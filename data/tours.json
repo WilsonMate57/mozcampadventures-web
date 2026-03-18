@@ -1,0 +1,2042 @@
+[
+  {
+    "id": "island-hopping-experience",
+    "slug": "island-hopping-experience",
+    "category": "island-tours",
+    "name": "Island Hopping Experience",
+    "subtitle": "Inhaca · Ilha dos Portugueses · Praia de Santa Maria",
+    "badge": "Popular",
+    "badgeClass": "popular",
+    "stars": 5,
+    "image": "../assets/images/packages/island-hopping/1.webp",
+    "heroImage": "../assets/images/packages/island-hopping/2.webp",
+    "location": "Baía de Maputo",
+    "destinations": "3 destinos",
+    "duration": "Dia inteiro",
+    "price": "5.500 MZN",
+    "price_from": 5500,
+    "priceOld": "6.500 MZN",
+    "priceLabel": "por adulto",
+    "price_child": 4500,
+    "priceChild": "4.500 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Aventura épica pelas ilhas mais bonitas de Moçambique — snorkeling em corais intocados, praias de areia branca e um autêntico barbecue à beira-mar.",
+    "detailText": [
+      "Embarque numa jornada inesquecível pelas ilhas paradisíacas da Baía de Maputo. Navegue por águas cristalinas e descubra a beleza selvagem da Ilha da Inhaca, a encantadora Ilha dos Portugueses e a deslumbrante Praia de Santa Maria — três destinos num único dia extraordinário.",
+      "A nossa equipa local guia-o por recifes de coral vibrantes, habitados por peixes tropicais, tartarugas marinhas e raias. Ao meio-dia, desfrute de um autêntico barbecue à beira-mar com peixe fresco, camarão e marisco grelhados na hora.",
+      "Perfeito para famílias, casais e grupos de amigos que querem viver o melhor que Moçambique tem para oferecer — natureza, sabor e aventura num único dia inesquecível."
+    ],
+    "includes": [
+      "Transporte de barco de ida e volta",
+      "Guia local certificado durante todo o passeio",
+      "Equipamento de snorkeling completo",
+      "Barbecue com peixe fresco, camarão e marisco",
+      "Água e bebidas frias durante o dia",
+      "Colete salva-vidas e equipamento de segurança",
+      "Taxas portuárias incluídas"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas",
+      "Gorjetas (opcional)",
+      "Despesas pessoais",
+      "Protetor solar (recomendamos trazer)"
+    ],
+    "highlights": [
+      "Snorkeling em recifes de coral com biodiversidade única",
+      "Barbecue autêntico com marisco fresco do dia",
+      "Praias virgens de areia branca e águas turquesa",
+      "Observação de golfinhos e tartarugas marinhas",
+      "Guias experientes com profundo conhecimento local",
+      "Grupos pequenos para uma experiência mais íntima"
+    ],
+    "itinerary": [
+      {
+        "time": "07h30",
+        "title": "Partida da Marina de Maputo",
+        "body": "Encontro na Marina de Maputo com a nossa equipa. Briefing de segurança, distribuição de equipamento de snorkeling e embarque.",
+        "checklist": [
+          "Protetor solar fator 50+",
+          "Roupa de banho",
+          "Toalha",
+          "Câmara fotográfica"
+        ]
+      },
+      {
+        "time": "08h30",
+        "title": "Ilha dos Portugueses — Snorkeling",
+        "body": "Chegada à Ilha dos Portugueses. Exploração dos impressionantes recifes de coral com peixes tropicais coloridos, tartarugas e raias.",
+        "checklist": [
+          "Snorkeling com equipamento incluído",
+          "Tempo livre na praia"
+        ]
+      },
+      {
+        "time": "11h00",
+        "title": "Ilha da Inhaca — Praia & Natureza",
+        "body": "Travessia para a Ilha da Inhaca. Passeio pela orla marítima, observação de aves e relaxamento nas praias desertas.",
+        "checklist": [
+          "Visita à praia principal",
+          "Exploração da natureza local"
+        ]
+      },
+      {
+        "time": "12h30",
+        "title": "Barbecue à Beira-Mar",
+        "body": "Barbecue com peixe fresco, camarão e marisco grelhados na hora pela nossa equipa, acompanhado de pão artesanal e saladas.",
+        "checklist": [
+          "Almoço completo incluído",
+          "Bebidas frias incluídas"
+        ]
+      },
+      {
+        "time": "14h30",
+        "title": "Praia de Santa Maria — Tarde Livre",
+        "body": "Tempo livre na deslumbrante Praia de Santa Maria para nadar, relaxar, fazer snorkeling ou simplesmente absorver o pôr do sol.",
+        "checklist": [
+          "Snorkeling facultativo",
+          "Fotografia do pôr do sol"
+        ]
+      },
+      {
+        "time": "16h30",
+        "title": "Regresso a Maputo",
+        "body": "Partida de regresso ao porto de Maputo com memórias e fotografias para toda a vida.",
+        "checklist": [
+          "Chegada prevista às 17h30"
+        ]
+      }
+    ],
+    "gallery": [
+      "../assets/images/packages/island-hopping/1.webp",
+      "../assets/images/packages/island-hopping/2.webp",
+      "../assets/images/packages/island-hopping/3.webp",
+      "../assets/images/packages/island-hopping/4.webp"
+    ],
+    "importantInfo": [
+      "Mínimo de 4 participantes para a saída ser confirmada.",
+      "Crianças com menos de 3 anos não pagam (sem assento próprio).",
+      "Tour sujeito a condições meteorológicas favoráveis — reagendamento gratuito.",
+      "Ponto de encontro: Marina de Maputo, às 07h30.",
+      "Recomendamos protetor solar com fator 50+ e óculos de sol."
+    ]
+  },
+  {
+    "id": "portuguese-island-bbq",
+    "slug": "portuguese-island-bbq",
+    "category": "island-tours",
+    "name": "Ilha dos Portugueses — Barbecue na Praia",
+    "subtitle": "Snorkeling & Barbecue na Ilha dos Portugueses",
+    "badge": "Mais Reservado",
+    "badgeClass": "popular",
+    "stars": 5,
+    "image": "../assets/images/packages/beach-berbecue/1.webp",
+    "heroImage": "../assets/images/packages/beach-berbecue/2.webp",
+    "location": "Ilha dos Portugueses",
+    "destinations": "1 destino",
+    "duration": "Meio dia",
+    "price": "4.800 MZN",
+    "price_from": 4800,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 3500,
+    "priceChild": "3.500 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Uma escapadinha perfeita à Ilha dos Portugueses com snorkeling em recifes de coral e um delicioso barbecue de marisco à beira-mar.",
+    "detailText": [
+      "A Ilha dos Portugueses é um banco de areia branca deslumbrante, rodeado por alguns dos melhores recifes de coral de Moçambique. Neste passeio exclusivo, navegamos diretamente até à ilha para uma manhã de snorkeling, sol e relaxamento.",
+      "O ponto alto é o nosso autêntico barbecue moçambicano: peixe fresco grelhado, camarão tigre, lulas e marisco preparados pela nossa equipa na praia, com vista para o Índico. Uma experiência gastronómica que vai recordar para sempre.",
+      "Ideal para quem tem menos tempo disponível mas não quer perder a essência das ilhas de Moçambique."
+    ],
+    "includes": [
+      "Transporte de barco de ida e volta",
+      "Equipamento de snorkeling completo",
+      "Barbecue com peixe fresco, camarão e marisco",
+      "Água e bebidas frias",
+      "Guia local experiente",
+      "Taxas portuárias incluídas"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas",
+      "Gorjetas (opcional)",
+      "Despesas pessoais"
+    ],
+    "highlights": [
+      "Barbecue autêntico com marisco fresco na praia",
+      "Snorkeling em recifes de coral vibrantes",
+      "Praia de areia branca pristina",
+      "Experiência compacta — perfeita para meio dia",
+      "Grupos pequenos e atenção personalizada"
+    ],
+    "itinerary": [
+      {
+        "time": "08h00",
+        "title": "Partida da Marina de Maputo",
+        "body": "Encontro na marina para briefing de segurança e embarque rumo à Ilha dos Portugueses.",
+        "checklist": [
+          "Protetor solar",
+          "Fato de banho",
+          "Toalha"
+        ]
+      },
+      {
+        "time": "09h00",
+        "title": "Chegada & Snorkeling",
+        "body": "Chegada à ilha e início da sessão de snorkeling nos recifes de coral com guia experiente.",
+        "checklist": [
+          "Equipamento de snorkeling incluído"
+        ]
+      },
+      {
+        "time": "11h00",
+        "title": "Barbecue na Praia",
+        "body": "A nossa equipa prepara o barbecue diretamente na areia. Peixe fresco, camarão e marisco grelhados na hora.",
+        "checklist": [
+          "Almoço completo incluído",
+          "Bebidas frias incluídas"
+        ]
+      },
+      {
+        "time": "12h30",
+        "title": "Tempo Livre & Regresso",
+        "body": "Tempo livre para mergulho livre, fotografia e relaxamento antes do regresso a Maputo.",
+        "checklist": [
+          "Chegada prevista 13h30"
+        ]
+      }
+    ],
+    "gallery": [
+      "../assets/images/packages/beach-berbecue/1.webp",
+      "../assets/images/packages/beach-berbecue/2.webp",
+      "../assets/images/packages/beach-berbecue/3.webp",
+      "../assets/images/packages/beach-berbecue/4.webp"
+    ],
+    "importantInfo": [
+      "Mínimo de 4 participantes para confirmação da saída.",
+      "Tour sujeito a condições meteorológicas.",
+      "Ponto de encontro: Marina de Maputo, às 08h00.",
+      "Não disponível às segundas-feiras."
+    ]
+  },
+  {
+    "id": "portuguese-island-farol",
+    "slug": "portuguese-island-farol",
+    "category": "island-tours",
+    "name": "Ilha dos Portugueses & Praia do Farol",
+    "subtitle": "Dois destinos icónicos numa única aventura",
+    "badge": "Exclusivo",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "../assets/images/packages/farol-inhaca/1.webp",
+    "heroImage": "../assets/images/packages/farol-inhaca/2.webp",
+    "location": "Inhaca & Ilha dos Portugueses",
+    "destinations": "2 destinos",
+    "duration": "Dia inteiro",
+    "price": "4.200 MZN",
+    "price_from": 4200,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 3200,
+    "priceChild": "3.200 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Uma combinação única: snorkeling na Ilha dos Portugueses e visita à histórica Praia do Farol na Ilha da Inhaca, com o seu icónico farol do século XIX.",
+    "detailText": [
+      "Este passeio combina dois dos destinos mais fotogénicos da Baía de Maputo: a Ilha dos Portugueses com os seus recifes de coral intocados, e a Praia do Farol na Ilha da Inhaca, marcada pelo histórico farol construído em 1893.",
+      "Após o snorkeling na Ilha dos Portugueses, navegamos até à Praia do Farol para uma visita guiada ao farol e um piquenique na praia com vistas deslumbrantes para o oceano. Um passeio com história, natureza e muita beleza.",
+      "Uma experiência perfeita para os amantes de história e natureza que procuram algo diferente das tradicionais visitas às ilhas."
+    ],
+    "includes": [
+      "Transporte de barco de ida e volta",
+      "Equipamento de snorkeling",
+      "Piquenique na Praia do Farol",
+      "Visita guiada ao farol histórico",
+      "Água e bebidas frias",
+      "Guia local certificado"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas",
+      "Gorjetas",
+      "Despesas pessoais"
+    ],
+    "highlights": [
+      "Visita ao icónico Farol da Inhaca (1893)",
+      "Snorkeling em recifes de coral da Ilha dos Portugueses",
+      "Piquenique com vista panorâmica para o Índico",
+      "Guia histórico e cultural incluído",
+      "Excelentes oportunidades fotográficas"
+    ],
+    "itinerary": [
+      {
+        "time": "07h30",
+        "title": "Partida da Marina",
+        "body": "Embarque na Marina de Maputo rumo à Ilha dos Portugueses.",
+        "checklist": []
+      },
+      {
+        "time": "08h30",
+        "title": "Snorkeling — Ilha dos Portugueses",
+        "body": "Sessão de snorkeling nos recifes de coral com peixes tropicais e tartarugas marinhas.",
+        "checklist": []
+      },
+      {
+        "time": "10h30",
+        "title": "Travessia para a Praia do Farol",
+        "body": "Navegação até à Praia do Farol na Ilha da Inhaca.",
+        "checklist": []
+      },
+      {
+        "time": "11h00",
+        "title": "Visita ao Farol Histórico",
+        "body": "Tour guiado pelo farol histórico da Inhaca com vista panorâmica da ilha e da baía.",
+        "checklist": []
+      },
+      {
+        "time": "12h30",
+        "title": "Piquenique na Praia",
+        "body": "Piquenique à beira-mar com sanduíches, fruta fresca e bebidas frias.",
+        "checklist": []
+      },
+      {
+        "time": "14h00",
+        "title": "Regresso a Maputo",
+        "body": "Regresso à Marina de Maputo com chegada prevista às 15h00.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "../assets/images/packages/farol-inhaca/1.webp",
+      "../assets/images/packages/farol-inhaca/2.webp",
+      "../assets/images/packages/farol-inhaca/3.webp",
+      "../assets/images/packages/farol-inhaca/4.webp"
+    ],
+    "importantInfo": [
+      "A subida ao farol pode ser fisicamente exigente — calçado adequado recomendado.",
+      "Mínimo de 4 participantes.",
+      "Sujeito a condições meteorológicas.",
+      "Ponto de encontro: Marina de Maputo, 07h30."
+    ]
+  },
+  {
+    "id": "santa-maria-snorkeling",
+    "slug": "santa-maria-snorkeling",
+    "category": "island-tours",
+    "name": "Praia de Santa Maria — Snorkeling & BBQ",
+    "subtitle": "Uma das praias mais bonitas de Moçambique",
+    "badge": "Recomendado",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "../assets/images/packages/snorkeling-bbq/1.webp",
+    "heroImage": "../assets/images/packages/snorkeling-bbq/2.webp",
+    "location": "Praia de Santa Maria",
+    "destinations": "1 destino",
+    "duration": "Dia inteiro",
+    "price": "5.200 MZN",
+    "price_from": 5200,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 4000,
+    "priceChild": "4.000 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Um dia completo na deslumbrante Praia de Santa Maria com snorkeling em recifes de coral, barbecue à beira-mar e a mais pura paz do Índico.",
+    "detailText": [
+      "A Praia de Santa Maria é considerada uma das praias mais intocadas de Moçambique. Com areia branca fina, águas cristalinas e recifes de coral à porta, é o destino perfeito para um dia de total desconexão e natureza pura.",
+      "O nosso passeio inclui uma sessão de snorkeling guiada nos recifes locais, repletos de vida marinha diversificada, seguida de um autêntico barbecue moçambicano preparado na areia pela nossa equipa.",
+      "A tarde é toda sua para mergulhar, relaxar, explorar a praia ou simplesmente absorver a beleza incomparável da natureza moçambicana."
+    ],
+    "includes": [
+      "Transporte de barco de ida e volta",
+      "Equipamento de snorkeling completo",
+      "Barbecue com peixe e marisco frescos",
+      "Água e bebidas frias",
+      "Guia local experiente",
+      "Colete salva-vidas"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas",
+      "Gorjetas",
+      "Despesas pessoais"
+    ],
+    "highlights": [
+      "Praia de areia branca pristina com águas turquesa",
+      "Snorkeling em recifes de coral intocados",
+      "Barbecue autêntico com marisco fresco",
+      "Ambiente tranquilo e sem multidões",
+      "Pôr do sol memorável sobre o Índico"
+    ],
+    "itinerary": [
+      {
+        "time": "07h00",
+        "title": "Partida da Marina",
+        "body": "Embarque na Marina de Maputo com destino à Praia de Santa Maria.",
+        "checklist": []
+      },
+      {
+        "time": "09h00",
+        "title": "Chegada & Instalação na Praia",
+        "body": "Chegada à Praia de Santa Maria. Instalação e briefing de snorkeling.",
+        "checklist": []
+      },
+      {
+        "time": "09h30",
+        "title": "Snorkeling nos Recifes",
+        "body": "Sessão guiada de snorkeling nos recifes de coral com peixes tropicais e fauna marinha diversificada.",
+        "checklist": []
+      },
+      {
+        "time": "12h00",
+        "title": "Barbecue na Praia",
+        "body": "Barbecue moçambicano com peixe fresco, camarão e marisco grelhados na areia.",
+        "checklist": []
+      },
+      {
+        "time": "13h30",
+        "title": "Tarde Livre na Praia",
+        "body": "Tempo livre para nadar, relaxar ou explorar a praia até à hora do regresso.",
+        "checklist": []
+      },
+      {
+        "time": "16h00",
+        "title": "Regresso a Maputo",
+        "body": "Partida de Santa Maria com chegada prevista às 18h00.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "../assets/images/packages/snorkeling-bbq/1.webp",
+      "../assets/images/packages/snorkeling-bbq/2.webp",
+      "../assets/images/packages/snorkeling-bbq/3.webp",
+      "../assets/images/packages/snorkeling-bbq/4.webp"
+    ],
+    "importantInfo": [
+      "Sujeito a condições meteorológicas.",
+      "Mínimo de 4 participantes.",
+      "Ponto de encontro: Marina de Maputo, 07h00.",
+      "A praia não tem infraestruturas — trazer tudo necessário."
+    ]
+  },
+  {
+    "id": "inhaca-cultural",
+    "slug": "inhaca-cultural",
+    "category": "island-tours",
+    "name": "Inhaca Island — Experiência Cultural",
+    "subtitle": "Descobre a vida e a cultura da Ilha da Inhaca",
+    "badge": "Autêntico",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "../assets/images/packages/inhaca-cultural/1.webp",
+    "heroImage": "../assets/images/packages/inhaca-cultural/2.webp",
+    "location": "Ilha da Inhaca",
+    "destinations": "1 destino",
+    "duration": "Dia inteiro",
+    "price": "4.500 MZN",
+    "price_from": 4500,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 3000,
+    "priceChild": "3.000 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Uma imersão autêntica na cultura e comunidade da Ilha da Inhaca — visita à aldeia, mercado local, praias selvagens e almoço típico moçambicano.",
+    "detailText": [
+      "A Ilha da Inhaca é muito mais do que praias paradisíacas. É uma comunidade viva com uma história rica, mercados coloridos e uma culinária local única. Este passeio leva-o para dentro da vida real da ilha.",
+      "Comece com uma visita guiada à aldeia principal de Inhaca, onde vai conhecer os pescadores locais, visitar o mercado de artesanato e compreender a forma de vida desta comunidade costeira. A tarde é passada nas praias mais tranquilas da ilha.",
+      "O almoço é servido numa tasca local com pratos típicos moçambicanos — matapa, carapau frito e arroz de coco — uma experiência gastronómica autêntica que não encontrará em nenhum restaurante da cidade."
+    ],
+    "includes": [
+      "Transporte de barco de ida e volta",
+      "Guia cultural local certificado",
+      "Visita guiada à aldeia e mercado",
+      "Almoço típico moçambicano",
+      "Água e bebidas frias",
+      "Entrada no museu local (quando disponível)"
+    ],
+    "excludes": [
+      "Artesanato e compras no mercado",
+      "Bebidas alcoólicas",
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Visita guiada à aldeia de pescadores de Inhaca",
+      "Mercado local com artesanato e produtos típicos",
+      "Almoço com pratos tradicionais moçambicanos",
+      "Praias tranquilas e pouco frequentadas por turistas",
+      "Interação autêntica com a comunidade local",
+      "Perfeito para famílias com crianças"
+    ],
+    "itinerary": [
+      {
+        "time": "08h00",
+        "title": "Partida para Inhaca",
+        "body": "Embarque na Marina de Maputo rumo à Ilha da Inhaca.",
+        "checklist": []
+      },
+      {
+        "time": "09h30",
+        "title": "Visita à Aldeia de Inhaca",
+        "body": "Tour guiado pela aldeia principal — mercado de peixe, artesanato e interação com a comunidade local.",
+        "checklist": []
+      },
+      {
+        "time": "11h30",
+        "title": "Praia Tranquila — Tempo Livre",
+        "body": "Tempo livre numa das praias mais desertas da ilha para nadar e relaxar.",
+        "checklist": []
+      },
+      {
+        "time": "13h00",
+        "title": "Almoço Típico Local",
+        "body": "Almoço numa tasca local com matapa, carapau frito, arroz de coco e outros pratos típicos moçambicanos.",
+        "checklist": []
+      },
+      {
+        "time": "14h30",
+        "title": "Exploração Livre & Artesanato",
+        "body": "Tarde livre para compras de artesanato, mais exploração ou simplesmente relaxamento na praia.",
+        "checklist": []
+      },
+      {
+        "time": "16h00",
+        "title": "Regresso a Maputo",
+        "body": "Regresso à Marina de Maputo com chegada prevista às 17h30.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "../assets/images/packages/inhaca-cultural/1.webp",
+      "../assets/images/packages/inhaca-cultural/2.webp",
+      "../assets/images/packages/inhaca-cultural/3.webp",
+      "../assets/images/packages/inhaca-cultural/4.webp"
+    ],
+    "importantInfo": [
+      "Respeitar os costumes e tradições locais durante a visita à aldeia.",
+      "Vestuário modesto recomendado para a visita à aldeia.",
+      "Sujeito a condições meteorológicas.",
+      "Ponto de encontro: Marina de Maputo, 08h00."
+    ]
+  },
+  {
+    "id": "maputo-bay-sunset-cruise",
+    "slug": "maputo-bay-sunset-cruise",
+    "category": "sunset-cruise",
+    "name": "Maputo Bay Sunset Cruise",
+    "subtitle": "O pôr do sol mais bonito da Baía de Maputo",
+    "badge": "Favorito",
+    "badgeClass": "popular",
+    "stars": 5,
+    "image": "assets/images/packages/sunset_cruise_2.jpeg",
+    "heroImage": "assets/images/packages/sunset_cruise_1.jpeg",
+    "location": "Baía de Maputo",
+    "destinations": "Maputo Bay",
+    "duration": "3 horas",
+    "price": "2.500 MZN",
+    "price_from": 2500,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 1800,
+    "priceChild": "1.800 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Navegue pela Baía de Maputo ao fim do dia e assista a um dos pôres do sol mais deslumbrantes do mundo, a bordo do nosso barco confortável.",
+    "detailText": [
+      "Há poucas coisas mais bonitas do que ver o sol mergulhar no horizonte da Baía de Maputo a partir do mar. O nosso Sunset Cruise leva-o por uma navegação tranquila de 3 horas ao longo da baía, com champanhe, bebidas e snacks incluídos.",
+      "A bordo, desfrute da brisa do mar, música ao vivo e a companhia perfeita para uma tarde inesquecível. O cruzeiro passa pelas margens da cidade, com vistas únicas da linha de horizonte de Maputo ao entardecer.",
+      "Ideal para casais, grupos de amigos ou qualquer pessoa que queira celebrar um momento especial com estilo."
+    ],
+    "includes": [
+      "Cruzeiro de 3 horas na Baía de Maputo",
+      "Champanhe de boas-vindas",
+      "Bebidas (não alcoólicas e 1 alcoólica por pessoa)",
+      "Snacks de bordo",
+      "Música ambiente",
+      "Tripulação experiente"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas adicionais",
+      "Gorjetas",
+      "Transferes de e para o porto"
+    ],
+    "highlights": [
+      "Pôr do sol espectacular sobre a Baía de Maputo",
+      "Champanhe de boas-vindas a bordo",
+      "Vistas únicas da linha de horizonte de Maputo",
+      "Ambiente romântico e descontraído",
+      "Tripulação profissional e hospitaleira"
+    ],
+    "itinerary": [
+      {
+        "time": "17h00",
+        "title": "Embarque & Champanhe de Boas-Vindas",
+        "body": "Recepção a bordo com champanhe de boas-vindas e apresentação da tripulação.",
+        "checklist": []
+      },
+      {
+        "time": "17h30",
+        "title": "Partida para a Baía",
+        "body": "Largamos da marina e navegamos pela Baía de Maputo enquanto o sol começa a baixar no horizonte.",
+        "checklist": []
+      },
+      {
+        "time": "18h30",
+        "title": "Pôr do Sol — Momento Especial",
+        "body": "O momento mais esperado: o sol mergulha no horizonte sobre a baía. Música ambiente e snacks servidos a bordo.",
+        "checklist": []
+      },
+      {
+        "time": "20h00",
+        "title": "Regresso ao Porto",
+        "body": "Regresso tranquilo ao porto de Maputo ao anoitecer.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/sunset_cruise_1.jpeg",
+      "assets/images/packages/sunset_cruise_2.jpeg",
+      "assets/images/packages/sunset_cruise_3.jpeg",
+      "assets/images/packages/sunset_cruise_5.jpeg"
+    ],
+    "importantInfo": [
+      "Saídas disponíveis de quarta a domingo.",
+      "Reserva antecipada recomendada — lugares limitados.",
+      "Roupa leve e um casaco fino recomendados (brisa ao anoitecer).",
+      "Ponto de encontro: Porto de Maputo, às 17h00."
+    ]
+  },
+  {
+    "id": "sunset-dinner-dj",
+    "slug": "sunset-dinner-dj",
+    "category": "sunset-cruise",
+    "name": "Sunset Dinner & DJ Cruise",
+    "subtitle": "Jantar premium & DJ ao vivo no Índico",
+    "badge": "Premium",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/sunset_cruise_4.jpeg",
+    "heroImage": "assets/images/packages/sunset_cruise_3.jpeg",
+    "location": "Baía de Maputo",
+    "destinations": "Maputo Bay",
+    "duration": "4 horas",
+    "price": "3.800 MZN",
+    "price_from": 3800,
+    "priceOld": null,
+    "priceLabel": "por pessoa",
+    "price_child": null,
+    "priceChild": null,
+    "priceChildLabel": null,
+    "currency": "MZN",
+    "description": "Uma noite premium no mar: jantar a 4 mãos com marisco fresco, DJ ao vivo e o pôr do sol mais incrível da Baía de Maputo. Apenas para adultos.",
+    "detailText": [
+      "O nosso Sunset Dinner & DJ Cruise é a experiência mais exclusiva que oferecemos. A bordo do nosso barco premium, um chef moçambicano prepara um jantar de 3 pratos com o melhor marisco fresco do dia, acompanhado por uma carta de vinhos cuidadosamente seleccionada.",
+      "Um DJ residente garante a banda sonora perfeita para a noite — de música ambiente ao entardecer até beats mais animados ao anoitecer, criando uma atmosfera única sobre as águas da baía.",
+      "Apenas para adultos (maiores de 16 anos). Número máximo de 20 participantes por saída para garantir a exclusividade da experiência."
+    ],
+    "includes": [
+      "Cruzeiro de 4 horas na Baía de Maputo",
+      "Champanhe de boas-vindas",
+      "Jantar de 3 pratos com marisco fresco",
+      "1 garrafa de vinho por casal (ou equivalente)",
+      "DJ ao vivo durante toda a noite",
+      "Open bar (bebidas não alcoólicas)"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas extra",
+      "Gorjetas",
+      "Transferes"
+    ],
+    "highlights": [
+      "Jantar de chef com marisco fresco do Índico",
+      "DJ ao vivo com ambiente exclusivo",
+      "Pôr do sol espectacular sobre a Baía de Maputo",
+      "Máximo 20 pessoas — experiência verdadeiramente exclusiva",
+      "Champanhe e vinho incluídos"
+    ],
+    "itinerary": [
+      {
+        "time": "17h30",
+        "title": "Recepção & Champanhe",
+        "body": "Recepção a bordo com champanhe e apresentação do chef e DJ.",
+        "checklist": []
+      },
+      {
+        "time": "18h00",
+        "title": "Partida & Entrada",
+        "body": "Partida para a baía com servição das entradas (ostras, gambas e couvert).",
+        "checklist": []
+      },
+      {
+        "time": "19h00",
+        "title": "Pôr do Sol & Prato Principal",
+        "body": "Jantar principal com o pôr do sol em pano de fundo. Peixe grelhado ou lagosta conforme o dia.",
+        "checklist": []
+      },
+      {
+        "time": "20h00",
+        "title": "Sobremesa & DJ Set",
+        "body": "Sobremesa servida enquanto o DJ anima a noite com música ambiente e beats seleccionados.",
+        "checklist": []
+      },
+      {
+        "time": "21h30",
+        "title": "Regresso ao Porto",
+        "body": "Regresso tranquilo ao porto de Maputo ao final da noite.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/sunset_cruise_3.jpeg",
+      "assets/images/packages/sunset_cruise_4.jpeg",
+      "assets/images/packages/sunset_cruise_5.jpeg",
+      "assets/images/packages/sunset_cruise_6.jpeg"
+    ],
+    "importantInfo": [
+      "Apenas para adultos (maiores de 16 anos).",
+      "Máximo 20 participantes por saída — reserva antecipada essencial.",
+      "Dresscode: Smart casual.",
+      "Disponível sextas e sábados.",
+      "Cancelamento gratuito até 48h antes."
+    ]
+  },
+  {
+    "id": "xefina-island-cruise",
+    "slug": "xefina-island-cruise",
+    "category": "sunset-cruise",
+    "name": "Xefina Island Sunset Party Cruise",
+    "subtitle": "Cruzeiro festivo até à Ilha da Xefina ao pôr do sol",
+    "badge": "Animado",
+    "badgeClass": "",
+    "stars": 4,
+    "image": "assets/images/packages/sunset_cruise_6.jpeg",
+    "heroImage": "assets/images/packages/sunset_cruise_5.jpeg",
+    "location": "Ilha da Xefina",
+    "destinations": "Ilha da Xefina",
+    "duration": "5 horas",
+    "price": "3.200 MZN",
+    "price_from": 3200,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 2500,
+    "priceChild": "2.500 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Uma festa no mar! Cruzeiro animado até à Ilha da Xefina com música, barbecue, bebidas e o melhor pôr do sol da Baía de Maputo.",
+    "detailText": [
+      "A Ilha da Xefina é um segredo bem guardado da Baía de Maputo — uma ilha histórica com praias desertas e um ambiente único. O nosso Party Cruise leva-o até lá ao fim do dia para uma experiência que combina aventura, gastronomia e festa.",
+      "A bordo, música animada, barbecue de marisco e um open bar de bebidas criam a atmosfera perfeita para uma tarde inesquecível. Na ilha, há tempo para explorar a praia, nadar nas águas mornas e assistir ao pôr do sol num ambiente verdadeiramente especial.",
+      "Perfeito para grupos de amigos, despedidas de solteiro/a ou qualquer celebração que mereça um cenário extraordinário."
+    ],
+    "includes": [
+      "Cruzeiro de 5 horas",
+      "Entrada na Ilha da Xefina",
+      "Barbecue de marisco e grelhados",
+      "Bebidas (cerveja, refrigerantes, água durante o cruzeiro)",
+      "Música e animação a bordo",
+      "Guia e tripulação experiente"
+    ],
+    "excludes": [
+      "Bebidas premium e cocktails",
+      "Gorjetas",
+      "Transferes para o porto"
+    ],
+    "highlights": [
+      "Visita à histórica e misteriosa Ilha da Xefina",
+      "Barbecue animado com marisco fresco",
+      "Música e ambiente de festa a bordo",
+      "Pôr do sol único sobre a baía",
+      "Ideal para grupos e celebrações"
+    ],
+    "itinerary": [
+      {
+        "time": "15h00",
+        "title": "Embarque & Música",
+        "body": "Recepção a bordo com primeiras bebidas e início da música.",
+        "checklist": []
+      },
+      {
+        "time": "16h00",
+        "title": "Chegada à Ilha da Xefina",
+        "body": "Chegada à ilha para exploração da praia e início do barbecue.",
+        "checklist": []
+      },
+      {
+        "time": "17h30",
+        "title": "Pôr do Sol & Barbecue",
+        "body": "Barbecue à beira-mar enquanto o sol se põe no horizonte. Música e animação.",
+        "checklist": []
+      },
+      {
+        "time": "19h00",
+        "title": "Regresso a Maputo",
+        "body": "Regresso à marina de Maputo ao anoitecer.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/sunset_cruise_5.jpeg",
+      "assets/images/packages/sunset_cruise_6.jpeg",
+      "assets/images/packages/sunset_cruise_2.jpeg",
+      "assets/images/packages/sunset_cruise_3.jpeg"
+    ],
+    "importantInfo": [
+      "Disponível fins de semana e feriados.",
+      "Mínimo de 8 participantes para confirmação.",
+      "Ideal para grupos — descontos para grupos acima de 15 pessoas.",
+      "Ponto de encontro: Porto de Maputo, 14h45."
+    ]
+  },
+  {
+    "id": "ponta-douro-day-trip",
+    "slug": "ponta-douro-day-trip",
+    "category": "beach-tours",
+    "name": "Ponta D'Ouro — Dia Completo",
+    "subtitle": "Golfinhos, snorkeling e praias douradas no sul de Moçambique",
+    "badge": "Top Destino",
+    "badgeClass": "popular",
+    "stars": 5,
+    "image": "assets/images/packages/ponta_torres.jpg",
+    "heroImage": "assets/images/packages/beach_day_1.jpg",
+    "location": "Ponta D'Ouro",
+    "destinations": "Ponta D'Ouro",
+    "duration": "Dia inteiro",
+    "price": "4.500 MZN",
+    "price_from": 4500,
+    "priceOld": "5.500 MZN",
+    "priceLabel": "por adulto",
+    "price_child": 3000,
+    "priceChild": "3.000 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Ponta D'Ouro é famosa pelos golfinhos selvagens e praias douradas intocadas. Um dia de aventura oceânica, snorkeling e natureza no sul de Moçambique.",
+    "detailText": [
+      "Ponta D'Ouro, a 120km a sul de Maputo, é um dos destinos mais amados pelos moçambicanos e visitantes estrangeiros. Famosa pelas suas praias douradas, águas cristalinas e uma das maiores populações residentes de golfinhos do mundo.",
+      "O nosso day trip inclui uma excursão de barco para nadar com golfinhos selvagens no seu habitat natural, snorkeling nos recifes costeiros e tempo livre nas praias paradisíacas. O almoço é servido num restaurante local à beira-mar.",
+      "Uma viagem de 2 horas de Maputo que parece transportá-lo para outro mundo — natureza, oceano e autenticidade."
+    ],
+    "includes": [
+      "Transporte privado de ida e volta (4x4)",
+      "Excursão de barco para observação de golfinhos",
+      "Equipamento de snorkeling",
+      "Almoço em restaurante local",
+      "Guia experiente",
+      "Água e bebidas não alcoólicas"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas",
+      "Entradas em reservas (quando aplicável)",
+      "Gorjetas",
+      "Despesas pessoais"
+    ],
+    "highlights": [
+      "Natação com golfinhos selvagens no seu habitat natural",
+      "Snorkeling em recifes costeiros de Ponta D'Ouro",
+      "Praias douradas intocadas com dunas imponentes",
+      "Almoço fresco em restaurante à beira-mar",
+      "Viagem em 4x4 pelas dunas e paisagens do sul"
+    ],
+    "itinerary": [
+      {
+        "time": "06h00",
+        "title": "Partida de Maputo",
+        "body": "Saída de Maputo em 4x4 privado com destino a Ponta D'Ouro.",
+        "checklist": [
+          "Passaporte ou BI",
+          "Roupa de banho",
+          "Protetor solar"
+        ]
+      },
+      {
+        "time": "08h30",
+        "title": "Chegada a Ponta D'Ouro",
+        "body": "Chegada ao destino e preparação para a excursão de barco.",
+        "checklist": []
+      },
+      {
+        "time": "09h00",
+        "title": "Excursão de Barco & Golfinhos",
+        "body": "Saída de barco para observação e natação com golfinhos selvagens nas águas de Ponta D'Ouro.",
+        "checklist": []
+      },
+      {
+        "time": "11h00",
+        "title": "Snorkeling & Praia Livre",
+        "body": "Snorkeling nos recifes costeiros e tempo livre na praia dourada.",
+        "checklist": []
+      },
+      {
+        "time": "13h00",
+        "title": "Almoço Local",
+        "body": "Almoço em restaurante local com peixe fresco e pratos típicos moçambicanos.",
+        "checklist": []
+      },
+      {
+        "time": "15h00",
+        "title": "Regresso a Maputo",
+        "body": "Partida para Maputo com chegada prevista às 17h30.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/ponta_torres.jpg",
+      "assets/images/packages/beach_day_1.jpg",
+      "assets/images/packages/beach_day_3.jpg",
+      "assets/images/packages/observacao_baleias_1.jpg"
+    ],
+    "importantInfo": [
+      "Passaporte ou BI obrigatório para a viagem ao sul.",
+      "A natação com golfinhos não é garantida — depende do comportamento dos animais.",
+      "Tour sujeito a condições meteorológicas e do mar.",
+      "Partida de Maputo às 06h00 — chegada atempada obrigatória."
+    ]
+  },
+  {
+    "id": "macaneta-day-trip",
+    "slug": "macaneta-day-trip",
+    "category": "beach-tours",
+    "name": "Macaneta Beach Day",
+    "subtitle": "Lagoa, mangais e praias selvagens a 30 minutos de Maputo",
+    "badge": "Perto de Maputo",
+    "badgeClass": "",
+    "stars": 4,
+    "image": "assets/images/packages/beach_day_2.jpg",
+    "heroImage": "assets/images/packages/beach_day_3.jpg",
+    "location": "Macaneta",
+    "destinations": "Macaneta",
+    "duration": "Dia inteiro",
+    "price": "3.500 MZN",
+    "price_from": 3500,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 2500,
+    "priceChild": "2.500 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Macaneta é a escapadinha perfeita de Maputo — uma língua de terra entre o oceano e a lagoa com praias selvagens, mangais e peixe fresco.",
+    "detailText": [
+      "Macaneta é uma península estreita a apenas 30 minutos de Maputo, separada do continente pelo Rio Incomáti. Com praias selvagens voltadas para o oceano de um lado e a tranquilidade da lagoa do outro, é um destino único e acessível.",
+      "O nosso day trip inclui a travessia de barco pelo rio, passeio pelos mangais com guia local e um longo dia de praia com almoço de peixe fresco num restaurante típico da região.",
+      "Perfeito para quem quer escapar da cidade sem viagens longas."
+    ],
+    "includes": [
+      "Transporte de ida e volta de Maputo",
+      "Travessia de barco pelo Rio Incomáti",
+      "Guia local para o passeio pelos mangais",
+      "Almoço com peixe fresco e bebidas",
+      "Acesso à praia"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas extras",
+      "Gorjetas",
+      "Atividades extras"
+    ],
+    "highlights": [
+      "Travessia de barco pelo pitoresco Rio Incomáti",
+      "Praias selvagens e pouco frequentadas",
+      "Passeio pelos mangais com fauna local",
+      "Peixe fresco e marisco no melhor estilo local",
+      "Apenas 30 minutos de Maputo"
+    ],
+    "itinerary": [
+      {
+        "time": "08h30",
+        "title": "Partida de Maputo",
+        "body": "Saída de Maputo com destino a Macaneta.",
+        "checklist": []
+      },
+      {
+        "time": "09h30",
+        "title": "Travessia do Rio Incomáti",
+        "body": "Travessia de barco pelo Rio Incomáti até à península de Macaneta.",
+        "checklist": []
+      },
+      {
+        "time": "10h00",
+        "title": "Passeio pelos Mangais",
+        "body": "Exploração guiada dos mangais com observação de aves e fauna costeira.",
+        "checklist": []
+      },
+      {
+        "time": "11h30",
+        "title": "Praia Livre",
+        "body": "Tempo livre na praia selvagem de Macaneta para nadar e relaxar.",
+        "checklist": []
+      },
+      {
+        "time": "13h30",
+        "title": "Almoço Típico",
+        "body": "Almoço com carapau frito, camarão e arroz de coco num restaurante local.",
+        "checklist": []
+      },
+      {
+        "time": "15h30",
+        "title": "Regresso a Maputo",
+        "body": "Regresso a Maputo com chegada prevista às 17h00.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/beach_day_2.jpg",
+      "assets/images/packages/beach_day_3.jpg",
+      "assets/images/packages/beach_day_4.jpg"
+    ],
+    "importantInfo": [
+      "Disponível todos os dias da semana.",
+      "Mínimo de 4 participantes.",
+      "A praia de Macaneta tem correntes fortes — nadar com cautela.",
+      "Ponto de encontro: Maputo, 08h30."
+    ]
+  },
+  {
+    "id": "bilene-day-trip",
+    "slug": "bilene-day-trip",
+    "category": "beach-tours",
+    "name": "Bilene — Lagoa de São Martinho",
+    "subtitle": "A lagoa mais azul de Moçambique a 2 horas de Maputo",
+    "badge": "Família",
+    "badgeClass": "",
+    "stars": 4,
+    "image": "assets/images/packages/beach_day_4.jpg",
+    "heroImage": "assets/images/packages/beach_day_1.jpg",
+    "location": "Bilene, Gaza",
+    "destinations": "Bilene",
+    "duration": "Dia inteiro",
+    "price": "4.200 MZN",
+    "price_from": 4200,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 3000,
+    "priceChild": "3.000 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "A Lagoa de São Martinho em Bilene é a praia de águas calmas mais popular de Moçambique — perfeita para famílias com crianças e amantes de kayak e windsurf.",
+    "detailText": [
+      "Bilene, a 180km a norte de Maputo, abriga a Lagoa de São Martinho — uma lagoa de água salgada separada do oceano por uma estreita faixa de areia. As suas águas calmas e cristalinas tornam-na no destino de praia mais seguro e familiar de Moçambique.",
+      "O nosso day trip inclui transporte privado de ida e volta, acesso à lagoa e almoço num dos restaurantes à beira-água. É possível alugar kayaks, pranchas de windsurf e outros equipamentos aquáticos diretamente no local (custos extra).",
+      "Um dia perfeito para famílias com crianças, graças às águas calmas e fundas, sem correntes perigosas."
+    ],
+    "includes": [
+      "Transporte privado de ida e volta (AC)",
+      "Guia acompanhante",
+      "Almoço em restaurante à beira da lagoa",
+      "Água e bebidas não alcoólicas",
+      "Acesso à lagoa"
+    ],
+    "excludes": [
+      "Aluguer de equipamento aquático (kayak, windsurf)",
+      "Bebidas alcoólicas",
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Lagoa de águas calmas — perfeita para crianças",
+      "Kayak e windsurf disponíveis no local",
+      "Almoço fresco à beira da lagoa",
+      "Transporte privado confortável com AC",
+      "Ambiente familiar e descontraído"
+    ],
+    "itinerary": [
+      {
+        "time": "07h00",
+        "title": "Partida de Maputo",
+        "body": "Saída de Maputo em viatura privada com AC.",
+        "checklist": []
+      },
+      {
+        "time": "09h00",
+        "title": "Chegada a Bilene",
+        "body": "Chegada à Lagoa de São Martinho e instalação na praia.",
+        "checklist": []
+      },
+      {
+        "time": "09h30",
+        "title": "Atividades na Lagoa",
+        "body": "Natação nas águas calmas, kayak e windsurf (aluguer extra). Tempo livre à beira-água.",
+        "checklist": []
+      },
+      {
+        "time": "13h00",
+        "title": "Almoço à Beira da Lagoa",
+        "body": "Almoço num restaurante local com vistas deslumbrantes para a lagoa.",
+        "checklist": []
+      },
+      {
+        "time": "14h30",
+        "title": "Tarde Livre",
+        "body": "Mais tempo livre para nadar, relaxar ou explorar os arredores.",
+        "checklist": []
+      },
+      {
+        "time": "16h00",
+        "title": "Regresso a Maputo",
+        "body": "Partida para Maputo com chegada prevista às 18h00.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/beach_day_4.jpg",
+      "assets/images/packages/beach_day_1.jpg",
+      "assets/images/packages/beach_day_2.jpg"
+    ],
+    "importantInfo": [
+      "Aluguer de kayak e equipamento não incluído no preço.",
+      "Ideal para famílias com crianças — águas calmas e seguras.",
+      "Estrada asfaltada — viagem confortável.",
+      "Ponto de encontro: Maputo, 07h00."
+    ]
+  },
+  {
+    "id": "tofo-beach-trip",
+    "slug": "tofo-beach-trip",
+    "category": "beach-tours",
+    "name": "Tofo Beach — Tubarões-baleia & Mantas",
+    "subtitle": "O destino de mergulho mais famoso de Moçambique",
+    "badge": "Aventura",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/observacao_baleias_1.jpg",
+    "heroImage": "assets/images/packages/beach_day_2.jpg",
+    "location": "Tofo, Inhambane",
+    "destinations": "Tofo Beach",
+    "duration": "2 dias / 1 noite",
+    "price": "7.500 MZN",
+    "price_from": 7500,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 5500,
+    "priceChild": "5.500 MZN",
+    "priceChildLabel": "Crianças (8–12 anos)",
+    "currency": "MZN",
+    "description": "Tofo é o capital mundial dos tubarões-baleia e mantas gigantes. Dois dias de mergulho, snorkeling e praias paradisíacas em Inhambane.",
+    "detailText": [
+      "A Praia do Tofo, em Inhambane, é internacionalmente reconhecida como um dos melhores destinos de mergulho do mundo. Os seus recifes abrigam tubarões-baleia, manta-raias gigantes, tartarugas, golfinhos e uma biodiversidade marinha de tirar o fôlego.",
+      "O nosso pacote de 2 dias inclui transporte de ida e volta de Maputo, alojamento em pousada de frente para a praia, duas saídas de snorkeling ou mergulho guiado (com possibilidade de encontrar tubarões-baleia conforme a época) e todas as refeições.",
+      "Uma experiência transformadora para amantes do oceano e da vida selvagem marinha."
+    ],
+    "includes": [
+      "Transporte de ida e volta de Maputo (voo ou autocarro AC)",
+      "1 noite em pousada à beira-mar",
+      "2 saídas de snorkeling/mergulho guiado",
+      "Todas as refeições (pequeno-almoço, almoço, jantar)",
+      "Guia de mergulho certificado",
+      "Equipamento de snorkeling"
+    ],
+    "excludes": [
+      "Equipamento de mergulho (escafandro)",
+      "Curso de mergulho (disponível no local)",
+      "Bebidas alcoólicas",
+      "Despesas pessoais"
+    ],
+    "highlights": [
+      "Snorkeling com tubarões-baleia (época Jun–Nov)",
+      "Manta-raias gigantes nos recifes de Tofo",
+      "Praia de Tofo — uma das mais bonitas de Moçambique",
+      "Alojamento à beira-mar incluído",
+      "Guia de mergulho certificado PADI"
+    ],
+    "itinerary": [
+      {
+        "time": "Dia 1 — 06h00",
+        "title": "Partida de Maputo",
+        "body": "Transporte de Maputo a Inhambane/Tofo (aprox. 4h de autocarro AC ou 45min de voo).",
+        "checklist": []
+      },
+      {
+        "time": "Dia 1 — 11h00",
+        "title": "Chegada & Check-in",
+        "body": "Check-in na pousada e almoço de chegada.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 1 — 14h00",
+        "title": "Primeira Saída de Snorkeling",
+        "body": "Saída de barco para snorkeling nos recifes de Tofo com guia certificado.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 1 — 19h00",
+        "title": "Jantar na Pousada",
+        "body": "Jantar à beira-mar com peixe fresco da região.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — 07h00",
+        "title": "Segunda Saída — Tubarões-baleia",
+        "body": "Saída matinal para avistamento de tubarões-baleia e manta-raias (conforme época e condições).",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — 14h00",
+        "title": "Regresso a Maputo",
+        "body": "Após almoço, regresso a Maputo com chegada prevista ao final da tarde.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/observacao_baleias_1.jpg",
+      "assets/images/packages/observacao_baleias_2.jpg",
+      "assets/images/packages/beach_day_2.jpg",
+      "assets/images/packages/beach_day_3.jpg"
+    ],
+    "importantInfo": [
+      "Avistamento de tubarões-baleia mais provável de Junho a Novembro.",
+      "Mínimo de 2 participantes.",
+      "Crianças com menos de 8 anos não recomendadas para as saídas de mergulho.",
+      "Mergulho com escafandro requer certificação PADI (cursos disponíveis no local).",
+      "Cancelamento gratuito até 72h antes."
+    ]
+  },
+  {
+    "id": "vilanculos-trip",
+    "slug": "vilanculos-trip",
+    "category": "beach-tours",
+    "name": "Vilanculos & Arquipélago de Bazaruto",
+    "subtitle": "O paraíso absoluto do norte de Moçambique",
+    "badge": "Luxo",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/beach_day_4.jpg",
+    "heroImage": "assets/images/packages/beach_day_2.jpg",
+    "location": "Vilanculos, Inhambane",
+    "destinations": "Vilanculos & Bazaruto",
+    "duration": "3 dias / 2 noites",
+    "price": "12.500 MZN",
+    "price_from": 12500,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 9000,
+    "priceChild": "9.000 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Vilanculos e o Arquipélago de Bazaruto formam um dos destinos mais espectaculares do continente africano — dunas douradas, recifes de coral virgens e um mar de várias cores.",
+    "detailText": [
+      "O Arquipélago de Bazaruto, ao largo de Vilanculos, é considerado um dos mais belos parques marinhos de África. Com ilhas de dunas douradas, recifes de coral intocados e uma vida marinha extraordinária, é o destino de sonho de qualquer amante do oceano.",
+      "O nosso pacote de 3 dias inclui voos de e para Vilanculos, alojamento em lodge à beira-mar, excursão ao Arquipélago de Bazaruto com snorkeling, avistamento de dugongos (vacas marinhas) e todas as refeições.",
+      "Uma experiência premium que justifica plenamente a viagem."
+    ],
+    "includes": [
+      "Voos de ida e volta Maputo–Vilanculos",
+      "2 noites em lodge à beira-mar",
+      "Excursão de barco ao Arquipélago de Bazaruto",
+      "Snorkeling com equipamento incluído",
+      "Todas as refeições e bebidas não alcoólicas",
+      "Guia especializado"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas premium",
+      "Atividades extra no local",
+      "Gorjetas",
+      "Despesas pessoais"
+    ],
+    "highlights": [
+      "Arquipélago de Bazaruto — Parque Marinho Nacional",
+      "Snorkeling em recifes de coral virgens",
+      "Avistamento de dugongos (vacas marinhas)",
+      "Alojamento em lodge de luxo à beira-mar",
+      "Voos incluídos de/para Vilanculos"
+    ],
+    "itinerary": [
+      {
+        "time": "Dia 1 — Manhã",
+        "title": "Voo para Vilanculos",
+        "body": "Voo de Maputo para Vilanculos (aprox. 1h15). Check-in no lodge e almoço de chegada.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 1 — Tarde",
+        "title": "Exploração da Vila de Vilanculos",
+        "body": "Passeio pela vila, visita ao mercado e jantar no lodge.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — Manhã",
+        "title": "Excursão ao Arquipélago de Bazaruto",
+        "body": "Saída de barco para Bazaruto com snorkeling nos recifes, visita às dunas e avistamento de dugongos.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — Tarde",
+        "title": "Praia Livre & Pôr do Sol",
+        "body": "Tarde de praia no lodge e pôr do sol sobre o Índico.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 3 — Manhã",
+        "title": "Pequeno-almoço & Checkout",
+        "body": "Último pequeno-almoço, checkout e transfer para o aeroporto.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 3 — Tarde",
+        "title": "Voo de Regresso",
+        "body": "Voo de Vilanculos para Maputo.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/beach_day_4.jpg",
+      "assets/images/packages/beach_day_2.jpg",
+      "assets/images/packages/observacao_baleias_1.jpg",
+      "assets/images/packages/beach_day_1.jpg"
+    ],
+    "importantInfo": [
+      "Os voos são sujeitos a disponibilidade e podem variar de preço.",
+      "Confirmação mínima 7 dias antes da partida.",
+      "O avistamento de dugongos não é garantido.",
+      "Pacote personalizável — contacte-nos para mais informações."
+    ]
+  },
+  {
+    "id": "safari-kruger-park",
+    "slug": "safari-kruger-park",
+    "category": "safaris",
+    "name": "Kruger National Park Safari",
+    "subtitle": "O maior parque nacional de África com os Big 5",
+    "badge": "Imperdível",
+    "badgeClass": "popular",
+    "stars": 5,
+    "image": "assets/images/packages/safari_kgp_1.jpg",
+    "heroImage": "assets/images/packages/safari_kgp_2.jpg",
+    "location": "Kruger, África do Sul",
+    "destinations": "Kruger National Park",
+    "duration": "3 dias / 2 noites",
+    "price": "13.500 MZN",
+    "price_from": 13500,
+    "priceOld": "15.500 MZN",
+    "priceLabel": "por adulto",
+    "price_child": 10500,
+    "priceChild": "10.500 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Uma safari épica no maior parque nacional de África. Encontre os Big 5 — leão, leopardo, elefante, rinoceronte e búfalo — nas suas savanas naturais.",
+    "detailText": [
+      "O Parque Nacional Kruger é o maior e mais famoso parque de safaris de África, com mais de 20.000 km² de savana habitados pelos Big 5 e outras 147 espécies de mamíferos. A nossa safari de 3 dias inclui transporte privado de Maputo, entrada no parque, alojamento em lodge e 4 game drives guiados.",
+      "A viagem começa antes do amanhecer — quando os predadores são mais activos. Os nossos rangers experientes guiam-no pelos trilhos do parque em viaturas abertas adaptadas, garantindo as melhores oportunidades de avistamento e fotografias incríveis.",
+      "Uma experiência que muda a perspectiva sobre o continente africano e a sua fauna selvagem majestosa."
+    ],
+    "includes": [
+      "Transporte privado Maputo–Kruger–Maputo",
+      "2 noites em lodge dentro ou próximo do parque",
+      "4 game drives guiados (2 ao amanhecer + 2 ao anoitecer)",
+      "Todas as refeições incluídas",
+      "Taxas de entrada no parque",
+      "Ranger e veículo safari certificados",
+      "Binóculos e guias de fauna"
+    ],
+    "excludes": [
+      "Visto para a África do Sul (se necessário)",
+      "Bebidas alcoólicas",
+      "Gorjetas",
+      "Actividades extras no parque"
+    ],
+    "highlights": [
+      "Os Big 5 nas suas savanas naturais",
+      "Game drives ao amanhecer e anoitecer",
+      "Ranger certificado e veículo aberto especializado",
+      "Mais de 500 espécies de aves",
+      "Alojamento em lodge com piscina",
+      "Maior parque nacional de África"
+    ],
+    "itinerary": [
+      {
+        "time": "Dia 1 — 05h00",
+        "title": "Partida de Maputo",
+        "body": "Saída muito cedo de Maputo em viatura privada. Fronteira de Ressano Garcia e entrada na África do Sul.",
+        "checklist": [
+          "Passaporte válido",
+          "Roupas quentes (madrugada)"
+        ]
+      },
+      {
+        "time": "Dia 1 — Tarde",
+        "title": "Chegada & Check-in no Lodge",
+        "body": "Check-in no lodge e game drive de tarde no Kruger — prime time para avistamento de predadores.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — 05h30",
+        "title": "Game Drive ao Amanhecer",
+        "body": "Saída ao amanhecer quando os leões e leopardos terminam a caça nocturna. As melhores fotos do dia.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — Tarde",
+        "title": "Game Drive ao Anoitecer",
+        "body": "Segundo game drive com search de leopardos e leões activos ao entardecer.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 3 — 05h30",
+        "title": "Último Game Drive & Regresso",
+        "body": "Game drive final ao amanhecer, check-out e regresso a Maputo com chegada ao final da tarde.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/safari_kgp_1.jpg",
+      "assets/images/packages/safari_kgp_2.jpg",
+      "assets/images/packages/safari_kgp_3.jpg",
+      "assets/images/packages/safari_kgp_4.jpg",
+      "assets/images/packages/safari_kgp.jpeg"
+    ],
+    "importantInfo": [
+      "Passaporte válido obrigatório para a África do Sul.",
+      "Crianças com menos de 6 anos não são permitidas nos game drives noturnos.",
+      "Roupas neutras (caqui, verde, cinzento) recomendadas — evitar branco e cores vivas.",
+      "Cancela gratuitamente até 72h antes.",
+      "Sujeito a confirmação de disponibilidade do lodge."
+    ]
+  },
+  {
+    "id": "safari-parque-maputo",
+    "slug": "safari-parque-maputo",
+    "category": "safaris",
+    "name": "Reserva Especial de Maputo",
+    "subtitle": "Elefantes, hipopótamos e flamingos a 1 hora de Maputo",
+    "badge": "Local",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/maputo_national_park.jpg",
+    "heroImage": "assets/images/packages/safari_kgp.jpeg",
+    "location": "Reserva de Maputo",
+    "destinations": "Reserva Especial de Maputo",
+    "duration": "Dia inteiro",
+    "price": "6.500 MZN",
+    "price_from": 6500,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 4500,
+    "priceChild": "4.500 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "A Reserva Especial de Maputo abriga elefantes, hipopótamos, flamingos e pântanos de mangal únicos — um safari espectacular a apenas 1 hora da capital.",
+    "detailText": [
+      "A Reserva Especial de Maputo (anteriormente Reserva dos Elefantes) é o paraíso dos elefantes — com mais de 700 indivíduos a viver em liberdade. Mas não são só elefantes: hipopótamos, leões, zebras, flamingos e mais de 300 espécies de aves habitam este paraíso natural a apenas 1 hora de Maputo.",
+      "O nosso day trip inclui transporte 4x4, game drive guiado, visita à costa costeira da reserva com flamingos rosados, e almoço na sede da reserva.",
+      "Uma safari acessível e inesquecível, perfeita para famílias e para quem tem poucos dias em Maputo."
+    ],
+    "includes": [
+      "Transporte 4x4 de ida e volta",
+      "Taxas de entrada na reserva",
+      "Game drive guiado com ranger certificado",
+      "Almoço na sede da reserva",
+      "Água e bebidas não alcoólicas",
+      "Binóculos para uso durante o passeio"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas",
+      "Gorjetas",
+      "Fotografias em saídas exclusivas"
+    ],
+    "highlights": [
+      "Mais de 700 elefantes em liberdade",
+      "Hipopótamos, leões e zebras",
+      "Flamingos rosados na costa da reserva",
+      "A apenas 1 hora de Maputo",
+      "Ranger certificado com profundo conhecimento local"
+    ],
+    "itinerary": [
+      {
+        "time": "06h30",
+        "title": "Partida de Maputo",
+        "body": "Saída de Maputo em 4x4 com destino à Reserva Especial de Maputo.",
+        "checklist": []
+      },
+      {
+        "time": "07h30",
+        "title": "Entrada na Reserva & Game Drive",
+        "body": "Início do game drive guiado. Procura de elefantes, hipopótamos, leões e fauna diversa.",
+        "checklist": []
+      },
+      {
+        "time": "11h00",
+        "title": "Costa dos Flamingos",
+        "body": "Visita à zona costeira para avistamento de flamingos rosados e outras aves aquáticas.",
+        "checklist": []
+      },
+      {
+        "time": "12h30",
+        "title": "Almoço na Sede",
+        "body": "Almoço na sede da reserva com vistas para a savana.",
+        "checklist": []
+      },
+      {
+        "time": "14h00",
+        "title": "Segundo Game Drive",
+        "body": "Continuação do game drive na zona norte da reserva.",
+        "checklist": []
+      },
+      {
+        "time": "16h30",
+        "title": "Regresso a Maputo",
+        "body": "Regresso a Maputo com chegada prevista às 18h00.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/maputo_national_park.jpg",
+      "assets/images/packages/safari_kgp.jpeg",
+      "assets/images/packages/safari_kgp_1.jpg"
+    ],
+    "importantInfo": [
+      "Roupas neutras e confortáveis recomendadas.",
+      "Repelente de insectos obrigatório.",
+      "A reserva está em recuperação — avistamento de fauna não é garantido mas é muito provável.",
+      "Ponto de encontro: Maputo, 06h30."
+    ]
+  },
+  {
+    "id": "tour-reino-eswatini",
+    "slug": "tour-reino-eswatini",
+    "category": "safaris",
+    "name": "Reino de Eswatini — Tour Cultural",
+    "subtitle": "Cultura, natureza e tradição no último reino absoluto de África",
+    "badge": "Único",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/eswatini_1.jpg",
+    "heroImage": "assets/images/packages/eswatini_2.jpg",
+    "location": "Eswatini (Suazilândia)",
+    "destinations": "Eswatini",
+    "duration": "2 dias / 1 noite",
+    "price": "16.600 MZN",
+    "price_from": 16600,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 12000,
+    "priceChild": "12.000 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Eswatini (antiga Suazilândia) é o último reino absoluto de África — uma jornada de dois dias pela cultura, natureza e tradições de um povo único.",
+    "detailText": [
+      "O Reino de Eswatini, encravado entre a África do Sul e Moçambique, é um destino fascinante que combina cenários naturais impressionantes com uma cultura viva e autêntica. Com montanhas, florestas e savanas, é também lar de uma vida selvagem diversa.",
+      "O nosso tour de 2 dias passa pelo Parque Nacional Hlane (leões, elefantes, rinocerontes brancos), pela aldeia cultural de Swazi com danças tradicionais, pelo mercado de artesanato Tinkhabi e pela fábrica de velas Swazi Candles — uma das mais famosas do mundo.",
+      "Uma viagem que enriquece a alma e alarga horizontes, combinando África selvagem com tradição e hospitalidade africana genuína."
+    ],
+    "includes": [
+      "Transporte privado de ida e volta de Maputo",
+      "1 noite em alojamento em Eswatini",
+      "Game drive no Parque Nacional Hlane",
+      "Visita à aldeia cultural Swazi",
+      "Todas as refeições",
+      "Entrada nos parques e museus",
+      "Guia bilingue (PT/EN)"
+    ],
+    "excludes": [
+      "Visto para Eswatini (geralmente não necessário)",
+      "Bebidas alcoólicas",
+      "Compras de artesanato",
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Parque Nacional Hlane — leões, elefantes e rinocerontes",
+      "Danças tradicionais Swazi numa aldeia local",
+      "Fábrica Swazi Candles — artesanato famoso mundialmente",
+      "Cenários naturais de montanha e savana",
+      "O único reino absoluto de África"
+    ],
+    "itinerary": [
+      {
+        "time": "Dia 1 — 06h00",
+        "title": "Partida de Maputo",
+        "body": "Saída de Maputo com passagem pela fronteira de Lomahasha para Eswatini.",
+        "checklist": [
+          "Passaporte válido"
+        ]
+      },
+      {
+        "time": "Dia 1 — 10h00",
+        "title": "Parque Nacional Hlane — Game Drive",
+        "body": "Game drive no Hlane com avistamento de leões, elefantes, rinocerontes brancos e mais.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 1 — 14h00",
+        "title": "Aldeia Cultural & Danças Swazi",
+        "body": "Visita a uma aldeia tradicional com demonstração de danças e rituais culturais Swazi.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 1 — 19h00",
+        "title": "Jantar & Pernoita",
+        "body": "Jantar e pernoita em lodge em Eswatini.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — 09h00",
+        "title": "Swazi Candles & Artesanato",
+        "body": "Visita à famosa fábrica Swazi Candles e ao mercado Tinkhabi de artesanato local.",
+        "checklist": []
+      },
+      {
+        "time": "Dia 2 — 14h00",
+        "title": "Regresso a Maputo",
+        "body": "Início da viagem de regresso a Maputo com chegada prevista às 18h00.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/eswatini_1.jpg",
+      "assets/images/packages/eswatini_2.jpg",
+      "assets/images/packages/eswatini_3.jpg",
+      "assets/images/packages/eswatini_4.jpg"
+    ],
+    "importantInfo": [
+      "Passaporte válido obrigatório para Eswatini.",
+      "Eswatini geralmente não exige visto para cidadãos moçambicanos.",
+      "Roupas para game drive (tons neutros) e roupas culturalmente respeitosas para visitas.",
+      "Cancelamento gratuito até 72h antes."
+    ]
+  },
+  {
+    "id": "whale-watching",
+    "slug": "whale-watching",
+    "category": "ocean-activities",
+    "name": "Observação de Baleias",
+    "subtitle": "As baleias jubarte da Baía de Maputo (Jun–Nov)",
+    "badge": "Sazonal",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/observacao_baleias_2.jpg",
+    "heroImage": "assets/images/packages/observacao_baleias_1.jpg",
+    "location": "Baía de Maputo",
+    "destinations": "Baía de Maputo",
+    "duration": "Meio dia (4 horas)",
+    "price": "8.500 MZN",
+    "price_from": 8500,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 6000,
+    "priceChild": "6.000 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Entre Junho e Novembro, a Baía de Maputo recebe centenas de baleias jubarte em migração. Uma das experiências de vida selvagem mais espectaculares do planeta.",
+    "detailText": [
+      "A Baía de Maputo é um dos melhores locais do mundo para observação de baleias jubarte. Entre Junho e Novembro, estas magníficas criaturas — que podem atingir 16 metros de comprimento — migram para as águas quentes do Índico para dar à luz e criar as suas crias.",
+      "A nossa excursão de observação de baleias é conduzida por biólogos marinhos e navegadores experientes, com embarcações silenciosas e protocolos de observação responsável para não perturbar os animais. A probabilidade de avistamento durante a época é superior a 95%.",
+      "Uma experiência transformadora que poucos alguma vez terão a sorte de vivenciar."
+    ],
+    "includes": [
+      "Excursão de barco de 4 horas",
+      "Biólogo marinho / naturalista a bordo",
+      "Equipamento de observação (binóculos)",
+      "Snacks e água a bordo",
+      "Briefing educativo sobre as baleias",
+      "Colete salva-vidas e equipamento de segurança"
+    ],
+    "excludes": [
+      "Transporte de/para o porto",
+      "Refeições completas",
+      "Bebidas alcoólicas"
+    ],
+    "highlights": [
+      "Baleias jubarte em águas mozambicanas (Jun–Nov)",
+      "Biólogo marinho a bordo para interpretação",
+      "Probabilidade de avistamento superior a 95% na época",
+      "Protocolo de observação responsável e ética",
+      "Possibilidade de ver saltos, batidas de barbatana e crias"
+    ],
+    "itinerary": [
+      {
+        "time": "06h30",
+        "title": "Briefing & Embarque",
+        "body": "Briefing educativo sobre as baleias jubarte com o biólogo marinho. Embarque e saída para a baía.",
+        "checklist": []
+      },
+      {
+        "time": "07h30",
+        "title": "Procura de Baleias",
+        "body": "Navegação pelas zonas de maior actividade baleeira. O naturalista identifica os indivíduos e explica os comportamentos.",
+        "checklist": []
+      },
+      {
+        "time": "09h30",
+        "title": "Observação de Perto",
+        "body": "Abordagem cuidadosa e respeitosa para observação próxima — saltos, batidas de barbatana e surfacing.",
+        "checklist": []
+      },
+      {
+        "time": "11h00",
+        "title": "Regresso ao Porto",
+        "body": "Regresso ao porto com fotos e memórias inesquecíveis.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/observacao_baleias_1.jpg",
+      "assets/images/packages/observacao_baleias_2.jpg",
+      "assets/images/packages/observacao_baleias_3.jpg",
+      "assets/images/packages/observacao_baleias_4.jpg"
+    ],
+    "importantInfo": [
+      "Apenas disponível de Junho a Novembro.",
+      "O avistamento não é garantido mas a probabilidade é muito alta na época.",
+      "Não recomendado para pessoas com enjoo de mar grave — trazer medicação preventiva.",
+      "O barco respeita todas as regras de aproximação para protecção das baleias.",
+      "Saídas às 06h30 — pontualidade obrigatória."
+    ]
+  },
+  {
+    "id": "deep-sea-fishing",
+    "slug": "deep-sea-fishing",
+    "category": "ocean-activities",
+    "name": "Deep Sea Fishing",
+    "subtitle": "Marlim, atum, dorado e wahoo no Índico Profundo",
+    "badge": "Adrenalina",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/sunset_cruise_1.jpeg",
+    "heroImage": "assets/images/packages/sunset_cruise_2.jpeg",
+    "location": "Baía de Maputo",
+    "destinations": "Oceano Índico",
+    "duration": "Dia inteiro (8 horas)",
+    "price": "12.000 MZN",
+    "price_from": 12000,
+    "priceOld": null,
+    "priceLabel": "por pessoa (máx. 6)",
+    "price_child": null,
+    "priceChild": null,
+    "priceChildLabel": null,
+    "currency": "MZN",
+    "description": "Pesca em alto mar no Índico — marlim azul, atum de barbatana amarela, dorado e wahoo. Uma aventura de adrenalina pura para pescadores de todos os níveis.",
+    "detailText": [
+      "O Oceano Índico ao largo de Maputo é uma das melhores zonas de pesca desportiva de África. As águas quentes e profundas abrigam marlim azul, atum de barbatana amarela, dorado, wahoo e barracuda — espécies que os pescadores viajam do mundo inteiro para apanhar.",
+      "O nosso barco de pesca desportiva está equipado com linhas de 'trolling', canas de alta performance e todos os consumíveis. O patrão e a tripulação têm anos de experiência nas águas de Maputo e garantem as melhores posições para a pesca.",
+      "O preço é por barco (até 6 pessoas) — ideal para grupos de amigos ou famílias de pescadores."
+    ],
+    "includes": [
+      "Aluguer do barco de pesca (dia inteiro — 8 horas)",
+      "Patrão e tripulação experientes",
+      "Todo o equipamento de pesca (canas, linhas, isco)",
+      "Licença de pesca",
+      "Almoço de bordo e bebidas não alcoólicas",
+      "Processamento e embalamento das capturas"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas",
+      "Gorjetas",
+      "Filetagem e confecção do peixe (disponível a pedido)"
+    ],
+    "highlights": [
+      "Pesca de marlim azul, atum, dorado e wahoo",
+      "Barco totalmente equipado com material profissional",
+      "Patrão com 15+ anos de experiência no Índico",
+      "Modalidade catch & release disponível",
+      "Até 6 pessoas por barco — ideal para grupos"
+    ],
+    "itinerary": [
+      {
+        "time": "06h00",
+        "title": "Embarque & Preparação",
+        "body": "Embarque no barco de pesca. Distribuição de equipamento, briefing e saída para o alto mar.",
+        "checklist": [
+          "Roupa de vento",
+          "Protetor solar",
+          "Medicação para enjoo (se necessário)"
+        ]
+      },
+      {
+        "time": "07h00",
+        "title": "Pesca em Alto Mar",
+        "body": "Pesca activa nas zonas de maior actividade piscatória. Trolling e pesca profunda.",
+        "checklist": []
+      },
+      {
+        "time": "13h00",
+        "title": "Almoço a Bordo",
+        "body": "Almoço a bordo enquanto as linhas continuam na água.",
+        "checklist": []
+      },
+      {
+        "time": "14h00",
+        "title": "Última Jornada de Pesca",
+        "body": "Tarde de pesca com retorno à marina. O patrão escolhe as melhores posições conforme as condições do dia.",
+        "checklist": []
+      },
+      {
+        "time": "16h00",
+        "title": "Regresso ao Porto",
+        "body": "Regresso à marina, pesagem e fotografias das capturas.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/sunset_cruise_1.jpeg",
+      "assets/images/packages/sunset_cruise_2.jpeg",
+      "assets/images/packages/beach_day_1.jpg"
+    ],
+    "importantInfo": [
+      "Preço é por barco — até 6 pessoas.",
+      "Pesca do tipo catch & release disponível e incentivada para marlim.",
+      "Não recomendado para pessoas com enjoo grave.",
+      "Reserva mínima 3 dias antes.",
+      "O peixe capturado pertence ao cliente — processamento incluído."
+    ]
+  },
+  {
+    "id": "private-boat-rental",
+    "slug": "private-boat-rental",
+    "category": "ocean-activities",
+    "name": "Aluguer de Barco Privado",
+    "subtitle": "O barco, o mar e o destino que você escolher",
+    "badge": "Flexível",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/sunset_cruise_3.jpeg",
+    "heroImage": "assets/images/packages/sunset_cruise_4.jpeg",
+    "location": "Maputo",
+    "destinations": "À escolha",
+    "duration": "Dia completo",
+    "price": "8.000 MZN",
+    "price_from": 8000,
+    "priceOld": null,
+    "priceLabel": "por barco (até 8 pax)",
+    "price_child": null,
+    "priceChild": null,
+    "priceChildLabel": null,
+    "currency": "MZN",
+    "description": "Alugue o nosso barco para o dia inteiro e escolha o seu destino — ilhas, baía, pesca, snorkeling ou simplesmente explorar o Índico ao seu ritmo.",
+    "detailText": [
+      "A opção mais flexível que oferecemos: alugue o barco para o dia inteiro e faça o roteiro à sua medida. Quer seja para uma ilha privada, pesca, snorkeling, uma festa no mar ou simplesmente explorar a baía — o barco e a tripulação estão ao seu dispor.",
+      "A tripulação inclui patrão experiente e assistente de bordo. O barco está equipado com equipamento de segurança, caixa de frio, sistema de som e capacidade para 8 pessoas.",
+      "Ideal para aniversários, despedidas de solteiro, eventos corporativos ou simplesmente um dia extraordinário no mar."
+    ],
+    "includes": [
+      "Barco por dia inteiro (8 horas)",
+      "Patrão e assistente de bordo",
+      "Equipamento de segurança completo",
+      "Sistema de som a bordo",
+      "Caixa de frio (gelo incluído)",
+      "Combustível"
+    ],
+    "excludes": [
+      "Alimentação e bebidas",
+      "Equipamento de snorkeling (aluguer disponível)",
+      "Taxas de entrada em ilhas protegidas",
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Total flexibilidade de itinerário e destino",
+      "Até 8 pessoas por barco",
+      "Patrão experiente com 10+ anos nas águas de Maputo",
+      "Perfeito para aniversários e eventos especiais",
+      "Sistema de som e caixa de frio incluídos"
+    ],
+    "itinerary": [
+      {
+        "time": "À escolha",
+        "title": "Partida à hora combinada",
+        "body": "Embarca na marina à hora que preferir e define o roteiro com o patrão.",
+        "checklist": []
+      },
+      {
+        "time": "Flexível",
+        "title": "Itinerário Personalizado",
+        "body": "O patrão executa o roteiro que você definiu — ilhas, pesca, snorkeling, ou simplesmente a baía.",
+        "checklist": []
+      },
+      {
+        "time": "Ao final do dia",
+        "title": "Regresso ao Porto",
+        "body": "Regresso à marina após 8 horas de barco privado.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/sunset_cruise_3.jpeg",
+      "assets/images/packages/sunset_cruise_4.jpeg",
+      "assets/images/packages/sunset_cruise_1.jpeg"
+    ],
+    "importantInfo": [
+      "Reserva mínima 48h antes.",
+      "O itinerário é combinado com o patrão na véspera.",
+      "Condições meteorológicas adversas podem alterar o roteiro.",
+      "Alimentação e bebidas por conta do cliente.",
+      "Para grupos acima de 8 pessoas, contacte-nos para arranjos especiais."
+    ]
+  },
+  {
+    "id": "maputo-city-tour",
+    "slug": "maputo-city-tour",
+    "category": "city-tour",
+    "name": "Maputo City Tour Histórico",
+    "subtitle": "História, arquitectura e cultura da vibrante capital moçambicana",
+    "badge": "Essencial",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/IMG-20221213-WA0010.jpg",
+    "heroImage": "assets/images/packages/package_1.jpg",
+    "location": "Maputo",
+    "destinations": "Maputo",
+    "duration": "Meio dia (4 horas)",
+    "price": "2.200 MZN",
+    "price_from": 2200,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 1500,
+    "priceChild": "1.500 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Descubra os segredos de Maputo num tour guiado pelos monumentos históricos, bairros coloniais, jardins centenários e os melhores pontos de vista da cidade.",
+    "detailText": [
+      "Maputo é uma das capitais mais fascinantes de África. Fundada pelos portugueses no século XVIII, a cidade combina uma arquitectura colonial única com uma energia contemporânea vibrante. O nosso City Tour histórico leva-o pelos pontos mais emblemáticos da cidade.",
+      "Visite a Casa de Ferro, projectada por Gustave Eiffel, o imponente Museu de História Natural com os seus elefantes embalsamados, o Mercado Municipal Central, a histórica Fortaleza de Maputo e os jardins centenários da avenida.",
+      "O tour é conduzido por guias locais que conhecem as histórias por detrás de cada monumento — uma experiência educativa, envolvente e profundamente moçambicana."
+    ],
+    "includes": [
+      "Transporte privado com AC",
+      "Guia histórico e cultural certificado",
+      "Entradas nos museus incluídas",
+      "Água e snacks no final",
+      "Passagem por todos os pontos históricos principais"
+    ],
+    "excludes": [
+      "Compras e lembranças",
+      "Almoço (não incluído)",
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Casa de Ferro de Gustave Eiffel",
+      "Museu de História Natural com elefantes embalsamados",
+      "Fortaleza de Maputo (século XVIII)",
+      "Mercado Municipal Central",
+      "Jardins centenários e arquitectura colonial única",
+      "Vistas panorâmicas sobre a Baía de Maputo"
+    ],
+    "itinerary": [
+      {
+        "time": "09h00",
+        "title": "Partida & Bairro Histórico",
+        "body": "Início do tour pelo bairro histórico de Maputo — arquitectura colonial, ruas empedradas e o antigo consulado.",
+        "checklist": []
+      },
+      {
+        "time": "09h30",
+        "title": "Casa de Ferro & Catedral",
+        "body": "Visita à icónica Casa de Ferro (projectada por Eiffel) e à Catedral de Nossa Senhora da Conceição.",
+        "checklist": []
+      },
+      {
+        "time": "10h15",
+        "title": "Fortaleza de Maputo",
+        "body": "Visita à Fortaleza Portuguesa do século XVIII com história da colonização e vistas para a baía.",
+        "checklist": []
+      },
+      {
+        "time": "11h00",
+        "title": "Museu de História Natural",
+        "body": "Visita ao museu com a famosa colecção de elefantes embalsamados em posição natural.",
+        "checklist": []
+      },
+      {
+        "time": "12h00",
+        "title": "Mercado Central & Jardins",
+        "body": "Visita ao Mercado Municipal Central e passeio nos jardins da avenida Samora Machel.",
+        "checklist": []
+      },
+      {
+        "time": "13h00",
+        "title": "Fim do Tour",
+        "body": "Fim do tour com entrega no hotel ou ponto de saída.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/IMG-20221213-WA0010.jpg",
+      "assets/images/packages/package_1.jpg"
+    ],
+    "importantInfo": [
+      "Tour disponível todos os dias excepto segunda-feira (museus fechados).",
+      "Vestuário confortável e sapatos de caminhar recomendados.",
+      "O Museu de História Natural pode estar fechado ocasionalmente para obras.",
+      "Ponto de encontro: Hotel do cliente ou local combinado."
+    ]
+  },
+  {
+    "id": "maputo-food-tour",
+    "slug": "maputo-food-tour",
+    "category": "city-tour",
+    "name": "Maputo Food & Market Tour",
+    "subtitle": "Sabores, aromas e mercados da culinária moçambicana",
+    "badge": "Gastronómico",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "assets/images/packages/IMG-20240717-WA0059.jpg",
+    "heroImage": "assets/images/packages/IMG-20221213-WA0010.jpg",
+    "location": "Maputo",
+    "destinations": "Maputo",
+    "duration": "3 horas",
+    "price": "1.800 MZN",
+    "price_from": 1800,
+    "priceOld": null,
+    "priceLabel": "por adulto",
+    "price_child": 1200,
+    "priceChild": "1.200 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "description": "Uma viagem pelos sabores de Moçambique — mercados coloridos, petiscos de rua, chá de especiarias e os melhores restaurantes locais de Maputo.",
+    "detailText": [
+      "A culinária moçambicana é uma fusão única de sabores africanos, portugueses, árabes e indianos. O nosso Food Tour leva-o pelos mercados mais animados de Maputo e pelos melhores pontos de street food da cidade.",
+      "Prove matapa (folhas de mandioca com amendoim), carapau frito no mercado, cajú fresco, chá de especiarias no bairro indiano e muito mais. O guia explica a história e a influência cultural por trás de cada prato.",
+      "Uma experiência gastronómica que lhe vai revelar um lado de Maputo que os turistas raramente conhecem."
+    ],
+    "includes": [
+      "Guia gastronómico local",
+      "Degustações em 5 a 7 paragens",
+      "Água e bebidas durante o tour",
+      "Bilhete de acesso ao mercado central"
+    ],
+    "excludes": [
+      "Refeição completa adicional",
+      "Compras e lembranças",
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Degustações em 5 a 7 pontos de street food e mercados",
+      "Matapa, carapau frito, cajú fresco e especiarias",
+      "Bairro Indiano de Maputo — especiarias e chás",
+      "Mercado Municipal Central com produtos locais",
+      "Guia com profundo conhecimento da culinária moçambicana"
+    ],
+    "itinerary": [
+      {
+        "time": "10h00",
+        "title": "Mercado Municipal Central",
+        "body": "Início no Mercado Central — peixe fresco, especiarias, frutas exóticas e produtos locais.",
+        "checklist": []
+      },
+      {
+        "time": "10h45",
+        "title": "Street Food — Carapau & Matapa",
+        "body": "Paragem em tasca local para provar carapau frito, matapa e pão artesanal.",
+        "checklist": []
+      },
+      {
+        "time": "11h30",
+        "title": "Bairro Indiano — Especiarias & Chás",
+        "body": "Visita ao bairro indiano com degustação de chás de especiarias, doces e snacks indianos.",
+        "checklist": []
+      },
+      {
+        "time": "12h15",
+        "title": "Cajú & Frutas Tropicais",
+        "body": "Paragem para cajú fresco torrado na rua e frutas tropicais da estação.",
+        "checklist": []
+      },
+      {
+        "time": "13h00",
+        "title": "Fim do Tour",
+        "body": "Fim do Food Tour com mapa de recomendações de restaurantes locais.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "assets/images/packages/IMG-20240717-WA0059.jpg",
+      "assets/images/packages/IMG-20221213-WA0010.jpg"
+    ],
+    "importantInfo": [
+      "Tour a pé — calçado confortável recomendado.",
+      "Não recomendado para pessoas com alergias alimentares severas (informar antecipadamente).",
+      "Disponível manhãs (10h00) ou tardes (16h00).",
+      "Ponto de encontro: Entrada do Mercado Municipal Central."
+    ]
+  }
+]

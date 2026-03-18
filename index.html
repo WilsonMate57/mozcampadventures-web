@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moz Camp Adventures | Camping, Safaris & 4x4 Tours in Mozambique</title>
+  <meta name="description" content="Moz Camp Adventures oferece experiências de camping, safaris e expedições 4x4 em Moçambique.">
+  <meta name="author" content="Moz Camp Adventures">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Moz Camp Adventures | Explore Mozambique">
+  <meta property="og:description" content="Camping, safaris e expedições 4x4 premium em Moçambique.">
+  <meta property="og:url" content="https://mozcampadventures.com">
+  <meta property="og:type" content="website">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div id="preloader"><div id="lottie-loader"></div></div>
+
+<!-- NAVBAR -->
+<div id="navbar-placeholder"></div>
+
+<!-- HERO CAROUSEL -->
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="hero-slide">
+        <div class="img-placeholder"><img src="assets/images/hero/hero_slider_1.jpeg" class="hero-image" alt="Ilha da Inhaca"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-badge"><i class="bi bi-geo-alt-fill"></i> Ilha da Inhaca</div>
+          <h1 class="hero-title reveal">Explorando Maputo e além</h1>
+          <p class="hero-sub reveal">Descubra as maravilhas de Moçambique com experiências inesquecíveis</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="#packages" class="btn-hero-solid">Explorar destinos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="hero-slide">
+        <div class="img-placeholder"><img src="assets/images/hero/hero_slider_2.jpg" class="hero-image" alt="Ilhas Portuguesas"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-badge"><i class="bi bi-geo-alt-fill"></i> Ilhas Portuguesas</div>
+          <h1 class="hero-title reveal">Onde o Oceano Encontra a Liberdade</h1>
+          <p class="hero-sub reveal">Explore águas cristalinas, bancos de areia intocados e momentos que transformam simples viagens em memórias eternas.</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="#packages" class="btn-hero-solid">Explorar destinos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="hero-slide">
+        <div class="img-placeholder"><img src="assets/images/hero/hero_slider_4.jpg" class="hero-image" alt="Santa Maria"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-badge"><i class="bi bi-geo-alt-fill"></i> Santa Maria</div>
+          <h1 class="hero-title reveal">Um Refúgio Selvagem a Minutos de Maputo</h1>
+          <p class="hero-sub reveal">Descubra trilhos naturais, vida marinha vibrante e paisagens que revelam a essência mais pura de Moçambique.</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="#packages" class="btn-hero-solid">Explorar destinos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="hero-slide">
+        <div class="img-placeholder"><img src="assets/images/hero/hero_slider_5.jpeg" class="hero-image" alt="Paraíso"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-badge"><i class="bi bi-geo-alt-fill"></i> Santa Maria</div>
+          <h1 class="hero-title reveal">O Seu Paraíso Privado Espera Por Si</h1>
+          <p class="hero-sub reveal">Fuja da rotina e navegue rumo a praias desertas, águas azul-turquesa e experiências para quem exige mais.</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="pages/tours.html" class="btn-hero-outline">Reservar agora</a>
+            <a href="#packages" class="btn-hero-solid">Descobrir este destino</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+</div>
+
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal reveal-left">
+        <div class="section-label">sobre nós</div>
+        <h2 class="about-title">Vamos descobrir mais sobre<br><span>a nossa jornada</span></h2>
+        <p class="mission-label mt-3"><i class="bi bi-compass-fill"></i> Missão &amp; Visão</p>
+        <p class="text-muted" style="font-size:.9rem;">A Moz Camp Adventures nasceu da paixão por Moçambique e pelo desejo de revelar ao mundo os seus tesouros escondidos. Mais do que organizar passeios, criamos experiências autênticas que conectam pessoas à natureza, ao oceano e à cultura local.</p>
+        <p class="text-muted" style="font-size:.9rem;">Com uma equipa experiente e dedicada, levamos os nossos viajantes a explorar destinos icónicos como Santa Maria, Ilha da Inhaca e Ilhas Portuguesas com segurança, conforto e um toque de exclusividade.<br><br>Acreditamos que cada viagem deve ser memorável. Por isso, planeamos cada detalhe para que os nossos clientes não apenas visitem um destino — mas vivam uma verdadeira aventura.</p>
+        <a href="pages/tours.html" class="btn-teal mt-2">Explorar Tours</a>
+      </div>
+      <div class="col-lg-6 reveal reveal-right">
+        <div class="about-grid">
+          <div class="img-box tall"><div class="img-box-placeholder" style="height:100%;"><img src="assets/images/about/about-1.jpeg" class="about-img" alt="Equipa"></div></div>
+          <div class="img-box"><div class="img-box-placeholder"><img src="assets/images/packages/sunset_cruise_2.jpeg" class="about-img" alt="Praia"></div></div>
+          <div class="img-box"><div class="img-box-placeholder"><img src="assets/images/accommodation/villa_martins_4.jpg" class="about-img" alt="Lodge"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="container text-center">
+    <div class="section-label reveal reveal-up">pacotes</div>
+    <h2 class="reveal reveal-up">Planos de Passeios</h2>
+    <p class="sub reveal reveal-up">Explore as Ilhas de Inhaca, Ilha dos Portugueses e a deslumbrante Praia de Santa Maria.</p>
+    <div class="row g-3 text-start mt-2" id="cat-grid-home">
+
+      <div class="col-md-4 col-sm-6 reveal reveal-left">
+        <a href="pages/tours.html?cat=island-tours" class="cat-img-card">
+          <div class="cat-img-wrap">
+            <img src="assets/images/packages/package_1.jpg" alt="Island Tours">
+            <div class="cat-img-compass"><i class="bi bi-compass-fill"></i></div>
+          </div>
+          <div class="cat-img-footer">
+            <span class="cat-img-title">Island Tours</span>
+            <span class="cat-img-more">Ver mais&nbsp;&raquo;</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 reveal reveal-up">
+        <a href="pages/tours.html?cat=island-accommodation" class="cat-img-card">
+          <div class="cat-img-wrap">
+            <img src="assets/images/accommodation/machangulo_beach_lodge_1.jpg" alt="Island Accommodation">
+            <div class="cat-img-compass"><i class="bi bi-compass-fill"></i></div>
+          </div>
+          <div class="cat-img-footer">
+            <span class="cat-img-title">Island Accommodation</span>
+            <span class="cat-img-more">Ver mais&nbsp;&raquo;</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 reveal reveal-right">
+        <a href="pages/tours.html?cat=transfers" class="cat-img-card">
+          <div class="cat-img-wrap">
+            <img src="assets/images/packages/sunset_cruise_1.jpg" alt="Transfers">
+            <div class="cat-img-compass"><i class="bi bi-compass-fill"></i></div>
+          </div>
+          <div class="cat-img-footer">
+            <span class="cat-img-title">Transfers</span>
+            <span class="cat-img-more">Ver mais&nbsp;&raquo;</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 reveal reveal-left">
+        <a href="pages/tours.html?cat=beach-tours" class="cat-img-card">
+          <div class="cat-img-wrap">
+            <img src="assets/images/packages/beach_day_1.jpg" alt="Beach Tours">
+            <div class="cat-img-compass"><i class="bi bi-compass-fill"></i></div>
+          </div>
+          <div class="cat-img-footer">
+            <span class="cat-img-title">Beach Tours</span>
+            <span class="cat-img-more">Ver mais&nbsp;&raquo;</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 reveal reveal-up">
+        <a href="pages/tours.html?cat=safaris" class="cat-img-card">
+          <div class="cat-img-wrap">
+            <img src="assets/images/packages/safari_kgp_1.jpg" alt="Safaris">
+            <div class="cat-img-compass"><i class="bi bi-compass-fill"></i></div>
+          </div>
+          <div class="cat-img-footer">
+            <span class="cat-img-title">Safaris</span>
+            <span class="cat-img-more">Ver mais&nbsp;&raquo;</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 reveal reveal-right">
+        <a href="pages/tours.html?cat=city-tour" class="cat-img-card">
+          <div class="cat-img-wrap">
+            <img src="assets/images/packages/maputo_national_park.jpg" alt="Maputo City Tour">
+            <div class="cat-img-compass"><i class="bi bi-compass-fill"></i></div>
+          </div>
+          <div class="cat-img-footer">
+            <span class="cat-img-title">Maputo City Tour</span>
+            <span class="cat-img-more">Ver mais&nbsp;&raquo;</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FEEDBACK -->
+<section id="feedback">
+  <div class="container">
+    <div class="section-label reveal reveal-up">feedbacks</div>
+    <h2 class="mb-4 reveal reveal-up">O Que Os Nossos Clientes Dizem</h2>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-5 reveal reveal-left">
+        <div class="feedback-img-area">
+          <div class="video-thumb position-relative" data-bs-toggle="modal" data-bs-target="#videoModal">
+            <img src="assets/images/thumbnails/video_thumb.jpeg" class="img-fluid w-100"
+              style="height:380px;object-fit:cover;border-radius:12px;" alt="Depoimento">
+            <div class="play-btn"><i class="bi bi-play-fill"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 reveal reveal-right">
+        <div id="reviewCarousel" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="review-card">
+                <div class="quote-icon"><i class="bi bi-quote"></i></div>
+                <p class="review-text">Eu adorei, a equipe foi incrível. Um deles até me emprestou as próprias
+                  sandálias para eu andar na areia quente.
+                  Recomendo muito essa empresa de turismo e com certeza vou usá-la novamente.</p>
+                <div class="stars-review">★★★★★</div>
+                <a href="#" class="google-link">Via Google</a>
+                <div class="reviewer mt-3">
+                  <div class="reviewer-avatar">
+                    <div class="img-box-placeholder" style="height:44px;border-radius:50%;background:rgba(255,255,255,.2);">
+                      <i class="bi bi-person-fill" style="font-size:1.2rem;color:#fff;"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="reviewer-name">– Njabulo Nkabinde</div>
+                    <div class="reviewer-role">Turista, África do Sul</div>
+                  </div>
+                  <div class="review-nav ms-auto">
+                    <button class="review-nav-btn" data-bs-target="#reviewCarousel" data-bs-slide="prev"><i class="bi bi-chevron-left"></i></button>
+                    <div class="review-dots">
+                      <div class="dot active" data-index="0"></div>
+                      <div class="dot" data-index="1"></div>
+                      <div class="dot" data-index="2"></div>
+                    </div>
+                    <button class="review-nav-btn" data-bs-target="#reviewCarousel" data-bs-slide="next"><i class="bi bi-chevron-right"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="review-card">
+                <div class="quote-icon"><i class="bi bi-quote"></i></div>
+                <p class="review-text">Acabei de voltar da nossa primeira viagem com a Moz Camp Adventures e uau — foi
+                  absolutamente incrível! Chegamos lá em apenas 45 minutos e fomos recebidos com lanches enquanto
+                  relaxávamos na Praia de Santa Maria, que honestamente parece o paraíso... ou melhor, o paraíso! O
+                  Douglas foi o melhor guia turístico — fizemos umas mil perguntas e ele tinha resposta para todas!
+                  Depois, chegou a hora do almoço, e eles serviram uma refeição deliciosa — não conseguíamos nem nos
+                  mexer depois, rsrs. Também exploramos um pouco da Vila de Inhaca, conhecemos alguns moradores locais
+                  e aprendemos sobre a cultura, o que foi um dos pontos altos da viagem. Nossa última parada foi a
+                  Ilha Portuguesa — meu lugar favorito para nadar.
+                  Fiquei muito triste de ir embora! Resumindo, foi uma experiência inesquecível e mal posso esperar
+                  para voltar. Recomendo 100%!</p>
+                <div class="stars-review">★★★★★</div>
+                <a href="#" class="google-link">Via Google</a>
+                <div class="reviewer mt-3">
+                  <div class="reviewer-avatar">
+                    <div class="img-box-placeholder" style="height:44px;border-radius:50%;background:rgba(255,255,255,.2);">
+                      <i class="bi bi-person-fill" style="font-size:1.2rem;color:#fff;"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="reviewer-name">– Luisa Adelina</div>
+                    <div class="reviewer-role">Turista, Moçambique</div>
+                  </div>
+                  <div class="review-nav ms-auto">
+                    <button class="review-nav-btn" data-bs-target="#reviewCarousel" data-bs-slide="prev"><i class="bi bi-chevron-left"></i></button>
+                    <div class="review-dots">
+                      <div class="dot" data-index="0"></div>
+                      <div class="dot active" data-index="1"></div>
+                      <div class="dot" data-index="2"></div>
+                    </div>
+                    <button class="review-nav-btn" data-bs-target="#reviewCarousel" data-bs-slide="next"><i class="bi bi-chevron-right"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="review-card">
+                <div class="quote-icon"><i class="bi bi-quote"></i></div>
+                <p class="review-text">Está foi uma das melhores experiências da minha vida. Esteve tudo tão incrível,
+                  desde o momento da nossa partida até a nossa volta. As encantadoras paisagens, o passeio de barco,
+                  os guias, poder interagir com pessoas de diferentes países, até os golfinhos tornaram o passeio
+                  SUPER…
+                  Com certeza faria mais vezes sem me cansar. Thanks Moz Camp Adventures for this incredible
+                  experience.</p>
+                <div class="stars-review">★★★★☆</div>
+                <a href="#" class="google-link">Via Google</a>
+                <div class="reviewer mt-3">
+                  <div class="reviewer-avatar">
+                    <div class="img-box-placeholder" style="height:44px;border-radius:50%;background:rgba(255,255,255,.2);">
+                      <i class="bi bi-person-fill" style="font-size:1.2rem;color:#fff;"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="reviewer-name">– Natércia Mucucusa</div>
+                    <div class="reviewer-role">Turista, Moçambique</div>
+                  </div>
+                  <div class="review-nav ms-auto">
+                    <button class="review-nav-btn" data-bs-target="#reviewCarousel" data-bs-slide="prev"><i class="bi bi-chevron-left"></i></button>
+                    <div class="review-dots">
+                      <div class="dot" data-index="0"></div>
+                      <div class="dot" data-index="1"></div>
+                      <div class="dot active" data-index="2"></div>
+                    </div>
+                    <button class="review-nav-btn" data-bs-target="#reviewCarousel" data-bs-slide="next"><i class="bi bi-chevron-right"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="mt-4 mb-2" style="font-weight:600;">Viajou connosco? Deixe seu feedback no:</p>
+        <div class="platform-row">
+          <div class="platform-badge viator"><i class="bi bi-star-fill" style="color:var(--teal)"></i> viator</div>
+          <div class="platform-badge tripadvisor"><i class="bi bi-star-fill" style="color:#34a853"></i> Tripadvisor</div>
+          <div class="platform-badge gyg">GET YOUR GUIDE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ACOMODAÇÃO -->
+<section id="acomodacao">
+  <div class="container text-center">
+    <div class="section-label reveal reveal-up">acomodação</div>
+    <h2 class="reveal reveal-up">Alojamentos — Inhaca e Machangulo</h2>
+    <p class="sub-acc reveal reveal-up">Explore as Ilhas de Inhaca, Ilha dos Portugueses e a deslumbrante Praia de Santa Maria.</p>
+    <div class="row g-4 text-start justify-content-center">
+
+      <div class="col-lg-5 col-md-10 reveal reveal-left">
+        <div class="acc-card">
+          <div class="acc-img-wrap">
+            <img src="assets/images/accommodation/machangulo_getaway_1.jpg" alt="Machangulo Beach Lodge" class="acc-img">
+          </div>
+          <div class="acc-body">
+            <h4 class="acc-title">Machangulo Beach Lodge</h4>
+            <div class="acc-stars">★★★★★</div>
+            <div class="acc-meta">
+              <span><i class="bi bi-geo-alt-fill"></i> Machangulo</span>
+              <span><i class="bi bi-clock"></i> 8 horas</span>
+            </div>
+            <ul class="acc-features">
+              <li><i class="bi bi-circle-fill"></i> Acomodação 1 noite</li>
+              <li><i class="bi bi-circle-fill"></i> Wi-fi</li>
+              <li><i class="bi bi-circle-fill"></i> Água Potável</li>
+              <li><i class="bi bi-circle-fill"></i> Taxas da Marina</li>
+              <li><i class="bi bi-circle-fill"></i> Pequeno almoço e jantar</li>
+              <li><i class="bi bi-circle-fill"></i> Transporte ida e volta</li>
+            </ul>
+            <div class="acc-footer-row">
+              <div class="acc-price-block">
+                <span class="acc-cancel">Cancelamento<br><strong>até 48 horas antes</strong></span>
+                <div class="acc-price-right">
+                  <span class="acc-per">1 noite, por adulto</span>
+                  <span class="acc-price">16.900MT</span>
+                </div>
+              </div>
+              <a href="pages/package.html?id=machangulo-getaway" class="btn-acc">Ver disponibilidade</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-10 reveal reveal-right">
+        <div class="acc-card">
+          <div class="acc-img-wrap">
+            <img src="assets/images/accommodation/mamas_lodge_1.jpg" alt="Mama's Lodge" class="acc-img">
+          </div>
+          <div class="acc-body">
+            <h4 class="acc-title">Mama's Lodge</h4>
+            <div class="acc-stars">★★★★★</div>
+            <div class="acc-meta">
+              <span><i class="bi bi-geo-alt-fill"></i> Ilha de Inhaca</span>
+              <span><i class="bi bi-clock"></i> 1 noite</span>
+            </div>
+            <ul class="acc-features">
+              <li><i class="bi bi-circle-fill"></i> Acomodação no lodge</li>
+              <li><i class="bi bi-circle-fill"></i> Wi-Fi disponível</li>
+              <li><i class="bi bi-circle-fill"></i> Piscina</li>
+              <li><i class="bi bi-circle-fill"></i> Tour Praia Santa Maria</li>
+              <li><i class="bi bi-circle-fill"></i> Snorkeling</li>
+              <li><i class="bi bi-circle-fill"></i> Transfer barco ida e volta</li>
+            </ul>
+            <div class="acc-footer-row">
+              <div class="acc-price-block">
+                <span class="acc-cancel">Cancelamento<br><strong>até 48 horas antes</strong></span>
+                <div class="acc-price-right">
+                  <span class="acc-per">1 noite, por adulto</span>
+                  <span class="acc-price">15.000MT</span>
+                </div>
+              </div>
+              <a href="pages/package.html?id=mamas-lodge" class="btn-acc">Ver disponibilidade</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-center mt-5 reveal reveal-up">
+      <a href="pages/accommodations.html" class="btn-acc-more">Ver todos os alojamentos</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+
+<!-- VIDEO MODAL -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark border-0">
+      <div class="modal-body p-0 position-relative">
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        <video id="modalVideo" src="assets/videos/depoimento.mp4" class="w-100" controls autoplay style="border-radius:12px;"></video>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Galeria" onclick="closeLightbox()">
+  <button class="lightbox-close" id="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">&times;</button>
+  <button class="lightbox-prev" id="lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Anterior">&#8249;</button>
+  <button class="lightbox-next" id="lightbox-next" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Seguinte">&#8250;</button>
+  <img id="lightbox-img" src="" alt="Imagem ampliada" onclick="event.stopPropagation()">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/data-loader.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

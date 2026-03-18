@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Package | Moz Camp Adventures</title>
+  <meta name="description" id="page-desc" content="Descubra os nossos pacotes de viagem em Moçambique.">
+  <meta name="author" content="Moz Camp Adventures">
+  <meta name="robots" content="index, follow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<div id="preloader"><div id="lottie-loader"></div></div>
+
+<!-- NAVBAR -->
+<div id="navbar-placeholder"></div>
+
+<!-- PACKAGE HERO -->
+<div class="pkg-hero" id="pkg-hero">
+  <img id="pkg-hero-img" src="" alt="" class="pkg-hero-bg">
+  <div class="pkg-hero-overlay"></div>
+  <div class="pkg-hero-content">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="pkg-breadcrumb">
+        <ol class="breadcrumb mb-2">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item" id="breadcrumb-cat">Tours</li>
+          <li class="breadcrumb-item active" id="breadcrumb-name">Package</li>
+        </ol>
+      </nav>
+      <div class="pkg-hero-badge" id="pkg-badge"></div>
+      <h1 class="pkg-hero-title" id="pkg-title">Package Name</h1>
+      <p class="pkg-hero-sub" id="pkg-subtitle"></p>
+      <div class="pkg-hero-meta" id="pkg-hero-meta"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<section class="pkg-body-section">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- LEFT COLUMN: Details + Itinerary -->
+      <div class="col-lg-7">
+
+        <div class="pkg-gallery-strip" id="pkg-gallery-strip"></div>
+
+        <div class="pkg-price-block reveal reveal-up" id="pkg-price-block"></div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-prices-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bi bi-tag-fill"></i> Preços</h3>
+          <div id="pkg-prices-detail"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bi bi-info-circle-fill"></i> Sobre este Pacote</h3>
+          <div id="pkg-description"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bi bi-list-check"></i> Incluído e Excluído</h3>
+          <div class="pkg-inc-exc-grid" id="pkg-inc-exc"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-menu-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bi bi-journal-richtext"></i> Menu Seleccionado</h3>
+          <div id="pkg-menu"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bi bi-patch-check-fill"></i> Destaques</h3>
+          <ul class="pkg-highlights-list" id="pkg-highlights"></ul>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bi bi-map-fill"></i> Itinerário</h3>
+          <div class="pkg-itinerary" id="pkg-itinerary"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-important-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bi bi-exclamation-circle-fill"></i> Informações Importantes</h3>
+          <ul class="pkg-important-list" id="pkg-important"></ul>
+        </div>
+
+      </div><!-- /left col -->
+
+
+      <!-- RIGHT COLUMN: Booking Sidebar -->
+      <div class="col-lg-5">
+        <div class="pkg-sidebar-wrap">
+
+          <!-- Booking Card -->
+          <div class="booking-card reveal reveal-right">
+            <h5 class="mb-1">Reservar o Seu Tour</h5>
+            <p class="booking-subtitle">Reserve cedo para garantir o seu lugar — conforto e tranquilidade assegurados!</p>
+
+            <!-- Tabs -->
+            <div class="book-tabs">
+              <button class="book-tab active" id="tab-btn-wa" onclick="switchBookTab('wa')" type="button">
+                <i class="bi bi-whatsapp"></i> Reserva Online
+              </button>
+              <button class="book-tab" id="tab-btn-email" onclick="switchBookTab('email')" type="button">
+                <i class="bi bi-envelope-fill"></i> Contacto
+              </button>
+            </div>
+
+            <!-- WhatsApp Pane -->
+            <div class="book-pane" id="pane-wa">
+              <div class="booking-field">
+                <label>Nome Completo <span class="req">*</span></label>
+                <input type="text" id="wa-name" placeholder="Introduza o seu nome completo">
+              </div>
+              <div class="booking-field">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" id="wa-email" placeholder="Introduza o seu email">
+              </div>
+              <div class="booking-field">
+                <label>Telefone <span class="req">*</span></label>
+                <input type="tel" id="wa-phone" placeholder="Ex: +258 84 000 0000">
+              </div>
+              <div class="booking-field">
+                <label>Data Pretendida <span class="req">*</span></label>
+                <input type="date" id="book-date">
+              </div>
+              <div class="booking-field">
+                <label>Adultos <span class="req">*</span></label>
+                <div class="booking-stepper">
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('adults',-1)" aria-label="Menos"><i class="bi bi-dash"></i></button>
+                  <span class="booking-stepper-val" id="book-adults-val">1</span>
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('adults',1)" aria-label="Mais"><i class="bi bi-plus"></i></button>
+                </div>
+              </div>
+              <div class="booking-field" id="book-child-row" style="display:none;">
+                <label>Crianças <small id="book-child-label" class="text-muted"></small></label>
+                <div class="booking-stepper">
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('children',-1)" aria-label="Menos"><i class="bi bi-dash"></i></button>
+                  <span class="booking-stepper-val" id="book-children-val">0</span>
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('children',1)" aria-label="Mais"><i class="bi bi-plus"></i></button>
+                </div>
+              </div>
+              <div class="booking-summary" id="book-price-summary">
+                <div class="booking-summary-row">
+                  <span>Adultos (<span id="bps-adults">1</span>×)</span>
+                  <span id="bps-adult-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-child-row" style="display:none;">
+                  <span>Crianças (<span id="bps-children">0</span>×)</span>
+                  <span id="bps-child-total"></span>
+                </div>
+                <div class="booking-summary-row booking-summary-total">
+                  <span>Total estimado</span>
+                  <span id="bps-total"></span>
+                </div>
+              </div>
+              <a id="book-wa-btn" href="https://wa.me/258844406543" target="_blank" rel="noopener" class="btn-wa-book">
+                <i class="bi bi-calendar-check-fill"></i> Reservar Agora
+              </a>
+              <p class="book-note"><i class="bi bi-shield-check-fill"></i> Confirmação em minutos via WhatsApp.</p>
+            </div>
+
+            <!-- Email Pane -->
+            <div class="book-pane" id="pane-email" style="display:none;">
+              <div class="booking-field">
+                <label>Nome Completo <span class="req">*</span></label>
+                <input type="text" id="em-name" placeholder="Introduza o seu nome completo">
+              </div>
+              <div class="booking-field">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" id="em-email" placeholder="Introduza o seu email">
+              </div>
+              <div class="booking-field">
+                <label>Telefone <span class="req">*</span></label>
+                <input type="tel" id="em-phone" placeholder="Ex: +258 84 000 0000">
+              </div>
+              <div class="booking-field">
+                <label>Data Pretendida <span class="req">*</span></label>
+                <input type="date" id="em-date">
+              </div>
+              <div class="booking-field">
+                <label>Número de Pessoas <span class="req">*</span></label>
+                <input type="number" id="em-people" min="1" max="50" placeholder="Ex: 2">
+              </div>
+              <div class="booking-field">
+                <label>Mensagem <span class="req">*</span></label>
+                <textarea id="em-message" rows="3" placeholder="Diga-nos algo sobre a sua viagem..."></textarea>
+              </div>
+              <button type="button" class="btn-email-book" id="btn-email-submit">
+                <i class="bi bi-send-fill"></i> Enviar Pedido
+              </button>
+              <div class="book-email-success" id="email-success" style="display:none;">
+                <i class="bi bi-check-circle-fill"></i>
+                <strong>Pedido enviado!</strong>
+                <p>Entraremos em contacto em breve.</p>
+              </div>
+              <p class="book-note"><i class="bi bi-clock-fill"></i> Resposta em até 24 horas por email.</p>
+            </div>
+
+          </div>
+
+
+          <!-- Agent Contact Card -->
+          <div class="contact-agent-card reveal reveal-right">
+            <div class="agent-img-wrap">
+              <img src="../assets/images/packages/sunset_cruise_2.jpeg" alt="Agente de Viagens">
+            </div>
+            <div class="agent-contact-bar">
+              <div class="agent-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div>
+                <div class="agent-inquiry">Para Mais Informações</div>
+                <a href="tel:+258844406543" class="agent-phone">+258 84 440 6543</a>
+              </div>
+            </div>
+            <div class="agent-whatsapp">
+              <a href="https://wa.me/258844406543" target="_blank" rel="noopener" class="whatsapp-btn w-100 justify-content-center">
+                <i class="bi bi-whatsapp"></i> Chat no WhatsApp
+              </a>
+            </div>
+          </div>
+
+
+          <!-- Related Packages -->
+          <div class="pkg-related reveal reveal-right">
+            <h6 class="pkg-related-title">Outros Pacotes</h6>
+            <div id="pkg-related-list"></div>
+          </div>
+
+        </div>
+      </div><!-- /right col -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- NOT FOUND -->
+<div id="pkg-not-found" style="display:none; padding:120px 0; text-align:center;">
+  <div class="container">
+    <i class="bi bi-exclamation-triangle-fill" style="font-size:3rem;color:var(--orange);"></i>
+    <h2 style="margin-top:1rem;">Pacote não encontrado</h2>
+    <p class="text-muted">O pacote que procura não existe ou foi removido.</p>
+    <a href="tours.html" class="btn-teal mt-3 d-inline-block">Ver todos os tours</a>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+
+<!-- MOBILE STICKY BOOKING BAR -->
+<div class="mob-booking-bar" id="mob-booking-bar">
+  <div class="mob-book-info">
+    <span class="mob-book-from">A partir de</span>
+    <span class="mob-book-price" id="mob-book-price">—</span>
+  </div>
+  <a id="mob-book-btn" href="https://wa.me/258844406543" target="_blank" rel="noopener" class="mob-book-cta">
+    <i class="bi bi-whatsapp"></i> Reservar
+  </a>
+</div>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Galeria" onclick="closeLightbox()">
+  <button class="lightbox-close" id="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">&times;</button>
+  <button class="lightbox-prev" id="lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Anterior">&#8249;</button>
+  <button class="lightbox-next" id="lightbox-next" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Seguinte">&#8250;</button>
+  <img id="lightbox-img" src="" alt="Imagem ampliada" onclick="event.stopPropagation()">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="../assets/js/components.js"></script>
+<script src="../assets/js/data-loader.js"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+(function () {
+  var packageId = new URLSearchParams(window.location.search).get('id') || '';
+
+  mcaReady(function () {
+    var pkg = getPackageBySlug(packageId);
+
+    if (!pkg) {
+      document.getElementById('pkg-hero').style.display          = 'none';
+      document.querySelector('.pkg-body-section').style.display  = 'none';
+      document.getElementById('mob-booking-bar').style.display   = 'none';
+      document.getElementById('pkg-not-found').style.display     = 'block';
+      return;
+    }
+
+    buildPackagePage(pkg);
+
+    // Show mobile bar when scrolled past hero
+    var bar = document.getElementById('mob-booking-bar');
+    window.addEventListener('scroll', function () {
+      var heroH = document.getElementById('pkg-hero').offsetHeight;
+      bar.classList.toggle('visible', window.scrollY > heroH);
+    }, { passive: true });
+  });
+})();
+
+function switchBookTab(tab) {
+  document.getElementById('tab-btn-wa').classList.toggle('active', tab === 'wa');
+  document.getElementById('tab-btn-email').classList.toggle('active', tab === 'email');
+  document.getElementById('pane-wa').style.display    = tab === 'wa'    ? 'block' : 'none';
+  document.getElementById('pane-email').style.display = tab === 'email' ? 'block' : 'none';
+}
+
+document.getElementById('btn-email-submit').addEventListener('click', function () {
+  var fields = ['em-name', 'em-email', 'em-phone', 'em-date', 'em-people'];
+  var valid = fields.every(function (id) {
+    var el = document.getElementById(id);
+    var ok = el && el.value.trim() !== '';
+    if (el) el.classList.toggle('field-error', !ok);
+    return ok;
+  });
+  if (!valid) return;
+
+  // Placeholder — email sending will be configured later
+  document.getElementById('pane-email').querySelectorAll('.booking-field, .btn-email-book').forEach(function (el) {
+    el.style.display = 'none';
+  });
+  document.getElementById('email-success').style.display = 'block';
+});
+</script>
+</body>
+</html>

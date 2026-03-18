@@ -1,0 +1,570 @@
+/**
+ * MOZ CAMP ADVENTURES — data-loader.js
+ * =====================================================
+ * Loads tour and accommodation data from JSON files.
+ * Provides rendering functions for all pages.
+ * Handles WhatsApp booking on package detail page.
+ * =====================================================
+ */
+
+(function () {
+  'use strict';
+
+  /* ── Constants ──────────────────────────────────────────── */
+  var WA_PHONE = '258844406543';
+  var WA_BASE  = 'https://wa.me/' + WA_PHONE + '?text=';
+
+  /* ── Path resolution ────────────────────────────────────── */
+  var _isInPages = window.location.pathname.includes('/pages/');
+  var _base = _isInPages ? '../' : '';
+
+  /* ── State ──────────────────────────────────────────────── */
+  var MCA = { tours: [], accommodation: [] };
+  var _ready = false;
+  var _queue = [];
+
+  /* ── Public API ─────────────────────────────────────────── */
+  window.MCA = MCA;
+
+  window.mcaReady = function (cb) {
+    if (_ready) { cb(MCA); return; }
+    _queue.push(cb);
+  };
+
+  // Legacy alias
+  window.PACKAGES_DATA = MCA;
+  window._loadAllPackagesAsync = function (cb) { window.mcaReady(function () { cb(); }); };
+
+  window.getPackageBySlug = function (slug) {
+    return [].concat(MCA.tours, MCA.accommodation)
+      .find(function (p) { return (p.slug || p.id) === slug; }) || null;
+  };
+
+  window.getPackageCategory = function (slug) {
+    if (MCA.tours.find(function (p) { return (p.slug || p.id) === slug; })) return 'tour';
+    if (MCA.accommodation.find(function (p) { return (p.slug || p.id) === slug; })) return 'accommodation';
+    return null;
+  };
+
+  /* ── Load JSON ──────────────────────────────────────────── */
+  function flush() {
+    _ready = true;
+    // Sync legacy alias
+    window.PACKAGES_DATA.tours = MCA.tours;
+    window.PACKAGES_DATA.accommodation = MCA.accommodation;
+    _queue.forEach(function (cb) { cb(MCA); });
+    _queue = [];
+  }
+
+  Promise.all([
+    fetch(_base + 'data/tours.json').then(function (r) { return r.json(); }),
+    fetch(_base + 'data/accommodations.json').then(function (r) { return r.json(); })
+  ]).then(function (results) {
+    MCA.tours         = results[0] || [];
+    MCA.accommodation = results[1] || [];
+    flush();
+  }).catch(function (err) {
+    console.error('[MCA] Data load failed:', err);
+    flush();
+  });
+
+  /* ── Helpers ─────────────────────────────────────────────── */
+  function stars(n) {
+    n = n || 5;
+    return '★'.repeat(n) + (n < 5 ? '☆'.repeat(5 - n) : '');
+  }
+
+  function fmt(n) {
+    return Number(n).toLocaleString('pt-MZ') + ' MT';
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     TOUR CARD — used on tours.html and home page carousel
+  ───────────────────────────────────────────────────────── */
+  window.makeTourCard = function (pkg, animClass) {
+    animClass = animClass || 'reveal-up';
+    var slug = pkg.slug || pkg.id;
+    var href = (_isInPages ? 'package.html' : 'pages/package.html') + '?id=' + slug;
+
+    var col = document.createElement('div');
+    col.className = 'col-md-4 reveal ' + animClass;
+    col.innerHTML =
+      '<div class="tour-card h-100">' +
+        '<div class="tour-card-img-wrap">' +
+          '<img src="' + pkg.image + '" alt="' + pkg.name + '" loading="lazy">' +
+          (pkg.badge ? '<div class="tour-card-badge">' + pkg.badge + '</div>' : '') +
+        '</div>' +
+        '<div class="tour-card-body">' +
+          '<div class="tour-card-stars">' + stars(pkg.stars) + '</div>' +
+          '<h5 class="tour-card-title">' + pkg.name + '</h5>' +
+          '<div class="tour-card-meta">' +
+            '<span><i class="bi bi-geo-alt-fill"></i> ' + (pkg.location || '') + '</span>' +
+            (pkg.duration ? '<span><i class="bi bi-clock-fill"></i> ' + pkg.duration + '</span>' : '') +
+          '</div>' +
+          '<p class="tour-card-desc">' + (pkg.description || '') + '</p>' +
+          '<div class="tour-card-footer">' +
+            '<div class="tour-card-price">' +
+              '<span class="price-label">A partir de:</span>' +
+              '<span class="price-amount">' + (pkg.price || '') + '</span>' +
+              (pkg.priceOld ? '<span class="price-old">' + pkg.priceOld + '</span>' : '') +
+            '</div>' +
+            '<a href="' + href + '" class="btn-reserve">Reservar <i class="bi bi-arrow-right-circle-fill"></i></a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    return col;
+  };
+
+  /* ─────────────────────────────────────────────────────────
+     PACKAGE DETAIL PAGE
+  ───────────────────────────────────────────────────────── */
+  window.buildPackagePage = function (pkg) {
+    if (!pkg) return;
+
+    var slug = pkg.slug || pkg.id;
+    var cat  = window.getPackageCategory(slug);
+    var isAccom = cat === 'accommodation';
+
+    /* Meta */
+    document.title = pkg.name + ' | Moz Camp Adventures';
+    var descMeta = document.getElementById('page-desc');
+    if (descMeta) descMeta.setAttribute('content', pkg.description || '');
+
+    /* Hero */
+    var heroImg = document.getElementById('pkg-hero-img');
+    if (heroImg) { heroImg.src = (pkg.images && pkg.images[0]) || pkg.heroImage || pkg.image; heroImg.alt = pkg.name; }
+
+    var badge = document.getElementById('pkg-badge');
+    if (badge) badge.innerHTML = '<span class="pkg-hero-badge-pill"><i class="bi bi-' + (isAccom ? 'house-heart-fill' : 'compass-fill') + '"></i> ' + (isAccom ? 'Alojamento' : 'Tour') + '</span>';
+
+    var titleEl = document.getElementById('pkg-title');
+    if (titleEl) titleEl.textContent = pkg.name;
+    var subEl = document.getElementById('pkg-subtitle');
+    if (subEl) subEl.textContent = pkg.subtitle || '';
+
+    var catEl = document.getElementById('breadcrumb-cat');
+    if (catEl) catEl.innerHTML = '<a href="' + (isAccom ? 'accommodations.html' : 'tours.html') + '">' + (isAccom ? 'Alojamentos' : 'Tours') + '</a>';
+
+    var nameEl = document.getElementById('breadcrumb-name');
+    if (nameEl) nameEl.textContent = pkg.name;
+
+    /* Hero meta bar */
+    var metaEl = document.getElementById('pkg-hero-meta');
+    if (metaEl) {
+      var items = [
+        { icon: 'geo-alt-fill', text: pkg.location },
+        { icon: 'clock-fill',   text: pkg.duration },
+        { icon: 'people-fill',  text: 'Máx. ' + (pkg.maxPeople || 20) + ' pessoas' }
+      ];
+      if (pkg.destinations) items.splice(2, 0, { icon: 'map-fill', text: pkg.destinations });
+      metaEl.innerHTML = items.map(function (m) {
+        return '<div class="pkg-hero-meta-item"><i class="bi bi-' + m.icon + '"></i><span>' + m.text + '</span></div>';
+      }).join('');
+    }
+
+    /* Gallery strip */
+    buildGallery(pkg);
+
+    /* Price block */
+    var priceEl = document.getElementById('pkg-price-block');
+    if (priceEl) {
+      priceEl.innerHTML =
+        '<div class="pkg-price-inner">' +
+          '<div>' +
+            '<span class="pkg-price-amount">' + (pkg.price || '') + '</span>' +
+            (pkg.priceOld ? '<span class="pkg-price-old">' + pkg.priceOld + '</span>' : '') +
+            '<span class="pkg-price-label"> / ' + (pkg.priceLabel || 'por pessoa') + '</span>' +
+          '</div>' +
+          '<div class="pkg-stars">' + stars(pkg.stars) + '</div>' +
+        '</div>' +
+        (pkg.cancelPolicy ? '<div class="pkg-cancel-note"><i class="bi bi-shield-check-fill"></i> Cancelamento gratuito ' + pkg.cancelPolicy + '</div>' : '');
+    }
+
+    /* Description */
+    var descEl = document.getElementById('pkg-description');
+    if (descEl) {
+      (pkg.detailText || [pkg.description]).forEach(function (para) {
+        var p = document.createElement('p');
+        p.className = 'pkg-body-text';
+        p.textContent = para;
+        descEl.appendChild(p);
+      });
+    }
+
+    /* Prices detail */
+    if (pkg.priceChild) {
+      var pricesSection = document.getElementById('pkg-prices-section');
+      if (pricesSection) {
+        pricesSection.style.display = '';
+        var pricesEl = document.getElementById('pkg-prices-detail');
+        if (pricesEl) {
+          pricesEl.innerHTML =
+            '<ul class="pkg-price-list">' +
+              '<li><i class="bi bi-person-fill"></i> <strong>Adulto:</strong> ' + pkg.price + '</li>' +
+              '<li><i class="bi bi-person-hearts"></i> <strong>' + (pkg.priceChildLabel || 'Crianças') + ':</strong> ' + pkg.priceChild + '</li>' +
+            '</ul>';
+        }
+      }
+    }
+
+    /* Included / Excluded */
+    var incExc = document.getElementById('pkg-inc-exc');
+    if (incExc) {
+      var html = '';
+      (pkg.includes || []).forEach(function (item) { html += '<div class="pkg-inc-item"><i class="bi bi-check-lg"></i><span>' + item + '</span></div>'; });
+      (pkg.excludes || []).forEach(function (item) { html += '<div class="pkg-exc-item"><i class="bi bi-x-lg"></i><span>' + item + '</span></div>'; });
+      incExc.innerHTML = html;
+    }
+
+    /* Menu */
+    if (pkg.menu && pkg.menu.length) {
+      var menuSection = document.getElementById('pkg-menu-section');
+      if (menuSection) {
+        menuSection.style.display = '';
+        var menuEl = document.getElementById('pkg-menu');
+        if (menuEl) {
+          var menuHtml = '';
+          pkg.menu.forEach(function (block) {
+            menuHtml += '<div class="menu-block"><div class="menu-block-title">' + block.title + '</div><div class="menu-categories-grid">';
+            (block.categories || []).forEach(function (catItem) {
+              menuHtml += '<div><div class="menu-category-name">' + catItem.name + '</div><ul class="menu-items">';
+              (catItem.items || []).forEach(function (item) { menuHtml += '<li><i class="bi bi-circle-fill"></i> ' + item + '</li>'; });
+              menuHtml += '</ul></div>';
+            });
+            menuHtml += '</div></div>';
+          });
+          menuEl.innerHTML = menuHtml;
+        }
+      }
+    }
+
+    /* Highlights */
+    var hlEl = document.getElementById('pkg-highlights');
+    if (hlEl) {
+      (pkg.highlights || []).forEach(function (hl) {
+        hlEl.innerHTML += '<li><i class="bi bi-patch-check-fill"></i> ' + hl + '</li>';
+      });
+    }
+
+    /* Itinerary */
+    var itiEl = document.getElementById('pkg-itinerary');
+    if (itiEl) {
+      (pkg.itinerary || []).forEach(function (step, i) {
+        var isFirst = i === 0;
+        itiEl.innerHTML +=
+          '<div class="iti-item">' +
+            '<div class="iti-header ' + (isFirst ? 'open' : '') + '" onclick="toggleItinerary(this)">' +
+              '<div class="iti-badge">' + step.time + '</div>' +
+              '<div class="iti-title">' + step.title + '</div>' +
+              '<div class="iti-icon"><i class="bi bi-chevron-' + (isFirst ? 'up' : 'down') + '"></i></div>' +
+            '</div>' +
+            '<div class="iti-body' + (isFirst ? ' show' : '') + '">' +
+              '<p>' + step.body + '</p>' +
+              (step.checklist && step.checklist.length ? '<ul class="iti-checklist">' + step.checklist.map(function (c) { return '<li><i class="bi bi-check2"></i> ' + c + '</li>'; }).join('') + '</ul>' : '') +
+            '</div>' +
+          '</div>';
+      });
+    }
+
+    /* Important Information */
+    if (pkg.importantInfo && pkg.importantInfo.length) {
+      var impSection = document.getElementById('pkg-important-section');
+      if (impSection) {
+        impSection.style.display = '';
+        var impEl = document.getElementById('pkg-important');
+        if (impEl) {
+          pkg.importantInfo.forEach(function (info) {
+            impEl.innerHTML += '<li><i class="bi bi-circle-fill"></i> ' + info + '</li>';
+          });
+        }
+      }
+    }
+
+    /* Booking sidebar */
+    initBookingSidebar(pkg);
+
+    /* Related packages */
+    var allPkgs = [].concat(MCA.tours, MCA.accommodation);
+    var related = allPkgs.filter(function (p) { return (p.slug || p.id) !== slug; }).slice(0, 3);
+    var relEl = document.getElementById('pkg-related-list');
+    if (relEl) {
+      related.forEach(function (rp) {
+        var rSlug = rp.slug || rp.id;
+        relEl.innerHTML +=
+          '<a href="package.html?id=' + rSlug + '" class="pkg-related-item">' +
+            '<img src="' + rp.image + '" alt="' + rp.name + '" loading="lazy">' +
+            '<div class="pkg-related-info">' +
+              '<div class="pkg-related-name">' + rp.name + '</div>' +
+              '<div class="pkg-related-price">' + (rp.price || '') + '</div>' +
+            '</div>' +
+            '<i class="bi bi-arrow-right-circle"></i>' +
+          '</a>';
+      });
+    }
+
+    /* Scroll reveal */
+    if (typeof revealOnScroll === 'function') revealOnScroll();
+  };
+
+  /* ── Gallery ─────────────────────────────────────────────── */
+  function buildGallery(pkg) {
+    var stripEl = document.getElementById('pkg-gallery-strip');
+    var src = pkg.images || pkg.gallery;
+    if (!stripEl || !src || !src.length) return;
+
+    var gallery = src;
+    var current = 0;
+
+    stripEl.innerHTML =
+      '<div class="pkg-gallery-main" id="pkgMainWrap">' +
+        '<img id="pkg-gallery-main-img" src="' + gallery[0] + '" alt="' + pkg.name + '" loading="eager">' +
+        '<button class="pkg-gal-btn pkg-gal-prev" id="pkgGalPrev" aria-label="Imagem anterior"><i class="bi bi-chevron-left"></i></button>' +
+        '<button class="pkg-gal-btn pkg-gal-next" id="pkgGalNext" aria-label="Próxima imagem"><i class="bi bi-chevron-right"></i></button>' +
+        '<div class="pkg-gallery-count"><i class="bi bi-images"></i> ' + gallery.length + ' fotos</div>' +
+      '</div>' +
+      '<div class="pkg-thumb-grid" id="pkgThumbGrid">' +
+        gallery.slice(0, 4).map(function (src, i) {
+          return '<div class="pkg-thumb-item ' + (i === 0 ? 'active' : '') + '" data-idx="' + i + '" role="button" tabindex="0">' +
+            '<img src="' + src + '" alt="' + pkg.name + ' ' + (i + 1) + '" loading="lazy">' +
+            (i === 3 && gallery.length > 4 ? '<div class="pkg-thumb-more">+' + (gallery.length - 4) + '</div>' : '') +
+            '</div>';
+        }).join('') +
+      '</div>';
+
+    var mainImg = document.getElementById('pkg-gallery-main-img');
+    if (mainImg) mainImg.style.transition = 'opacity .2s ease, transform .25s ease';
+
+    function goTo(idx) {
+      idx = ((idx % gallery.length) + gallery.length) % gallery.length;
+      current = idx;
+      if (mainImg) {
+        mainImg.style.opacity = '0';
+        mainImg.style.transform = 'scale(1.03)';
+        setTimeout(function () {
+          mainImg.src = gallery[idx];
+          mainImg.style.opacity = '1';
+          mainImg.style.transform = 'scale(1)';
+        }, 180);
+      }
+      document.querySelectorAll('.pkg-thumb-item').forEach(function (t, i) {
+        t.classList.toggle('active', i === idx || (idx >= 4 && i === 3));
+      });
+    }
+
+    var prevBtn = document.getElementById('pkgGalPrev');
+    var nextBtn = document.getElementById('pkgGalNext');
+    if (prevBtn) prevBtn.addEventListener('click', function (e) { e.stopPropagation(); goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function (e) { e.stopPropagation(); goTo(current + 1); });
+
+    var thumbGrid = document.getElementById('pkgThumbGrid');
+    if (thumbGrid) {
+      thumbGrid.addEventListener('click', function (e) {
+        var item = e.target.closest('.pkg-thumb-item');
+        if (!item) return;
+        var idx = parseInt(item.dataset.idx);
+        if (idx === 3 && gallery.length > 4) {
+          openLightbox(null, 3, gallery);
+        } else {
+          goTo(idx);
+        }
+      });
+    }
+
+    var mainWrap = document.getElementById('pkgMainWrap');
+    if (mainWrap) {
+      mainWrap.addEventListener('click', function (e) {
+        if (prevBtn && prevBtn.contains(e.target)) return;
+        if (nextBtn && nextBtn.contains(e.target)) return;
+        openLightbox(null, current, gallery);
+      });
+
+      // Swipe
+      var tx = 0;
+      mainWrap.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+      mainWrap.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+    }
+  }
+
+  /* ── Lightbox (used by package + accommodations pages) ───── */
+  var _lbImages = [];
+  var _lbIndex  = 0;
+
+  window.openLightbox = function (_el, index, images) {
+    if (images) {
+      _lbImages = images;
+    } else {
+      var items = document.querySelectorAll('.gallery-item img');
+      _lbImages = Array.from(items).map(function (img) { return img.src; });
+    }
+    _lbIndex = index !== undefined ? index : 0;
+    _updateLightbox();
+    var lb = document.getElementById('lightbox');
+    if (lb) { lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  };
+
+  window.lightboxNav = function (dir) {
+    _lbIndex = (_lbIndex + dir + _lbImages.length) % _lbImages.length;
+    _updateLightbox();
+  };
+
+  window.closeLightbox = function () {
+    var lb = document.getElementById('lightbox');
+    if (lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  };
+
+  function _updateLightbox() {
+    var img  = document.getElementById('lightbox-img');
+    var prev = document.getElementById('lightbox-prev');
+    var next = document.getElementById('lightbox-next');
+    if (img)  img.src = _lbImages[_lbIndex] || '';
+    if (prev) prev.style.display = _lbImages.length > 1 ? 'flex' : 'none';
+    if (next) next.style.display = _lbImages.length > 1 ? 'flex' : 'none';
+  }
+
+  document.addEventListener('keydown', function (e) {
+    var lb = document.getElementById('lightbox');
+    if (!lb || !lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     window.closeLightbox();
+    if (e.key === 'ArrowLeft')  window.lightboxNav(-1);
+    if (e.key === 'ArrowRight') window.lightboxNav(1);
+  });
+
+  document.addEventListener('click', function (e) {
+    var lb = document.getElementById('lightbox');
+    if (lb && e.target === lb) window.closeLightbox();
+  });
+
+  /* ── Booking Sidebar (package detail) ────────────────────── */
+  var _priceAdult   = 0;
+  var _priceChild   = 0;
+  var _adults       = 1;
+  var _children     = 0;
+  var _pkgNameGlobal = '';
+
+  function initBookingSidebar(pkg) {
+    _priceAdult    = pkg.price_from || 0;
+    _priceChild    = pkg.price_child || 0;
+    _pkgNameGlobal = pkg.name || '';
+
+    /* Show child row if child price exists */
+    if (_priceChild) {
+      var childRow = document.getElementById('book-child-row');
+      if (childRow) childRow.style.display = '';
+      var childLabel = document.getElementById('book-child-label');
+      if (childLabel) childLabel.textContent = pkg.priceChildLabel || 'Crianças (4–10 anos)';
+    }
+
+    /* Set min date to today */
+    var dateInput = document.getElementById('book-date');
+    if (dateInput) {
+      var today = new Date().toISOString().split('T')[0];
+      dateInput.min = today;
+      dateInput.addEventListener('change', updateWhatsAppLink);
+    }
+
+    updateBookingTotal();
+  }
+
+  window.bookAdjust = function (type, delta) {
+    if (type === 'adults') {
+      _adults = Math.max(1, Math.min(20, _adults + delta));
+      var el = document.getElementById('book-adults-val');
+      if (el) el.textContent = _adults;
+    } else {
+      _children = Math.max(0, Math.min(10, _children + delta));
+      var el2 = document.getElementById('book-children-val');
+      if (el2) el2.textContent = _children;
+    }
+    updateBookingTotal();
+  };
+
+  function updateBookingTotal() {
+    var adultTotal = _adults * _priceAdult;
+    var childTotal = _children * _priceChild;
+    var total      = adultTotal + childTotal;
+
+    var elAd = document.getElementById('bps-adults');   if (elAd) elAd.textContent = _adults;
+    var elAT = document.getElementById('bps-adult-total'); if (elAT) elAT.textContent = fmt(adultTotal);
+    var elCh = document.getElementById('bps-children'); if (elCh) elCh.textContent = _children;
+    var elCT = document.getElementById('bps-child-total'); if (elCT) elCT.textContent = fmt(childTotal);
+    var elTo = document.getElementById('bps-total');   if (elTo) elTo.textContent = fmt(total);
+
+    /* Update mobile bar price */
+    var mobilePrice = document.getElementById('mob-book-price');
+    if (mobilePrice && _priceAdult) mobilePrice.textContent = fmt(_priceAdult) + '/pax';
+
+    updateWhatsAppLink();
+  }
+
+  function updateWhatsAppLink() {
+    var dateEl = document.getElementById('book-date');
+    var dateVal = dateEl ? dateEl.value : '';
+    var dateFmt = '';
+    if (dateVal) {
+      try {
+        dateFmt = new Date(dateVal + 'T00:00:00').toLocaleDateString('pt-MZ', { day: 'numeric', month: 'long', year: 'numeric' });
+      } catch (e) { dateFmt = dateVal; }
+    }
+
+    var nameVal  = (document.getElementById('wa-name')  || {}).value || '';
+    var phoneVal = (document.getElementById('wa-phone') || {}).value || '';
+
+    var adultTotal = _adults * _priceAdult;
+    var childTotal = _children * _priceChild;
+    var total = adultTotal + childTotal;
+
+    var msg =
+      'Olá Moz Camp Adventures 👋\n\n' +
+      'Gostaria de reservar o seguinte tour:\n\n' +
+      'Tour: ' + _pkgNameGlobal + '\n' +
+      (nameVal  ? 'Nome: '     + nameVal  + '\n' : '') +
+      (phoneVal ? 'Telefone: ' + phoneVal + '\n' : '') +
+      (dateFmt  ? 'Data: '     + dateFmt  + '\n' : '') +
+      '\nParticipantes:\n' +
+      'Adultos: ' + _adults + ' × ' + fmt(_priceAdult) + ' = ' + fmt(adultTotal) + '\n' +
+      (_priceChild ? 'Crianças: ' + _children + ' × ' + fmt(_priceChild) + ' = ' + fmt(childTotal) + '\n' : '') +
+      '\nTotal estimado: ' + fmt(total) + '\n\n' +
+      'Por favor, confirme a disponibilidade.';
+
+    var url = WA_BASE + encodeURIComponent(msg);
+
+    ['book-wa-btn', 'mob-book-btn'].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (btn) btn.href = url;
+    });
+  }
+
+  /* ── Itinerary accordion (global) ────────────────────────── */
+  window.toggleItinerary = function (header) {
+    var body   = header.nextElementSibling;
+    var isOpen = header.classList.contains('open');
+
+    document.querySelectorAll('.iti-header').forEach(function (h) {
+      h.classList.remove('open');
+      h.nextElementSibling.classList.remove('show');
+      h.querySelector('.iti-icon i').className = 'bi bi-chevron-down';
+    });
+
+    if (!isOpen) {
+      header.classList.add('open');
+      body.classList.add('show');
+      header.querySelector('.iti-icon i').className = 'bi bi-chevron-up';
+    }
+  };
+
+  /* ── Video modal stop on close ───────────────────────────── */
+  document.addEventListener('DOMContentLoaded', function () {
+    var videoModal = document.getElementById('videoModal');
+    var modalVideo = document.getElementById('modalVideo');
+    if (videoModal && modalVideo) {
+      videoModal.addEventListener('hidden.bs.modal', function () {
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+      });
+    }
+  });
+
+})();

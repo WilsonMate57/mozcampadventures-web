@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tours & Pacotes | Moz Camp Adventures</title>
+  <meta name="description" content="Explore os nossos tours e pacotes: ilhas, safaris, praias, city tours e muito mais em Moçambique.">
+  <meta name="author" content="Moz Camp Adventures">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Tours & Pacotes | Moz Camp Adventures">
+  <meta property="og:description" content="Ilhas, safaris, praias e city tours premium em Moçambique.">
+  <meta property="og:url" content="https://mozcampadventures.com/pages/tours.html">
+  <meta property="og:type" content="website">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<div id="preloader"><div id="lottie-loader"></div></div>
+
+<!-- NAVBAR -->
+<div id="navbar-placeholder"></div>
+
+<!-- PAGE BANNER -->
+<div class="page-banner">
+  <img src="../assets/images/hero/hero_slider_1.jpeg" class="page-banner-bg" alt="Tours & Pacotes">
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content">
+    <div class="container">
+      <nav class="page-banner-breadcrumb" aria-label="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Tours &amp; Pacotes</span>
+      </nav>
+      <div class="page-banner-label"><i class="bi bi-compass-fill me-1"></i>tours &amp; passeios</div>
+      <h1 class="page-banner-title">Todos os Tours e Pacotes</h1>
+      <p class="page-banner-sub">Ilhas, safaris, praias, city tours e muito mais em Moçambique.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- CATEGORY TABS -->
+<div class="cat-tabs-wrap" id="packages">
+  <div class="container">
+    <div class="cat-tabs" id="cat-tabs">
+      <button class="cat-tab-btn active" data-cat="island-tours"><i class="bi bi-water"></i> Island Tours</button>
+      <button class="cat-tab-btn" data-cat="sunset-cruise"><i class="bi bi-sunset-fill"></i> Sunset Cruises</button>
+      <button class="cat-tab-btn" data-cat="beach-tours"><i class="bi bi-umbrella-fill"></i> Beach Tours</button>
+      <button class="cat-tab-btn" data-cat="safaris"><i class="bi bi-binoculars-fill"></i> Safaris</button>
+      <button class="cat-tab-btn" data-cat="ocean-activities"><i class="bi bi-tsunami"></i> Ocean Activities</button>
+      <button class="cat-tab-btn" data-cat="city-tour"><i class="bi bi-buildings-fill"></i> City Tour</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- PACKAGES BY CATEGORY -->
+<section id="packages-page">
+  <div class="container">
+
+    <div class="cat-section active" data-cat="island-tours">
+      <div class="cat-section-header">
+        <div class="cat-section-icon"><i class="bi bi-water"></i></div>
+        <div>
+          <h2 class="cat-section-title">Island Tours</h2>
+          <p class="cat-section-sub">Explore as ilhas paradisíacas de Moçambique — snorkeling, barbecue e praias intocadas.</p>
+        </div>
+      </div>
+      <div class="row g-4 text-start" id="cat-root-island-tours"></div>
+    </div>
+
+    <div class="cat-section" data-cat="sunset-cruise">
+      <div class="cat-section-header">
+        <div class="cat-section-icon"><i class="bi bi-sunset-fill"></i></div>
+        <div>
+          <h2 class="cat-section-title">Sunset Cruises</h2>
+          <p class="cat-section-sub">Navegue pela Baía de Maputo ao pôr do sol — cruzeiros clássicos, jantares premium e festas no mar.</p>
+        </div>
+      </div>
+      <div class="row g-4 text-start" id="cat-root-sunset-cruise"></div>
+    </div>
+
+    <div class="cat-section" data-cat="beach-tours">
+      <div class="cat-section-header">
+        <div class="cat-section-icon"><i class="bi bi-umbrella-fill"></i></div>
+        <div>
+          <h2 class="cat-section-title">Beach Tours</h2>
+          <p class="cat-section-sub">Das praias do norte ao sul — Macaneta, Bilene, Ponta D'Ouro, Tofo e Vilanculos.</p>
+        </div>
+      </div>
+      <div class="row g-4 text-start" id="cat-root-beach-tours"></div>
+    </div>
+
+    <div class="cat-section" data-cat="safaris">
+      <div class="cat-section-header">
+        <div class="cat-section-icon"><i class="bi bi-binoculars-fill"></i></div>
+        <div>
+          <h2 class="cat-section-title">Safaris</h2>
+          <p class="cat-section-sub">Safaris inesquecíveis no Parque Nacional de Maputo, Kruger e o reino de Eswatini.</p>
+        </div>
+      </div>
+      <div class="row g-4 text-start" id="cat-root-safaris"></div>
+    </div>
+
+    <div class="cat-section" data-cat="ocean-activities">
+      <div class="cat-section-header">
+        <div class="cat-section-icon"><i class="bi bi-tsunami"></i></div>
+        <div>
+          <h2 class="cat-section-title">Ocean Activities</h2>
+          <p class="cat-section-sub">Observação de baleias, pesca em alto mar e aluguer de barco privado no Índico moçambicano.</p>
+        </div>
+      </div>
+      <div class="row g-4 text-start" id="cat-root-ocean-activities"></div>
+    </div>
+
+    <div class="cat-section" data-cat="city-tour">
+      <div class="cat-section-header">
+        <div class="cat-section-icon"><i class="bi bi-buildings-fill"></i></div>
+        <div>
+          <h2 class="cat-section-title">Maputo City Tour</h2>
+          <p class="cat-section-sub">Descobre a vibrante capital moçambicana — história, cultura, gastronomia e arquitectura.</p>
+        </div>
+      </div>
+      <div class="row g-4 text-start" id="cat-root-city-tour"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- INFO + CTA -->
+<section id="pacotes-info">
+  <div class="pkg-why-box reveal reveal-up">
+    <div class="section-label" style="background:var(--orange);margin-bottom:10px;">pacotes</div>
+    <h2 class="pkg-why-title">Planos de Passeios</h2>
+    <p class="pkg-why-sub">Explore as Ilhas de Inhaca, Ilha dos Portugueses e a deslumbrante Praia de Santa Maria.</p>
+    <ul class="pkg-check-list">
+      <li><i class="bi bi-check-circle-fill"></i> Experiências autênticas guiadas por locais com profundo conhecimento do território.</li>
+      <li><i class="bi bi-check-circle-fill"></i> Segurança garantida com equipamentos certificados e guias experientes em cada passeio.</li>
+      <li><i class="bi bi-check-circle-fill"></i> Pacotes personalizados para famílias, grupos e viajantes individuais.</li>
+      <li><i class="bi bi-check-circle-fill"></i> Reserva fácil e rápida com confirmação imediata via WhatsApp ou e-mail.</li>
+    </ul>
+  </div>
+  <div class="pkg-cta-banner reveal reveal-up">
+    <img src="../assets/images/packages/beach_day_1.jpg" alt="Moz Camp Adventures" class="pkg-cta-img">
+    <div class="pkg-cta-overlay"></div>
+    <div class="pkg-cta-content">
+      <h3>Viajou connosco?</h3>
+      <p>Partilha a tua experiência e ajuda outros viajantes a descobrir Moçambique.</p>
+      <a href="https://www.tripadvisor.com" target="_blank" rel="noopener" class="btn-cta-feedback">
+        <span style="font-family:'Dancing Script',cursive;font-size:1.1rem;">deixar feedback</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Galeria" onclick="closeLightbox()">
+  <button class="lightbox-close" id="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">&times;</button>
+  <button class="lightbox-prev" id="lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Anterior">&#8249;</button>
+  <button class="lightbox-next" id="lightbox-next" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Seguinte">&#8250;</button>
+  <img id="lightbox-img" src="" alt="Imagem ampliada" onclick="event.stopPropagation()">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="../assets/js/components.js"></script>
+<script src="../assets/js/data-loader.js"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+(function () {
+  var anims = ['reveal-left', 'reveal-up', 'reveal-right'];
+
+  mcaReady(function (data) {
+    data.tours.forEach(function (pkg, i) {
+      var cat  = pkg.category || 'island-tours';
+      var root = document.getElementById('cat-root-' + cat);
+      if (root) root.appendChild(makeTourCard(pkg, anims[i % anims.length]));
+    });
+
+    // Category tabs
+    var tabs     = document.querySelectorAll('.cat-tab-btn');
+    var sections = document.querySelectorAll('.cat-section');
+
+    function activateCat(cat) {
+      tabs.forEach(function (btn) { btn.classList.toggle('active', btn.dataset.cat === cat); });
+      sections.forEach(function (sec) { sec.classList.toggle('active', sec.dataset.cat === cat); });
+    }
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activateCat(btn.dataset.cat);
+      });
+    });
+
+    // Activate from URL ?cat=
+    var urlCat = new URLSearchParams(window.location.search).get('cat');
+    if (urlCat) activateCat(urlCat);
+
+    if (typeof revealOnScroll === 'function') revealOnScroll();
+  });
+})();
+</script>
+</body>
+</html>
