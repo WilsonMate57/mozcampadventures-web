@@ -8,8 +8,8 @@
     "badge": "5 Estrelas",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "assets/images/accommodation/machangulo_beach_lodge_1.jpg",
-    "heroImage": "assets/images/accommodation/machangulo_beach_lodge_3.jpeg",
+    "image": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg",
+    "heroImage": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpeg",
     "location": "Machangulo, Maputo",
     "destinations": "Machangulo Peninsula",
     "duration": "Mínimo 1 noite",
@@ -86,9 +86,10 @@
       }
     ],
     "gallery": [
-      "assets/images/accommodation/machangulo_beach_lodge_1.jpg",
-      "assets/images/accommodation/machangulo_beach_lodge_3.jpeg",
-      "assets/images/accommodation/machangulo_beach_lodge_4.jpg"
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpeg",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_4.jpg",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_getaway_6.jpg"
     ],
     "importantInfo": [
       "Check-in: 14h00 | Check-out: 11h00",
@@ -98,100 +99,7 @@
     ],
     "locationCategory": "machangulo"
   },
-  {
-    "id": "machangulo-getaway",
-    "slug": "machangulo-getaway",
-    "category": "island-accommodation",
-    "name": "Machangulo Getaway",
-    "subtitle": "Eco-lodge tranquilo na Península de Machangulo",
-    "badge": "Eco-Lodge",
-    "badgeClass": "",
-    "stars": 4,
-    "image": "assets/images/accommodation/machangulo_getaway_1.jpg",
-    "heroImage": "assets/images/accommodation/machangulo_getaway_3.jpg",
-    "location": "Machangulo, Maputo",
-    "destinations": "Machangulo Peninsula",
-    "duration": "Mínimo 1 noite",
-    "price": "19.900 MZN",
-    "price_from": 19900,
-    "priceOld": null,
-    "priceLabel": "por noite (2 pessoas)",
-    "price_child": 8500,
-    "priceChild": "8.500 MZN",
-    "priceChildLabel": "Crianças (por noite)",
-    "currency": "MZN",
-    "cancelPolicy": "até 48 horas antes",
-    "maxPeople": 6,
-    "description": "Eco-lodge sustentável em Machangulo com cabanas de madeira, praia deserta e um ambiente de paz e natureza que raramente se encontra.",
-    "features": [
-      "Cabanas de madeira com varanda privada",
-      "Praia deserta e exclusiva",
-      "Refeições caseiras com produtos locais",
-      "Kayak e snorkeling incluídos",
-      "Construção eco-sustentável",
-      "Energia solar e água reciclada",
-      "Ideal para famílias e grupos"
-    ],
-    "detailText": [
-      "O Machangulo Getaway é um eco-lodge comprometido com a sustentabilidade ambiental e o apoio às comunidades locais. As suas cabanas de madeira são construídas com materiais naturais e funcionam a energia solar.",
-      "A localização na Península de Machangulo garante acesso a uma praia praticamente privada, com águas calmas e recifes de coral a poucos metros da margem. As refeições são preparadas com ingredientes frescos comprados directamente aos pescadores locais.",
-      "Perfeito para famílias, casais e grupos que procuram autenticidade, natureza e uma escapada verdadeiramente desligada do mundo moderno."
-    ],
-    "includes": [
-      "Alojamento em cabana de madeira",
-      "Todas as refeições (pensão completa)",
-      "Kayak e snorkeling",
-      "Acesso à praia privada",
-      "Actividades de natureza guiadas"
-    ],
-    "excludes": [
-      "Transfer Maputo–Machangulo",
-      "Bebidas alcoólicas premium",
-      "Passeios de barco externos"
-    ],
-    "highlights": [
-      "Construção eco-sustentável a energia solar",
-      "Praia privada em Machangulo",
-      "Pensão completa com cozinha local",
-      "Kayak e snorkeling incluídos",
-      "Ideal para famílias e grupos pequenos"
-    ],
-    "itinerary": [
-      {
-        "time": "Check-in",
-        "title": "Chegada & Instalação",
-        "body": "Recepção e apresentação do lodge, da praia e das actividades disponíveis.",
-        "checklist": []
-      },
-      {
-        "time": "Tarde",
-        "title": "Actividades Livres",
-        "body": "Kayak, snorkeling ou simplesmente relaxamento na praia deserta.",
-        "checklist": []
-      },
-      {
-        "time": "19h30",
-        "title": "Jantar Caseiro",
-        "body": "Jantar preparado com produtos locais frescos servido em ambiente familiar.",
-        "checklist": []
-      }
-    ],
-    "gallery": [
-      "assets/images/accommodation/machangulo_getaway_1.jpg",
-      "assets/images/accommodation/machangulo_getaway_2.jpg",
-      "assets/images/accommodation/machangulo_getaway_3.jpg",
-      "assets/images/accommodation/machangulo_getaway_5.jpeg",
-      "assets/images/accommodation/machangulo_getaway_6.jpg"
-    ],
-    "importantInfo": [
-      "Check-in: 13h00 | Check-out: 11h00",
-      "Eco-lodge sem gerador — energia solar (tomadas limitadas).",
-      "Ideal para estadias de 2+ noites.",
-      "Cancelamento gratuito até 48h antes."
-    ],
-    "locationCategory": "machangulo"
-  },
-  {
+    {
     "id": "mamas-lodge",
     "slug": "mamas-lodge",
     "category": "island-accommodation",
@@ -200,30 +108,28 @@
     "badge": "Autêntico",
     "badgeClass": "",
     "stars": 4,
-    "image": "assets/images/accommodation/mamas_lodge_1.jpg",
-    "heroImage": "assets/images/accommodation/mamas_lodge_3.jpg",
+    "image": "../assets/images/accommodation/mamas-lodge/mamas_lodge_1.jpg",
+    "heroImage": "../assets/images/accommodation/mamas-lodge/mamas_lodge_3.jpg",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 1 noite",
-    "price": "15.000 MZN",
-    "price_from": 15000,
+    "price": "14.900 MZN",
+    "price_from": 14900,
     "priceOld": null,
-    "priceLabel": "por noite (2 pessoas)",
-    "price_child": 7000,
-    "priceChild": "7.000 MZN",
-    "priceChildLabel": "Crianças (por noite)",
+    "priceLabel": "por noite / por adulto",
+    "price_child": 9500,
+    "priceChild": "9.500 MZN",
+    "priceChildLabel": "Crianças (4-9 anos)",
     "currency": "MZN",
     "cancelPolicy": "até 48 horas antes",
     "maxPeople": 4,
     "description": "A Mama's Lodge é uma joia escondida na Ilha da Inhaca — atmosfera familiar, cozinha moçambicana genuína e vistas deslumbrantes para o Oceano Índico.",
     "features": [
-      "Quartos com vista para o oceano",
-      "Cozinha moçambicana caseira e autêntica",
-      "Pequeno-almoço incluído",
-      "Terraço panorâmico com vista para o Índico",
-      "Acesso directo à praia",
-      "Organização de passeios e snorkeling",
-      "Atmosfera familiar e personalizada"
+      "Wi-Fi",
+      "Cozinha & utensílios para churrasco",
+      "Piscina",
+      "Próximo à praia",
+      "Próximo à villa"
     ],
     "detailText": [
       "A Mama's Lodge é gerida pela família há duas gerações e representa o melhor da hospitalidade moçambicana. Situada na Ilha da Inhaca, a lodge oferece quartos confortáveis com vista para o Índico e uma cozinha que é, simplesmente, inesquecível.",
@@ -231,14 +137,14 @@
       "Uma experiência de alojamento autêntica, longe das grandes cadeias hoteleiras — para quem quer sentir Moçambique de dentro."
     ],
     "includes": [
-      "Alojamento em quarto com vista para o mar",
-      "Pequeno-almoço caseiro incluído",
-      "Acesso à praia da ilha",
-      "Organização de passeios e snorkeling (custo extra)"
+      "Acomodação",
+      "Transfer de barco ida e volta",
+      "Tour à Praia da Santa Maria",
+      "Snorkeling",
+      "Taxas da Marina"
     ],
     "excludes": [
-      "Transfer Maputo–Inhaca (barco)",
-      "Almoço e jantar (disponíveis a pedido)",
+      "Refeições (disponíveis a pedido: +9.300 MZN/adulto com pequeno-almoço, almoço e jantar)",
       "Bebidas alcoólicas",
       "Actividades externas"
     ],
@@ -258,28 +164,30 @@
       },
       {
         "time": "Tarde",
-        "title": "Praia & Exploração da Ilha",
-        "body": "Tarde livre para explorar a praia, a aldeia ou os recifes de coral.",
+        "title": "Tour Praia de Santa Maria & Snorkeling",
+        "body": "Tour à Praia da Santa Maria incluído no pacote, com snorkeling nos recifes de coral.",
         "checklist": []
       },
       {
-        "time": "07h00",
-        "title": "Pequeno-almoço com Vista",
-        "body": "Pequeno-almoço caseiro no terraço panorâmico com vista para o Índico.",
+        "time": "Manhã seguinte",
+        "title": "Praia & Exploração da Ilha",
+        "body": "Manhã livre para explorar a praia, a aldeia ou os recifes de coral antes do checkout.",
         "checklist": []
       }
     ],
     "gallery": [
-      "assets/images/accommodation/mamas_lodge_1.jpg",
-      "assets/images/accommodation/mamas_lodge_2.jpg",
-      "assets/images/accommodation/mamas_lodge_3.jpg",
-      "assets/images/accommodation/mamas_lodge_4.jpg",
-      "assets/images/accommodation/mamas_lodge_5.jpg"
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_1.jpg",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_2.jpg",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_3.jpg",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_4.jpg",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_5.jpg"
     ],
     "importantInfo": [
       "Check-in: 13h00 | Check-out: 11h00",
-      "Acesso por barco de Maputo (não incluído).",
-      "Jantar disponível a pedido — reservar com 24h de antecedência.",
+      "Preço por adulto/noite sem refeições: 14.900 MZN | Com refeições (PA+almoço+jantar): 24.200 MZN.",
+      "2 noites: Adultos 24.400 MZN sem refeições / 32.400 MZN com refeições.",
+      "Crianças (4-9 anos) 1 noite: 9.500 MZN sem refeições / 14.500 MZN com refeições.",
+      "Crianças (4-9 anos) 2 noites: 14.900 MZN sem refeições / 19.800 MZN com refeições.",
       "Capacidade limitada — reserva antecipada essencial."
     ],
     "locationCategory": "inhaca"
@@ -293,86 +201,84 @@
     "badge": "Glamping",
     "badgeClass": "",
     "stars": 4,
-    "image": "assets/images/accommodation/manico_camp_1.jpeg",
-    "heroImage": "assets/images/accommodation/manico_camp_2.jpeg",
+    "image": "../assets/images/accommodation/manico-camp/manico_camp_1.jpeg",
+    "heroImage": "../assets/images/accommodation/manico-camp/manico_camp_2.jpeg",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 1 noite",
     "price": "9.500 MZN",
     "price_from": 9500,
     "priceOld": null,
-    "priceLabel": "por noite (2 pessoas)",
-    "price_child": 5000,
-    "priceChild": "5.000 MZN",
-    "priceChildLabel": "Crianças (por noite)",
+    "priceLabel": "por noite / por adulto",
+    "price_child": 7200,
+    "priceChild": "7.200 MZN",
+    "priceChildLabel": "Crianças (4-9 anos)",
     "currency": "MZN",
     "cancelPolicy": "até 48 horas antes",
     "maxPeople": 8,
-    "description": "Manico Camp oferece glamping à beira-mar na Ilha da Inhaca — tendas confortáveis, refeições ao ar livre e estrelas para cobrir.",
+    "description": "Manico Camp oferece alojamento à beira-mar na Ilha da Inhaca — com restaurante frente ao mar, piscina, pequeno-almoço incluído e tour à Praia da Santa Maria.",
     "features": [
-      "Tendas de glamping confortáveis à beira-mar",
-      "Casas de banho partilhadas com água quente",
-      "Refeições comunitárias ao ar livre",
-      "Acesso directo à praia",
-      "Fogueiras nocturnas",
-      "Snorkeling e pesca incluídos",
-      "Ideal para grupos e aventureiros"
+      "Piscina",
+      "Banheiro externo",
+      "Restaurante frente ao mar"
     ],
     "detailText": [
-      "O Manico Camp é a opção de alojamento mais aventureira da Ilha da Inhaca. Com tendas de glamping posicionadas directamente na praia, oferece uma experiência de contacto puro com a natureza sem abrir mão do conforto básico.",
-      "As refeições são servidas ao ar livre em ambiente comunitário — uma forma fantástica de conviver com outros viajantes. As noites terminam sempre com fogueira na praia e um céu de estrelas que a cidade não permite ver.",
-      "Ideal para grupos de amigos, aventureiros e todos os que procuram uma experiência de alojamento diferente e memorável."
+      "O Manico Camp é a opção de alojamento mais aventureira da Ilha da Inhaca. Posicionado directamente na praia, com restaurante frente ao mar, oferece uma experiência de contacto puro com a natureza sem abrir mão do conforto básico.",
+      "O pacote inclui pequeno-almoço, transfer de barco ida e volta e tour à deslumbrante Praia da Santa Maria com snorkeling nos recifes de coral.",
+      "Ideal para grupos de amigos, aventureiros e todos os que procuram uma experiência de alojamento diferente e memorável na Ilha da Inhaca."
     ],
     "includes": [
-      "Alojamento em tenda de glamping",
-      "Pequeno-almoço e jantar incluídos",
-      "Snorkeling e pesca básica",
-      "Fogueiras nocturnas",
-      "Acesso directo à praia privada"
+      "Acomodação",
+      "Transfer de barco ida e volta",
+      "Pequeno-almoço",
+      "Tour à Praia da Santa Maria",
+      "Snorkeling",
+      "Taxas da Marina"
     ],
     "excludes": [
-      "Transfer Maputo–Inhaca",
+      "Almoço e jantar",
       "Bebidas alcoólicas",
-      "Actividades de mergulho avançado"
+      "Actividades extras"
     ],
     "highlights": [
-      "Tendas de glamping na praia da Inhaca",
-      "Fogueiras nocturnas sob um céu de estrelas",
-      "Refeições comunitárias ao ar livre",
-      "Snorkeling e pesca incluídos",
+      "Restaurante frente ao mar",
+      "Piscina na Ilha da Inhaca",
+      "Tour incluído à Praia da Santa Maria",
+      "Snorkeling nos recifes de coral",
       "Experiência de aventura a preço acessível"
     ],
     "itinerary": [
       {
         "time": "Check-in",
-        "title": "Chegada & Instalação na Tenda",
-        "body": "Chegada ao camp e instalação na tenda de glamping à beira-mar.",
+        "title": "Chegada & Transfer de Barco",
+        "body": "Transfer de barco incluído de Maputo até à Ilha da Inhaca. Instalação e boas-vindas no camp.",
         "checklist": []
       },
       {
         "time": "Tarde",
-        "title": "Snorkeling & Pesca",
-        "body": "Snorkeling nos recifes próximos ou pesca simples na praia.",
+        "title": "Tour Praia de Santa Maria & Snorkeling",
+        "body": "Tour à Praia da Santa Maria incluído, com snorkeling nos recifes de coral.",
         "checklist": []
       },
       {
-        "time": "Noite",
-        "title": "Fogueira & Jantar",
-        "body": "Jantar comunitário ao ar livre seguido de fogueira na praia.",
+        "time": "Manhã seguinte",
+        "title": "Pequeno-almoço & Checkout",
+        "body": "Pequeno-almoço incluído antes do checkout e transfer de regresso a Maputo.",
         "checklist": []
       }
     ],
     "gallery": [
-      "assets/images/accommodation/manico_camp_1.jpeg",
-      "assets/images/accommodation/manico_camp_2.jpeg",
-      "assets/images/accommodation/manico_camp_3.jpeg",
-      "assets/images/accommodation/manico_camp_4.jpeg"
+      "../assets/images/accommodation/manico-camp/manico_camp_1.jpeg",
+      "../assets/images/accommodation/manico-camp/manico_camp_2.jpeg",
+      "../assets/images/accommodation/manico-camp/manico_camp_3.jpeg",
+      "../assets/images/accommodation/manico-camp/manico_camp_4.jpeg"
     ],
     "importantInfo": [
-      "Casas de banho são partilhadas.",
-      "Acesso por barco de Maputo (não incluído).",
-      "Ideal para estadias de 2+ noites.",
-      "Geradores disponíveis para carregamento de dispositivos."
+      "Banheiro externo partilhado.",
+      "Transfer de barco Maputo–Inhaca incluído no pacote.",
+      "1 noite: Adultos 9.500 MZN | Crianças (4-9 anos) 7.200 MZN.",
+      "2 noites: Adultos 13.500 MZN | Crianças (4-9 anos) 6.900 MZN/noite.",
+      "Saídas todos os dias."
     ],
     "locationCategory": "inhaca"
   },
@@ -385,59 +291,53 @@
     "badge": "Tudo Incluído",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "assets/images/accommodation/villa_martins_1.jpg",
-    "heroImage": "assets/images/accommodation/villa_martins_2.jpg",
+    "image": "../assets/images/accommodation/villa-martins/villa_martins_1.jpg",
+    "heroImage": "../assets/images/accommodation/villa-martins/villa_martins_2.jpg",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 2 noites",
-    "price": "15.000 MZN",
-    "price_from": 15000,
+    "price": "11.400 MZN",
+    "price_from": 11400,
     "priceOld": null,
     "priceLabel": "por noite / por adulto",
-    "price_child": 8500,
-    "priceChild": "8.500 MZN",
-    "priceChildLabel": "Crianças (por noite)",
+    "price_child": 5700,
+    "priceChild": "5.700 MZN",
+    "priceChildLabel": "Crianças (3-12 anos)",
     "currency": "MZN",
     "cancelPolicy": "até 72 horas antes",
     "maxPeople": 10,
-    "description": "Villa Martins é a experiência mais completa da Ilha da Inhaca — tudo incluído, villa privada, piscina, Wi-Fi e a praia mais bonita da ilha à porta.",
+    "description": "Villa Martins é a experiência premium da Ilha da Inhaca — piscina, Wi-Fi, restaurante, lavandaria e transfer de barco incluídos, com tour à Praia da Santa Maria.",
     "features": [
-      "Villa privada com capacidade para 10 pessoas",
-      "Tudo incluído (refeições, bebidas, actividades)",
-      "Piscina privada",
-      "Wi-Fi de alta velocidade",
-      "Cozinheiro pessoal incluído",
-      "Kayak, snorkeling e pesca incluídos",
-      "Serviço de limpeza e arrumação diários",
-      "Transfer de barco incluído"
+      "Wi-Fi",
+      "Piscina",
+      "Lavandaria",
+      "Restaurante",
+      "Próximo ao mar"
     ],
     "detailText": [
-      "A Villa Martins é a joia da coroa dos alojamentos na Ilha da Inhaca. Esta villa privada de alto padrão pode acomodar até 10 pessoas e oferece uma experiência tudo incluído que raramente se encontra nas ilhas moçambicanas.",
-      "Com piscina privada, cozinheiro pessoal, Wi-Fi de alta velocidade e transfer de barco incluído de Maputo, a Villa Martins elimina qualquer preocupação logística para que possa simplesmente desfrutar da ilha.",
-      "Ideal para famílias numerosas, grupos de amigos ou celebrações especiais que merecem um cenário extraordinário."
+      "A Villa Martins é a joia da coroa dos alojamentos na Ilha da Inhaca. Com piscina, restaurante, Wi-Fi e lavandaria, oferece todo o conforto num cenário paradisíaco à beira-mar.",
+      "O pacote inclui pequeno-almoço, transfer de barco ida e volta de Maputo, tour à Praia da Santa Maria e snorkeling — tudo organizado para que não tenha de se preocupar com nada.",
+      "Ideal para famílias, grupos de amigos ou celebrações especiais que merecem um cenário extraordinário na Ilha da Inhaca."
     ],
     "includes": [
-      "Villa privada para até 10 pessoas",
-      "Todas as refeições e bebidas (incluindo alcoólicas)",
-      "Piscina privada",
-      "Wi-Fi de alta velocidade",
-      "Cozinheiro pessoal",
-      "Kayak, snorkeling e pesca",
-      "Transfer de barco Maputo–Inhaca–Maputo",
-      "Serviço diário de limpeza"
+      "Acomodação",
+      "Transfer de barco ida e volta",
+      "Pequeno-almoço",
+      "Tour à Praia da Santa Maria",
+      "Snorkeling",
+      "Taxas da Marina"
     ],
     "excludes": [
-      "Passeios de barco externos",
-      "Actividades de mergulho certificado",
-      "Gorjetas (opcionais)"
+      "Almoço e jantar",
+      "Bebidas alcoólicas",
+      "Actividades extras"
     ],
     "highlights": [
-      "Tudo incluído — sem surpresas",
-      "Piscina privada na Ilha da Inhaca",
-      "Cozinheiro pessoal incluído",
+      "Piscina na Ilha da Inhaca",
       "Transfer de barco de Maputo incluído",
-      "Wi-Fi de alta velocidade na ilha",
-      "Capacidade para grupos de até 10 pessoas"
+      "Tour incluído à Praia da Santa Maria",
+      "Wi-Fi e restaurante no local",
+      "Próximo ao mar"
     ],
     "itinerary": [
       {
@@ -447,9 +347,15 @@
         "checklist": []
       },
       {
-        "time": "Livre",
-        "title": "Estadia à Medida",
-        "body": "Todos os dias são livres — piscina, praia, snorkeling, pesca ou simplesmente relaxar.",
+        "time": "Manhã",
+        "title": "Pequeno-almoço & Tour Santa Maria",
+        "body": "Pequeno-almoço incluído, seguido de tour à Praia da Santa Maria com snorkeling.",
+        "checklist": []
+      },
+      {
+        "time": "Tarde",
+        "title": "Piscina & Praia",
+        "body": "Tarde livre na piscina ou na praia, com toda a infraestrutura da villa disponível.",
         "checklist": []
       },
       {
@@ -460,16 +366,18 @@
       }
     ],
     "gallery": [
-      "assets/images/accommodation/villa_martins_1.jpg",
-      "assets/images/accommodation/villa_martins_2.jpg",
-      "assets/images/accommodation/villa_martins_3.jpg",
-      "assets/images/accommodation/villa_martins_4.jpeg",
-      "assets/images/accommodation/villa_martins_5.jpg",
-      "assets/images/accommodation/villa_martins_7.jpg",
-      "assets/images/accommodation/villa_martins_8.jpeg"
+      "../assets/images/accommodation/villa-martins/villa_martins_1.jpg",
+      "../assets/images/accommodation/villa-martins/villa_martins_2.jpg",
+      "../assets/images/accommodation/villa-martins/villa_martins_3.jpg",
+      "../assets/images/accommodation/villa-martins/villa_martins_4.jpeg",
+      "../assets/images/accommodation/villa-martins/villa_martins_4.jpg",
+      "../assets/images/accommodation/villa-martins/villa_martins_5.jpg",
+      "../assets/images/accommodation/villa-martins/villa_martins_7.jpg",
+      "../assets/images/accommodation/villa-martins/villa_martins_8.jpeg"
     ],
     "importantInfo": [
-      "Preço por adulto por noite — mínimo 2 noites.",
+      "1 noite: Adultos 11.400 MZN | Crianças (3-12 anos) 5.700 MZN.",
+      "2 noites: Adultos 16.400 MZN | Crianças (3-12 anos) 8.200 MZN.",
       "Transfer de barco incluído (partida da Marina de Maputo).",
       "Reserva antecipada obrigatória — disponibilidade limitada.",
       "Cancelamento gratuito até 72h antes."
@@ -480,273 +388,181 @@
     "id": "mad-marlin",
     "slug": "mad-marlin",
     "category": "island-accommodation",
-    "name": "Mad Marlin — Machangulo",
-    "subtitle": "Lodge de pesca e aventura na Península de Machangulo",
-    "badge": "Pesca & Aventura",
+    "name": "Mad Marlin — Inhaca",
+    "subtitle": "Lodge de frente para o mar na Ilha da Inhaca com piscina e refeições self-service",
+    "badge": "Frente ao Mar",
     "badgeClass": "",
     "stars": 4,
-    "image": "assets/images/accommodation/mad_marlin_1.jpg",
-    "heroImage": "assets/images/accommodation/mad_marlin_1.jpg",
-    "location": "Machangulo, Maputo",
-    "destinations": "Machangulo Peninsula",
-    "duration": "Mínimo 1 noite",
-    "price": "18.000 MZN",
-    "price_from": 18000,
-    "priceOld": null,
-    "priceLabel": "por noite (2 pessoas)",
-    "price_child": null,
-    "priceChild": null,
-    "priceChildLabel": null,
-    "currency": "MZN",
-    "cancelPolicy": "até 48 horas antes",
-    "maxPeople": 8,
-    "description": "Mad Marlin é o paraíso dos pescadores desportivos em Machangulo — lodge de alto padrão com frota de pesca própria, marisco fresco e o melhor das águas do Índico.",
-    "features": [
-      "Lodge especializado em pesca desportiva",
-      "Frota própria de barcos de pesca",
-      "Restaurante de marisco fresco",
-      "Quartos de alto padrão com AC",
-      "Piscina e bar exterior",
-      "Acesso directo à praia",
-      "Equipamento de pesca de alta performance"
-    ],
-    "detailText": [
-      "O Mad Marlin nasceu da paixão pela pesca desportiva em alto mar. Situado em Machangulo, este lodge especializado tem frota própria de barcos equipados para pesca de marlim azul, atum, dorado e wahoo nas ricas águas do Índico moçambicano.",
-      "Mesmo que não seja pescador, o Mad Marlin encanta pela sua localização excepcional, pelo restaurante de marisco fresco, pela piscina com vista para o oceano e pelos quartos de alto padrão.",
-      "Uma combinação perfeita de aventura oceânica e conforto de lodge."
-    ],
-    "includes": [
-      "Alojamento em quarto com AC",
-      "Pequeno-almoço incluído",
-      "Acesso à piscina e praia",
-      "Equipamento básico de snorkeling"
-    ],
-    "excludes": [
-      "Saídas de pesca (disponíveis a pedido)",
-      "Almoço e jantar",
-      "Transfer Maputo–Machangulo",
-      "Bebidas alcoólicas"
-    ],
-    "highlights": [
-      "Especializado em pesca desportiva de alto mar",
-      "Frota própria de barcos de pesca",
-      "Restaurante de marisco fresco",
-      "Piscina com vista para o Índico",
-      "Localização privilegiada em Machangulo"
-    ],
-    "itinerary": [
-      {
-        "time": "Check-in",
-        "title": "Chegada & Instalação",
-        "body": "Recepção no lodge, instalação no quarto e apresentação das instalações.",
-        "checklist": []
-      },
-      {
-        "time": "Tarde",
-        "title": "Praia & Piscina",
-        "body": "Tarde livre na praia privada ou piscina do lodge.",
-        "checklist": []
-      },
-      {
-        "time": "Amanhecer",
-        "title": "Saída de Pesca (Opcional)",
-        "body": "Saída ao amanhecer com a frota do Mad Marlin para pesca em alto mar (custo extra).",
-        "checklist": []
-      }
-    ],
-    "gallery": [
-      "assets/images/accommodation/mad_marlin_1.jpg"
-    ],
-    "importantInfo": [
-      "Saídas de pesca têm custo separado — reservar com antecedência.",
-      "Check-in: 14h00 | Check-out: 11h00",
-      "Transfer por barco de Maputo disponível a pedido.",
-      "Cancelamento gratuito até 48h antes."
-    ],
-    "locationCategory": "machangulo"
-  },
-  {
-    "id": "bemugis-lodge",
-    "slug": "bemugis-lodge",
-    "category": "island-accommodation",
-    "name": "Bemugis Lodge — Inhaca",
-    "subtitle": "Retiro de luxo sereno na Ilha da Inhaca",
-    "badge": "Luxo",
-    "badgeClass": "",
-    "stars": 5,
-    "image": "assets/images/hero/hero_slider_4.jpg",
-    "heroImage": "assets/images/hero/hero_slider_5.jpeg",
+    "image": "../assets/images/accommodation/mad-marlin/mad_marlin_1.jpg",
+    "heroImage": "../assets/images/accommodation/mad-marlin/mad_marlin_1.jpg",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
-    "duration": "Mínimo 2 noites",
-    "price": "18.500 MZN",
-    "price_from": 18500,
-    "priceOld": null,
-    "priceLabel": "por noite (2 pessoas)",
-    "price_child": 9000,
-    "priceChild": "9.000 MZN",
-    "priceChildLabel": "Crianças (por noite)",
-    "currency": "MZN",
-    "cancelPolicy": "até 72 horas antes",
-    "maxPeople": 6,
-    "description": "Bemugis Lodge é um retiro de luxo sereno na Ilha da Inhaca — suites sofisticadas, gastronomia de autor e uma praia paradisíaca completamente privada.",
-    "features": [
-      "Suites de luxo com terraço privado",
-      "Gastronomia de autor com produtos locais",
-      "Praia privada com espreguiçadeiras",
-      "Spa e massagens disponíveis",
-      "Serviço personalizado 24h",
-      "Transfer de barco privado incluído",
-      "Snorkeling e kayak incluídos"
-    ],
-    "detailText": [
-      "O Bemugis Lodge representa o pináculo do alojamento na Ilha da Inhaca. Com suites de decoração sofisticada, terraços privados com vista para o oceano e uma praia exclusiva, é a escolha natural para os hóspedes mais exigentes.",
-      "O restaurante trabalha com os melhores produtos do mar e da terra moçambicana, criando uma experiência gastronómica que rivaliza com os melhores restaurantes de Maputo. O bar na praia serve cocktails tropicais ao pôr do sol.",
-      "Um lugar para desligar, recarregar e descobrir o verdadeiro significado da palavra 'paraíso'."
-    ],
-    "includes": [
-      "Suite de luxo com terraço privado",
-      "Pequeno-almoço e jantar (meia pensão)",
-      "Transfer de barco privado Maputo–Inhaca",
-      "Snorkeling e kayak",
-      "Serviço de praia personalizado"
-    ],
-    "excludes": [
-      "Almoço (disponível a pedido)",
-      "Tratamentos de spa",
-      "Bebidas alcoólicas premium",
-      "Gorjetas"
-    ],
-    "highlights": [
-      "Suites de luxo com terraço privado",
-      "Praia privada na Ilha da Inhaca",
-      "Gastronomia de autor com marisco fresco",
-      "Transfer de barco privado incluído",
-      "Spa e massagens disponíveis"
-    ],
-    "itinerary": [
-      {
-        "time": "Check-in",
-        "title": "Transfer Privado & Chegada",
-        "body": "Transfer de barco privado de Maputo. Recepção personalizada e instalação na suite.",
-        "checklist": []
-      },
-      {
-        "time": "Livre",
-        "title": "Dias de Paraíso",
-        "body": "Dias completamente livres — praia privada, snorkeling, spa ou simplesmente desfrutar da suite.",
-        "checklist": []
-      },
-      {
-        "time": "19h30",
-        "title": "Jantar Gastronómico",
-        "body": "Jantar de autor no restaurante do lodge com marisco fresco e vinhos seleccionados.",
-        "checklist": []
-      }
-    ],
-    "gallery": [
-      "assets/images/hero/hero_slider_4.jpg",
-      "assets/images/hero/hero_slider_5.jpeg",
-      "assets/images/hero/hero_slider_1.jpeg"
-    ],
-    "importantInfo": [
-      "Estadia mínima de 2 noites.",
-      "Transfer privado incluído (agenda confirmada 48h antes).",
-      "Reserva antecipada essencial — disponibilidade muito limitada.",
-      "Cancelamento gratuito até 72h antes."
-    ],
-    "locationCategory": "inhaca"
-  },
-  {
-    "id": "khanimambo-lodge",
-    "slug": "khanimambo-lodge",
-    "category": "island-accommodation",
-    "name": "Khanimambo Lodge — Machangulo",
-    "subtitle": "\"Obrigado\" em Shangaan — hospitalidade genuína em Machangulo",
-    "badge": "Boutique",
-    "badgeClass": "",
-    "stars": 4,
-    "image": "assets/images/hero/hero_slider_2.jpg",
-    "heroImage": "assets/images/hero/hero_slider_3.jpeg",
-    "location": "Machangulo, Maputo",
-    "destinations": "Machangulo Peninsula",
     "duration": "Mínimo 1 noite",
-    "price": "14.500 MZN",
-    "price_from": 14500,
+    "price": "10.500 MZN",
+    "price_from": 10500,
     "priceOld": null,
-    "priceLabel": "por noite (2 pessoas)",
+    "priceLabel": "por noite / por adulto",
     "price_child": 6500,
     "priceChild": "6.500 MZN",
-    "priceChildLabel": "Crianças (por noite)",
+    "priceChildLabel": "Crianças (3-9 anos)",
     "currency": "MZN",
     "cancelPolicy": "até 48 horas antes",
     "maxPeople": 8,
-    "description": "Khanimambo — 'obrigado' em Shangaan — é um boutique lodge que encarna a verdadeira hospitalidade moçambicana na deslumbrante Península de Machangulo.",
+    "description": "Mad Marlin é um lodge de frente para o mar na Ilha da Inhaca — piscina, refeições self-service, transfer de barco, pequeno-almoço e tour à Praia da Santa Maria incluídos.",
     "features": [
-      "Bungalows boutique com decoração local",
-      "Restaurante com cozinha moçambicana-portuguesa",
-      "Pequeno-almoço incluído",
-      "Praia de acesso directo",
-      "Piscina exterior com vista para o mar",
-      "Bar com cocktails tropicais",
-      "Wi-Fi em áreas comuns",
-      "Snorkeling e kayak"
+      "Uma pequena piscina",
+      "Refeições self-service",
+      "De frente para o mar"
     ],
     "detailText": [
-      "Khanimambo, que significa 'obrigado' em língua Shangaan, representa a essência da hospitalidade moçambicana. Este boutique lodge em Machangulo foi concebido para fazer cada hóspede sentir-se verdadeiramente bem-vindo.",
-      "Os bungalows têm decoração inspirada na arte e artesanato local, com materiais naturais e cores vibrantes que celebram a cultura moçambicana. O restaurante serve uma fusão de cozinha moçambicana com influências portuguesas.",
-      "A piscina com vista para o oceano e o bar de cocktails tropicais completam uma experiência que concilia autenticidade com conforto de boutique hotel."
+      "O Mad Marlin está situado directamente de frente para o mar na Ilha da Inhaca, oferecendo uma estadia descontraída com tudo o que precisa para desfrutar plenamente da ilha.",
+      "O pacote inclui pequeno-almoço, transfer de barco ida e volta de Maputo, tour à Praia da Santa Maria e snorkeling nos recifes de coral — sem stress com a logística.",
+      "Uma opção perfeita para quem quer sentir a Ilha da Inhaca de perto, com conforto e a natureza à porta."
     ],
     "includes": [
-      "Alojamento em bungalow boutique",
-      "Pequeno-almoço diário",
-      "Acesso à piscina e praia",
-      "Snorkeling básico",
-      "Wi-Fi em áreas comuns"
+      "Acomodação",
+      "Transfer de barco ida e volta",
+      "Pequeno-almoço",
+      "Tour à Praia da Santa Maria",
+      "Snorkeling",
+      "Taxas da Marina"
     ],
     "excludes": [
-      "Almoço e jantar (disponíveis no restaurante)",
-      "Transfer Maputo–Machangulo",
+      "Almoço e jantar (self-service disponível no local)",
       "Bebidas alcoólicas",
       "Actividades extras"
     ],
     "highlights": [
-      "Decoração com arte e artesanato moçambicano",
-      "Piscina com vista para o Oceano Índico",
-      "Cozinha moçambicana-portuguesa no restaurante",
-      "Bar de cocktails tropicais ao pôr do sol",
+      "Alojamento de frente para o mar",
+      "Piscina na Ilha da Inhaca",
+      "Transfer de barco de Maputo incluído",
+      "Tour incluído à Praia da Santa Maria",
+      "Refeições self-service no local"
+    ],
+    "itinerary": [
+      {
+        "time": "Check-in",
+        "title": "Transfer de Barco & Chegada",
+        "body": "Transfer de barco incluído de Maputo até à Ilha da Inhaca. Instalação e boas-vindas no Mad Marlin.",
+        "checklist": []
+      },
+      {
+        "time": "Tarde",
+        "title": "Tour Praia de Santa Maria & Snorkeling",
+        "body": "Tour à Praia da Santa Maria com snorkeling nos recifes de coral incluído no pacote.",
+        "checklist": []
+      },
+      {
+        "time": "Manhã seguinte",
+        "title": "Pequeno-almoço & Checkout",
+        "body": "Pequeno-almoço incluído antes do checkout e transfer de regresso a Maputo.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "../assets/images/accommodation/mad-marlin/mad_marlin_1.jpg",
+      "../assets/images/accommodation/mad-marlin/mad_marlin_2.jpg",
+      "../assets/images/accommodation/mad-marlin/mad_marlin_3.jpg",
+      "../assets/images/accommodation/mad-marlin/mad_marlin_4.jpg"
+    ],
+    "importantInfo": [
+      "1 noite: Adultos 10.500 MZN | Crianças (3-9 anos) 6.500 MZN.",
+      "2 noites: Adultos 14.500 MZN | Crianças (3-9 anos) 8.500 MZN.",
+      "Check-in: 14h00 | Check-out: 11h00",
+      "Transfer de barco Maputo–Inhaca incluído no pacote.",
+      "Cancelamento gratuito até 48h antes."
+    ],
+    "locationCategory": "inhaca"
+  },
+  
+  {
+    "id": "khanimambo-lodge",
+    "slug": "khanimambo-lodge",
+    "category": "island-accommodation",
+    "name": "Khanimambo Lodge — Inhaca",
+    "subtitle": "\"Obrigado\" em Shangaan — hospitalidade genuína na Ilha da Inhaca",
+    "badge": "Boutique",
+    "badgeClass": "",
+    "stars": 4,
+    "image": "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-1.jpg",
+    "heroImage": "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.jpg",
+    "location": "Ilha da Inhaca",
+    "destinations": "Ilha da Inhaca",
+    "duration": "Mínimo 1 noite",
+    "price": "10.900 MZN",
+    "price_from": 10900,
+    "priceOld": null,
+    "priceLabel": "por noite / por adulto",
+    "price_child": 6500,
+    "priceChild": "6.500 MZN",
+    "priceChildLabel": "Crianças (7-9 anos)",
+    "currency": "MZN",
+    "cancelPolicy": "até 48 horas antes",
+    "maxPeople": 8,
+    "description": "Khanimambo — 'obrigado' em Shangaan — é um boutique lodge na Ilha da Inhaca com piscina, próximo ao restaurante e à praia, com transfer e tour à Santa Maria incluídos.",
+    "features": [
+      "Uma pequena piscina",
+      "Próximo ao restaurante",
+      "Próximo à praia"
+    ],
+    "detailText": [
+      "Khanimambo, que significa 'obrigado' em língua Shangaan, representa a essência da hospitalidade moçambicana. Este lodge na Ilha da Inhaca foi concebido para fazer cada hóspede sentir-se verdadeiramente bem-vindo.",
+      "O pacote inclui acomodação, transfer de barco ida e volta de Maputo, pequeno-almoço, tour à Praia da Santa Maria e snorkeling — com saídas todos os dias.",
+      "Localizado próximo ao restaurante e à praia, com uma pequena piscina para relaxar à sombra da ilha."
+    ],
+    "includes": [
+      "Acomodação",
+      "Transfer de barco ida e volta",
+      "Pequeno-almoço",
+      "Tour à Praia da Santa Maria",
+      "Snorkeling",
+      "Taxas da Marina"
+    ],
+    "excludes": [
+      "Almoço e jantar",
+      "Bebidas alcoólicas",
+      "Actividades extras"
+    ],
+    "highlights": [
+      "Localização privilegiada na Ilha da Inhaca",
+      "Transfer de barco de Maputo incluído",
+      "Tour incluído à Praia da Santa Maria",
+      "Próximo ao restaurante e à praia",
       "Autenticidade e hospitalidade genuína"
     ],
     "itinerary": [
       {
         "time": "Check-in",
-        "title": "Chegada & Instalação",
-        "body": "Chegada ao lodge e instalação no bungalow boutique com boas-vindas da equipa.",
+        "title": "Transfer de Barco & Chegada",
+        "body": "Transfer de barco incluído de Maputo até à Ilha da Inhaca. Instalação e boas-vindas no Khanimambo.",
         "checklist": []
       },
       {
         "time": "Tarde",
-        "title": "Praia & Piscina",
-        "body": "Tarde livre na praia ou piscina com vista para o oceano.",
+        "title": "Tour Praia de Santa Maria & Snorkeling",
+        "body": "Tour à Praia da Santa Maria com snorkeling nos recifes de coral incluído no pacote.",
         "checklist": []
       },
       {
-        "time": "18h00",
-        "title": "Cocktails ao Pôr do Sol",
-        "body": "Cocktails tropicais no bar exterior enquanto o sol se põe sobre o Índico.",
+        "time": "Manhã seguinte",
+        "title": "Pequeno-almoço & Checkout",
+        "body": "Pequeno-almoço incluído antes do checkout e transfer de regresso a Maputo.",
         "checklist": []
       }
     ],
     "gallery": [
-      "assets/images/hero/hero_slider_2.jpg",
-      "assets/images/hero/hero_slider_3.jpeg"
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-1.jpg",
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.jpg",
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-3.jpg",
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-4.jpg"
     ],
     "importantInfo": [
+      "1 noite: Adultos 10.900 MZN | Crianças (7-9 anos) 6.500 MZN.",
+      "2 noites: Adultos 14.500 MZN | Crianças (3-9 anos) 8.800 MZN.",
       "Check-in: 14h00 | Check-out: 11h00",
-      "Transfer de Maputo por barco disponível a pedido.",
-      "Jantar recomendado no restaurante — reservar com antecedência.",
-      "Cancelamento gratuito até 48h antes."
+      "Transfer de barco Maputo–Inhaca incluído no pacote.",
+      "Saídas todos os dias. Cancelamento gratuito até 48h antes."
     ],
-    "locationCategory": "machangulo"
+    "locationCategory": "inhaca"
   }
 ]

@@ -11,8 +11,13 @@
   'use strict';
 
   /* ── Path resolution ────────────────────────────────────── */
-  var _isInPages = window.location.pathname.includes('/pages/');
-  var _base = _isInPages ? '../' : '';
+  var _cParts = window.location.pathname.split('/').filter(Boolean);
+  if (_cParts.length > 0 && _cParts[_cParts.length - 1].indexOf('.') > -1) { _cParts.pop(); }
+  var _base = _cParts.length > 0 ? _cParts.map(function () { return '..'; }).join('/') + '/' : '';
+
+  /* ── Language & component directory ─────────────────────── */
+  var _isEn = window.location.pathname.indexOf('/en/') !== -1 || window.location.pathname.startsWith('/en');
+  var _compDir = _isEn ? _base + 'en/components/' : _base + 'components/';
 
   /* ── Active page detection ──────────────────────────────── */
   var _path = window.location.pathname;
@@ -44,7 +49,7 @@
     var placeholder = document.getElementById('navbar-placeholder');
     if (!placeholder) return;
 
-    fetchComponent(_base + 'components/navbar.html', function (html) {
+    fetchComponent(_compDir + 'navbar.html', function (html) {
       // Replace base placeholder
       html = html.replace(/\{base\}/g, _base);
 
@@ -145,7 +150,7 @@
     var placeholder = document.getElementById('footer-placeholder');
     if (!placeholder) return;
 
-    fetchComponent(_base + 'components/footer.html', function (html) {
+    fetchComponent(_compDir + 'footer.html', function (html) {
       html = html.replace(/\{base\}/g, _base);
       placeholder.innerHTML = html;
 

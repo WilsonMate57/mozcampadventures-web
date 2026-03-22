@@ -1,0 +1,117 @@
+<!-- MOZ CAMP ADVENTURES — en/components/navbar.html
+     Injected via assets/js/components.js
+     {base} is replaced at runtime
+-->
+<nav class="main-navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
+  <div class="container navbar-inner">
+
+    <!-- Logo -->
+    <a class="navbar-logo" href="{base}en/index.html" aria-label="Moz Camp Adventures – Home">
+      <img src="{base}assets/images/logo/logo_moz_camp_adventures.png" alt="Moz Camp Adventures" width="64">
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" role="menubar">
+      <li role="none">
+        <a href="{base}en/index.html" role="menuitem" data-page="home">Home</a>
+      </li>
+      <li role="none">
+        <a href="{base}en/index.html#about" role="menuitem" data-page="about">About</a>
+      </li>
+      <li class="nav-dropdown" role="none">
+        <a href="{base}en/pages/tours.html" role="menuitem" data-page="tours" aria-haspopup="true" aria-expanded="false">
+          Tours <i class="bx bx-chevron-down nav-chevron"></i>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu">
+          <li><a href="{base}en/pages/tours.html?cat=island-tours" role="menuitem"><i class="bx bx-droplet"></i> Island Tours</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=island-accommodation" role="menuitem"><i class="bx bxs-home-heart"></i> Island Accommodation</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=beach-tours" role="menuitem"><i class="bx bxs-umbrella"></i> Beach Tours</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=safaris" role="menuitem"><i class="bx bxs-binoculars"></i> Safaris</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=transfers" role="menuitem"><i class="bx bxs-car"></i> Transfers</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=city-tour" role="menuitem"><i class="bx bxs-buildings"></i> City Tour</a></li>
+          <li class="dropdown-divider-item"><hr></li>
+          <li><a href="{base}en/pages/tours.html" role="menuitem"><i class="bx bxs-grid"></i> View all tours</a></li>
+        </ul>
+      </li>
+      <li role="none">
+        <a href="{base}en/pages/accommodations.html" role="menuitem" data-page="accommodation">Accommodations</a>
+      </li>
+      <li role="none">
+        <a href="{base}en/pages/contact.html" role="menuitem" data-page="contact">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Language Switcher (desktop) -->
+    <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-pill" data-lang="pt" aria-pressed="false">PT</button>
+      <button class="lang-pill active" data-lang="en" aria-pressed="true">EN</button>
+    </div>
+
+    <!-- Phone CTA (desktop) -->
+    <div class="nav-phone-cta">
+      <div class="nav-phone-icon"><i class="bx bxs-phone"></i></div>
+      <div>
+        <span class="nav-phone-label">More info:</span>
+        <a href="tel:+258844406543" class="nav-phone-number">+258 84 440 6543</a>
+      </div>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div><!-- /.navbar-inner -->
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+      <i class="bx bx-x"></i>
+    </button>
+
+    <div class="mobile-nav-brand">
+      <img src="{base}assets/images/logo/logo_moz_camp_adventures.png" alt="Moz Camp Adventures" width="56">
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="{base}en/index.html" data-page="home">Home</a></li>
+      <li><a href="{base}en/index.html#about">About Us</a></li>
+      <li class="mobile-has-sub">
+        <button class="mobile-sub-toggle" aria-expanded="false" data-target="mob-sub-tours">
+          Tours <i class="bx bx-chevron-down"></i>
+        </button>
+        <ul class="mobile-submenu" id="mob-sub-tours" hidden>
+          <li><a href="{base}en/pages/tours.html?cat=island-tours">Island Tours</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=island-accommodation">Island Accommodation</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=beach-tours">Beach Tours</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=safaris">Safaris</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=transfers">Transfers</a></li>
+          <li><a href="{base}en/pages/tours.html?cat=city-tour">City Tour</a></li>
+          <li><a href="{base}en/pages/tours.html">View all</a></li>
+        </ul>
+      </li>
+      <li><a href="{base}en/pages/accommodations.html" data-page="accommodation">Accommodations</a></li>
+      <li><a href="{base}en/pages/contact.html" data-page="contact">Contact</a></li>
+    </ul>
+
+    <div class="mobile-nav-contact">
+      <a href="tel:+258844406543"><i class="bx bxs-phone"></i> +258 84 440 6543</a>
+      <a href="https://wa.me/258844406543" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
+    </div>
+
+    <div class="mobile-lang-row">
+      <span class="mobile-lang-label">Language</span>
+      <div class="mobile-lang-pills">
+        <button class="mobile-lang-pill" data-lang="pt">PT</button>
+        <button class="mobile-lang-pill active" data-lang="en">EN</button>
+      </div>
+    </div>
+
+    <div class="mobile-nav-socials">
+      <a href="https://www.facebook.com/mozcampadventures" aria-label="Facebook" target="_blank" rel="noopener"><i class="bx bxl-facebook"></i></a>
+      <a href="https://www.instagram.com/moz__camp_adventures_official/" aria-label="Instagram" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i></a>
+    </div>
+  </aside>
+
+</nav>

@@ -8,6 +8,7 @@
  *   4. Review carousel (homepage)
  *   5. Package infinite carousel (homepage)
  *   6. Accommodation hero carousel
+ *   7. Language switcher
  * =====================================================
  */
 
@@ -16,6 +17,8 @@
    1. PRELOADER
    ============================================= */
 document.addEventListener('DOMContentLoaded', function () {
+  document.body.classList.add('preloading');
+
   var MIN_TIME = 2800;
   var startTime = Date.now();
   var loaderEl  = document.getElementById('lottie-loader');
@@ -26,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
       renderer:  'svg',
       loop:      true,
       autoplay:  true,
-      path:      'assets/preloader/summer-vibes.json'
+      path:      (window.location.pathname.includes('/pages/') ? '../' : '') + 'assets/preloader/summer-vibes.json'
     });
   }
 
@@ -41,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         preloader.style.opacity    = '0';
         setTimeout(function () {
           preloader.style.display = 'none';
+          document.body.classList.remove('preloading');
           revealOnScroll();
         }, 600);
       }
@@ -71,7 +75,7 @@ window.addEventListener('load', revealOnScroll);
 document.addEventListener('DOMContentLoaded', function () {
   var btn = document.createElement('button');
   btn.id = 'scroll-to-top';
-  btn.innerHTML = '<i class="bi bi-arrow-up"></i>';
+  btn.innerHTML = '<i class="bx bx-up-arrow-alt"></i>';
   btn.setAttribute('aria-label', 'Voltar ao topo');
   document.body.appendChild(btn);
 
@@ -212,6 +216,48 @@ document.addEventListener('DOMContentLoaded', function () {
   jumpTo(current);
   startAuto();
 });
+
+
+/* =============================================
+   7. LANGUAGE SWITCHER
+   ============================================= */
+(function () {
+  var _path    = window.location.pathname;
+  var _current = (_path.indexOf('/en/') !== -1 || _path.startsWith('/en')) ? 'en' : 'pt';
+
+  function applyLang(lang) {
+    document.documentElement.setAttribute('lang', lang === 'pt' ? 'pt' : 'en');
+    document.querySelectorAll('.lang-pill, .mobile-lang-pill').forEach(function (btn) {
+      var isActive = btn.dataset.lang === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    var pill = e.target.closest('.lang-pill, .mobile-lang-pill');
+    if (!pill || !pill.dataset.lang) return;
+    var lang = pill.dataset.lang;
+    if (lang === _current) return;
+
+    var search = window.location.search;
+    if (lang === 'en') {
+      window.location.href = '/en' + _path + search;
+    } else {
+      var ptPath = _path.replace(/^\/en/, '') || '/index.html';
+      window.location.href = ptPath + search;
+    }
+  });
+
+  // Apply correct pill state once navbar is injected
+  var observer = new MutationObserver(function (_, obs) {
+    if (document.querySelector('.lang-pill')) {
+      applyLang(_current);
+      obs.disconnect();
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
 
 
 /* =============================================

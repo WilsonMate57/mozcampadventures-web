@@ -20,17 +20,17 @@
       </li>
       <li class="nav-dropdown" role="none">
         <a href="{base}pages/tours.html" role="menuitem" data-page="tours" aria-haspopup="true" aria-expanded="false">
-          Tours <i class="bi bi-chevron-down nav-chevron"></i>
+          Tours <i class="bx bx-chevron-down nav-chevron"></i>
         </a>
         <ul class="nav-dropdown-menu" role="menu">
-          <li><a href="{base}pages/tours.html?cat=island-tours" role="menuitem"><i class="bi bi-water"></i> Island Tours</a></li>
-          <li><a href="{base}pages/tours.html?cat=island-accommodation" role="menuitem"><i class="bi bi-house-heart-fill"></i> Island Accommodation</a></li>
-          <li><a href="{base}pages/tours.html?cat=beach-tours" role="menuitem"><i class="bi bi-umbrella-fill"></i> Beach Tours</a></li>
-          <li><a href="{base}pages/tours.html?cat=safaris" role="menuitem"><i class="bi bi-binoculars-fill"></i> Safaris</a></li>
-          <li><a href="{base}pages/tours.html?cat=transfers" role="menuitem"><i class="bi bi-car-front-fill"></i> Transfers</a></li>
-          <li><a href="{base}pages/tours.html?cat=city-tour" role="menuitem"><i class="bi bi-buildings-fill"></i> City Tour</a></li>
+          <li><a href="{base}pages/tours.html?cat=island-tours" role="menuitem"><i class="bx bx-droplet"></i> Island Tours</a></li>
+          <li><a href="{base}pages/tours.html?cat=island-accommodation" role="menuitem"><i class="bx bxs-home-heart"></i> Island Accommodation</a></li>
+          <li><a href="{base}pages/tours.html?cat=beach-tours" role="menuitem"><i class="bx bxs-umbrella"></i> Beach Tours</a></li>
+          <li><a href="{base}pages/tours.html?cat=safaris" role="menuitem"><i class="bx bxs-binoculars"></i> Safaris</a></li>
+          <li><a href="{base}pages/tours.html?cat=transfers" role="menuitem"><i class="bx bxs-car"></i> Transfers</a></li>
+          <li><a href="{base}pages/tours.html?cat=city-tour" role="menuitem"><i class="bx bxs-buildings"></i> City Tour</a></li>
           <li class="dropdown-divider-item"><hr></li>
-          <li><a href="{base}pages/tours.html" role="menuitem"><i class="bi bi-grid-fill"></i> Ver todos os tours</a></li>
+          <li><a href="{base}pages/tours.html" role="menuitem"><i class="bx bxs-grid"></i> Ver todos os tours</a></li>
         </ul>
       </li>
       <li role="none">
@@ -41,9 +41,15 @@
       </li>
     </ul>
 
+    <!-- Language Switcher (desktop) -->
+    <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Idioma">
+      <button class="lang-pill active" data-lang="pt" aria-pressed="true">PT</button>
+      <button class="lang-pill" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+
     <!-- Phone CTA (desktop) -->
     <div class="nav-phone-cta">
-      <div class="nav-phone-icon"><i class="bi bi-telephone-fill"></i></div>
+      <div class="nav-phone-icon"><i class="bx bxs-phone"></i></div>
       <div>
         <span class="nav-phone-label">Para mais info:</span>
         <a href="tel:+258844406543" class="nav-phone-number">+258 84 440 6543</a>
@@ -61,7 +67,7 @@
   <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
   <aside class="mobile-nav" id="mobile-nav" aria-hidden="true">
     <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fechar menu">
-      <i class="bi bi-x-lg"></i>
+      <i class="bx bx-x"></i>
     </button>
 
     <div class="mobile-nav-brand">
@@ -73,7 +79,7 @@
       <li><a href="{base}index.html#about">Sobre Nós</a></li>
       <li class="mobile-has-sub">
         <button class="mobile-sub-toggle" aria-expanded="false" data-target="mob-sub-tours">
-          Tours <i class="bi bi-chevron-down"></i>
+          Tours <i class="bx bx-chevron-down"></i>
         </button>
         <ul class="mobile-submenu" id="mob-sub-tours" hidden>
           <li><a href="{base}pages/tours.html?cat=island-tours">Island Tours</a></li>
@@ -90,13 +96,21 @@
     </ul>
 
     <div class="mobile-nav-contact">
-      <a href="tel:+258844406543"><i class="bi bi-telephone-fill"></i> +258 84 440 6543</a>
-      <a href="https://wa.me/258844406543" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+      <a href="tel:+258844406543"><i class="bx bxs-phone"></i> +258 84 440 6543</a>
+      <a href="https://wa.me/258844406543" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
+    </div>
+
+    <div class="mobile-lang-row">
+      <span class="mobile-lang-label">Idioma</span>
+      <div class="mobile-lang-pills">
+        <button class="mobile-lang-pill active" data-lang="pt">PT</button>
+        <button class="mobile-lang-pill" data-lang="en">EN</button>
+      </div>
     </div>
 
     <div class="mobile-nav-socials">
-      <a href="https://www.facebook.com/mozcampadventures" aria-label="Facebook" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
-      <a href="https://www.instagram.com/moz__camp_adventures_official/" aria-label="Instagram" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.facebook.com/mozcampadventures" aria-label="Facebook" target="_blank" rel="noopener"><i class="bx bxl-facebook"></i></a>
+      <a href="https://www.instagram.com/moz__camp_adventures_official/" aria-label="Instagram" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i></a>
     </div>
   </aside>
 

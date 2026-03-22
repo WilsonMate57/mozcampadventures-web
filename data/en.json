@@ -1,0 +1,464 @@
+{
+  "island-hopping-experience": {
+    "subtitle": "Inhaca · Portuguese Island · Santa Maria Beach",
+    "badge": "Popular",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "An epic adventure through Mozambique's most beautiful islands — snorkelling on pristine coral reefs, white-sand beaches and an authentic beachside barbecue.",
+    "detailText": [
+      "Set sail on an unforgettable journey through the paradise islands of Maputo Bay. Glide across crystal-clear waters and discover the wild beauty of Inhaca Island, the enchanting Portuguese Island and the stunning Santa Maria Beach — three remarkable destinations in one extraordinary day.",
+      "Our local guides lead you through vibrant coral reefs teeming with tropical fish, sea turtles and manta rays. At midday, feast on an authentic Mozambican barbecue — freshly grilled fish, tiger prawns and seafood prepared right on the beach.",
+      "Perfect for families, couples and groups looking to experience the very best Mozambique has to offer — nature, flavour and adventure in one unforgettable day."
+    ],
+    "includes": ["Return boat transfer", "Certified local guide throughout", "Full snorkelling equipment", "Barbecue with fresh fish, prawns and seafood", "Water and cold drinks", "Life jackets and safety equipment", "Marina fees included"],
+    "excludes": ["Alcoholic beverages", "Tips (optional)", "Personal expenses", "Sunscreen (we recommend bringing SPF 50+)"],
+    "highlights": ["Snorkelling on coral reefs with unique biodiversity", "Authentic barbecue with fresh seafood", "Pristine white-sand beaches and turquoise waters", "Dolphin and sea turtle sightings", "Experienced guides with deep local knowledge", "Small groups for a more intimate experience"],
+    "importantInfo": ["Minimum 4 participants for departure confirmation.", "Children under 3 travel free (no separate seat).", "Tour subject to favourable weather conditions — free rescheduling.", "Meeting point: Maputo Marina at 07:30.", "We recommend SPF 50+ sunscreen and sunglasses."]
+  },
+  "portuguese-island-bbq": {
+    "name": "Portuguese Island — Beach BBQ",
+    "subtitle": "Snorkelling & Barbecue on Portuguese Island",
+    "badge": "Most Booked",
+    "duration": "Half day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "A perfect escape to Portuguese Island with snorkelling on coral reefs and a delicious beachside seafood barbecue.",
+    "detailText": [
+      "Portuguese Island is a breathtaking white sandbank surrounded by some of the finest coral reefs in Mozambique. On this exclusive trip, we sail directly to the island for a morning of snorkelling, sunshine and pure relaxation.",
+      "The highlight is our authentic Mozambican barbecue: freshly grilled fish, tiger prawns, squid and seafood prepared by our team right on the beach, with the Indian Ocean as your backdrop — a gastronomic experience you will never forget.",
+      "Ideal for those with limited time who still want to experience the essence of Mozambique's islands."
+    ],
+    "includes": ["Return boat transfer", "Full snorkelling equipment", "Barbecue with fresh fish, prawns and seafood", "Water and cold drinks", "Experienced local guide", "Marina fees included"],
+    "excludes": ["Alcoholic beverages", "Tips (optional)", "Personal expenses"],
+    "highlights": ["Authentic beachside barbecue with fresh seafood", "Snorkelling on vibrant coral reefs", "Pristine white-sand beach", "Half-day experience — perfect when time is short", "Small groups and personalised attention"],
+    "importantInfo": ["Minimum 4 participants for departure confirmation.", "Tour subject to weather conditions.", "Meeting point: Maputo Marina at 08:00.", "Not available on Mondays."]
+  },
+  "portuguese-island-farol": {
+    "name": "Portuguese Island & Lighthouse Beach",
+    "subtitle": "Two iconic destinations in one adventure",
+    "badge": "Exclusive",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "A unique combination: snorkelling on Portuguese Island and a visit to the historic Lighthouse Beach on Inhaca Island, with its iconic 19th-century lighthouse.",
+    "detailText": [
+      "This tour combines two of Maputo Bay's most photogenic destinations: Portuguese Island with its untouched coral reefs, and Lighthouse Beach on Inhaca Island, marked by the historic lighthouse built in 1893.",
+      "After snorkelling on Portuguese Island, we sail to Lighthouse Beach for a guided tour of the lighthouse and a picnic on the beach with stunning ocean views — history, nature and breathtaking scenery in one tour.",
+      "A perfect experience for lovers of history and nature looking for something different from the usual island visits."
+    ],
+    "includes": ["Return boat transfer", "Snorkelling equipment", "Picnic at Lighthouse Beach", "Guided tour of the historic lighthouse", "Water and cold drinks", "Certified local guide"],
+    "excludes": ["Alcoholic beverages", "Tips", "Personal expenses"],
+    "highlights": ["Visit to the iconic Inhaca Lighthouse (1893)", "Snorkelling on Portuguese Island coral reefs", "Panoramic picnic overlooking the Indian Ocean", "Historical and cultural guided tour", "Outstanding photography opportunities"],
+    "importantInfo": ["The lighthouse climb can be physically demanding — appropriate footwear recommended.", "Minimum 4 participants.", "Subject to weather conditions.", "Meeting point: Maputo Marina at 07:30."]
+  },
+  "santa-maria-snorkeling": {
+    "name": "Santa Maria Beach — Snorkelling & BBQ",
+    "subtitle": "One of Mozambique's most beautiful beaches",
+    "badge": "Recommended",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "A full day at the stunning Santa Maria Beach with guided snorkelling on coral reefs, a beachside barbecue and the purest peace of the Indian Ocean.",
+    "detailText": [
+      "Santa Maria Beach is considered one of the most untouched beaches in Mozambique. With fine white sand, crystal-clear waters and coral reefs at your doorstep, it is the perfect destination for a day of total disconnection and pure nature.",
+      "Our tour includes a guided snorkelling session on the local reefs, full of diverse marine life, followed by an authentic Mozambican barbecue prepared on the sand by our team.",
+      "The afternoon is entirely yours — dive, relax, explore the beach or simply absorb the incomparable beauty of Mozambican nature."
+    ],
+    "includes": ["Return boat transfer", "Full snorkelling equipment", "Barbecue with fresh fish and seafood", "Water and cold drinks", "Experienced local guide", "Life jackets"],
+    "excludes": ["Alcoholic beverages", "Tips", "Personal expenses"],
+    "highlights": ["Pristine white-sand beach with turquoise waters", "Snorkelling on untouched coral reefs", "Authentic barbecue with fresh seafood", "Peaceful, uncrowded atmosphere", "Unforgettable Indian Ocean sunset"],
+    "importantInfo": ["Subject to weather conditions.", "Minimum 4 participants.", "Meeting point: Maputo Marina at 07:00.", "The beach has no infrastructure — bring everything you need."]
+  },
+  "inhaca-cultural": {
+    "name": "Inhaca Island — Cultural Experience",
+    "subtitle": "Discover life and culture on Inhaca Island",
+    "badge": "Authentic",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "A genuine immersion in the culture and community of Inhaca Island — village tour, local market, wild beaches and a traditional Mozambican lunch.",
+    "detailText": [
+      "Inhaca Island is far more than paradise beaches. It is a living community with a rich history, colourful markets and unique local cuisine. This tour takes you inside the real life of the island.",
+      "Begin with a guided tour of Inhaca's main village, where you will meet local fishermen, visit the craft market and understand the way of life of this coastal community. The afternoon is spent on the island's quietest beaches.",
+      "Lunch is served at a local eatery with traditional Mozambican dishes — matapa, fried carapau and coconut rice — an authentic culinary experience you won't find in any city restaurant."
+    ],
+    "includes": ["Return boat transfer", "Certified local cultural guide", "Guided village and market tour", "Traditional Mozambican lunch", "Water and cold drinks", "Local museum entry (when open)"],
+    "excludes": ["Crafts and market purchases", "Alcoholic beverages", "Tips"],
+    "highlights": ["Guided tour of an Inhaca fishing village", "Local market with crafts and traditional goods", "Lunch featuring traditional Mozambican dishes", "Quiet beaches rarely visited by tourists", "Authentic interaction with the local community", "Great for families with children"],
+    "importantInfo": ["Please respect local customs and traditions during the village visit.", "Modest clothing recommended for the village visit.", "Subject to weather conditions.", "Meeting point: Maputo Marina at 08:00."]
+  },
+  "maputo-bay-sunset-cruise": {
+    "subtitle": "The most beautiful sunset over Maputo Bay",
+    "badge": "Favourite",
+    "duration": "3 hours",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Sail across Maputo Bay as the sun sets and witness one of the world's most stunning sunsets, aboard our comfortable boat.",
+    "detailText": [
+      "Few things are more beautiful than watching the sun sink below the horizon over Maputo Bay from the water. Our Sunset Cruise takes you on a leisurely 3-hour sail across the bay, with champagne, drinks and snacks included.",
+      "On board, enjoy the sea breeze, live music and perfect company for an unforgettable afternoon. The cruise passes along the city's shores, offering unique views of Maputo's skyline at dusk.",
+      "Ideal for couples, groups of friends or anyone looking to celebrate a special moment in style."
+    ],
+    "includes": ["3-hour cruise on Maputo Bay", "Welcome champagne", "Drinks (non-alcoholic + 1 alcoholic per person)", "On-board snacks", "Ambient music", "Experienced crew"],
+    "excludes": ["Additional alcoholic beverages", "Tips", "Transfers to/from the port"],
+    "highlights": ["Spectacular sunset over Maputo Bay", "Welcome champagne on board", "Unique views of the Maputo skyline", "Romantic and relaxed atmosphere", "Professional and welcoming crew"],
+    "importantInfo": ["Departures available Wednesday to Sunday.", "Advance booking recommended — limited seats.", "Light clothing and a thin jacket recommended (evening breeze).", "Meeting point: Maputo Port at 17:00."]
+  },
+  "sunset-dinner-dj": {
+    "subtitle": "Premium dinner & live DJ on the Indian Ocean",
+    "duration": "4 hours",
+    "priceLabel": "per person",
+    "description": "A premium evening at sea: a 3-course chef dinner with fresh seafood, live DJ and the most incredible sunset over Maputo Bay. Adults only.",
+    "detailText": [
+      "Our Sunset Dinner & DJ Cruise is the most exclusive experience we offer. On board our premium boat, a Mozambican chef prepares a 3-course dinner featuring the freshest seafood of the day, accompanied by a carefully selected wine list.",
+      "A resident DJ provides the perfect soundtrack for the evening — from ambient tunes at sunset to livelier beats after dark, creating a unique atmosphere on the bay's waters.",
+      "Adults only (16+). Maximum 20 guests per departure to guarantee the exclusivity of the experience."
+    ],
+    "includes": ["4-hour cruise on Maputo Bay", "Welcome champagne", "3-course dinner with fresh seafood", "1 bottle of wine per couple (or equivalent)", "Live DJ throughout the evening", "Open bar (non-alcoholic)"],
+    "excludes": ["Additional alcoholic drinks", "Tips", "Transfers"],
+    "highlights": ["Chef dinner with fresh Indian Ocean seafood", "Live DJ in an exclusive setting", "Spectacular sunset over Maputo Bay", "Maximum 20 guests — truly exclusive experience", "Champagne and wine included"],
+    "importantInfo": ["Adults only (16+).", "Maximum 20 guests per departure — advance booking essential.", "Dress code: Smart casual.", "Available Fridays and Saturdays.", "Free cancellation up to 48 hours before."]
+  },
+  "xefina-island-cruise": {
+    "subtitle": "Sunset party cruise to Xefina Island",
+    "badge": "Lively",
+    "duration": "5 hours",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "A party at sea! A lively cruise to Xefina Island with music, barbecue, drinks and the best sunset over Maputo Bay.",
+    "detailText": [
+      "Xefina Island is a well-kept secret of Maputo Bay — a historic island with deserted beaches and a unique atmosphere. Our Party Cruise takes you there at the end of the day for an experience that combines adventure, food and celebration.",
+      "On board, lively music, a seafood barbecue and an open bar create the perfect atmosphere for an unforgettable afternoon. On the island, there is time to explore the beach, swim in the warm waters and watch the sunset in a truly special setting.",
+      "Perfect for groups of friends, bachelor/bachelorette parties or any celebration that deserves an extraordinary backdrop."
+    ],
+    "includes": ["5-hour cruise", "Xefina Island entry", "Seafood and grilled barbecue", "Drinks (beer, soft drinks, water during the cruise)", "Music and entertainment on board", "Experienced guide and crew"],
+    "excludes": ["Premium drinks and cocktails", "Tips", "Transfers to the port"],
+    "highlights": ["Visit to the historic and mysterious Xefina Island", "Lively barbecue with fresh seafood", "Music and party atmosphere on board", "Unique sunset over the bay", "Perfect for groups and celebrations"],
+    "importantInfo": ["Available weekends and public holidays.", "Minimum 8 participants for confirmation.", "Ideal for groups — discounts for groups of 15+.", "Meeting point: Maputo Port at 14:45."]
+  },
+  "ponta-douro-day-trip": {
+    "name": "Ponta D'Ouro — Full Day",
+    "subtitle": "Wild dolphins, snorkelling and golden beaches in southern Mozambique",
+    "badge": "Top Destination",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Ponta D'Ouro is famous for its wild dolphins and pristine golden beaches. A day of ocean adventure, snorkelling and nature in southern Mozambique.",
+    "detailText": [
+      "Ponta D'Ouro, 120km south of Maputo, is one of the most beloved destinations for Mozambicans and international visitors alike. Famous for its golden beaches, crystal-clear waters and one of the world's largest resident dolphin populations.",
+      "Our day trip includes a boat excursion to swim with wild dolphins in their natural habitat, snorkelling on coastal reefs and free time on the paradisiacal beaches. Lunch is served at a local beachfront restaurant.",
+      "A 2-hour drive from Maputo that feels like travelling to another world — nature, ocean and authenticity."
+    ],
+    "includes": ["Private return transfer (4x4)", "Boat trip for dolphin watching", "Snorkelling equipment", "Lunch at a local restaurant", "Experienced guide", "Water and non-alcoholic drinks"],
+    "excludes": ["Alcoholic beverages", "Reserve entry fees (when applicable)", "Tips", "Personal expenses"],
+    "highlights": ["Swimming with wild dolphins in their natural habitat", "Snorkelling on Ponta D'Ouro's coastal reefs", "Pristine golden beaches with towering dunes", "Fresh seafood lunch at a beachfront restaurant", "4x4 drive through southern Mozambique's landscapes"],
+    "importantInfo": ["Passport or national ID required for travel to the south.", "Swimming with dolphins is not guaranteed — depends on animal behaviour.", "Tour subject to weather and sea conditions.", "Departure from Maputo at 06:00 — punctuality required."]
+  },
+  "macaneta-day-trip": {
+    "subtitle": "Lagoon, mangroves and wild beaches 30 minutes from Maputo",
+    "badge": "Near Maputo",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Macaneta is the perfect escape from Maputo — a narrow strip of land between the ocean and the lagoon with wild beaches, mangroves and fresh fish.",
+    "detailText": [
+      "Macaneta is a narrow peninsula just 30 minutes from Maputo, separated from the mainland by the Incomáti River. With wild ocean-facing beaches on one side and the calm lagoon on the other, it is a unique and accessible destination.",
+      "Our day trip includes the river boat crossing, a guided mangrove walk with a local guide and a long beach day with a fresh fish lunch at a typical local restaurant.",
+      "Perfect for anyone wanting to escape the city without a long journey."
+    ],
+    "includes": ["Return transport from Maputo", "Incomáti River boat crossing", "Local guide for the mangrove walk", "Fresh fish lunch and drinks", "Beach access"],
+    "excludes": ["Extra alcoholic drinks", "Tips", "Additional activities"],
+    "highlights": ["Scenic boat crossing of the Incomáti River", "Wild and uncrowded beaches", "Mangrove walk with local wildlife", "Fresh fish and seafood in true local style", "Just 30 minutes from Maputo"],
+    "importantInfo": ["Available every day of the week.", "Minimum 4 participants.", "Macaneta beach has strong currents — swim with caution.", "Meeting point: Maputo at 08:30."]
+  },
+  "bilene-day-trip": {
+    "name": "Bilene — São Martinho Lagoon",
+    "subtitle": "Mozambique's most serene lagoon, 2 hours from Maputo",
+    "badge": "Family",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "São Martinho Lagoon in Bilene is Mozambique's most popular calm-water beach — perfect for families with children and lovers of kayaking and windsurfing.",
+    "detailText": [
+      "Bilene, 180km north of Maputo, is home to São Martinho Lagoon — a saltwater lagoon separated from the ocean by a narrow strip of sand. Its calm, crystal-clear waters make it the safest and most family-friendly beach destination in Mozambique.",
+      "Our day trip includes private return transport, lagoon access and lunch at one of the waterside restaurants. Kayaks, windsurfs and other water equipment can be hired on site (extra cost).",
+      "A perfect day for families with children, thanks to the calm, shallow waters with no dangerous currents."
+    ],
+    "includes": ["Private return transport (air-conditioned)", "Accompanying guide", "Lunch at a lagoon-side restaurant", "Water and non-alcoholic drinks", "Lagoon access"],
+    "excludes": ["Water equipment hire (kayak, windsurfing)", "Alcoholic beverages", "Tips"],
+    "highlights": ["Calm, safe waters — perfect for children", "Kayaking and windsurfing available on site", "Fresh lunch beside the lagoon", "Comfortable air-conditioned private transport", "Relaxed and family-friendly atmosphere"],
+    "importantInfo": ["Kayak and equipment hire not included in the price.", "Ideal for families with children — calm and safe waters.", "Paved road — comfortable journey.", "Meeting point: Maputo at 07:00."]
+  },
+  "tofo-beach-trip": {
+    "name": "Tofo Beach — Whale Sharks & Mantas",
+    "subtitle": "Mozambique's most famous diving destination",
+    "badge": "Adventure",
+    "duration": "2 days / 1 night",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (8–12 years)",
+    "description": "Tofo is the world capital of whale sharks and giant manta rays. Two days of diving, snorkelling and paradise beaches in Inhambane.",
+    "detailText": [
+      "Tofo Beach in Inhambane is internationally recognised as one of the world's best diving destinations. Its reefs are home to whale sharks, giant manta rays, sea turtles, dolphins and a breathtaking diversity of marine life.",
+      "Our 2-day package includes return transport from Maputo, one night at a beachfront guesthouse, two guided snorkelling or diving trips (with the possibility of encountering whale sharks depending on the season) and all meals.",
+      "A transformative experience for ocean and marine wildlife lovers."
+    ],
+    "includes": ["Return transport from Maputo (flight or air-conditioned bus)", "1 night at a beachfront guesthouse", "2 guided snorkelling/diving trips", "All meals (breakfast, lunch, dinner)", "Certified diving guide", "Snorkelling equipment"],
+    "excludes": ["Scuba diving equipment", "Diving course (available locally)", "Alcoholic beverages", "Personal expenses"],
+    "highlights": ["Snorkelling with whale sharks (season Jun–Nov)", "Giant manta rays on Tofo's reefs", "Tofo Beach — one of Mozambique's most beautiful", "Beachfront accommodation included", "PADI certified diving guide"],
+    "importantInfo": ["Whale shark sightings most likely from June to November.", "Minimum 2 participants.", "Children under 8 not recommended for the diving trips.", "Scuba diving requires PADI certification (courses available locally).", "Free cancellation up to 72 hours before."]
+  },
+  "vilanculos-trip": {
+    "name": "Vilanculos & Bazaruto Archipelago",
+    "subtitle": "The ultimate paradise destination in northern Mozambique",
+    "badge": "Luxury",
+    "duration": "3 days / 2 nights",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Vilanculos and the Bazaruto Archipelago form one of the most spectacular destinations on the African continent — golden dunes, pristine coral reefs and a sea of shifting colours.",
+    "detailText": [
+      "The Bazaruto Archipelago, off the coast of Vilanculos, is considered one of the most beautiful marine parks in Africa. With islands of golden dunes, untouched coral reefs and extraordinary marine life, it is the dream destination of any ocean lover.",
+      "Our 3-day package includes return flights to Vilanculos, beachfront lodge accommodation, a boat excursion to the Bazaruto Archipelago with snorkelling, dugong (sea cow) sightings and all meals.",
+      "A premium experience that fully justifies the journey."
+    ],
+    "includes": ["Return flights Maputo–Vilanculos", "2 nights at a beachfront lodge", "Boat excursion to the Bazaruto Archipelago", "Snorkelling with equipment included", "All meals and non-alcoholic drinks", "Specialist guide"],
+    "excludes": ["Premium alcoholic beverages", "Extra activities on site", "Tips", "Personal expenses"],
+    "highlights": ["Bazaruto Archipelago — National Marine Park", "Snorkelling on pristine coral reefs", "Dugong (sea cow) sightings", "Luxury beachfront lodge accommodation", "Return flights included"],
+    "importantInfo": ["Flights are subject to availability and may vary in price.", "Minimum confirmation 7 days before departure.", "Dugong sightings are not guaranteed.", "Package is customisable — contact us for more information."]
+  },
+  "safari-kruger-park": {
+    "subtitle": "Africa's greatest national park with the Big 5",
+    "badge": "Must-See",
+    "duration": "3 days / 2 nights",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "An epic safari in Africa's largest national park. Encounter the Big 5 — lion, leopard, elephant, rhino and buffalo — in their natural savannah.",
+    "detailText": [
+      "Kruger National Park is Africa's largest and most famous safari park, with over 20,000km² of savannah home to the Big 5 and 147 other mammal species. Our 3-day safari includes private transport from Maputo, park entry, lodge accommodation and 4 guided game drives.",
+      "The journey begins before dawn — when predators are most active. Our experienced rangers guide you along the park's trails in open adapted vehicles, ensuring the best wildlife sighting opportunities and incredible photographs.",
+      "An experience that changes your perspective on the African continent and its majestic wildlife."
+    ],
+    "includes": ["Private return transport Maputo–Kruger–Maputo", "2 nights in a lodge inside or near the park", "4 guided game drives (2 at dawn + 2 at dusk)", "All meals included", "Park entrance fees", "Certified ranger and safari vehicle", "Binoculars and wildlife guides"],
+    "excludes": ["South African visa (if required)", "Alcoholic beverages", "Tips", "Extra activities in the park"],
+    "highlights": ["The Big 5 in their natural savannah", "Dawn and dusk game drives", "Certified ranger in a specialist open vehicle", "Over 500 bird species", "Lodge accommodation with pool", "Africa's largest national park"],
+    "importantInfo": ["Valid passport required for South Africa.", "Children under 6 not allowed on night game drives.", "Neutral clothing recommended (khaki, green, grey) — avoid white and bright colours.", "Free cancellation up to 72 hours before.", "Subject to lodge availability confirmation."]
+  },
+  "safari-parque-maputo": {
+    "name": "Maputo Special Reserve",
+    "subtitle": "Elephants, hippos and flamingos 1 hour from Maputo",
+    "badge": "Local",
+    "duration": "Full day",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Maputo Special Reserve is home to elephants, hippos, flamingos and unique mangrove wetlands — a spectacular safari just 1 hour from the capital.",
+    "detailText": [
+      "Maputo Special Reserve (formerly the Elephant Reserve) is an elephant paradise — with over 700 individuals roaming free. But it is not just elephants: hippos, lions, zebras, flamingos and over 300 bird species inhabit this natural paradise just 1 hour from Maputo.",
+      "Our day trip includes 4x4 transport, a guided game drive, a visit to the reserve's coastal area with pink flamingos and lunch at the reserve headquarters.",
+      "An accessible and unforgettable safari, perfect for families and those with limited days in Maputo."
+    ],
+    "includes": ["Return 4x4 transport", "Reserve entry fees", "Guided game drive with certified ranger", "Lunch at the reserve headquarters", "Water and non-alcoholic drinks", "Binoculars for use during the tour"],
+    "excludes": ["Alcoholic beverages", "Tips", "Photography on exclusive excursions"],
+    "highlights": ["Over 700 free-roaming elephants", "Hippos, lions and zebras", "Pink flamingos on the reserve's coastline", "Just 1 hour from Maputo", "Certified ranger with deep local knowledge"],
+    "importantInfo": ["Comfortable neutral clothing recommended.", "Insect repellent essential.", "The reserve is recovering — wildlife sightings are not guaranteed but very likely.", "Meeting point: Maputo at 06:30."]
+  },
+  "tour-reino-eswatini": {
+    "name": "Kingdom of Eswatini — Cultural Tour",
+    "subtitle": "Culture, nature and tradition in Africa's last absolute kingdom",
+    "badge": "Unique",
+    "duration": "2 days / 1 night",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Eswatini (formerly Swaziland) is Africa's last absolute kingdom — a two-day journey through the culture, nature and traditions of a remarkable people.",
+    "detailText": [
+      "The Kingdom of Eswatini, nestled between South Africa and Mozambique, is a fascinating destination combining stunning natural scenery with vibrant, authentic culture. With mountains, forests and savannahs, it is also home to diverse wildlife.",
+      "Our 2-day tour passes through Hlane National Park (lions, elephants, white rhinos), a Swazi cultural village with traditional dances, the Tinkhabi craft market and the Swazi Candles factory — one of the most famous in the world.",
+      "A journey that enriches the soul and broadens horizons, combining wild Africa with genuine African tradition and hospitality."
+    ],
+    "includes": ["Private return transport from Maputo", "1 night accommodation in Eswatini", "Game drive in Hlane National Park", "Visit to a Swazi cultural village", "All meals", "Park and museum entry fees", "Bilingual guide (PT/EN)"],
+    "excludes": ["Eswatini visa (generally not required)", "Alcoholic beverages", "Craft purchases", "Tips"],
+    "highlights": ["Hlane National Park — lions, elephants and rhinos", "Traditional Swazi dances in a local village", "Swazi Candles factory — world-famous handicrafts", "Mountain and savannah natural landscapes", "Africa's only absolute kingdom"],
+    "importantInfo": ["Valid passport required for Eswatini.", "Eswatini generally does not require a visa for Mozambican citizens.", "Neutral game-drive clothing and culturally respectful attire for village visits.", "Free cancellation up to 72 hours before."]
+  },
+  "whale-watching": {
+    "name": "Whale Watching",
+    "subtitle": "Humpback whales in Maputo Bay (Jun–Nov)",
+    "badge": "Seasonal",
+    "duration": "Half day (4 hours)",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Between June and November, hundreds of humpback whales migrate through Maputo Bay. One of the most spectacular wildlife experiences on the planet.",
+    "detailText": [
+      "Maputo Bay is one of the world's finest locations for humpback whale watching. Between June and November, these magnificent creatures — which can reach 16 metres in length — migrate to the warm Indian Ocean waters to give birth and raise their calves.",
+      "Our whale watching excursion is conducted by marine biologists and experienced navigators, using quiet vessels and responsible observation protocols to avoid disturbing the animals. The sighting probability during peak season exceeds 95%.",
+      "A transformative experience that very few will ever be fortunate enough to have."
+    ],
+    "includes": ["4-hour boat excursion", "Marine biologist / naturalist on board", "Observation equipment (binoculars)", "Snacks and water on board", "Educational briefing about the whales", "Life jackets and safety equipment"],
+    "excludes": ["Transport to/from the port", "Full meals", "Alcoholic beverages"],
+    "highlights": ["Humpback whales in Mozambican waters (Jun–Nov)", "Marine biologist on board for interpretation", "Over 95% sighting probability during peak season", "Responsible and ethical observation protocols", "Possible sightings of breaches, tail slaps and calves"],
+    "importantInfo": ["Available June to November only.", "Sightings not guaranteed but probability is very high during the season.", "Not recommended for people with severe seasickness — bring preventative medication.", "The boat complies with all approach rules to protect the whales.", "Departures at 06:30 — punctuality required."]
+  },
+  "deep-sea-fishing": {
+    "subtitle": "Marlin, tuna, dorado and wahoo in the deep Indian Ocean",
+    "badge": "Adrenaline",
+    "duration": "Full day (8 hours)",
+    "priceLabel": "per person (max. 6)",
+    "description": "Deep sea fishing on the Indian Ocean — blue marlin, yellowfin tuna, dorado and wahoo. A pure adrenaline adventure for anglers of all levels.",
+    "detailText": [
+      "The Indian Ocean off Maputo is one of Africa's finest sport fishing grounds. The warm, deep waters are home to blue marlin, yellowfin tuna, dorado, wahoo and barracuda — species that anglers travel from around the world to catch.",
+      "Our sport fishing boat is equipped with trolling lines, high-performance rods and all consumables. The skipper and crew have years of experience on Maputo's waters and always find the best fishing spots.",
+      "The price is per boat (up to 6 people) — ideal for groups of friends or fishing families."
+    ],
+    "includes": ["Full-day boat hire (8 hours)", "Experienced skipper and crew", "All fishing equipment (rods, lines, bait)", "Fishing licence", "On-board lunch and non-alcoholic drinks", "Catch processing and packaging"],
+    "excludes": ["Alcoholic beverages", "Tips", "Fish filleting and cooking (available on request)"],
+    "highlights": ["Fishing for blue marlin, tuna, dorado and wahoo", "Fully equipped boat with professional gear", "Skipper with 15+ years' experience on the Indian Ocean", "Catch & release option available", "Up to 6 people per boat — ideal for groups"],
+    "importantInfo": ["Price is per boat — up to 6 people.", "Catch & release fishing available and encouraged for marlin.", "Not recommended for people with severe seasickness.", "Minimum booking 3 days in advance.", "The caught fish belongs to the client — processing included."]
+  },
+  "private-boat-rental": {
+    "name": "Private Boat Rental",
+    "subtitle": "The boat, the sea and the destination you choose",
+    "badge": "Flexible",
+    "duration": "Full day",
+    "priceLabel": "per boat (up to 8 pax)",
+    "description": "Hire our boat for the full day and choose your own destination — islands, bay, fishing, snorkelling or simply exploring the Indian Ocean at your own pace.",
+    "detailText": [
+      "Our most flexible option: hire the boat for the full day and plan your own itinerary. Whether it is a private island, fishing, snorkelling, a party at sea or simply exploring the bay — the boat and crew are entirely at your disposal.",
+      "The crew includes an experienced skipper and a deck assistant. The boat is equipped with safety gear, a cool box, a sound system and capacity for 8 people.",
+      "Ideal for birthdays, bachelor/bachelorette parties, corporate events or simply an extraordinary day on the water."
+    ],
+    "includes": ["Full-day boat hire (8 hours)", "Experienced skipper and deck assistant", "Full safety equipment", "On-board sound system", "Cool box (ice included)", "Fuel"],
+    "excludes": ["Food and drinks", "Snorkelling equipment (hire available)", "Entry fees for protected islands", "Tips"],
+    "highlights": ["Total flexibility of itinerary and destination", "Up to 8 people per boat", "Skipper with 10+ years on Maputo waters", "Perfect for birthdays and special events", "Sound system and cool box included"],
+    "importantInfo": ["Minimum booking 48 hours in advance.", "Itinerary is agreed with the skipper the evening before.", "Adverse weather conditions may alter the route.", "Food and drinks are the client's responsibility.", "For groups over 8 people, contact us for special arrangements."]
+  },
+  "maputo-city-tour": {
+    "subtitle": "History, architecture and culture of Mozambique's vibrant capital",
+    "badge": "Essential",
+    "duration": "Half day (4 hours)",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "description": "Uncover Maputo's secrets on a guided tour of its historic monuments, colonial neighbourhoods, century-old gardens and the city's best viewpoints.",
+    "detailText": [
+      "Maputo is one of Africa's most fascinating capitals. Founded by the Portuguese in the 18th century, the city combines unique colonial architecture with a vibrant contemporary energy. Our historical City Tour takes you to the city's most iconic landmarks.",
+      "Visit the Iron House designed by Gustave Eiffel, the impressive Natural History Museum with its taxidermied elephants, the Municipal Central Market, the historic Maputo Fortress and the century-old avenue gardens.",
+      "The tour is led by local guides who know the stories behind every monument — an educational, engaging and deeply Mozambican experience."
+    ],
+    "includes": ["Private air-conditioned transport", "Certified historical and cultural guide", "Museum entry fees included", "Water and snacks at the end", "All main historic sites covered"],
+    "excludes": ["Shopping and souvenirs", "Lunch (not included)", "Tips"],
+    "highlights": ["The Iron House by Gustave Eiffel", "Natural History Museum with taxidermied elephants", "Maputo Fortress (18th century)", "Municipal Central Market", "Century-old gardens and unique colonial architecture", "Panoramic views over Maputo Bay"],
+    "importantInfo": ["Tour available every day except Monday (museums closed).", "Comfortable clothing and walking shoes recommended.", "The Natural History Museum may occasionally be closed for works.", "Meeting point: Client's hotel or agreed location."]
+  },
+  "machangulo-beach-lodge": {
+    "subtitle": "Premium lodge on the Machangulo Peninsula",
+    "badge": "5 Stars",
+    "duration": "Minimum 1 night",
+    "priceLabel": "per night (2 people)",
+    "cancelPolicy": "up to 72 hours before",
+    "description": "Machangulo Beach Lodge is a premium beachfront lodge on the Machangulo Peninsula — ocean-view bungalows, an infinity pool and the finest sunsets on the Mozambican Indian Ocean.",
+    "features": ["Ocean-view bungalows with private terrace", "Infinity pool overlooking the ocean", "Breakfast included", "Restaurant with fresh seafood", "Snorkelling and kayaking included", "Wi-Fi throughout", "Boat transfer from/to Maputo"],
+    "detailText": [
+      "Machangulo Beach Lodge is one of the most exclusive lodges in the Maputo region. Situated on the stunning Machangulo Peninsula, its wooden and thatch bungalows are positioned directly on the beach, with private terraces overlooking the Indian Ocean.",
+      "The infinity pool merges visually with the ocean horizon, creating one of Mozambique's most photogenic settings. The restaurant serves fresh fish and seafood daily, caught by local fishermen at dawn.",
+      "Access is by boat from Maputo (1 hour), ensuring the privacy and seclusion that make this experience truly special."
+    ],
+    "includes": ["Bungalow accommodation with ocean view", "Daily breakfast", "Snorkelling and kayaking", "Pool and private beach access", "Wi-Fi", "Daily housekeeping service"],
+    "excludes": ["Boat transfer Maputo–Machangulo (available on request)", "Lunch and dinner", "Alcoholic beverages", "Extra activities"],
+    "highlights": ["Infinity pool overlooking the Indian Ocean", "Thatched bungalows on the beach", "Private and secluded beach", "Spectacular sunsets every evening", "Daily fresh-catch seafood at the restaurant"],
+    "importantInfo": ["Check-in: 14:00 | Check-out: 11:00", "Access by boat — transfer not included in base price.", "Advance booking recommended — limited capacity.", "Free cancellation up to 72 hours before."]
+  },
+  "mamas-lodge": {
+    "subtitle": "Authentic lodge on Inhaca Island with ocean views",
+    "badge": "Authentic",
+    "duration": "Minimum 1 night",
+    "priceLabel": "per night / per adult",
+    "priceChildLabel": "Children (4–9 years)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Mama's Lodge is a hidden gem on Inhaca Island — family atmosphere, genuine Mozambican cuisine and breathtaking views of the Indian Ocean.",
+    "features": ["Wi-Fi", "Kitchen & BBQ utensils", "Swimming pool", "Near the beach", "Near the villa"],
+    "detailText": [
+      "Mama's Lodge has been run by the same family for two generations and represents the finest Mozambican hospitality. Situated on Inhaca Island, the lodge offers comfortable rooms with ocean views and cuisine that is, quite simply, unforgettable.",
+      "The 'Mama' prepares daily dishes such as matapa, groundnut chicken, fried carapau and coconut rice — recipes passed down through generations. The panoramic terrace is the perfect spot to watch the sun rise over the ocean while enjoying breakfast.",
+      "An authentic accommodation experience, far from large hotel chains — for those who want to feel Mozambique from the inside."
+    ],
+    "includes": ["Accommodation", "Return boat transfer", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
+    "excludes": ["Meals (available on request: +9,300 MZN/adult for breakfast, lunch and dinner)", "Alcoholic beverages", "External activities"],
+    "highlights": ["Home-cooked authentic Mozambican cuisine", "Panoramic views over the Indian Ocean", "Warm family atmosphere", "Ideal location on Inhaca Island", "Family-run for 2 generations"],
+    "importantInfo": ["Check-in: 13:00 | Check-out: 11:00", "Price per adult/night without meals: 14,900 MZN | With meals (B+L+D): 24,200 MZN.", "2 nights: Adults 24,400 MZN without meals / 32,400 MZN with meals.", "Children (4–9 yrs) 1 night: 9,500 MZN without meals / 14,500 MZN with meals.", "Children (4–9 yrs) 2 nights: 14,900 MZN without meals / 19,800 MZN with meals.", "Limited capacity — advance booking essential."]
+  },
+  "manico-camp": {
+    "subtitle": "Beachside glamping on Inhaca Island",
+    "badge": "Glamping",
+    "duration": "Minimum 1 night",
+    "priceLabel": "per night / per adult",
+    "priceChildLabel": "Children (4–9 years)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Manico Camp offers beachside accommodation on Inhaca Island — with a beachfront restaurant, pool, breakfast included and a Santa Maria Beach tour.",
+    "features": ["Swimming pool", "Shared outdoor bathroom", "Beachfront restaurant"],
+    "detailText": [
+      "Manico Camp is the most adventurous accommodation option on Inhaca Island. Positioned directly on the beach with a beachfront restaurant, it offers a pure nature experience without sacrificing basic comfort.",
+      "The package includes breakfast, return boat transfer and a tour to the stunning Santa Maria Beach with snorkelling on coral reefs.",
+      "Ideal for groups of friends, adventurers and everyone looking for a different and memorable accommodation experience on Inhaca Island."
+    ],
+    "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
+    "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
+    "highlights": ["Beachfront restaurant", "Swimming pool on Inhaca Island", "Included Santa Maria Beach tour", "Snorkelling on coral reefs", "Adventure experience at an accessible price"],
+    "importantInfo": ["Shared outdoor bathroom.", "Return boat transfer Maputo–Inhaca included.", "1 night: Adults 9,500 MZN | Children (4–9 yrs) 7,200 MZN.", "2 nights: Adults 13,500 MZN | Children (4–9 yrs) 6,900 MZN/night.", "Daily departures."]
+  },
+  "villa-martins": {
+    "subtitle": "All-inclusive exclusive villa on Inhaca Island",
+    "badge": "All Inclusive",
+    "duration": "Minimum 2 nights",
+    "priceLabel": "per night / per adult",
+    "priceChildLabel": "Children (3–12 years)",
+    "cancelPolicy": "up to 72 hours before",
+    "description": "Villa Martins is the premium Inhaca Island experience — pool, Wi-Fi, restaurant, laundry and boat transfer included, with a Santa Maria Beach tour.",
+    "features": ["Wi-Fi", "Swimming pool", "Laundry service", "Restaurant", "Near the sea"],
+    "detailText": [
+      "Villa Martins is the crown jewel of Inhaca Island accommodation. With a pool, restaurant, Wi-Fi and laundry service, it offers every comfort in a paradisiacal beachside setting.",
+      "The package includes breakfast, return boat transfer from Maputo, a Santa Maria Beach tour and snorkelling — all organised so you have nothing to worry about.",
+      "Ideal for families, groups of friends or special celebrations that deserve an extraordinary setting on Inhaca Island."
+    ],
+    "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
+    "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
+    "highlights": ["Swimming pool on Inhaca Island", "Boat transfer from Maputo included", "Included Santa Maria Beach tour", "Wi-Fi and on-site restaurant", "Near the sea"],
+    "importantInfo": ["1 night: Adults 11,400 MZN | Children (3–12 yrs) 5,700 MZN.", "2 nights: Adults 16,400 MZN | Children (3–12 yrs) 8,200 MZN.", "Boat transfer included (departing from Maputo Marina).", "Advance booking required — limited availability.", "Free cancellation up to 72 hours before."]
+  },
+  "mad-marlin": {
+    "subtitle": "Beachfront lodge on Inhaca Island with pool and self-service meals",
+    "badge": "Beachfront",
+    "duration": "Minimum 1 night",
+    "priceLabel": "per night / per adult",
+    "priceChildLabel": "Children (3–9 years)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Mad Marlin is a beachfront lodge on Inhaca Island — pool, self-service meals, boat transfer, breakfast and a Santa Maria Beach tour all included.",
+    "features": ["Small swimming pool", "Self-service meals", "Beachfront"],
+    "detailText": [
+      "Mad Marlin is situated directly facing the sea on Inhaca Island, offering a relaxed stay with everything you need to fully enjoy the island.",
+      "The package includes breakfast, return boat transfer from Maputo, a Santa Maria Beach tour and snorkelling on coral reefs — no logistics stress.",
+      "A perfect option for those who want to experience Inhaca Island up close, with comfort and nature right at the door."
+    ],
+    "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
+    "excludes": ["Lunch and dinner (self-service available on site)", "Alcoholic beverages", "Extra activities"],
+    "highlights": ["Beachfront accommodation", "Swimming pool on Inhaca Island", "Boat transfer from Maputo included", "Included Santa Maria Beach tour", "Self-service meals on site"],
+    "importantInfo": ["1 night: Adults 10,500 MZN | Children (3–9 yrs) 6,500 MZN.", "2 nights: Adults 14,500 MZN | Children (3–9 yrs) 8,500 MZN.", "Check-in: 14:00 | Check-out: 11:00", "Return boat transfer Maputo–Inhaca included.", "Free cancellation up to 48 hours before."]
+  },
+  "khanimambo-lodge": {
+    "subtitle": "\"Thank you\" in Shangaan — genuine hospitality on Inhaca Island",
+    "badge": "Boutique",
+    "duration": "Minimum 1 night",
+    "priceLabel": "per night / per adult",
+    "priceChildLabel": "Children (7–9 years)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Khanimambo — 'thank you' in Shangaan — is a boutique lodge on Inhaca Island with a small pool, near the restaurant and beach, with transfer and Santa Maria tour included.",
+    "features": ["Small swimming pool", "Near the restaurant", "Near the beach"],
+    "detailText": [
+      "Khanimambo, meaning 'thank you' in Shangaan, embodies the essence of Mozambican hospitality. This lodge on Inhaca Island was designed to make every guest feel truly welcome.",
+      "The package includes accommodation, return boat transfer from Maputo, breakfast, a Santa Maria Beach tour and snorkelling — with daily departures.",
+      "Located near the restaurant and beach, with a small pool to relax in the shade of the island."
+    ],
+    "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
+    "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
+    "highlights": ["Prime location on Inhaca Island", "Boat transfer from Maputo included", "Included Santa Maria Beach tour", "Near the restaurant and beach", "Authentic and genuine hospitality"],
+    "importantInfo": ["1 night: Adults 10,900 MZN | Children (7–9 yrs) 6,500 MZN.", "2 nights: Adults 14,500 MZN | Children (3–9 yrs) 8,800 MZN.", "Check-in: 14:00 | Check-out: 11:00", "Return boat transfer Maputo–Inhaca included.", "Daily departures. Free cancellation up to 48 hours before."]
+  }
+}

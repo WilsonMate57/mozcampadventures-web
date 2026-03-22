@@ -526,8 +526,8 @@
     "badge": "Favorito",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "assets/images/packages/sunset_cruise_2.jpeg",
-    "heroImage": "assets/images/packages/sunset_cruise_1.jpeg",
+    "image": "../assets/images/packages/sunset_cruise_2.jpeg",
+    "heroImage": "../assets/images/packages/sunset_cruise_1.jpeg",
     "location": "Baía de Maputo",
     "destinations": "Maputo Bay",
     "duration": "3 horas",
@@ -592,10 +592,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/sunset_cruise_1.jpeg",
-      "assets/images/packages/sunset_cruise_2.jpeg",
-      "assets/images/packages/sunset_cruise_3.jpeg",
-      "assets/images/packages/sunset_cruise_5.jpeg"
+      "../assets/images/packages/sunset_cruise_1.jpeg",
+      "../assets/images/packages/sunset_cruise_2.jpeg",
+      "../assets/images/packages/sunset_cruise_3.jpeg",
+      "../assets/images/packages/sunset_cruise_5.jpeg"
     ],
     "importantInfo": [
       "Saídas disponíveis de quarta a domingo.",
@@ -613,8 +613,8 @@
     "badge": "Premium",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/sunset_cruise_4.jpeg",
-    "heroImage": "assets/images/packages/sunset_cruise_3.jpeg",
+    "image": "../assets/images/packages/sunset-dinner/sunset-dinner-1.jpg",
+    "heroImage": "../assets/images/packages/sunset-dinner/sunset-dinner-1.jpg",
     "location": "Baía de Maputo",
     "destinations": "Maputo Bay",
     "duration": "4 horas",
@@ -685,10 +685,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/sunset_cruise_3.jpeg",
-      "assets/images/packages/sunset_cruise_4.jpeg",
-      "assets/images/packages/sunset_cruise_5.jpeg",
-      "assets/images/packages/sunset_cruise_6.jpeg"
+      "../assets/images/packages/sunset-dinner/sunset-dinner-1.jpg",
+      "../assets/images/packages/sunset-dinner/sunset-dinner-2.jpg",
+      "../assets/images/packages/sunset-dinner/sunset-dinner-3.jpg",
+      "../assets/images/packages/sunset-dinner/sunset-dinner-4.jpg"
     ],
     "importantInfo": [
       "Apenas para adultos (maiores de 16 anos).",
@@ -707,8 +707,8 @@
     "badge": "Animado",
     "badgeClass": "",
     "stars": 4,
-    "image": "assets/images/packages/sunset_cruise_6.jpeg",
-    "heroImage": "assets/images/packages/sunset_cruise_5.jpeg",
+    "image": "../assets/images/packages/sunset-xefina/sunset-xefina-1.jpg",
+    "heroImage": "../assets/images/packages/sunset-xefina/sunset-xefina-1.jpg",
     "location": "Ilha da Xefina",
     "destinations": "Ilha da Xefina",
     "duration": "5 horas",
@@ -773,10 +773,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/sunset_cruise_5.jpeg",
-      "assets/images/packages/sunset_cruise_6.jpeg",
-      "assets/images/packages/sunset_cruise_2.jpeg",
-      "assets/images/packages/sunset_cruise_3.jpeg"
+      "../assets/images/packages/sunset-xefina/sunset-xefina-1.jpg",
+      "../assets/images/packages/sunset-xefina/sunset-xefina-2.jpg",
+      "../assets/images/packages/sunset-xefina/sunset-xefina-3.jpg",
+      "../assets/images/packages/sunset-xefina/sunset-xefina-4.jpg"
     ],
     "importantInfo": [
       "Disponível fins de semana e feriados.",
@@ -898,8 +898,8 @@
     "badge": "Perto de Maputo",
     "badgeClass": "",
     "stars": 4,
-    "image": "assets/images/packages/beach_day_2.jpg",
-    "heroImage": "assets/images/packages/beach_day_3.jpg",
+    "image": "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-1.jpeg",
+    "heroImage": "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-2.jpeg",
     "location": "Macaneta",
     "destinations": "Macaneta",
     "duration": "Dia inteiro",
@@ -975,9 +975,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/beach_day_2.jpg",
-      "assets/images/packages/beach_day_3.jpg",
-      "assets/images/packages/beach_day_4.jpg"
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-1.jpeg",
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-2.jpeg",
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-3.jpeg",
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-4.jpeg"
     ],
     "importantInfo": [
       "Disponível todos os dias da semana.",
@@ -1092,7 +1093,7 @@
     "badge": "Aventura",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/observacao_baleias_1.jpg",
+    "image": "assets/images/packages/whale-watching_1.jpg",
     "heroImage": "assets/images/packages/beach_day_2.jpg",
     "location": "Tofo, Inhambane",
     "destinations": "Tofo Beach",
@@ -1293,8 +1294,8 @@
     "badge": "Imperdível",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "assets/images/packages/safari_kgp_1.jpg",
-    "heroImage": "assets/images/packages/safari_kgp_2.jpg",
+    "image": "../assets/images/packages/safari/safari-kruger-1.jpg",
+    "heroImage": "../assets/images/packages/safari/safari-kruger-2.jpg",
     "location": "Kruger, África do Sul",
     "destinations": "Kruger National Park",
     "duration": "3 dias / 2 noites",
@@ -1371,11 +1372,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/safari_kgp_1.jpg",
-      "assets/images/packages/safari_kgp_2.jpg",
-      "assets/images/packages/safari_kgp_3.jpg",
-      "assets/images/packages/safari_kgp_4.jpg",
-      "assets/images/packages/safari_kgp.jpeg"
+      "../assets/images/packages/safari/safari-kruger-1.jpg",
+      "../assets/images/packages/safari/safari-kruger-2.jpg",
+      "../assets/images/packages/safari/safari-kruger-3.jpg",
+      "../assets/images/packages/safari/safari-kruger-4.jpg"
     ],
     "importantInfo": [
       "Passaporte válido obrigatório para a África do Sul.",
@@ -1394,8 +1394,8 @@
     "badge": "Local",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/maputo_national_park.jpg",
-    "heroImage": "assets/images/packages/safari_kgp.jpeg",
+    "image": "../assets/images/packages/safari/safari-maputo-park-1.jpeg",
+    "heroImage": "../assets/images/packages/safari/safari-maputo-park-2.jpeg",
     "location": "Reserva de Maputo",
     "destinations": "Reserva Especial de Maputo",
     "duration": "Dia inteiro",
@@ -1472,9 +1472,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/maputo_national_park.jpg",
-      "assets/images/packages/safari_kgp.jpeg",
-      "assets/images/packages/safari_kgp_1.jpg"
+      "../assets/images/packages/safari/safari-maputo-park-1.jpeg",
+      "../assets/images/packages/safari/safari-maputo-park-2.jpeg",
+      "../assets/images/packages/safari/safari-maputo-park-3.jpeg",
+      "../assets/images/packages/safari/safari-maputo-park-4.jpeg"
     ],
     "importantInfo": [
       "Roupas neutras e confortáveis recomendadas.",
@@ -1492,8 +1493,8 @@
     "badge": "Único",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/eswatini_1.jpg",
-    "heroImage": "assets/images/packages/eswatini_2.jpg",
+    "image": "../assets/images/packages/safari/safari-eswatini-1.jpeg",
+    "heroImage": "../assets/images/packages/safari/safari-eswatini-3.jpeg",
     "location": "Eswatini (Suazilândia)",
     "destinations": "Eswatini",
     "duration": "2 dias / 1 noite",
@@ -1574,10 +1575,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/eswatini_1.jpg",
-      "assets/images/packages/eswatini_2.jpg",
-      "assets/images/packages/eswatini_3.jpg",
-      "assets/images/packages/eswatini_4.jpg"
+      "../assets/images/packages/safari/safari-eswatini-1.jpeg",
+      "../assets/images/packages/safari/safari-eswatini-2.jpeg",
+      "../assets/images/packages/safari/safari-eswatini-3.jpeg",
+      "../assets/images/packages/safari/safari-eswatini-4.jpeg"
     ],
     "importantInfo": [
       "Passaporte válido obrigatório para Eswatini.",
@@ -1595,8 +1596,8 @@
     "badge": "Sazonal",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/observacao_baleias_2.jpg",
-    "heroImage": "assets/images/packages/observacao_baleias_1.jpg",
+    "image": "../assets/images/packages/whale-watching/observacao_baleias_1.jpg",
+    "heroImage": "../assets/images/packages/whale-watching/observacao_baleias_4.jpg",
     "location": "Baía de Maputo",
     "destinations": "Baía de Maputo",
     "duration": "Meio dia (4 horas)",
@@ -1661,10 +1662,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/observacao_baleias_1.jpg",
-      "assets/images/packages/observacao_baleias_2.jpg",
-      "assets/images/packages/observacao_baleias_3.jpg",
-      "assets/images/packages/observacao_baleias_4.jpg"
+      "../assets/images/packages/whale-watching/observacao_baleias_1.jpg",
+      "../assets/images/packages/whale-watching/observacao_baleias_2.jpg",
+      "../assets/images/packages/whale-watching/observacao_baleias_3.jpg",
+      "../assets/images/packages/whale-watching/observacao_baleias_4.jpg"
     ],
     "importantInfo": [
       "Apenas disponível de Junho a Novembro.",
@@ -1683,8 +1684,8 @@
     "badge": "Adrenalina",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/sunset_cruise_1.jpeg",
-    "heroImage": "assets/images/packages/sunset_cruise_2.jpeg",
+    "image": "../assets/images/packages/fishing/deep-sea-fishing-1.jpg",
+    "heroImage": "../assets/images/packages/fishing/deep-sea-fishing-2.jpeg",
     "location": "Baía de Maputo",
     "destinations": "Oceano Índico",
     "duration": "Dia inteiro (8 horas)",
@@ -1759,9 +1760,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/sunset_cruise_1.jpeg",
-      "assets/images/packages/sunset_cruise_2.jpeg",
-      "assets/images/packages/beach_day_1.jpg"
+      "../assets/images/packages/fishing/deep-sea-fishing-1.jpg",
+      "../assets/images/packages/fishing/deep-sea-fishing-2.jpeg",
+      "../assets/images/packages/fishing/deep-sea-fishing-3.jpg",
+      "../assets/images/packages/fishing/deep-sea-fishing-4.jpg"
     ],
     "importantInfo": [
       "Preço é por barco — até 6 pessoas.",
@@ -1780,8 +1782,8 @@
     "badge": "Flexível",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/sunset_cruise_3.jpeg",
-    "heroImage": "assets/images/packages/sunset_cruise_4.jpeg",
+    "image": "../assets/images/packages/private-rental/private-rental-1.jpg",
+    "heroImage": "../assets/images/packages/private-rental/private-rental-2.jpg",
     "location": "Maputo",
     "destinations": "À escolha",
     "duration": "Dia completo",
@@ -1841,9 +1843,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/sunset_cruise_3.jpeg",
-      "assets/images/packages/sunset_cruise_4.jpeg",
-      "assets/images/packages/sunset_cruise_1.jpeg"
+      "../assets/images/packages/private-rental/private-rental-1.jpg",
+      "../assets/images/packages/private-rental/private-rental-2.jpg",
+      "../assets/images/packages/private-rental/private-rental-3.jpg",
+      "../assets/images/packages/private-rental/private-rental-4.jpg"
     ],
     "importantInfo": [
       "Reserva mínima 48h antes.",
@@ -1857,13 +1860,13 @@
     "id": "maputo-city-tour",
     "slug": "maputo-city-tour",
     "category": "city-tour",
-    "name": "Maputo City Tour Histórico",
+    "name": "Maputo City Tour",
     "subtitle": "História, arquitectura e cultura da vibrante capital moçambicana",
     "badge": "Essencial",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/IMG-20221213-WA0010.jpg",
-    "heroImage": "assets/images/packages/package_1.jpg",
+    "image": "../assets/images/packages/maputo-tour/maputo-tour-3.jpeg",
+    "heroImage": "../assets/images/packages/maputo-tour/maputo-tour-2.jpeg",
     "location": "Maputo",
     "destinations": "Maputo",
     "duration": "Meio dia (4 horas)",
@@ -1940,103 +1943,16 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/IMG-20221213-WA0010.jpg",
-      "assets/images/packages/package_1.jpg"
+      "../assets/images/packages/maputo-tour/maputo-tour-1.jpeg",
+      "../assets/images/packages/maputo-tour/maputo-tour-2.jpeg",
+      "../assets/images/packages/maputo-tour/maputo-tour-3.jpeg",
+      "../assets/images/packages/maputo-tour/maputo-tour-4.jpeg"
     ],
     "importantInfo": [
       "Tour disponível todos os dias excepto segunda-feira (museus fechados).",
       "Vestuário confortável e sapatos de caminhar recomendados.",
       "O Museu de História Natural pode estar fechado ocasionalmente para obras.",
       "Ponto de encontro: Hotel do cliente ou local combinado."
-    ]
-  },
-  {
-    "id": "maputo-food-tour",
-    "slug": "maputo-food-tour",
-    "category": "city-tour",
-    "name": "Maputo Food & Market Tour",
-    "subtitle": "Sabores, aromas e mercados da culinária moçambicana",
-    "badge": "Gastronómico",
-    "badgeClass": "",
-    "stars": 5,
-    "image": "assets/images/packages/IMG-20240717-WA0059.jpg",
-    "heroImage": "assets/images/packages/IMG-20221213-WA0010.jpg",
-    "location": "Maputo",
-    "destinations": "Maputo",
-    "duration": "3 horas",
-    "price": "1.800 MZN",
-    "price_from": 1800,
-    "priceOld": null,
-    "priceLabel": "por adulto",
-    "price_child": 1200,
-    "priceChild": "1.200 MZN",
-    "priceChildLabel": "Crianças (4–12 anos)",
-    "currency": "MZN",
-    "description": "Uma viagem pelos sabores de Moçambique — mercados coloridos, petiscos de rua, chá de especiarias e os melhores restaurantes locais de Maputo.",
-    "detailText": [
-      "A culinária moçambicana é uma fusão única de sabores africanos, portugueses, árabes e indianos. O nosso Food Tour leva-o pelos mercados mais animados de Maputo e pelos melhores pontos de street food da cidade.",
-      "Prove matapa (folhas de mandioca com amendoim), carapau frito no mercado, cajú fresco, chá de especiarias no bairro indiano e muito mais. O guia explica a história e a influência cultural por trás de cada prato.",
-      "Uma experiência gastronómica que lhe vai revelar um lado de Maputo que os turistas raramente conhecem."
-    ],
-    "includes": [
-      "Guia gastronómico local",
-      "Degustações em 5 a 7 paragens",
-      "Água e bebidas durante o tour",
-      "Bilhete de acesso ao mercado central"
-    ],
-    "excludes": [
-      "Refeição completa adicional",
-      "Compras e lembranças",
-      "Gorjetas"
-    ],
-    "highlights": [
-      "Degustações em 5 a 7 pontos de street food e mercados",
-      "Matapa, carapau frito, cajú fresco e especiarias",
-      "Bairro Indiano de Maputo — especiarias e chás",
-      "Mercado Municipal Central com produtos locais",
-      "Guia com profundo conhecimento da culinária moçambicana"
-    ],
-    "itinerary": [
-      {
-        "time": "10h00",
-        "title": "Mercado Municipal Central",
-        "body": "Início no Mercado Central — peixe fresco, especiarias, frutas exóticas e produtos locais.",
-        "checklist": []
-      },
-      {
-        "time": "10h45",
-        "title": "Street Food — Carapau & Matapa",
-        "body": "Paragem em tasca local para provar carapau frito, matapa e pão artesanal.",
-        "checklist": []
-      },
-      {
-        "time": "11h30",
-        "title": "Bairro Indiano — Especiarias & Chás",
-        "body": "Visita ao bairro indiano com degustação de chás de especiarias, doces e snacks indianos.",
-        "checklist": []
-      },
-      {
-        "time": "12h15",
-        "title": "Cajú & Frutas Tropicais",
-        "body": "Paragem para cajú fresco torrado na rua e frutas tropicais da estação.",
-        "checklist": []
-      },
-      {
-        "time": "13h00",
-        "title": "Fim do Tour",
-        "body": "Fim do Food Tour com mapa de recomendações de restaurantes locais.",
-        "checklist": []
-      }
-    ],
-    "gallery": [
-      "assets/images/packages/IMG-20240717-WA0059.jpg",
-      "assets/images/packages/IMG-20221213-WA0010.jpg"
-    ],
-    "importantInfo": [
-      "Tour a pé — calçado confortável recomendado.",
-      "Não recomendado para pessoas com alergias alimentares severas (informar antecipadamente).",
-      "Disponível manhãs (10h00) ou tardes (16h00).",
-      "Ponto de encontro: Entrada do Mercado Municipal Central."
     ]
   }
 ]

@@ -15,8 +15,13 @@
   var WA_BASE  = 'https://wa.me/' + WA_PHONE + '?text=';
 
   /* ── Path resolution ────────────────────────────────────── */
-  var _isInPages = window.location.pathname.includes('/pages/');
-  var _base = _isInPages ? '../' : '';
+  var _parts = window.location.pathname.split('/').filter(Boolean);
+  if (_parts.length > 0 && _parts[_parts.length - 1].indexOf('.') > -1) { _parts.pop(); }
+  var _base = _parts.length > 0 ? _parts.map(function () { return '..'; }).join('/') + '/' : '';
+
+  /* ── Language detection ─────────────────────────────────── */
+  var _lang = (window.location.pathname.indexOf('/en/') !== -1 ||
+               window.location.pathname.startsWith('/en')) ? 'en' : 'pt';
 
   /* ── State ──────────────────────────────────────────────── */
   var MCA = { tours: [], accommodation: [] };
@@ -25,6 +30,19 @@
 
   /* ── Public API ─────────────────────────────────────────── */
   window.MCA = MCA;
+  window.MCA_LANG = _lang;
+  window.MCA_BASE = _base;
+
+  /* ── Image path resolver ─────────────────────────────────
+     JSON image paths are stored as '../assets/...' (depth-1).
+     This normalises them to work at any depth using _base.
+  ───────────────────────────────────────────────────────── */
+  function resolveImg(src) {
+    if (!src) return src;
+    if (src.slice(0, 3) === '../') return _base + src.slice(3);
+    return src;
+  }
+  window.resolveImg = resolveImg;
 
   window.mcaReady = function (cb) {
     if (_ready) { cb(MCA); return; }
@@ -54,14 +72,35 @@
     window.PACKAGES_DATA.accommodation = MCA.accommodation;
     _queue.forEach(function (cb) { cb(MCA); });
     _queue = [];
+    // Signal that cards are in the DOM
+    document.dispatchEvent(new CustomEvent('mcaCardsReady'));
   }
 
-  Promise.all([
+  function mergeEn(items, enMap) {
+    return items.map(function (item) {
+      var tr = enMap[item.id] || enMap[item.slug];
+      return tr ? Object.assign({}, item, tr) : item;
+    });
+  }
+
+  var fetches = [
     fetch(_base + 'data/tours.json').then(function (r) { return r.json(); }),
     fetch(_base + 'data/accommodations.json').then(function (r) { return r.json(); })
-  ]).then(function (results) {
-    MCA.tours         = results[0] || [];
-    MCA.accommodation = results[1] || [];
+  ];
+  if (_lang === 'en') {
+    fetches.push(fetch(_base + 'data/en.json').then(function (r) { return r.json(); }));
+  }
+
+  Promise.all(fetches).then(function (results) {
+    var tours  = results[0] || [];
+    var accom  = results[1] || [];
+    var enData = results[2] || null;
+    if (_lang === 'en' && enData) {
+      tours = mergeEn(tours, enData);
+      accom = mergeEn(accom, enData);
+    }
+    MCA.tours         = tours;
+    MCA.accommodation = accom;
     flush();
   }).catch(function (err) {
     console.error('[MCA] Data load failed:', err);
@@ -84,22 +123,22 @@
   window.makeTourCard = function (pkg, animClass) {
     animClass = animClass || 'reveal-up';
     var slug = pkg.slug || pkg.id;
-    var href = (_isInPages ? 'package.html' : 'pages/package.html') + '?id=' + slug;
+    var href = (_parts.length > 0 && _parts[_parts.length - 1] === 'pages' ? 'package.html' : 'pages/package.html') + '?id=' + slug;
 
     var col = document.createElement('div');
     col.className = 'col-md-4 reveal ' + animClass;
     col.innerHTML =
       '<div class="tour-card h-100">' +
         '<div class="tour-card-img-wrap">' +
-          '<img src="' + pkg.image + '" alt="' + pkg.name + '" loading="lazy">' +
+          '<img src="' + resolveImg(pkg.image) + '" alt="' + pkg.name + '" loading="lazy">' +
           (pkg.badge ? '<div class="tour-card-badge">' + pkg.badge + '</div>' : '') +
         '</div>' +
         '<div class="tour-card-body">' +
-          '<div class="tour-card-stars">' + stars(pkg.stars) + '</div>' +
+          '<div class="tour-card-stars" data-pkg-id="' + slug + '"><span class="stars-text">' + stars(pkg.stars) + '</span><span class="review-count">(' + (pkg.reviewCount || 0) + ')</span></div>' +
           '<h5 class="tour-card-title">' + pkg.name + '</h5>' +
           '<div class="tour-card-meta">' +
-            '<span><i class="bi bi-geo-alt-fill"></i> ' + (pkg.location || '') + '</span>' +
-            (pkg.duration ? '<span><i class="bi bi-clock-fill"></i> ' + pkg.duration + '</span>' : '') +
+            '<span><i class="bx bxs-map"></i> ' + (pkg.location || '') + '</span>' +
+            (pkg.duration ? '<span><i class="bx bxs-time"></i> ' + pkg.duration + '</span>' : '') +
           '</div>' +
           '<p class="tour-card-desc">' + (pkg.description || '') + '</p>' +
           '<div class="tour-card-footer">' +
@@ -108,7 +147,7 @@
               '<span class="price-amount">' + (pkg.price || '') + '</span>' +
               (pkg.priceOld ? '<span class="price-old">' + pkg.priceOld + '</span>' : '') +
             '</div>' +
-            '<a href="' + href + '" class="btn-reserve">Reservar <i class="bi bi-arrow-right-circle-fill"></i></a>' +
+            '<a href="' + href + '" class="btn-reserve">' + (_lang === 'en' ? 'Book Now' : 'Reservar') + ' <i class="bx bxs-right-arrow-circle"></i></a>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -132,10 +171,10 @@
 
     /* Hero */
     var heroImg = document.getElementById('pkg-hero-img');
-    if (heroImg) { heroImg.src = (pkg.images && pkg.images[0]) || pkg.heroImage || pkg.image; heroImg.alt = pkg.name; }
+    if (heroImg) { heroImg.src = resolveImg((pkg.images && pkg.images[0]) || pkg.heroImage || pkg.image); heroImg.alt = pkg.name; }
 
     var badge = document.getElementById('pkg-badge');
-    if (badge) badge.innerHTML = '<span class="pkg-hero-badge-pill"><i class="bi bi-' + (isAccom ? 'house-heart-fill' : 'compass-fill') + '"></i> ' + (isAccom ? 'Alojamento' : 'Tour') + '</span>';
+    if (badge) badge.innerHTML = '<span class="pkg-hero-badge-pill"><i class="bx ' + (isAccom ? 'bxs-home-heart' : 'bxs-compass') + '"></i> ' + (isAccom ? (_lang === 'en' ? 'Accommodation' : 'Alojamento') : 'Tour') + '</span>';
 
     var titleEl = document.getElementById('pkg-title');
     if (titleEl) titleEl.textContent = pkg.name;
@@ -143,7 +182,7 @@
     if (subEl) subEl.textContent = pkg.subtitle || '';
 
     var catEl = document.getElementById('breadcrumb-cat');
-    if (catEl) catEl.innerHTML = '<a href="' + (isAccom ? 'accommodations.html' : 'tours.html') + '">' + (isAccom ? 'Alojamentos' : 'Tours') + '</a>';
+    if (catEl) catEl.innerHTML = '<a href="' + (isAccom ? 'accommodations.html' : 'tours.html') + '">' + (isAccom ? (_lang === 'en' ? 'Accommodations' : 'Alojamentos') : 'Tours') + '</a>';
 
     var nameEl = document.getElementById('breadcrumb-name');
     if (nameEl) nameEl.textContent = pkg.name;
@@ -152,13 +191,13 @@
     var metaEl = document.getElementById('pkg-hero-meta');
     if (metaEl) {
       var items = [
-        { icon: 'geo-alt-fill', text: pkg.location },
-        { icon: 'clock-fill',   text: pkg.duration },
-        { icon: 'people-fill',  text: 'Máx. ' + (pkg.maxPeople || 20) + ' pessoas' }
+        { icon: 'bx bxs-map',    text: pkg.location },
+        { icon: 'bx bxs-time',   text: pkg.duration },
+        { icon: 'bx bxs-group',  text: (_lang === 'en' ? 'Max. ' : 'Máx. ') + (pkg.maxPeople || 20) + (_lang === 'en' ? ' people' : ' pessoas') }
       ];
-      if (pkg.destinations) items.splice(2, 0, { icon: 'map-fill', text: pkg.destinations });
+      if (pkg.destinations) items.splice(2, 0, { icon: 'bx bxs-map-alt', text: pkg.destinations });
       metaEl.innerHTML = items.map(function (m) {
-        return '<div class="pkg-hero-meta-item"><i class="bi bi-' + m.icon + '"></i><span>' + m.text + '</span></div>';
+        return '<div class="pkg-hero-meta-item"><i class="' + m.icon + '"></i><span>' + m.text + '</span></div>';
       }).join('');
     }
 
@@ -175,9 +214,9 @@
             (pkg.priceOld ? '<span class="pkg-price-old">' + pkg.priceOld + '</span>' : '') +
             '<span class="pkg-price-label"> / ' + (pkg.priceLabel || 'por pessoa') + '</span>' +
           '</div>' +
-          '<div class="pkg-stars">' + stars(pkg.stars) + '</div>' +
+          '<div class="pkg-stars" data-pkg-id="' + slug + '">' + stars(pkg.stars) + '</div>' +
         '</div>' +
-        (pkg.cancelPolicy ? '<div class="pkg-cancel-note"><i class="bi bi-shield-check-fill"></i> Cancelamento gratuito ' + pkg.cancelPolicy + '</div>' : '');
+        (pkg.cancelPolicy ? '<div class="pkg-cancel-note"><i class="bx bxs-shield"></i> ' + (_lang === 'en' ? 'Free cancellation ' : 'Cancelamento gratuito ') + pkg.cancelPolicy + '</div>' : '');
     }
 
     /* Description */
@@ -200,8 +239,8 @@
         if (pricesEl) {
           pricesEl.innerHTML =
             '<ul class="pkg-price-list">' +
-              '<li><i class="bi bi-person-fill"></i> <strong>Adulto:</strong> ' + pkg.price + '</li>' +
-              '<li><i class="bi bi-person-hearts"></i> <strong>' + (pkg.priceChildLabel || 'Crianças') + ':</strong> ' + pkg.priceChild + '</li>' +
+              '<li><i class="bx bxs-user"></i> <strong>Adulto:</strong> ' + pkg.price + '</li>' +
+              '<li><i class="bx bxs-user-plus"></i> <strong>' + (pkg.priceChildLabel || 'Crianças') + ':</strong> ' + pkg.priceChild + '</li>' +
             '</ul>';
         }
       }
@@ -211,8 +250,8 @@
     var incExc = document.getElementById('pkg-inc-exc');
     if (incExc) {
       var html = '';
-      (pkg.includes || []).forEach(function (item) { html += '<div class="pkg-inc-item"><i class="bi bi-check-lg"></i><span>' + item + '</span></div>'; });
-      (pkg.excludes || []).forEach(function (item) { html += '<div class="pkg-exc-item"><i class="bi bi-x-lg"></i><span>' + item + '</span></div>'; });
+      (pkg.includes || []).forEach(function (item) { html += '<div class="pkg-inc-item"><i class="bx bx-check"></i><span>' + item + '</span></div>'; });
+      (pkg.excludes || []).forEach(function (item) { html += '<div class="pkg-exc-item"><i class="bx bx-x"></i><span>' + item + '</span></div>'; });
       incExc.innerHTML = html;
     }
 
@@ -228,7 +267,7 @@
             menuHtml += '<div class="menu-block"><div class="menu-block-title">' + block.title + '</div><div class="menu-categories-grid">';
             (block.categories || []).forEach(function (catItem) {
               menuHtml += '<div><div class="menu-category-name">' + catItem.name + '</div><ul class="menu-items">';
-              (catItem.items || []).forEach(function (item) { menuHtml += '<li><i class="bi bi-circle-fill"></i> ' + item + '</li>'; });
+              (catItem.items || []).forEach(function (item) { menuHtml += '<li><i class="bx bxs-circle"></i> ' + item + '</li>'; });
               menuHtml += '</ul></div>';
             });
             menuHtml += '</div></div>';
@@ -242,7 +281,7 @@
     var hlEl = document.getElementById('pkg-highlights');
     if (hlEl) {
       (pkg.highlights || []).forEach(function (hl) {
-        hlEl.innerHTML += '<li><i class="bi bi-patch-check-fill"></i> ' + hl + '</li>';
+        hlEl.innerHTML += '<li><i class="bx bxs-badge-check"></i> ' + hl + '</li>';
       });
     }
 
@@ -256,11 +295,11 @@
             '<div class="iti-header ' + (isFirst ? 'open' : '') + '" onclick="toggleItinerary(this)">' +
               '<div class="iti-badge">' + step.time + '</div>' +
               '<div class="iti-title">' + step.title + '</div>' +
-              '<div class="iti-icon"><i class="bi bi-chevron-' + (isFirst ? 'up' : 'down') + '"></i></div>' +
+              '<div class="iti-icon"><i class="bx bx-chevron-' + (isFirst ? 'up' : 'down') + '"></i></div>' +
             '</div>' +
             '<div class="iti-body' + (isFirst ? ' show' : '') + '">' +
               '<p>' + step.body + '</p>' +
-              (step.checklist && step.checklist.length ? '<ul class="iti-checklist">' + step.checklist.map(function (c) { return '<li><i class="bi bi-check2"></i> ' + c + '</li>'; }).join('') + '</ul>' : '') +
+              (step.checklist && step.checklist.length ? '<ul class="iti-checklist">' + step.checklist.map(function (c) { return '<li><i class="bx bx-check"></i> ' + c + '</li>'; }).join('') + '</ul>' : '') +
             '</div>' +
           '</div>';
       });
@@ -274,7 +313,7 @@
         var impEl = document.getElementById('pkg-important');
         if (impEl) {
           pkg.importantInfo.forEach(function (info) {
-            impEl.innerHTML += '<li><i class="bi bi-circle-fill"></i> ' + info + '</li>';
+            impEl.innerHTML += '<li><i class="bx bxs-circle"></i> ' + info + '</li>';
           });
         }
       }
@@ -292,12 +331,12 @@
         var rSlug = rp.slug || rp.id;
         relEl.innerHTML +=
           '<a href="package.html?id=' + rSlug + '" class="pkg-related-item">' +
-            '<img src="' + rp.image + '" alt="' + rp.name + '" loading="lazy">' +
+            '<img src="' + resolveImg(rp.image) + '" alt="' + rp.name + '" loading="lazy">' +
             '<div class="pkg-related-info">' +
               '<div class="pkg-related-name">' + rp.name + '</div>' +
               '<div class="pkg-related-price">' + (rp.price || '') + '</div>' +
             '</div>' +
-            '<i class="bi bi-arrow-right-circle"></i>' +
+            '<i class="bx bx-right-arrow-circle"></i>' +
           '</a>';
       });
     }
@@ -312,15 +351,15 @@
     var src = pkg.images || pkg.gallery;
     if (!stripEl || !src || !src.length) return;
 
-    var gallery = src;
+    var gallery = src.map(resolveImg);
     var current = 0;
 
     stripEl.innerHTML =
       '<div class="pkg-gallery-main" id="pkgMainWrap">' +
         '<img id="pkg-gallery-main-img" src="' + gallery[0] + '" alt="' + pkg.name + '" loading="eager">' +
-        '<button class="pkg-gal-btn pkg-gal-prev" id="pkgGalPrev" aria-label="Imagem anterior"><i class="bi bi-chevron-left"></i></button>' +
-        '<button class="pkg-gal-btn pkg-gal-next" id="pkgGalNext" aria-label="Próxima imagem"><i class="bi bi-chevron-right"></i></button>' +
-        '<div class="pkg-gallery-count"><i class="bi bi-images"></i> ' + gallery.length + ' fotos</div>' +
+        '<button class="pkg-gal-btn pkg-gal-prev" id="pkgGalPrev" aria-label="Imagem anterior"><i class="bx bx-chevron-left"></i></button>' +
+        '<button class="pkg-gal-btn pkg-gal-next" id="pkgGalNext" aria-label="Próxima imagem"><i class="bx bx-chevron-right"></i></button>' +
+        '<div class="pkg-gallery-count"><i class="bx bx-images"></i> ' + gallery.length + ' fotos</div>' +
       '</div>' +
       '<div class="pkg-thumb-grid" id="pkgThumbGrid">' +
         gallery.slice(0, 4).map(function (src, i) {
@@ -482,15 +521,23 @@
   };
 
   function updateBookingTotal() {
-    var adultTotal = _adults * _priceAdult;
-    var childTotal = _children * _priceChild;
-    var total      = adultTotal + childTotal;
+    var adultTotal  = _adults * _priceAdult;
+    var childTotal  = _children * _priceChild;
+    var extrasTotal = window._mcaExtrasTotal || 0;
+    var total       = adultTotal + childTotal + extrasTotal;
 
-    var elAd = document.getElementById('bps-adults');   if (elAd) elAd.textContent = _adults;
+    var elAd = document.getElementById('bps-adults');      if (elAd) elAd.textContent = _adults;
     var elAT = document.getElementById('bps-adult-total'); if (elAT) elAT.textContent = fmt(adultTotal);
-    var elCh = document.getElementById('bps-children'); if (elCh) elCh.textContent = _children;
+    var elCh = document.getElementById('bps-children');    if (elCh) elCh.textContent = _children;
     var elCT = document.getElementById('bps-child-total'); if (elCT) elCT.textContent = fmt(childTotal);
-    var elTo = document.getElementById('bps-total');   if (elTo) elTo.textContent = fmt(total);
+
+    /* Extras row */
+    var extRow   = document.getElementById('bps-extras-row');
+    var extTotEl = document.getElementById('bps-extras-total');
+    if (extRow)   extRow.style.display = extrasTotal > 0 ? '' : 'none';
+    if (extTotEl) extTotEl.textContent  = '+' + fmt(extrasTotal);
+
+    var elTo = document.getElementById('bps-total');       if (elTo) elTo.textContent = fmt(total);
 
     /* Update mobile bar price */
     var mobilePrice = document.getElementById('mob-book-price');
@@ -512,22 +559,37 @@
     var nameVal  = (document.getElementById('wa-name')  || {}).value || '';
     var phoneVal = (document.getElementById('wa-phone') || {}).value || '';
 
-    var adultTotal = _adults * _priceAdult;
-    var childTotal = _children * _priceChild;
-    var total = adultTotal + childTotal;
+    var adultTotal    = _adults * _priceAdult;
+    var childTotal    = _children * _priceChild;
+    var extrasTotal   = window._mcaExtrasTotal   || 0;
+    var extrasSummary = window._mcaExtrasSummary || '';
+    var total         = adultTotal + childTotal + extrasTotal;
 
-    var msg =
-      'Olá Moz Camp Adventures 👋\n\n' +
-      'Gostaria de reservar o seguinte tour:\n\n' +
-      'Tour: ' + _pkgNameGlobal + '\n' +
-      (nameVal  ? 'Nome: '     + nameVal  + '\n' : '') +
-      (phoneVal ? 'Telefone: ' + phoneVal + '\n' : '') +
-      (dateFmt  ? 'Data: '     + dateFmt  + '\n' : '') +
-      '\nParticipantes:\n' +
-      'Adultos: ' + _adults + ' × ' + fmt(_priceAdult) + ' = ' + fmt(adultTotal) + '\n' +
-      (_priceChild ? 'Crianças: ' + _children + ' × ' + fmt(_priceChild) + ' = ' + fmt(childTotal) + '\n' : '') +
-      '\nTotal estimado: ' + fmt(total) + '\n\n' +
-      'Por favor, confirme a disponibilidade.';
+    var msg = _lang === 'en'
+      ? 'Hello Moz Camp Adventures 👋\n\n' +
+        'I would like to book the following:\n\n' +
+        'Package: ' + _pkgNameGlobal + '\n' +
+        (nameVal  ? 'Name: '  + nameVal  + '\n' : '') +
+        (phoneVal ? 'Phone: ' + phoneVal + '\n' : '') +
+        (dateFmt  ? 'Date: '  + dateFmt  + '\n' : '') +
+        '\nParticipants:\n' +
+        'Adults: '   + _adults   + ' × ' + fmt(_priceAdult) + ' = ' + fmt(adultTotal) + '\n' +
+        (_priceChild ? 'Children: ' + _children + ' × ' + fmt(_priceChild) + ' = ' + fmt(childTotal) + '\n' : '') +
+        (extrasTotal > 0 ? '\nCustomisations:\n' + extrasSummary + '\n' : '') +
+        '\nEstimated total: ' + fmt(total) + '\n\n' +
+        'Please confirm availability.'
+      : 'Olá Moz Camp Adventures 👋\n\n' +
+        'Gostaria de reservar o seguinte tour:\n\n' +
+        'Tour: ' + _pkgNameGlobal + '\n' +
+        (nameVal  ? 'Nome: '     + nameVal  + '\n' : '') +
+        (phoneVal ? 'Telefone: ' + phoneVal + '\n' : '') +
+        (dateFmt  ? 'Data: '     + dateFmt  + '\n' : '') +
+        '\nParticipantes:\n' +
+        'Adultos: ' + _adults + ' × ' + fmt(_priceAdult) + ' = ' + fmt(adultTotal) + '\n' +
+        (_priceChild ? 'Crianças: ' + _children + ' × ' + fmt(_priceChild) + ' = ' + fmt(childTotal) + '\n' : '') +
+        (extrasTotal > 0 ? '\nPersonalizações:\n' + extrasSummary + '\n' : '') +
+        '\nTotal estimado: ' + fmt(total) + '\n\n' +
+        'Por favor, confirme a disponibilidade.';
 
     var url = WA_BASE + encodeURIComponent(msg);
 
@@ -545,13 +607,13 @@
     document.querySelectorAll('.iti-header').forEach(function (h) {
       h.classList.remove('open');
       h.nextElementSibling.classList.remove('show');
-      h.querySelector('.iti-icon i').className = 'bi bi-chevron-down';
+      h.querySelector('.iti-icon i').className = 'bx bx-chevron-down';
     });
 
     if (!isOpen) {
       header.classList.add('open');
       body.classList.add('show');
-      header.querySelector('.iti-icon i').className = 'bi bi-chevron-up';
+      header.querySelector('.iti-icon i').className = 'bx bx-chevron-up';
     }
   };
 

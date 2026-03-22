@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Package | Moz Camp Adventures</title>
+  <meta name="description" id="page-desc" content="Discover our travel packages in Mozambique.">
+  <meta name="author" content="Moz Camp Adventures">
+  <meta name="robots" content="index, follow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/pages/package.css">
+</head>
+<body>
+
+<div id="preloader"><div id="lottie-loader"></div></div>
+
+<!-- NAVBAR -->
+<div id="navbar-placeholder"></div>
+
+<!-- PACKAGE HERO -->
+<div class="pkg-hero" id="pkg-hero">
+  <img id="pkg-hero-img" src="" alt="" class="pkg-hero-bg">
+  <div class="pkg-hero-overlay"></div>
+  <div class="pkg-hero-content">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="pkg-breadcrumb">
+        <ol class="breadcrumb mb-2">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item" id="breadcrumb-cat">Tours</li>
+          <li class="breadcrumb-item active" id="breadcrumb-name">Package</li>
+        </ol>
+      </nav>
+      <div class="pkg-hero-badge" id="pkg-badge"></div>
+      <h1 class="pkg-hero-title" id="pkg-title">Package Name</h1>
+      <p class="pkg-hero-sub" id="pkg-subtitle"></p>
+      <div class="pkg-hero-meta" id="pkg-hero-meta"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<section class="pkg-body-section">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- LEFT COLUMN: Details + Itinerary -->
+      <div class="col-lg-7">
+
+        <div class="pkg-gallery-strip" id="pkg-gallery-strip"></div>
+
+        <div class="pkg-price-block reveal reveal-up" id="pkg-price-block"></div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-prices-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-tag"></i> Prices</h3>
+          <div id="pkg-prices-detail"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bxs-info-circle"></i> About This Package</h3>
+          <div id="pkg-description"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bx-list-check"></i> Included &amp; Excluded</h3>
+          <div class="pkg-inc-exc-grid" id="pkg-inc-exc"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-menu-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-book-content"></i> Selected Menu</h3>
+          <div id="pkg-menu"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bxs-badge-check"></i> Highlights</h3>
+          <ul class="pkg-highlights-list" id="pkg-highlights"></ul>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bxs-map-alt"></i> Itinerary</h3>
+          <div class="pkg-itinerary" id="pkg-itinerary"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-important-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-error-circle"></i> Important Information</h3>
+          <ul class="pkg-important-list" id="pkg-important"></ul>
+        </div>
+
+        <!-- REVIEWS SECTION -->
+        <div class="pkg-section pkg-reviews-section reveal reveal-up">
+          <h3 class="pkg-section-title">
+            <i class="bx bxs-star"></i> Reviews
+            <span class="pkg-reviews-badge">
+              <span id="pkg-reviews-avg">—</span>
+              <span class="pkg-reviews-sep">·</span>
+              <span id="pkg-reviews-count">0</span> reviews
+            </span>
+          </h3>
+
+          <!-- Reviews list -->
+          <div id="pkg-reviews-list"></div>
+
+          <!-- Submit form -->
+          <div class="pkg-review-form-wrap">
+            <h5 class="pkg-review-form-title"><i class="bx bxs-edit me-2"></i>Leave Your Review</h5>
+
+            <!-- Success state -->
+            <div id="pkg-review-success" style="display:none;" class="pkg-review-success-msg">
+              <i class="bx bxs-check-circle"></i>
+              <div>
+                <strong>Thank you for your feedback!</strong>
+                <p>Your review will be published after moderation.</p>
+              </div>
+            </div>
+
+            <form id="pkg-review-form" novalidate>
+              <div class="pkg-review-row">
+                <div>
+                  <label class="review-form-label">Name *</label>
+                  <input type="text" id="pkg-r-name" class="review-form-control" placeholder="Your name" required maxlength="100">
+                </div>
+                <div>
+                  <label class="review-form-label">Origin <span style="opacity:.5;">(optional)</span></label>
+                  <input type="text" id="pkg-r-role" class="review-form-control" placeholder="E.g.: London, UK">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="review-form-label">Rating *</label>
+                <div class="star-picker" id="pkg-star-picker">
+                  <i class="bx bx-star" data-v="1"></i>
+                  <i class="bx bx-star" data-v="2"></i>
+                  <i class="bx bx-star" data-v="3"></i>
+                  <i class="bx bx-star" data-v="4"></i>
+                  <i class="bx bx-star" data-v="5"></i>
+                </div>
+                <input type="hidden" id="pkg-r-rating" value="0">
+              </div>
+              <div class="mb-3">
+                <label class="review-form-label">Your experience *</label>
+                <textarea id="pkg-r-text" class="review-form-control" rows="4" placeholder="Tell us about your experience with this package..." required maxlength="1000"></textarea>
+              </div>
+              <div id="pkg-review-error" class="review-form-error" style="display:none;"></div>
+              <button type="submit" id="pkg-r-submit" class="btn-cta-feedback">
+                <i class="bx bxs-send me-2"></i>Submit Review
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- CUSTOMIZE EXPERIENCE -->
+        <div class="pkg-section pkg-customize-section reveal reveal-up" id="pkg-customize-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bx-slider"></i> Customise Your Experience</h3>
+          <p class="pkg-customize-subtitle">Add options to make your trip even more special</p>
+
+          <!-- D: Experience Type (radio) -->
+          <div class="cz-group">
+            <div class="cz-group-label"><i class="bx bxs-award"></i> Experience Type</div>
+            <div class="cz-radio-row" id="cz-type-cards"></div>
+          </div>
+
+          <!-- A: Additional Destinations (checkbox) -->
+          <div class="cz-group">
+            <div class="cz-group-label"><i class="bx bxs-map"></i> Additional Destinations</div>
+            <div class="cz-cards-grid" id="cz-destination-cards"></div>
+          </div>
+
+          <!-- B: Activities (checkbox) -->
+          <div class="cz-group">
+            <div class="cz-group-label"><i class="bx bx-pulse"></i> Activities</div>
+            <div class="cz-cards-grid" id="cz-activity-cards"></div>
+          </div>
+
+          <!-- C: Additional Services (checkbox) -->
+          <div class="cz-group">
+            <div class="cz-group-label"><i class="bx bxs-plus-circle"></i> Additional Services</div>
+            <div class="cz-cards-grid" id="cz-service-cards"></div>
+          </div>
+
+          <!-- Extras summary -->
+          <div class="cz-summary" id="cz-summary" style="display:none;">
+            <div class="cz-summary-label"><i class="bx bx-check-double"></i> Selected extras</div>
+            <div class="cz-summary-items" id="cz-summary-items"></div>
+            <div class="cz-summary-total-row">
+              <span>Extras total</span>
+              <span class="cz-summary-total" id="cz-extras-total-display">0 MT</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /left col -->
+
+
+      <!-- RIGHT COLUMN: Booking Sidebar -->
+      <div class="col-lg-5">
+        <div class="pkg-sidebar-wrap">
+
+          <!-- Booking Card -->
+          <div class="booking-card reveal reveal-right">
+            <h5 class="mb-1">Book Your Tour</h5>
+            <p class="booking-subtitle">Book early to secure your spot — comfort and peace of mind guaranteed!</p>
+
+            <!-- Tabs -->
+            <div class="book-tabs">
+              <button class="book-tab active" id="tab-btn-wa" onclick="switchBookTab('wa')" type="button">
+                <i class="bx bxl-whatsapp"></i> Online Booking
+              </button>
+              <button class="book-tab" id="tab-btn-email" onclick="switchBookTab('email')" type="button">
+                <i class="bx bxs-envelope"></i> Contact
+              </button>
+            </div>
+
+            <!-- WhatsApp Pane -->
+            <div class="book-pane" id="pane-wa">
+              <div class="booking-field">
+                <label>Full Name <span class="req">*</span></label>
+                <input type="text" id="wa-name" placeholder="Enter your full name">
+              </div>
+              <div class="booking-field">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" id="wa-email" placeholder="Enter your email">
+              </div>
+              <div class="booking-field">
+                <label>Phone <span class="req">*</span></label>
+                <input type="tel" id="wa-phone" placeholder="E.g.: +258 84 000 0000">
+              </div>
+              <div class="booking-field">
+                <label>Preferred Date <span class="req">*</span></label>
+                <input type="date" id="book-date">
+              </div>
+              <div class="booking-field">
+                <label>Adults <span class="req">*</span></label>
+                <div class="booking-stepper">
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('adults',-1)" aria-label="Less"><i class="bx bx-minus"></i></button>
+                  <span class="booking-stepper-val" id="book-adults-val">1</span>
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('adults',1)" aria-label="More"><i class="bx bx-plus"></i></button>
+                </div>
+              </div>
+              <div class="booking-field" id="book-child-row" style="display:none;">
+                <label>Children <small id="book-child-label" class="text-muted"></small></label>
+                <div class="booking-stepper">
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('children',-1)" aria-label="Less"><i class="bx bx-minus"></i></button>
+                  <span class="booking-stepper-val" id="book-children-val">0</span>
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('children',1)" aria-label="More"><i class="bx bx-plus"></i></button>
+                </div>
+              </div>
+              <div class="booking-summary" id="book-price-summary">
+                <div class="booking-summary-row">
+                  <span>Adults (<span id="bps-adults">1</span>×)</span>
+                  <span id="bps-adult-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-child-row" style="display:none;">
+                  <span>Children (<span id="bps-children">0</span>×)</span>
+                  <span id="bps-child-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-extras-row" style="display:none;">
+                  <span>Extras</span>
+                  <span id="bps-extras-total"></span>
+                </div>
+                <div class="booking-summary-row booking-summary-total">
+                  <span>Estimated total</span>
+                  <span id="bps-total"></span>
+                </div>
+              </div>
+              <a id="book-wa-btn" href="https://wa.me/258844406543" target="_blank" rel="noopener" class="btn-wa-book">
+                <i class="bx bxs-calendar-check"></i> Book Now
+              </a>
+              <p class="book-note"><i class="bx bxs-shield"></i> Confirmation in minutes via WhatsApp.</p>
+            </div>
+
+            <!-- Email Pane -->
+            <div class="book-pane" id="pane-email" style="display:none;">
+              <div class="booking-field">
+                <label>Full Name <span class="req">*</span></label>
+                <input type="text" id="em-name" placeholder="Enter your full name">
+              </div>
+              <div class="booking-field">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" id="em-email" placeholder="Enter your email">
+              </div>
+              <div class="booking-field">
+                <label>Phone <span class="req">*</span></label>
+                <input type="tel" id="em-phone" placeholder="E.g.: +258 84 000 0000">
+              </div>
+              <div class="booking-field">
+                <label>Preferred Date <span class="req">*</span></label>
+                <input type="date" id="em-date">
+              </div>
+              <div class="booking-field">
+                <label>Number of People <span class="req">*</span></label>
+                <input type="number" id="em-people" min="1" max="50" placeholder="E.g.: 2">
+              </div>
+              <div class="booking-field">
+                <label>Message <span class="req">*</span></label>
+                <textarea id="em-message" rows="3" placeholder="Tell us a bit about your trip..."></textarea>
+              </div>
+              <button type="button" class="btn-email-book" id="btn-email-submit">
+                <i class="bx bxs-send"></i> Send Request
+              </button>
+              <div class="book-email-success" id="email-success" style="display:none;">
+                <i class="bx bxs-check-circle"></i>
+                <strong>Request sent!</strong>
+                <p>We'll be in touch shortly.</p>
+              </div>
+              <p class="book-note"><i class="bx bxs-time"></i> Response within 24 hours by email.</p>
+            </div>
+
+          </div>
+
+
+          <!-- Agent Contact Card -->
+          <div class="contact-agent-card reveal reveal-right">
+            <div class="agent-img-wrap">
+              <img src="../../assets/images/packages/sunset_cruise_2.jpeg" alt="Travel Agent">
+            </div>
+            <div class="agent-contact-bar">
+              <div class="agent-icon"><i class="bx bxs-phone"></i></div>
+              <div>
+                <div class="agent-inquiry">For More Information</div>
+                <a href="tel:+258844406543" class="agent-phone">+258 84 440 6543</a>
+              </div>
+            </div>
+            <div class="agent-whatsapp">
+              <a href="https://wa.me/258844406543" target="_blank" rel="noopener" class="whatsapp-btn w-100 justify-content-center">
+                <i class="bx bxl-whatsapp"></i> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+
+          <!-- Related Packages -->
+          <div class="pkg-related reveal reveal-right">
+            <h6 class="pkg-related-title">Other Packages</h6>
+            <div id="pkg-related-list"></div>
+          </div>
+
+        </div>
+      </div><!-- /right col -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- NOT FOUND -->
+<div id="pkg-not-found" style="display:none; padding:120px 0; text-align:center;">
+  <div class="container">
+    <i class="bx bxs-error" style="font-size:3rem;color:var(--orange);"></i>
+    <h2 style="margin-top:1rem;">Package not found</h2>
+    <p class="text-muted">The package you're looking for doesn't exist or has been removed.</p>
+    <a href="tours.html" class="btn-teal mt-3 d-inline-block">View all tours</a>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+
+<!-- MOBILE STICKY BOOKING BAR -->
+<div class="mob-booking-bar" id="mob-booking-bar">
+  <div class="mob-book-info">
+    <span class="mob-book-from">From</span>
+    <span class="mob-book-price" id="mob-book-price">—</span>
+  </div>
+  <a id="mob-book-btn" href="https://wa.me/258844406543" target="_blank" rel="noopener" class="mob-book-cta">
+    <i class="bx bxl-whatsapp"></i> Book
+  </a>
+</div>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Gallery" onclick="closeLightbox()">
+  <button class="lightbox-close" id="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <button class="lightbox-prev" id="lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Previous">&#8249;</button>
+  <button class="lightbox-next" id="lightbox-next" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Next">&#8250;</button>
+  <img id="lightbox-img" src="" alt="Enlarged image" onclick="event.stopPropagation()">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="../../assets/js/components.js"></script>
+<script src="../../assets/js/data-loader.js"></script>
+<script src="../../assets/js/packages-extras.js"></script>
+<script src="../../assets/js/main.js"></script>
+<script type="module" src="../../assets/js/reviews-package.js"></script>
+<script>
+(function () {
+  var packageId = new URLSearchParams(window.location.search).get('id') || '';
+
+  mcaReady(function () {
+    var pkg = getPackageBySlug(packageId);
+
+    if (!pkg) {
+      document.getElementById('pkg-hero').style.display          = 'none';
+      document.querySelector('.pkg-body-section').style.display  = 'none';
+      document.getElementById('mob-booking-bar').style.display   = 'none';
+      document.getElementById('pkg-not-found').style.display     = 'block';
+      return;
+    }
+
+    buildPackagePage(pkg);
+
+    // Show mobile bar when scrolled past hero
+    var bar = document.getElementById('mob-booking-bar');
+    window.addEventListener('scroll', function () {
+      var heroH = document.getElementById('pkg-hero').offsetHeight;
+      bar.classList.toggle('visible', window.scrollY > heroH);
+    }, { passive: true });
+  });
+})();
+
+function switchBookTab(tab) {
+  document.getElementById('tab-btn-wa').classList.toggle('active', tab === 'wa');
+  document.getElementById('tab-btn-email').classList.toggle('active', tab === 'email');
+  document.getElementById('pane-wa').style.display    = tab === 'wa'    ? 'block' : 'none';
+  document.getElementById('pane-email').style.display = tab === 'email' ? 'block' : 'none';
+}
+
+document.getElementById('btn-email-submit').addEventListener('click', function () {
+  var fields = ['em-name', 'em-email', 'em-phone', 'em-date', 'em-people'];
+  var valid = fields.every(function (id) {
+    var el = document.getElementById(id);
+    var ok = el && el.value.trim() !== '';
+    if (el) el.classList.toggle('field-error', !ok);
+    return ok;
+  });
+  if (!valid) return;
+
+  document.getElementById('pane-email').querySelectorAll('.booking-field, .btn-email-book').forEach(function (el) {
+    el.style.display = 'none';
+  });
+  document.getElementById('email-success').style.display = 'block';
+});
+</script>
+</body>
+</html>
