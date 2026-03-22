@@ -294,17 +294,17 @@ body.preloading {
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px 4px;
-  border-top: 1px solid rgba(255,255,255,.08);
+  border-top: 1px solid rgba(0,0,0,.08);
   margin-top: 8px;
 }
-.mobile-lang-label { font-size: .72rem; color: rgba(255,255,255,.45); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.mobile-lang-label { font-size: .72rem; color: rgba(0,0,0,.4); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .mobile-lang-pills { display: flex; gap: 6px; }
 .mobile-lang-pill {
   padding: 5px 14px;
   border-radius: 50px;
-  border: 1.5px solid rgba(255,255,255,.2);
+  border: 1.5px solid rgba(0,0,0,.18);
   background: transparent;
-  color: rgba(255,255,255,.6);
+  color: rgba(0,0,0,.55);
   font-size: .78rem;
   font-weight: 700;
   cursor: pointer;
