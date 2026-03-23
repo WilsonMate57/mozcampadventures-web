@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
       renderer:  'svg',
       loop:      true,
       autoplay:  true,
-      path:      (window.location.pathname.includes('/pages/') ? '../' : '') + 'assets/preloader/summer-vibes.json'
+      path:      (window.MCA_BASE || '') + 'assets/preloader/summer-vibes.json'
     });
   }
 

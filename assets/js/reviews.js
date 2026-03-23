@@ -36,6 +36,13 @@ function starsHtml(rating) {
   return '★'.repeat(rating) + '☆'.repeat(5 - rating);
 }
 
+function formatDate(ts) {
+  if (!ts) return '';
+  const date   = ts.toDate ? ts.toDate() : new Date(ts);
+  const lang   = window.MCA_LANG === 'en' ? 'en-GB' : 'pt-MZ';
+  return date.toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
 
 /* ── Carousel rendering ───────────────────────────────── */
 
@@ -59,6 +66,7 @@ function buildCarouselItem(review, index, total, isActive) {
           <div>
             <div class="reviewer-name">– ${esc(review.name)}</div>
             ${review.role ? `<div class="reviewer-role">${esc(review.role)}</div>` : ''}
+            ${review.createdAt ? `<div class="reviewer-date">${formatDate(review.createdAt)}</div>` : ''}
           </div>
           <div class="review-nav ms-auto">
             <button class="review-nav-btn" data-bs-target="#reviewCarousel" data-bs-slide="prev">

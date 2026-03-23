@@ -973,6 +973,7 @@ section#packages .sub { color: rgba(255,255,255,.85); margin-bottom: 2rem; }
 .reviewer-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,.4); }
 .reviewer-name   { font-weight: 700; font-size: .9rem; }
 .reviewer-role   { font-size: .75rem; opacity: .75; }
+.reviewer-date   { font-size: .7rem; opacity: .5; margin-top: 2px; }
 .review-nav { display: flex; align-items: center; gap: 8px; }
 .review-dots { display: flex; align-items: center; gap: 6px; }
 .review-nav .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.4); cursor: pointer; transition: background .2s; }
@@ -2357,6 +2358,7 @@ a.contact-info-item:hover .contact-info-arrow { color: var(--teal); }
 }
 .pkg-review-name  { font-weight: 700; font-size: .88rem; }
 .pkg-review-role  { font-size: .75rem; color: #888; }
+.pkg-review-date  { font-size: .72rem; color: #aaa; margin: 4px 0 8px; }
 .pkg-review-stars { color: var(--orange); font-size: .9rem; }
 .pkg-review-text  { font-size: .87rem; color: #555; line-height: 1.7; margin: 0; }
 

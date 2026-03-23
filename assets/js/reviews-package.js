@@ -34,6 +34,13 @@ function starsHtml(rating) {
   return '★'.repeat(rating) + '☆'.repeat(5 - rating);
 }
 
+function formatDate(ts) {
+  if (!ts) return '';
+  const date = ts.toDate ? ts.toDate() : new Date(ts);
+  const lang = window.MCA_LANG === 'en' ? 'en-GB' : 'pt-MZ';
+  return date.toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
 function getPackageId() {
   return new URLSearchParams(window.location.search).get('id') || '';
 }
@@ -69,6 +76,7 @@ function renderReviews(reviews) {
         </div>
         <div class="pkg-review-stars ms-auto">${starsHtml(r.rating)}</div>
       </div>
+      ${r.createdAt ? `<div class="pkg-review-date">${formatDate(r.createdAt)}</div>` : ''}
       <p class="pkg-review-text">${esc(r.text)}</p>
     </div>
   `).join('');
