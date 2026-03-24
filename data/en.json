@@ -6,16 +6,84 @@
     "priceLabel": "per adult",
     "priceChildLabel": "Children (4–12 years)",
     "cancelPolicy": "up to 48 hours before",
-    "description": "An epic adventure through Mozambique's most beautiful islands — snorkelling on pristine coral reefs, white-sand beaches and an authentic beachside barbecue.",
+    "description": "An unforgettable adventure across three of Mozambique's most beautiful islands — snorkelling, a fresh seafood lunch, a visit to Inhaca Village and a final dip in the crystal-clear waters of Portuguese Island, all in one day.",
     "detailText": [
-      "Set sail on an unforgettable journey through the paradise islands of Maputo Bay. Glide across crystal-clear waters and discover the wild beauty of Inhaca Island, the enchanting Portuguese Island and the stunning Santa Maria Beach — three remarkable destinations in one extraordinary day.",
-      "Our local guides lead you through vibrant coral reefs teeming with tropical fish, sea turtles and manta rays. At midday, feast on an authentic Mozambican barbecue — freshly grilled fish, tiger prawns and seafood prepared right on the beach.",
-      "Perfect for families, couples and groups looking to experience the very best Mozambique has to offer — nature, flavour and adventure in one unforgettable day."
+      "The boat departs at 08:00 from Maputo Marina, next to the Waterfront Restaurant. The first stop is Santa Maria Beach (09:30), where a light snack is served and you can snorkel, play beach volleyball, stroll along the shore or simply relax in the warm Indian Ocean.",
+      "At 12:00 we leave Santa Maria for Inhaca Village. On the 25-minute crossing you may spot flamingos, white sandbars and, very likely, dolphins in their natural habitat — along with the traditional dhow fishing boats and their always-friendly local crews. Lunch is served at Restaurant Lucas in Inhaca Village — the freshest local seafood, straight from the sea, in a warm and welcoming atmosphere with live music.",
+      "After lunch, a quick visit to the local market to admire the crafts made by the island's talented artists. The final stop is Portuguese Island (14:10) — just 7 minutes from Inhaca — with its calm, crystal-clear waters perfect for a last swim. Return to Maputo at 16:10, with arrival expected between 17:00 and 17:30."
     ],
-    "includes": ["Return boat transfer", "Certified local guide throughout", "Full snorkelling equipment", "Barbecue with fresh fish, prawns and seafood", "Water and cold drinks", "Life jackets and safety equipment", "Marina fees included"],
-    "excludes": ["Alcoholic beverages", "Tips (optional)", "Personal expenses", "Sunscreen (we recommend bringing SPF 50+)"],
-    "highlights": ["Snorkelling on coral reefs with unique biodiversity", "Authentic barbecue with fresh seafood", "Pristine white-sand beaches and turquoise waters", "Dolphin and sea turtle sightings", "Experienced guides with deep local knowledge", "Small groups for a more intimate experience"],
-    "importantInfo": ["Minimum 4 participants for departure confirmation.", "Children under 3 travel free (no separate seat).", "Tour subject to favourable weather conditions — free rescheduling.", "Meeting point: Maputo Marina at 07:30.", "We recommend SPF 50+ sunscreen and sunglasses."]
+    "includes": [
+      "Light snack at the beach",
+      "Lunch at Restaurant Lucas (Inhaca)",
+      "Two drinks (local beer, water or soft drink)",
+      "Marina boarding fees",
+      "Island entry fees",
+      "Snorkelling fee and equipment",
+      "Tour guide"
+    ],
+    "excludes": [
+      "Personal expenses",
+      "Any activities or meals not mentioned in the itinerary"
+    ],
+    "highlights": [
+      "3 islands in one day: Santa Maria, Inhaca and Portuguese Island",
+      "Snorkelling with equipment included",
+      "Fresh seafood lunch at Restaurant Lucas",
+      "Dolphin, flamingo and sandbar sightings",
+      "Visit to Inhaca Village local craft market",
+      "Calm, crystal-clear waters at Portuguese Island"
+    ],
+    "itinerary": [
+      {
+        "time": "08:00",
+        "title": "Departure from Maputo Marina",
+        "body": "The boat departs from Maputo Marina, next to the Waterfront Restaurant. Early arrival is required — punctuality is essential to keep the trip running smoothly.",
+        "checklist": ["Sunscreen", "Swimwear", "Towel", "Camera"]
+      },
+      {
+        "time": "09:30",
+        "title": "1st Stop — Santa Maria Beach",
+        "body": "Arrival at Santa Maria Beach. A light snack is served. Activities available: snorkelling, beach volleyball, walking along the shore or simply relaxing in the warm Indian Ocean.",
+        "checklist": ["Light snack included", "Snorkelling equipment included"]
+      },
+      {
+        "time": "12:00",
+        "title": "Crossing to Inhaca Village",
+        "body": "Departure from Santa Maria towards Inhaca Village (25-minute boat ride). Along the way you may spot flamingos, white sandbars, dolphins and the traditional dhow fishing boats with their friendly local crews.",
+        "checklist": []
+      },
+      {
+        "time": "12:30",
+        "title": "2nd Stop — Lunch at Inhaca Village",
+        "body": "Arrival at Inhaca Village. Lunch included at Restaurant Lucas — the freshest local seafood straight from the sea, in a warm atmosphere with live music. After lunch, a quick visit to the local market to discover crafts made by the island's talented artists.",
+        "checklist": ["Lunch included", "Two drinks included"]
+      },
+      {
+        "time": "14:00",
+        "title": "Departure from Inhaca Village",
+        "body": "Departure from Inhaca Village towards the final stop.",
+        "checklist": []
+      },
+      {
+        "time": "14:10",
+        "title": "3rd Stop — Portuguese Island",
+        "body": "Portuguese Island is just 7 minutes from Inhaca. With calm tides and crystal-clear waters, it's the perfect spot for a final swim and to relax with your favourite drink (available to buy on the beach).",
+        "checklist": []
+      },
+      {
+        "time": "16:10",
+        "title": "Return to Maputo",
+        "body": "Departure back to Maputo Marina. Arrival expected between 17:00 and 17:30, depending on sea conditions.",
+        "checklist": ["Expected arrival: 17:00–17:30"]
+      }
+    ],
+    "importantInfo": [
+      "Boarding point: Maputo Marina, next to the Waterfront Restaurant.",
+      "Booking is confirmed upon full payment of the tour price.",
+      "Cancellations must be made 48 hours in advance — no refund outside this window.",
+      "Punctuality is required — late arrivals may disrupt the tour schedule.",
+      "Tour subject to favourable weather conditions."
+    ]
   },
   "portuguese-island-bbq": {
     "name": "Portuguese Island — Beach BBQ",

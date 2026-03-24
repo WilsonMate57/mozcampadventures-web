@@ -21,89 +21,88 @@
     "priceChild": "4.500 MZN",
     "priceChildLabel": "Crianças (4–12 anos)",
     "currency": "MZN",
-    "description": "Aventura épica pelas ilhas mais bonitas de Moçambique — snorkeling em corais intocados, praias de areia branca e um autêntico barbecue à beira-mar.",
+    "cancelPolicy": "até 48h antes",
+    "description": "Uma aventura inesquecível pelas três ilhas mais bonitas de Moçambique — snorkeling, almoço com marisco fresco, visita à Vila de Inhaca e mergulho nas águas cristalinas da Ilha dos Portugueses, tudo num único dia.",
     "detailText": [
-      "Embarque numa jornada inesquecível pelas ilhas paradisíacas da Baía de Maputo. Navegue por águas cristalinas e descubra a beleza selvagem da Ilha da Inhaca, a encantadora Ilha dos Portugueses e a deslumbrante Praia de Santa Maria — três destinos num único dia extraordinário.",
-      "A nossa equipa local guia-o por recifes de coral vibrantes, habitados por peixes tropicais, tartarugas marinhas e raias. Ao meio-dia, desfrute de um autêntico barbecue à beira-mar com peixe fresco, camarão e marisco grelhados na hora.",
-      "Perfeito para famílias, casais e grupos de amigos que querem viver o melhor que Moçambique tem para oferecer — natureza, sabor e aventura num único dia inesquecível."
+      "O barco parte às 08h00 da Marina de Maputo, ao lado do Waterfront Restaurant. A primeira paragem é a Praia de Santa Maria (09h30), onde será servido um lanche leve e poderá fazer snorkeling, voleibol de praia, caminhar pela orla ou simplesmente relaxar.",
+      "Às 12h00 saímos de Santa Maria para a Vila de Inhaca. Na rota de 25 minutos é possível avistar flamingos, bancos de areia e, muito provavelmente, golfinhos no seu habitat natural. Na Vila, o almoço é servido no Restaurante Lucas — o melhor marisco local, sempre fresco, num ambiente aconchegante com música ao vivo.",
+      "Após o almoço, uma rápida visita ao mercado local para apreciar o artesanato feito pelos talentosos artistas da ilha. A última paragem é a Ilha dos Portugueses (14h10) — a apenas 7 minutos de barco da Inhaca — com as suas águas calmas e cristalinas para um último mergulho. Regresso a Maputo às 16h10, chegada prevista entre as 17h00 e as 17h30."
     ],
     "includes": [
-      "Transporte de barco de ida e volta",
-      "Guia local certificado durante todo o passeio",
-      "Equipamento de snorkeling completo",
-      "Barbecue com peixe fresco, camarão e marisco",
-      "Água e bebidas frias durante o dia",
-      "Colete salva-vidas e equipamento de segurança",
-      "Taxas portuárias incluídas"
+      "Lanche leve na praia",
+      "Almoço no Restaurante Lucas (Inhaca)",
+      "Duas bebidas (cerveja local, água ou refrigerante)",
+      "Taxas de embarque na Marina",
+      "Taxas de entrada nas ilhas",
+      "Taxa de mergulho e equipamento de snorkeling",
+      "Tour guide"
     ],
     "excludes": [
-      "Bebidas alcoólicas",
-      "Gorjetas (opcional)",
       "Despesas pessoais",
-      "Protetor solar (recomendamos trazer)"
+      "Actividades ou refeições não mencionadas no itinerário"
     ],
     "highlights": [
-      "Snorkeling em recifes de coral com biodiversidade única",
-      "Barbecue autêntico com marisco fresco do dia",
-      "Praias virgens de areia branca e águas turquesa",
-      "Observação de golfinhos e tartarugas marinhas",
-      "Guias experientes com profundo conhecimento local",
-      "Grupos pequenos para uma experiência mais íntima"
+      "3 ilhas num único dia: Santa Maria, Inhaca e Ilha dos Portugueses",
+      "Snorkeling com equipamento incluído",
+      "Almoço com marisco fresco no Restaurante Lucas",
+      "Avistamento de golfinhos, flamingos e bancos de areia",
+      "Visita ao mercado de artesanato local da Vila de Inhaca",
+      "Águas calmas e cristalinas na Ilha dos Portugueses"
     ],
     "itinerary": [
       {
-        "time": "07h30",
+        "time": "08h00",
         "title": "Partida da Marina de Maputo",
-        "body": "Encontro na Marina de Maputo com a nossa equipa. Briefing de segurança, distribuição de equipamento de snorkeling e embarque.",
+        "body": "O barco parte da Marina de Maputo, ao lado do Waterfront Restaurant. Chegada antecipada obrigatória — não toleramos atrasos para não perturbar o percurso.",
         "checklist": [
-          "Protetor solar fator 50+",
+          "Protetor solar",
           "Roupa de banho",
           "Toalha",
           "Câmara fotográfica"
         ]
       },
       {
-        "time": "08h30",
-        "title": "Ilha dos Portugueses — Snorkeling",
-        "body": "Chegada à Ilha dos Portugueses. Exploração dos impressionantes recifes de coral com peixes tropicais coloridos, tartarugas e raias.",
+        "time": "09h30",
+        "title": "1ª Paragem — Praia de Santa Maria",
+        "body": "Chegada à Praia de Santa Maria. Será servido um lanche leve. Actividades disponíveis: snorkeling, voleibol de praia, caminhada na praia ou simplesmente relaxar nas águas quentes do Índico.",
         "checklist": [
-          "Snorkeling com equipamento incluído",
-          "Tempo livre na praia"
+          "Lanche leve incluído",
+          "Equipamento de snorkeling incluído"
         ]
       },
       {
-        "time": "11h00",
-        "title": "Ilha da Inhaca — Praia & Natureza",
-        "body": "Travessia para a Ilha da Inhaca. Passeio pela orla marítima, observação de aves e relaxamento nas praias desertas.",
-        "checklist": [
-          "Visita à praia principal",
-          "Exploração da natureza local"
-        ]
+        "time": "12h00",
+        "title": "Travessia para a Vila de Inhaca",
+        "body": "Saída de Santa Maria rumo à Vila de Inhaca (25 min de barco). No percurso é possível avistar flamingos, bancos de areia de águas cristalinas, golfinhos e os típicos Dhows — barcos de pesca artesanal com os pescadores locais sempre simpáticos.",
+        "checklist": []
       },
       {
         "time": "12h30",
-        "title": "Barbecue à Beira-Mar",
-        "body": "Barbecue com peixe fresco, camarão e marisco grelhados na hora pela nossa equipa, acompanhado de pão artesanal e saladas.",
+        "title": "2ª Paragem — Almoço na Vila de Inhaca",
+        "body": "Chegada à Vila da Ilha de Inhaca. Almoço incluído no Restaurante Lucas — o melhor marisco local, sempre fresco, acabado de sair do mar, num ambiente aconchegante com música. Após o almoço, visita rápida ao mercado local para apreciar e adquirir artesanato feito pelos artistas da ilha.",
         "checklist": [
-          "Almoço completo incluído",
-          "Bebidas frias incluídas"
+          "Almoço incluído",
+          "Duas bebidas incluídas"
         ]
       },
       {
-        "time": "14h30",
-        "title": "Praia de Santa Maria — Tarde Livre",
-        "body": "Tempo livre na deslumbrante Praia de Santa Maria para nadar, relaxar, fazer snorkeling ou simplesmente absorver o pôr do sol.",
-        "checklist": [
-          "Snorkeling facultativo",
-          "Fotografia do pôr do sol"
-        ]
+        "time": "14h00",
+        "title": "Saída da Vila de Inhaca",
+        "body": "Partida da Vila da Ilha de Inhaca em direcção à última paragem.",
+        "checklist": []
       },
       {
-        "time": "16h30",
+        "time": "14h10",
+        "title": "3ª Paragem — Ilha dos Portugueses",
+        "body": "A Ilha dos Portugueses fica a apenas 7 minutos de barco da Inhaca. Com marés calmas e águas cristalinas, é o local perfeito para um último mergulho e relaxar com o seu drink favorito (à venda na praia).",
+        "checklist": []
+      },
+      {
+        "time": "16h10",
         "title": "Regresso a Maputo",
-        "body": "Partida de regresso ao porto de Maputo com memórias e fotografias para toda a vida.",
+        "body": "Partida de regresso à Marina de Maputo. Chegada prevista entre as 17h00 e as 17h30, dependendo das condições do mar.",
         "checklist": [
-          "Chegada prevista às 17h30"
+          "Chegada prevista: 17h00–17h30"
         ]
       }
     ],
@@ -114,11 +113,11 @@
       "../assets/images/packages/island-hopping/4.webp"
     ],
     "importantInfo": [
-      "Mínimo de 4 participantes para a saída ser confirmada.",
-      "Crianças com menos de 3 anos não pagam (sem assento próprio).",
-      "Tour sujeito a condições meteorológicas favoráveis — reagendamento gratuito.",
-      "Ponto de encontro: Marina de Maputo, às 07h30.",
-      "Recomendamos protetor solar com fator 50+ e óculos de sol."
+      "Ponto de embarque: Marina de Maputo, ao lado do Waterfront Restaurant.",
+      "A reserva é confirmada após pagamento integral do valor do tour.",
+      "Cancelamento deve ser feito 48h antes — sem reembolso fora deste prazo.",
+      "Pontualidade obrigatória — não toleramos atrasos para não perturbar o percurso.",
+      "Tour sujeito a condições meteorológicas favoráveis."
     ]
   },
   {
