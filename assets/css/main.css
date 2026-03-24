@@ -30,7 +30,7 @@
    main scroll container, so position:sticky works correctly everywhere. */
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -40,7 +40,7 @@ body {
   background-image: url("../images/bg/marine-bg.png");
   background-repeat: repeat;
   background-size: 1420px;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
 }
 
