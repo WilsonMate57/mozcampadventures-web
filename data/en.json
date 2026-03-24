@@ -251,7 +251,7 @@
       "Personal expenses"
     ],
     "highlights": [
-      "Closed 4x4 safari vehicle with pop-up roof — comfortable and private",
+      "Closed 4x4 safari vehicle — comfortable and private",
       "Open safari vehicle option with 360° photography visibility",
       "Elephants, lions, giraffes, zebras and buffalo in the wild",
       "Entry through Crocodile Bridge Gate",
@@ -316,7 +316,6 @@
             "name": "⭐ Closed Safari Vehicle — 13,500 MZN / person (Recommended)",
             "items": [
               "Comfortable air-conditioned 4x4",
-              "Pop-up roof for wildlife viewing",
               "Ideal for private groups",
               "Protection from wind and dust"
             ]
@@ -332,7 +331,7 @@
         ]
       }
     ],
-    "importantInfo": ["Valid passport required for South Africa.", "Neutral clothing recommended (khaki, green, grey) — avoid white and bright colours.", "Lunch is included in the package.", "Free cancellation up to 72 hours before.", "Subject to availability confirmation."]
+    "importantInfo": ["Valid passport required for South Africa.", "Neutral clothing recommended.", "Lunch is included in the package.", "Free cancellation up to 48 hours before.", "Subject to availability confirmation."]
   },
   "safari-parque-maputo": {
     "name": "Maputo Special Reserve",
