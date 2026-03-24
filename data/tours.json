@@ -1299,6 +1299,7 @@
     "location": "Kruger, África do Sul",
     "destinations": "Kruger National Park",
     "duration": "Regresso no mesmo dia",
+    "maxPeople": 100,
     "price": "13.500 MZN",
     "price_from": 13500,
     "priceOld": null,
