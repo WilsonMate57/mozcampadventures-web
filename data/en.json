@@ -228,21 +228,111 @@
     "importantInfo": ["Flights are subject to availability and may vary in price.", "Minimum confirmation 7 days before departure.", "Dugong sightings are not guaranteed.", "Package is customisable — contact us for more information."]
   },
   "safari-kruger-park": {
-    "subtitle": "Africa's greatest national park with the Big 5",
+    "subtitle": "Africa's greatest national park — Big 5 in one day",
     "badge": "Must-See",
-    "duration": "3 days / 2 nights",
+    "duration": "Same Day Return",
     "priceLabel": "per adult",
-    "priceChildLabel": "Children (4–12 years)",
-    "description": "An epic safari in Africa's largest national park. Encounter the Big 5 — lion, leopard, elephant, rhino and buffalo — in their natural savannah.",
+    "description": "A full-day safari in Africa's largest national park. Spot elephants, lions, giraffes, zebras and more — with return to Maputo the same day.",
     "detailText": [
-      "Kruger National Park is Africa's largest and most famous safari park, with over 20,000km² of savannah home to the Big 5 and 147 other mammal species. Our 3-day safari includes private transport from Maputo, park entry, lodge accommodation and 4 guided game drives.",
-      "The journey begins before dawn — when predators are most active. Our experienced rangers guide you along the park's trails in open adapted vehicles, ensuring the best wildlife sighting opportunities and incredible photographs.",
-      "An experience that changes your perspective on the African continent and its majestic wildlife."
+      "Kruger National Park is Africa's largest and most famous safari destination, spanning over 20,000km² of savannah teeming with the Big 5 and 147 other mammal species. Our full-day trip departs Maputo at 05:00, entering through the Crocodile Bridge Gate for morning and afternoon game drives.",
+      "Choose your safari vehicle: the closed 4x4 with pop-up roof (recommended for private groups and protection from wind and dust) or the classic open safari vehicle with elevated seats and 360° visibility for photography.",
+      "With a professional safari guide, you will explore the park's roads in search of elephants, lions, giraffes, zebras, buffalo, antelopes and hundreds of bird species."
     ],
-    "includes": ["Private return transport Maputo–Kruger–Maputo", "2 nights in a lodge inside or near the park", "4 guided game drives (2 at dawn + 2 at dusk)", "All meals included", "Park entrance fees", "Certified ranger and safari vehicle", "Binoculars and wildlife guides"],
-    "excludes": ["South African visa (if required)", "Alcoholic beverages", "Tips", "Extra activities in the park"],
-    "highlights": ["The Big 5 in their natural savannah", "Dawn and dusk game drives", "Certified ranger in a specialist open vehicle", "Over 500 bird species", "Lodge accommodation with pool", "Africa's largest national park"],
-    "importantInfo": ["Valid passport required for South Africa.", "Children under 6 not allowed on night game drives.", "Neutral clothing recommended (khaki, green, grey) — avoid white and bright colours.", "Free cancellation up to 72 hours before.", "Subject to lodge availability confirmation."]
+    "includes": [
+      "Return transport Maputo – Kruger – Maputo",
+      "Park entrance fees",
+      "Professional safari guide",
+      "Safari drive (morning & afternoon)",
+      "Bottled water",
+      "Border assistance"
+    ],
+    "excludes": [
+      "Lunch",
+      "Personal expenses"
+    ],
+    "highlights": [
+      "Closed 4x4 safari vehicle with pop-up roof — comfortable and private",
+      "Open safari vehicle option with 360° photography visibility",
+      "Elephants, lions, giraffes, zebras and buffalo in the wild",
+      "Entry through Crocodile Bridge Gate",
+      "Certified and experienced safari guide",
+      "Return to Maputo the same day"
+    ],
+    "itinerary": [
+      {
+        "time": "05:00",
+        "title": "Departure from Maputo",
+        "body": "Pick-up at hotel or meeting point. Transfer towards the Mozambique – South Africa border.",
+        "checklist": ["Valid passport", "Warm layers (early morning)"]
+      },
+      {
+        "time": "06:30",
+        "title": "Border Crossing",
+        "body": "Assistance with border formalities. Continue towards Kruger National Park.",
+        "checklist": []
+      },
+      {
+        "time": "07:00",
+        "title": "Arrival at Kruger National Park",
+        "body": "Entry through Crocodile Bridge Gate. Beginning of the safari experience.",
+        "checklist": []
+      },
+      {
+        "time": "Morning",
+        "title": "Morning Safari Drive",
+        "body": "Explore the park with a professional guide. Possibility to see: elephants, lions, giraffes, zebras, buffalo, antelopes and many bird species.",
+        "checklist": []
+      },
+      {
+        "time": "12:00",
+        "title": "Rest Stop at Camp",
+        "body": "Stop at a rest camp inside the park. Time for lunch (not included), a short rest and photos.",
+        "checklist": []
+      },
+      {
+        "time": "Afternoon",
+        "title": "Afternoon Safari",
+        "body": "Continue exploring other areas of the park with wildlife viewing and scenic stops.",
+        "checklist": []
+      },
+      {
+        "time": "15:30",
+        "title": "Exit the Park",
+        "body": "Begin return journey to Maputo.",
+        "checklist": []
+      },
+      {
+        "time": "18:30",
+        "title": "Arrival in Maputo",
+        "body": "Arrival in Maputo and end of the excursion.",
+        "checklist": []
+      }
+    ],
+    "menu": [
+      {
+        "title": "Safari Vehicle Options",
+        "categories": [
+          {
+            "name": "⭐ Closed Safari Vehicle — 13,500 MZN / person (Recommended)",
+            "items": [
+              "Comfortable air-conditioned 4x4",
+              "Pop-up roof for wildlife viewing",
+              "Ideal for private groups",
+              "Protection from wind and dust"
+            ]
+          },
+          {
+            "name": "Open Safari Vehicle — 16,500 MZN / person",
+            "items": [
+              "Classic African safari experience",
+              "Elevated seats for better wildlife viewing",
+              "360° open visibility for photography"
+            ]
+          }
+        ]
+      }
+    ],
+    "importantInfo": ["Valid passport required for South Africa.", "Neutral clothing recommended (khaki, green, grey) — avoid white and bright colours.", "Lunch is not included — options are available at the rest camp inside the park.", "Free cancellation up to 72 hours before.", "Subject to availability confirmation."]
   },
   "safari-parque-maputo": {
     "name": "Maputo Special Reserve",

@@ -1298,77 +1298,116 @@
     "heroImage": "../assets/images/packages/safari/safari-kruger-2.jpg",
     "location": "Kruger, África do Sul",
     "destinations": "Kruger National Park",
-    "duration": "3 dias / 2 noites",
+    "duration": "Regresso no mesmo dia",
     "price": "13.500 MZN",
     "price_from": 13500,
-    "priceOld": "15.500 MZN",
+    "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 10500,
-    "priceChild": "10.500 MZN",
-    "priceChildLabel": "Crianças (4–12 anos)",
+    "price_child": null,
+    "priceChild": null,
+    "priceChildLabel": null,
     "currency": "MZN",
-    "description": "Uma safari épica no maior parque nacional de África. Encontre os Big 5 — leão, leopardo, elefante, rinoceronte e búfalo — nas suas savanas naturais.",
+    "description": "Safari épica de dia inteiro no maior parque nacional de África. Aviste elefantes, leões, girafas, zebras e muito mais, com regresso a Maputo no mesmo dia.",
     "detailText": [
-      "O Parque Nacional Kruger é o maior e mais famoso parque de safaris de África, com mais de 20.000 km² de savana habitados pelos Big 5 e outras 147 espécies de mamíferos. A nossa safari de 3 dias inclui transporte privado de Maputo, entrada no parque, alojamento em lodge e 4 game drives guiados.",
-      "A viagem começa antes do amanhecer — quando os predadores são mais activos. Os nossos rangers experientes guiam-no pelos trilhos do parque em viaturas abertas adaptadas, garantindo as melhores oportunidades de avistamento e fotografias incríveis.",
-      "Uma experiência que muda a perspectiva sobre o continente africano e a sua fauna selvagem majestosa."
+      "O Parque Nacional Kruger é o maior e mais famoso parque de safaris de África, com mais de 20.000 km² de savana habitados pelos Big 5 e outras 147 espécies de mamíferos. A nossa excursão de dia inteiro parte de Maputo às 05h00, com entrada pelo portão Crocodile Bridge e safaris da manhã e da tarde.",
+      "Escolha entre duas opções de viatura: a viatura fechada 4x4 com tecto pop-up (recomendada para grupos privados e protecção do vento e poeira) ou a viatura aberta clássica, com assentos elevados e visibilidade de 360° para fotografia.",
+      "Com um guia safari profissional, irá explorar as estradas do parque à procura de elefantes, leões, girafas, zebras, búfalos, antílopes e centenas de espécies de aves."
     ],
     "includes": [
-      "Transporte privado Maputo–Kruger–Maputo",
-      "2 noites em lodge dentro ou próximo do parque",
-      "4 game drives guiados (2 ao amanhecer + 2 ao anoitecer)",
-      "Todas as refeições incluídas",
+      "Transporte Maputo – Kruger – Maputo",
       "Taxas de entrada no parque",
-      "Ranger e veículo safari certificados",
-      "Binóculos e guias de fauna"
+      "Guia safari profissional",
+      "Drive safari (manhã e tarde)",
+      "Água engarrafada",
+      "Assistência na fronteira"
     ],
     "excludes": [
-      "Visto para a África do Sul (se necessário)",
-      "Bebidas alcoólicas",
-      "Gorjetas",
-      "Actividades extras no parque"
+      "Almoço",
+      "Despesas pessoais"
     ],
     "highlights": [
-      "Os Big 5 nas suas savanas naturais",
-      "Game drives ao amanhecer e anoitecer",
-      "Ranger certificado e veículo aberto especializado",
-      "Mais de 500 espécies de aves",
-      "Alojamento em lodge com piscina",
-      "Maior parque nacional de África"
+      "Viatura fechada 4x4 com tecto pop-up — confortável e privada",
+      "Opção de viatura aberta com visibilidade 360° para fotografia",
+      "Elefantes, leões, girafas, zebras e búfalos em liberdade",
+      "Entrada pelo portão Crocodile Bridge",
+      "Guia safari certificado e experiente",
+      "Regresso a Maputo no mesmo dia"
     ],
     "itinerary": [
       {
-        "time": "Dia 1 — 05h00",
+        "time": "05h00",
         "title": "Partida de Maputo",
-        "body": "Saída muito cedo de Maputo em viatura privada. Fronteira de Ressano Garcia e entrada na África do Sul.",
+        "body": "Partida de Maputo com recolha no hotel ou ponto de encontro. Transfere em direcção à fronteira Moçambique–África do Sul.",
         "checklist": [
           "Passaporte válido",
           "Roupas quentes (madrugada)"
         ]
       },
       {
-        "time": "Dia 1 — Tarde",
-        "title": "Chegada & Check-in no Lodge",
-        "body": "Check-in no lodge e game drive de tarde no Kruger — prime time para avistamento de predadores.",
+        "time": "06h30",
+        "title": "Passagem da Fronteira",
+        "body": "Assistência com as formalidades fronteiriças. Continuação em direcção ao Parque Nacional Kruger.",
         "checklist": []
       },
       {
-        "time": "Dia 2 — 05h30",
-        "title": "Game Drive ao Amanhecer",
-        "body": "Saída ao amanhecer quando os leões e leopardos terminam a caça nocturna. As melhores fotos do dia.",
+        "time": "07h00",
+        "title": "Chegada ao Parque Nacional Kruger",
+        "body": "Entrada pelo portão Crocodile Bridge. Início da experiência safari.",
         "checklist": []
       },
       {
-        "time": "Dia 2 — Tarde",
-        "title": "Game Drive ao Anoitecer",
-        "body": "Segundo game drive com search de leopardos e leões activos ao entardecer.",
+        "time": "Manhã",
+        "title": "Safari da Manhã",
+        "body": "Exploração do parque com guia profissional. Possibilidade de avistar: elefantes, leões, girafas, zebras, búfalos, antílopes e muitas espécies de aves.",
         "checklist": []
       },
       {
-        "time": "Dia 3 — 05h30",
-        "title": "Último Game Drive & Regresso",
-        "body": "Game drive final ao amanhecer, check-out e regresso a Maputo com chegada ao final da tarde.",
+        "time": "12h00",
+        "title": "Paragem para Almoço",
+        "body": "Paragem num rest camp dentro do parque. Tempo para almoço (não incluído), descanso e fotografias.",
         "checklist": []
+      },
+      {
+        "time": "Tarde",
+        "title": "Safari da Tarde",
+        "body": "Continuação da exploração de outras zonas do parque com avistamentos de fauna e paragens panorâmicas.",
+        "checklist": []
+      },
+      {
+        "time": "15h30",
+        "title": "Saída do Parque",
+        "body": "Início do regresso a Maputo.",
+        "checklist": []
+      },
+      {
+        "time": "18h30",
+        "title": "Chegada a Maputo",
+        "body": "Chegada a Maputo com fim da excursão.",
+        "checklist": []
+      }
+    ],
+    "menu": [
+      {
+        "title": "Opções de Viatura Safari",
+        "categories": [
+          {
+            "name": "⭐ Viatura Fechada — 13.500 MZN / pessoa (Recomendado)",
+            "items": [
+              "4x4 confortável com ar condicionado",
+              "Tecto pop-up para observação de fauna",
+              "Ideal para grupos privados",
+              "Protecção do vento e poeira"
+            ]
+          },
+          {
+            "name": "Viatura Aberta — 16.500 MZN / pessoa",
+            "items": [
+              "Experiência clássica de safari africano",
+              "Assentos elevados para melhor visibilidade",
+              "Visibilidade 360° para fotografia"
+            ]
+          }
+        ]
       }
     ],
     "gallery": [
@@ -1379,10 +1418,10 @@
     ],
     "importantInfo": [
       "Passaporte válido obrigatório para a África do Sul.",
-      "Crianças com menos de 6 anos não são permitidas nos game drives noturnos.",
-      "Roupas neutras (caqui, verde, cinzento) recomendadas — evitar branco e cores vivas.",
+      "Roupas neutras recomendadas (caqui, verde, cinzento) — evitar branco e cores vivas.",
+      "Almoço não incluído — há opções no rest camp dentro do parque.",
       "Cancela gratuitamente até 72h antes.",
-      "Sujeito a confirmação de disponibilidade do lodge."
+      "Sujeito a confirmação de disponibilidade."
     ]
   },
   {
