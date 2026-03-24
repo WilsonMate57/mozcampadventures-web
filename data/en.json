@@ -340,14 +340,14 @@
     "badge": "Local",
     "duration": "Full day",
     "priceLabel": "per adult",
-    "priceChildLabel": "Children (4–12 years)",
+    "priceChildLabel": "Children (4–10 years)",
     "description": "Maputo Special Reserve is home to elephants, hippos, flamingos and unique mangrove wetlands — a spectacular safari just 1 hour from the capital.",
     "detailText": [
       "Maputo Special Reserve (formerly the Elephant Reserve) is an elephant paradise — with over 700 individuals roaming free. But it is not just elephants: hippos, lions, zebras, flamingos and over 300 bird species inhabit this natural paradise just 1 hour from Maputo.",
-      "Our day trip includes 4x4 transport, a guided game drive, a visit to the reserve's coastal area with pink flamingos and lunch at the reserve headquarters.",
+      "Our day trip includes 4x4 transport, a guided game drive, a visit to the reserve's coastal area with pink flamingos and a picnic by the lagoon.",
       "An accessible and unforgettable safari, perfect for families and those with limited days in Maputo."
     ],
-    "includes": ["Return 4x4 transport", "Reserve entry fees", "Guided game drive with certified ranger", "Lunch at the reserve headquarters", "Water and non-alcoholic drinks", "Binoculars for use during the tour"],
+    "includes": ["Return 4x4 transport", "Reserve entry fees", "Guided game drive with certified ranger", "Picnic by the lagoon", "Water and non-alcoholic drinks", "Binoculars for use during the tour"],
     "excludes": ["Alcoholic beverages", "Tips", "Photography on exclusive excursions"],
     "highlights": ["Over 700 free-roaming elephants", "Hippos, lions and zebras", "Pink flamingos on the reserve's coastline", "Just 1 hour from Maputo", "Certified ranger with deep local knowledge"],
     "importantInfo": ["Comfortable neutral clothing recommended.", "Insect repellent essential.", "The reserve is recovering — wildlife sightings are not guaranteed but very likely.", "Meeting point: Maputo at 06:30."]
