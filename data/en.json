@@ -222,11 +222,16 @@
     "excludes": ["Alcoholic beverages", "Tips", "Personal expenses"],
     "highlights": ["Private tour — exclusive boat for your group", "Stop at Portuguese Island", "Authentic lunch in Inhaca Village", "Guided island safari on Inhaca Island", "Afternoon at the remote and stunning Lighthouse Beach"],
     "menu": [
-      { "section": "Starter", "items": ["Fresh seasonal tropical fruit"] },
-      { "section": "Main Course", "items": ["Freshly grilled fish", "Peri-peri chicken", "Vegetarian curry"] },
-      { "section": "Sides", "items": ["Coconut rice", "Sautéed local vegetables", "Fresh salad"] },
-      { "section": "Dessert", "items": ["Seasonal fresh fruit platter"] },
-      { "section": "Drinks", "items": ["Soft drinks", "Mineral water", "Snacks during the journey"] }
+      {
+        "title": "Inhaca Lunch Menu",
+        "categories": [
+          { "name": "Starter", "items": ["Fresh seasonal tropical fruit"] },
+          { "name": "Main Course", "items": ["Freshly grilled fish", "Peri-peri chicken", "Vegetarian curry"] },
+          { "name": "Sides", "items": ["Coconut rice", "Sautéed local vegetables", "Fresh salad"] },
+          { "name": "Dessert", "items": ["Seasonal fresh fruit platter"] },
+          { "name": "Drinks", "items": ["Soft drinks", "Mineral water", "Snacks during the journey"] }
+        ]
+      }
     ],
     "itinerary": [
       { "time": "07:30", "title": "Departure from Maputo Marina", "body": "Board at Maputo Marina. The private boat departs towards Portuguese Island on a morning cruise across Maputo Bay.", "checklist": [] },
@@ -240,22 +245,40 @@
     "importantInfo": ["Full-day experience — approximately 10 hours.", "Minimum 5 participants (private tour).", "Suitable for families and groups.", "Comfortable clothing and appropriate footwear for walking recommended.", "Subject to weather and sea conditions.", "Meeting point: Maputo Marina at 07:30."]
   },
   "santa-maria-snorkeling": {
-    "name": "Santa Maria Beach — Snorkelling & BBQ",
-    "subtitle": "One of Mozambique's most beautiful beaches",
+    "name": "Santa Maria Beach — Snorkelling & Beach Barbecue",
+    "subtitle": "Snorkelling and barbecue at Ponta Torres, Inhaca Island",
     "badge": "Recommended",
-    "duration": "Full day",
+    "duration": "Full day (~10h)",
     "priceLabel": "per adult",
     "priceChildLabel": "Children (4–12 years)",
-    "description": "A full day at the stunning Santa Maria Beach with guided snorkelling on coral reefs, a beachside barbecue and the purest peace of the Indian Ocean.",
+    "description": "Discover one of the best snorkelling spots around Inhaca Island — vibrant coral reefs, stunning marine life and a fresh beach barbecue at Ponta Torres.",
     "detailText": [
-      "Santa Maria Beach is considered one of the most untouched beaches in Mozambique. With fine white sand, crystal-clear waters and coral reefs at your doorstep, it is the perfect destination for a day of total disconnection and pure nature.",
-      "Our tour includes a guided snorkelling session on the local reefs, full of diverse marine life, followed by an authentic Mozambican barbecue prepared on the sand by our team.",
-      "The afternoon is entirely yours — dive, relax, explore the beach or simply absorb the incomparable beauty of Mozambican nature."
+      "Discover one of the best snorkelling spots around Inhaca Island with this full-day experience at Ponta Torres. Known for its clear waters and vibrant marine life, this area offers an incredible opportunity to explore coral reefs while enjoying a relaxed beach barbecue.",
+      "After snorkelling in the reef, guests will enjoy a freshly prepared barbecue lunch on the beach, surrounded by the natural beauty of the island.",
+      "This experience combines adventure, marine exploration, and a tropical beach escape."
     ],
-    "includes": ["Return boat transfer", "Full snorkelling equipment", "Barbecue with fresh fish and seafood", "Water and cold drinks", "Experienced local guide", "Life jackets"],
+    "includes": ["Return boat transfer", "Professional guide / snorkelling guide", "Snorkelling equipment", "Beach barbecue lunch", "Snacks and soft drinks", "Kayaking", "Safety equipment", "All local taxes and island access fees"],
     "excludes": ["Alcoholic beverages", "Tips", "Personal expenses"],
-    "highlights": ["Pristine white-sand beach with turquoise waters", "Snorkelling on untouched coral reefs", "Authentic barbecue with fresh seafood", "Peaceful, uncrowded atmosphere", "Unforgettable Indian Ocean sunset"],
-    "importantInfo": ["Subject to weather conditions.", "Minimum 4 participants.", "Meeting point: Maputo Marina at 07:00.", "The beach has no infrastructure — bring everything you need."]
+    "highlights": ["Snorkelling on Ponta Torres coral reefs", "Fresh beach barbecue with fish and prawns", "Kayaking included", "Professional snorkelling guide", "Pristine beaches of Inhaca Island"],
+    "menu": [
+      {
+        "title": "Beach Barbecue Menu",
+        "categories": [
+          { "name": "Grill Selection", "items": ["Fresh grilled fish", "Prawns", "Mozambican chicken BBQ", "Grilled vegetables (vegetarian option)"] },
+          { "name": "Side Dishes", "items": ["Coconut rice", "Fresh garden salad", "Local bread", "Seasonal tropical fruits", "Soft drinks"] }
+        ]
+      }
+    ],
+    "itinerary": [
+      { "time": "07:30", "title": "Departure from Maputo Marina", "body": "Board at Maputo Marina for the boat journey to Inhaca Island.", "checklist": [] },
+      { "time": "09:00", "title": "Arrival at Inhaca Island — Ponta Torres", "body": "Arrival at Ponta Torres. Beach set-up and snorkelling briefing.", "checklist": [] },
+      { "time": "09:30", "title": "Guided Snorkelling", "body": "Guided exploration of coral reefs with professional snorkelling guidance.", "checklist": ["Explore coral reefs", "Observe tropical fish and marine life", "Snorkelling with professional guidance"] },
+      { "time": "12:30", "title": "Beach Barbecue Lunch", "body": "Freshly prepared barbecue lunch on the beach with grills, sides and soft drinks.", "checklist": [] },
+      { "time": "14:00", "title": "Free Time", "body": "Free afternoon to relax, swim, walk the beach or snorkel some more.", "checklist": ["Relax on the beach", "Swimming", "Beach walks", "Optional snorkelling"] },
+      { "time": "16:00", "title": "Return to Maputo", "body": "Departure from Ponta Torres back to Maputo Marina.", "checklist": [] },
+      { "time": "17:30", "title": "Arrival in Maputo", "body": "Arrival at Maputo Marina.", "checklist": [] }
+    ],
+    "importantInfo": ["Duration: full day (approximately 10 hours).", "Minimum 5 people.", "Basic swimming ability recommended.", "Snorkelling equipment and safety briefing included.", "Experience subject to weather and sea conditions.", "What to bring: swimwear, towel, sunscreen, hat and sunglasses.", "Meeting point: Maputo Marina at 07:30."]
   },
   "inhaca-cultural": {
     "name": "Inhaca Island — Cultural Experience",

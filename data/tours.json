@@ -286,6 +286,7 @@
     "location": "Ilha dos Portugueses, Inhaca & Praia do Farol",
     "destinations": "3 destinos",
     "duration": "Dia inteiro (~10h)",
+    "maxPeople": 100,
     "price": "6.000 MZN",
     "price_from": 6000,
     "priceOld": null,
@@ -367,35 +368,40 @@
     ],
     "menu": [
       {
-        "section": "Entrada",
-        "items": ["Fruta tropical fresca da época"]
-      },
-      {
-        "section": "Prato Principal",
-        "items": [
-          "Peixe grelhado fresco",
-          "Frango peri-peri",
-          "Caril vegetariano"
-        ]
-      },
-      {
-        "section": "Acompanhamentos",
-        "items": [
-          "Arroz de coco",
-          "Legumes locais salteados",
-          "Salada fresca"
-        ]
-      },
-      {
-        "section": "Sobremesa",
-        "items": ["Prato de fruta fresca da época"]
-      },
-      {
-        "section": "Bebidas",
-        "items": [
-          "Refrigerantes",
-          "Água mineral",
-          "Snacks durante o percurso"
+        "title": "Menu do Almoço na Inhaca",
+        "categories": [
+          {
+            "name": "Entrada",
+            "items": ["Fruta tropical fresca da época"]
+          },
+          {
+            "name": "Prato Principal",
+            "items": [
+              "Peixe grelhado fresco",
+              "Frango peri-peri",
+              "Caril vegetariano"
+            ]
+          },
+          {
+            "name": "Acompanhamentos",
+            "items": [
+              "Arroz de coco",
+              "Legumes locais salteados",
+              "Salada fresca"
+            ]
+          },
+          {
+            "name": "Sobremesa",
+            "items": ["Prato de fruta fresca da época"]
+          },
+          {
+            "name": "Bebidas",
+            "items": [
+              "Refrigerantes",
+              "Água mineral",
+              "Snacks durante o percurso"
+            ]
+          }
         ]
       }
     ],
@@ -418,37 +424,40 @@
     "id": "santa-maria-snorkeling",
     "slug": "santa-maria-snorkeling",
     "category": "island-tours",
-    "name": "Praia de Santa Maria — Snorkeling & BBQ",
-    "subtitle": "Uma das praias mais bonitas de Moçambique",
+    "name": "Praia de Santa Maria — Snorkeling & Barbecue na Praia",
+    "subtitle": "Snorkeling e barbecue na Ponta Torres, Ilha da Inhaca",
     "badge": "Recomendado",
     "badgeClass": "",
     "stars": 5,
     "image": "../assets/images/packages/snorkeling-bbq/1.webp",
     "heroImage": "../assets/images/packages/snorkeling-bbq/2.webp",
-    "location": "Praia de Santa Maria",
+    "location": "Ponta Torres — Ilha da Inhaca",
     "destinations": "1 destino",
-    "duration": "Dia inteiro",
-    "price": "5.200 MZN",
-    "price_from": 5200,
+    "duration": "Dia inteiro (~10h)",
+    "maxPeople": 100,
+    "price": "7.500 MZN",
+    "price_from": 7500,
     "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 4000,
-    "priceChild": "4.000 MZN",
+    "price_child": 5200,
+    "priceChild": "5.200 MZN",
     "priceChildLabel": "Crianças (4–12 anos)",
     "currency": "MZN",
-    "description": "Um dia completo na deslumbrante Praia de Santa Maria com snorkeling em recifes de coral, barbecue à beira-mar e a mais pura paz do Índico.",
+    "description": "Descubra um dos melhores pontos de snorkeling da Ilha da Inhaca, na Ponta Torres — recifes de coral vibrantes, vida marinha deslumbrante e um barbecue fresco na praia.",
     "detailText": [
-      "A Praia de Santa Maria é considerada uma das praias mais intocadas de Moçambique. Com areia branca fina, águas cristalinas e recifes de coral à porta, é o destino perfeito para um dia de total desconexão e natureza pura.",
-      "O nosso passeio inclui uma sessão de snorkeling guiada nos recifes locais, repletos de vida marinha diversificada, seguida de um autêntico barbecue moçambicano preparado na areia pela nossa equipa.",
-      "A tarde é toda sua para mergulhar, relaxar, explorar a praia ou simplesmente absorver a beleza incomparável da natureza moçambicana."
+      "Descubra um dos melhores pontos de snorkeling dos arredores da Ilha da Inhaca com esta experiência de dia inteiro na Ponta Torres. Conhecida pelas suas águas límpidas e vida marinha exuberante, esta área oferece uma oportunidade incrível de explorar recifes de coral enquanto desfruta de um relaxante barbecue na praia.",
+      "Após o snorkeling no recife, os convidados desfrutam de um almoço barbecue preparado na hora, na praia, rodeados pela beleza natural da ilha.",
+      "Esta experiência combina aventura, exploração marinha e uma escapada tropical à beira-mar."
     ],
     "includes": [
       "Transporte de barco de ida e volta",
-      "Equipamento de snorkeling completo",
-      "Barbecue com peixe e marisco frescos",
-      "Água e bebidas frias",
-      "Guia local experiente",
-      "Colete salva-vidas"
+      "Guia profissional / guia de snorkeling",
+      "Equipamento de snorkeling",
+      "Almoço barbecue na praia",
+      "Snacks e refrigerantes",
+      "Caiaque",
+      "Equipamento de segurança",
+      "Todas as taxas locais e de acesso à ilha"
     ],
     "excludes": [
       "Bebidas alcoólicas",
@@ -456,48 +465,89 @@
       "Despesas pessoais"
     ],
     "highlights": [
-      "Praia de areia branca pristina com águas turquesa",
-      "Snorkeling em recifes de coral intocados",
-      "Barbecue autêntico com marisco fresco",
-      "Ambiente tranquilo e sem multidões",
-      "Pôr do sol memorável sobre o Índico"
+      "Snorkeling nos recifes de coral da Ponta Torres",
+      "Barbecue fresco na praia com peixe e camarão",
+      "Caiaque incluído",
+      "Guia de snorkeling profissional",
+      "Praias intocadas da Ilha da Inhaca"
     ],
     "itinerary": [
       {
-        "time": "07h00",
-        "title": "Partida da Marina",
-        "body": "Embarque na Marina de Maputo com destino à Praia de Santa Maria.",
+        "time": "07h30",
+        "title": "Partida da Marina de Maputo",
+        "body": "Embarque na Marina de Maputo rumo à Ilha da Inhaca.",
         "checklist": []
       },
       {
         "time": "09h00",
-        "title": "Chegada & Instalação na Praia",
-        "body": "Chegada à Praia de Santa Maria. Instalação e briefing de snorkeling.",
+        "title": "Chegada à Ilha da Inhaca — Ponta Torres",
+        "body": "Chegada à Ponta Torres. Instalação na praia e briefing de snorkeling.",
         "checklist": []
       },
       {
         "time": "09h30",
-        "title": "Snorkeling nos Recifes",
-        "body": "Sessão guiada de snorkeling nos recifes de coral com peixes tropicais e fauna marinha diversificada.",
+        "title": "Snorkeling Guiado",
+        "body": "Exploração guiada dos recifes de coral: peixes tropicais, vida marinha diversificada e orientação profissional durante toda a sessão.",
+        "checklist": [
+          "Exploração dos recifes de coral",
+          "Observação de peixes tropicais e vida marinha",
+          "Snorkeling com orientação profissional"
+        ]
+      },
+      {
+        "time": "12h30",
+        "title": "Almoço — Barbecue na Praia",
+        "body": "Barbecue fresco preparado na praia com grelhados, acompanhamentos e refrigerantes.",
         "checklist": []
       },
       {
-        "time": "12h00",
-        "title": "Barbecue na Praia",
-        "body": "Barbecue moçambicano com peixe fresco, camarão e marisco grelhados na areia.",
-        "checklist": []
-      },
-      {
-        "time": "13h30",
-        "title": "Tarde Livre na Praia",
-        "body": "Tempo livre para nadar, relaxar ou explorar a praia até à hora do regresso.",
-        "checklist": []
+        "time": "14h00",
+        "title": "Tempo Livre",
+        "body": "Tarde livre para relaxar na praia, nadar, passear ou fazer snorkeling adicional.",
+        "checklist": [
+          "Relaxar na praia",
+          "Nadar",
+          "Passeios na praia",
+          "Snorkeling opcional"
+        ]
       },
       {
         "time": "16h00",
         "title": "Regresso a Maputo",
-        "body": "Partida de Santa Maria com chegada prevista às 18h00.",
+        "body": "Partida da Ponta Torres de regresso à Marina de Maputo.",
         "checklist": []
+      },
+      {
+        "time": "17h30",
+        "title": "Chegada a Maputo",
+        "body": "Chegada à Marina de Maputo.",
+        "checklist": []
+      }
+    ],
+    "menu": [
+      {
+        "title": "Menu do Barbecue na Praia",
+        "categories": [
+          {
+            "name": "Grelhados",
+            "items": [
+              "Peixe fresco grelhado",
+              "Camarão",
+              "Frango à moçambicana no barbecue",
+              "Legumes grelhados (opção vegetariana)"
+            ]
+          },
+          {
+            "name": "Acompanhamentos",
+            "items": [
+              "Arroz de coco",
+              "Salada fresca de jardim",
+              "Pão local",
+              "Frutas tropicais sazonais",
+              "Refrigerantes"
+            ]
+          }
+        ]
       }
     ],
     "gallery": [
@@ -507,10 +557,13 @@
       "../assets/images/packages/snorkeling-bbq/4.webp"
     ],
     "importantInfo": [
-      "Sujeito a condições meteorológicas.",
-      "Mínimo de 4 participantes.",
-      "Ponto de encontro: Marina de Maputo, 07h00.",
-      "A praia não tem infraestruturas — trazer tudo necessário."
+      "Duração: dia inteiro (aproximadamente 10 horas).",
+      "Mínimo de 5 participantes.",
+      "Capacidade básica de natação recomendada.",
+      "Equipamento de snorkeling e briefing de segurança incluídos.",
+      "Experiência sujeita a condições meteorológicas e do mar.",
+      "O que trazer: fato de banho, toalha, protetor solar, chapéu e óculos de sol.",
+      "Ponto de encontro: Marina de Maputo, às 07h30."
     ]
   },
   {
