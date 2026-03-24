@@ -86,22 +86,125 @@
     ]
   },
   "portuguese-island-bbq": {
-    "name": "Portuguese Island — Beach BBQ",
-    "subtitle": "Snorkelling & Barbecue on Portuguese Island",
-    "badge": "Most Booked",
-    "duration": "Half day",
+    "name": "Portuguese Island — Beach BBQ Experience",
+    "subtitle": "A full day on Portuguese Island with a fresh beach barbecue",
+    "badge": "Private Tour",
+    "duration": "Full day (~10 hours)",
     "priceLabel": "per adult",
-    "priceChildLabel": "Children (4–12 years)",
-    "description": "A perfect escape to Portuguese Island with snorkelling on coral reefs and a delicious beachside seafood barbecue.",
+    "priceChildLabel": "Children (4–10 years)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "A full day on the famous Portuguese Island — one of the most beautiful natural spots in Maputo Bay.",
     "detailText": [
-      "Portuguese Island is a breathtaking white sandbank surrounded by some of the finest coral reefs in Mozambique. On this exclusive trip, we sail directly to the island for a morning of snorkelling, sunshine and pure relaxation.",
-      "The highlight is our authentic Mozambican barbecue: freshly grilled fish, tiger prawns, squid and seafood prepared by our team right on the beach, with the Indian Ocean as your backdrop — a gastronomic experience you will never forget.",
-      "Ideal for those with limited time who still want to experience the essence of Mozambique's islands."
+      "Portuguese Island is a small sandbank nestled between Maputo and Inhaca Island, renowned for its calm turquoise waters and shallow shoreline — ideal for swimming, relaxing and simply being.",
+      "This experience is designed for those who want a laid-back day by the sea, without rush. The morning is yours to enjoy at your own pace — beach sports, snorkelling, photography or pure relaxation. At midday, our team prepares a full barbecue directly on the sand with fresh fish, prawns, beef, grilled vegetables and side dishes. The afternoon continues with more free time before the return journey.",
+      "Perfect for groups, families and travellers looking for a classic tropical beach day with great food and crystal-clear water — everything taken care of, no complications."
     ],
-    "includes": ["Return boat transfer", "Full snorkelling equipment", "Barbecue with fresh fish, prawns and seafood", "Water and cold drinks", "Experienced local guide", "Marina fees included"],
-    "excludes": ["Alcoholic beverages", "Tips (optional)", "Personal expenses"],
-    "highlights": ["Authentic beachside barbecue with fresh seafood", "Snorkelling on vibrant coral reefs", "Pristine white-sand beach", "Half-day experience — perfect when time is short", "Small groups and personalised attention"],
-    "importantInfo": ["Minimum 4 participants for departure confirmation.", "Tour subject to weather conditions.", "Meeting point: Maputo Marina at 08:00.", "Not available on Mondays."]
+    "includes": [
+      "Return boat transport",
+      "Professional guide / crew",
+      "Beach barbecue lunch",
+      "Snacks and soft drinks",
+      "Snorkelling equipment",
+      "Beach setup (shade / picnic area)",
+      "All island access fees"
+    ],
+    "excludes": [
+      "Alcoholic beverages",
+      "Personal expenses",
+      "Tips (optional)"
+    ],
+    "highlights": [
+      "Full day on Portuguese Island — calm water and white sand",
+      "Beach BBQ with fresh fish, prawns, beef and grilled vegetables",
+      "Beach volleyball, kayaking and snorkelling included",
+      "Beach setup with shade and picnic area",
+      "Perfect for groups, families and private tours",
+      "All-inclusive — no surprises"
+    ],
+    "itinerary": [
+      {
+        "time": "07:30",
+        "title": "Departure from Maputo Marina",
+        "body": "Board at Maputo Marina. Begin the boat journey towards Portuguese Island.",
+        "checklist": ["Swimwear", "Towel", "Sunscreen", "Hat and sunglasses"]
+      },
+      {
+        "time": "09:00",
+        "title": "Arrival at Portuguese Island",
+        "body": "Welcome drinks and beach setup. Free time to explore the island.",
+        "checklist": []
+      },
+      {
+        "time": "09:30 – 12:30",
+        "title": "Free Time on the Island",
+        "body": "A full morning to enjoy the island at your own pace: beach volleyball, kayaking, snorkelling, walks on the sandbank or pure relaxation.",
+        "checklist": ["Snorkelling equipment included"]
+      },
+      {
+        "time": "13:00",
+        "title": "Beach BBQ Lunch",
+        "body": "Our team serves lunch directly on the beach: freshly grilled fish, prawns, beef, grilled vegetables (vegetarian option available on request), served with coconut rice, fresh mixed salad, local bread, seasonal tropical fruits, soft drinks and water.",
+        "checklist": ["Full lunch included", "Soft drinks and water included"]
+      },
+      {
+        "time": "14:30 – 16:00",
+        "title": "Relaxation & Leisure",
+        "body": "Free afternoon for a final swim, photography or simply enjoying the island's tranquillity.",
+        "checklist": []
+      },
+      {
+        "time": "16:00",
+        "title": "Departure back to Maputo",
+        "body": "Leave the island and begin the return journey to Maputo Marina.",
+        "checklist": []
+      },
+      {
+        "time": "17:30",
+        "title": "Arrival in Maputo",
+        "body": "Arrival at Maputo Marina and end of the experience.",
+        "checklist": []
+      }
+    ],
+    "menu": [
+      {
+        "title": "Beach BBQ Menu",
+        "categories": [
+          {
+            "name": "Grill Selection",
+            "items": [
+              "Fresh grilled fish",
+              "Prawns",
+              "Beef",
+              "Grilled vegetables",
+              "Vegetarian option (on request)"
+            ]
+          },
+          {
+            "name": "Side Dishes",
+            "items": [
+              "Coconut rice",
+              "Fresh mixed salad",
+              "Local bread"
+            ]
+          },
+          {
+            "name": "Extras",
+            "items": [
+              "Seasonal tropical fruits",
+              "Soft drinks",
+              "Bottled water"
+            ]
+          }
+        ]
+      }
+    ],
+    "importantInfo": [
+      "Duration: full day (approx. 10 hours).",
+      "Minimum of 5 people for departure confirmation.",
+      "Departure point: Maputo Marina at 07:30.",
+      "What to bring: swimwear, towel, sunscreen, hat and sunglasses.",
+      "Experience is subject to weather and sea conditions."
+    ]
   },
   "portuguese-island-farol": {
     "name": "Portuguese Island & Lighthouse Beach",

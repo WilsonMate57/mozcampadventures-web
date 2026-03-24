@@ -123,85 +123,139 @@
   {
     "id": "portuguese-island-bbq",
     "slug": "portuguese-island-bbq",
-    "category": "island-tours",
-    "name": "Ilha dos Portugueses — Barbecue na Praia",
-    "subtitle": "Snorkeling & Barbecue na Ilha dos Portugueses",
-    "badge": "Mais Reservado",
+    "category": "private-tour",
+    "name": "Ilha dos Portugueses — Beach BBQ Experience",
+    "subtitle": "Dia completo na Ilha dos Portugueses com barbecue na praia",
+    "badge": "Tour Privado",
     "badgeClass": "popular",
     "stars": 5,
     "image": "../assets/images/packages/beach-berbecue/1.webp",
     "heroImage": "../assets/images/packages/beach-berbecue/2.webp",
     "location": "Ilha dos Portugueses",
     "destinations": "1 destino",
-    "duration": "Meio dia",
-    "price": "4.800 MZN",
-    "price_from": 4800,
+    "duration": "Dia inteiro (~10 horas)",
+    "maxPeople": 100,
+    "price": "6.800 MZN",
+    "price_from": 6800,
     "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 3500,
-    "priceChild": "3.500 MZN",
-    "priceChildLabel": "Crianças (4–12 anos)",
+    "price_child": 4800,
+    "priceChild": "4.800 MZN",
+    "priceChildLabel": "Crianças (4–10 anos)",
     "currency": "MZN",
-    "description": "Uma escapadinha perfeita à Ilha dos Portugueses com snorkeling em recifes de coral e um delicioso barbecue de marisco à beira-mar.",
+    "cancelPolicy": "até 48h antes",
+    "description": "Um dia inteiro na famosa Ilha dos Portugueses, um dos mais belos recantos naturais da Baía de Maputo.",
     "detailText": [
-      "A Ilha dos Portugueses é um banco de areia branca deslumbrante, rodeado por alguns dos melhores recifes de coral de Moçambique. Neste passeio exclusivo, navegamos diretamente até à ilha para uma manhã de snorkeling, sol e relaxamento.",
-      "O ponto alto é o nosso autêntico barbecue moçambicano: peixe fresco grelhado, camarão tigre, lulas e marisco preparados pela nossa equipa na praia, com vista para o Índico. Uma experiência gastronómica que vai recordar para sempre.",
-      "Ideal para quem tem menos tempo disponível mas não quer perder a essência das ilhas de Moçambique."
+      "A Ilha dos Portugueses é um banco de areia branca encravado entre Maputo e a Ilha de Inhaca, celebre pelas suas águas turquesa calmas e rasas — perfeitas para nadar, relaxar e simplesmente estar.",
+      "Esta experiência foi pensada para quem quer desfrutar de um dia tranquilo à beira-mar, sem pressa. A manhã é sua para explorar a ilha como quiser — desportos de praia, snorkeling, fotografia ou pura descontracção. Ao meio-dia, a nossa equipa prepara um barbecue directamente na areia com peixe fresco, camarão, carne, vegetais grelhados e acompanhamentos. A tarde continua com mais tempo livre até ao regresso.",
+      "Ideal para grupos, famílias e viajantes que procuram um dia de praia tropical clássico com boa comida e água cristalina — sem complicações, com tudo tratado."
     ],
     "includes": [
       "Transporte de barco de ida e volta",
-      "Equipamento de snorkeling completo",
-      "Barbecue com peixe fresco, camarão e marisco",
-      "Água e bebidas frias",
-      "Guia local experiente",
-      "Taxas portuárias incluídas"
+      "Guia profissional / tripulação",
+      "Barbecue na praia (almoço completo)",
+      "Snacks e refrigerantes",
+      "Equipamento de snorkeling",
+      "Instalações de praia (sombra / área de piquenique)",
+      "Todas as taxas de acesso à ilha"
     ],
     "excludes": [
       "Bebidas alcoólicas",
-      "Gorjetas (opcional)",
-      "Despesas pessoais"
+      "Despesas pessoais",
+      "Gorjetas (opcional)"
     ],
     "highlights": [
-      "Barbecue autêntico com marisco fresco na praia",
-      "Snorkeling em recifes de coral vibrantes",
-      "Praia de areia branca pristina",
-      "Experiência compacta — perfeita para meio dia",
-      "Grupos pequenos e atenção personalizada"
+      "Dia completo na Ilha dos Portugueses — águas calmas e areia branca",
+      "Barbecue na praia com peixe, camarão, carne e vegetais grelhados",
+      "Voleibol de praia, kayak e snorkeling incluídos",
+      "Instalações de praia com sombra e área de piquenique",
+      "Perfeito para grupos, famílias e tours privados",
+      "Tudo incluído — sem surpresas"
     ],
     "itinerary": [
       {
-        "time": "08h00",
+        "time": "07h30",
         "title": "Partida da Marina de Maputo",
-        "body": "Encontro na marina para briefing de segurança e embarque rumo à Ilha dos Portugueses.",
+        "body": "Embarque na Marina de Maputo. Início da viagem de barco rumo à Ilha dos Portugueses.",
         "checklist": [
-          "Protetor solar",
           "Fato de banho",
-          "Toalha"
+          "Toalha",
+          "Protetor solar",
+          "Chapéu e óculos de sol"
         ]
       },
       {
         "time": "09h00",
-        "title": "Chegada & Snorkeling",
-        "body": "Chegada à ilha e início da sessão de snorkeling nos recifes de coral com guia experiente.",
+        "title": "Chegada à Ilha dos Portugueses",
+        "body": "Chegada à ilha com boas-vindas e instalação da área de praia. Tempo livre para explorar.",
+        "checklist": []
+      },
+      {
+        "time": "09h30 – 12h30",
+        "title": "Tempo Livre na Ilha",
+        "body": "Manhã inteira para desfrutar da ilha ao seu ritmo: voleibol de praia, kayak, snorkeling, caminhadas pelo banco de areia ou simplesmente relaxar.",
         "checklist": [
           "Equipamento de snorkeling incluído"
         ]
       },
       {
-        "time": "11h00",
+        "time": "13h00",
         "title": "Barbecue na Praia",
-        "body": "A nossa equipa prepara o barbecue diretamente na areia. Peixe fresco, camarão e marisco grelhados na hora.",
+        "body": "A nossa equipa serve o almoço directamente na praia: peixe fresco grelhado, camarão, carne, vegetais grelhados (opção vegetariana disponível mediante pedido), acompanhado de arroz de coco, salada mista, pão local, frutas tropicais sazonais, refrigerantes e água.",
         "checklist": [
           "Almoço completo incluído",
-          "Bebidas frias incluídas"
+          "Refrigerantes e água incluídos"
         ]
       },
       {
-        "time": "12h30",
-        "title": "Tempo Livre & Regresso",
-        "body": "Tempo livre para mergulho livre, fotografia e relaxamento antes do regresso a Maputo.",
-        "checklist": [
-          "Chegada prevista 13h30"
+        "time": "14h30 – 16h00",
+        "title": "Descanso & Lazer",
+        "body": "Tarde livre para um último mergulho, fotografia ou simplesmente desfrutar da tranquilidade da ilha.",
+        "checklist": []
+      },
+      {
+        "time": "16h00",
+        "title": "Regresso a Maputo",
+        "body": "Partida da ilha de regresso à Marina de Maputo.",
+        "checklist": []
+      },
+      {
+        "time": "17h30",
+        "title": "Chegada a Maputo",
+        "body": "Chegada à Marina de Maputo e fim do passeio.",
+        "checklist": []
+      }
+    ],
+    "menu": [
+      {
+        "title": "Menu do Barbecue na Praia",
+        "categories": [
+          {
+            "name": "Grelhados",
+            "items": [
+              "Peixe fresco grelhado",
+              "Camarão",
+              "Carne",
+              "Vegetais grelhados",
+              "Opção vegetariana (mediante pedido)"
+            ]
+          },
+          {
+            "name": "Acompanhamentos",
+            "items": [
+              "Arroz de coco",
+              "Salada mista fresca",
+              "Pão local"
+            ]
+          },
+          {
+            "name": "Extras",
+            "items": [
+              "Frutas tropicais sazonais",
+              "Refrigerantes",
+              "Água engarrafada"
+            ]
+          }
         ]
       }
     ],
@@ -212,10 +266,11 @@
       "../assets/images/packages/beach-berbecue/4.webp"
     ],
     "importantInfo": [
-      "Mínimo de 4 participantes para confirmação da saída.",
-      "Tour sujeito a condições meteorológicas.",
-      "Ponto de encontro: Marina de Maputo, às 08h00.",
-      "Não disponível às segundas-feiras."
+      "Duração: dia inteiro (aprox. 10 horas).",
+      "Mínimo de 5 pessoas para confirmação da saída.",
+      "Ponto de partida: Marina de Maputo, às 07h30.",
+      "O que trazer: fato de banho, toalha, protetor solar, chapéu e óculos de sol.",
+      "A experiência está sujeita às condições meteorológicas e do mar."
     ]
   },
   {
