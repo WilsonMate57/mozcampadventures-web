@@ -277,36 +277,37 @@
     "slug": "portuguese-island-farol",
     "category": "island-tours",
     "name": "Ilha dos Portugueses & Praia do Farol",
-    "subtitle": "Dois destinos icónicos numa única aventura",
-    "badge": "Exclusivo",
+    "subtitle": "Uma jornada privada pela Baía de Maputo",
+    "badge": "Tour Privado",
     "badgeClass": "",
     "stars": 5,
     "image": "../assets/images/packages/farol-inhaca/1.webp",
     "heroImage": "../assets/images/packages/farol-inhaca/2.webp",
-    "location": "Inhaca & Ilha dos Portugueses",
-    "destinations": "2 destinos",
-    "duration": "Dia inteiro",
-    "price": "4.200 MZN",
-    "price_from": 4200,
+    "location": "Ilha dos Portugueses, Inhaca & Praia do Farol",
+    "destinations": "3 destinos",
+    "duration": "Dia inteiro (~10h)",
+    "price": "6.000 MZN",
+    "price_from": 6000,
     "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 3200,
-    "priceChild": "3.200 MZN",
-    "priceChildLabel": "Crianças (4–12 anos)",
+    "price_child": 5000,
+    "priceChild": "5.000 MZN",
+    "priceChildLabel": "Crianças (4–10 anos)",
     "currency": "MZN",
-    "description": "Uma combinação única: snorkeling na Ilha dos Portugueses e visita à histórica Praia do Farol na Ilha da Inhaca, com o seu icónico farol do século XIX.",
+    "description": "Uma aventura privada exclusiva pela Baía de Maputo, com paragens na Ilha dos Portugueses, almoço na Vila da Inhaca e tarde na paradisíaca Praia do Farol.",
     "detailText": [
-      "Este passeio combina dois dos destinos mais fotogénicos da Baía de Maputo: a Ilha dos Portugueses com os seus recifes de coral intocados, e a Praia do Farol na Ilha da Inhaca, marcada pelo histórico farol construído em 1893.",
-      "Após o snorkeling na Ilha dos Portugueses, navegamos até à Praia do Farol para uma visita guiada ao farol e um piquenique na praia com vistas deslumbrantes para o oceano. Um passeio com história, natureza e muita beleza.",
-      "Uma experiência perfeita para os amantes de história e natureza que procuram algo diferente das tradicionais visitas às ilhas."
+      "Embarque nesta experiência privada exclusiva e descubra três dos destinos mais fascinantes da Baía de Maputo num único dia. A bordo de uma embarcação privada, parte da Marina de Maputo ao amanhecer, rumo à Ilha dos Portugueses — onde a natureza ainda preserva toda a sua pureza, com águas cristalinas e areias que parecem pertencer a outro mundo.",
+      "Na pitoresca Vila da Inhaca, o ritmo desacelera enquanto partilha um almoço autêntico num restaurante local. Peixe grelhado acabado de apanhar, frango peri-peri a saber genuinamente a Moçambique e uma mesa cheia de sabores locais. Um safari de ilha guiado apresenta-lhe a vida local, a história e a flora única desta ilha protegida — um encontro genuíno com a cultura moçambicana.",
+      "O dia culmina na Praia do Farol, um dos recantos mais remotos e deslumbrantes de toda a baía: areia branca, água cristalina e a sensação rara de ter descoberto um segredo que poucos conhecem. Uma experiência desenhada para famílias e grupos que procuram muito mais do que uma simples ida à praia."
     ],
     "includes": [
-      "Transporte de barco de ida e volta",
-      "Equipamento de snorkeling",
-      "Piquenique na Praia do Farol",
-      "Visita guiada ao farol histórico",
-      "Água e bebidas frias",
-      "Guia local certificado"
+      "Transporte de barco de ida e volta (embarcação privada)",
+      "Guia profissional durante todo o dia",
+      "Safari de ilha guiado na Ilha da Inhaca",
+      "Almoço no restaurante local da Vila da Inhaca",
+      "Snacks durante o percurso",
+      "Refrigerantes e água mineral",
+      "Todas as taxas locais incluídas"
     ],
     "excludes": [
       "Bebidas alcoólicas",
@@ -314,48 +315,88 @@
       "Despesas pessoais"
     ],
     "highlights": [
-      "Visita ao icónico Farol da Inhaca (1893)",
-      "Snorkeling em recifes de coral da Ilha dos Portugueses",
-      "Piquenique com vista panorâmica para o Índico",
-      "Guia histórico e cultural incluído",
-      "Excelentes oportunidades fotográficas"
+      "Passeio privado — embarcação exclusiva para o seu grupo",
+      "Paragem na Ilha dos Portugueses",
+      "Almoço autêntico na Vila da Inhaca",
+      "Safari de ilha guiado pela Ilha da Inhaca",
+      "Tarde na remota e deslumbrante Praia do Farol"
     ],
     "itinerary": [
       {
         "time": "07h30",
-        "title": "Partida da Marina",
-        "body": "Embarque na Marina de Maputo rumo à Ilha dos Portugueses.",
+        "title": "Partida da Marina de Maputo",
+        "body": "Embarque na Marina de Maputo. A embarcação privada parte rumo à Ilha dos Portugueses num cruzeiro matinal pela Baía de Maputo.",
         "checklist": []
       },
       {
-        "time": "08h30",
-        "title": "Snorkeling — Ilha dos Portugueses",
-        "body": "Sessão de snorkeling nos recifes de coral com peixes tropicais e tartarugas marinhas.",
+        "time": "09h00",
+        "title": "Ilha dos Portugueses",
+        "body": "Chegada à Ilha dos Portugueses. Tempo livre para explorar a ilha, nadar nas águas cristalinas e desfrutar da natureza intocada.",
         "checklist": []
       },
       {
-        "time": "10h30",
-        "title": "Travessia para a Praia do Farol",
-        "body": "Navegação até à Praia do Farol na Ilha da Inhaca.",
+        "time": "11h30",
+        "title": "Almoço na Vila da Inhaca",
+        "body": "Almoço num restaurante local da Vila da Inhaca com pratos típicos moçambicanos preparados com ingredientes frescos.",
         "checklist": []
       },
       {
-        "time": "11h00",
-        "title": "Visita ao Farol Histórico",
-        "body": "Tour guiado pelo farol histórico da Inhaca com vista panorâmica da ilha e da baía.",
+        "time": "13h00",
+        "title": "Safari de Ilha",
+        "body": "Passeio guiado pela Ilha da Inhaca: flora endémica, cultura local e pontos de interesse histórico da ilha.",
         "checklist": []
       },
       {
-        "time": "12h30",
-        "title": "Piquenique na Praia",
-        "body": "Piquenique à beira-mar com sanduíches, fruta fresca e bebidas frias.",
+        "time": "13h45",
+        "title": "Praia do Farol",
+        "body": "Chegada à Praia do Farol — uma das praias mais remotas e deslumbrantes da Baía de Maputo. Tempo livre para relaxar e nadar.",
         "checklist": []
       },
       {
-        "time": "14h00",
-        "title": "Regresso a Maputo",
-        "body": "Regresso à Marina de Maputo com chegada prevista às 15h00.",
+        "time": "15h45",
+        "title": "Regresso",
+        "body": "Partida da Praia do Farol de regresso à Marina de Maputo.",
         "checklist": []
+      },
+      {
+        "time": "17h30",
+        "title": "Chegada a Maputo",
+        "body": "Chegada à Marina de Maputo com as melhores recordações de um dia inesquecível.",
+        "checklist": []
+      }
+    ],
+    "menu": [
+      {
+        "section": "Entrada",
+        "items": ["Fruta tropical fresca da época"]
+      },
+      {
+        "section": "Prato Principal",
+        "items": [
+          "Peixe grelhado fresco",
+          "Frango peri-peri",
+          "Caril vegetariano"
+        ]
+      },
+      {
+        "section": "Acompanhamentos",
+        "items": [
+          "Arroz de coco",
+          "Legumes locais salteados",
+          "Salada fresca"
+        ]
+      },
+      {
+        "section": "Sobremesa",
+        "items": ["Prato de fruta fresca da época"]
+      },
+      {
+        "section": "Bebidas",
+        "items": [
+          "Refrigerantes",
+          "Água mineral",
+          "Snacks durante o percurso"
+        ]
       }
     ],
     "gallery": [
@@ -365,10 +406,12 @@
       "../assets/images/packages/farol-inhaca/4.webp"
     ],
     "importantInfo": [
-      "A subida ao farol pode ser fisicamente exigente — calçado adequado recomendado.",
-      "Mínimo de 4 participantes.",
-      "Sujeito a condições meteorológicas.",
-      "Ponto de encontro: Marina de Maputo, 07h30."
+      "Passeio de dia inteiro — duração aproximada de 10 horas.",
+      "Mínimo de 5 participantes (tour privado).",
+      "Adequado para famílias e grupos.",
+      "Recomendado vestuário confortável e calçado adequado para caminhada.",
+      "Sujeito a condições meteorológicas e do mar.",
+      "Ponto de encontro: Marina de Maputo, às 07h30."
     ]
   },
   {

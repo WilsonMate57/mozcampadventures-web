@@ -207,21 +207,37 @@
   },
   "portuguese-island-farol": {
     "name": "Portuguese Island & Lighthouse Beach",
-    "subtitle": "Two iconic destinations in one adventure",
-    "badge": "Exclusive",
-    "duration": "Full day",
+    "subtitle": "A private journey through Maputo Bay",
+    "badge": "Private Tour",
+    "duration": "Full day (~10h)",
     "priceLabel": "per adult",
-    "priceChildLabel": "Children (4–12 years)",
-    "description": "A unique combination: snorkelling on Portuguese Island and a visit to the historic Lighthouse Beach on Inhaca Island, with its iconic 19th-century lighthouse.",
+    "priceChildLabel": "Children (4–10 years)",
+    "description": "An exclusive private adventure across Maputo Bay, with stops at Portuguese Island, lunch in Inhaca Village and an afternoon at the breathtaking Lighthouse Beach.",
     "detailText": [
-      "This tour combines two of Maputo Bay's most photogenic destinations: Portuguese Island with its untouched coral reefs, and Lighthouse Beach on Inhaca Island, marked by the historic lighthouse built in 1893.",
-      "After snorkelling on Portuguese Island, we sail to Lighthouse Beach for a guided tour of the lighthouse and a picnic on the beach with stunning ocean views — history, nature and breathtaking scenery in one tour.",
-      "A perfect experience for lovers of history and nature looking for something different from the usual island visits."
+      "Step aboard this exclusive private experience and discover three of Maputo Bay's most captivating destinations in a single day. On a private boat, you'll leave Maputo Marina at sunrise and head towards Portuguese Island — where nature remains pristine, with crystal-clear waters and sands that feel like they belong to another world.",
+      "In the charming Inhaca Village, the pace slows as you share an authentic lunch at a local restaurant. Freshly caught grilled fish, genuine Mozambican peri-peri chicken and a table full of local flavours. A guided island safari then introduces you to the local life, history and unique flora of this protected island — a genuine encounter with Mozambican culture.",
+      "The day ends at Lighthouse Beach, one of the most remote and stunning spots in the entire bay: white sand, crystal water and the rare feeling of having discovered a secret few people know. An experience crafted for families and groups looking for far more than just a day at the beach."
     ],
-    "includes": ["Return boat transfer", "Snorkelling equipment", "Picnic at Lighthouse Beach", "Guided tour of the historic lighthouse", "Water and cold drinks", "Certified local guide"],
+    "includes": ["Return boat transfer (private boat)", "Professional guide throughout the day", "Guided island safari on Inhaca Island", "Lunch at a local restaurant in Inhaca Village", "Snacks during the journey", "Soft drinks and mineral water", "All local fees included"],
     "excludes": ["Alcoholic beverages", "Tips", "Personal expenses"],
-    "highlights": ["Visit to the iconic Inhaca Lighthouse (1893)", "Snorkelling on Portuguese Island coral reefs", "Panoramic picnic overlooking the Indian Ocean", "Historical and cultural guided tour", "Outstanding photography opportunities"],
-    "importantInfo": ["The lighthouse climb can be physically demanding — appropriate footwear recommended.", "Minimum 4 participants.", "Subject to weather conditions.", "Meeting point: Maputo Marina at 07:30."]
+    "highlights": ["Private tour — exclusive boat for your group", "Stop at Portuguese Island", "Authentic lunch in Inhaca Village", "Guided island safari on Inhaca Island", "Afternoon at the remote and stunning Lighthouse Beach"],
+    "menu": [
+      { "section": "Starter", "items": ["Fresh seasonal tropical fruit"] },
+      { "section": "Main Course", "items": ["Freshly grilled fish", "Peri-peri chicken", "Vegetarian curry"] },
+      { "section": "Sides", "items": ["Coconut rice", "Sautéed local vegetables", "Fresh salad"] },
+      { "section": "Dessert", "items": ["Seasonal fresh fruit platter"] },
+      { "section": "Drinks", "items": ["Soft drinks", "Mineral water", "Snacks during the journey"] }
+    ],
+    "itinerary": [
+      { "time": "07:30", "title": "Departure from Maputo Marina", "body": "Board at Maputo Marina. The private boat departs towards Portuguese Island on a morning cruise across Maputo Bay.", "checklist": [] },
+      { "time": "09:00", "title": "Portuguese Island", "body": "Arrival at Portuguese Island. Free time to explore the island, swim in crystal-clear waters and enjoy untouched nature.", "checklist": [] },
+      { "time": "11:30", "title": "Lunch in Inhaca Village", "body": "Lunch at a local restaurant in Inhaca Village with traditional Mozambican dishes prepared with fresh ingredients.", "checklist": [] },
+      { "time": "13:00", "title": "Island Safari", "body": "Guided tour of Inhaca Island: endemic flora, local culture and historic points of interest on the island.", "checklist": [] },
+      { "time": "13:45", "title": "Lighthouse Beach", "body": "Arrival at Lighthouse Beach — one of the most remote and breathtaking beaches in Maputo Bay. Free time to relax and swim.", "checklist": [] },
+      { "time": "15:45", "title": "Return Journey", "body": "Departure from Lighthouse Beach back to Maputo Marina.", "checklist": [] },
+      { "time": "17:30", "title": "Arrival in Maputo", "body": "Arrival at Maputo Marina with unforgettable memories of a remarkable day.", "checklist": [] }
+    ],
+    "importantInfo": ["Full-day experience — approximately 10 hours.", "Minimum 5 participants (private tour).", "Suitable for families and groups.", "Comfortable clothing and appropriate footwear for walking recommended.", "Subject to weather and sea conditions.", "Meeting point: Maputo Marina at 07:30."]
   },
   "santa-maria-snorkeling": {
     "name": "Santa Maria Beach — Snorkelling & BBQ",
