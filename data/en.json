@@ -243,11 +243,11 @@
       "Park entrance fees",
       "Professional safari guide",
       "Safari drive (morning & afternoon)",
+      "Lunch",
       "Bottled water",
       "Border assistance"
     ],
     "excludes": [
-      "Lunch",
       "Personal expenses"
     ],
     "highlights": [
@@ -286,7 +286,7 @@
       {
         "time": "12:00",
         "title": "Rest Stop at Camp",
-        "body": "Stop at a rest camp inside the park. Time for lunch (not included), a short rest and photos.",
+        "body": "Stop at a rest camp inside the park. Lunch included, short rest and photos.",
         "checklist": []
       },
       {
@@ -332,7 +332,7 @@
         ]
       }
     ],
-    "importantInfo": ["Valid passport required for South Africa.", "Neutral clothing recommended (khaki, green, grey) — avoid white and bright colours.", "Lunch is not included — options are available at the rest camp inside the park.", "Free cancellation up to 72 hours before.", "Subject to availability confirmation."]
+    "importantInfo": ["Valid passport required for South Africa.", "Neutral clothing recommended (khaki, green, grey) — avoid white and bright colours.", "Lunch is included in the package.", "Free cancellation up to 72 hours before.", "Subject to availability confirmation."]
   },
   "safari-parque-maputo": {
     "name": "Maputo Special Reserve",

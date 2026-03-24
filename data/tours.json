@@ -1318,11 +1318,11 @@
       "Taxas de entrada no parque",
       "Guia safari profissional",
       "Drive safari (manhã e tarde)",
+      "Almoço",
       "Água engarrafada",
       "Assistência na fronteira"
     ],
     "excludes": [
-      "Almoço",
       "Despesas pessoais"
     ],
     "highlights": [
@@ -1364,7 +1364,7 @@
       {
         "time": "12h00",
         "title": "Paragem para Almoço",
-        "body": "Paragem num rest camp dentro do parque. Tempo para almoço (não incluído), descanso e fotografias.",
+        "body": "Paragem num rest camp dentro do parque. Almoço incluído, descanso e fotografias.",
         "checklist": []
       },
       {
@@ -1419,7 +1419,7 @@
     "importantInfo": [
       "Passaporte válido obrigatório para a África do Sul.",
       "Roupas neutras recomendadas (caqui, verde, cinzento) — evitar branco e cores vivas.",
-      "Almoço não incluído — há opções no rest camp dentro do parque.",
+      "Almoço incluído no pacote.",
       "Cancela gratuitamente até 72h antes.",
       "Sujeito a confirmação de disponibilidade."
     ]
