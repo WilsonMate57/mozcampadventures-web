@@ -1527,8 +1527,8 @@
     "id": "tour-reino-eswatini",
     "slug": "tour-reino-eswatini",
     "category": "safaris",
-    "name": "Reino de Eswatini — Tour Cultural",
-    "subtitle": "Cultura, natureza e tradição no último reino absoluto de África",
+    "name": "Eswatini — Experiência Cultural",
+    "subtitle": "Cultura, tradição e natureza no Reino de Eswatini",
     "badge": "Único",
     "badgeClass": "",
     "stars": 5,
@@ -1536,80 +1536,77 @@
     "heroImage": "../assets/images/packages/safari/safari-eswatini-3.jpeg",
     "location": "Eswatini (Suazilândia)",
     "destinations": "Eswatini",
-    "duration": "2 dias / 1 noite",
-    "price": "16.600 MZN",
-    "price_from": 16600,
+    "duration": "1 dia",
+    "maxPeople": 100,
+    "price": "16.500 MZN",
+    "price_from": 16500,
     "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 12000,
-    "priceChild": "12.000 MZN",
-    "priceChildLabel": "Crianças (4–12 anos)",
+    "price_child": 10500,
+    "priceChild": "10.500 MZN",
+    "priceChildLabel": "Crianças (4–10 anos)",
     "currency": "MZN",
-    "description": "Eswatini (antiga Suazilândia) é o último reino absoluto de África — uma jornada de dois dias pela cultura, natureza e tradições de um povo único.",
+    "description": "Descubra a rica cultura do Reino de Eswatini numa experiência autêntica e inesquecível. Este tour de um dia combina tradição, natureza e artesanato local.",
     "detailText": [
-      "O Reino de Eswatini, encravado entre a África do Sul e Moçambique, é um destino fascinante que combina cenários naturais impressionantes com uma cultura viva e autêntica. Com montanhas, florestas e savanas, é também lar de uma vida selvagem diversa.",
-      "O nosso tour de 2 dias passa pelo Parque Nacional Hlane (leões, elefantes, rinocerontes brancos), pela aldeia cultural de Swazi com danças tradicionais, pelo mercado de artesanato Tinkhabi e pela fábrica de velas Swazi Candles — uma das mais famosas do mundo.",
-      "Uma viagem que enriquece a alma e alarga horizontes, combinando África selvagem com tradição e hospitalidade africana genuína."
+      "O Reino de Eswatini, encravado entre a África do Sul e Moçambique, é um destino fascinante que combina cenários naturais impressionantes com uma cultura viva e autêntica.",
+      "O tour inclui visita à Aldeia Cultural de Mantenga, as impressionantes Cataratas de Mantenga, uma autêntica experiência cultural Swazi, paragem na fábrica Swazi Candles e almoço com refrigerantes no Santuário de Vida Selvagem de Mlilwane.",
+      "Adequado para famílias e crianças, com caminhada moderada e guia profissional incluído."
     ],
     "includes": [
-      "Transporte privado de ida e volta de Maputo",
-      "1 noite em alojamento em Eswatini",
-      "Game drive no Parque Nacional Hlane",
-      "Visita à aldeia cultural Swazi",
-      "Todas as refeições",
-      "Entrada nos parques e museus",
-      "Guia bilingue (PT/EN)"
+      "Transporte de ida e volta",
+      "Taxas de entrada",
+      "Almoço + refrigerantes",
+      "Guia experiente"
     ],
     "excludes": [
-      "Visto para Eswatini (geralmente não necessário)",
       "Bebidas alcoólicas",
       "Compras de artesanato",
-      "Gorjetas"
+      "Gorjetas",
+      "Despesas pessoais"
     ],
     "highlights": [
-      "Parque Nacional Hlane — leões, elefantes e rinocerontes",
-      "Danças tradicionais Swazi numa aldeia local",
-      "Fábrica Swazi Candles — artesanato famoso mundialmente",
-      "Cenários naturais de montanha e savana",
-      "O único reino absoluto de África"
+      "Visita à Aldeia Cultural de Mantenga",
+      "Cataratas de Mantenga",
+      "Experiência cultural Swazi autêntica",
+      "Paragem na Swazi Candles (artesanato local)",
+      "Almoço e refrigerantes no Santuário de Mlilwane",
+      "Guia profissional incluído"
     ],
     "itinerary": [
       {
-        "time": "Dia 1 — 06h00",
+        "time": "Cedo de manhã",
         "title": "Partida de Maputo",
-        "body": "Saída de Maputo com passagem pela fronteira de Lomahasha para Eswatini.",
+        "body": "Recolha em Maputo e início da viagem em direcção a Eswatini. Aproximadamente 206 km | 3 horas (incluindo passagem na fronteira e paragens).",
         "checklist": [
-          "Passaporte válido"
+          "Passaporte válido",
+          "Sapatos confortáveis para caminhar",
+          "Chapéu e protector solar",
+          "Câmara fotográfica",
+          "Casaco leve"
         ]
       },
       {
-        "time": "Dia 1 — 10h00",
-        "title": "Parque Nacional Hlane — Game Drive",
-        "body": "Game drive no Hlane com avistamento de leões, elefantes, rinocerontes brancos e mais.",
+        "time": "Manhã",
+        "title": "Aldeia Cultural de Mantenga & Cataratas",
+        "body": "Visita à Aldeia Cultural de Mantenga com experiência cultural Swazi autêntica. Exploração das impressionantes Cataratas de Mantenga.",
         "checklist": []
       },
       {
-        "time": "Dia 1 — 14h00",
-        "title": "Aldeia Cultural & Danças Swazi",
-        "body": "Visita a uma aldeia tradicional com demonstração de danças e rituais culturais Swazi.",
+        "time": "Hora do almoço",
+        "title": "Almoço no Santuário de Mlilwane",
+        "body": "Almoço e refrigerantes no Santuário de Vida Selvagem de Mlilwane — incluídos no pacote.",
         "checklist": []
       },
       {
-        "time": "Dia 1 — 19h00",
-        "title": "Jantar & Pernoita",
-        "body": "Jantar e pernoita em lodge em Eswatini.",
-        "checklist": []
-      },
-      {
-        "time": "Dia 2 — 09h00",
+        "time": "Tarde",
         "title": "Swazi Candles & Artesanato",
-        "body": "Visita à famosa fábrica Swazi Candles e ao mercado Tinkhabi de artesanato local.",
+        "body": "Paragem na famosa fábrica Swazi Candles para conhecer o artesanato local e adquirir lembranças únicas.",
         "checklist": []
       },
       {
-        "time": "Dia 2 — 14h00",
+        "time": "Final da tarde",
         "title": "Regresso a Maputo",
-        "body": "Início da viagem de regresso a Maputo com chegada prevista às 18h00.",
+        "body": "Início da viagem de regresso a Maputo.",
         "checklist": []
       }
     ],
@@ -1620,10 +1617,13 @@
       "../assets/images/packages/safari/safari-eswatini-4.jpeg"
     ],
     "importantInfo": [
-      "Passaporte válido obrigatório para Eswatini.",
-      "Eswatini geralmente não exige visto para cidadãos moçambicanos.",
-      "Roupas para game drive (tons neutros) e roupas culturalmente respeitosas para visitas.",
-      "Cancelamento gratuito até 72h antes."
+      "Local de partida: Maputo.",
+      "Distância e duração: aprox. 206 km | 3 horas (incluindo formalidades fronteiriças e paragens).",
+      "Passaporte válido obrigatório para entrada em Eswatini.",
+      "Algumas nacionalidades podem necessitar de visto — verifique com antecedência.",
+      "Reserve tempo para as formalidades na fronteira.",
+      "O que levar: passaporte, sapatos confortáveis, chapéu e protector solar, câmara, casaco leve.",
+      "Tour de dia inteiro. Adequado para famílias e crianças. Caminhada moderada. Funciona na maioria das condições meteorológicas."
     ]
   },
   {

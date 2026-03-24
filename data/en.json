@@ -352,22 +352,85 @@
     "importantInfo": ["Comfortable neutral clothing recommended.", "Insect repellent essential.", "The reserve is recovering — wildlife sightings are not guaranteed but very likely.", "Meeting point: Maputo at 06:30."]
   },
   "tour-reino-eswatini": {
-    "name": "Kingdom of Eswatini — Cultural Tour",
-    "subtitle": "Culture, nature and tradition in Africa's last absolute kingdom",
+    "name": "Eswatini — Cultural Experience",
+    "subtitle": "Culture, tradition and nature in the Kingdom of Eswatini",
     "badge": "Unique",
-    "duration": "2 days / 1 night",
+    "duration": "1 Day",
     "priceLabel": "per adult",
-    "priceChildLabel": "Children (4–12 years)",
-    "description": "Eswatini (formerly Swaziland) is Africa's last absolute kingdom — a two-day journey through the culture, nature and traditions of a remarkable people.",
+    "priceChildLabel": "Children (4–10 years)",
+    "description": "Discover the rich culture of the Kingdom of Eswatini through an authentic and unforgettable experience. This one-day tour combines tradition, nature, and local craftsmanship.",
     "detailText": [
-      "The Kingdom of Eswatini, nestled between South Africa and Mozambique, is a fascinating destination combining stunning natural scenery with vibrant, authentic culture. With mountains, forests and savannahs, it is also home to diverse wildlife.",
-      "Our 2-day tour passes through Hlane National Park (lions, elephants, white rhinos), a Swazi cultural village with traditional dances, the Tinkhabi craft market and the Swazi Candles factory — one of the most famous in the world.",
-      "A journey that enriches the soul and broadens horizons, combining wild Africa with genuine African tradition and hospitality."
+      "The Kingdom of Eswatini, nestled between South Africa and Mozambique, is a fascinating destination combining stunning natural scenery with vibrant, authentic culture.",
+      "The tour includes a visit to Mantenga Cultural Village, the spectacular Mantenga Falls, an authentic Swazi cultural experience, a stop at Swazi Candles and lunch with soft drinks at Mlilwane Wildlife Sanctuary.",
+      "Suitable for families and children, with moderate walking and a professional tour guide included throughout."
     ],
-    "includes": ["Private return transport from Maputo", "1 night accommodation in Eswatini", "Game drive in Hlane National Park", "Visit to a Swazi cultural village", "All meals", "Park and museum entry fees", "Bilingual guide (PT/EN)"],
-    "excludes": ["Eswatini visa (generally not required)", "Alcoholic beverages", "Craft purchases", "Tips"],
-    "highlights": ["Hlane National Park — lions, elephants and rhinos", "Traditional Swazi dances in a local village", "Swazi Candles factory — world-famous handicrafts", "Mountain and savannah natural landscapes", "Africa's only absolute kingdom"],
-    "importantInfo": ["Valid passport required for Eswatini.", "Eswatini generally does not require a visa for Mozambican citizens.", "Neutral game-drive clothing and culturally respectful attire for village visits.", "Free cancellation up to 72 hours before."]
+    "includes": [
+      "Round-trip transport",
+      "Entrance fees",
+      "Lunch + soft drinks",
+      "Experienced guide"
+    ],
+    "excludes": [
+      "Alcoholic beverages",
+      "Craft purchases",
+      "Tips",
+      "Personal expenses"
+    ],
+    "highlights": [
+      "Visit to Mantenga Cultural Village",
+      "Explore Mantenga Falls",
+      "Traditional Swazi cultural experience",
+      "Stop at Swazi Candles (local crafts)",
+      "Lunch and soft drinks at Mlilwane Wildlife Sanctuary",
+      "Professional tour guide"
+    ],
+    "itinerary": [
+      {
+        "time": "Early morning",
+        "title": "Departure from Maputo",
+        "body": "Pick-up in Maputo and departure towards Eswatini. Approximately 206 km | 3 hours (including border procedures and stops).",
+        "checklist": [
+          "Valid passport",
+          "Comfortable walking shoes",
+          "Hat & sunscreen",
+          "Camera",
+          "Light jacket (weather dependent)"
+        ]
+      },
+      {
+        "time": "Morning",
+        "title": "Mantenga Cultural Village & Falls",
+        "body": "Visit to Mantenga Cultural Village with an authentic Swazi cultural experience. Explore the spectacular Mantenga Falls.",
+        "checklist": []
+      },
+      {
+        "time": "Lunchtime",
+        "title": "Lunch at Mlilwane Wildlife Sanctuary",
+        "body": "Lunch and soft drinks at Mlilwane Wildlife Sanctuary — included in the package.",
+        "checklist": []
+      },
+      {
+        "time": "Afternoon",
+        "title": "Swazi Candles & Local Crafts",
+        "body": "Stop at the famous Swazi Candles factory to discover local craftsmanship and pick up unique souvenirs.",
+        "checklist": []
+      },
+      {
+        "time": "Late afternoon",
+        "title": "Return to Maputo",
+        "body": "Begin return journey to Maputo.",
+        "checklist": []
+      }
+    ],
+    "importantInfo": [
+      "Departure location: Maputo.",
+      "Travel distance & time: approximately 206 km | 3 hours (including border procedures and stops).",
+      "A valid passport is required for entry into Eswatini.",
+      "Some nationalities may require a visa — please check in advance.",
+      "Guests should allow time for border formalities.",
+      "What to bring: passport, comfortable walking shoes, hat & sunscreen, camera, light jacket.",
+      "Full-day tour. Suitable for families and children. Moderate walking involved. Operates in most weather conditions."
+    ]
   },
   "whale-watching": {
     "name": "Whale Watching",
