@@ -192,8 +192,7 @@
     if (metaEl) {
       var items = [
         { icon: 'bx bxs-map',    text: pkg.location },
-        { icon: 'bx bxs-time',   text: pkg.duration },
-        { icon: 'bx bxs-group',  text: (_lang === 'en' ? 'Max. ' : 'Máx. ') + (pkg.maxPeople || 20) + (_lang === 'en' ? ' people' : ' pessoas') }
+        { icon: 'bx bxs-time',   text: pkg.duration }
       ];
       if (pkg.destinations) items.splice(2, 0, { icon: 'bx bxs-map-alt', text: pkg.destinations });
       metaEl.innerHTML = items.map(function (m) {

@@ -4,84 +4,87 @@
     "slug": "machangulo-beach-lodge",
     "category": "island-accommodation",
     "name": "Machangulo Beach Lodge",
-    "subtitle": "Lodge premium na Península de Machangulo",
+    "subtitle": "Premium Getaway na Península de Machangulo",
     "badge": "5 Estrelas",
     "badgeClass": "popular",
     "stars": 5,
     "image": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg",
     "heroImage": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpeg",
     "location": "Machangulo, Maputo",
-    "destinations": "Machangulo Peninsula",
+    "destinations": "Península de Machangulo",
     "duration": "Mínimo 1 noite",
-    "price": "22.500 MZN",
-    "price_from": 22500,
+    "price": "16.900 MZN",
+    "price_from": 16900,
     "priceOld": null,
-    "priceLabel": "por noite (2 pessoas)",
-    "price_child": null,
-    "priceChild": null,
-    "priceChildLabel": null,
+    "priceLabel": "por pessoa (1 noite — adulto)",
+    "price_child": 9500,
+    "priceChild": "9.500 MZN",
+    "priceChildLabel": "Crianças (4–10 anos)",
     "currency": "MZN",
-    "cancelPolicy": "até 72 horas antes",
-    "maxPeople": 2,
-    "description": "Lodge de praia premium na Península de Machangulo — bungalows frente ao mar, piscina infinita e o melhor pôr do sol do Índico moçambicano.",
+    "cancelPolicy": "até 48 horas antes",
+    "description": "Desfruta de uma escapadela de luxo no Machangulo Beach Lodge, um dos destinos mais exclusivos perto de Maputo. Ideal para casais e viajantes que procuram conforto, privacidade e uma experiência costeira refinada.",
     "features": [
-      "Bungalows frente ao mar com terraço privado",
-      "Piscina infinita com vista para o oceano",
-      "Pequeno-almoço incluído",
-      "Restaurante com marisco fresco",
-      "Snorkeling e kayak incluídos",
-      "Wi-Fi em todas as áreas",
-      "Transfer de barco de/para Maputo"
+      "Localização frente ao mar",
+      "Piscina",
+      "Restaurante & bar",
+      "Lounge & áreas de relaxamento",
+      "Wi-Fi",
+      "Natureza e vistas panorâmicas"
     ],
     "detailText": [
-      "O Machangulo Beach Lodge é um dos lodges mais exclusivos da região de Maputo. Situado na deslumbrante Península de Machangulo, os seus bungalows de madeira e palha estão posicionados diretamente na praia, com terraços privados que olham para o Oceano Índico.",
-      "A piscina infinita funde-se visualmente com o horizonte do oceano, criando um dos cenários mais fotogénicos de Moçambique. O restaurante serve diariamente peixe e marisco frescos, apanhados pelos pescadores locais ao amanhecer.",
-      "O acesso é feito de barco a partir de Maputo (1 hora), o que garante a privacidade e isolamento que tornam esta experiência verdadeiramente especial."
+      "O Machangulo Beach Lodge é um dos lodges mais exclusivos da região de Maputo. Situado na deslumbrante Península de Machangulo, oferece conforto premium, privacidade e uma experiência costeira verdadeiramente refinada.",
+      "O pacote inclui transfer de ida e volta de Maputo, alojamento em meia pensão (pequeno-almoço e jantar), tour à Praia de Santa Maria e snorkeling — tudo incluído para uma experiência sem preocupações.",
+      "Para uma experiência completa, o pacote de 2 noites é o mais recomendado — menos pressa com os transfers, mais tempo para desfrutar do lodge e do ambiente de luxo de Machangulo."
     ],
     "includes": [
-      "Alojamento em bungalow com vista para o mar",
-      "Pequeno-almoço diário",
-      "Snorkeling e kayak",
-      "Acesso à piscina e praia privada",
-      "Wi-Fi",
-      "Serviço de limpeza diário"
+      "Transfer ida e volta (Maputo – Machangulo – Maputo)",
+      "Alojamento no Machangulo Beach Lodge",
+      "Pequeno-almoço e jantar diários (Meia Pensão)",
+      "Tour à Praia de Santa Maria",
+      "Snorkeling",
+      "Acesso a todas as instalações do lodge"
     ],
     "excludes": [
-      "Transfer de barco Maputo–Machangulo (disponível a pedido)",
-      "Almoço e jantar",
+      "Almoço",
       "Bebidas alcoólicas",
       "Actividades extras"
     ],
     "highlights": [
-      "Piscina infinita com vista para o Índico",
-      "Bungalows de palha frente ao mar",
-      "Praia privada e isolada",
-      "Pôr do sol espectacular todos os dias",
-      "Marisco fresco do dia no restaurante"
+      "Localização absolutamente frente ao mar",
+      "Transfer Maputo–Machangulo incluído",
+      "Meia pensão incluída (pequeno-almoço + jantar)",
+      "Tour à Praia de Santa Maria & snorkeling",
+      "Pacote de 2 noites recomendado para experiência completa"
     ],
     "itinerary": [
       {
-        "time": "Check-in",
-        "title": "Chegada & Boas-Vindas",
-        "body": "Recepção no lodge com bebida de boas-vindas e instalação no bungalow.",
+        "time": "Manhã",
+        "title": "Transfer Maputo → Machangulo",
+        "body": "Partida de Maputo de barco com chegada ao Machangulo Beach Lodge e instalação.",
         "checklist": []
       },
       {
         "time": "Tarde",
         "title": "Praia & Piscina",
-        "body": "Tarde livre na praia privada ou piscina infinita.",
+        "body": "Tarde livre na praia ou piscina do lodge com vistas para o oceano Índico.",
         "checklist": []
       },
       {
         "time": "19h00",
         "title": "Jantar no Restaurante",
-        "body": "Jantar com marisco fresco, música ambiente e vistas nocturnas para o oceano.",
+        "body": "Jantar incluído no restaurante do lodge com vistas nocturnas para o oceano.",
         "checklist": []
       },
       {
-        "time": "Manhã seguinte",
-        "title": "Pequeno-almoço & Actividades",
-        "body": "Pequeno-almoço incluído, snorkeling ou kayak antes do checkout.",
+        "time": "Dia seguinte",
+        "title": "Tour Praia de Santa Maria & Snorkeling",
+        "body": "Tour guiado à Praia de Santa Maria com snorkeling nos recifes de coral.",
+        "checklist": []
+      },
+      {
+        "time": "Regresso",
+        "title": "Pequeno-almoço & Transfer de Volta",
+        "body": "Último pequeno-almoço incluído antes do checkout e transfer de regresso a Maputo.",
         "checklist": []
       }
     ],
@@ -92,10 +95,12 @@
       "../assets/images/accommodation/machangulo-beach-lodge/machangulo_getaway_6.jpg"
     ],
     "importantInfo": [
+      "1 noite: Adultos 16.900 MZN | Crianças (4–10 anos) 9.500 MZN por pessoa.",
+      "2 noites: Adultos 31.000 MZN | Crianças (4–10 anos) 17.500 MZN por pessoa.",
+      "Transfer de barco Maputo–Machangulo incluído.",
+      "Meia Pensão incluída (pequeno-almoço + jantar).",
       "Check-in: 14h00 | Check-out: 11h00",
-      "Acesso por barco — transfer não incluído no preço base.",
-      "Reserva antecipada recomendada — capacidade limitada.",
-      "Cancelamento gratuito até 72h antes."
+      "Cancelamento gratuito até 48h antes."
     ],
     "locationCategory": "machangulo"
   },
@@ -304,7 +309,7 @@
     "priceChild": "5.700 MZN",
     "priceChildLabel": "Crianças (3-12 anos)",
     "currency": "MZN",
-    "cancelPolicy": "até 72 horas antes",
+    "cancelPolicy": "até 48 horas antes",
     "maxPeople": 10,
     "description": "Villa Martins é a experiência premium da Ilha da Inhaca — piscina, Wi-Fi, restaurante, lavandaria e transfer de barco incluídos, com tour à Praia da Santa Maria.",
     "features": [
@@ -380,7 +385,7 @@
       "2 noites: Adultos 16.400 MZN | Crianças (3-12 anos) 8.200 MZN.",
       "Transfer de barco incluído (partida da Marina de Maputo).",
       "Reserva antecipada obrigatória — disponibilidade limitada.",
-      "Cancelamento gratuito até 72h antes."
+      "Cancelamento gratuito até 48h antes."
     ],
     "locationCategory": "inhaca"
   },
@@ -564,5 +569,205 @@
       "Saídas todos os dias. Cancelamento gratuito até 48h antes."
     ],
     "locationCategory": "inhaca"
+  },
+  {
+    "id": "cabo-beach-villas",
+    "slug": "cabo-beach-villas",
+    "category": "island-accommodation",
+    "name": "Cabo Beach Villas",
+    "subtitle": "Beach Escape em frente ao mar — Região de Santa Maria",
+    "badge": "Villas Exclusivas",
+    "badgeClass": "popular",
+    "stars": 5,
+    "image": "../assets/images/accommodation/cabo-beach/cabo-beach-1.jpeg",
+    "heroImage": "../assets/images/accommodation/cabo-beach/cabo-beach-2.jpeg",
+    "location": "Santa Maria, Machangulo",
+    "destinations": "Região de Santa Maria",
+    "duration": "Mínimo 1 noite",
+    "price": "22.699 MZN",
+    "price_from": 22699,
+    "priceOld": null,
+    "priceLabel": "por noite (Villa 2 quartos — época baixa)",
+    "price_child": null,
+    "priceChild": null,
+    "priceChildLabel": null,
+    "currency": "MZN",
+    "cancelPolicy": "até 48 horas antes",
+    "description": "Descobre o retiro de praia definitivo nas Cabo Beach Villas, situadas na deslumbrante região de Santa Maria, sul de Moçambique. Perfeito para famílias, amigos e grupos que procuram privacidade, conforto e vistas oceânicas inesquecíveis. Villas limitadas disponíveis — reserva com antecedência para garantir as tuas datas!",
+    "features": [
+      "Localização absolutamente frente ao mar",
+      "A apenas 1 hora de barco de Maputo",
+      "Praias tranquilas e sem multidões",
+      "Piscina privada em cada villa",
+      "Ar condicionado e redes mosquiteiras",
+      "Serviço diário de limpeza incluído",
+      "Wi-Fi gratuito",
+      "Ideal para famílias e grupos"
+    ],
+    "detailText": [
+      "As Cabo Beach Villas oferecem dois tipos de alojamento exclusivo na região de Santa Maria. As Villas de 2 Quartos (2 disponíveis) acomodam até 4 adultos + 2 crianças (menores de 12 anos), com quartos en-suite, piscina splash privada, deck e área de braai privada.",
+      "As Villas de 4 Quartos (2 disponíveis) acomodam até 8 adultos + 4 crianças (menores de 12 anos), com uma disposição espaçosa com passagens cobertas, piscina privada, deck amplo e área de braai privada — ideal para grupos e famílias alargadas.",
+      "O acesso é feito de barco a partir de Maputo (1 hora), garantindo a privacidade e o isolamento que tornam esta experiência verdadeiramente especial. Praias tranquilas, água cristalina e o melhor do Índico moçambicano à tua porta."
+    ],
+    "includes": [
+      "Alojamento em villa com vista para o mar",
+      "Piscina privada e deck",
+      "Área de braai privada",
+      "Ar condicionado",
+      "Wi-Fi gratuito",
+      "Serviço diário de limpeza"
+    ],
+    "excludes": [
+      "Transfer de barco Maputo–Santa Maria (disponível a pedido)",
+      "Refeições",
+      "Bebidas",
+      "Actividades extras"
+    ],
+    "highlights": [
+      "Piscina privada em cada villa",
+      "Localização absolutamente frente ao mar",
+      "Praias tranquilas e sem multidões",
+      "Villas para 4 ou 8 adultos + crianças",
+      "A 1 hora de barco de Maputo"
+    ],
+    "itinerary": [
+      {
+        "time": "Check-in",
+        "title": "Chegada & Boas-Vindas",
+        "body": "Chegada de barco e instalação na villa com vista directa para o oceano.",
+        "checklist": []
+      },
+      {
+        "time": "Tarde",
+        "title": "Praia & Piscina Privada",
+        "body": "Tarde livre na praia ou na piscina privada da villa com deck e área de braai.",
+        "checklist": []
+      },
+      {
+        "time": "Noite",
+        "title": "Braai Privado",
+        "body": "Aproveita a área de braai privada com vistas nocturnas para o oceano Índico.",
+        "checklist": []
+      },
+      {
+        "time": "Manhã seguinte",
+        "title": "Praia & Checkout",
+        "body": "Última manhã na praia antes do checkout e transfer de barco de regresso.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "../assets/images/accommodation/cabo-beach/cabo-beach-1.jpeg",
+      "../assets/images/accommodation/cabo-beach/cabo-beach-2.jpeg",
+      "../assets/images/accommodation/cabo-beach/cabo-beach-3.jpeg",
+      "../assets/images/accommodation/cabo-beach/cabo-beach-4.jpeg"
+    ],
+    "importantInfo": [
+      "Villa 2 Quartos (até 4 adultos + 2 crianças): Época Baixa 22.699 MZN/noite | Época Alta 30.699 MZN/noite (Dezembro, Janeiro, Abril).",
+      "Villa 4 Quartos (até 8 adultos + 4 crianças): Época Baixa 40.700 MZN/noite | Época Alta 55.300 MZN/noite.",
+      "Transfer de barco (ida e volta): Adultos 10.000 MZN | Crianças (3–10 anos) 5.000 MZN.",
+      "Check-in: 14h00 | Check-out: 11h00",
+      "Reserva antecipada essencial — apenas 2 villas de cada tipo disponíveis."
+    ],
+    "locationCategory": "machangulo"
+  },
+  {
+    "id": "bemugis-lodge",
+    "slug": "bemugis-lodge",
+    "category": "island-accommodation",
+    "name": "Bemugis Lodge",
+    "subtitle": "Beach Experience na Península de Machangulo",
+    "badge": "Beach Escape",
+    "badgeClass": "",
+    "stars": 4,
+    "image": "../assets/images/accommodation/bemugis/bemugis-1.jpeg",
+    "heroImage": "../assets/images/accommodation/bemugis/bemugis-2.jpeg",
+    "location": "Machangulo, Maputo",
+    "destinations": "Península de Machangulo",
+    "duration": "Mínimo 1 noite",
+    "price": "13.500 MZN",
+    "price_from": 13500,
+    "priceOld": null,
+    "priceLabel": "por pessoa (1 noite — adulto)",
+    "price_child": 7500,
+    "priceChild": "7.500 MZN",
+    "priceChildLabel": "Crianças (4–10 anos)",
+    "currency": "MZN",
+    "cancelPolicy": "até 48 horas antes",
+    "description": "Foge da cidade e desfruta de uma experiência de praia relaxante no Bemugis Lodge, situado no paraíso intocado de Machangulo. Perfeito para casais, amigos ou pequenos grupos que procuram natureza, vistas para o oceano e tranquilidade.",
+    "features": [
+      "Localização à beira-mar",
+      "Piscina",
+      "Áreas comuns relaxantes",
+      "Refeições com menu especial (sob pedido)",
+      "Wi-Fi"
+    ],
+    "detailText": [
+      "O Bemugis Lodge é um retiro costeiro na deslumbrante Península de Machangulo, onde a natureza intocada encontra o conforto e a hospitalidade moçambicana. Ideal para quem quer desligar da cidade e recarregar energias.",
+      "O pacote inclui transfer de ida e volta de Maputo, alojamento com pequeno-almoço diário, tour guiado à Praia de Santa Maria e snorkeling nos recifes de coral.",
+      "Para estadias mais longas, o pacote de 2 noites oferece o melhor custo-benefício — mais tempo para desfrutar das actividades e do ritmo tranquilo de Machangulo."
+    ],
+    "includes": [
+      "Transfer ida e volta (Maputo – Machangulo – Maputo)",
+      "Alojamento no Bemugis Lodge",
+      "Pequeno-almoço diário",
+      "Tour guiado à Praia de Santa Maria",
+      "Snorkeling",
+      "Acesso às instalações do lodge"
+    ],
+    "excludes": [
+      "Almoço e jantar (menu especial disponível sob pedido)",
+      "Bebidas alcoólicas",
+      "Actividades extras"
+    ],
+    "highlights": [
+      "Localização à beira-mar em Machangulo",
+      "Transfer Maputo–Machangulo incluído",
+      "Tour à Praia de Santa Maria incluído",
+      "Snorkeling nos recifes de coral",
+      "Desconto para estadias de 2 ou mais noites"
+    ],
+    "itinerary": [
+      {
+        "time": "Manhã",
+        "title": "Transfer Maputo → Machangulo",
+        "body": "Partida de Maputo de barco com chegada ao Bemugis Lodge e instalação.",
+        "checklist": []
+      },
+      {
+        "time": "Tarde",
+        "title": "Praia & Piscina",
+        "body": "Tarde livre na praia ou piscina do lodge com vistas para o oceano.",
+        "checklist": []
+      },
+      {
+        "time": "Dia seguinte",
+        "title": "Tour Praia de Santa Maria & Snorkeling",
+        "body": "Tour guiado à Praia de Santa Maria com snorkeling nos recifes de coral.",
+        "checklist": []
+      },
+      {
+        "time": "Regresso",
+        "title": "Pequeno-almoço & Transfer de Volta",
+        "body": "Último pequeno-almoço incluído antes do checkout e transfer de regresso a Maputo.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "../assets/images/accommodation/bemugis/bemugis-1.jpeg",
+      "../assets/images/accommodation/bemugis/bemugis-2.jpeg",
+      "../assets/images/accommodation/bemugis/bemugis-3.jpeg",
+      "../assets/images/accommodation/bemugis/bemugis-4.jpeg"
+    ],
+    "importantInfo": [
+      "1 noite: Adultos 13.500 MZN | Crianças (4–10 anos) 7.500 MZN.",
+      "2 noites: Adultos 24.000 MZN | Crianças (4–10 anos) 13.500 MZN.",
+      "Desconto disponível para estadias de 2 ou mais noites.",
+      "Pacotes personalizados disponíveis sob pedido.",
+      "Transfer de barco Maputo–Machangulo incluído.",
+      "Check-in: 14h00 | Check-out: 11h00",
+      "Cancelamento gratuito até 48h antes."
+    ],
+    "locationCategory": "machangulo"
   }
 ]

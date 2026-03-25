@@ -710,22 +710,86 @@
     "importantInfo": ["Tour available every day except Monday (museums closed).", "Comfortable clothing and walking shoes recommended.", "The Natural History Museum may occasionally be closed for works.", "Meeting point: Client's hotel or agreed location."]
   },
   "machangulo-beach-lodge": {
-    "subtitle": "Premium lodge on the Machangulo Peninsula",
+    "subtitle": "Premium Getaway on the Machangulo Peninsula",
     "badge": "5 Stars",
     "duration": "Minimum 1 night",
-    "priceLabel": "per night (2 people)",
-    "cancelPolicy": "up to 72 hours before",
-    "description": "Machangulo Beach Lodge is a premium beachfront lodge on the Machangulo Peninsula — ocean-view bungalows, an infinity pool and the finest sunsets on the Mozambican Indian Ocean.",
-    "features": ["Ocean-view bungalows with private terrace", "Infinity pool overlooking the ocean", "Breakfast included", "Restaurant with fresh seafood", "Snorkelling and kayaking included", "Wi-Fi throughout", "Boat transfer from/to Maputo"],
-    "detailText": [
-      "Machangulo Beach Lodge is one of the most exclusive lodges in the Maputo region. Situated on the stunning Machangulo Peninsula, its wooden and thatch bungalows are positioned directly on the beach, with private terraces overlooking the Indian Ocean.",
-      "The infinity pool merges visually with the ocean horizon, creating one of Mozambique's most photogenic settings. The restaurant serves fresh fish and seafood daily, caught by local fishermen at dawn.",
-      "Access is by boat from Maputo (1 hour), ensuring the privacy and seclusion that make this experience truly special."
+    "priceLabel": "per person (1 night — adult)",
+    "priceChildLabel": "Children (4–10 yrs)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Indulge in a luxury beach escape at Machangulo Beach Lodge, one of the most exclusive destinations near Maputo. Ideal for couples and travellers seeking comfort, privacy, and a refined coastal experience.",
+    "features": [
+      "Beachfront location",
+      "Swimming pool",
+      "Restaurant & bar",
+      "Lounge & relaxation areas",
+      "Wi-Fi",
+      "Nature surroundings & scenic views"
     ],
-    "includes": ["Bungalow accommodation with ocean view", "Daily breakfast", "Snorkelling and kayaking", "Pool and private beach access", "Wi-Fi", "Daily housekeeping service"],
-    "excludes": ["Boat transfer Maputo–Machangulo (available on request)", "Lunch and dinner", "Alcoholic beverages", "Extra activities"],
-    "highlights": ["Infinity pool overlooking the Indian Ocean", "Thatched bungalows on the beach", "Private and secluded beach", "Spectacular sunsets every evening", "Daily fresh-catch seafood at the restaurant"],
-    "importantInfo": ["Check-in: 14:00 | Check-out: 11:00", "Access by boat — transfer not included in base price.", "Advance booking recommended — limited capacity.", "Free cancellation up to 72 hours before."]
+    "detailText": [
+      "Machangulo Beach Lodge is one of the most exclusive lodges near Maputo. Situated on the stunning Machangulo Peninsula, it offers premium comfort, privacy, and a truly refined coastal experience.",
+      "The package includes round-trip transfer from Maputo, accommodation on half board (breakfast and dinner), a tour to Santa Maria Beach, and snorkelling — everything included for a worry-free experience.",
+      "For the full experience, the 2-night package is highly recommended — less rush with transfers, more time to enjoy the lodge and the luxury atmosphere of Machangulo."
+    ],
+    "includes": [
+      "Round-trip transfer (Maputo – Machangulo – Maputo)",
+      "Accommodation at Machangulo Beach Lodge",
+      "Daily breakfast & dinner (Half Board)",
+      "Tour to Santa Maria Beach",
+      "Snorkelling experience",
+      "Access to all lodge facilities"
+    ],
+    "excludes": [
+      "Lunch",
+      "Alcoholic beverages",
+      "Extra activities"
+    ],
+    "highlights": [
+      "Absolute beachfront location",
+      "Round-trip Maputo–Machangulo transfer included",
+      "Half board included (breakfast + dinner)",
+      "Santa Maria Beach tour & snorkelling",
+      "2-night package recommended for the full experience"
+    ],
+    "itinerary": [
+      {
+        "time": "Morning",
+        "title": "Transfer Maputo → Machangulo",
+        "body": "Depart Maputo by boat and arrive at Machangulo Beach Lodge for check-in.",
+        "checklist": []
+      },
+      {
+        "time": "Afternoon",
+        "title": "Beach & Pool",
+        "body": "Free afternoon at the beach or lodge pool with views over the Indian Ocean.",
+        "checklist": []
+      },
+      {
+        "time": "19:00",
+        "title": "Dinner at the Restaurant",
+        "body": "Included dinner at the lodge restaurant with evening ocean views.",
+        "checklist": []
+      },
+      {
+        "time": "Next day",
+        "title": "Santa Maria Beach Tour & Snorkelling",
+        "body": "Guided tour to Santa Maria Beach with snorkelling on the coral reefs.",
+        "checklist": []
+      },
+      {
+        "time": "Return",
+        "title": "Breakfast & Transfer Back",
+        "body": "Final breakfast included before checkout and return transfer to Maputo.",
+        "checklist": []
+      }
+    ],
+    "importantInfo": [
+      "1 night: Adults 16,900 MZN | Children (4–10 yrs) 9,500 MZN per person.",
+      "2 nights: Adults 31,000 MZN | Children (4–10 yrs) 17,500 MZN per person.",
+      "Round-trip boat transfer Maputo–Machangulo included.",
+      "Half board included (breakfast + dinner).",
+      "Check-in: 14:00 | Check-out: 11:00",
+      "Free cancellation up to 48 hours before."
+    ]
   },
   "mamas-lodge": {
     "subtitle": "Authentic lodge on Inhaca Island with ocean views",
@@ -771,7 +835,7 @@
     "duration": "Minimum 2 nights",
     "priceLabel": "per night / per adult",
     "priceChildLabel": "Children (3–12 years)",
-    "cancelPolicy": "up to 72 hours before",
+    "cancelPolicy": "up to 48 hours before",
     "description": "Villa Martins is the premium Inhaca Island experience — pool, Wi-Fi, restaurant, laundry and boat transfer included, with a Santa Maria Beach tour.",
     "features": ["Wi-Fi", "Swimming pool", "Laundry service", "Restaurant", "Near the sea"],
     "detailText": [
@@ -782,7 +846,7 @@
     "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
     "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
     "highlights": ["Swimming pool on Inhaca Island", "Boat transfer from Maputo included", "Included Santa Maria Beach tour", "Wi-Fi and on-site restaurant", "Near the sea"],
-    "importantInfo": ["1 night: Adults 11,400 MZN | Children (3–12 yrs) 5,700 MZN.", "2 nights: Adults 16,400 MZN | Children (3–12 yrs) 8,200 MZN.", "Boat transfer included (departing from Maputo Marina).", "Advance booking required — limited availability.", "Free cancellation up to 72 hours before."]
+    "importantInfo": ["1 night: Adults 11,400 MZN | Children (3–12 yrs) 5,700 MZN.", "2 nights: Adults 16,400 MZN | Children (3–12 yrs) 8,200 MZN.", "Boat transfer included (departing from Maputo Marina).", "Advance booking required — limited availability.", "Free cancellation up to 48 hours before."]
   },
   "mad-marlin": {
     "subtitle": "Beachfront lodge on Inhaca Island with pool and self-service meals",
@@ -821,5 +885,114 @@
     "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
     "highlights": ["Prime location on Inhaca Island", "Boat transfer from Maputo included", "Included Santa Maria Beach tour", "Near the restaurant and beach", "Authentic and genuine hospitality"],
     "importantInfo": ["1 night: Adults 10,900 MZN | Children (7–9 yrs) 6,500 MZN.", "2 nights: Adults 14,500 MZN | Children (3–9 yrs) 8,800 MZN.", "Check-in: 14:00 | Check-out: 11:00", "Return boat transfer Maputo–Inhaca included.", "Daily departures. Free cancellation up to 48 hours before."]
+  },
+  "cabo-beach-villas": {
+    "subtitle": "Beachfront Beach Escape — Santa Maria Region",
+    "badge": "Exclusive Villas",
+    "duration": "Minimum 1 night",
+    "priceLabel": "per night (2-Bedroom Villa — low season)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Discover the ultimate beachfront getaway at Cabo Beach Villas, located in the stunning Santa Maria region of Southern Mozambique. Perfect for families, friends, and groups looking for privacy, comfort, and unforgettable ocean views. Limited villas available — secure your dates early to avoid disappointment!",
+    "features": [
+      "Absolute beachfront location",
+      "Only 1 hour by boat from Maputo",
+      "Quiet, uncrowded beaches",
+      "Private pools at every villa",
+      "Air-conditioning & mosquito nets",
+      "Daily villa servicing included",
+      "Complimentary Wi-Fi",
+      "Perfect for families & groups"
+    ],
+    "detailText": [
+      "Cabo Beach Villas offers two types of exclusive accommodation in the Santa Maria region. The Two-Bedroom Villas (2 available) sleep up to 4 adults + 2 children (under 12), with en-suite rooms, a private splash pool, deck and private braai area.",
+      "The Four-Bedroom Villas (2 available) sleep up to 8 adults + 4 children (under 12), with a spacious layout with walkways, private pool, large deck and private braai area — ideal for large groups and families.",
+      "Access is by boat from Maputo (1 hour), ensuring the privacy and seclusion that make this experience truly special. Quiet beaches, crystal-clear water and the best of the Mozambican Indian Ocean right at your door."
+    ],
+    "includes": ["Villa accommodation with ocean view", "Private pool and deck", "Private braai area", "Air-conditioning", "Complimentary Wi-Fi", "Daily housekeeping service"],
+    "excludes": ["Boat transfer Maputo–Santa Maria (available on request)", "Meals", "Beverages", "Extra activities"],
+    "highlights": ["Private pool at every villa", "Absolute beachfront location", "Quiet, uncrowded beaches", "Villas for 4 or 8 adults + children", "1 hour by boat from Maputo"],
+    "importantInfo": [
+      "Two-Bedroom Villa (up to 4 adults + 2 children): Low Season 22,699 MZN/night | High Season 30,699 MZN/night (December, January, April).",
+      "Four-Bedroom Villa (up to 8 adults + 4 children): Low Season 40,700 MZN/night | High Season 55,300 MZN/night.",
+      "Boat transfer (round trip): Adults 10,000 MZN | Children (3–10 yrs) 5,000 MZN.",
+      "Check-in: 14:00 | Check-out: 11:00",
+      "Advance booking essential — only 2 villas of each type available."
+    ]
+  },
+  "bemugis-lodge": {
+    "subtitle": "Beach Experience on the Machangulo Peninsula",
+    "badge": "Beach Escape",
+    "duration": "Minimum 1 night",
+    "priceLabel": "per person (1 night — adult)",
+    "priceChildLabel": "Children (4–10 yrs)",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Escape the city and enjoy a relaxing beach experience at Bemugis Lodge, located in the untouched paradise of Machangulo. Perfect for couples, friends, or small groups looking for nature, ocean views, and tranquility.",
+    "features": [
+      "Seaside location",
+      "Swimming pool",
+      "Relaxing common areas",
+      "Special menu meals (available on request)",
+      "Wi-Fi"
+    ],
+    "detailText": [
+      "Bemugis Lodge is a coastal retreat on the stunning Machangulo Peninsula, where untouched nature meets Mozambican comfort and hospitality. Ideal for those looking to disconnect from the city and recharge.",
+      "The package includes round-trip transfer from Maputo, accommodation with daily breakfast, a guided tour to Santa Maria Beach, and snorkeling on the coral reefs.",
+      "For longer stays, the 2-night package offers the best value — more time to enjoy the activities and the relaxed pace of Machangulo."
+    ],
+    "includes": [
+      "Round-trip transfer (Maputo – Machangulo – Maputo)",
+      "Accommodation at Bemugis Lodge",
+      "Daily breakfast",
+      "Guided tour to Santa Maria Beach",
+      "Snorkeling experience",
+      "Access to lodge facilities"
+    ],
+    "excludes": [
+      "Lunch and dinner (special menu available on request)",
+      "Alcoholic beverages",
+      "Extra activities"
+    ],
+    "highlights": [
+      "Seaside location in Machangulo",
+      "Round-trip Maputo–Machangulo transfer included",
+      "Santa Maria Beach guided tour included",
+      "Coral reef snorkeling",
+      "Discount for stays of 2 or more nights"
+    ],
+    "itinerary": [
+      {
+        "time": "Morning",
+        "title": "Transfer Maputo → Machangulo",
+        "body": "Depart Maputo by boat and arrive at Bemugis Lodge for check-in.",
+        "checklist": []
+      },
+      {
+        "time": "Afternoon",
+        "title": "Beach & Pool",
+        "body": "Free afternoon at the beach or lodge pool with ocean views.",
+        "checklist": []
+      },
+      {
+        "time": "Next day",
+        "title": "Santa Maria Beach Tour & Snorkeling",
+        "body": "Guided tour to Santa Maria Beach with snorkeling on the coral reefs.",
+        "checklist": []
+      },
+      {
+        "time": "Return",
+        "title": "Breakfast & Transfer Back",
+        "body": "Final breakfast included before checkout and return transfer to Maputo.",
+        "checklist": []
+      }
+    ],
+    "importantInfo": [
+      "1 night: Adults 13,500 MZN | Children (4–10 yrs) 7,500 MZN.",
+      "2 nights: Adults 24,000 MZN | Children (4–10 yrs) 13,500 MZN.",
+      "Discount available for stays of 2 or more nights.",
+      "Custom packages available on request.",
+      "Round-trip boat transfer Maputo–Machangulo included.",
+      "Check-in: 14:00 | Check-out: 11:00",
+      "Free cancellation up to 48 hours before."
+    ]
   }
 }

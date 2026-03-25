@@ -26,11 +26,8 @@
 
 /* ── RESET & BASE ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-/* Clipping horizontal overflow on html (not body) keeps body as the
-   main scroll container, so position:sticky works correctly everywhere. */
 html {
   scroll-behavior: smooth;
-  overflow-x: clip;
 }
 
 body {
@@ -40,8 +37,7 @@ body {
   background-image: url("../images/bg/marine-bg.png");
   background-repeat: repeat;
   background-size: 1420px;
-  overflow-x: clip;
-  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; }
@@ -1412,6 +1408,19 @@ div#packages { background: transparent !important; padding: 0 !important; }
 }
 .alo-acc-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.2); }
 .alo-acc-img-wrap { width: 220px; min-width: 180px; position: relative; flex-shrink: 0; overflow: hidden; }
+.tour-badge {
+  position: absolute;
+  top: 12px;
+  left: -4px;
+  z-index: 2;
+  background: var(--teal);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 4px 14px 4px 10px;
+  clip-path: polygon(0 0, 100% 0, 92% 50%, 100% 100%, 0 100%);
+}
+.tour-badge.badge-popular { background: var(--orange); }
 .alo-acc-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
 .alo-acc-card:hover .alo-acc-img { transform: scale(1.05); }
 .alo-acc-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
