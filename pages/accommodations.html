@@ -78,7 +78,6 @@
 <div class="cat-tabs-wrap" id="alo-filter-bar">
   <div class="container">
     <div class="cat-tabs" id="alo-filter-tabs">
-      <a class="cat-tab-btn cat-tab-link" href="../pages/tours.html"><i class="bx bxs-compass"></i> <span class="alo-tab-label">Tours</span></a>
       <button class="cat-tab-btn active" data-loc="all">
         <i class="bx bxs-grid"></i>
         <span class="alo-tab-label">Todos</span>
@@ -123,29 +122,44 @@
     <p class="text-muted mb-4 reveal reveal-up" style="font-size:.9rem;">Imagens reais dos nossos parceiros e alojamentos na Ilha da Inhaca.</p>
     <div class="gallery-grid reveal reveal-up">
 
-      <div class="gallery-item" onclick="openLightbox(this, 0)" role="button" tabindex="0" aria-label="Ver imagem 1">
-        <img src="../assets/images/accommodation/machangulo_getaway_5.jpeg" alt="Lodge principal" loading="lazy">
+      <div class="gallery-item" onclick="openLightbox(this, 0)" role="button" tabindex="0" aria-label="Cabo Beach Villas">
+        <img src="../assets/images/accommodation/cabo-beach/cabo-beach-2.jpeg" alt="Cabo Beach Villas" loading="lazy">
         <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
       </div>
 
-      <div class="gallery-item" onclick="openLightbox(this, 1)" role="button" tabindex="0" aria-label="Ver imagem 2">
-        <img src="../assets/images/accommodation/villa_martins_4.jpeg" alt="Praia Inhaca" loading="lazy">
+      <div class="gallery-item" onclick="openLightbox(this, 1)" role="button" tabindex="0" aria-label="Machangulo Beach Lodge">
+        <img src="../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg" alt="Machangulo Beach Lodge" loading="lazy">
         <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
       </div>
 
-      <div class="gallery-item" onclick="openLightbox(this, 2)" role="button" tabindex="0" aria-label="Ver imagem 3">
-        <img src="../assets/images/accommodation/mamas_lodge_5.jpg" alt="Ilhas Portuguesas" loading="lazy">
+      <div class="gallery-item" onclick="openLightbox(this, 2)" role="button" tabindex="0" aria-label="Bemugis Lodge">
+        <img src="../assets/images/accommodation/bemugis/bemugis-3.jpeg" alt="Bemugis Lodge" loading="lazy">
         <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
       </div>
 
-      <div class="gallery-item" onclick="openLightbox(this, 3)" role="button" tabindex="0" aria-label="Ver imagem 4">
-        <img src="../assets/images/accommodation/mad_marlin_1.jpg" alt="Equipa em acção" loading="lazy">
+      <div class="gallery-item" onclick="openLightbox(this, 3)" role="button" tabindex="0" aria-label="Villa Martins">
+        <img src="../assets/images/accommodation/villa-martins/villa_martins_3.jpg" alt="Villa Martins" loading="lazy">
         <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
       </div>
 
-      <div class="gallery-item gallery-video" data-bs-toggle="modal" data-bs-target="#videoModal" role="button" tabindex="0" aria-label="Ver vídeo">
-        <img src="../assets/images/thumbnails/video_thumb.jpeg" alt="Ver vídeo" loading="lazy">
-        <div class="gallery-item-overlay"><i class="bx bx-play-circle"></i><span>Ver Vídeo</span></div>
+      <div class="gallery-item" onclick="openLightbox(this, 4)" role="button" tabindex="0" aria-label="Mama's Lodge">
+        <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_1.jpg" alt="Mama's Lodge" loading="lazy">
+        <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this, 5)" role="button" tabindex="0" aria-label="Khanimambo Lodge">
+        <img src="../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.jpg" alt="Khanimambo Lodge" loading="lazy">
+        <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this, 6)" role="button" tabindex="0" aria-label="Manico Camp">
+        <img src="../assets/images/accommodation/manico-camp/manico_camp_1.jpeg" alt="Manico Camp" loading="lazy">
+        <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this, 7)" role="button" tabindex="0" aria-label="Mad Marlin">
+        <img src="../assets/images/accommodation/mad-marlin/mad_marlin_2.jpg" alt="Mad Marlin" loading="lazy">
+        <div class="gallery-item-overlay"><i class="bx bx-show"></i><span>Ver imagem</span></div>
       </div>
 
     </div>
@@ -197,11 +211,58 @@
     'machangulo': { title: 'Alojamentos em Machangulo',    sub: 'Lodges premium e eco-retiros na deslumbrante Península de Machangulo.' }
   };
 
+  /* ── Card image slider logic ─────────────────────────────── */
+  function initCardSliders() {
+    document.querySelectorAll('.alo-card-slider').forEach(function (slider) {
+      var track = slider.querySelector('.alo-card-slider-track');
+      var dots  = slider.querySelectorAll('.alo-card-sl-dot');
+      var prev  = slider.querySelector('.alo-card-sl-prev');
+      var next  = slider.querySelector('.alo-card-sl-next');
+      var total = dots.length || 1;
+      var cur   = 0;
+      var timer;
+
+      function goTo(idx) {
+        cur = (idx + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === cur); });
+      }
+
+      function startAuto() { timer = setInterval(function () { goTo(cur + 1); }, 4000); }
+      function stopAuto()  { clearInterval(timer); }
+
+      if (total > 1) {
+        startAuto();
+        slider.addEventListener('mouseenter', stopAuto);
+        slider.addEventListener('mouseleave', startAuto);
+      }
+
+      if (prev) prev.addEventListener('click', function (e) { e.preventDefault(); stopAuto(); goTo(cur - 1); startAuto(); });
+      if (next) next.addEventListener('click', function (e) { e.preventDefault(); stopAuto(); goTo(cur + 1); startAuto(); });
+      dots.forEach(function (d) {
+        d.addEventListener('click', function (e) { e.preventDefault(); stopAuto(); goTo(+d.dataset.idx); startAuto(); });
+      });
+    });
+  }
+
   /* ── Render a single card ────────────────────────────────── */
   function makeCard(pkg, anim) {
     var starsStr = '★'.repeat(pkg.stars || 5) + ((pkg.stars || 5) < 5 ? '☆'.repeat(5 - (pkg.stars || 5)) : '');
     var slug     = pkg.slug || pkg.id;
     var loc      = pkg.locationCategory || 'inhaca';
+
+    /* Build slider images (up to 3 from gallery, fallback to image) */
+    var imgs = (pkg.gallery && pkg.gallery.length ? pkg.gallery : [pkg.image]).slice(0, 3);
+    var slides = imgs.map(function (src) {
+      return '<img src="' + src + '" alt="' + pkg.name + '" class="alo-acc-img" loading="lazy">';
+    }).join('');
+    var dots = imgs.map(function (_, i) {
+      return '<button class="alo-card-sl-dot' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '" aria-label="Imagem ' + (i + 1) + '"></button>';
+    }).join('');
+    var arrows = imgs.length > 1
+      ? '<button class="alo-card-sl-btn alo-card-sl-prev" aria-label="Anterior"><i class="bx bx-chevron-left"></i></button>' +
+        '<button class="alo-card-sl-btn alo-card-sl-next" aria-label="Próxima"><i class="bx bx-chevron-right"></i></button>'
+      : '';
 
     var col = document.createElement('div');
     col.className = 'col-lg-6 reveal ' + anim;
@@ -210,7 +271,11 @@
       '<div class="alo-acc-card">' +
         '<div class="alo-acc-img-wrap">' +
           (pkg.badge ? '<span class="tour-badge' + (pkg.badgeClass ? ' badge-' + pkg.badgeClass : '') + '">' + pkg.badge + '</span>' : '') +
-          '<img src="' + pkg.image + '" alt="' + pkg.name + '" class="alo-acc-img" loading="lazy">' +
+          '<div class="alo-card-slider">' +
+            '<div class="alo-card-slider-track">' + slides + '</div>' +
+            arrows +
+            (imgs.length > 1 ? '<div class="alo-card-sl-dots">' + dots + '</div>' : '') +
+          '</div>' +
         '</div>' +
         '<div class="alo-acc-body">' +
           '<h4 class="alo-acc-title">' + pkg.name + '</h4>' +
@@ -324,6 +389,9 @@
     } else {
       applyFilter('all');
     }
+
+    /* Init card image sliders */
+    initCardSliders();
 
     if (typeof revealOnScroll === 'function') revealOnScroll();
   });
