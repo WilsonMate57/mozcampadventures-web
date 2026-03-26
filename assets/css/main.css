@@ -1202,6 +1202,7 @@ section#packages .sub { color: rgba(255,255,255,.85); margin-bottom: 2rem; }
 .cat-tab-btn:hover { color: var(--teal); }
 .cat-tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
 .cat-tab-btn i { font-size: .95rem; }
+.cat-tab-link { text-decoration: none; }
 @media (max-width: 480px) {
   .cat-tab-btn { padding: 10px; font-size: .75rem; }
 }
