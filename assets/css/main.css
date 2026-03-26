@@ -1171,7 +1171,7 @@ section#packages .sub { color: rgba(255,255,255,.85); margin-bottom: 2rem; }
    TOURS PAGE (pages/tours.html)
 ══════════════════════════════════════════════════════════════ */
 .cat-tabs-wrap {
-  background: #fff;
+  background: #f0fafa;
   border-bottom: 2px solid #c8eeed;
   padding: 0;
   position: sticky;
@@ -1213,7 +1213,7 @@ section#packages .sub { color: rgba(255,255,255,.85); margin-bottom: 2rem; }
 }
 
 #packages-page { background: #fff; padding: 60px 0 80px; }
-div#packages { background: transparent !important; padding: 0 !important; }
+div#packages { padding: 0 !important; }
 .cat-section { display: none; }
 .cat-section.active { display: block; }
 .cat-section-header {

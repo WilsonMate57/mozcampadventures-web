@@ -287,6 +287,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script src="../assets/js/components.js"></script>
 <script src="../assets/js/data-loader.js"></script>
@@ -294,8 +295,16 @@
 <script>
 (function () {
 
+  var EMAILJS_PUBLIC_KEY       = 'YOUR_PUBLIC_KEY';
+  var EMAILJS_SERVICE_ID       = 'YOUR_SERVICE_ID';
+  var EMAILJS_CONTACT_TEMPLATE = 'YOUR_CONTACT_TEMPLATE_ID';
+
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
   var form    = document.getElementById('contact-form');
   var success = document.getElementById('cf-success');
+  var submitBtn   = document.getElementById('cf-submit');
+  var submitLabel = document.getElementById('cf-submit-label');
 
   /* ── Field validation helpers ──────────────────────────── */
   function validateField(input) {
@@ -330,19 +339,30 @@
 
     var required = form.querySelectorAll('.cf-input[required], .cf-select[required]');
     var allValid = true;
-
-    required.forEach(function (el) {
-      if (!validateField(el)) allValid = false;
-    });
-
+    required.forEach(function (el) { if (!validateField(el)) allValid = false; });
     if (!allValid) return;
 
-    /* Swap form for success panel */
-    form.style.display    = 'none';
-    success.style.display = 'block';
+    submitBtn.disabled = true;
+    submitLabel.textContent = 'A enviar...';
+    submitBtn.querySelector('i').className = 'bx bx-loader-alt bx-spin me-2';
 
-    /* Optional: scroll to success message */
-    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE, {
+      from_name : document.getElementById('cf-name').value.trim(),
+      from_email: document.getElementById('cf-email').value.trim(),
+      phone     : document.getElementById('cf-phone').value.trim() || 'N/A',
+      subject   : document.getElementById('cf-subject').value,
+      message   : document.getElementById('cf-message').value.trim()
+    }).then(function () {
+      form.style.display    = 'none';
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, function (err) {
+      submitBtn.disabled = false;
+      submitLabel.textContent = 'Enviar Mensagem';
+      submitBtn.querySelector('i').className = 'bx bxs-send me-2';
+      alert('Erro ao enviar. Por favor tente novamente ou contacte-nos via WhatsApp.');
+      console.error('[EmailJS] Contact send failed:', err);
+    });
   });
 
   if (typeof revealOnScroll === 'function') revealOnScroll();

@@ -56,9 +56,24 @@ function renderReviews(reviews) {
 
   if (counter) counter.textContent = reviews.length;
 
+  const priceStars = document.querySelector('.pkg-stars');
+
   if (avg && reviews.length) {
     const mean = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
     avg.textContent = mean.toFixed(1);
+
+    /* Sync the price-block stars with the real calculated rating */
+    if (priceStars) {
+      const rounded = Math.round(mean);
+      priceStars.innerHTML =
+        '<span class="pkg-stars-icons">' + starsHtml(rounded) + '</span>' +
+        '<span class="pkg-stars-avg"> ' + mean.toFixed(1) + '</span>' +
+        '<span class="pkg-stars-count"> (' + reviews.length + ')</span>';
+    }
+  } else if (priceStars) {
+    /* No reviews yet — append a zero-count label */
+    priceStars.insertAdjacentHTML('beforeend',
+      ' <span class="pkg-stars-count">(0)</span>');
   }
 
   if (!reviews.length) {

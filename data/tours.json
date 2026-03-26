@@ -940,8 +940,8 @@
     "badge": "Top Destino",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "assets/images/packages/ponta_torres.jpg",
-    "heroImage": "assets/images/packages/beach_day_1.jpg",
+    "image": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpg",
+    "heroImage": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpg",
     "location": "Ponta D'Ouro",
     "destinations": "Ponta D'Ouro",
     "duration": "Dia inteiro",
@@ -1023,10 +1023,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/ponta_torres.jpg",
-      "assets/images/packages/beach_day_1.jpg",
-      "assets/images/packages/beach_day_3.jpg",
-      "assets/images/packages/observacao_baleias_1.jpg"
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpg",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpg",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.webp",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.jpg"
     ],
     "importantInfo": [
       "Passaporte ou BI obrigatório para a viagem ao sul.",
@@ -1142,8 +1142,8 @@
     "badge": "Família",
     "badgeClass": "",
     "stars": 4,
-    "image": "assets/images/packages/beach_day_4.jpg",
-    "heroImage": "assets/images/packages/beach_day_1.jpg",
+    "image": "../assets/images/packages/beach-tours/bilene/bilene-1.webp",
+    "heroImage": "../assets/images/packages/beach-tours/bilene/bilene-2.jpg",
     "location": "Bilene, Gaza",
     "destinations": "Bilene",
     "duration": "Dia inteiro",
@@ -1219,9 +1219,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/beach_day_4.jpg",
-      "assets/images/packages/beach_day_1.jpg",
-      "assets/images/packages/beach_day_2.jpg"
+      "../assets/images/packages/beach-tours/bilene/bilene-1.webp",
+      "../assets/images/packages/beach-tours/bilene/bilene-2.jpg",
+      "../assets/images/packages/beach-tours/bilene/bilene-3.webp",
+      "../assets/images/packages/beach-tours/bilene/bilene-4.webp"
     ],
     "importantInfo": [
       "Aluguer de kayak e equipamento não incluído no preço.",
@@ -1239,8 +1240,8 @@
     "badge": "Aventura",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/whale-watching_1.jpg",
-    "heroImage": "assets/images/packages/beach_day_2.jpg",
+    "image": "../assets/images/packages/beach-tours/tofo/tofo-1.jpg",
+    "heroImage": "../assets/images/packages/beach-tours/tofo/tofo-2.webp",
     "location": "Tofo, Inhambane",
     "destinations": "Tofo Beach",
     "duration": "2 dias / 1 noite",
@@ -1318,10 +1319,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/observacao_baleias_1.jpg",
-      "assets/images/packages/observacao_baleias_2.jpg",
-      "assets/images/packages/beach_day_2.jpg",
-      "assets/images/packages/beach_day_3.jpg"
+      "../assets/images/packages/beach-tours/tofo/tofo-1.jpg",
+      "../assets/images/packages/beach-tours/tofo/tofo-2.webp",
+      "../assets/images/packages/beach-tours/tofo/tofo-3.jpg",
+      "../assets/images/packages/beach-tours/tofo/tofo-4.jpg"
     ],
     "importantInfo": [
       "Avistamento de tubarões-baleia mais provável de Junho a Novembro.",
@@ -1340,8 +1341,8 @@
     "badge": "Luxo",
     "badgeClass": "",
     "stars": 5,
-    "image": "assets/images/packages/beach_day_4.jpg",
-    "heroImage": "assets/images/packages/beach_day_2.jpg",
+    "image": "../assets/images/packages/beach-tours/bazaruto/bazaruto-1.jpg",
+    "heroImage": "../assets/images/packages/beach-tours/bazaruto/bazaruto-2.jpg",
     "location": "Vilanculos, Inhambane",
     "destinations": "Vilanculos & Bazaruto",
     "duration": "3 dias / 2 noites",
@@ -1419,10 +1420,10 @@
       }
     ],
     "gallery": [
-      "assets/images/packages/beach_day_4.jpg",
-      "assets/images/packages/beach_day_2.jpg",
-      "assets/images/packages/observacao_baleias_1.jpg",
-      "assets/images/packages/beach_day_1.jpg"
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-1.jpg",
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-2.jpg",
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-3.jpg",
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-4.jpg"
     ],
     "importantInfo": [
       "Os voos são sujeitos a disponibilidade e podem variar de preço.",

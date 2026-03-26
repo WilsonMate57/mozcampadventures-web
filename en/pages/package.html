@@ -381,6 +381,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script src="../../assets/js/components.js"></script>
 <script src="../../assets/js/data-loader.js"></script>
@@ -420,21 +421,52 @@ function switchBookTab(tab) {
   document.getElementById('pane-email').style.display = tab === 'email' ? 'block' : 'none';
 }
 
-document.getElementById('btn-email-submit').addEventListener('click', function () {
-  var fields = ['em-name', 'em-email', 'em-phone', 'em-date', 'em-people'];
-  var valid = fields.every(function (id) {
-    var el = document.getElementById(id);
-    var ok = el && el.value.trim() !== '';
-    if (el) el.classList.toggle('field-error', !ok);
-    return ok;
-  });
-  if (!valid) return;
+/* ── EmailJS — Booking Form (EN) ────────────────────── */
+(function () {
+  var EMAILJS_PUBLIC_KEY      = 'YOUR_PUBLIC_KEY';
+  var EMAILJS_SERVICE_ID      = 'YOUR_SERVICE_ID';
+  var EMAILJS_BOOKING_TEMPLATE = 'YOUR_BOOKING_TEMPLATE_ID';
 
-  document.getElementById('pane-email').querySelectorAll('.booking-field, .btn-email-book').forEach(function (el) {
-    el.style.display = 'none';
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  document.getElementById('btn-email-submit').addEventListener('click', function () {
+    var fields = ['em-name', 'em-email', 'em-phone', 'em-date', 'em-people'];
+    var valid = fields.every(function (id) {
+      var el = document.getElementById(id);
+      var ok = el && el.value.trim() !== '';
+      if (el) el.classList.toggle('field-error', !ok);
+      return ok;
+    });
+    if (!valid) return;
+
+    var btn = document.getElementById('btn-email-submit');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bx bx-loader-alt bx-spin me-2"></i>Sending...';
+
+    var packageName = (document.getElementById('pkg-title') || {}).textContent || 'N/A';
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_BOOKING_TEMPLATE, {
+      package_name : packageName,
+      package_url  : window.location.href,
+      from_name    : document.getElementById('em-name').value.trim(),
+      from_email   : document.getElementById('em-email').value.trim(),
+      phone        : document.getElementById('em-phone').value.trim(),
+      date         : document.getElementById('em-date').value,
+      people       : document.getElementById('em-people').value.trim(),
+      message      : (document.getElementById('em-message') || {}).value || ''
+    }).then(function () {
+      document.getElementById('pane-email').querySelectorAll('.booking-field, .btn-email-book, .book-note').forEach(function (el) {
+        el.style.display = 'none';
+      });
+      document.getElementById('email-success').style.display = 'block';
+    }, function (err) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bx bxs-send me-2"></i>Send Request';
+      alert('Failed to send. Please try again or contact us via WhatsApp.');
+      console.error('[EmailJS] Booking send failed:', err);
+    });
   });
-  document.getElementById('email-success').style.display = 'block';
-});
+})();
 </script>
 </body>
 </html>
