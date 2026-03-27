@@ -9,7 +9,7 @@
     "badgeClass": "popular",
     "stars": 5,
     "image": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg",
-    "heroImage": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpeg",
+    "heroImage": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpg",
     "location": "Machangulo, Maputo",
     "destinations": "Península de Machangulo",
     "duration": "Mínimo 1 noite",
@@ -90,9 +90,9 @@
     ],
     "gallery": [
       "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg",
-      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_getaway_3.jpg",
-      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_4.jpg",
-      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_getaway_6.jpg"
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_2.jpg",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpg",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_4.jpg"
     ],
     "importantInfo": [
       "1 noite: Adultos 16.900 MZN | Crianças (4–10 anos) 9.500 MZN por pessoa.",

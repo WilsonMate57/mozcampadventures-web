@@ -2348,7 +2348,8 @@ a.contact-info-item:hover .contact-info-arrow { color: var(--teal); }
 
 /* Review count label inline with stars on cards */
 .tour-card-stars,
-.pkg-stars {
+.pkg-stars,
+.alo-acc-stars {
   display: flex;
   align-items: center;
   gap: 6px;

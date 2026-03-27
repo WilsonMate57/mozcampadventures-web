@@ -197,6 +197,7 @@
 <script src="../assets/js/components.js"></script>
 <script src="../assets/js/data-loader.js"></script>
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/reviews.js" type="module"></script>
 <script>
 (function () {
   'use strict';
@@ -279,7 +280,7 @@
         '</div>' +
         '<div class="alo-acc-body">' +
           '<h4 class="alo-acc-title">' + pkg.name + '</h4>' +
-          '<div class="alo-acc-stars">' + starsStr + '</div>' +
+          '<div class="alo-acc-stars" data-pkg-id="' + slug + '"><span class="stars-text">' + starsStr + '</span><span class="review-count">(0)</span></div>' +
           '<div class="alo-acc-meta">' +
             '<span><i class="bx bxs-map"></i> ' + (pkg.location || '') + '</span>' +
             '<span><i class="bx bx-time"></i> ' + (pkg.duration || '') + '</span>' +
