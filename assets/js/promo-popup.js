@@ -32,7 +32,7 @@
     description:   'Desfrute de um sunset cruise inesquecível na Baía de Maputo com vistas deslumbrantes, ambiente exclusivo e uma experiência perfeita para celebrar uma ocasião especial.',
     expiry:        '2026-04-07T23:59:59',
     ctaText:       'Reservar Agora',
-    ctaLink:       'pages/package.html?id=sunset-cruise',
+    ctaLink:       'pages/package.html?id=sunset-cruise-dia-da-mulher',
     dismissText:   'Fechar',
     expiredText:   'Esta oferta já expirou.',
     image:         'assets/images/hero/sunset-cruise-maputo-bay.jpeg',
@@ -52,7 +52,10 @@
 
   /* ── Session / cooldown guard ───────────────────────────── */
 
+  var isPreview = window.location.search.indexOf('promo_preview=1') !== -1;
+
   function shouldShow() {
+    if (isPreview) return true; // ?promo_preview=1 bypasses cooldown
     try {
       var stored = localStorage.getItem(cfg.sessionKey);
       if (!stored) return true;
@@ -63,6 +66,7 @@
   }
 
   function markShown() {
+    if (isPreview) return; // don't mark during preview
     try { localStorage.setItem(cfg.sessionKey, Date.now().toString()); } catch (e) {}
   }
 
@@ -190,7 +194,7 @@
 
   /* ── Init ────────────────────────────────────────────────── */
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function launch() {
     setTimeout(function () {
       var overlay = buildPopup();
 
@@ -221,6 +225,13 @@
 
       openPopup(overlay);
     }, cfg.delayMs);
-  });
+  }
+
+  // Guard against DOMContentLoaded already having fired (script loaded late)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', launch);
+  } else {
+    launch();
+  }
 
 })();

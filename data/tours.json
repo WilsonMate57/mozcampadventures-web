@@ -751,6 +751,98 @@
     ]
   },
   {
+    "id": "sunset-cruise-dia-da-mulher",
+    "slug": "sunset-cruise-dia-da-mulher",
+    "category": "sunset-cruise",
+    "name": "Sunset Cruise — Especial Dia da Mulher Moçambicana",
+    "subtitle": "Celebre com uma experiência exclusiva na Baía de Maputo",
+    "badge": "Promoção Especial",
+    "badgeClass": "popular",
+    "stars": 5,
+    "image": "../assets/images/promo/sunset-cruise/sunset_cruise_1.jpeg",
+    "heroImage": "../assets/images/promo/sunset-cruise/sunset_cruise_2.jpeg",
+    "location": "Baía de Maputo",
+    "destinations": "Maputo Bay",
+    "duration": "3 horas",
+    "price": "2.250 MZN",
+    "price_from": 2250,
+    "priceOld": "2.500 MZN",
+    "priceLabel": "por adulto",
+    "promoNote": "10% de desconto ao reservar online",
+    "price_child": 1620,
+    "priceChild": "1.620 MZN",
+    "priceChildLabel": "Crianças (4–12 anos)",
+    "currency": "MZN",
+    "cancelPolicy": "até 48 horas antes",
+    "description": "Celebre o Dia da Mulher Moçambicana com um sunset cruise exclusivo na Baía de Maputo — vistas deslumbrantes, ambiente romântico e 10% de desconto ao reservar diretamente pelo site.",
+    "detailText": [
+      "Uma ocasião especial merece uma experiência inesquecível. Este cruzeiro ao pôr do sol foi criado para celebrar o Dia da Mulher Moçambicana com elegância, conforto e as vistas mais bonitas de Maputo — tudo a bordo do nosso barco premium.",
+      "Navegue tranquilamente pela Baía de Maputo enquanto o sol mergulha no horizonte. Champanhe de boas-vindas, snacks de bordo, música ambiente e uma tripulação atenciosa tornam este momento verdadeiramente especial.",
+      "Ao reservar diretamente pelo site, beneficia de 10% de desconto sobre o preço normal. Uma oportunidade única para celebrar com estilo e poupar ao mesmo tempo."
+    ],
+    "includes": [
+      "Cruzeiro de 3 horas na Baía de Maputo",
+      "Champanhe de boas-vindas",
+      "Bebidas (não alcoólicas e 1 alcoólica por pessoa)",
+      "Snacks de bordo",
+      "Música ambiente",
+      "Tripulação experiente e atenciosa",
+      "10% de desconto exclusivo para reservas online"
+    ],
+    "excludes": [
+      "Bebidas alcoólicas adicionais",
+      "Gorjetas",
+      "Transferes de e para o porto"
+    ],
+    "highlights": [
+      "Oferta especial: 10% de desconto ao reservar pelo site",
+      "Pôr do sol espectacular sobre a Baía de Maputo",
+      "Champanhe de boas-vindas a bordo",
+      "Ambiente romântico e exclusivo para ocasiões especiais",
+      "Vistas únicas da linha de horizonte de Maputo",
+      "Ideal para casais e grupos que queiram celebrar"
+    ],
+    "itinerary": [
+      {
+        "time": "17h00",
+        "title": "Embarque & Champanhe de Boas-Vindas",
+        "body": "Recepção especial a bordo com champanhe e apresentação da tripulação.",
+        "checklist": []
+      },
+      {
+        "time": "17h30",
+        "title": "Partida para a Baía",
+        "body": "Largamos da marina e navegamos pela Baía de Maputo enquanto o sol começa a baixar no horizonte.",
+        "checklist": []
+      },
+      {
+        "time": "18h30",
+        "title": "Pôr do Sol — Momento Especial",
+        "body": "O momento mais esperado: o sol mergulha no horizonte sobre a baía. Música ambiente e snacks servidos a bordo.",
+        "checklist": []
+      },
+      {
+        "time": "20h00",
+        "title": "Regresso ao Porto",
+        "body": "Regresso tranquilo ao porto de Maputo ao anoitecer.",
+        "checklist": []
+      }
+    ],
+    "gallery": [
+      "../assets/images/promo/sunset-cruise/sunset_cruise_1.jpeg",
+      "../assets/images/promo/sunset-cruise/sunset_cruise_2.jpeg",
+      "../assets/images/promo/sunset-cruise/sunset_cruise_3.jpeg",
+      "../assets/images/promo/sunset-cruise/sunset_cruise_4.jpg"
+    ],
+    "importantInfo": [
+      "Promoção válida para reservas efetuadas diretamente pelo site — 10% de desconto aplicado automaticamente.",
+      "Saídas disponíveis de quarta a domingo.",
+      "Reserva antecipada obrigatória — lugares limitados para esta edição especial.",
+      "Roupa leve e um casaco fino recomendados (brisa ao anoitecer).",
+      "Ponto de encontro: Porto de Maputo, às 17h00."
+    ]
+  },
+  {
     "id": "sunset-dinner-dj",
     "slug": "sunset-dinner-dj",
     "category": "sunset-cruise",
