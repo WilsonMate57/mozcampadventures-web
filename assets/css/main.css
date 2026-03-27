@@ -1157,6 +1157,9 @@ section#packages .sub { color: rgba(255,255,255,.85); margin-bottom: 2rem; }
 .footer-bottom a { color: rgba(255,255,255,.45); font-size: .78rem; transition: color .2s; }
 .footer-bottom a:hover { color: var(--teal); }
 .footer-sep { color: rgba(255,255,255,.25); margin: 0 8px; }
+.footer-credits { color: rgba(255,255,255,.3); font-size: .72rem; border-top: 1px solid rgba(255,255,255,.07); padding-top: 10px; margin-top: 10px; }
+.footer-credits-link { color: rgba(255,255,255,.55); font-weight: 600; transition: color .2s; }
+.footer-credits-link:hover { color: var(--teal); }
 
 @media (max-width: 767px) {
   .office-block-border {
