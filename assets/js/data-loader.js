@@ -321,9 +321,12 @@
     /* Booking sidebar */
     initBookingSidebar(pkg);
 
-    /* Related packages */
-    var allPkgs = [].concat(MCA.tours, MCA.accommodation);
-    var related = allPkgs.filter(function (p) { return (p.slug || p.id) !== slug; }).slice(0, 3);
+    /* Related packages — same category first, fill from others if needed */
+    var allPkgs  = [].concat(MCA.tours, MCA.accommodation);
+    var others   = allPkgs.filter(function (p) { return (p.slug || p.id) !== slug; });
+    var sameCat  = others.filter(function (p) { return p.category === pkg.category; });
+    var diffCat  = others.filter(function (p) { return p.category !== pkg.category; });
+    var related  = sameCat.concat(diffCat).slice(0, 3);
     var relEl = document.getElementById('pkg-related-list');
     if (relEl) {
       related.forEach(function (rp) {
