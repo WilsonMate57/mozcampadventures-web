@@ -617,6 +617,26 @@
 <script src="../assets/js/main.js"></script>
 <script type="module" src="../assets/js/reviews.js"></script>
 <script>
+  window.MCA_PROMO_CONFIG = {
+    badgeText:   'Special Offer',
+    title:       'Limited Time Offer',
+    campaign:    'Sunset Cruise — Mozambican Women\'s Day',
+    discount:    '10% off when booking online',
+    description: 'Enjoy an unforgettable sunset cruise across Maputo Bay with breathtaking views, an exclusive atmosphere and a perfect experience to celebrate a special occasion.',
+    expiry:      '2026-04-07T23:59:59',
+    ctaText:     'Book Now',
+    ctaLink:     '../pages/package.html?id=sunset-cruise',
+    dismissText: 'Close',
+    expiredText: 'This offer has expired.',
+    image:       '../assets/images/hero/sunset-cruise-maputo-bay.jpeg',
+    daysLabel:   'days',
+    hoursLabel:  'hours',
+    minsLabel:   'min',
+    secsLabel:   'sec',
+  };
+</script>
+<script src="../assets/js/promo-popup.js"></script>
+<script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.alo-card-slider').forEach(function (slider) {
       var track = slider.querySelector('.alo-card-slider-track');
