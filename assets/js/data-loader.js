@@ -529,6 +529,7 @@
     var elAT = document.getElementById('bps-adult-total'); if (elAT) elAT.textContent = fmt(adultTotal);
     var elCh = document.getElementById('bps-children');    if (elCh) elCh.textContent = _children;
     var elCT = document.getElementById('bps-child-total'); if (elCT) elCT.textContent = fmt(childTotal);
+    var elCR = document.getElementById('bps-child-row');   if (elCR) elCR.style.display = _children > 0 ? '' : 'none';
 
     /* Extras row */
     var extRow   = document.getElementById('bps-extras-row');
