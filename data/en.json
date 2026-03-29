@@ -366,21 +366,21 @@
     "importantInfo": ["Passport or national ID required for travel to the south.", "Swimming with dolphins is not guaranteed — depends on animal behaviour.", "Tour subject to weather and sea conditions.", "Departure from Maputo at 06:00 — punctuality required."]
   },
   "macaneta-day-trip": {
-    "subtitle": "Lagoon, mangroves and wild beaches 30 minutes from Maputo",
+    "subtitle": "Wild beaches, horse riding and nature just 1 hour from Maputo",
     "badge": "Near Maputo",
     "duration": "Full day",
     "priceLabel": "per adult",
     "priceChildLabel": "Children (4–12 years)",
-    "description": "Macaneta is the perfect escape from Maputo — a narrow strip of land between the ocean and the lagoon with wild beaches, mangroves and fresh fish.",
+    "description": "Macaneta is the perfect escape from Maputo — wild beaches, a horse ride along the shore, a fresh beachfront lunch and activities of your choice. Just 1 hour from the city.",
     "detailText": [
-      "Macaneta is a narrow peninsula just 30 minutes from Maputo, separated from the mainland by the Incomáti River. With wild ocean-facing beaches on one side and the calm lagoon on the other, it is a unique and accessible destination.",
-      "Our day trip includes the river boat crossing, a guided mangrove walk with a local guide and a long beach day with a fresh fish lunch at a typical local restaurant.",
-      "Perfect for anyone wanting to escape the city without a long journey."
+      "Macaneta is a narrow peninsula just 1 hour from Maputo, separated from the mainland by the Incomáti River. With wild ocean-facing beaches on one side and the calm lagoon on the other, it is a unique and accessible destination.",
+      "Our day trip includes home pick-up, return transport, a guided horse ride on the beach, snacks, water and fruit throughout the day and lunch at a beachfront restaurant. Optional extras available on request: quad bike, boat trip or kayak on the Incomáti River.",
+      "Ideal for those wanting to escape the city without giving up comfort — and still personalise the experience to their taste."
     ],
-    "includes": ["Home pick-up (Maputo city only)", "Return transport from Maputo", "Incomáti River boat crossing", "Local guide for the mangrove walk", "Fresh fish lunch and drinks", "Beach access"],
-    "excludes": ["Extra alcoholic drinks", "Tips", "Additional activities"],
-    "highlights": ["Scenic boat crossing of the Incomáti River", "Wild and uncrowded beaches", "Mangrove walk with local wildlife", "Fresh fish and seafood in true local style", "Just 30 minutes from Maputo"],
-    "importantInfo": ["Available every day of the week.", "Minimum 4 participants.", "Macaneta beach has strong currents — swim with caution.", "Meeting point: Maputo at 08:30."]
+    "includes": ["Home pick-up (Maputo city only)", "Return transport", "Local guide", "Snacks", "Water and fruit", "Horse riding on the beach", "Lunch at a beachfront restaurant"],
+    "excludes": ["Alcoholic drinks", "Tips", "Extra activities (quad, boat, kayak)"],
+    "highlights": ["Wild and uncrowded beaches", "Horse riding on the beach included", "Lunch at a beachfront restaurant", "Optional extras: Quad, boat trip and kayak on the Incomáti River", "Just 1 hour from Maputo"],
+    "importantInfo": ["Available every day of the week.", "You can book for just 1 person — a minimum of 4 participants is recommended for the best experience.", "Macaneta beach has strong currents — swim with caution.", "Departure at 08:00 — home pick-up included.", "Expected return at 16:30."]
   },
   "bilene-day-trip": {
     "name": "Bilene — São Martinho Lagoon",

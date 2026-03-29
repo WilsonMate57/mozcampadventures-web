@@ -1138,7 +1138,7 @@
     "slug": "macaneta-day-trip",
     "category": "beach-tours",
     "name": "Macaneta Beach Day",
-    "subtitle": "Lagoa, mangais e praias selvagens a 30 minutos de Maputo",
+    "subtitle": "Praias selvagens, passeio a cavalo e natureza a 1 hora de Maputo",
     "badge": "Perto de Maputo",
     "badgeClass": "",
     "stars": 4,
@@ -1147,75 +1147,82 @@
     "location": "Macaneta",
     "destinations": "Macaneta",
     "duration": "Dia inteiro",
-    "price": "3.500 MZN",
-    "price_from": 3500,
+    "price": "7.500 MZN",
+    "price_from": 7500,
     "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 2500,
-    "priceChild": "2.500 MZN",
+    "price_child": 6500,
+    "priceChild": "6.500 MZN",
     "priceChildLabel": "Crianças (4–12 anos)",
     "currency": "MZN",
-    "description": "Macaneta é a escapadinha perfeita de Maputo — uma língua de terra entre o oceano e a lagoa com praias selvagens, mangais e peixe fresco.",
+    "description": "Macaneta é a escapadinha perfeita de Maputo — praias selvagens, passeio a cavalo à beira-mar, almoço fresco e atividades à sua escolha. A apenas 1 hora da cidade.",
     "detailText": [
-      "Macaneta é uma península estreita a apenas 30 minutos de Maputo, separada do continente pelo Rio Incomáti. Com praias selvagens voltadas para o oceano de um lado e a tranquilidade da lagoa do outro, é um destino único e acessível.",
-      "O nosso day trip inclui a travessia de barco pelo rio, passeio pelos mangais com guia local e um longo dia de praia com almoço de peixe fresco num restaurante típico da região.",
-      "Perfeito para quem quer escapar da cidade sem viagens longas."
+      "Macaneta é uma península tranquila a apenas uma hora da cidade Maputo, separada do continente pelo Rio Incomáti. Com praias selvagens voltadas para o oceano de um lado e do outro a serenidade do rio, é um destino acessível e perfeito para quem procura desligar da rotina.",
+      "O nosso day trip oferece uma experiência completa, com transporte confortável, contacto com a natureza e tempo livre para aproveitar a praia ao seu ritmo. Desfrute de um almoço em restaurante típico da região, num ambiente simples, autêntico e acolhedor.",
+      "Ideal para quem quer escapar da cidade sem viagens longas, este passeio combina relaxamento, paisagens naturais e momentos inesquecíveis à beira-mar."
     ],
     "includes": [
       "Recolha em casa (Cidade de Maputo)",
-      "Transporte de ida e volta de Maputo",
-      "Travessia de barco pelo Rio Incomáti",
-      "Guia local para o passeio pelos mangais",
-      "Almoço com peixe fresco e bebidas",
-      "Acesso à praia"
+      "Transporte de ida e volta",
+      "Guia local",
+      "Snacks",
+      "Água e frutas",
+      "Passeio a cavalo na praia",
+      "Almoço em restaurante à beira-mar"
     ],
     "excludes": [
-      "Bebidas alcoólicas extras",
+      "Bebidas alcoólicas",
       "Gorjetas",
-      "Atividades extras"
+      "Atividades extras (quad, barco, kayak)"
     ],
     "highlights": [
-      "Travessia de barco pelo pitoresco Rio Incomáti",
       "Praias selvagens e pouco frequentadas",
-      "Passeio pelos mangais com fauna local",
-      "Peixe fresco e marisco no melhor estilo local",
-      "Apenas 30 minutos de Maputo"
+      "Passeio a cavalo na praia incluído",
+      "Almoço em restaurante à beira-mar",
+      "Atividades extras: Quad, barco e kayak no Rio Incomáti",
+      "Apenas 1 hora de Maputo"
     ],
     "itinerary": [
       {
-        "time": "08h30",
-        "title": "Partida de Maputo",
-        "body": "Saída de Maputo com destino a Macaneta.",
+        "time": "08h00",
+        "title": "Recolha em Maputo",
+        "body": "Recolha em casa na Cidade de Maputo e partida para Macaneta.",
+        "checklist": ["Fato de banho", "Protetor solar", "Toalha"]
+      },
+      {
+        "time": "09h00",
+        "title": "Chegada a Macaneta",
+        "body": "Chegada à península de Macaneta. Receção pelo guia local e distribuição de snacks e água.",
         "checklist": []
       },
       {
         "time": "09h30",
-        "title": "Travessia do Rio Incomáti",
-        "body": "Travessia de barco pelo Rio Incomáti até à península de Macaneta.",
+        "title": "Passeio a Cavalo na Praia",
+        "body": "Passeio a cavalo guiado ao longo da praia selvagem de Macaneta — uma experiência inesquecível com vista para o oceano.",
         "checklist": []
       },
       {
-        "time": "10h00",
-        "title": "Passeio pelos Mangais",
-        "body": "Exploração guiada dos mangais com observação de aves e fauna costeira.",
+        "time": "11h00",
+        "title": "Praia Livre & Atividades Extras",
+        "body": "Tempo livre na praia para nadar e relaxar. Atividades extras disponíveis: quad bike, passeio de barco ou kayak no Rio Incomáti (custo adicional).",
         "checklist": []
       },
       {
-        "time": "11h30",
-        "title": "Praia Livre",
-        "body": "Tempo livre na praia selvagem de Macaneta para nadar e relaxar.",
+        "time": "13h00",
+        "title": "Almoço no Restaurante",
+        "body": "Almoço incluído num restaurante à beira-mar com vista para o oceano Índico.",
         "checklist": []
       },
       {
-        "time": "13h30",
-        "title": "Almoço Típico",
-        "body": "Almoço com carapau frito, camarão e arroz de coco num restaurante local.",
+        "time": "15h00",
+        "title": "Tempo Livre",
+        "body": "Tarde livre para relaxar na praia, nadar ou explorar os arredores.",
         "checklist": []
       },
       {
-        "time": "15h30",
+        "time": "16h30",
         "title": "Regresso a Maputo",
-        "body": "Regresso a Maputo com chegada prevista às 17h00.",
+        "body": "Partida de Macaneta e regresso a Maputo.",
         "checklist": []
       }
     ],
@@ -1227,9 +1234,15 @@
     ],
     "importantInfo": [
       "Disponível todos os dias da semana.",
-      "Mínimo de 4 participantes.",
+      "Pode reservar a partir de 1 pessoa — recomendamos um mínimo de 4 participantes para uma melhor experiência.",
       "A praia de Macaneta tem correntes fortes — nadar com cautela.",
-      "Ponto de encontro: Maputo, 08h30."
+      "Partida às 08h00 — recolha em casa incluída.",
+      "Regresso previsto às 16h30."
+    ],
+    "extras": [
+      { "id": "quad-macaneta", "icon": "bicycle", "title": "Quad Bike Ride", "desc": "Aventura pelas dunas", "price": 1500, "perPerson": true },
+      { "id": "boat-icomati", "icon": "water", "title": "Passeio de Barco", "desc": "Rio Incomáti", "price": 1500, "perPerson": true },
+      { "id": "kayak-icomati", "icon": "droplet-fill", "title": "Kayak no Incomáti", "desc": "Aventura fluvial", "price": 1500, "perPerson": true }
     ]
   },
   {
