@@ -220,7 +220,7 @@
             <div class="book-pane" id="pane-wa">
               <div class="booking-field">
                 <label>Nome Completo <span class="req">*</span></label>
-                <input type="text" id="wa-name" placeholder="Introduza o seu nome completo">
+                <input type="text" id="wa-name" placeholder="Introduza o seu nome completo" required>
               </div>
               <div class="booking-field">
                 <label>Email <span class="req">*</span></label>
@@ -228,11 +228,11 @@
               </div>
               <div class="booking-field">
                 <label>Telefone <span class="req">*</span></label>
-                <input type="tel" id="wa-phone" placeholder="Ex: +258 84 000 0000">
+                <input type="tel" id="wa-phone" placeholder="Ex: +258 84 000 0000" required>
               </div>
               <div class="booking-field">
                 <label>Data Pretendida <span class="req">*</span></label>
-                <input type="date" id="book-date">
+                <input type="date" id="book-date" required>
               </div>
               <div class="booking-field">
                 <label>Adultos <span class="req">*</span></label>
@@ -278,19 +278,19 @@
             <div class="book-pane" id="pane-email" style="display:none;">
               <div class="booking-field">
                 <label>Nome Completo <span class="req">*</span></label>
-                <input type="text" id="em-name" placeholder="Introduza o seu nome completo">
+                <input type="text" id="em-name" placeholder="Introduza o seu nome completo" required>
               </div>
               <div class="booking-field">
                 <label>Email <span class="req">*</span></label>
-                <input type="email" id="em-email" placeholder="Introduza o seu email">
+                <input type="email" id="em-email" placeholder="Introduza o seu email" required>
               </div>
               <div class="booking-field">
                 <label>Telefone <span class="req">*</span></label>
-                <input type="tel" id="em-phone" placeholder="Ex: +258 84 000 0000">
+                <input type="tel" id="em-phone" placeholder="Ex: +258 84 000 0000" required>
               </div>
               <div class="booking-field">
                 <label>Data Pretendida <span class="req">*</span></label>
-                <input type="date" id="em-date">
+                <input type="date" id="em-date" required>
               </div>
               <div class="booking-field">
                 <label>Número de Pessoas <span class="req">*</span></label>
@@ -423,6 +423,22 @@ function switchBookTab(tab) {
   document.getElementById('pane-wa').style.display    = tab === 'wa'    ? 'block' : 'none';
   document.getElementById('pane-email').style.display = tab === 'email' ? 'block' : 'none';
 }
+
+/* ── WhatsApp pane — required field validation ──────── */
+(function () {
+  document.getElementById('book-wa-btn').addEventListener('click', function (e) {
+    var name  = document.getElementById('wa-name');
+    var phone = document.getElementById('wa-phone');
+    var date  = document.getElementById('book-date');
+    var valid = true;
+    [name, phone, date].forEach(function (el) {
+      var ok = el && el.value.trim() !== '';
+      if (el) el.classList.toggle('field-error', !ok);
+      if (!ok) valid = false;
+    });
+    if (!valid) { e.preventDefault(); }
+  });
+})();
 
 /* ── EmailJS — Booking Form ─────────────────────────── */
 (function () {

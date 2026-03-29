@@ -344,6 +344,11 @@
 
     /* Scroll reveal */
     if (typeof revealOnScroll === 'function') revealOnScroll();
+
+    /* Init extras section if package has extras (packages-extras.js) */
+    if (pkg.extras && pkg.extras.length && typeof window._mcaInitExtras === 'function') {
+      window._mcaInitExtras(pkg.extras);
+    }
   };
 
   /* ── Gallery ─────────────────────────────────────────────── */

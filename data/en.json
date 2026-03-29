@@ -360,9 +360,9 @@
       "Our day trip includes a boat excursion to swim with wild dolphins in their natural habitat, snorkelling on coastal reefs and free time on the paradisiacal beaches. Lunch is served at a local beachfront restaurant.",
       "A 2-hour drive from Maputo that feels like travelling to another world — nature, ocean and authenticity."
     ],
-    "includes": ["Private return transfer (4x4)", "Boat trip for dolphin watching", "Snorkelling equipment", "Lunch at a local restaurant", "Experienced guide", "Water and non-alcoholic drinks"],
+    "includes": ["Home pick-up (Maputo city only)", "Private return transfer (4x4)", "Quad Bike ride on the dunes of Ponta D'Ouro", "Lunch at a local restaurant", "Experienced guide", "Water and non-alcoholic drinks"],
     "excludes": ["Alcoholic beverages", "Reserve entry fees (when applicable)", "Tips", "Personal expenses"],
-    "highlights": ["Swimming with wild dolphins in their natural habitat", "Snorkelling on Ponta D'Ouro's coastal reefs", "Pristine golden beaches with towering dunes", "Fresh seafood lunch at a beachfront restaurant", "4x4 drive through southern Mozambique's landscapes"],
+    "highlights": ["Diving with wild dolphins in their natural habitat", "Scuba Diving on Ponta D'Ouro's coastal reefs", "Quad Bike ride on the golden dunes of Ponta D'Ouro", "Pristine golden beaches with towering dunes", "Fresh seafood lunch at a beachfront restaurant", "Private return transfer from Maputo"],
     "importantInfo": ["Passport or national ID required for travel to the south.", "Swimming with dolphins is not guaranteed — depends on animal behaviour.", "Tour subject to weather and sea conditions.", "Departure from Maputo at 06:00 — punctuality required."]
   },
   "macaneta-day-trip": {
@@ -377,7 +377,7 @@
       "Our day trip includes the river boat crossing, a guided mangrove walk with a local guide and a long beach day with a fresh fish lunch at a typical local restaurant.",
       "Perfect for anyone wanting to escape the city without a long journey."
     ],
-    "includes": ["Return transport from Maputo", "Incomáti River boat crossing", "Local guide for the mangrove walk", "Fresh fish lunch and drinks", "Beach access"],
+    "includes": ["Home pick-up (Maputo city only)", "Return transport from Maputo", "Incomáti River boat crossing", "Local guide for the mangrove walk", "Fresh fish lunch and drinks", "Beach access"],
     "excludes": ["Extra alcoholic drinks", "Tips", "Additional activities"],
     "highlights": ["Scenic boat crossing of the Incomáti River", "Wild and uncrowded beaches", "Mangrove walk with local wildlife", "Fresh fish and seafood in true local style", "Just 30 minutes from Maputo"],
     "importantInfo": ["Available every day of the week.", "Minimum 4 participants.", "Macaneta beach has strong currents — swim with caution.", "Meeting point: Maputo at 08:30."]
@@ -395,7 +395,7 @@
       "Our day trip includes private return transport, lagoon access and lunch at one of the waterside restaurants. Kayaks, windsurfs and other water equipment can be hired on site (extra cost).",
       "A perfect day for families with children, thanks to the calm, shallow waters with no dangerous currents."
     ],
-    "includes": ["Private return transport (air-conditioned)", "Accompanying guide", "Lunch at a lagoon-side restaurant", "Water and non-alcoholic drinks", "Lagoon access"],
+    "includes": ["Home pick-up (Maputo city only)", "Private return transport (air-conditioned)", "Accompanying guide", "Lunch at a lagoon-side restaurant", "Water and non-alcoholic drinks", "Lagoon access"],
     "excludes": ["Water equipment hire (kayak, windsurfing)", "Alcoholic beverages", "Tips"],
     "highlights": ["Calm, safe waters — perfect for children", "Kayaking and windsurfing available on site", "Fresh lunch beside the lagoon", "Comfortable air-conditioned private transport", "Relaxed and family-friendly atmosphere"],
     "importantInfo": ["Kayak and equipment hire not included in the price.", "Ideal for families with children — calm and safe waters.", "Paved road — comfortable journey.", "Meeting point: Maputo at 07:00."]
@@ -413,7 +413,7 @@
       "Our 2-day package includes return transport from Maputo, one night at a beachfront guesthouse, two guided snorkelling or diving trips (with the possibility of encountering whale sharks depending on the season) and all meals.",
       "A transformative experience for ocean and marine wildlife lovers."
     ],
-    "includes": ["Return transport from Maputo (flight or air-conditioned bus)", "1 night at a beachfront guesthouse", "2 guided snorkelling/diving trips", "All meals (breakfast, lunch, dinner)", "Certified diving guide", "Snorkelling equipment"],
+    "includes": ["Home pick-up (Maputo city only)", "Return transport from Maputo (flight or air-conditioned bus)", "1 night at a beachfront guesthouse", "2 guided snorkelling/diving trips", "All meals (breakfast, lunch, dinner)", "Certified diving guide", "Snorkelling equipment"],
     "excludes": ["Scuba diving equipment", "Diving course (available locally)", "Alcoholic beverages", "Personal expenses"],
     "highlights": ["Snorkelling with whale sharks (season Jun–Nov)", "Giant manta rays on Tofo's reefs", "Tofo Beach — one of Mozambique's most beautiful", "Beachfront accommodation included", "PADI certified diving guide"],
     "importantInfo": ["Whale shark sightings most likely from June to November.", "Minimum 2 participants.", "Children under 8 not recommended for the diving trips.", "Scuba diving requires PADI certification (courses available locally).", "Free cancellation up to 72 hours before."]
@@ -431,7 +431,7 @@
       "Our 3-day package includes return flights to Vilanculos, beachfront lodge accommodation, a boat excursion to the Bazaruto Archipelago with snorkelling, dugong (sea cow) sightings and all meals.",
       "A premium experience that fully justifies the journey."
     ],
-    "includes": ["Return flights Maputo–Vilanculos", "2 nights at a beachfront lodge", "Boat excursion to the Bazaruto Archipelago", "Snorkelling with equipment included", "All meals and non-alcoholic drinks", "Specialist guide"],
+    "includes": ["Home pick-up (Maputo city only)", "Return flights Maputo–Vilanculos", "2 nights at a beachfront lodge", "Boat excursion to the Bazaruto Archipelago", "Snorkelling with equipment included", "All meals and non-alcoholic drinks", "Specialist guide"],
     "excludes": ["Premium alcoholic beverages", "Extra activities on site", "Tips", "Personal expenses"],
     "highlights": ["Bazaruto Archipelago — National Marine Park", "Snorkelling on pristine coral reefs", "Dugong (sea cow) sightings", "Luxury beachfront lodge accommodation", "Return flights included"],
     "importantInfo": ["Flights are subject to availability and may vary in price.", "Minimum confirmation 7 days before departure.", "Dugong sightings are not guaranteed.", "Package is customisable — contact us for more information."]
@@ -993,6 +993,76 @@
       "Round-trip boat transfer Maputo–Machangulo included.",
       "Check-in: 14:00 | Check-out: 11:00",
       "Free cancellation up to 48 hours before."
+    ]
+  },
+  "sunset-cruise-dia-da-mulher": {
+    "subtitle": "Celebrate with an exclusive experience on Maputo Bay",
+    "badge": "Special Offer",
+    "duration": "3 hours",
+    "priceLabel": "per adult",
+    "priceChildLabel": "Children (4–12 years)",
+    "promoNote": "10% discount when booking online",
+    "cancelPolicy": "up to 48 hours before",
+    "description": "Celebrate Mozambican Women's Day with an exclusive sunset cruise on Maputo Bay — stunning views, a romantic atmosphere and 10% off when you book directly through the website.",
+    "detailText": [
+      "A special occasion deserves an unforgettable experience. This sunset cruise was created to celebrate Mozambican Women's Day with elegance, comfort and the most beautiful views of Maputo — all aboard our premium boat.",
+      "Glide across Maputo Bay as the sun dips below the horizon. A welcome glass of champagne, on-board snacks, ambient music and an attentive crew make this moment truly special.",
+      "By booking directly through the website, you enjoy a 10% discount off the standard price. A unique opportunity to celebrate in style and save at the same time."
+    ],
+    "includes": [
+      "3-hour cruise on Maputo Bay",
+      "Welcome champagne",
+      "Drinks (non-alcoholic and 1 alcoholic drink per person)",
+      "On-board snacks",
+      "Ambient music",
+      "Experienced and attentive crew",
+      "Exclusive 10% discount for online bookings"
+    ],
+    "excludes": [
+      "Additional alcoholic drinks",
+      "Gratuities",
+      "Transfers to and from the harbour"
+    ],
+    "highlights": [
+      "Special offer: 10% off when booking through the website",
+      "Spectacular sunset over Maputo Bay",
+      "Welcome champagne on board",
+      "Romantic and exclusive atmosphere for special occasions",
+      "Unique views of the Maputo skyline",
+      "Perfect for couples and groups looking to celebrate"
+    ],
+    "itinerary": [
+      {
+        "time": "17:00",
+        "title": "Boarding & Welcome Champagne",
+        "body": "Special welcome on board with champagne and crew introduction.",
+        "checklist": []
+      },
+      {
+        "time": "17:30",
+        "title": "Departure into the Bay",
+        "body": "We leave the marina and sail across Maputo Bay as the sun begins to set on the horizon.",
+        "checklist": []
+      },
+      {
+        "time": "18:30",
+        "title": "Sunset — The Special Moment",
+        "body": "The most anticipated moment: the sun dips below the horizon over the bay. Ambient music and on-board snacks are served.",
+        "checklist": []
+      },
+      {
+        "time": "20:00",
+        "title": "Return to Harbour",
+        "body": "A relaxed return to Maputo harbour as night falls.",
+        "checklist": []
+      }
+    ],
+    "importantInfo": [
+      "Promotion valid for bookings made directly through the website — 10% discount applied automatically.",
+      "Departures available Wednesday to Sunday.",
+      "Advance booking required — limited seats for this special edition.",
+      "Light clothing and a thin jacket recommended (evening breeze).",
+      "Meeting point: Maputo Harbour, at 17:00."
     ]
   }
 }

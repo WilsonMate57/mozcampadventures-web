@@ -1037,25 +1037,25 @@
     "location": "Ponta D'Ouro",
     "destinations": "Ponta D'Ouro",
     "duration": "Dia inteiro",
-    "price": "4.500 MZN",
-    "price_from": 4500,
-    "priceOld": "5.500 MZN",
+    "price": "8.500 MZN",
+    "price_from": 8500,
+    "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 3000,
-    "priceChild": "3.000 MZN",
+    "price_child": 6500,
+    "priceChild": "6.500 MZN",
     "priceChildLabel": "Crianças (4–12 anos)",
     "currency": "MZN",
-    "description": "Ponta D'Ouro é famosa pelos golfinhos selvagens e praias douradas intocadas. Um dia de aventura oceânica, snorkeling e natureza no sul de Moçambique.",
+    "description": "Ponta D'Ouro é famosa pelos golfinhos selvagens e praias douradas intocadas. Um dia de aventura oceânica, snorkeling, passeio de 4x4 pelas dunas e almoço fresco à beira-mar.",
     "detailText": [
       "Ponta D'Ouro, a 120km a sul de Maputo, é um dos destinos mais amados pelos moçambicanos e visitantes estrangeiros. Famosa pelas suas praias douradas, águas cristalinas e uma das maiores populações residentes de golfinhos do mundo.",
-      "O nosso day trip inclui uma excursão de barco para nadar com golfinhos selvagens no seu habitat natural, snorkeling nos recifes costeiros e tempo livre nas praias paradisíacas. O almoço é servido num restaurante local à beira-mar.",
+      "O nosso day trip inclui uma excursão de barco para nadar com golfinhos selvagens no seu habitat natural, snorkeling nos recifes costeiros, passeio emocionante de 4x4 pelas dunas douradas de Ponta D'Ouro, e almoço em restaurante local à beira-mar.",
       "Uma viagem de 2 horas de Maputo que parece transportá-lo para outro mundo — natureza, oceano e autenticidade."
     ],
     "includes": [
+      "Recolha em casa (Cidade de Maputo)",
       "Transporte privado de ida e volta (4x4)",
-      "Excursão de barco para observação de golfinhos",
-      "Equipamento de snorkeling",
-      "Almoço em restaurante local",
+      "Quad Bike ride nas dunas de Ponta D'Ouro",
+      "Almoço em restaurante local à beira-mar",
       "Guia experiente",
       "Água e bebidas não alcoólicas"
     ],
@@ -1066,11 +1066,12 @@
       "Despesas pessoais"
     ],
     "highlights": [
-      "Natação com golfinhos selvagens no seu habitat natural",
-      "Snorkeling em recifes costeiros de Ponta D'Ouro",
+      "Mergulho com golfinhos selvagens no seu habitat natural",
+      "Scuba Diving nos recifes costeiros de Ponta D'Ouro",
+      "Quad Bike ride nas dunas douradas de Ponta D'Ouro",
       "Praias douradas intocadas com dunas imponentes",
-      "Almoço fresco em restaurante à beira-mar",
-      "Viagem em 4x4 pelas dunas e paisagens do sul"
+      "Almoço fresco em restaurante à beira-mar incluído",
+      "Transporte privado ida e volta de Maputo"
     ],
     "itinerary": [
       {
@@ -1125,6 +1126,11 @@
       "A natação com golfinhos não é garantida — depende do comportamento dos animais.",
       "Tour sujeito a condições meteorológicas e do mar.",
       "Partida de Maputo às 06h00 — chegada atempada obrigatória."
+    ],
+    "extras": [
+      { "id": "scuba-diving", "icon": "water", "title": "Scuba Diving", "desc": "Equipamento incluído", "price": 10000, "perPerson": true },
+      { "id": "snorkeling-extra", "icon": "eye-fill", "title": "Snorkeling", "desc": "Equipamento incluído", "price": 3000, "perPerson": true },
+      { "id": "swim-with-dolphins", "icon": "heart-pulse", "title": "Nadar com Golfinhos", "desc": "Experiência única", "price": 3000, "perPerson": true }
     ]
   },
   {
@@ -1156,6 +1162,7 @@
       "Perfeito para quem quer escapar da cidade sem viagens longas."
     ],
     "includes": [
+      "Recolha em casa (Cidade de Maputo)",
       "Transporte de ida e volta de Maputo",
       "Travessia de barco pelo Rio Incomáti",
       "Guia local para o passeio pelos mangais",
@@ -1254,6 +1261,7 @@
       "Um dia perfeito para famílias com crianças, graças às águas calmas e fundas, sem correntes perigosas."
     ],
     "includes": [
+      "Recolha em casa (Cidade de Maputo)",
       "Transporte privado de ida e volta (AC)",
       "Guia acompanhante",
       "Almoço em restaurante à beira da lagoa",
@@ -1352,6 +1360,7 @@
       "Uma experiência transformadora para amantes do oceano e da vida selvagem marinha."
     ],
     "includes": [
+      "Recolha em casa (Cidade de Maputo)",
       "Transporte de ida e volta de Maputo (voo ou autocarro AC)",
       "1 noite em pousada à beira-mar",
       "2 saídas de snorkeling/mergulho guiado",
@@ -1453,6 +1462,7 @@
       "Uma experiência premium que justifica plenamente a viagem."
     ],
     "includes": [
+      "Recolha em casa (Cidade de Maputo)",
       "Voos de ida e volta Maputo–Vilanculos",
       "2 noites em lodge à beira-mar",
       "Excursão de barco ao Arquipélago de Bazaruto",

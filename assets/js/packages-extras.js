@@ -95,8 +95,9 @@
   ];
 
   /* ── State ──────────────────────────────────────────────── */
-  var _checked = {};
-  var _typeId  = 'shared';
+  var _checked   = {};
+  var _typeId    = 'shared';
+  var _pkgExtras = null; // set in per-package mode; null = use global data
 
   /* ── Helpers ─────────────────────────────────────────────── */
   function fmt(n) {
@@ -193,6 +194,26 @@
     var total  = 0;
     var lines  = [];
 
+    /* Per-package extras mode */
+    if (_pkgExtras) {
+      _pkgExtras.forEach(function (opt) {
+        if (!_checked[opt.id]) return;
+        var amount = opt.perPerson ? opt.price * adults : opt.price;
+        if (amount > 0) {
+          total += amount;
+          lines.push(
+            opt.title + ': +' + Number(amount).toLocaleString('pt-MZ') + ' MT' +
+            (opt.perPerson ? ' (' + adults + '×)' : '')
+          );
+        } else {
+          lines.push(opt.title + ': Incluído');
+        }
+      });
+      return { total: total, lines: lines };
+    }
+
+    /* Global mode */
+
     /* Experience type */
     var typeOpt = EXPERIENCE_TYPES.find(function (t) { return t.id === _typeId; });
     if (typeOpt && typeOpt.price > 0) {
@@ -265,29 +286,28 @@
   }
 
   /* ── Init ────────────────────────────────────────────────── */
-  function init() {
+  function init(pkgExtras) {
     var section = document.getElementById('pkg-customize-section');
     if (!section) return;
 
+    _pkgExtras = pkgExtras;
     section.style.display = '';
 
-    renderTypeCards();
-    renderOptionCards('cz-destination-cards', DESTINATIONS);
-    renderOptionCards('cz-activity-cards',    ACTIVITIES);
-    renderOptionCards('cz-service-cards',     SERVICES);
+    /* Per-package mode: show only the Activities group */
+    ['cz-type-cards', 'cz-destination-cards', 'cz-service-cards'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.parentElement) el.parentElement.style.display = 'none';
+    });
 
+    renderOptionCards('cz-activity-cards', _pkgExtras);
     watchAdultsStepper();
 
-    /* Initial state: no extras, no WA summary change needed */
+    /* Initial state: no extras selected */
     window._mcaExtrasTotal   = 0;
     window._mcaExtrasSummary = '';
   }
 
-  /* Wait for package data to be ready before initialising */
-  if (typeof window.mcaReady === 'function') {
-    window.mcaReady(function () { setTimeout(init, 120); });
-  } else {
-    document.addEventListener('DOMContentLoaded', init);
-  }
+  /* Called directly by buildPackagePage in data-loader.js */
+  window._mcaInitExtras = function (extras) { init(extras); };
 
 })();

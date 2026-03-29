@@ -912,10 +912,9 @@
 
 /* ── CUSTOMIZE EXPERIENCE SECTION ────────────────────────── */
 /* TEMPORARILY HIDDEN — re-enable by removing the display:none below */
-.pkg-customize-section { display: none !important; }
-/*.pkg-customize-section {
+.pkg-customize-section {
   border-top: 3px solid var(--teal);
-}*/
+}
 
 .pkg-customize-subtitle {
   font-size: .85rem;
