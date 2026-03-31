@@ -93,6 +93,13 @@
           <ul class="pkg-important-list" id="pkg-important"></ul>
         </div>
 
+        <!-- PRIVATE TRANSFER OPTIONS (beach-tours only) -->
+        <div class="pkg-section pkg-transfer-section reveal reveal-up" id="pkg-transfer-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-car"></i> Opções de Transporte Privado</h3>
+          <p class="pkg-transfer-subtitle">Selecione uma opção de transporte privado para complementar a sua viagem. Pode clicar novamente para desmarcar.</p>
+          <div class="pkg-transfer-cards" id="pkg-transfer-cards"></div>
+        </div>
+
         <!-- REVIEWS SECTION -->
         <div class="pkg-section pkg-reviews-section reveal reveal-up">
           <h3 class="pkg-section-title">
@@ -263,6 +270,10 @@
                   <span>Extras</span>
                   <span id="bps-extras-total"></span>
                 </div>
+                <div class="booking-summary-row" id="bps-transfer-row" style="display:none;">
+                  <span id="bps-transfer-label">Transporte Privado</span>
+                  <span id="bps-transfer-total"></span>
+                </div>
                 <div class="booking-summary-row booking-summary-total">
                   <span>Total estimado</span>
                   <span id="bps-total"></span>
@@ -389,6 +400,7 @@
 <script src="../assets/js/components.js"></script>
 <script src="../assets/js/data-loader.js"></script>
 <script src="../assets/js/packages-extras.js"></script>
+<script src="../assets/js/packages-transfer.js"></script>
 <script src="../assets/js/main.js"></script>
 <script type="module" src="../assets/js/reviews-package.js"></script>
 <script>

@@ -1174,3 +1174,163 @@
   .cz-type-card { padding: 12px 8px 10px; }
   .cz-cards-grid { grid-template-columns: 1fr; gap: 8px; }
 }
+
+
+/* ════════════════════════════════════════════════════════════
+   PRIVATE TRANSFER OPTIONS
+   ════════════════════════════════════════════════════════════ */
+
+.pkg-transfer-subtitle {
+  color: #7a8998;
+  font-size: .875rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.pkg-transfer-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Card base ── */
+.transfer-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1.25rem 1rem;
+  border: 2px solid #e4eaf0;
+  border-radius: 14px;
+  cursor: pointer;
+  background: #fff;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .15s ease;
+  user-select: none;
+  outline: none;
+}
+
+.transfer-card:hover {
+  border-color: var(--teal);
+  background: rgba(0, 145, 132, .03);
+  box-shadow: 0 4px 20px rgba(0, 145, 132, .1);
+  transform: translateY(-1px);
+}
+
+.transfer-card:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* ── Selected state ── */
+.transfer-card.selected {
+  border-color: var(--teal);
+  background: rgba(0, 145, 132, .06);
+  box-shadow: 0 6px 28px rgba(0, 145, 132, .16);
+  transform: translateY(-1px);
+}
+
+/* ── Circle check indicator ── */
+.transfer-card-check {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #cdd6df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  color: transparent;
+  background: #fff;
+  margin-top: 1px;
+  transition: background .2s, border-color .2s, color .2s;
+}
+
+.transfer-card.selected .transfer-card-check {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+/* ── Card content ── */
+.transfer-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.transfer-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.transfer-card-title {
+  font-size: .975rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+.transfer-card-subtitle {
+  font-size: .8rem;
+  color: #7a8998;
+  margin-top: 3px;
+}
+
+.transfer-card-price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--teal);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Notes list ── */
+.transfer-card-notes {
+  list-style: none;
+  padding: 0;
+  margin: .75rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.transfer-card-notes li {
+  font-size: .78rem;
+  color: #8d9bab;
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.transfer-card-notes li::before {
+  content: '·';
+  position: absolute;
+  left: .3rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* ── Booking summary transfer row ── */
+#bps-transfer-total {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+/* ── Mobile ── */
+@media (max-width: 576px) {
+  .transfer-card {
+    padding: 1rem .9rem;
+    gap: .75rem;
+  }
+
+  .transfer-card-top {
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  .transfer-card-price {
+    font-size: .95rem;
+  }
+}

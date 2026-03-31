@@ -349,6 +349,11 @@
     if (pkg.extras && pkg.extras.length && typeof window._mcaInitExtras === 'function') {
       window._mcaInitExtras(pkg.extras);
     }
+
+    /* Init private transfer section for beach-tour packages (packages-transfer.js) */
+    if (pkg.category === 'beach-tours' && typeof window._mcaInitTransfer === 'function') {
+      window._mcaInitTransfer(pkg.privateTransferOptions || null, _lang);
+    }
   };
 
   /* ── Gallery ─────────────────────────────────────────────── */
@@ -527,10 +532,11 @@
   };
 
   function updateBookingTotal() {
-    var adultTotal  = _adults * _priceAdult;
-    var childTotal  = _children * _priceChild;
-    var extrasTotal = window._mcaExtrasTotal || 0;
-    var total       = adultTotal + childTotal + extrasTotal;
+    var adultTotal    = _adults * _priceAdult;
+    var childTotal    = _children * _priceChild;
+    var extrasTotal   = window._mcaExtrasTotal   || 0;
+    var transferTotal = window._mcaTransferTotal || 0;
+    var total         = adultTotal + childTotal + extrasTotal + transferTotal;
 
     var elAd = document.getElementById('bps-adults');      if (elAd) elAd.textContent = _adults;
     var elAT = document.getElementById('bps-adult-total'); if (elAT) elAT.textContent = fmt(adultTotal);
@@ -543,6 +549,14 @@
     var extTotEl = document.getElementById('bps-extras-total');
     if (extRow)   extRow.style.display = extrasTotal > 0 ? '' : 'none';
     if (extTotEl) extTotEl.textContent  = '+' + fmt(extrasTotal);
+
+    /* Transfer row */
+    var tfrRow   = document.getElementById('bps-transfer-row');
+    var tfrLabel = document.getElementById('bps-transfer-label');
+    var tfrTotEl = document.getElementById('bps-transfer-total');
+    if (tfrRow)   tfrRow.style.display  = transferTotal > 0 ? '' : 'none';
+    if (tfrLabel) tfrLabel.textContent  = window._mcaTransferLabel || (_lang === 'en' ? 'Private Transfer' : 'Transporte Privado');
+    if (tfrTotEl) tfrTotEl.textContent  = '+' + fmt(transferTotal);
 
     var elTo = document.getElementById('bps-total');       if (elTo) elTo.textContent = fmt(total);
 
@@ -570,7 +584,9 @@
     var childTotal    = _children * _priceChild;
     var extrasTotal   = window._mcaExtrasTotal   || 0;
     var extrasSummary = window._mcaExtrasSummary || '';
-    var total         = adultTotal + childTotal + extrasTotal;
+    var transferTotal = window._mcaTransferTotal || 0;
+    var transferLabel = window._mcaTransferLabel || '';
+    var total         = adultTotal + childTotal + extrasTotal + transferTotal;
 
     var msg = _lang === 'en'
       ? 'Hello Moz Camp Adventures 👋\n\n' +
@@ -583,6 +599,7 @@
         'Adults: '   + _adults   + ' × ' + fmt(_priceAdult) + ' = ' + fmt(adultTotal) + '\n' +
         (_priceChild ? 'Children: ' + _children + ' × ' + fmt(_priceChild) + ' = ' + fmt(childTotal) + '\n' : '') +
         (extrasTotal > 0 ? '\nCustomisations:\n' + extrasSummary + '\n' : '') +
+        (transferTotal > 0 ? '\nPrivate Transfer: ' + transferLabel + ' = ' + fmt(transferTotal) + '\n' : '') +
         '\nEstimated total: ' + fmt(total) + '\n\n' +
         'Please confirm availability.'
       : 'Olá Moz Camp Adventures 👋\n\n' +
@@ -595,6 +612,7 @@
         'Adultos: ' + _adults + ' × ' + fmt(_priceAdult) + ' = ' + fmt(adultTotal) + '\n' +
         (_priceChild ? 'Crianças: ' + _children + ' × ' + fmt(_priceChild) + ' = ' + fmt(childTotal) + '\n' : '') +
         (extrasTotal > 0 ? '\nPersonalizações:\n' + extrasSummary + '\n' : '') +
+        (transferTotal > 0 ? '\nTransporte Privado: ' + transferLabel + ' = ' + fmt(transferTotal) + '\n' : '') +
         '\nTotal estimado: ' + fmt(total) + '\n\n' +
         'Por favor, confirme a disponibilidade.';
 

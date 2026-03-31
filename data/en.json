@@ -356,14 +356,39 @@
     "priceChildLabel": "Children (4–12 years)",
     "description": "Ponta D'Ouro is famous for its wild dolphins and pristine golden beaches. A day of ocean adventure, snorkelling and nature in southern Mozambique.",
     "detailText": [
-      "Ponta D'Ouro, 120km south of Maputo, is one of the most beloved destinations for Mozambicans and international visitors alike. Famous for its golden beaches, crystal-clear waters and one of the world's largest resident dolphin populations.",
-      "Our day trip includes a boat excursion to swim with wild dolphins in their natural habitat, snorkelling on coastal reefs and free time on the paradisiacal beaches. Lunch is served at a local beachfront restaurant.",
-      "A 2-hour drive from Maputo that feels like travelling to another world — nature, ocean and authenticity."
+      "Ponta D'Ouro, located around 120km south of Maputo, is one of Mozambique's most enchanting destinations, cherished by local and international visitors alike. Known for its golden sandy beaches, crystal-clear waters and breathtaking natural scenery, it is the perfect retreat for those seeking tranquillity and a connection with nature.",
+      "This day trip includes leisure time on the beautiful beaches of Ponta D'Ouro and lunch at a local beachfront restaurant, where you can enjoy the flavours of regional cuisine.",
+      "The journey takes approximately 2 hours from Maputo and offers a unique experience — transporting you to a world of pure natural beauty, serenity and authenticity."
     ],
-    "includes": ["Home pick-up (Maputo city only)", "Private return transfer (4x4)", "Quad Bike ride on the dunes of Ponta D'Ouro", "Lunch at a local restaurant", "Experienced guide", "Water and non-alcoholic drinks"],
+    "includes": ["Home pick-up (Maputo city only)", "Private return transfer", "Quad Bike ride on the dunes of Ponta D'Ouro", "Lunch at a local restaurant", "Experienced guide", "Water and non-alcoholic drinks"],
     "excludes": ["Alcoholic beverages", "Reserve entry fees (when applicable)", "Tips", "Personal expenses"],
     "highlights": ["Diving with wild dolphins in their natural habitat", "Scuba Diving on Ponta D'Ouro's coastal reefs", "Quad Bike ride on the golden dunes of Ponta D'Ouro", "Pristine golden beaches with towering dunes", "Fresh seafood lunch at a beachfront restaurant", "Private return transfer from Maputo"],
-    "importantInfo": ["Passport or national ID required for travel to the south.", "Swimming with dolphins is not guaranteed — depends on animal behaviour.", "Tour subject to weather and sea conditions.", "Departure from Maputo at 06:00 — punctuality required."]
+    "importantInfo": ["We accept bookings from 1 person — the experience is confirmed once we reach a minimum of 4 participants.", "Passport or national ID required for travel to the south.", "Swimming with dolphins is not guaranteed — depends on animal behaviour.", "Tour subject to weather and sea conditions.", "Departure from Maputo at 06:00 — punctuality required."],
+    "extras": [
+      { "id": "scuba-diving", "icon": "water", "title": "Scuba Diving", "desc": "Equipment included", "price": 10000, "perPerson": true },
+      { "id": "snorkeling-extra", "icon": "eye-fill", "title": "Snorkelling", "desc": "Equipment included", "price": 3000, "perPerson": true },
+      { "id": "swim-with-dolphins", "icon": "heart-pulse", "title": "Swim with Dolphins", "desc": "Unique experience", "price": 3000, "perPerson": true },
+      { "id": "surf-lessons", "icon": "water", "title": "Surf Lessons", "desc": "Equipment included", "price": 2300, "perPerson": true }
+    ],
+    "privateTransferOptions": [
+      {
+        "id": "day-trip-transfer",
+        "title": "Private Transfer — Day Trip",
+        "subtitle": "Same-day round trip",
+        "price": 14000,
+        "notes": ["Does not include meals or activities."]
+      },
+      {
+        "id": "one-night-transfer",
+        "title": "Private Transfer — 1 Night",
+        "subtitle": "Return the following day",
+        "price": 20000,
+        "notes": [
+          "Does not include accommodation or meals.",
+          "Accommodation at the client's own expense."
+        ]
+      }
+    ]
   },
   "macaneta-day-trip": {
     "subtitle": "Wild beaches, horse riding and nature just 1 hour from Maputo",
@@ -380,7 +405,7 @@
     "includes": ["Home pick-up (Maputo city only)", "Return transport", "Local guide", "Snacks", "Water and fruit", "Horse riding on the beach", "Lunch at a beachfront restaurant"],
     "excludes": ["Alcoholic drinks", "Tips", "Extra activities (quad, boat, kayak)"],
     "highlights": ["Wild and uncrowded beaches", "Horse riding on the beach included", "Lunch at a beachfront restaurant", "Optional extras: Quad, boat trip and kayak on the Incomáti River", "Just 1 hour from Maputo"],
-    "importantInfo": ["Available every day of the week.", "You can book for just 1 person — a minimum of 4 participants is recommended for the best experience.", "Macaneta beach has strong currents — swim with caution.", "Departure at 08:00 — home pick-up included.", "Expected return at 16:30."]
+    "importantInfo": ["We accept bookings from 1 person — the experience is confirmed once we reach a minimum of 4 participants.", "Available every day of the week.", "Macaneta beach has strong currents — swim with caution.", "Departure at 08:00 — home pick-up included.", "Expected return at 16:30."]
   },
   "bilene-day-trip": {
     "name": "Bilene — São Martinho Lagoon",
@@ -388,17 +413,25 @@
     "badge": "Family",
     "duration": "Full day",
     "priceLabel": "per adult",
-    "priceChildLabel": "Children (4–12 years)",
-    "description": "São Martinho Lagoon in Bilene is Mozambique's most popular calm-water beach — perfect for families with children and lovers of kayaking and windsurfing.",
+    "priceChildLabel": "Children (4–10 years)",
+    "description": "São Martinho Lagoon in Bilene is Mozambique's most popular calm-water beach — perfect for families with children and water sports enthusiasts.",
     "detailText": [
-      "Bilene, 180km north of Maputo, is home to São Martinho Lagoon — a saltwater lagoon separated from the ocean by a narrow strip of sand. Its calm, crystal-clear waters make it the safest and most family-friendly beach destination in Mozambique.",
-      "Our day trip includes private return transport, lagoon access and lunch at one of the waterside restaurants. Kayaks, windsurfs and other water equipment can be hired on site (extra cost).",
-      "A perfect day for families with children, thanks to the calm, shallow waters with no dangerous currents."
+      "Bilene, located around 180km north of Maputo, is home to the stunning São Martinho Lagoon — a saltwater lagoon separated from the ocean by a narrow strip of sand.",
+      "Its calm, crystal-clear and safe waters make this one of the best beach destinations in Mozambique, especially for families with children. This day trip offers a relaxing and complete experience, with private return transport, lagoon access and lunch at a beachside restaurant. On site, you can also hire equipment for water activities (additional costs).",
+      "Perfect for those seeking tranquillity, nature and fun all in one day."
     ],
-    "includes": ["Home pick-up (Maputo city only)", "Private return transport (air-conditioned)", "Accompanying guide", "Lunch at a lagoon-side restaurant", "Water and non-alcoholic drinks", "Lagoon access"],
-    "excludes": ["Water equipment hire (kayak, windsurfing)", "Alcoholic beverages", "Tips"],
-    "highlights": ["Calm, safe waters — perfect for children", "Kayaking and windsurfing available on site", "Fresh lunch beside the lagoon", "Comfortable air-conditioned private transport", "Relaxed and family-friendly atmosphere"],
-    "importantInfo": ["Kayak and equipment hire not included in the price.", "Ideal for families with children — calm and safe waters.", "Paved road — comfortable journey.", "Meeting point: Maputo at 07:00."]
+    "includes": ["Home pick-up (Maputo city only)", "Accompanying guide", "Comfortable return transport", "Water and non-alcoholic drinks", "Lunch", "Quad biking"],
+    "excludes": ["Water equipment hire (kayak, windsurfing, etc.)", "Alcoholic beverages", "Tips"],
+    "highlights": ["Private air-conditioned return transport", "Access to São Martinho Lagoon", "Lunch at a lagoon-side restaurant", "Safe and family-friendly environment", "Calm, clean waters with no dangerous currents"],
+    "importantInfo": ["We accept bookings from 1 person — the experience is confirmed once we reach a minimum of 4 participants.", "Distance: approximately 180km from Maputo.", "Duration: 1 day (day trip).", "Meeting point: Maputo at 05:00.", "Return to Maputo at 16:00 — expected arrival 18:30.", "Paved road — comfortable journey.", "Water equipment hire not included in the price."],
+    "extras": [
+      { "id": "kayak-bilene", "icon": "droplet-fill", "title": "Kayak Trip", "desc": "São Martinho Lagoon", "price": 1000, "perPerson": true },
+      { "id": "windsurf-bilene", "icon": "wind", "title": "Windsurfing", "desc": "Equipment included", "price": 3000, "perPerson": true },
+      { "id": "horse-riding-bilene", "icon": "bicycle", "title": "Horse Riding", "desc": "Along the lagoon shore", "price": 2500, "perPerson": true },
+      { "id": "sup-bilene", "icon": "water", "title": "Stand-up Paddle", "desc": "Equipment included", "price": 1000, "perPerson": true },
+      { "id": "boat-bilene", "icon": "water", "title": "Boat Trip", "desc": "São Martinho Lagoon", "price": 3500, "perPerson": true },
+      { "id": "jetski-bilene", "icon": "lightning-fill", "title": "Jet Ski", "desc": "Adrenaline on the lagoon", "price": 2200, "perPerson": true }
+    ]
   },
   "tofo-beach-trip": {
     "name": "Tofo Beach — Whale Sharks & Mantas",
@@ -416,7 +449,7 @@
     "includes": ["Home pick-up (Maputo city only)", "Return transport from Maputo (flight or air-conditioned bus)", "1 night at a beachfront guesthouse", "2 guided snorkelling/diving trips", "All meals (breakfast, lunch, dinner)", "Certified diving guide", "Snorkelling equipment"],
     "excludes": ["Scuba diving equipment", "Diving course (available locally)", "Alcoholic beverages", "Personal expenses"],
     "highlights": ["Snorkelling with whale sharks (season Jun–Nov)", "Giant manta rays on Tofo's reefs", "Tofo Beach — one of Mozambique's most beautiful", "Beachfront accommodation included", "PADI certified diving guide"],
-    "importantInfo": ["Whale shark sightings most likely from June to November.", "Minimum 2 participants.", "Children under 8 not recommended for the diving trips.", "Scuba diving requires PADI certification (courses available locally).", "Free cancellation up to 72 hours before."]
+    "importantInfo": ["We accept bookings from 1 person — the experience is confirmed once we reach a minimum of 4 participants.", "Whale shark sightings most likely from June to November.", "Children under 8 not recommended for the diving trips.", "Scuba diving requires PADI certification (courses available locally).", "Free cancellation up to 72 hours before."]
   },
   "vilanculos-trip": {
     "name": "Vilanculos & Bazaruto Archipelago",
@@ -434,7 +467,7 @@
     "includes": ["Home pick-up (Maputo city only)", "Return flights Maputo–Vilanculos", "2 nights at a beachfront lodge", "Boat excursion to the Bazaruto Archipelago", "Snorkelling with equipment included", "All meals and non-alcoholic drinks", "Specialist guide"],
     "excludes": ["Premium alcoholic beverages", "Extra activities on site", "Tips", "Personal expenses"],
     "highlights": ["Bazaruto Archipelago — National Marine Park", "Snorkelling on pristine coral reefs", "Dugong (sea cow) sightings", "Luxury beachfront lodge accommodation", "Return flights included"],
-    "importantInfo": ["Flights are subject to availability and may vary in price.", "Minimum confirmation 7 days before departure.", "Dugong sightings are not guaranteed.", "Package is customisable — contact us for more information."]
+    "importantInfo": ["We accept bookings from 1 person — the experience is confirmed once we reach a minimum of 4 participants.", "Flights are subject to availability and may vary in price.", "Minimum confirmation 7 days before departure.", "Dugong sightings are not guaranteed.", "Package is customisable — contact us for more information."]
   },
   "safari-kruger-park": {
     "subtitle": "Africa's greatest national park — Big 5 in one day",

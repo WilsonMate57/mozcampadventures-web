@@ -1032,28 +1032,28 @@
     "badge": "Top Destino",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpg",
-    "heroImage": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpg",
+    "image": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpeg",
+    "heroImage": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpeg",
     "location": "Ponta D'Ouro",
     "destinations": "Ponta D'Ouro",
     "duration": "Dia inteiro",
-    "price": "8.500 MZN",
-    "price_from": 8500,
+    "price": "7.400 MZN",
+    "price_from": 7400,
     "priceOld": null,
     "priceLabel": "por adulto",
     "price_child": 6500,
     "priceChild": "6.500 MZN",
     "priceChildLabel": "Crianças (4–12 anos)",
     "currency": "MZN",
-    "description": "Ponta D'Ouro é famosa pelos golfinhos selvagens e praias douradas intocadas. Um dia de aventura oceânica, snorkeling, passeio de 4x4 pelas dunas e almoço fresco à beira-mar.",
+    "description": "Ponta D'Ouro é famosa pelos golfinhos selvagens e praias douradas intocadas. Um dia de aventura oceânica, snorkeling, Quad Bike pelas dunas e almoço fresco à beira-mar.",
     "detailText": [
-      "Ponta D'Ouro, a 120km a sul de Maputo, é um dos destinos mais amados pelos moçambicanos e visitantes estrangeiros. Famosa pelas suas praias douradas, águas cristalinas e uma das maiores populações residentes de golfinhos do mundo.",
-      "O nosso day trip inclui uma excursão de barco para nadar com golfinhos selvagens no seu habitat natural, snorkeling nos recifes costeiros, passeio emocionante de 4x4 pelas dunas douradas de Ponta D'Ouro, e almoço em restaurante local à beira-mar.",
-      "Uma viagem de 2 horas de Maputo que parece transportá-lo para outro mundo — natureza, oceano e autenticidade."
+      "Ponta D'Ouro, localizada a cerca de 120 km a sul de Maputo, é um dos destinos mais encantadores de Moçambique, muito apreciado tanto por visitantes locais como internacionais. Conhecida pelas suas praias de areia dourada, águas cristalinas e paisagens naturais deslumbrantes, é o refúgio perfeito para quem procura tranquilidade e contacto com a natureza.",
+      "Este passeio de um dia inclui momentos de lazer nas belas praias de Ponta D'Ouro, almoço num restaurante local à beira-mar, onde poderá desfrutar da gastronomia típica da região.",
+      "A viagem, com duração aproximada de 2 horas a partir de Maputo, proporciona uma experiência única, transportando-o para um ambiente de pura beleza natural, serenidade e autenticidade."
     ],
     "includes": [
       "Recolha em casa (Cidade de Maputo)",
-      "Transporte privado de ida e volta (4x4)",
+      "Transporte privado de ida e volta",
       "Quad Bike ride nas dunas de Ponta D'Ouro",
       "Almoço em restaurante local à beira-mar",
       "Guia experiente",
@@ -1077,7 +1077,7 @@
       {
         "time": "06h00",
         "title": "Partida de Maputo",
-        "body": "Saída de Maputo em 4x4 privado com destino a Ponta D'Ouro.",
+        "body": "Saída de Maputo em transporte privado com destino a Ponta D'Ouro.",
         "checklist": [
           "Passaporte ou BI",
           "Roupa de banho",
@@ -1116,12 +1116,13 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpg",
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpg",
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.webp",
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.jpg"
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpeg",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpeg",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.jpeg",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.jpeg"
     ],
     "importantInfo": [
+      "Aceitamos reservas a partir de 1 pessoa — a experiência é confirmada assim que reunimos um mínimo de 4 participantes.",
       "Passaporte ou BI obrigatório para a viagem ao sul.",
       "A natação com golfinhos não é garantida — depende do comportamento dos animais.",
       "Tour sujeito a condições meteorológicas e do mar.",
@@ -1130,7 +1131,27 @@
     "extras": [
       { "id": "scuba-diving", "icon": "water", "title": "Scuba Diving", "desc": "Equipamento incluído", "price": 10000, "perPerson": true },
       { "id": "snorkeling-extra", "icon": "eye-fill", "title": "Snorkeling", "desc": "Equipamento incluído", "price": 3000, "perPerson": true },
-      { "id": "swim-with-dolphins", "icon": "heart-pulse", "title": "Nadar com Golfinhos", "desc": "Experiência única", "price": 3000, "perPerson": true }
+      { "id": "swim-with-dolphins", "icon": "heart-pulse", "title": "Nadar com Golfinhos", "desc": "Experiência única", "price": 3000, "perPerson": true },
+      { "id": "surf-lessons", "icon": "water", "title": "Aulas de Surf", "desc": "Equipamento incluído", "price": 2300, "perPerson": true }
+    ],
+    "privateTransferOptions": [
+      {
+        "id": "day-trip-transfer",
+        "title": "Transfer Privado Day Trip",
+        "subtitle": "Ida e volta no mesmo dia",
+        "price": 14000,
+        "notes": ["Não inclui refeição nem atividades."]
+      },
+      {
+        "id": "one-night-transfer",
+        "title": "Transfer Privado — 1 Noite",
+        "subtitle": "Regresso no dia seguinte",
+        "price": 20000,
+        "notes": [
+          "Não inclui alojamento nem refeições.",
+          "Hospedagem por conta do cliente."
+        ]
+      }
     ]
   },
   {
@@ -1234,7 +1255,7 @@
     ],
     "importantInfo": [
       "Disponível todos os dias da semana.",
-      "Pode reservar a partir de 1 pessoa — recomendamos um mínimo de 4 participantes para uma melhor experiência.",
+      "Aceitamos reservas a partir de 1 pessoa — a experiência é confirmada assim que reunimos um mínimo de 4 participantes.",
       "A praia de Macaneta tem correntes fortes — nadar com cautela.",
       "Partida às 08h00 — recolha em casa incluída.",
       "Regresso previsto às 16h30."
@@ -1259,57 +1280,57 @@
     "location": "Bilene, Gaza",
     "destinations": "Bilene",
     "duration": "Dia inteiro",
-    "price": "4.200 MZN",
-    "price_from": 4200,
+    "price": "8.300 MZN",
+    "price_from": 8300,
     "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 3000,
-    "priceChild": "3.000 MZN",
-    "priceChildLabel": "Crianças (4–12 anos)",
+    "price_child": 6800,
+    "priceChild": "6.800 MZN",
+    "priceChildLabel": "Crianças (4–10 anos)",
     "currency": "MZN",
-    "description": "A Lagoa de São Martinho em Bilene é a praia de águas calmas mais popular de Moçambique — perfeita para famílias com crianças e amantes de kayak e windsurf.",
+    "description": "A Lagoa de São Martinho em Bilene é a praia de águas calmas mais popular de Moçambique — perfeita para famílias com crianças e amantes de atividades aquáticas.",
     "detailText": [
-      "Bilene, a 180km a norte de Maputo, abriga a Lagoa de São Martinho — uma lagoa de água salgada separada do oceano por uma estreita faixa de areia. As suas águas calmas e cristalinas tornam-na no destino de praia mais seguro e familiar de Moçambique.",
-      "O nosso day trip inclui transporte privado de ida e volta, acesso à lagoa e almoço num dos restaurantes à beira-água. É possível alugar kayaks, pranchas de windsurf e outros equipamentos aquáticos diretamente no local (custos extra).",
-      "Um dia perfeito para famílias com crianças, graças às águas calmas e fundas, sem correntes perigosas."
+      "Bilene, localizada a cerca de 180 km a norte de Maputo, é o lar da deslumbrante Lagoa de São Martinho — uma lagoa de água salgada separada do oceano por uma estreita faixa de areia.",
+      "As suas águas calmas, cristalinas e seguras fazem deste destino uma das melhores opções de praia em Moçambique, especialmente para famílias com crianças. Este day trip oferece uma experiência relaxante e completa, com transporte privado de ida e volta, acesso à lagoa e almoço num restaurante à beira-mar. No local, poderá ainda alugar equipamentos para atividades aquáticas (custos adicionais).",
+      "Perfeito para quem procura tranquilidade, natureza e diversão num só dia."
     ],
     "includes": [
       "Recolha em casa (Cidade de Maputo)",
-      "Transporte privado de ida e volta (AC)",
       "Guia acompanhante",
-      "Almoço em restaurante à beira da lagoa",
+      "Transporte confortável (ida e volta)",
       "Água e bebidas não alcoólicas",
-      "Acesso à lagoa"
+      "Almoço",
+      "Quad biking"
     ],
     "excludes": [
-      "Aluguer de equipamento aquático (kayak, windsurf)",
+      "Aluguer de equipamentos aquáticos (kayak, windsurf, etc.)",
       "Bebidas alcoólicas",
       "Gorjetas"
     ],
     "highlights": [
-      "Lagoa de águas calmas — perfeita para crianças",
-      "Kayak e windsurf disponíveis no local",
-      "Almoço fresco à beira da lagoa",
-      "Transporte privado confortável com AC",
-      "Ambiente familiar e descontraído"
+      "Transporte privado de ida e volta com ar condicionado",
+      "Acesso à Lagoa de São Martinho",
+      "Almoço em restaurante à beira da lagoa",
+      "Ambiente seguro e ideal para famílias",
+      "Águas calmas, limpas e sem correntes perigosas"
     ],
     "itinerary": [
       {
-        "time": "07h00",
+        "time": "05h00",
         "title": "Partida de Maputo",
-        "body": "Saída de Maputo em viatura privada com AC.",
+        "body": "Recolha em casa na Cidade de Maputo e saída em viatura privada com AC.",
         "checklist": []
       },
       {
-        "time": "09h00",
+        "time": "07h30",
         "title": "Chegada a Bilene",
         "body": "Chegada à Lagoa de São Martinho e instalação na praia.",
         "checklist": []
       },
       {
-        "time": "09h30",
+        "time": "08h00",
         "title": "Atividades na Lagoa",
-        "body": "Natação nas águas calmas, kayak e windsurf (aluguer extra). Tempo livre à beira-água.",
+        "body": "Natação nas águas calmas, quad biking e atividades aquáticas opcionais (aluguer extra). Tempo livre à beira-água.",
         "checklist": []
       },
       {
@@ -1327,7 +1348,7 @@
       {
         "time": "16h00",
         "title": "Regresso a Maputo",
-        "body": "Partida para Maputo com chegada prevista às 18h00.",
+        "body": "Partida para Maputo com chegada prevista às 18h30.",
         "checklist": []
       }
     ],
@@ -1338,10 +1359,21 @@
       "../assets/images/packages/beach-tours/bilene/bilene-4.webp"
     ],
     "importantInfo": [
-      "Aluguer de kayak e equipamento não incluído no preço.",
-      "Ideal para famílias com crianças — águas calmas e seguras.",
+      "Aceitamos reservas a partir de 1 pessoa — a experiência é confirmada assim que reunimos um mínimo de 4 participantes.",
+      "Distância: aproximadamente 180 km de Maputo.",
+      "Duração: 1 dia (day trip).",
+      "Ponto de encontro: Maputo, às 05h00.",
+      "Regresso para Maputo às 16h00 — chegada prevista às 18h30.",
       "Estrada asfaltada — viagem confortável.",
-      "Ponto de encontro: Maputo, 07h00."
+      "Aluguer de equipamento aquático não incluído no preço."
+    ],
+    "extras": [
+      { "id": "kayak-bilene", "icon": "droplet-fill", "title": "Passeio de Kayak", "desc": "Lagoa de São Martinho", "price": 1000, "perPerson": true },
+      { "id": "windsurf-bilene", "icon": "wind", "title": "Windsurf", "desc": "Equipamento incluído", "price": 3000, "perPerson": true },
+      { "id": "horse-riding-bilene", "icon": "bicycle", "title": "Passeio a Cavalo", "desc": "À beira da lagoa", "price": 2500, "perPerson": true },
+      { "id": "sup-bilene", "icon": "water", "title": "Stand-up Paddle", "desc": "Equipamento incluído", "price": 1000, "perPerson": true },
+      { "id": "boat-bilene", "icon": "water", "title": "Passeio de Barco", "desc": "Lagoa de São Martinho", "price": 3500, "perPerson": true },
+      { "id": "jetski-bilene", "icon": "lightning-fill", "title": "Jet Ski", "desc": "Adrenalina na lagoa", "price": 2200, "perPerson": true }
     ]
   },
   {
@@ -1440,7 +1472,7 @@
     ],
     "importantInfo": [
       "Avistamento de tubarões-baleia mais provável de Junho a Novembro.",
-      "Mínimo de 2 participantes.",
+      "Aceitamos reservas a partir de 1 pessoa — a experiência é confirmada assim que reunimos um mínimo de 4 participantes.",
       "Crianças com menos de 8 anos não recomendadas para as saídas de mergulho.",
       "Mergulho com escafandro requer certificação PADI (cursos disponíveis no local).",
       "Cancelamento gratuito até 72h antes."
@@ -1541,6 +1573,7 @@
       "../assets/images/packages/beach-tours/bazaruto/bazaruto-4.jpg"
     ],
     "importantInfo": [
+      "Aceitamos reservas a partir de 1 pessoa — a experiência é confirmada assim que reunimos um mínimo de 4 participantes.",
       "Os voos são sujeitos a disponibilidade e podem variar de preço.",
       "Confirmação mínima 7 dias antes da partida.",
       "O avistamento de dugongos não é garantido.",
