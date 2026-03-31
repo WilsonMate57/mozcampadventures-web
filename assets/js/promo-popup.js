@@ -117,7 +117,7 @@
 
           /* actions */
           '<div class="promo-actions">' +
-            '<a href="' + cfg.ctaLink + '" class="btn-promo-cta">' + cfg.ctaText + ' <i class="bx bxs-right-arrow-circle"></i></a>' +
+            '<a href="' + cfg.ctaLink + '" class="btn-promo-cta" id="promo-cta-btn">' + cfg.ctaText + ' <i class="bx bxs-right-arrow-circle"></i></a>' +
             '<button class="btn-promo-dismiss" id="promo-dismiss">' + cfg.dismissText + '</button>' +
           '</div>' +
         '</div>' +
@@ -180,6 +180,13 @@
     });
     markShown();
     startCountdown(cfg.expiry);
+
+    /* ── Analytics: view_promo_popup ── */
+    if (typeof window.mcaTrack === 'function') {
+      window.mcaTrack('view_promo_popup', {
+        promo_name: cfg.campaign
+      });
+    }
   }
 
   function closePopup(overlay) {
@@ -212,6 +219,19 @@
       var dismissBtn = overlay.querySelector('#promo-dismiss');
       if (dismissBtn) {
         dismissBtn.addEventListener('click', function () { closePopup(overlay); });
+      }
+
+      /* CTA click */
+      var ctaBtn = overlay.querySelector('#promo-cta-btn');
+      if (ctaBtn) {
+        ctaBtn.addEventListener('click', function () {
+          if (typeof window.mcaTrack === 'function') {
+            window.mcaTrack('click_promo_popup', {
+              promo_name: cfg.campaign,
+              cta_link:   cfg.ctaLink
+            });
+          }
+        });
       }
 
       /* Escape key */

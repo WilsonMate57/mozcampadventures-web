@@ -671,6 +671,21 @@
         d.addEventListener('click', function (e) { e.preventDefault(); stopAuto(); goTo(+d.dataset.idx); startAuto(); });
       });
     });
+
+    /* ── Analytics: click_hero_cta ── */
+    document.querySelectorAll('.btn-hero-solid').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (typeof window.mcaTrack === 'function') {
+          var slide = btn.closest('.hero-slide');
+          var title = slide ? (slide.querySelector('.hero-title') || {}).textContent || '' : '';
+          window.mcaTrack('click_hero_cta', {
+            cta_text: btn.textContent.trim(),
+            cta_link: btn.getAttribute('href') || '',
+            slide_title: title.trim()
+          });
+        }
+      });
+    });
   });
 </script>
 

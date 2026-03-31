@@ -354,6 +354,16 @@
     if (pkg.category === 'beach-tours' && typeof window._mcaInitTransfer === 'function') {
       window._mcaInitTransfer(pkg.privateTransferOptions || null, _lang);
     }
+
+    /* ── Analytics: view_package ── */
+    if (typeof window.mcaTrack === 'function') {
+      window.mcaTrack('view_package', {
+        package_id:   slug,
+        package_name: pkg.name,
+        category:     pkg.category || '',
+        price:        pkg.price_from || 0
+      });
+    }
   };
 
   /* ── Gallery ─────────────────────────────────────────────── */
@@ -560,6 +570,19 @@
 
     var elTo = document.getElementById('bps-total');       if (elTo) elTo.textContent = fmt(total);
 
+    /* ── Analytics: calculate_price ── */
+    if (typeof window.mcaTrack === 'function') {
+      window.mcaTrack('calculate_price', {
+        package_id:     slug || '',
+        package_name:   _pkgNameGlobal,
+        adults:         _adults,
+        children:       _children,
+        extras_total:   extrasTotal,
+        transfer_total: transferTotal,
+        total_price:    total
+      });
+    }
+
     /* Update mobile bar price */
     var mobilePrice = document.getElementById('mob-book-price');
     if (mobilePrice && _priceAdult) mobilePrice.textContent = fmt(_priceAdult) + '/pax';
@@ -620,7 +643,24 @@
 
     ['book-wa-btn', 'mob-book-btn'].forEach(function (id) {
       var btn = document.getElementById(id);
-      if (btn) btn.href = url;
+      if (!btn) return;
+      btn.href = url;
+      /* attach click tracker once — replace element to avoid duplicate listeners */
+      if (!btn.dataset.waTracked) {
+        btn.dataset.waTracked = '1';
+        btn.addEventListener('click', function () {
+          if (typeof window.mcaTrack === 'function') {
+            window.mcaTrack('click_whatsapp', {
+              package_id:   _pkgNameGlobal ? (window.location.search.split('id=')[1] || '') : '',
+              package_name: _pkgNameGlobal,
+              adults:       _adults,
+              children:     _children,
+              total_price:  (_adults * _priceAdult) + (_children * _priceChild) + (window._mcaExtrasTotal || 0) + (window._mcaTransferTotal || 0),
+              source:       id
+            });
+          }
+        });
+      }
     });
   }
 

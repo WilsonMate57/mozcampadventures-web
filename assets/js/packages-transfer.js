@@ -114,6 +114,16 @@
     _selectedId = (_selectedId === id) ? null : id;
     updateUI();
     syncToBooking();
+
+    /* ── Analytics: select_transfer ── */
+    if (typeof window.mcaTrack === 'function') {
+      var opt = _options.find(function (o) { return o.id === _selectedId; });
+      window.mcaTrack('select_transfer', {
+        transfer_id:    _selectedId || 'none',
+        transfer_name:  opt ? opt.title : 'none',
+        transfer_price: opt ? opt.price : 0
+      });
+    }
   }
 
   function updateUI() {

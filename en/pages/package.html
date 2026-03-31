@@ -440,7 +440,7 @@ function switchBookTab(tab) {
   document.getElementById('pane-email').style.display = tab === 'email' ? 'block' : 'none';
 }
 
-/* ── WhatsApp pane — required field validation ──────── */
+/* ── WhatsApp pane — required field validation + analytics ── */
 (function () {
   document.getElementById('book-wa-btn').addEventListener('click', function (e) {
     var name  = document.getElementById('wa-name');
@@ -452,7 +452,30 @@ function switchBookTab(tab) {
       if (el) el.classList.toggle('field-error', !ok);
       if (!ok) valid = false;
     });
-    if (!valid) { e.preventDefault(); }
+    if (!valid) { e.preventDefault(); return; }
+    if (typeof window.mcaTrack === 'function') {
+      window.mcaTrack('submit_booking_wa', {
+        package_name:   (document.getElementById('pkg-title') || {}).textContent || '',
+        adults:         parseInt((document.getElementById('bps-adults') || {}).textContent, 10) || 1,
+        children:       parseInt((document.getElementById('bps-children') || {}).textContent, 10) || 0,
+        transfer_name:  window._mcaTransferLabel || '',
+        transfer_price: window._mcaTransferTotal || 0
+      });
+    }
+  });
+
+  /* open_booking_form — fired when user switches tabs */
+  ['tab-btn-wa', 'tab-btn-email'].forEach(function (id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      if (typeof window.mcaTrack === 'function') {
+        window.mcaTrack('open_booking_form', {
+          package_name: (document.getElementById('pkg-title') || {}).textContent || '',
+          form_type:    id === 'tab-btn-wa' ? 'whatsapp' : 'email'
+        });
+      }
+    });
   });
 })();
 
@@ -494,6 +517,12 @@ function switchBookTab(tab) {
         el.style.display = 'none';
       });
       document.getElementById('email-success').style.display = 'block';
+      if (typeof window.mcaTrack === 'function') {
+        window.mcaTrack('submit_booking_email', {
+          package_name: packageName,
+          people:       document.getElementById('em-people').value.trim()
+        });
+      }
     }, function (err) {
       btn.disabled = false;
       btn.innerHTML = '<i class="bx bxs-send me-2"></i>Send Request';
