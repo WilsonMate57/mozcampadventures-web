@@ -498,16 +498,18 @@
   });
 
   /* ── Booking Sidebar (package detail) ────────────────────── */
-  var _priceAdult   = 0;
-  var _priceChild   = 0;
-  var _adults       = 1;
-  var _children     = 0;
+  var _priceAdult    = 0;
+  var _priceChild    = 0;
+  var _adults        = 1;
+  var _children      = 0;
   var _pkgNameGlobal = '';
+  var _pkgSlugGlobal = '';
 
   function initBookingSidebar(pkg) {
     _priceAdult    = pkg.price_from || 0;
     _priceChild    = pkg.price_child || 0;
     _pkgNameGlobal = pkg.name || '';
+    _pkgSlugGlobal = pkg.slug || pkg.id || '';
 
     /* Show child row if child price exists */
     if (_priceChild) {
@@ -573,7 +575,7 @@
     /* ── Analytics: calculate_price ── */
     if (typeof window.mcaTrack === 'function') {
       window.mcaTrack('calculate_price', {
-        package_id:     slug || '',
+        package_id:     _pkgSlugGlobal,
         package_name:   _pkgNameGlobal,
         adults:         _adults,
         children:       _children,
