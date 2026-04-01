@@ -48,23 +48,20 @@
   }
 
   /* ── One result row ── */
-  function makeResultCard(pkg) {
+  function makeResultCard(pkg, onClickExtra) {
     var a = document.createElement('a');
     a.className = 'search-result-card';
     a.href = packageUrl(pkg);
+    if (typeof onClickExtra === 'function') {
+      a.addEventListener('click', onClickExtra);
+    }
 
-    var imgSrc = typeof window.resolveImg === 'function'
-      ? window.resolveImg(pkg.image)
-      : (pkg.image || '').replace('../', window.MCA_BASE || '');
+    var meta = [pkg.location, pkg.duration].filter(Boolean).join(' · ');
 
     a.innerHTML =
-      '<img class="search-result-img" src="' + imgSrc + '" alt="' + pkg.name + '" loading="lazy">' +
       '<div class="search-result-info">' +
         '<div class="search-result-name">' + pkg.name + '</div>' +
-        '<div class="search-result-meta">' +
-          '<i class="bx bxs-map"></i> ' + (pkg.location || '') +
-          (pkg.duration ? ' &middot; ' + pkg.duration : '') +
-        '</div>' +
+        (meta ? '<div class="search-result-meta">' + meta + '</div>' : '') +
       '</div>' +
       '<div class="search-result-price">' + (pkg.price || '') + '</div>';
 
@@ -72,7 +69,7 @@
   }
 
   /* ── Render grouped results ── */
-  function renderGroups(tours, accom) {
+  function renderGroups(tours, accom, onClickExtra) {
     var frag = document.createDocumentFragment();
     var labels = _lang === 'en'
       ? { tours: 'Tours', accom: 'Accommodations' }
@@ -85,18 +82,18 @@
       lbl.className = 'search-group-label';
       lbl.textContent = labels.tours;
       g.appendChild(lbl);
-      tours.forEach(function (pkg) { g.appendChild(makeResultCard(pkg)); });
+      tours.forEach(function (pkg) { g.appendChild(makeResultCard(pkg, onClickExtra)); });
       frag.appendChild(g);
     }
 
     if (accom.length > 0) {
       var g2 = document.createElement('div');
-      g2.className = 'search-group' + (tours.length > 0 ? ' search-group' : '');
+      g2.className = 'search-group';
       var lbl2 = document.createElement('div');
       lbl2.className = 'search-group-label';
       lbl2.textContent = labels.accom;
       g2.appendChild(lbl2);
-      accom.forEach(function (pkg) { g2.appendChild(makeResultCard(pkg)); });
+      accom.forEach(function (pkg) { g2.appendChild(makeResultCard(pkg, onClickExtra)); });
       frag.appendChild(g2);
     }
 
@@ -105,17 +102,22 @@
 
   /* ── Init (runs after navbar is injected) ── */
   function init() {
-    var overlayEl  = document.getElementById('search-overlay');
-    var toggleBtn  = document.getElementById('nav-search-btn');
-    var closeBtn   = document.getElementById('search-overlay-close');
-    var inputDesk  = document.getElementById('pkg-search');
-    var clearDesk  = document.getElementById('search-clear');
-    var inputMob   = document.getElementById('pkg-search-mobile');
-    var clearMob   = document.getElementById('search-clear-mobile');
-    var dropdown   = document.getElementById('search-dropdown');
-    var dropResults= document.getElementById('search-dropdown-results');
-    var dropEmpty  = document.getElementById('search-dropdown-empty');
-    var queryLabel = document.getElementById('search-query-label');
+    var overlayEl      = document.getElementById('search-overlay');
+    var toggleBtn      = document.getElementById('nav-search-btn');
+    var closeBtn       = document.getElementById('search-overlay-close');
+    var inputDesk      = document.getElementById('pkg-search');
+    var clearDesk      = document.getElementById('search-clear');
+    var inputMob       = document.getElementById('pkg-search-mobile');
+    var clearMob       = document.getElementById('search-clear-mobile');
+    var dropdown       = document.getElementById('search-dropdown');
+    var dropResults    = document.getElementById('search-dropdown-results');
+    var dropEmpty      = document.getElementById('search-dropdown-empty');
+    var queryLabel     = document.getElementById('search-query-label');
+    var dropdownMob    = document.getElementById('search-dropdown-mobile');
+    var dropResultsMob = document.getElementById('search-dropdown-results-mobile');
+    var dropEmptyMob   = document.getElementById('search-dropdown-empty-mobile');
+    var queryLabelMob  = document.getElementById('search-query-label-mobile');
+    var mobileNav      = document.getElementById('mobile-nav');
 
     /* ── Open / Close ── */
     function openOverlay() {
@@ -165,6 +167,7 @@
         inputMob.value = '';
         syncInputs('');
         runSearch('');
+        if (dropdownMob) dropdownMob.style.display = 'none';
         inputMob.focus();
       });
     }
@@ -187,12 +190,23 @@
     if (inputDesk) inputDesk.addEventListener('input', onInput);
     if (inputMob)  inputMob.addEventListener('input',  onInput);
 
+    /* ── Close mobile nav ── */
+    function closeMobileNav() {
+      if (!mobileNav) return;
+      var backdrop = document.getElementById('mobile-nav-backdrop');
+      mobileNav.classList.remove('open');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      if (backdrop) backdrop.classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
     /* ── Run search ── */
     function runSearch(query) {
       var q = normalise(query.trim());
 
       if (q.length === 0) {
-        if (dropdown) dropdown.style.display = 'none';
+        if (dropdown)    dropdown.style.display = 'none';
+        if (dropdownMob) dropdownMob.style.display = 'none';
         if (_isTours) restoreTours();
         return;
       }
@@ -202,13 +216,22 @@
         var accomMatches = (data.accommodation || []).filter(function (p) { return searchableText(p).indexOf(q) !== -1; });
         var total = tourMatches.length + accomMatches.length;
 
-        /* Dropdown */
+        /* Desktop dropdown */
         if (dropdown && dropResults) {
           dropdown.style.display = '';
           dropResults.innerHTML = '';
           dropResults.appendChild(renderGroups(tourMatches, accomMatches));
           if (queryLabel) queryLabel.textContent = query.trim();
           if (dropEmpty)  dropEmpty.style.display = total === 0 ? '' : 'none';
+        }
+
+        /* Mobile dropdown — close drawer on click */
+        if (dropdownMob && dropResultsMob) {
+          dropdownMob.style.display = '';
+          dropResultsMob.innerHTML = '';
+          dropResultsMob.appendChild(renderGroups(tourMatches, accomMatches, closeMobileNav));
+          if (queryLabelMob) queryLabelMob.textContent = query.trim();
+          if (dropEmptyMob)  dropEmptyMob.style.display = total === 0 ? '' : 'none';
         }
 
         /* tours.html in-page */

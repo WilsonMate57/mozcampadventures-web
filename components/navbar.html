@@ -103,18 +103,30 @@
     <!-- Search (mobile) -->
     <div class="mobile-search-wrap">
       <div class="search-field-wrap">
-        <i class="bx bx-search search-icon"></i>
-        <input
-          type="search"
-          id="pkg-search-mobile"
-          class="search-input"
-          placeholder="Pesquisar pacotes, destinos..."
-          autocomplete="off"
-          aria-label="Pesquisar pacotes"
-        >
-        <button class="search-clear" id="search-clear-mobile" aria-label="Limpar pesquisa" style="display:none">
-          <i class="bx bx-x"></i>
-        </button>
+        <div class="search-input-wrap">
+          <i class="bx bx-search search-icon"></i>
+          <input
+            type="search"
+            id="pkg-search-mobile"
+            class="search-input"
+            placeholder="Pesquisar pacotes, destinos..."
+            autocomplete="off"
+            aria-label="Pesquisar pacotes"
+          >
+          <button class="search-clear" id="search-clear-mobile" aria-label="Limpar pesquisa" style="display:none">
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+      </div>
+      <div id="search-dropdown-mobile" style="display:none">
+        <div id="search-dropdown-results-mobile"></div>
+        <div id="search-dropdown-empty-mobile" style="display:none">
+          <div class="search-empty">
+            <i class="bx bx-search-alt"></i>
+            <p>Nenhum resultado para "<span id="search-query-label-mobile"></span>"</p>
+            <span>Tenta outro termo.</span>
+          </div>
+        </div>
       </div>
     </div>
 

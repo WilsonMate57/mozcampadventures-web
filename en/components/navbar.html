@@ -103,18 +103,30 @@
     <!-- Search (mobile) -->
     <div class="mobile-search-wrap">
       <div class="search-field-wrap">
-        <i class="bx bx-search search-icon"></i>
-        <input
-          type="search"
-          id="pkg-search-mobile"
-          class="search-input"
-          placeholder="Search packages, destinations..."
-          autocomplete="off"
-          aria-label="Search packages"
-        >
-        <button class="search-clear" id="search-clear-mobile" aria-label="Clear search" style="display:none">
-          <i class="bx bx-x"></i>
-        </button>
+        <div class="search-input-wrap">
+          <i class="bx bx-search search-icon"></i>
+          <input
+            type="search"
+            id="pkg-search-mobile"
+            class="search-input"
+            placeholder="Search packages, destinations..."
+            autocomplete="off"
+            aria-label="Search packages"
+          >
+          <button class="search-clear" id="search-clear-mobile" aria-label="Clear search" style="display:none">
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+      </div>
+      <div id="search-dropdown-mobile" style="display:none">
+        <div id="search-dropdown-results-mobile"></div>
+        <div id="search-dropdown-empty-mobile" style="display:none">
+          <div class="search-empty">
+            <i class="bx bx-search-alt"></i>
+            <p>No results for "<span id="search-query-label-mobile"></span>"</p>
+            <span>Try a different term.</span>
+          </div>
+        </div>
       </div>
     </div>
 
