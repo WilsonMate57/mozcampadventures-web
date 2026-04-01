@@ -89,6 +89,9 @@
 
       // Mobile nav toggle
       initMobileNav();
+
+      // Signal that navbar is ready
+      document.dispatchEvent(new CustomEvent('mcaNavReady'));
     });
   }
 

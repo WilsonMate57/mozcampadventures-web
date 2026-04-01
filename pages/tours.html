@@ -73,6 +73,18 @@
 <section id="packages-page">
   <div class="container">
 
+    <!-- SEARCH RESULTS -->
+    <div id="search-results-section" style="display:none">
+      <div class="row g-4 text-start" id="search-results-root"></div>
+      <div id="search-no-results" style="display:none">
+        <div class="search-empty">
+          <i class="bx bx-search-alt"></i>
+          <p>Nenhum resultado encontrado para "<span id="search-query-label"></span>"</p>
+          <span>Tenta outro termo ou explora as categorias abaixo.</span>
+        </div>
+      </div>
+    </div>
+
     <div class="cat-section active" data-cat="island-tours">
       <div class="cat-section-header">
         <div class="cat-section-icon"><i class="bx bx-droplet"></i></div>
@@ -216,6 +228,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/search.js"></script>
 <script src="../assets/js/components.js"></script>
 <script src="../assets/js/data-loader.js"></script>
 <script src="../assets/js/main.js"></script>

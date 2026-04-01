@@ -41,6 +41,11 @@
       </li>
     </ul>
 
+    <!-- Search toggle (desktop) -->
+    <button class="nav-search-btn" id="nav-search-btn" aria-label="Search packages" aria-expanded="false">
+      <i class="bx bx-search"></i>
+    </button>
+
     <!-- Language Switcher (desktop) -->
     <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language">
       <button class="lang-pill" data-lang="pt" aria-pressed="false">PT</button>
@@ -95,6 +100,24 @@
       <li><a href="{base}en/pages/contact.html" data-page="contact">Contact</a></li>
     </ul>
 
+    <!-- Search (mobile) -->
+    <div class="mobile-search-wrap">
+      <div class="search-field-wrap">
+        <i class="bx bx-search search-icon"></i>
+        <input
+          type="search"
+          id="pkg-search-mobile"
+          class="search-input"
+          placeholder="Search packages, destinations..."
+          autocomplete="off"
+          aria-label="Search packages"
+        >
+        <button class="search-clear" id="search-clear-mobile" aria-label="Clear search" style="display:none">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+    </div>
+
     <div class="mobile-nav-contact">
       <a href="tel:+258844406543"><i class="bx bxs-phone"></i> +258 84 440 6543</a>
       <a href="https://wa.me/258844406543" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
@@ -115,3 +138,41 @@
   </aside>
 
 </nav>
+
+<!-- SEARCH BACKDROP -->
+<div id="search-backdrop"></div>
+
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay" aria-hidden="true">
+  <div class="container">
+    <div class="search-field-wrap">
+      <div class="search-input-wrap">
+        <i class="bx bx-search search-icon"></i>
+        <input
+          type="search"
+          id="pkg-search"
+          class="search-input"
+          placeholder="Search packages, destinations or experiences..."
+          autocomplete="off"
+          aria-label="Search packages"
+        >
+        <button class="search-clear" id="search-clear" aria-label="Clear search" style="display:none">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <button class="search-overlay-close" id="search-overlay-close" aria-label="Close search">
+        <i class="bx bx-x"></i> <span>Close</span>
+      </button>
+    </div>
+    <div id="search-dropdown" style="display:none">
+      <div id="search-dropdown-results"></div>
+      <div id="search-dropdown-empty" style="display:none">
+        <div class="search-empty">
+          <i class="bx bx-search-alt"></i>
+          <p>No results for "<span id="search-query-label"></span>"</p>
+          <span>Try a different term or explore the categories.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
