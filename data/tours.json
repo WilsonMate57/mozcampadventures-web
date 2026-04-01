@@ -2193,7 +2193,7 @@
     "slug": "maputo-city-tour",
     "category": "city-tour",
     "name": "Maputo City Tour",
-    "subtitle": "História, arquitectura e cultura da vibrante capital moçambicana",
+    "subtitle": "Explore a cultura, história e sabores da capital moçambicana",
     "badge": "Essencial",
     "badgeClass": "",
     "stars": 5,
@@ -2201,89 +2201,177 @@
     "heroImage": "../assets/images/packages/maputo-tour/maputo-tour-2.jpeg",
     "location": "Maputo",
     "destinations": "Maputo",
-    "duration": "Meio dia (4 horas)",
-    "price": "2.200 MZN",
-    "price_from": 2200,
+    "duration": "3h30 – 4h",
+    "price": "4.000 MZN",
+    "price_from": 4000,
     "priceOld": null,
     "priceLabel": "por adulto",
-    "price_child": 1500,
-    "priceChild": "1.500 MZN",
-    "priceChildLabel": "Crianças (4–12 anos)",
+    "price_child": 2500,
+    "priceChild": "2.500 MZN",
+    "priceChildLabel": "Crianças (4–11 anos)",
     "currency": "MZN",
-    "description": "Descubra os segredos de Maputo num tour guiado pelos monumentos históricos, bairros coloniais, jardins centenários e os melhores pontos de vista da cidade.",
+    "description": "Descubra os segredos de Maputo num tour guiado pelo bairro histórico da Mafalala, monumentos icónicos, mercados locais e os melhores sabores da cidade.",
     "detailText": [
-      "Maputo é uma das capitais mais fascinantes de África. Fundada pelos portugueses no século XVIII, a cidade combina uma arquitectura colonial única com uma energia contemporânea vibrante. O nosso City Tour histórico leva-o pelos pontos mais emblemáticos da cidade.",
-      "Visite a Casa de Ferro, projectada por Gustave Eiffel, o imponente Museu de História Natural com os seus elefantes embalsamados, o Mercado Municipal Central, a histórica Fortaleza de Maputo e os jardins centenários da avenida.",
-      "O tour é conduzido por guias locais que conhecem as histórias por detrás de cada monumento — uma experiência educativa, envolvente e profundamente moçambicana."
+      "Maputo é uma das capitais mais fascinantes de África — uma cidade onde a história colonial, a cultura local e a energia contemporânea se encontram a cada esquina.",
+      "O nosso Maputo City Tour leva-o por alguns dos lugares mais emblemáticos da cidade: o Bairro Histórico da Mafalala, a Estação Central dos Caminhos de Ferro, a Casa de Ferro, a Fortaleza, a Catedral, o Mercado Central e muito mais.",
+      "O tour termina na FEIMA — Feira de Artesanato, Flores e Gastronomia — onde vai almoçar com pratos típicos moçambicanos incluídos no preço."
     ],
     "includes": [
-      "Transporte privado com AC",
-      "Guia histórico e cultural certificado",
-      "Entradas nos museus incluídas",
-      "Água e snacks no final",
-      "Passagem por todos os pontos históricos principais"
+      "Transporte privado durante todo o tour",
+      "Guia local experiente",
+      "Visitas a pontos turísticos com taxas de entrada incluídas",
+      "Almoço na FEIMA com pratos típicos moçambicanos",
+      "Snacks e água engarrafada durante o tour"
     ],
     "excludes": [
       "Compras e lembranças",
-      "Almoço (não incluído)",
       "Gorjetas"
     ],
     "highlights": [
-      "Casa de Ferro de Gustave Eiffel",
-      "Museu de História Natural com elefantes embalsamados",
-      "Fortaleza de Maputo (século XVIII)",
-      "Mercado Municipal Central",
-      "Jardins centenários e arquitectura colonial única",
-      "Vistas panorâmicas sobre a Baía de Maputo"
+      "Bairro histórico da Mafalala",
+      "Baixa de Maputo",
+      "Estação Central dos Caminhos de Ferro",
+      "Casa de Ferro",
+      "Mercado Central",
+      "Fortaleza de Maputo",
+      "Catedral de Maputo",
+      "Igreja Santo António da Polana",
+      "FEIMA – Feira de Artesanato, Flores e Gastronomia",
+      "Outros pontos de interesse relevantes da cidade"
     ],
     "itinerary": [
       {
-        "time": "09h00",
-        "title": "Partida & Bairro Histórico",
-        "body": "Início do tour pelo bairro histórico de Maputo — arquitectura colonial, ruas empedradas e o antigo consulado.",
+        "time": "Início",
+        "title": "Bairro Histórico da Mafalala & Baixa",
+        "body": "O tour começa pelo emblemático Bairro da Mafalala, berço de figuras históricas moçambicanas, seguindo pela Baixa de Maputo com a sua arquitectura colonial e ruas históricas.",
         "checklist": []
       },
       {
-        "time": "09h30",
-        "title": "Casa de Ferro & Catedral",
-        "body": "Visita à icónica Casa de Ferro (projectada por Eiffel) e à Catedral de Nossa Senhora da Conceição.",
+        "time": "A seguir",
+        "title": "Estação de Caminhos de Ferro & Casa de Ferro",
+        "body": "Visita à magnífica Estação Central dos Caminhos de Ferro, uma das mais belas de África, e à icónica Casa de Ferro.",
         "checklist": []
       },
       {
-        "time": "10h15",
-        "title": "Fortaleza de Maputo",
-        "body": "Visita à Fortaleza Portuguesa do século XVIII com história da colonização e vistas para a baía.",
+        "time": "A seguir",
+        "title": "Mercado Central & Fortaleza",
+        "body": "Mergulhe na energia do Mercado Central de Maputo e explore a histórica Fortaleza de Maputo com as suas paredes centenárias.",
         "checklist": []
       },
       {
-        "time": "11h00",
-        "title": "Museu de História Natural",
-        "body": "Visita ao museu com a famosa colecção de elefantes embalsamados em posição natural.",
+        "time": "A seguir",
+        "title": "Catedral & Igreja Santo António da Polana",
+        "body": "Passagem pela imponente Catedral de Maputo e pela Igreja Santo António da Polana, dois marcos religiosos e arquitectónicos da cidade.",
         "checklist": []
       },
       {
-        "time": "12h00",
-        "title": "Mercado Central & Jardins",
-        "body": "Visita ao Mercado Municipal Central e passeio nos jardins da avenida Samora Machel.",
-        "checklist": []
-      },
-      {
-        "time": "13h00",
-        "title": "Fim do Tour",
-        "body": "Fim do tour com entrega no hotel ou ponto de saída.",
+        "time": "Final",
+        "title": "FEIMA – Almoço & Artesanato",
+        "body": "O tour termina na FEIMA — Feira de Artesanato, Flores e Gastronomia — com almoço incluído com pratos típicos moçambicanos e oportunidade de explorar artesanato local.",
         "checklist": []
       }
     ],
     "gallery": [
       "../assets/images/packages/maputo-tour/maputo-tour-1.jpeg",
       "../assets/images/packages/maputo-tour/maputo-tour-2.jpeg",
-      "../assets/images/packages/maputo-tour/maputo-tour-3.jpeg"
+      "../assets/images/packages/maputo-tour/maputo-tour-3.jpeg",
+      "../assets/images/packages/maputo-tour/maputo-tour-4.jpeg"
     ],
     "importantInfo": [
-      "Tour disponível todos os dias excepto segunda-feira (museus fechados).",
+      "Mínimo de 2 pessoas por reserva.",
       "Vestuário confortável e sapatos de caminhar recomendados.",
-      "O Museu de História Natural pode estar fechado ocasionalmente para obras.",
+      "Tour disponível todos os dias — confirme disponibilidade no momento da reserva.",
       "Ponto de encontro: Hotel do cliente ou local combinado."
+    ]
+  },
+  {
+    "id": "transfer-aeroporto-hotel",
+    "slug": "transfer-aeroporto-hotel",
+    "category": "transfers",
+    "name": "Transfer Aeroporto ⇄ Hotel",
+    "subtitle": "Transfer Aeroporto ⇄ Marina",
+    "badge": "Privado",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "../assets/images/packages/transfers/marina-airport-transfer-1.webp",
+    "heroImage": "../assets/images/packages/transfers/marina-airport-transfer-1.webp",
+    "location": "Maputo",
+    "destinations": "Aeroporto – Hotel / Marina",
+    "duration": "Conforme o trajecto",
+    "price": "1.300 MZN",
+    "price_from": 1300,
+    "priceOld": null,
+    "priceLabel": "por trajecto",
+    "currency": "MZN",
+    "description": "Transporte privado e confortável entre o Aeroporto Internacional de Maputo e o seu hotel ou marina. Disponível tanto na chegada como na partida.",
+    "detailText": [
+      "Chegue ou parta de Maputo sem preocupações. O nosso serviço de transfer privado garante pontualidade, conforto e assistência personalizada em cada trajecto.",
+      "Disponível para chegadas e partidas, com motorista profissional, carro climatizado e água engarrafada incluída."
+    ],
+    "includes": [
+      "Motorista profissional",
+      "Carro climatizado",
+      "Água engarrafada",
+      "Assistência durante o transfer"
+    ],
+    "excludes": [
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Transfer privado — sem partilha",
+      "Disponível para chegadas e partidas",
+      "Aeroporto Internacional de Maputo ⇄ Hotel / Marina",
+      "Motorista profissional e pontual"
+    ],
+    "importantInfo": [
+      "Preço por trajecto (ida ou volta): 1.300 MZN.",
+      "Reserva antecipada obrigatória — indique o número de voo e horário.",
+      "Serviço disponível 24h."
+    ]
+  },
+  {
+    "id": "transfer-hotel-marina",
+    "slug": "transfer-hotel-marina",
+    "category": "transfers",
+    "name": "Transfer Hotel ⇄ Marina",
+    "subtitle": "Transporte privado directo entre o hotel e a Marina",
+    "badge": "Privado",
+    "badgeClass": "",
+    "stars": 5,
+    "image": "../assets/images/packages/transfers/marina-hotel-transfer-1.jpg",
+    "heroImage": "../assets/images/packages/transfers/marina-hotel-transfer-1.jpg",
+    "location": "Maputo",
+    "destinations": "Hotel – Marina de Maputo",
+    "duration": "Conforme o trajecto",
+    "price": "1.000 MZN",
+    "price_from": 1000,
+    "priceOld": null,
+    "priceLabel": "ida e volta",
+    "currency": "MZN",
+    "description": "Transporte privado e directo entre o seu hotel e a Marina de Maputo. Ideal para os nossos passeios de barco.",
+    "detailText": [
+      "Sem stress, sem táxis — chegue à Marina de Maputo com conforto e a tempo para o seu passeio de barco.",
+      "O nosso transfer Hotel ⇄ Marina inclui ida e volta com motorista profissional, carro climatizado e água engarrafada."
+    ],
+    "includes": [
+      "Motorista profissional",
+      "Carro climatizado",
+      "Água engarrafada",
+      "Assistência durante o transfer"
+    ],
+    "excludes": [
+      "Gorjetas"
+    ],
+    "highlights": [
+      "Transfer privado ida e volta — 1.000 MZN",
+      "Ideal para passeios de barco da Moz Camp Adventures",
+      "Hotel ⇄ Marina de Maputo",
+      "Motorista profissional e pontual"
+    ],
+    "importantInfo": [
+      "Preço: 1.000 MZN — ida e volta incluídas.",
+      "Reserva antecipada obrigatória — indique o hotel e horário pretendido.",
+      "Serviço disponível todos os dias."
     ]
   }
 ]

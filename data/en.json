@@ -726,21 +726,75 @@
     "importantInfo": ["Minimum booking 48 hours in advance.", "Itinerary is agreed with the skipper the evening before.", "Adverse weather conditions may alter the route.", "Food and drinks are the client's responsibility.", "For groups over 8 people, contact us for special arrangements."]
   },
   "maputo-city-tour": {
-    "subtitle": "History, architecture and culture of Mozambique's vibrant capital",
+    "subtitle": "Explore the culture, history and flavours of Mozambique's capital",
     "badge": "Essential",
-    "duration": "Half day (4 hours)",
+    "duration": "3h30 – 4h",
     "priceLabel": "per adult",
-    "priceChildLabel": "Children (4–12 years)",
-    "description": "Uncover Maputo's secrets on a guided tour of its historic monuments, colonial neighbourhoods, century-old gardens and the city's best viewpoints.",
+    "priceChildLabel": "Children (4–11 years)",
+    "description": "Discover the best of Maputo on a guided tour through the historic Mafalala neighbourhood, iconic landmarks, local markets and the city's finest flavours.",
     "detailText": [
-      "Maputo is one of Africa's most fascinating capitals. Founded by the Portuguese in the 18th century, the city combines unique colonial architecture with a vibrant contemporary energy. Our historical City Tour takes you to the city's most iconic landmarks.",
-      "Visit the Iron House designed by Gustave Eiffel, the impressive Natural History Museum with its taxidermied elephants, the Municipal Central Market, the historic Maputo Fortress and the century-old avenue gardens.",
-      "The tour is led by local guides who know the stories behind every monument — an educational, engaging and deeply Mozambican experience."
+      "Maputo is one of Africa's most fascinating capitals — a city where colonial history, local culture and contemporary energy meet at every corner.",
+      "Our Maputo City Tour takes you through some of the city's most iconic landmarks: the historic Mafalala neighbourhood, the Central Railway Station, the Iron House, the Fortress, the Cathedral, the Central Market and more.",
+      "The tour ends at FEIMA — the Craft, Flower and Gastronomy Fair — where lunch with typical Mozambican dishes is included in the price."
     ],
-    "includes": ["Private air-conditioned transport", "Certified historical and cultural guide", "Museum entry fees included", "Water and snacks at the end", "All main historic sites covered"],
-    "excludes": ["Shopping and souvenirs", "Lunch (not included)", "Tips"],
-    "highlights": ["The Iron House by Gustave Eiffel", "Natural History Museum with taxidermied elephants", "Maputo Fortress (18th century)", "Municipal Central Market", "Century-old gardens and unique colonial architecture", "Panoramic views over Maputo Bay"],
-    "importantInfo": ["Tour available every day except Monday (museums closed).", "Comfortable clothing and walking shoes recommended.", "The Natural History Museum may occasionally be closed for works.", "Meeting point: Client's hotel or agreed location."]
+    "includes": [
+      "Private transport throughout the tour",
+      "Experienced local guide",
+      "Entry fees to all tourist sites included",
+      "Lunch at FEIMA with typical Mozambican dishes",
+      "Snacks and bottled water throughout the tour"
+    ],
+    "excludes": ["Shopping and souvenirs", "Tips"],
+    "highlights": [
+      "Historic Mafalala neighbourhood",
+      "Downtown Maputo",
+      "Central Railway Station",
+      "Iron House",
+      "Central Market",
+      "Maputo Fortress",
+      "Maputo Cathedral",
+      "Santo António da Polana Church",
+      "FEIMA – Craft, Flower and Gastronomy Fair",
+      "Other points of interest around the city"
+    ],
+    "itinerary": [
+      {
+        "time": "Start",
+        "title": "Historic Mafalala neighbourhood & Downtown",
+        "body": "The tour begins in the iconic Mafalala neighbourhood, birthplace of key Mozambican historical figures, then continues through downtown Maputo with its colonial architecture and historic streets.",
+        "checklist": []
+      },
+      {
+        "time": "Next",
+        "title": "Central Railway Station & Iron House",
+        "body": "Visit the magnificent Central Railway Station, one of the most beautiful in Africa, and the iconic Iron House.",
+        "checklist": []
+      },
+      {
+        "time": "Next",
+        "title": "Central Market & Fortress",
+        "body": "Immerse yourself in the energy of Maputo's Central Market and explore the historic Maputo Fortress with its centuries-old walls.",
+        "checklist": []
+      },
+      {
+        "time": "Next",
+        "title": "Cathedral & Santo António da Polana Church",
+        "body": "Visit the imposing Maputo Cathedral and the Santo António da Polana Church, two of the city's key religious and architectural landmarks.",
+        "checklist": []
+      },
+      {
+        "time": "End",
+        "title": "FEIMA – Lunch & Crafts",
+        "body": "The tour ends at FEIMA — the Craft, Flower and Gastronomy Fair — with an included lunch featuring typical Mozambican dishes and the chance to explore local crafts.",
+        "checklist": []
+      }
+    ],
+    "importantInfo": [
+      "Minimum 2 people per booking.",
+      "Comfortable clothing and walking shoes recommended.",
+      "Tour available every day — confirm availability at the time of booking.",
+      "Meeting point: Client's hotel or agreed location."
+    ]
   },
   "machangulo-beach-lodge": {
     "subtitle": "Premium Getaway on the Machangulo Peninsula",
@@ -1096,6 +1150,64 @@
       "Advance booking required — limited seats for this special edition.",
       "Light clothing and a thin jacket recommended (evening breeze).",
       "Meeting point: Maputo Harbour, at 17:00."
+    ]
+  },
+  "transfer-aeroporto-hotel": {
+    "name": "Airport ⇄ Hotel Transfer",
+    "subtitle": "Airport ⇄ Marina Transfer",
+    "badge": "Private",
+    "priceLabel": "per trip",
+    "description": "Private and comfortable transport between Maputo International Airport and your hotel or marina. Available for both arrivals and departures.",
+    "detailText": [
+      "Arrive or depart from Maputo worry-free. Our private transfer service guarantees punctuality, comfort and personalised assistance on every trip.",
+      "Available for arrivals and departures, with a professional driver, air-conditioned vehicle and bottled water included."
+    ],
+    "includes": [
+      "Professional driver",
+      "Air-conditioned vehicle",
+      "Bottled water",
+      "Assistance throughout the transfer"
+    ],
+    "excludes": ["Tips"],
+    "highlights": [
+      "Private transfer — no sharing",
+      "Available for arrivals and departures",
+      "Maputo International Airport ⇄ Hotel / Marina",
+      "Professional and punctual driver"
+    ],
+    "importantInfo": [
+      "Price per trip (one way): 1,300 MZN.",
+      "Advance booking required — please provide your flight number and time.",
+      "Service available 24h."
+    ]
+  },
+  "transfer-hotel-marina": {
+    "name": "Hotel ⇄ Marina Transfer",
+    "subtitle": "Direct private transport between your hotel and the Marina",
+    "badge": "Private",
+    "priceLabel": "return trip",
+    "description": "Private and direct transport between your hotel and Maputo Marina. Ideal for our boat tours.",
+    "detailText": [
+      "No stress, no taxis — arrive at Maputo Marina comfortably and on time for your boat tour.",
+      "Our Hotel ⇄ Marina transfer includes a return trip with a professional driver, air-conditioned vehicle and bottled water."
+    ],
+    "includes": [
+      "Professional driver",
+      "Air-conditioned vehicle",
+      "Bottled water",
+      "Assistance throughout the transfer"
+    ],
+    "excludes": ["Tips"],
+    "highlights": [
+      "Private return transfer — 1,000 MZN",
+      "Ideal for Moz Camp Adventures boat tours",
+      "Hotel ⇄ Maputo Marina",
+      "Professional and punctual driver"
+    ],
+    "importantInfo": [
+      "Price: 1,000 MZN — return trip included.",
+      "Advance booking required — please provide your hotel and preferred time.",
+      "Service available every day."
     ]
   }
 }
