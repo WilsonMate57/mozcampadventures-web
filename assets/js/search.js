@@ -16,7 +16,8 @@
 (function () {
   'use strict';
 
-  var _lang     = window.MCA_LANG || 'pt';
+  var _lang     = (window.location.pathname.indexOf('/en/') !== -1 ||
+                   window.location.pathname.startsWith('/en')) ? 'en' : 'pt';
   var _isTours  = !!document.getElementById('search-results-section');
   var _debounce = null;
 
