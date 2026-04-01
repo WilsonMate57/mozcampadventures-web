@@ -1,0 +1,68 @@
+<!-- MOZ CAMP ADVENTURES — cookie-banner.html (EN)
+     Injected via assets/js/components.js
+-->
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" style="display:none">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <strong>We use cookies</strong>
+      <p>We use cookies to improve your experience, analyse traffic and personalise content. You can manage your preferences at any time.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn-secondary" id="cb-essentials">Essentials only</button>
+      <button class="cookie-btn-outline" id="cb-customize">Customise</button>
+      <button class="cookie-btn-primary" id="cb-accept-all">Accept all</button>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE PREFERENCES MODAL -->
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="cookie-modal-content">
+      <div class="cookie-modal-header">
+        <h5 class="cookie-modal-title" id="cookieModalLabel">Cookie Preferences</h5>
+        <button type="button" class="cookie-modal-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <div class="cookie-modal-body">
+        <p class="cookie-modal-intro">Choose which cookies you want to accept. Essential cookies are always required for the site to function.</p>
+
+        <!-- Essential -->
+        <div class="cookie-category">
+          <div class="cookie-category-header">
+            <div class="cookie-category-info">
+              <span class="cookie-category-name">Essential Cookies</span>
+              <span class="cookie-category-desc">Required for the basic functioning of the site. Cannot be disabled.</span>
+            </div>
+            <div class="cookie-toggle-wrap">
+              <span class="cookie-toggle-locked"><i class="bx bx-lock-alt"></i> Always active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="cookie-category">
+          <div class="cookie-category-header">
+            <div class="cookie-category-info">
+              <span class="cookie-category-name">Analytics Cookies</span>
+              <span class="cookie-category-desc">Help us understand how visitors interact with the site (Google Analytics, Microsoft Clarity).</span>
+            </div>
+            <div class="cookie-toggle-wrap">
+              <label class="cookie-toggle" aria-label="Enable analytics cookies">
+                <input type="checkbox" id="toggle-analytics">
+                <span class="cookie-toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cookie-modal-footer">
+        <button class="cookie-btn-secondary" id="cm-save">Save preferences</button>
+        <button class="cookie-btn-primary" id="cm-accept-all">Accept all</button>
+      </div>
+    </div>
+  </div>
+</div>

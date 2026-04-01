@@ -163,15 +163,31 @@
     });
   }
 
+  /* ── Inject Cookie Banner ───────────────────────────────── */
+  function injectCookieBanner() {
+    fetchComponent(_compDir + 'cookie-banner.html', function (html) {
+      var wrapper = document.createElement('div');
+      wrapper.innerHTML = html;
+      // Append banner + modal at the end of <body>
+      while (wrapper.firstChild) {
+        document.body.appendChild(wrapper.firstChild);
+      }
+      // Signal that cookie banner is ready
+      document.dispatchEvent(new CustomEvent('mcaCookieReady'));
+    });
+  }
+
   /* ── Init on DOM ready ──────────────────────────────────── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       injectNavbar();
       injectFooter();
+      injectCookieBanner();
     });
   } else {
     injectNavbar();
     injectFooter();
+    injectCookieBanner();
   }
 
 })();
