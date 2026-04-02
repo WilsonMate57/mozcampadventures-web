@@ -107,6 +107,7 @@
     function openNav() {
       mobileNav.classList.add('open');
       backdrop.classList.add('visible');
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
       hamburger.setAttribute('aria-expanded', 'true');
       mobileNav.setAttribute('aria-hidden', 'false');
@@ -115,6 +116,7 @@
     function closeNav() {
       mobileNav.classList.remove('open');
       backdrop.classList.remove('visible');
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       hamburger.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
