@@ -241,6 +241,7 @@
 
   mcaReady(function (data) {
     data.tours.forEach(function (pkg, i) {
+      if (pkg.disabled) return;
       var cat  = pkg.category || 'island-tours';
       var root = document.getElementById('cat-root-' + cat);
       if (root) root.appendChild(makeTourCard(pkg, anims[i % anims.length]));

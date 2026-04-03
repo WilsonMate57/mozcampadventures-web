@@ -213,8 +213,8 @@
       }
 
       window.mcaReady(function (data) {
-        var tourMatches  = (data.tours         || []).filter(function (p) { return searchableText(p).indexOf(q) !== -1; });
-        var accomMatches = (data.accommodation || []).filter(function (p) { return searchableText(p).indexOf(q) !== -1; });
+        var tourMatches  = (data.tours         || []).filter(function (p) { return !p.disabled && searchableText(p).indexOf(q) !== -1; });
+        var accomMatches = (data.accommodation || []).filter(function (p) { return !p.disabled && searchableText(p).indexOf(q) !== -1; });
         var total = tourMatches.length + accomMatches.length;
 
         /* Desktop dropdown */

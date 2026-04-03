@@ -1379,6 +1379,7 @@
   {
     "id": "tofo-beach-trip",
     "slug": "tofo-beach-trip",
+    "disabled": true,
     "category": "beach-tours",
     "name": "Tofo Beach — Tubarões-baleia & Mantas",
     "subtitle": "O destino de mergulho mais famoso de Moçambique",
@@ -1481,6 +1482,7 @@
   {
     "id": "vilanculos-trip",
     "slug": "vilanculos-trip",
+    "disabled": true,
     "category": "beach-tours",
     "name": "Vilanculos & Arquipélago de Bazaruto",
     "subtitle": "O paraíso absoluto do norte de Moçambique",
