@@ -19,18 +19,27 @@
 document.addEventListener('DOMContentLoaded', function () {
   document.body.classList.add('preloading');
 
-  var MIN_TIME = 2800;
+  var MIN_TIME  = 700;
   var startTime = Date.now();
   var loaderEl  = document.getElementById('lottie-loader');
 
-  if (loaderEl && typeof lottie !== 'undefined') {
-    lottie.loadAnimation({
-      container: loaderEl,
-      renderer:  'svg',
-      loop:      true,
-      autoplay:  true,
-      path:      (window.MCA_BASE || '') + 'assets/preloader/summer-vibes.json'
-    });
+  // Lottie loads with defer — init when ready, fallback gracefully if not yet available
+  function initLottie() {
+    if (loaderEl && typeof lottie !== 'undefined') {
+      lottie.loadAnimation({
+        container: loaderEl,
+        renderer:  'svg',
+        loop:      true,
+        autoplay:  true,
+        path:      (window.MCA_BASE || '') + 'assets/preloader/summer-vibes.json'
+      });
+    }
+  }
+  // Lottie may not be parsed yet (defer) — wait for it
+  if (typeof lottie !== 'undefined') {
+    initLottie();
+  } else {
+    window.addEventListener('load', initLottie, { once: true });
   }
 
   window.addEventListener('load', function () {
@@ -40,13 +49,13 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
       var preloader = document.getElementById('preloader');
       if (preloader) {
-        preloader.style.transition = 'opacity 0.6s ease';
+        preloader.style.transition = 'opacity 0.4s ease';
         preloader.style.opacity    = '0';
         setTimeout(function () {
           preloader.style.display = 'none';
           document.body.classList.remove('preloading');
           revealOnScroll();
-        }, 600);
+        }, 400);
       }
     }, remaining);
   });

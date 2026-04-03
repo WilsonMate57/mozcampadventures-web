@@ -8,8 +8,8 @@
     "badge": "5 Estrelas",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg",
-    "heroImage": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpg",
+    "image": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.webp",
+    "heroImage": "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.webp",
     "location": "Machangulo, Maputo",
     "destinations": "Península de Machangulo",
     "duration": "Mínimo 1 noite",
@@ -89,10 +89,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg",
-      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_2.jpg",
-      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpg",
-      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_4.jpg"
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.webp",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_2.webp",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.webp",
+      "../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_4.webp"
     ],
     "importantInfo": [
       "1 noite: Adultos 16.900 MZN | Crianças (4–10 anos) 9.500 MZN por pessoa.",
@@ -113,8 +113,8 @@
     "badge": "Autêntico",
     "badgeClass": "",
     "stars": 4,
-    "image": "../assets/images/accommodation/mamas-lodge/mamas_lodge_1.jpg",
-    "heroImage": "../assets/images/accommodation/mamas-lodge/mamas_lodge_3.jpg",
+    "image": "../assets/images/accommodation/mamas-lodge/mamas_lodge_1.webp",
+    "heroImage": "../assets/images/accommodation/mamas-lodge/mamas_lodge_3.webp",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 1 noite",
@@ -181,11 +181,11 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/mamas-lodge/mamas_lodge_1.jpg",
-      "../assets/images/accommodation/mamas-lodge/mamas_lodge_2.jpg",
-      "../assets/images/accommodation/mamas-lodge/mamas_lodge_3.jpg",
-      "../assets/images/accommodation/mamas-lodge/mamas_lodge_4.jpg",
-      "../assets/images/accommodation/mamas-lodge/mamas_lodge_5.jpg"
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_1.webp",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_2.webp",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_3.webp",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_4.webp",
+      "../assets/images/accommodation/mamas-lodge/mamas_lodge_5.webp"
     ],
     "importantInfo": [
       "Check-in: 13h00 | Check-out: 11h00",
@@ -206,8 +206,8 @@
     "badge": "Glamping",
     "badgeClass": "",
     "stars": 4,
-    "image": "../assets/images/accommodation/manico-camp/manico_camp_1.jpeg",
-    "heroImage": "../assets/images/accommodation/manico-camp/manico_camp_2.jpeg",
+    "image": "../assets/images/accommodation/manico-camp/manico_camp_1.webp",
+    "heroImage": "../assets/images/accommodation/manico-camp/manico_camp_2.webp",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 1 noite",
@@ -273,10 +273,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/manico-camp/manico_camp_1.jpeg",
-      "../assets/images/accommodation/manico-camp/manico_camp_2.jpeg",
-      "../assets/images/accommodation/manico-camp/manico_camp_3.jpeg",
-      "../assets/images/accommodation/manico-camp/manico_camp_4.jpeg"
+      "../assets/images/accommodation/manico-camp/manico_camp_1.webp",
+      "../assets/images/accommodation/manico-camp/manico_camp_2.webp",
+      "../assets/images/accommodation/manico-camp/manico_camp_3.webp",
+      "../assets/images/accommodation/manico-camp/manico_camp_4.webp"
     ],
     "importantInfo": [
       "Banheiro externo partilhado.",
@@ -296,8 +296,8 @@
     "badge": "Tudo Incluído",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/accommodation/villa-martins/villa_martins_1.jpg",
-    "heroImage": "../assets/images/accommodation/villa-martins/villa_martins_2.jpg",
+    "image": "../assets/images/accommodation/villa-martins/villa_martins_1.webp",
+    "heroImage": "../assets/images/accommodation/villa-martins/villa_martins_2.webp",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 2 noites",
@@ -371,14 +371,14 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/villa-martins/villa_martins_1.jpg",
-      "../assets/images/accommodation/villa-martins/villa_martins_2.jpg",
-      "../assets/images/accommodation/villa-martins/villa_martins_3.jpg",
-      "../assets/images/accommodation/villa-martins/villa_martins_4.jpeg",
-      "../assets/images/accommodation/villa-martins/villa_martins_4.jpg",
-      "../assets/images/accommodation/villa-martins/villa_martins_5.jpg",
-      "../assets/images/accommodation/villa-martins/villa_martins_7.jpg",
-      "../assets/images/accommodation/villa-martins/villa_martins_8.jpeg"
+      "../assets/images/accommodation/villa-martins/villa_martins_1.webp",
+      "../assets/images/accommodation/villa-martins/villa_martins_2.webp",
+      "../assets/images/accommodation/villa-martins/villa_martins_3.webp",
+      "../assets/images/accommodation/villa-martins/villa_martins_4.webp",
+      "../assets/images/accommodation/villa-martins/villa_martins_4.webp",
+      "../assets/images/accommodation/villa-martins/villa_martins_5.webp",
+      "../assets/images/accommodation/villa-martins/villa_martins_7.webp",
+      "../assets/images/accommodation/villa-martins/villa_martins_8.webp"
     ],
     "importantInfo": [
       "1 noite: Adultos 11.400 MZN | Crianças (3-12 anos) 5.700 MZN.",
@@ -398,8 +398,8 @@
     "badge": "Frente ao Mar",
     "badgeClass": "",
     "stars": 4,
-    "image": "../assets/images/accommodation/mad-marlin/mad_marlin_1.jpg",
-    "heroImage": "../assets/images/accommodation/mad-marlin/mad_marlin_1.jpg",
+    "image": "../assets/images/accommodation/mad-marlin/mad_marlin_1.webp",
+    "heroImage": "../assets/images/accommodation/mad-marlin/mad_marlin_1.webp",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 1 noite",
@@ -465,10 +465,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/mad-marlin/mad_marlin_1.jpg",
-      "../assets/images/accommodation/mad-marlin/mad_marlin_2.jpg",
-      "../assets/images/accommodation/mad-marlin/mad_marlin_3.jpg",
-      "../assets/images/accommodation/mad-marlin/mad_marlin_4.jpg"
+      "../assets/images/accommodation/mad-marlin/mad_marlin_1.webp",
+      "../assets/images/accommodation/mad-marlin/mad_marlin_2.webp",
+      "../assets/images/accommodation/mad-marlin/mad_marlin_3.webp",
+      "../assets/images/accommodation/mad-marlin/mad_marlin_4.webp"
     ],
     "importantInfo": [
       "1 noite: Adultos 10.500 MZN | Crianças (3-9 anos) 6.500 MZN.",
@@ -489,8 +489,8 @@
     "badge": "Boutique",
     "badgeClass": "",
     "stars": 4,
-    "image": "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-1.jpg",
-    "heroImage": "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.jpg",
+    "image": "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-1.webp",
+    "heroImage": "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.webp",
     "location": "Ilha da Inhaca",
     "destinations": "Ilha da Inhaca",
     "duration": "Mínimo 1 noite",
@@ -556,10 +556,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-1.jpg",
-      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.jpg",
-      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-3.jpg",
-      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-4.jpg"
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-1.webp",
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.webp",
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-3.webp",
+      "../assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-4.webp"
     ],
     "importantInfo": [
       "1 noite: Adultos 10.900 MZN | Crianças (7-9 anos) 6.500 MZN.",
@@ -579,8 +579,8 @@
     "badge": "Villas Exclusivas",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/accommodation/cabo-beach/cabo-beach-1.jpeg",
-    "heroImage": "../assets/images/accommodation/cabo-beach/cabo-beach-2.jpeg",
+    "image": "../assets/images/accommodation/cabo-beach/cabo-beach-1.webp",
+    "heroImage": "../assets/images/accommodation/cabo-beach/cabo-beach-2.webp",
     "location": "Santa Maria, Machangulo",
     "destinations": "Região de Santa Maria",
     "duration": "Mínimo 1 noite",
@@ -657,10 +657,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/cabo-beach/cabo-beach-1.jpeg",
-      "../assets/images/accommodation/cabo-beach/cabo-beach-2.jpeg",
-      "../assets/images/accommodation/cabo-beach/cabo-beach-3.jpeg",
-      "../assets/images/accommodation/cabo-beach/cabo-beach-4.jpeg"
+      "../assets/images/accommodation/cabo-beach/cabo-beach-1.webp",
+      "../assets/images/accommodation/cabo-beach/cabo-beach-2.webp",
+      "../assets/images/accommodation/cabo-beach/cabo-beach-3.webp",
+      "../assets/images/accommodation/cabo-beach/cabo-beach-4.webp"
     ],
     "importantInfo": [
       "Villa 2 Quartos (até 4 adultos + 2 crianças): Época Baixa 22.699 MZN/noite | Época Alta 30.699 MZN/noite (Dezembro, Janeiro, Abril).",
@@ -680,8 +680,8 @@
     "badge": "Beach Escape",
     "badgeClass": "",
     "stars": 4,
-    "image": "../assets/images/accommodation/bemugis/bemugis-1.jpeg",
-    "heroImage": "../assets/images/accommodation/bemugis/bemugis-2.jpeg",
+    "image": "../assets/images/accommodation/bemugis/bemugis-1.webp",
+    "heroImage": "../assets/images/accommodation/bemugis/bemugis-2.webp",
     "location": "Machangulo, Maputo",
     "destinations": "Península de Machangulo",
     "duration": "Mínimo 1 noite",
@@ -754,10 +754,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/accommodation/bemugis/bemugis-1.jpeg",
-      "../assets/images/accommodation/bemugis/bemugis-2.jpeg",
-      "../assets/images/accommodation/bemugis/bemugis-3.jpeg",
-      "../assets/images/accommodation/bemugis/bemugis-4.jpeg"
+      "../assets/images/accommodation/bemugis/bemugis-1.webp",
+      "../assets/images/accommodation/bemugis/bemugis-2.webp",
+      "../assets/images/accommodation/bemugis/bemugis-3.webp",
+      "../assets/images/accommodation/bemugis/bemugis-4.webp"
     ],
     "importantInfo": [
       "1 noite: Adultos 13.500 MZN | Crianças (4–10 anos) 7.500 MZN.",

@@ -129,8 +129,8 @@
     "badge": "Tour Privado",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/packages/beach-berbecue/beach-bbq-1.jpeg",
-    "heroImage": "../assets/images/packages/beach-berbecue/beach-bbq-2.jpeg",
+    "image": "../assets/images/packages/beach-berbecue/beach-bbq-1.webp",
+    "heroImage": "../assets/images/packages/beach-berbecue/beach-bbq-2.webp",
     "location": "Ilha dos Portugueses",
     "destinations": "1 destino",
     "duration": "Dia inteiro (~10 horas)",
@@ -258,10 +258,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/beach-berbecue/beach-bbq-1.jpeg",
-      "../assets/images/packages/beach-berbecue/beach-bbq-2.jpeg",
-      "../assets/images/packages/beach-berbecue/beach-bbq-3.jpeg",
-      "../assets/images/packages/beach-berbecue/beach-bbq-4.jpeg"
+      "../assets/images/packages/beach-berbecue/beach-bbq-1.webp",
+      "../assets/images/packages/beach-berbecue/beach-bbq-2.webp",
+      "../assets/images/packages/beach-berbecue/beach-bbq-3.webp",
+      "../assets/images/packages/beach-berbecue/beach-bbq-4.webp"
     ],
     "importantInfo": [
       "Duração: dia inteiro (aprox. 10 horas).",
@@ -672,8 +672,8 @@
     "badge": "Favorito",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/packages/sunset_cruise_2.jpeg",
-    "heroImage": "../assets/images/packages/sunset_cruise_1.jpeg",
+    "image": "../assets/images/packages/sunset_cruise_2.webp",
+    "heroImage": "../assets/images/packages/sunset_cruise_1.webp",
     "location": "Baía de Maputo",
     "destinations": "Maputo Bay",
     "duration": "3 horas",
@@ -738,10 +738,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/sunset_cruise_1.jpeg",
-      "../assets/images/packages/sunset_cruise_2.jpeg",
-      "../assets/images/packages/sunset_cruise_3.jpeg",
-      "../assets/images/packages/sunset_cruise_5.jpeg"
+      "../assets/images/packages/sunset_cruise_1.webp",
+      "../assets/images/packages/sunset_cruise_2.webp",
+      "../assets/images/packages/sunset_cruise_3.webp",
+      "../assets/images/packages/sunset_cruise_5.webp"
     ],
     "importantInfo": [
       "Saídas disponíveis de quarta a domingo.",
@@ -755,30 +755,28 @@
     "slug": "sunset-cruise-dia-da-mulher",
     "category": "sunset-cruise",
     "name": "Sunset Cruise — Especial Dia da Mulher Moçambicana",
-    "subtitle": "Celebre com uma experiência exclusiva na Baía de Maputo",
-    "badge": "Promoção Especial",
+    "subtitle": "Um evento único para celebrar a mulher moçambicana na Baía de Maputo",
+    "badge": "Evento Especial",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/promo/sunset-cruise/sunset_cruise_1.jpeg",
-    "heroImage": "../assets/images/promo/sunset-cruise/sunset_cruise_2.jpeg",
+    "image": "../assets/images/promo/sunset-cruise/sunset_cruise_1.webp",
+    "heroImage": "../assets/images/promo/sunset-cruise/sunset_cruise_2.webp",
     "location": "Baía de Maputo",
     "destinations": "Maputo Bay",
     "duration": "3 horas",
-    "price": "2.250 MZN",
-    "price_from": 2250,
-    "priceOld": "2.500 MZN",
+    "price": "2.500 MZN",
+    "price_from": 2500,
     "priceLabel": "por adulto",
-    "promoNote": "10% de desconto ao reservar online",
-    "price_child": 1620,
-    "priceChild": "1.620 MZN",
+    "price_child": 1750,
+    "priceChild": "1.750 MZN",
     "priceChildLabel": "Crianças (4–12 anos)",
     "currency": "MZN",
     "cancelPolicy": "até 48 horas antes",
-    "description": "Celebre o Dia da Mulher Moçambicana com um sunset cruise exclusivo na Baía de Maputo — vistas deslumbrantes, ambiente romântico e 10% de desconto ao reservar diretamente pelo site.",
+    "description": "Uma edição especial do nosso Sunset Cruise, criada para celebrar o Dia da Mulher Moçambicana — um evento único e inesquecível na Baía de Maputo.",
     "detailText": [
-      "Uma ocasião especial merece uma experiência inesquecível. Este cruzeiro ao pôr do sol foi criado para celebrar o Dia da Mulher Moçambicana com elegância, conforto e as vistas mais bonitas de Maputo — tudo a bordo do nosso barco premium.",
+      "Uma ocasião especial merece uma experiência inesquecível. Esta edição especial do Sunset Cruise foi criada para celebrar o Dia da Mulher Moçambicana com elegância, conforto e as vistas mais bonitas de Maputo — tudo a bordo do nosso barco premium.",
       "Navegue tranquilamente pela Baía de Maputo enquanto o sol mergulha no horizonte. Champanhe de boas-vindas, snacks de bordo, música ambiente e uma tripulação atenciosa tornam este momento verdadeiramente especial.",
-      "Ao reservar diretamente pelo site, beneficia de 10% de desconto sobre o preço normal. Uma oportunidade única para celebrar com estilo e poupar ao mesmo tempo."
+      "Um evento único, pensado para homenagear e celebrar a mulher moçambicana de forma memorável."
     ],
     "includes": [
       "Cruzeiro de 3 horas na Baía de Maputo",
@@ -786,8 +784,7 @@
       "Bebidas (não alcoólicas e 1 alcoólica por pessoa)",
       "Snacks de bordo",
       "Música ambiente",
-      "Tripulação experiente e atenciosa",
-      "10% de desconto exclusivo para reservas online"
+      "Tripulação experiente e atenciosa"
     ],
     "excludes": [
       "Bebidas alcoólicas adicionais",
@@ -795,12 +792,12 @@
       "Transferes de e para o porto"
     ],
     "highlights": [
-      "Oferta especial: 10% de desconto ao reservar pelo site",
+      "Evento único em celebração ao Dia da Mulher Moçambicana",
       "Pôr do sol espectacular sobre a Baía de Maputo",
       "Champanhe de boas-vindas a bordo",
-      "Ambiente romântico e exclusivo para ocasiões especiais",
+      "Ambiente elegante e exclusivo para uma ocasião especial",
       "Vistas únicas da linha de horizonte de Maputo",
-      "Ideal para casais e grupos que queiram celebrar"
+      "Ideal para celebrar com amigas, família ou em casal"
     ],
     "itinerary": [
       {
@@ -829,13 +826,13 @@
       }
     ],
     "gallery": [
-      "../assets/images/promo/sunset-cruise/sunset_cruise_1.jpeg",
-      "../assets/images/promo/sunset-cruise/sunset_cruise_2.jpeg",
-      "../assets/images/promo/sunset-cruise/sunset_cruise_3.jpeg",
-      "../assets/images/promo/sunset-cruise/sunset_cruise_4.jpg"
+      "../assets/images/promo/sunset-cruise/sunset_cruise_1.webp",
+      "../assets/images/promo/sunset-cruise/sunset_cruise_2.webp",
+      "../assets/images/promo/sunset-cruise/sunset_cruise_3.webp",
+      "../assets/images/promo/sunset-cruise/sunset_cruise_4.webp"
     ],
     "importantInfo": [
-      "Promoção válida para reservas efetuadas diretamente pelo site — 10% de desconto aplicado automaticamente.",
+      "Evento especial alusivo ao Dia da Mulher Moçambicana — edição limitada.",
       "Saídas disponíveis de quarta a domingo.",
       "Reserva antecipada obrigatória — lugares limitados para esta edição especial.",
       "Roupa leve e um casaco fino recomendados (brisa ao anoitecer).",
@@ -851,8 +848,8 @@
     "badge": "Premium",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/sunset-dinner/sunset-dinner-1.jpg",
-    "heroImage": "../assets/images/packages/sunset-dinner/sunset-dinner-1.jpg",
+    "image": "../assets/images/packages/sunset-dinner/sunset-dinner-1.webp",
+    "heroImage": "../assets/images/packages/sunset-dinner/sunset-dinner-1.webp",
     "location": "Baía de Maputo",
     "destinations": "Maputo Bay",
     "duration": "4 horas",
@@ -923,10 +920,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/sunset-dinner/sunset-dinner-1.jpg",
-      "../assets/images/packages/sunset-dinner/sunset-dinner-2.jpg",
-      "../assets/images/packages/sunset-dinner/sunset-dinner-3.jpg",
-      "../assets/images/packages/sunset-dinner/sunset-dinner-4.jpg"
+      "../assets/images/packages/sunset-dinner/sunset-dinner-1.webp",
+      "../assets/images/packages/sunset-dinner/sunset-dinner-2.webp",
+      "../assets/images/packages/sunset-dinner/sunset-dinner-3.webp",
+      "../assets/images/packages/sunset-dinner/sunset-dinner-4.webp"
     ],
     "importantInfo": [
       "Apenas para adultos (maiores de 16 anos).",
@@ -945,8 +942,8 @@
     "badge": "Animado",
     "badgeClass": "",
     "stars": 4,
-    "image": "../assets/images/packages/sunset-xefina/sunset-xefina-1.jpg",
-    "heroImage": "../assets/images/packages/sunset-xefina/sunset-xefina-1.jpg",
+    "image": "../assets/images/packages/sunset-xefina/sunset-xefina-1.webp",
+    "heroImage": "../assets/images/packages/sunset-xefina/sunset-xefina-1.webp",
     "location": "Ilha da Xefina",
     "destinations": "Ilha da Xefina",
     "duration": "5 horas",
@@ -1011,10 +1008,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/sunset-xefina/sunset-xefina-1.jpg",
-      "../assets/images/packages/sunset-xefina/sunset-xefina-2.jpg",
-      "../assets/images/packages/sunset-xefina/sunset-xefina-3.jpg",
-      "../assets/images/packages/sunset-xefina/sunset-xefina-4.jpg"
+      "../assets/images/packages/sunset-xefina/sunset-xefina-1.webp",
+      "../assets/images/packages/sunset-xefina/sunset-xefina-2.webp",
+      "../assets/images/packages/sunset-xefina/sunset-xefina-3.webp",
+      "../assets/images/packages/sunset-xefina/sunset-xefina-4.webp"
     ],
     "importantInfo": [
       "Disponível fins de semana e feriados.",
@@ -1032,8 +1029,8 @@
     "badge": "Top Destino",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpeg",
-    "heroImage": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpeg",
+    "image": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.webp",
+    "heroImage": "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.webp",
     "location": "Ponta D'Ouro",
     "destinations": "Ponta D'Ouro",
     "duration": "Dia inteiro",
@@ -1116,10 +1113,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpeg",
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpeg",
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.jpeg",
-      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.jpeg"
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.webp",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.webp",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.webp",
+      "../assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.webp"
     ],
     "importantInfo": [
       "Aceitamos reservas a partir de 1 pessoa — a experiência é confirmada assim que reunimos um mínimo de 4 participantes.",
@@ -1163,8 +1160,8 @@
     "badge": "Perto de Maputo",
     "badgeClass": "",
     "stars": 4,
-    "image": "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-1.jpeg",
-    "heroImage": "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-2.jpeg",
+    "image": "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-1.webp",
+    "heroImage": "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-2.webp",
     "location": "Macaneta",
     "destinations": "Macaneta",
     "duration": "Dia inteiro",
@@ -1248,10 +1245,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-1.jpeg",
-      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-2.jpeg",
-      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-3.jpeg",
-      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-4.jpeg"
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-1.webp",
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-2.webp",
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-3.webp",
+      "../assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-4.webp"
     ],
     "importantInfo": [
       "Disponível todos os dias da semana.",
@@ -1276,7 +1273,7 @@
     "badgeClass": "",
     "stars": 4,
     "image": "../assets/images/packages/beach-tours/bilene/bilene-1.webp",
-    "heroImage": "../assets/images/packages/beach-tours/bilene/bilene-2.jpg",
+    "heroImage": "../assets/images/packages/beach-tours/bilene/bilene-2.webp",
     "location": "Bilene, Gaza",
     "destinations": "Bilene",
     "duration": "Dia inteiro",
@@ -1354,7 +1351,7 @@
     ],
     "gallery": [
       "../assets/images/packages/beach-tours/bilene/bilene-1.webp",
-      "../assets/images/packages/beach-tours/bilene/bilene-2.jpg",
+      "../assets/images/packages/beach-tours/bilene/bilene-2.webp",
       "../assets/images/packages/beach-tours/bilene/bilene-3.webp",
       "../assets/images/packages/beach-tours/bilene/bilene-4.webp"
     ],
@@ -1386,7 +1383,7 @@
     "badge": "Aventura",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/beach-tours/tofo/tofo-1.jpg",
+    "image": "../assets/images/packages/beach-tours/tofo/tofo-1.webp",
     "heroImage": "../assets/images/packages/beach-tours/tofo/tofo-2.webp",
     "location": "Tofo, Inhambane",
     "destinations": "Tofo Beach",
@@ -1466,10 +1463,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/beach-tours/tofo/tofo-1.jpg",
+      "../assets/images/packages/beach-tours/tofo/tofo-1.webp",
       "../assets/images/packages/beach-tours/tofo/tofo-2.webp",
-      "../assets/images/packages/beach-tours/tofo/tofo-3.jpg",
-      "../assets/images/packages/beach-tours/tofo/tofo-4.jpg"
+      "../assets/images/packages/beach-tours/tofo/tofo-3.webp",
+      "../assets/images/packages/beach-tours/tofo/tofo-4.webp"
     ],
     "importantInfo": [
       "Avistamento de tubarões-baleia mais provável de Junho a Novembro.",
@@ -1489,8 +1486,8 @@
     "badge": "Luxo",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/beach-tours/bazaruto/bazaruto-1.jpg",
-    "heroImage": "../assets/images/packages/beach-tours/bazaruto/bazaruto-2.jpg",
+    "image": "../assets/images/packages/beach-tours/bazaruto/bazaruto-1.webp",
+    "heroImage": "../assets/images/packages/beach-tours/bazaruto/bazaruto-2.webp",
     "location": "Vilanculos, Inhambane",
     "destinations": "Vilanculos & Bazaruto",
     "duration": "3 dias / 2 noites",
@@ -1569,10 +1566,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/beach-tours/bazaruto/bazaruto-1.jpg",
-      "../assets/images/packages/beach-tours/bazaruto/bazaruto-2.jpg",
-      "../assets/images/packages/beach-tours/bazaruto/bazaruto-3.jpg",
-      "../assets/images/packages/beach-tours/bazaruto/bazaruto-4.jpg"
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-1.webp",
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-2.webp",
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-3.webp",
+      "../assets/images/packages/beach-tours/bazaruto/bazaruto-4.webp"
     ],
     "importantInfo": [
       "Aceitamos reservas a partir de 1 pessoa — a experiência é confirmada assim que reunimos um mínimo de 4 participantes.",
@@ -1591,8 +1588,8 @@
     "badge": "Imperdível",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/packages/safari/safari-kruger-1.jpg",
-    "heroImage": "../assets/images/packages/safari/safari-kruger-2.jpg",
+    "image": "../assets/images/packages/safari/safari-kruger-1.webp",
+    "heroImage": "../assets/images/packages/safari/safari-kruger-2.webp",
     "location": "Kruger, África do Sul",
     "destinations": "Kruger National Park",
     "duration": "Regresso no mesmo dia",
@@ -1707,10 +1704,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/safari/safari-kruger-1.jpg",
-      "../assets/images/packages/safari/safari-kruger-2.jpg",
-      "../assets/images/packages/safari/safari-kruger-3.jpg",
-      "../assets/images/packages/safari/safari-kruger-4.jpg"
+      "../assets/images/packages/safari/safari-kruger-1.webp",
+      "../assets/images/packages/safari/safari-kruger-2.webp",
+      "../assets/images/packages/safari/safari-kruger-3.webp",
+      "../assets/images/packages/safari/safari-kruger-4.webp"
     ],
     "importantInfo": [
       "Passaporte válido obrigatório para a África do Sul.",
@@ -1729,8 +1726,8 @@
     "badge": "Local",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/safari/safari-maputo-park-1.jpeg",
-    "heroImage": "../assets/images/packages/safari/safari-maputo-park-2.jpeg",
+    "image": "../assets/images/packages/safari/safari-maputo-park-1.webp",
+    "heroImage": "../assets/images/packages/safari/safari-maputo-park-2.webp",
     "location": "Reserva de Maputo",
     "destinations": "Reserva Especial de Maputo",
     "duration": "Dia inteiro",
@@ -1807,10 +1804,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/safari/safari-maputo-park-1.jpeg",
-      "../assets/images/packages/safari/safari-maputo-park-2.jpeg",
-      "../assets/images/packages/safari/safari-maputo-park-3.jpeg",
-      "../assets/images/packages/safari/safari-maputo-park-4.jpeg"
+      "../assets/images/packages/safari/safari-maputo-park-1.webp",
+      "../assets/images/packages/safari/safari-maputo-park-2.webp",
+      "../assets/images/packages/safari/safari-maputo-park-3.webp",
+      "../assets/images/packages/safari/safari-maputo-park-4.webp"
     ],
     "importantInfo": [
       "Roupas neutras e confortáveis recomendadas.",
@@ -1828,8 +1825,8 @@
     "badge": "Único",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/safari/safari-eswatini-1.jpeg",
-    "heroImage": "../assets/images/packages/safari/safari-eswatini-3.jpeg",
+    "image": "../assets/images/packages/safari/safari-eswatini-1.webp",
+    "heroImage": "../assets/images/packages/safari/safari-eswatini-3.webp",
     "location": "Eswatini (Suazilândia)",
     "destinations": "Eswatini",
     "duration": "1 dia",
@@ -1906,10 +1903,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/safari/safari-eswatini-1.jpeg",
-      "../assets/images/packages/safari/safari-eswatini-2.jpeg",
-      "../assets/images/packages/safari/safari-eswatini-3.jpeg",
-      "../assets/images/packages/safari/safari-eswatini-4.jpeg"
+      "../assets/images/packages/safari/safari-eswatini-1.webp",
+      "../assets/images/packages/safari/safari-eswatini-2.webp",
+      "../assets/images/packages/safari/safari-eswatini-3.webp",
+      "../assets/images/packages/safari/safari-eswatini-4.webp"
     ],
     "importantInfo": [
       "Local de partida: Maputo.",
@@ -1930,8 +1927,8 @@
     "badge": "Sazonal",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/whale-watching/observacao_baleias_1.jpg",
-    "heroImage": "../assets/images/packages/whale-watching/observacao_baleias_4.jpg",
+    "image": "../assets/images/packages/whale-watching/observacao_baleias_1.webp",
+    "heroImage": "../assets/images/packages/whale-watching/observacao_baleias_4.webp",
     "location": "Baía de Maputo",
     "destinations": "Baía de Maputo",
     "duration": "Meio dia (4 horas)",
@@ -1996,10 +1993,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/whale-watching/observacao_baleias_1.jpg",
-      "../assets/images/packages/whale-watching/observacao_baleias_2.jpg",
-      "../assets/images/packages/whale-watching/observacao_baleias_3.jpg",
-      "../assets/images/packages/whale-watching/observacao_baleias_4.jpg"
+      "../assets/images/packages/whale-watching/observacao_baleias_1.webp",
+      "../assets/images/packages/whale-watching/observacao_baleias_2.webp",
+      "../assets/images/packages/whale-watching/observacao_baleias_3.webp",
+      "../assets/images/packages/whale-watching/observacao_baleias_4.webp"
     ],
     "importantInfo": [
       "Apenas disponível de Junho a Novembro.",
@@ -2018,8 +2015,8 @@
     "badge": "Adrenalina",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/fishing/deep-sea-fishing-1.jpg",
-    "heroImage": "../assets/images/packages/fishing/deep-sea-fishing-2.jpeg",
+    "image": "../assets/images/packages/fishing/deep-sea-fishing-1.webp",
+    "heroImage": "../assets/images/packages/fishing/deep-sea-fishing-2.webp",
     "location": "Baía de Maputo",
     "destinations": "Oceano Índico",
     "duration": "Dia inteiro (8 horas)",
@@ -2094,10 +2091,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/fishing/deep-sea-fishing-1.jpg",
-      "../assets/images/packages/fishing/deep-sea-fishing-2.jpeg",
-      "../assets/images/packages/fishing/deep-sea-fishing-3.jpg",
-      "../assets/images/packages/fishing/deep-sea-fishing-4.jpg"
+      "../assets/images/packages/fishing/deep-sea-fishing-1.webp",
+      "../assets/images/packages/fishing/deep-sea-fishing-2.webp",
+      "../assets/images/packages/fishing/deep-sea-fishing-3.webp",
+      "../assets/images/packages/fishing/deep-sea-fishing-4.webp"
     ],
     "importantInfo": [
       "Preço é por barco — até 6 pessoas.",
@@ -2116,8 +2113,8 @@
     "badge": "Flexível",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/private-rental/private-rental-1.jpg",
-    "heroImage": "../assets/images/packages/private-rental/private-rental-2.jpg",
+    "image": "../assets/images/packages/private-rental/private-rental-1.webp",
+    "heroImage": "../assets/images/packages/private-rental/private-rental-2.webp",
     "location": "Maputo",
     "destinations": "À escolha",
     "duration": "Dia completo",
@@ -2177,10 +2174,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/private-rental/private-rental-1.jpg",
-      "../assets/images/packages/private-rental/private-rental-2.jpg",
-      "../assets/images/packages/private-rental/private-rental-3.jpg",
-      "../assets/images/packages/private-rental/private-rental-4.jpg"
+      "../assets/images/packages/private-rental/private-rental-1.webp",
+      "../assets/images/packages/private-rental/private-rental-2.webp",
+      "../assets/images/packages/private-rental/private-rental-3.webp",
+      "../assets/images/packages/private-rental/private-rental-4.webp"
     ],
     "importantInfo": [
       "Reserva mínima 48h antes.",
@@ -2199,8 +2196,8 @@
     "badge": "Essencial",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/maputo-tour/maputo-tour-3.jpeg",
-    "heroImage": "../assets/images/packages/maputo-tour/maputo-tour-2.jpeg",
+    "image": "../assets/images/packages/maputo-tour/maputo-tour-3.webp",
+    "heroImage": "../assets/images/packages/maputo-tour/maputo-tour-2.webp",
     "location": "Maputo",
     "destinations": "Maputo",
     "duration": "3h30 – 4h",
@@ -2274,10 +2271,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/maputo-tour/maputo-tour-1.jpeg",
-      "../assets/images/packages/maputo-tour/maputo-tour-2.jpeg",
-      "../assets/images/packages/maputo-tour/maputo-tour-3.jpeg",
-      "../assets/images/packages/maputo-tour/maputo-tour-4.jpeg"
+      "../assets/images/packages/maputo-tour/maputo-tour-1.webp",
+      "../assets/images/packages/maputo-tour/maputo-tour-2.webp",
+      "../assets/images/packages/maputo-tour/maputo-tour-3.webp",
+      "../assets/images/packages/maputo-tour/maputo-tour-4.webp"
     ],
     "importantInfo": [
       "Mínimo de 2 pessoas por reserva.",
@@ -2340,8 +2337,8 @@
     "badge": "Privado",
     "badgeClass": "",
     "stars": 5,
-    "image": "../assets/images/packages/transfers/marina-hotel-transfer-1.jpg",
-    "heroImage": "../assets/images/packages/transfers/marina-hotel-transfer-1.jpg",
+    "image": "../assets/images/packages/transfers/marina-hotel-transfer-1.webp",
+    "heroImage": "../assets/images/packages/transfers/marina-hotel-transfer-1.webp",
     "location": "Maputo",
     "destinations": "Hotel – Marina de Maputo",
     "duration": "Conforme o trajecto",

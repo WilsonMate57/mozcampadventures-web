@@ -15,6 +15,12 @@
   <link rel="alternate" hreflang="pt" href="https://mozcampadventures.com/index.html">
   <link rel="alternate" hreflang="en" href="https://mozcampadventures.com/en/index.html">
   <link rel="alternate" hreflang="x-default" href="https://mozcampadventures.com/index.html">
+  <!-- Preconnect to external origins for faster DNS + TLS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -47,7 +53,7 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <div class="hero-slide">
-        <div class="img-placeholder"><img src="../assets/images/hero/snorkeling-santa-maria.jpeg" class="hero-image" alt="Snorkeling Santa Maria"></div>
+        <div class="img-placeholder"><img src="../assets/images/hero/snorkeling-santa-maria.webp" class="hero-image" alt="Snorkeling Santa Maria" fetchpriority="high" loading="eager"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <div class="hero-badge"><i class="bx bxs-map"></i> Santa Maria</div>
@@ -61,7 +67,7 @@
     </div>
     <div class="carousel-item">
       <div class="hero-slide">
-        <div class="img-placeholder"><img src="../assets/images/hero/island-hopping-maputo-bay.jpg" class="hero-image" alt="Island Hopping Maputo Bay"></div>
+        <div class="img-placeholder"><img src="../assets/images/hero/island-hopping-maputo-bay.webp" class="hero-image" alt="Island Hopping Maputo Bay" loading="lazy"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <div class="hero-badge"><i class="bx bxs-map"></i> Maputo Bay</div>
@@ -75,7 +81,7 @@
     </div>
     <div class="carousel-item">
       <div class="hero-slide">
-        <div class="img-placeholder"><img src="../assets/images/hero/sunset-cruise-maputo-bay.jpeg" class="hero-image" alt="Sunset Cruise Maputo Bay"></div>
+        <div class="img-placeholder"><img src="../assets/images/hero/sunset-cruise-maputo-bay.webp" class="hero-image" alt="Sunset Cruise Maputo Bay" loading="lazy"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <div class="hero-badge"><i class="bx bxs-map"></i> Maputo Bay</div>
@@ -89,7 +95,7 @@
     </div>
     <div class="carousel-item">
       <div class="hero-slide">
-        <div class="img-placeholder"><img src="../assets/images/hero/eswatini-kingdom-tour.jpg" class="hero-image" alt="Eswatini Kingdom Tour"></div>
+        <div class="img-placeholder"><img src="../assets/images/hero/eswatini-kingdom-tour.webp" class="hero-image" alt="Eswatini Kingdom Tour" loading="lazy"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <div class="hero-badge"><i class="bx bxs-map"></i> Eswatini</div>
@@ -103,7 +109,7 @@
     </div>
     <div class="carousel-item">
       <div class="hero-slide">
-        <div class="img-placeholder"><img src="../assets/images/hero/safari-kruger.jpg" class="hero-image" alt="Safari Kruger National Park"></div>
+        <div class="img-placeholder"><img src="../assets/images/hero/safari-kruger.webp" class="hero-image" alt="Safari Kruger National Park" loading="lazy"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <div class="hero-badge"><i class="bx bxs-map"></i> Kruger National Park</div>
@@ -170,17 +176,17 @@
           <div class="about-grid">
             <div class="img-box tall">
               <div class="img-box-placeholder" style="height:100%;">
-                <img src="../assets/images/about/about-1.jpeg" class="about-img" alt="Moz Camp Adventures Team">
+                <img src="../assets/images/about/about-1.webp" class="about-img" alt="Moz Camp Adventures Team" loading="lazy">
               </div>
             </div>
             <div class="img-box">
               <div class="img-box-placeholder">
-                <img src="../assets/images/packages/sunset_cruise_2.jpeg" class="about-img" alt="Sunset cruise">
+                <img src="../assets/images/packages/sunset_cruise_2.webp" class="about-img" alt="Sunset cruise" loading="lazy">
               </div>
             </div>
             <div class="img-box">
               <div class="img-box-placeholder">
-                <img src="../assets/images/accommodation/villa-martins/villa_martins_4.jpg" class="about-img" alt="Premium accommodation">
+                <img src="../assets/images/accommodation/villa-martins/villa_martins_4.webp" class="about-img" alt="Premium accommodation" loading="lazy">
               </div>
             </div>
           </div>
@@ -206,7 +212,7 @@
       <div class="col-md-4 col-sm-6 reveal reveal-left">
         <a href="pages/tours.html?cat=island-tours" class="cat-img-card">
           <div class="cat-img-wrap">
-            <img src="../assets/images/packages/package_1.jpg" alt="Island Tours">
+            <img src="../assets/images/packages/package_1.webp" alt="Island Tours" loading="lazy">
             <div class="cat-img-compass"><i class="bx bx-chevrons-right"></i></div>
           </div>
           <div class="cat-img-footer">
@@ -219,7 +225,7 @@
       <div class="col-md-4 col-sm-6 reveal reveal-up">
         <a href="pages/accommodations.html" class="cat-img-card">
           <div class="cat-img-wrap">
-            <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_3.jpg" alt="Island Accommodation">
+            <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_3.webp" alt="Island Accommodation" loading="lazy">
             <div class="cat-img-compass"><i class="bx bx-chevrons-right"></i></div>
           </div>
           <div class="cat-img-footer">
@@ -232,7 +238,7 @@
       <div class="col-md-4 col-sm-6 reveal reveal-right">
         <a href="pages/tours.html?cat=transfers" class="cat-img-card">
           <div class="cat-img-wrap">
-            <img src="../assets/images/packages/transfers/boat-transfer-1.jpeg" alt="Transfers">
+            <img src="../assets/images/packages/transfers/boat-transfer-1.webp" alt="Transfers" loading="lazy">
             <div class="cat-img-compass"><i class="bx bx-chevrons-right"></i></div>
           </div>
           <div class="cat-img-footer">
@@ -245,7 +251,7 @@
       <div class="col-md-4 col-sm-6 reveal reveal-left">
         <a href="pages/tours.html?cat=beach-tours" class="cat-img-card">
           <div class="cat-img-wrap">
-            <img src="../assets/images/packages/beach_day_1.jpg" alt="Beach Tours">
+            <img src="../assets/images/packages/beach_day_1.webp" alt="Beach Tours" loading="lazy">
             <div class="cat-img-compass"><i class="bx bx-chevrons-right"></i></div>
           </div>
           <div class="cat-img-footer">
@@ -258,7 +264,7 @@
       <div class="col-md-4 col-sm-6 reveal reveal-up">
         <a href="pages/tours.html?cat=safaris" class="cat-img-card">
           <div class="cat-img-wrap">
-            <img src="../assets/images/packages/safari/safari-maputo-park-1.jpeg" alt="Safaris">
+            <img src="../assets/images/packages/safari/safari-maputo-park-1.webp" alt="Safaris" loading="lazy">
             <div class="cat-img-compass"><i class="bx bx-chevrons-right"></i></div>
           </div>
           <div class="cat-img-footer">
@@ -271,7 +277,7 @@
       <div class="col-md-4 col-sm-6 reveal reveal-right">
         <a href="pages/tours.html?cat=city-tour" class="cat-img-card">
           <div class="cat-img-wrap">
-            <img src="../assets/images/packages/maputo-tour/maputo-tour-1.jpeg" alt="Maputo City Tour">
+            <img src="../assets/images/packages/maputo-tour/maputo-tour-1.webp" alt="Maputo City Tour" loading="lazy">
             <div class="cat-img-compass"><i class="bx bx-chevrons-right"></i></div>
           </div>
           <div class="cat-img-footer">
@@ -295,8 +301,8 @@
       <div class="col-lg-5 reveal reveal-left">
         <div class="feedback-img-area">
           <div class="video-thumb position-relative" data-bs-toggle="modal" data-bs-target="#videoModal">
-            <img src="../assets/images/thumbnails/video_thumb.jpeg" class="img-fluid w-100"
-              style="height:380px;object-fit:cover;border-radius:12px;" alt="Guest testimonial">
+            <img src="../assets/images/thumbnails/video_thumb.webp" class="img-fluid w-100"
+              style="height:380px;object-fit:cover;border-radius:12px;" alt="Guest testimonial" loading="lazy">
             <div class="play-btn"><i class="bx bxs-right-arrow"></i></div>
           </div>
         </div>
@@ -442,9 +448,9 @@
             <span class="tour-badge badge-popular">5 Stars</span>
             <div class="alo-card-slider">
               <div class="alo-card-slider-track">
-                <img src="../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.jpg" alt="Machangulo Beach Lodge" class="alo-acc-img">
-                <img src="../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_2.jpg" alt="Machangulo Beach Lodge" class="alo-acc-img">
-                <img src="../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.jpg" alt="Machangulo Beach Lodge" class="alo-acc-img">
+                <img src="../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.webp" alt="Machangulo Beach Lodge" class="alo-acc-img" loading="lazy">
+                <img src="../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_2.webp" alt="Machangulo Beach Lodge" class="alo-acc-img" loading="lazy">
+                <img src="../assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.webp" alt="Machangulo Beach Lodge" class="alo-acc-img" loading="lazy">
               </div>
               <button class="alo-card-sl-btn alo-card-sl-prev" aria-label="Previous"><i class="bx bx-chevron-left"></i></button>
               <button class="alo-card-sl-btn alo-card-sl-next" aria-label="Next"><i class="bx bx-chevron-right"></i></button>
@@ -491,9 +497,9 @@
             <span class="tour-badge">Authentic</span>
             <div class="alo-card-slider">
               <div class="alo-card-slider-track">
-                <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_1.jpg" alt="Mama's Lodge" class="alo-acc-img">
-                <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_2.jpg" alt="Mama's Lodge" class="alo-acc-img">
-                <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_3.jpg" alt="Mama's Lodge" class="alo-acc-img">
+                <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_1.webp" alt="Mama's Lodge" class="alo-acc-img" loading="lazy">
+                <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_2.webp" alt="Mama's Lodge" class="alo-acc-img" loading="lazy">
+                <img src="../assets/images/accommodation/mamas-lodge/mamas_lodge_3.webp" alt="Mama's Lodge" class="alo-acc-img" loading="lazy">
               </div>
               <button class="alo-card-sl-btn alo-card-sl-prev" aria-label="Previous"><i class="bx bx-chevron-left"></i></button>
               <button class="alo-card-sl-btn alo-card-sl-next" aria-label="Next"><i class="bx bx-chevron-right"></i></button>
@@ -615,11 +621,11 @@
   <button class="lightbox-close" id="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
   <button class="lightbox-prev" id="lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Previous">&#8249;</button>
   <button class="lightbox-next" id="lightbox-next" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Next">&#8250;</button>
-  <img id="lightbox-img" src="" alt="Enlarged image" onclick="event.stopPropagation()">
+  <img id="lightbox-img" src="" alt="Enlarged image" onclick="event.stopPropagation()" loading="lazy">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script src="../assets/js/analytics.js"></script>
 <script src="../assets/js/search.js"></script>
 <script src="../assets/js/components.js"></script>
@@ -638,7 +644,7 @@
     ctaLink:     '../pages/package.html?id=sunset-cruise-dia-da-mulher',
     dismissText: 'Close',
     expiredText: 'This offer has expired.',
-    image:       '../assets/images/hero/sunset-cruise-maputo-bay.jpeg',
+    image:       '../assets/images/hero/sunset-cruise-maputo-bay.webp',
     daysLabel:   'days',
     hoursLabel:  'hours',
     minsLabel:   'min',

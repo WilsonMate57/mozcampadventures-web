@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \":*)",
+      "Bash(python3 -c \":*)",
+      "Bash(node /tmp/audit.js)",
+      "Bash(node \"C:/Users/Wilson Mate/AppData/Local/Temp/audit.js\")",
+      "Read(//e/tmp/**)",
+      "Bash(node audit.js)",
+      "Bash(head -3 grep -n \"components\\\\|navbar\\\\|footer\\\\|script src\" \"e:/Wilson Creative Studio/Clientes/Moz Camp Adventures - 2024/Claude/mozcampadventures/index.html\")",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Bash(sed -i 's|<script src=\"\"assets/js/components.js\"\"></script>|<script src=\"\"assets/js/analytics.js\"\"></script>\\\\n<script src=\"\"assets/js/components.js\"\"></script>|' index.html)",
+      "Bash(sed -i 's|<script src=\"\"../assets/js/components.js\"\"></script>|<script src=\"\"../assets/js/analytics.js\"\"></script>\\\\n<script src=\"\"../assets/js/components.js\"\"></script>|' pages/tours.html pages/package.html pages/accommodations.html pages/contact.html)",
+      "Bash(sed -i 's|<script src=\"\"../assets/js/components.js\"\"></script>|<script src=\"\"../assets/js/analytics.js\"\"></script>\\\\n<script src=\"\"../assets/js/components.js\"\"></script>|' en/index.html)",
+      "Bash(sed -i 's|<script src=\"\"../../assets/js/components.js\"\"></script>|<script src=\"\"../../assets/js/analytics.js\"\"></script>\\\\n<script src=\"\"../../assets/js/components.js\"\"></script>|' en/pages/tours.html en/pages/package.html en/pages/accommodations.html en/pages/contact.html)",
+      "Bash(node -e ':*)"
+    ],
+    "additionalDirectories": [
+      "e:\\Wilson Creative Studio\\Clientes\\Moz Camp Adventures - 2024\\Claude\\mozcampadventures\\.git"
+    ]
+  }
+}

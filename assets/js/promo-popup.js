@@ -35,7 +35,7 @@
     ctaLink:       'pages/package.html?id=sunset-cruise-dia-da-mulher',
     dismissText:   'Fechar',
     expiredText:   'Esta oferta já expirou.',
-    image:         'assets/images/hero/sunset-cruise-maputo-bay.jpeg',
+    image:         'assets/images/hero/sunset-cruise-maputo-bay.webp',
     imageAlt:      'Sunset Cruise — Baía de Maputo',
     sessionKey:    'mca_promo_shown',
     cooldownHours: 24,
