@@ -129,8 +129,8 @@
     "badge": "Tour Privado",
     "badgeClass": "popular",
     "stars": 5,
-    "image": "../assets/images/packages/beach-berbecue/1.webp",
-    "heroImage": "../assets/images/packages/beach-berbecue/2.webp",
+    "image": "../assets/images/packages/beach-berbecue/beach-bbq-1.jpeg",
+    "heroImage": "../assets/images/packages/beach-berbecue/beach-bbq-2.jpeg",
     "location": "Ilha dos Portugueses",
     "destinations": "1 destino",
     "duration": "Dia inteiro (~10 horas)",
@@ -258,10 +258,10 @@
       }
     ],
     "gallery": [
-      "../assets/images/packages/beach-berbecue/1.webp",
-      "../assets/images/packages/beach-berbecue/2.webp",
-      "../assets/images/packages/beach-berbecue/3.webp",
-      "../assets/images/packages/beach-berbecue/4.webp"
+      "../assets/images/packages/beach-berbecue/beach-bbq-1.jpeg",
+      "../assets/images/packages/beach-berbecue/beach-bbq-2.jpeg",
+      "../assets/images/packages/beach-berbecue/beach-bbq-3.jpeg",
+      "../assets/images/packages/beach-berbecue/beach-bbq-4.jpeg"
     ],
     "importantInfo": [
       "Duração: dia inteiro (aprox. 10 horas).",
