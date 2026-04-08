@@ -195,6 +195,16 @@
       "Crianças (4-9 anos) 2 noites: 14.900 MZN sem refeições / 19.800 MZN com refeições.",
       "Capacidade limitada — reserva antecipada essencial."
     ],
+    "extras": [
+      { "id": "passeio-farol",       "icon": "car-front-fill",  "title": "Passeio pela Ilha ao Farol",        "desc": "Praia do Farol de carro",      "price": 2500, "currency": "MZN", "perPerson": true  },
+      { "id": "canoa-mangais",       "icon": "water",           "title": "Canoa nos Mangais",                 "desc": "Passeio de canoa",             "price": 1000, "currency": "MZN", "perPerson": false, "priceUnit": "/canoa" },
+      { "id": "barco-portugueses",   "icon": "compass",         "title": "Ilha dos Portugueses de Barco",     "desc": "Passeio de barco",             "price": 3500, "currency": "MZN", "perPerson": true  },
+      { "id": "sunset-cruise",       "icon": "sunset",          "title": "Sunset Cruise — Machangulo",        "desc": "Cruzeiro ao pôr do sol",       "price": 2700, "currency": "MZN", "perPerson": true  },
+      { "id": "whale-watching",      "icon": "binoculars-fill", "title": "Observação de Baleias",             "desc": "Época: Junho – Novembro",     "price": 7500, "currency": "MZN", "perPerson": true  },
+      { "id": "pesca-small",         "icon": "tsunami",         "title": "Pesca — Small Boat",                "desc": "Barco pequeno",                "price": 42000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "pesca-grande",        "icon": "tsunami",         "title": "Pesca — Barco Grande",              "desc": "Embarcação maior",             "price": 64000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "passeio-vila",        "icon": "people-fill",     "title": "Passeio pela Vila / Comunidade",    "desc": "Tour guiado local",            "price": 3500, "currency": "MZN", "perPerson": true  }
+    ],
     "locationCategory": "inhaca"
   },
   {
@@ -291,8 +301,8 @@
       { "id": "barco-portugueses",   "icon": "compass",         "title": "Ilha dos Portugueses de Barco",     "desc": "Passeio de barco",             "price": 3500, "currency": "MZN", "perPerson": true  },
       { "id": "sunset-cruise",       "icon": "sunset",          "title": "Sunset Cruise — Machangulo",        "desc": "Cruzeiro ao pôr do sol",       "price": 2700, "currency": "MZN", "perPerson": true  },
       { "id": "whale-watching",      "icon": "binoculars-fill", "title": "Observação de Baleias",             "desc": "Época: Junho – Novembro",     "price": 7500, "currency": "MZN", "perPerson": true  },
-      { "id": "pesca-small",         "icon": "tsunami",         "title": "Pesca — Small Boat",                "desc": "Barco pequeno",                "price": 650,  "currency": "USD", "perPerson": false, "priceUnit": "/barco" },
-      { "id": "pesca-grande",        "icon": "tsunami",         "title": "Pesca — Barco Grande",              "desc": "Embarcação maior",             "price": 1000, "currency": "USD", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "pesca-small",         "icon": "tsunami",         "title": "Pesca — Small Boat",                "desc": "Barco pequeno",                "price": 42000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "pesca-grande",        "icon": "tsunami",         "title": "Pesca — Barco Grande",              "desc": "Embarcação maior",             "price": 64000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
       { "id": "passeio-comunidade",  "icon": "people-fill",     "title": "Passeio pela Comunidade",           "desc": "Tour guiado local",            "price": 3500, "currency": "MZN", "perPerson": true  }
     ],
     "locationCategory": "inhaca"
@@ -396,6 +406,16 @@
       "Transfer de barco incluído (partida da Marina de Maputo).",
       "Reserva antecipada obrigatória — disponibilidade limitada.",
       "Cancelamento gratuito até 48h antes."
+    ],
+    "extras": [
+      { "id": "passeio-farol",       "icon": "car-front-fill",  "title": "Passeio pela Ilha ao Farol",        "desc": "Praia do Farol de carro",      "price": 2500, "currency": "MZN", "perPerson": true  },
+      { "id": "canoa-mangais",       "icon": "water",           "title": "Canoa nos Mangais",                 "desc": "Passeio de canoa",             "price": 1000, "currency": "MZN", "perPerson": false, "priceUnit": "/canoa" },
+      { "id": "barco-portugueses",   "icon": "compass",         "title": "Ilha dos Portugueses de Barco",     "desc": "Passeio de barco",             "price": 3500, "currency": "MZN", "perPerson": true  },
+      { "id": "sunset-cruise",       "icon": "sunset",          "title": "Sunset Cruise — Machangulo",        "desc": "Cruzeiro ao pôr do sol",       "price": 2700, "currency": "MZN", "perPerson": true  },
+      { "id": "whale-watching",      "icon": "binoculars-fill", "title": "Observação de Baleias",             "desc": "Época: Junho – Novembro",     "price": 7500, "currency": "MZN", "perPerson": true  },
+      { "id": "pesca-small",         "icon": "tsunami",         "title": "Pesca — Small Boat",                "desc": "Barco pequeno",                "price": 42000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "pesca-grande",        "icon": "tsunami",         "title": "Pesca — Barco Grande",              "desc": "Embarcação maior",             "price": 64000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "passeio-comunidade",  "icon": "people-fill",     "title": "Passeio pela Comunidade",           "desc": "Tour guiado local",            "price": 3500, "currency": "MZN", "perPerson": true  }
     ],
     "locationCategory": "inhaca"
   },
@@ -584,8 +604,8 @@
       { "id": "barco-portugueses",   "icon": "compass",         "title": "Ilha dos Portugueses de Barco",     "desc": "Passeio de barco",             "price": 3500, "currency": "MZN", "perPerson": true  },
       { "id": "sunset-cruise",       "icon": "sunset",          "title": "Sunset Cruise — Machangulo",        "desc": "Cruzeiro ao pôr do sol",       "price": 2700, "currency": "MZN", "perPerson": true  },
       { "id": "whale-watching",      "icon": "binoculars-fill", "title": "Observação de Baleias",             "desc": "Época: Junho – Novembro",     "price": 7500, "currency": "MZN", "perPerson": true  },
-      { "id": "pesca-small",         "icon": "tsunami",         "title": "Pesca — Small Boat",                "desc": "Barco pequeno",                "price": 650,  "currency": "USD", "perPerson": false, "priceUnit": "/barco" },
-      { "id": "pesca-grande",        "icon": "tsunami",         "title": "Pesca — Barco Grande",              "desc": "Embarcação maior",             "price": 1000, "currency": "USD", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "pesca-small",         "icon": "tsunami",         "title": "Pesca — Small Boat",                "desc": "Barco pequeno",                "price": 42000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
+      { "id": "pesca-grande",        "icon": "tsunami",         "title": "Pesca — Barco Grande",              "desc": "Embarcação maior",             "price": 64000, "currency": "MZN", "perPerson": false, "priceUnit": "/barco" },
       { "id": "passeio-comunidade",  "icon": "people-fill",     "title": "Passeio pela Comunidade",           "desc": "Tour guiado local",            "price": 3500, "currency": "MZN", "perPerson": true  }
     ],
     "locationCategory": "inhaca"

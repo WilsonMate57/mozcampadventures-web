@@ -928,7 +928,17 @@
     "includes": ["Accommodation", "Return boat transfer", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
     "excludes": ["Meals (available on request: +9,300 MZN/adult for breakfast, lunch and dinner)", "Alcoholic beverages", "External activities"],
     "highlights": ["Home-cooked authentic Mozambican cuisine", "Panoramic views over the Indian Ocean", "Warm family atmosphere", "Ideal location on Inhaca Island", "Family-run for 2 generations"],
-    "importantInfo": ["Check-in: 13:00 | Check-out: 11:00", "Price per adult/night without meals: 14,900 MZN | With meals (B+L+D): 24,200 MZN.", "2 nights: Adults 24,400 MZN without meals / 32,400 MZN with meals.", "Children (4–9 yrs) 1 night: 9,500 MZN without meals / 14,500 MZN with meals.", "Children (4–9 yrs) 2 nights: 14,900 MZN without meals / 19,800 MZN with meals.", "Limited capacity — advance booking essential."]
+    "importantInfo": ["Check-in: 13:00 | Check-out: 11:00", "Price per adult/night without meals: 14,900 MZN | With meals (B+L+D): 24,200 MZN.", "2 nights: Adults 24,400 MZN without meals / 32,400 MZN with meals.", "Children (4–9 yrs) 1 night: 9,500 MZN without meals / 14,500 MZN with meals.", "Children (4–9 yrs) 2 nights: 14,900 MZN without meals / 19,800 MZN with meals.", "Limited capacity — advance booking essential."],
+    "extras": [
+      { "id": "passeio-farol",      "title": "Island Drive to Farol Beach",       "desc": "Car trip to Farol Beach"        },
+      { "id": "canoa-mangais",      "title": "Mangrove Canoe Tour",               "desc": "Canoe paddle through mangroves" },
+      { "id": "barco-portugueses",  "title": "Boat Trip to Portuguese Island",    "desc": "Boat excursion"                 },
+      { "id": "sunset-cruise",      "title": "Sunset Cruise — Machangulo",       "desc": "Sunset boat cruise"             },
+      { "id": "whale-watching",     "title": "Whale Watching",                    "desc": "Season: June – November"        },
+      { "id": "pesca-small",        "title": "Fishing — Small Boat",             "desc": "Small fishing boat"             },
+      { "id": "pesca-grande",       "title": "Fishing — Large Boat",             "desc": "Larger fishing vessel"          },
+      { "id": "passeio-vila",       "title": "Village / Community Tour",         "desc": "Guided local tour"              }
+    ]
   },
   "manico-camp": {
     "subtitle": "Beachside glamping on Inhaca Island",
@@ -976,7 +986,17 @@
     "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
     "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
     "highlights": ["Swimming pool on Inhaca Island", "Boat transfer from Maputo included", "Included Santa Maria Beach tour", "Wi-Fi and on-site restaurant", "Near the sea"],
-    "importantInfo": ["1 night: Adults 11,400 MZN | Children (3–12 yrs) 5,700 MZN.", "2 nights: Adults 16,400 MZN | Children (3–12 yrs) 8,200 MZN.", "Boat transfer included (departing from Maputo Marina).", "Advance booking required — limited availability.", "Free cancellation up to 48 hours before."]
+    "importantInfo": ["1 night: Adults 11,400 MZN | Children (3–12 yrs) 5,700 MZN.", "2 nights: Adults 16,400 MZN | Children (3–12 yrs) 8,200 MZN.", "Boat transfer included (departing from Maputo Marina).", "Advance booking required — limited availability.", "Free cancellation up to 48 hours before."],
+    "extras": [
+      { "id": "passeio-farol",      "title": "Island Drive to Farol Beach",       "desc": "Car trip to Farol Beach"        },
+      { "id": "canoa-mangais",      "title": "Mangrove Canoe Tour",               "desc": "Canoe paddle through mangroves" },
+      { "id": "barco-portugueses",  "title": "Boat Trip to Portuguese Island",    "desc": "Boat excursion"                 },
+      { "id": "sunset-cruise",      "title": "Sunset Cruise — Machangulo",       "desc": "Sunset boat cruise"             },
+      { "id": "whale-watching",     "title": "Whale Watching",                    "desc": "Season: June – November"        },
+      { "id": "pesca-small",        "title": "Fishing — Small Boat",             "desc": "Small fishing boat"             },
+      { "id": "pesca-grande",       "title": "Fishing — Large Boat",             "desc": "Larger fishing vessel"          },
+      { "id": "passeio-comunidade", "title": "Community Tour",                   "desc": "Guided local tour"              }
+    ]
   },
   "mad-marlin": {
     "subtitle": "Beachfront lodge on Inhaca Island with pool and self-service meals",
