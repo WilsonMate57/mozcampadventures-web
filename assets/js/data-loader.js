@@ -79,7 +79,17 @@
   function mergeEn(items, enMap) {
     return items.map(function (item) {
       var tr = enMap[item.id] || enMap[item.slug];
-      return tr ? Object.assign({}, item, tr) : item;
+      if (!tr) return item;
+      var merged = Object.assign({}, item, tr);
+      /* Deep-merge extras array: keep PT pricing, overlay EN title/desc per id */
+      if (item.extras && tr.extras) {
+        var enExtrasById = {};
+        tr.extras.forEach(function (e) { enExtrasById[e.id] = e; });
+        merged.extras = item.extras.map(function (e) {
+          return enExtrasById[e.id] ? Object.assign({}, e, enExtrasById[e.id]) : e;
+        });
+      }
+      return merged;
     });
   }
 
@@ -345,9 +355,9 @@
     /* Scroll reveal */
     if (typeof revealOnScroll === 'function') revealOnScroll();
 
-    /* Init extras section if package has extras (packages-extras.js) */
-    if (pkg.extras && pkg.extras.length && typeof window._mcaInitExtras === 'function') {
-      window._mcaInitExtras(pkg.extras);
+    /* Init extras section if package has extras or privateBoatOptions (packages-extras.js) */
+    if ((pkg.extras && pkg.extras.length || pkg.privateBoatOptions && pkg.privateBoatOptions.length) && typeof window._mcaInitExtras === 'function') {
+      window._mcaInitExtras(pkg.extras || [], pkg.privateBoatOptions || []);
     }
 
     /* Init private transfer section for beach-tour packages (packages-transfer.js) */
@@ -544,17 +554,31 @@
   };
 
   function updateBookingTotal() {
-    var adultTotal    = _adults * _priceAdult;
-    var childTotal    = _children * _priceChild;
+    var boatOverride  = window._mcaBoatOverride || false;
+    var boatTotal     = window._mcaBoatTotal    || 0;
+    var adultTotal    = boatOverride ? 0 : _adults * _priceAdult;
+    var childTotal    = boatOverride ? 0 : _children * _priceChild;
     var extrasTotal   = window._mcaExtrasTotal   || 0;
     var transferTotal = window._mcaTransferTotal || 0;
-    var total         = adultTotal + childTotal + extrasTotal + transferTotal;
+    var total         = (boatOverride ? boatTotal : adultTotal + childTotal) + extrasTotal + transferTotal;
 
+    /* Boat row */
+    var boatRow   = document.getElementById('bps-boat-row');
+    var boatLabel = document.getElementById('bps-boat-label');
+    var boatTotEl = document.getElementById('bps-boat-total');
+    if (boatRow)   boatRow.style.display   = boatOverride ? '' : 'none';
+    if (boatLabel) boatLabel.textContent   = window._mcaBoatLabel || 'Barco Privado';
+    if (boatTotEl) boatTotEl.textContent   = fmt(boatTotal);
+
+    /* Adults / children rows: hide when boat override active */
+    var elAdRow = document.getElementById('bps-adult-row');
+    var elCRRow = document.getElementById('bps-child-row');
+    if (elAdRow) elAdRow.style.display = boatOverride ? 'none' : '';
     var elAd = document.getElementById('bps-adults');      if (elAd) elAd.textContent = _adults;
     var elAT = document.getElementById('bps-adult-total'); if (elAT) elAT.textContent = fmt(adultTotal);
     var elCh = document.getElementById('bps-children');    if (elCh) elCh.textContent = _children;
     var elCT = document.getElementById('bps-child-total'); if (elCT) elCT.textContent = fmt(childTotal);
-    var elCR = document.getElementById('bps-child-row');   if (elCR) elCR.style.display = _children > 0 ? '' : 'none';
+    var elCR = elCRRow; if (elCR) elCR.style.display = boatOverride ? 'none' : (_children > 0 ? '' : 'none');
 
     /* Extras row */
     var extRow   = document.getElementById('bps-extras-row');

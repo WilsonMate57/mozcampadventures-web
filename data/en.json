@@ -19,6 +19,7 @@
       "Marina boarding fees",
       "Island entry fees",
       "Snorkelling fee and equipment",
+      "Kayak",
       "Tour guide"
     ],
     "excludes": [
@@ -83,6 +84,38 @@
       "Cancellations must be made 48 hours in advance — no refund outside this window.",
       "Punctuality is required — late arrivals may disrupt the tour schedule.",
       "Tour subject to favourable weather conditions."
+    ],
+    "privateBoatOptions": [
+      {
+        "id": "boat-5pax",
+        "title": "Private Boat — up to 5 guests",
+        "desc": "Exclusive boat for your group. Departs and returns on your schedule.",
+        "price": 30000
+      },
+      {
+        "id": "boat-12pax",
+        "title": "Private Boat — up to 12 guests",
+        "desc": "Large exclusive boat, ideal for families and groups. Includes all amenities.",
+        "price": 58000
+      }
+    ],
+    "extras": [
+      {
+        "id": "beach-massage",
+        "icon": "heart-pulse-fill",
+        "title": "Beach Massage",
+        "desc": "30 minutes, on the beach",
+        "price": 2500,
+        "perPerson": true
+      },
+      {
+        "id": "hotel-marina-transfer",
+        "icon": "car-front-fill",
+        "title": "Hotel – Marina Transfer",
+        "desc": "Return included",
+        "price": 1000,
+        "perPerson": false
+      }
     ]
   },
   "portuguese-island-bbq": {
@@ -103,7 +136,7 @@
       "Professional guide / crew",
       "Beach barbecue lunch",
       "Snacks and soft drinks",
-      "Snorkelling equipment",
+      "Kayak",
       "Beach setup (shade / picnic area)",
       "All island access fees"
     ],
@@ -115,7 +148,7 @@
     "highlights": [
       "Full day on Portuguese Island — calm water and white sand",
       "Beach BBQ with fresh fish, prawns, beef and grilled vegetables",
-      "Beach volleyball, kayaking and snorkelling included",
+      "Beach volleyball and kayaking included",
       "Beach setup with shade and picnic area",
       "Perfect for groups, families and private tours",
       "All-inclusive — no surprises"
@@ -136,8 +169,8 @@
       {
         "time": "09:30 – 12:30",
         "title": "Free Time on the Island",
-        "body": "A full morning to enjoy the island at your own pace: beach volleyball, kayaking, snorkelling, walks on the sandbank or pure relaxation.",
-        "checklist": ["Snorkelling equipment included"]
+        "body": "A full morning to enjoy the island at your own pace: beach volleyball, kayaking, walks on the sandbank or pure relaxation.",
+        "checklist": []
       },
       {
         "time": "13:00",
@@ -914,7 +947,17 @@
     "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
     "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
     "highlights": ["Beachfront restaurant", "Swimming pool on Inhaca Island", "Included Santa Maria Beach tour", "Snorkelling on coral reefs", "Adventure experience at an accessible price"],
-    "importantInfo": ["Shared outdoor bathroom.", "Return boat transfer Maputo–Inhaca included.", "1 night: Adults 9,500 MZN | Children (4–9 yrs) 7,200 MZN.", "2 nights: Adults 13,500 MZN | Children (4–9 yrs) 6,900 MZN/night.", "Daily departures."]
+    "importantInfo": ["Shared outdoor bathroom.", "Return boat transfer Maputo–Inhaca included.", "1 night: Adults 9,500 MZN | Children (4–9 yrs) 7,200 MZN.", "2 nights: Adults 13,500 MZN | Children (4–9 yrs) 6,900 MZN/night.", "Daily departures."],
+    "extras": [
+      { "id": "passeio-farol",       "title": "Island Drive to Farol Beach",          "desc": "Car trip to Farol Beach"        },
+      { "id": "canoa-mangais",       "title": "Mangrove Canoe Tour",                  "desc": "Canoe paddle through mangroves" },
+      { "id": "barco-portugueses",   "title": "Boat Trip to Portuguese Island",       "desc": "Boat excursion"                 },
+      { "id": "sunset-cruise",       "title": "Sunset Cruise — Machangulo",          "desc": "Sunset boat cruise"             },
+      { "id": "whale-watching",      "title": "Whale Watching",                       "desc": "Season: June – November"        },
+      { "id": "pesca-small",         "title": "Fishing — Small Boat",                "desc": "Small fishing boat"             },
+      { "id": "pesca-grande",        "title": "Fishing — Large Boat",                "desc": "Larger fishing vessel"          },
+      { "id": "passeio-comunidade",  "title": "Community Tour",                      "desc": "Guided local tour"              }
+    ]
   },
   "villa-martins": {
     "subtitle": "All-inclusive exclusive villa on Inhaca Island",
@@ -971,7 +1014,17 @@
     "includes": ["Accommodation", "Return boat transfer", "Breakfast", "Santa Maria Beach tour", "Snorkelling", "Marina fees"],
     "excludes": ["Lunch and dinner", "Alcoholic beverages", "Extra activities"],
     "highlights": ["Prime location on Inhaca Island", "Boat transfer from Maputo included", "Included Santa Maria Beach tour", "Near the restaurant and beach", "Authentic and genuine hospitality"],
-    "importantInfo": ["1 night: Adults 10,900 MZN | Children (7–9 yrs) 6,500 MZN.", "2 nights: Adults 14,500 MZN | Children (3–9 yrs) 8,800 MZN.", "Check-in: 14:00 | Check-out: 11:00", "Return boat transfer Maputo–Inhaca included.", "Daily departures. Free cancellation up to 48 hours before."]
+    "importantInfo": ["1 night: Adults 10,900 MZN | Children (7–9 yrs) 6,500 MZN.", "2 nights: Adults 14,500 MZN | Children (3–9 yrs) 8,800 MZN.", "Check-in: 14:00 | Check-out: 11:00", "Return boat transfer Maputo–Inhaca included.", "Daily departures. Free cancellation up to 48 hours before."],
+    "extras": [
+      { "id": "passeio-farol",       "title": "Island Drive to Farol Beach",          "desc": "Car trip to Farol Beach"        },
+      { "id": "canoa-mangais",       "title": "Mangrove Canoe Tour",                  "desc": "Canoe paddle through mangroves" },
+      { "id": "barco-portugueses",   "title": "Boat Trip to Portuguese Island",       "desc": "Boat excursion"                 },
+      { "id": "sunset-cruise",       "title": "Sunset Cruise — Machangulo",          "desc": "Sunset boat cruise"             },
+      { "id": "whale-watching",      "title": "Whale Watching",                       "desc": "Season: June – November"        },
+      { "id": "pesca-small",         "title": "Fishing — Small Boat",                "desc": "Small fishing boat"             },
+      { "id": "pesca-grande",        "title": "Fishing — Large Boat",                "desc": "Larger fishing vessel"          },
+      { "id": "passeio-comunidade",  "title": "Community Tour",                      "desc": "Guided local tour"              }
+    ]
   },
   "cabo-beach-villas": {
     "subtitle": "Beachfront Beach Escape — Santa Maria Region",

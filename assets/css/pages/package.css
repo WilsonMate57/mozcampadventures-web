@@ -1168,11 +1168,142 @@
   font-size: 1rem;
 }
 
+/* ── Group description ── */
+.cz-group-desc {
+  font-size: .8rem;
+  color: #888;
+  margin-top: -.4rem;
+  margin-bottom: .85rem;
+  line-height: 1.45;
+}
+
+/* ── Private boat cards (radio) ── */
+.cz-boat-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cz-boat-card {
+  border: 2px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 16px;
+  cursor: pointer;
+  user-select: none;
+  background: #fafafa;
+  transition: border-color .2s, background .2s, transform .18s, box-shadow .2s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.cz-boat-card:hover {
+  border-color: var(--teal);
+  background: #f0fafe;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0,196,180,.13);
+}
+
+.cz-boat-card.selected {
+  border-color: var(--teal);
+  background: #e6faf8;
+  box-shadow: 0 0 0 3px rgba(0,196,180,.18), 0 6px 20px rgba(0,196,180,.14);
+  transform: translateY(-2px);
+}
+
+.cz-boat-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cz-boat-card-icon {
+  font-size: 1.8rem;
+  color: var(--teal);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.cz-boat-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cz-boat-card-title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.25;
+}
+
+.cz-boat-card-desc {
+  font-size: .75rem;
+  color: #888;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.cz-boat-card-price {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.cz-boat-price-val {
+  display: block;
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--teal);
+  line-height: 1.1;
+}
+
+.cz-boat-price-note {
+  display: block;
+  font-size: .68rem;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+.cz-boat-selected-badge {
+  margin-top: 10px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.cz-boat-selected-badge i { font-size: .9rem; }
+
+.cz-boat-deselect {
+  margin-top: 8px;
+  background: none;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: .76rem;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  transition: border-color .18s, color .18s;
+}
+
+.cz-boat-deselect:hover {
+  border-color: #e55;
+  color: #e55;
+}
+
 /* ── Responsive ── */
 @media (max-width: 576px) {
   .cz-radio-row { gap: 8px; }
   .cz-type-card { padding: 12px 8px 10px; }
   .cz-cards-grid { grid-template-columns: 1fr; gap: 8px; }
+  .cz-boat-card-inner { flex-wrap: wrap; }
+  .cz-boat-card-price { width: 100%; text-align: left; margin-top: 4px; }
+  .cz-boat-price-val { display: inline; font-size: .88rem; }
+  .cz-boat-price-note { display: inline; margin-left: 4px; }
 }
 
 

@@ -189,9 +189,19 @@
             <div class="cz-cards-grid" id="cz-destination-cards"></div>
           </div>
 
-          <!-- B: Activities (checkbox) -->
-          <div class="cz-group">
-            <div class="cz-group-label"><i class="bx bx-pulse"></i> Activities</div>
+          <!-- Private Boat Options (radio, per-package) -->
+          <div class="cz-group" id="cz-boat-section" style="display:none;">
+            <div class="cz-group-label"><i class="bx bxs-ship"></i> Private Boat</div>
+            <p class="cz-group-desc">Upgrade to an exclusive boat — fixed price regardless of the number of guests</p>
+            <div class="cz-boat-cards" id="cz-boat-cards"></div>
+            <button class="cz-boat-deselect" id="cz-boat-deselect" type="button" style="display:none;">
+              <i class="bx bx-x"></i> Remove boat selection
+            </button>
+          </div>
+
+          <!-- B: Activities / Per-package extras (checkbox) -->
+          <div class="cz-group" id="cz-extras-section" style="display:none;">
+            <div class="cz-group-label"><i class="bx bx-pulse"></i> Extras</div>
             <div class="cz-cards-grid" id="cz-activity-cards"></div>
           </div>
 
@@ -269,7 +279,11 @@
                 </div>
               </div>
               <div class="booking-summary" id="book-price-summary">
-                <div class="booking-summary-row">
+                <div class="booking-summary-row" id="bps-boat-row" style="display:none;">
+                  <span id="bps-boat-label">Private Boat</span>
+                  <span id="bps-boat-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-adult-row">
                   <span>Adults (<span id="bps-adults">1</span>×)</span>
                   <span id="bps-adult-total"></span>
                 </div>

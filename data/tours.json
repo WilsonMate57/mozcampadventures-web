@@ -35,6 +35,7 @@
       "Taxas de embarque na Marina",
       "Taxas de entrada nas ilhas",
       "Taxa de mergulho e equipamento de snorkeling",
+      "Kayak",
       "Tour guide"
     ],
     "excludes": [
@@ -118,6 +119,40 @@
       "Cancelamento deve ser feito 48h antes — sem reembolso fora deste prazo.",
       "Pontualidade obrigatória — não toleramos atrasos para não perturbar o percurso.",
       "Tour sujeito a condições meteorológicas favoráveis."
+    ],
+    "privateBoatOptions": [
+      {
+        "id": "boat-5pax",
+        "title": "Barco Privado — até 5 pessoas",
+        "desc": "Embarcação exclusiva para o seu grupo. Todas as inclusões do pacote cobertas.",
+        "price": 30000,
+        "capacity": 5
+      },
+      {
+        "id": "boat-12pax",
+        "title": "Barco Privado — até 12 pessoas",
+        "desc": "Embarcação exclusiva para grupos maiores. Todas as inclusões do pacote cobertas.",
+        "price": 58000,
+        "capacity": 12
+      }
+    ],
+    "extras": [
+      {
+        "id": "beach-massage",
+        "icon": "heart-pulse-fill",
+        "title": "Massagem na Praia",
+        "desc": "30 minutos, na praia",
+        "price": 2500,
+        "perPerson": true
+      },
+      {
+        "id": "hotel-marina-transfer",
+        "icon": "car-front-fill",
+        "title": "Transfer Hotel – Marina",
+        "desc": "Ida e volta incluída",
+        "price": 1000,
+        "perPerson": false
+      }
     ]
   },
   {
@@ -153,7 +188,7 @@
       "Guia profissional / tripulação",
       "Barbecue na praia (almoço completo)",
       "Snacks e refrigerantes",
-      "Equipamento de snorkeling",
+      "Kayak",
       "Instalações de praia (sombra / área de piquenique)",
       "Todas as taxas de acesso à ilha"
     ],
@@ -165,7 +200,7 @@
     "highlights": [
       "Dia completo na Ilha dos Portugueses — águas calmas e areia branca",
       "Barbecue na praia com peixe, camarão, carne e vegetais grelhados",
-      "Voleibol de praia, kayak e snorkeling incluídos",
+      "Voleibol de praia e kayak incluídos",
       "Instalações de praia com sombra e área de piquenique",
       "Perfeito para grupos, famílias e tours privados",
       "Tudo incluído — sem surpresas"
@@ -191,10 +226,8 @@
       {
         "time": "09h30 – 12h30",
         "title": "Tempo Livre na Ilha",
-        "body": "Manhã inteira para desfrutar da ilha ao seu ritmo: voleibol de praia, kayak, snorkeling, caminhadas pelo banco de areia ou simplesmente relaxar.",
-        "checklist": [
-          "Equipamento de snorkeling incluído"
-        ]
+        "body": "Manhã inteira para desfrutar da ilha ao seu ritmo: voleibol de praia, kayak, caminhadas pelo banco de areia ou simplesmente relaxar.",
+        "checklist": []
       },
       {
         "time": "13h00",

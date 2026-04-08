@@ -95,9 +95,11 @@
   ];
 
   /* ── State ──────────────────────────────────────────────── */
-  var _checked   = {};
-  var _typeId    = 'shared';
-  var _pkgExtras = null; // set in per-package mode; null = use global data
+  var _checked        = {};
+  var _typeId         = 'shared';
+  var _pkgExtras      = null; // set in per-package mode; null = use global data
+  var _boatOptions    = [];   // privateBoatOptions for this package
+  var _selectedBoatId = null; // currently selected boat option id
 
   /* ── Helpers ─────────────────────────────────────────────── */
   function fmt(n) {
@@ -105,15 +107,78 @@
     return Number(n).toLocaleString('pt-MZ') + ' MT';
   }
 
-  function fmtDiff(n, perPerson) {
+  function fmtDiff(n, perPerson, currency, priceUnit) {
     if (n === 0) return '<span class="cz-price-free">Incluído</span>';
-    var suffix = perPerson ? '<span class="cz-price-pax">/pax</span>' : '';
-    return '<span class="cz-price-add">+' + Number(n).toLocaleString('pt-MZ') + ' MT</span>' + suffix;
+    var isUsd  = currency === 'USD';
+    var valStr = isUsd
+      ? '$ ' + Number(n).toLocaleString('en-US')
+      : Number(n).toLocaleString('pt-MZ') + ' MT';
+    var unit = priceUnit
+      ? '<span class="cz-price-pax">' + priceUnit + '</span>'
+      : (perPerson ? '<span class="cz-price-pax">/pax</span>' : '');
+    return '<span class="cz-price-add">+' + valStr + '</span>' + unit;
   }
 
   function getAdults() {
     var el = document.getElementById('book-adults-val');
     return el ? (parseInt(el.textContent, 10) || 1) : 1;
+  }
+
+  /* ── Render: private boat options (radio) ───────────────── */
+  function renderBoatCards() {
+    var container = document.getElementById('cz-boat-cards');
+    if (!container) return;
+
+    container.innerHTML = _boatOptions.map(function (opt) {
+      var sel = opt.id === _selectedBoatId;
+      return (
+        '<div class="cz-boat-card' + (sel ? ' selected' : '') + '" ' +
+            'data-boat-id="' + opt.id + '" role="radio" aria-checked="' + sel + '" tabindex="0">' +
+          '<div class="cz-boat-card-inner">' +
+            '<div class="cz-boat-card-icon"><i class="bx bxs-ship"></i></div>' +
+            '<div class="cz-boat-card-info">' +
+              '<div class="cz-boat-card-title">' + opt.title + '</div>' +
+              '<div class="cz-boat-card-desc">' + opt.desc + '</div>' +
+            '</div>' +
+            '<div class="cz-boat-card-price">' +
+              '<span class="cz-boat-price-val">' + Number(opt.price).toLocaleString('pt-MZ') + ' MT</span>' +
+              '<span class="cz-boat-price-note">tudo incluído</span>' +
+            '</div>' +
+          '</div>' +
+          (sel ? '<div class="cz-boat-selected-badge"><i class="bx bxs-check-circle"></i> Seleccionado</div>' : '') +
+        '</div>'
+      );
+    }).join('');
+
+    /* Deselect option */
+    var deselEl = document.getElementById('cz-boat-deselect');
+    if (deselEl) deselEl.style.display = _selectedBoatId ? '' : 'none';
+
+    container.querySelectorAll('.cz-boat-card').forEach(function (el) {
+      el.addEventListener('click', onBoatClick);
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onBoatClick.call(this); }
+      });
+    });
+  }
+
+  function onBoatClick() {
+    var id = this.dataset.boatId;
+    /* Toggle off if already selected */
+    if (_selectedBoatId === id) {
+      _selectedBoatId = null;
+      window._mcaBoatOverride = false;
+      window._mcaBoatTotal    = 0;
+      window._mcaBoatLabel    = '';
+    } else {
+      _selectedBoatId = id;
+      var opt = _boatOptions.find(function (o) { return o.id === id; });
+      window._mcaBoatOverride = true;
+      window._mcaBoatTotal    = opt ? opt.price : 0;
+      window._mcaBoatLabel    = opt ? opt.title : 'Barco Privado';
+    }
+    renderBoatCards();
+    onExtrasChange();
   }
 
   /* ── Render: experience type cards (radio) ──────────────── */
@@ -164,7 +229,7 @@
           '<div class="cz-card-body">' +
             '<div class="cz-card-title">' + opt.title + '</div>' +
             '<div class="cz-card-desc">' + opt.desc + '</div>' +
-            '<div class="cz-card-price">' + fmtDiff(opt.price, opt.perPerson) + '</div>' +
+            '<div class="cz-card-price">' + fmtDiff(opt.price, opt.perPerson, opt.currency, opt.priceUnit) + '</div>' +
           '</div>' +
         '</div>'
       );
@@ -199,12 +264,14 @@
       _pkgExtras.forEach(function (opt) {
         if (!_checked[opt.id]) return;
         var amount = opt.perPerson ? opt.price * adults : opt.price;
+        var isUsd  = opt.currency === 'USD';
         if (amount > 0) {
-          total += amount;
-          lines.push(
-            opt.title + ': +' + Number(amount).toLocaleString('pt-MZ') + ' MT' +
-            (opt.perPerson ? ' (' + adults + '×)' : '')
-          );
+          if (!isUsd) total += amount;
+          var amtStr = isUsd
+            ? '$ ' + Number(amount).toLocaleString('en-US')
+            : '+' + Number(amount).toLocaleString('pt-MZ') + ' MT';
+          var unit = opt.priceUnit || (opt.perPerson ? ' (' + adults + '×)' : '');
+          lines.push(opt.title + ': ' + amtStr + unit);
         } else {
           lines.push(opt.title + ': Incluído');
         }
@@ -286,28 +353,55 @@
   }
 
   /* ── Init ────────────────────────────────────────────────── */
-  function init(pkgExtras) {
+  function init(pkgExtras, boatOptions) {
     var section = document.getElementById('pkg-customize-section');
     if (!section) return;
 
-    _pkgExtras = pkgExtras;
+    _pkgExtras   = pkgExtras   || [];
+    _boatOptions = boatOptions || [];
+
     section.style.display = '';
 
-    /* Per-package mode: show only the Activities group */
+    /* Per-package mode: hide global sections */
     ['cz-type-cards', 'cz-destination-cards', 'cz-service-cards'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el && el.parentElement) el.parentElement.style.display = 'none';
     });
 
-    renderOptionCards('cz-activity-cards', _pkgExtras);
+    /* Show/hide boat section */
+    var boatSection = document.getElementById('cz-boat-section');
+    if (boatSection) boatSection.style.display = _boatOptions.length ? '' : 'none';
+    if (_boatOptions.length) {
+      renderBoatCards();
+      var deselBtn = document.getElementById('cz-boat-deselect');
+      if (deselBtn) {
+        deselBtn.addEventListener('click', function () {
+          _selectedBoatId = null;
+          window._mcaBoatOverride = false;
+          window._mcaBoatTotal    = 0;
+          window._mcaBoatLabel    = '';
+          renderBoatCards();
+          onExtrasChange();
+        });
+      }
+    }
+
+    /* Show/hide extras section */
+    var extrasSection = document.getElementById('cz-extras-section');
+    if (extrasSection) extrasSection.style.display = _pkgExtras.length ? '' : 'none';
+    if (_pkgExtras.length) renderOptionCards('cz-activity-cards', _pkgExtras);
+
     watchAdultsStepper();
 
-    /* Initial state: no extras selected */
+    /* Initial state */
     window._mcaExtrasTotal   = 0;
     window._mcaExtrasSummary = '';
+    window._mcaBoatOverride  = false;
+    window._mcaBoatTotal     = 0;
+    window._mcaBoatLabel     = '';
   }
 
   /* Called directly by buildPackagePage in data-loader.js */
-  window._mcaInitExtras = function (extras) { init(extras); };
+  window._mcaInitExtras = function (extras, boatOptions) { init(extras, boatOptions); };
 
 })();
