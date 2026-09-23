@@ -1,0 +1,456 @@
+/* ============================================================
+   ALOJAMENTOS PAGE — alojamentos.css
+   ============================================================ */
+
+/* ── HERO CAROUSEL ────────────────────────────────────────── */
+.alo-hero-carousel {
+  position: relative;
+  overflow: hidden;
+  height: 60vh;
+  min-height: 380px;
+  background: #00504B;
+}
+
+.alo-hero-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.alo-hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+
+.alo-hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.alo-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alo-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 80, 75, 1)    0%,
+    rgba(0, 120, 115, .75) 50%,
+    rgba(0, 150, 140, 0)  100%
+  );
+}
+
+.alo-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  animation: heroFadeUp 0.8s ease forwards;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.alo-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orange);
+  color: #fff;
+  padding: 5px 18px;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.alo-hero-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: .5rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+
+.alo-hero-sub {
+  font-size: .95rem;
+  font-weight: 300;
+  opacity: .9;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Controls */
+.alo-hero-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, .2);
+  border: 2px solid rgba(255, 255, 255, .5);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .2s;
+  backdrop-filter: blur(4px);
+}
+
+.alo-hero-btn:hover {
+  background: rgba(255, 255, 255, .38);
+  border-color: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.alo-hero-prev { left: 16px; }
+.alo-hero-next { right: 16px; }
+
+/* Dots */
+.alo-hero-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+
+.alo-hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .4);
+  border: none;
+  cursor: pointer;
+  transition: background .25s, transform .25s;
+  padding: 0;
+}
+
+.alo-hero-dot.active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
+/* ── PACKAGES SECTION ─────────────────────────────────────── */
+#alo-packages {
+  background: var(--teal);
+  padding: 80px 0;
+}
+
+#alo-packages .section-label { background: var(--orange); }
+#alo-packages h2  { color: #fff; font-size: 2rem; font-weight: 700; }
+#alo-packages .sub { color: rgba(255,255,255,.85); margin-bottom: 2.5rem; }
+
+/* Accommodation Card */
+.alo-acc-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,.15);
+  display: flex;
+  height: 100%;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.alo-acc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.2);
+}
+
+.alo-acc-img-wrap {
+  width: 220px;
+  min-width: 180px;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.alo-acc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.alo-acc-card:hover .alo-acc-img {
+  transform: scale(1.05);
+}
+
+.alo-acc-body {
+  padding: 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.alo-acc-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 3px;
+}
+
+.alo-acc-stars {
+  color: var(--orange);
+  font-size: .85rem;
+  margin-bottom: 7px;
+}
+
+.alo-acc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: .72rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.alo-acc-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.alo-acc-meta i { color: var(--teal); }
+
+.alo-acc-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  flex: 1;
+}
+
+.alo-acc-features li {
+  font-size: .75rem;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+
+.alo-acc-features li i {
+  color: var(--teal);
+  font-size: .7rem;
+  flex-shrink: 0;
+}
+
+.alo-acc-footer {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+}
+
+.alo-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.alo-cancel {
+  font-size: .67rem;
+  color: #888;
+  line-height: 1.4;
+}
+
+.alo-cancel strong { color: var(--dark); }
+
+.alo-price-per {
+  font-size: .66rem;
+  color: #888;
+  display: block;
+}
+
+.alo-price-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--orange);
+}
+
+.alo-price-old {
+  font-size: .72rem;
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+.btn-alo-ver {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  text-align: center;
+  background: var(--teal);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: .85rem;
+  transition: background .2s, transform .2s;
+}
+
+.btn-alo-ver:hover {
+  background: #e69400;
+  color: #fff;
+  transform: scale(1.02);
+}
+
+/* ── GALLERY SECTION ──────────────────────────────────────── */
+#alo-gallery {
+  padding: 80px 0;
+  background: #fff;
+}
+
+#alo-gallery h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 260px 200px;
+  gap: 10px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-item:first-child { grid-row: span 2; }
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.gallery-item:hover img { transform: scale(1.06); }
+
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+.gallery-item-overlay i  { font-size: 1.8rem; color: var(--orange); margin-bottom: 6px; }
+.gallery-item-overlay span { font-size: .82rem; font-weight: 600; letter-spacing: .5px; }
+
+.gallery-video .gallery-item-overlay { opacity: 1; background: rgba(0,0,0,.52); }
+.gallery-video .gallery-item-overlay i { font-size: 2rem; }
+
+/* ── LIGHTBOX ─────────────────────────────────────────────── */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, .92);
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox.open { display: flex; }
+#lightbox img {
+  max-width: 88vw;
+  max-height: 85vh;
+  border-radius: 8px;
+  box-shadow: 0 8px 48px rgba(0,0,0,.5);
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background .2s;
+}
+
+#lightbox-close:hover { background: rgba(255,255,255,.15); }
+
+#lightbox-prev,
+#lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.2);
+  border: 2px solid rgba(255,255,255,.4);
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+#lightbox-prev:hover,
+#lightbox-next:hover { background: rgba(255,255,255,.35); }
+
+#lightbox-prev { left: 20px; }
+#lightbox-next { right: 20px; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .alo-hero-carousel { height: 70vh; }
+
+  .alo-acc-card { flex-direction: column; }
+  .alo-acc-img-wrap { width: 100%; height: 200px; min-width: unset; }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .gallery-item:first-child { grid-row: span 1; }
+}
+
+@media (max-width: 480px) {
+  .alo-hero-btn { width: 38px; height: 38px; font-size: .9rem; }
+  .alo-hero-title { font-size: 1.6rem; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}

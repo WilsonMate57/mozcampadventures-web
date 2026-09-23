@@ -1,0 +1,68 @@
+<!-- MOZ CAMP ADVENTURES — cookie-banner.html
+     Injected via assets/js/components.js
+-->
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentimento de cookies" style="display:none">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <strong>Usamos cookies</strong>
+      <p>Utilizamos cookies para melhorar a sua experiência, analisar o tráfego e personalizar conteúdo. Pode gerir as suas preferências a qualquer momento.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-btn-secondary" id="cb-essentials">Apenas essenciais</button>
+      <button class="cookie-btn-outline" id="cb-customize">Personalizar</button>
+      <button class="cookie-btn-primary" id="cb-accept-all">Aceitar tudo</button>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE PREFERENCES MODAL -->
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="cookie-modal-content">
+      <div class="cookie-modal-header">
+        <h5 class="cookie-modal-title" id="cookieModalLabel">Preferências de Cookies</h5>
+        <button type="button" class="cookie-modal-close" data-bs-dismiss="modal" aria-label="Fechar">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <div class="cookie-modal-body">
+        <p class="cookie-modal-intro">Escolha quais cookies pretende aceitar. Os cookies essenciais são sempre necessários para o funcionamento do site.</p>
+
+        <!-- Essenciais -->
+        <div class="cookie-category">
+          <div class="cookie-category-header">
+            <div class="cookie-category-info">
+              <span class="cookie-category-name">Cookies Essenciais</span>
+              <span class="cookie-category-desc">Necessários para o funcionamento básico do site. Não podem ser desativados.</span>
+            </div>
+            <div class="cookie-toggle-wrap">
+              <span class="cookie-toggle-locked"><i class="bx bx-lock-alt"></i> Sempre activo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="cookie-category">
+          <div class="cookie-category-header">
+            <div class="cookie-category-info">
+              <span class="cookie-category-name">Cookies de Análise</span>
+              <span class="cookie-category-desc">Ajudam-nos a perceber como os visitantes interagem com o site (Google Analytics, Microsoft Clarity).</span>
+            </div>
+            <div class="cookie-toggle-wrap">
+              <label class="cookie-toggle" aria-label="Activar cookies de análise">
+                <input type="checkbox" id="toggle-analytics">
+                <span class="cookie-toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cookie-modal-footer">
+        <button class="cookie-btn-secondary" id="cm-save">Guardar preferências</button>
+        <button class="cookie-btn-primary" id="cm-accept-all">Aceitar tudo</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Package | Moz Camp Adventures</title>
+  <meta name="description" id="page-desc" content="Descubra os nossos pacotes de viagem em Moçambique.">
+  <meta name="author" content="Moz Camp Adventures">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="../assets/images/logo/apple-touch-icon.png">
+  <link rel="alternate" hreflang="pt" href="https://mozcampadventures.com/pages/package.html">
+  <link rel="alternate" hreflang="en" href="https://mozcampadventures.com/en/pages/package.html">
+  <link rel="alternate" hreflang="x-default" href="https://mozcampadventures.com/pages/package.html">
+  <!-- Preconnect to external origins for faster DNS + TLS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/pages/package.css">
+  <!-- Cookie Consent (must load before GTM) -->
+  <script src="../assets/js/consent.js"></script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MQ73VSS3');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ73VSS3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="preloader"><div id="lottie-loader"></div></div>
+
+<!-- NAVBAR -->
+<div id="navbar-placeholder"></div>
+
+<!-- PACKAGE HERO -->
+<div class="pkg-hero" id="pkg-hero">
+  <img id="pkg-hero-img" src="" alt="" class="pkg-hero-bg">
+  <div class="pkg-hero-overlay"></div>
+  <div class="pkg-hero-content">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="pkg-breadcrumb">
+        <ol class="breadcrumb mb-2">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item" id="breadcrumb-cat">Tours</li>
+          <li class="breadcrumb-item active" id="breadcrumb-name">Package</li>
+        </ol>
+      </nav>
+      <div class="pkg-hero-badge" id="pkg-badge"></div>
+      <h1 class="pkg-hero-title" id="pkg-title">Package Name</h1>
+      <p class="pkg-hero-sub" id="pkg-subtitle"></p>
+      <div class="pkg-hero-meta" id="pkg-hero-meta"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<section class="pkg-body-section">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- LEFT COLUMN: Details + Itinerary -->
+      <div class="col-lg-7">
+
+        <div class="pkg-gallery-strip" id="pkg-gallery-strip"></div>
+
+        <div class="pkg-price-block reveal reveal-up" id="pkg-price-block"></div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-prices-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-tag"></i> Preços</h3>
+          <div id="pkg-prices-detail"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bxs-info-circle"></i> Sobre este Pacote</h3>
+          <div id="pkg-description"></div>
+        </div>
+
+        <!-- CUSTOMIZE EXPERIENCE -->
+        <div class="pkg-section pkg-customize-section reveal reveal-up" id="pkg-customize-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bx-slider"></i> Personalize a sua experiência</h3>
+          <p class="pkg-customize-subtitle">Adicione opções para tornar a sua viagem ainda mais especial</p>
+
+          <!-- D: Experience Type (radio) -->
+          <div class="cz-group">
+            <div class="cz-group-label"><i class="bx bxs-award"></i> Tipo de Experiência</div>
+            <div class="cz-radio-row" id="cz-type-cards"></div>
+          </div>
+
+          <!-- A: Additional Destinations (checkbox) -->
+          <div class="cz-group">
+            <div class="cz-group-label"><i class="bx bxs-map"></i> Destinos Adicionais</div>
+            <div class="cz-cards-grid" id="cz-destination-cards"></div>
+          </div>
+
+          <!-- Private Boat Options (radio, per-package) -->
+          <div class="cz-group" id="cz-boat-section" style="display:none;">
+            <div class="cz-group-label"><i class="bx bxs-ship"></i> Barco Privado</div>
+            <p class="cz-group-desc">Upgrade para barco exclusivo — preço fixo independente do número de pessoas</p>
+            <div class="cz-boat-cards" id="cz-boat-cards"></div>
+            <button class="cz-boat-deselect" id="cz-boat-deselect" type="button" style="display:none;">
+              <i class="bx bx-x"></i> Remover selecção de barco
+            </button>
+          </div>
+
+          <!-- B: Activities / Per-package extras (checkbox) -->
+          <div class="cz-group" id="cz-extras-section" style="display:none;">
+            <div class="cz-group-label"><i class="bx bx-pulse"></i> Extras</div>
+            <div class="cz-cards-grid" id="cz-activity-cards"></div>
+          </div>
+
+          <!-- C: Additional Services (checkbox) -->
+          <div class="cz-group">
+            <div class="cz-group-label"><i class="bx bxs-plus-circle"></i> Serviços Adicionais</div>
+            <div class="cz-cards-grid" id="cz-service-cards"></div>
+          </div>
+
+          <!-- Extras summary -->
+          <div class="cz-summary" id="cz-summary" style="display:none;">
+            <div class="cz-summary-label"><i class="bx bx-check-double"></i> Extras selecionados</div>
+            <div class="cz-summary-items" id="cz-summary-items"></div>
+            <div class="cz-summary-total-row">
+              <span>Total de extras</span>
+              <span class="cz-summary-total" id="cz-extras-total-display">0 MT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bx-list-check"></i> Incluído e Excluído</h3>
+          <div class="pkg-inc-exc-grid" id="pkg-inc-exc"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-menu-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-book-content"></i> Menu Seleccionado</h3>
+          <div id="pkg-menu"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bxs-badge-check"></i> Destaques</h3>
+          <ul class="pkg-highlights-list" id="pkg-highlights"></ul>
+        </div>
+
+        <div class="pkg-section reveal reveal-up">
+          <h3 class="pkg-section-title"><i class="bx bxs-map-alt"></i> Itinerário</h3>
+          <div class="pkg-itinerary" id="pkg-itinerary"></div>
+        </div>
+
+        <div class="pkg-section reveal reveal-up" id="pkg-important-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-error-circle"></i> Informações Importantes</h3>
+          <ul class="pkg-important-list" id="pkg-important"></ul>
+        </div>
+
+        <!-- PRIVATE TRANSFER OPTIONS (beach-tours only) -->
+        <div class="pkg-section pkg-transfer-section reveal reveal-up" id="pkg-transfer-section" style="display:none;">
+          <h3 class="pkg-section-title"><i class="bx bxs-car"></i> Opções de Transporte Privado</h3>
+          <p class="pkg-transfer-subtitle">Selecione uma opção de transporte privado para complementar a sua viagem. Pode clicar novamente para desmarcar.</p>
+          <div class="pkg-transfer-cards" id="pkg-transfer-cards"></div>
+        </div>
+
+        <!-- REVIEWS SECTION -->
+        <div class="pkg-section pkg-reviews-section reveal reveal-up">
+          <h3 class="pkg-section-title">
+            <i class="bx bxs-star"></i> Avaliações
+            <span class="pkg-reviews-badge">
+              <span id="pkg-reviews-avg">—</span>
+              <span class="pkg-reviews-sep">·</span>
+              <span id="pkg-reviews-count">0</span> avaliações
+            </span>
+          </h3>
+
+          <!-- Reviews list -->
+          <div id="pkg-reviews-list"></div>
+
+          <!-- Submit form -->
+          <div class="pkg-review-form-wrap">
+            <h5 class="pkg-review-form-title"><i class="bx bxs-edit me-2"></i>Deixe a Sua Avaliação</h5>
+
+            <!-- Success state -->
+            <div id="pkg-review-success" style="display:none;" class="pkg-review-success-msg">
+              <i class="bx bxs-check-circle"></i>
+              <div>
+                <strong>Obrigado pelo seu feedback!</strong>
+                <p>A sua avaliação será publicada após moderação.</p>
+              </div>
+            </div>
+
+            <form id="pkg-review-form" novalidate>
+              <div class="pkg-review-row">
+                <div>
+                  <label class="review-form-label">Nome *</label>
+                  <input type="text" id="pkg-r-name" class="review-form-control" placeholder="O seu nome" required maxlength="100">
+                </div>
+                <div>
+                  <label class="review-form-label">Origem <span style="opacity:.5;">(opcional)</span></label>
+                  <input type="text" id="pkg-r-role" class="review-form-control" placeholder="Ex: Lisboa, Portugal">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="review-form-label">Avaliação *</label>
+                <div class="star-picker" id="pkg-star-picker">
+                  <i class="bx bx-star" data-v="1"></i>
+                  <i class="bx bx-star" data-v="2"></i>
+                  <i class="bx bx-star" data-v="3"></i>
+                  <i class="bx bx-star" data-v="4"></i>
+                  <i class="bx bx-star" data-v="5"></i>
+                </div>
+                <input type="hidden" id="pkg-r-rating" value="0">
+              </div>
+              <div class="mb-3">
+                <label class="review-form-label">A sua experiência *</label>
+                <textarea id="pkg-r-text" class="review-form-control" rows="4" placeholder="Conte-nos sobre a sua experiência com este pacote..." required maxlength="1000"></textarea>
+              </div>
+              <div id="pkg-review-error" class="review-form-error" style="display:none;"></div>
+              <button type="submit" id="pkg-r-submit" class="btn-cta-feedback">
+                <i class="bx bxs-send me-2"></i>Enviar Avaliação
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div><!-- /left col -->
+
+
+      <!-- RIGHT COLUMN: Booking Sidebar -->
+      <div class="col-lg-5">
+        <div class="pkg-sidebar-wrap">
+
+          <!-- Booking Card -->
+          <div class="booking-card reveal reveal-right">
+            <h5 class="mb-1">Reservar o Seu Tour</h5>
+            <p class="booking-subtitle">Reserve cedo para garantir o seu lugar — conforto e tranquilidade assegurados!</p>
+
+            <!-- Tabs -->
+            <div class="book-tabs">
+              <button class="book-tab active" id="tab-btn-wa" onclick="switchBookTab('wa')" type="button">
+                <i class="bx bxl-whatsapp"></i> Reserva Online
+              </button>
+              <button class="book-tab" id="tab-btn-email" onclick="switchBookTab('email')" type="button">
+                <i class="bx bxs-envelope"></i> Contacto
+              </button>
+            </div>
+
+            <!-- WhatsApp Pane -->
+            <div class="book-pane" id="pane-wa">
+              <div class="booking-field">
+                <label>Nome Completo <span class="req">*</span></label>
+                <input type="text" id="wa-name" placeholder="Introduza o seu nome completo" required>
+              </div>
+              <div class="booking-field">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" id="wa-email" placeholder="Introduza o seu email">
+              </div>
+              <div class="booking-field">
+                <label>Telefone <span class="req">*</span></label>
+                <input type="tel" id="wa-phone" placeholder="Ex: +258 84 000 0000" required>
+              </div>
+              <div class="booking-field">
+                <label>Data Pretendida <span class="req">*</span></label>
+                <input type="date" id="book-date" required>
+              </div>
+              <div class="booking-field">
+                <label><span id="book-adults-label">Adultos</span> <span class="req">*</span></label>
+                <div class="booking-stepper">
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('adults',-1)" aria-label="Menos"><i class="bx bx-minus"></i></button>
+                  <span class="booking-stepper-val" id="book-adults-val">1</span>
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('adults',1)" aria-label="Mais"><i class="bx bx-plus"></i></button>
+                </div>
+              </div>
+              <div class="booking-field" id="book-child-row" style="display:none;">
+                <label>Crianças <small id="book-child-label" class="text-muted"></small></label>
+                <div class="booking-stepper">
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('children',-1)" aria-label="Menos"><i class="bx bx-minus"></i></button>
+                  <span class="booking-stepper-val" id="book-children-val">0</span>
+                  <button type="button" class="booking-stepper-btn" onclick="bookAdjust('children',1)" aria-label="Mais"><i class="bx bx-plus"></i></button>
+                </div>
+              </div>
+              <div class="booking-summary" id="book-price-summary">
+                <div class="booking-summary-row" id="bps-boat-row" style="display:none;">
+                  <span id="bps-boat-label">Barco Privado</span>
+                  <span id="bps-boat-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-adult-row">
+                  <span>Adultos (<span id="bps-adults">1</span>×)</span>
+                  <span id="bps-adult-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-child-row" style="display:none;">
+                  <span>Crianças (<span id="bps-children">0</span>×)</span>
+                  <span id="bps-child-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-extras-row" style="display:none;">
+                  <span>Extras</span>
+                  <span id="bps-extras-total"></span>
+                </div>
+                <div class="booking-summary-row" id="bps-transfer-row" style="display:none;">
+                  <span id="bps-transfer-label">Transporte Privado</span>
+                  <span id="bps-transfer-total"></span>
+                </div>
+                <div class="booking-summary-row booking-summary-total">
+                  <span>Total estimado</span>
+                  <span id="bps-total"></span>
+                </div>
+              </div>
+              <a id="book-wa-btn" href="https://wa.me/258844406543" target="_blank" rel="noopener" class="btn-wa-book">
+                <i class="bx bxs-calendar-check"></i> Reservar Agora
+              </a>
+              <p class="book-note"><i class="bx bxs-shield"></i> Confirmação em minutos via WhatsApp.</p>
+            </div>
+
+            <!-- Email Pane -->
+            <div class="book-pane" id="pane-email" style="display:none;">
+              <div class="booking-field">
+                <label>Nome Completo <span class="req">*</span></label>
+                <input type="text" id="em-name" placeholder="Introduza o seu nome completo" required>
+              </div>
+              <div class="booking-field">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" id="em-email" placeholder="Introduza o seu email" required>
+              </div>
+              <div class="booking-field">
+                <label>Telefone <span class="req">*</span></label>
+                <input type="tel" id="em-phone" placeholder="Ex: +258 84 000 0000" required>
+              </div>
+              <div class="booking-field">
+                <label>Data Pretendida <span class="req">*</span></label>
+                <input type="date" id="em-date" required>
+              </div>
+              <div class="booking-field">
+                <label>Número de Pessoas <span class="req">*</span></label>
+                <input type="number" id="em-people" min="1" max="50" placeholder="Ex: 2">
+              </div>
+              <div class="booking-field">
+                <label>Mensagem <span class="req">*</span></label>
+                <textarea id="em-message" rows="3" placeholder="Diga-nos algo sobre a sua viagem..."></textarea>
+              </div>
+              <button type="button" class="btn-email-book" id="btn-email-submit">
+                <i class="bx bxs-send"></i> Enviar Pedido
+              </button>
+              <div class="book-email-success" id="email-success" style="display:none;">
+                <i class="bx bxs-check-circle"></i>
+                <strong>Pedido enviado!</strong>
+                <p>Entraremos em contacto em breve.</p>
+              </div>
+              <p class="book-note"><i class="bx bxs-time"></i> Resposta em até 24 horas por email.</p>
+            </div>
+
+          </div>
+
+
+          <!-- Agent Contact Card -->
+          <div class="contact-agent-card reveal reveal-right">
+            <div class="agent-img-wrap">
+              <img src="../assets/images/packages/sunset_cruise_2.webp" alt="Agente de Viagens">
+            </div>
+            <div class="agent-contact-bar">
+              <div class="agent-icon"><i class="bx bxs-phone"></i></div>
+              <div>
+                <div class="agent-inquiry">Para Mais Informações</div>
+                <a href="tel:+258844406543" class="agent-phone">+258 84 440 6543</a>
+              </div>
+            </div>
+            <div class="agent-whatsapp">
+              <a href="https://wa.me/258844406543" target="_blank" rel="noopener" class="whatsapp-btn w-100 justify-content-center">
+                <i class="bx bxl-whatsapp"></i> Chat no WhatsApp
+              </a>
+            </div>
+          </div>
+
+
+          <!-- Related Packages -->
+          <div class="pkg-related reveal reveal-right">
+            <h6 class="pkg-related-title">Outros Pacotes</h6>
+            <div id="pkg-related-list"></div>
+          </div>
+
+        </div>
+      </div><!-- /right col -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- NOT FOUND -->
+<div id="pkg-not-found" style="display:none; padding:120px 0; text-align:center;">
+  <div class="container">
+    <i class="bx bxs-error" style="font-size:3rem;color:var(--orange);"></i>
+    <h2 style="margin-top:1rem;">Pacote não encontrado</h2>
+    <p class="text-muted">O pacote que procura não existe ou foi removido.</p>
+    <a href="tours.html" class="btn-teal mt-3 d-inline-block">Ver todos os tours</a>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+
+<!-- MOBILE STICKY BOOKING BAR -->
+<div class="mob-booking-bar" id="mob-booking-bar">
+  <div class="mob-book-info">
+    <span class="mob-book-from">A partir de</span>
+    <span class="mob-book-price" id="mob-book-price">—</span>
+  </div>
+  <a id="mob-book-btn" href="https://wa.me/258844406543" target="_blank" rel="noopener" class="mob-book-cta">
+    <i class="bx bxl-whatsapp"></i> Reservar
+  </a>
+</div>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Galeria" onclick="closeLightbox()">
+  <button class="lightbox-close" id="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">&times;</button>
+  <button class="lightbox-prev" id="lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)" aria-label="Anterior">&#8249;</button>
+  <button class="lightbox-next" id="lightbox-next" onclick="event.stopPropagation();lightboxNav(1)" aria-label="Seguinte">&#8250;</button>
+  <img id="lightbox-img" src="" alt="Imagem ampliada" onclick="event.stopPropagation()">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/search.js"></script>
+<script src="../assets/js/components.js"></script>
+<script src="../assets/js/data-loader.js"></script>
+<script src="../assets/js/packages-extras.js"></script>
+<script src="../assets/js/packages-transfer.js"></script>
+<script src="../assets/js/main.js"></script>
+<script type="module" src="../assets/js/reviews-package.js"></script>
+<script>
+(function () {
+  var packageId = new URLSearchParams(window.location.search).get('id') || '';
+
+  mcaReady(function () {
+    var pkg = getPackageBySlug(packageId);
+
+    if (!pkg) {
+      document.getElementById('pkg-hero').style.display          = 'none';
+      document.querySelector('.pkg-body-section').style.display  = 'none';
+      document.getElementById('mob-booking-bar').style.display   = 'none';
+      document.getElementById('pkg-not-found').style.display     = 'block';
+      return;
+    }
+
+    buildPackagePage(pkg);
+
+    // Show mobile bar when scrolled past hero
+    var bar = document.getElementById('mob-booking-bar');
+    window.addEventListener('scroll', function () {
+      var heroH = document.getElementById('pkg-hero').offsetHeight;
+      bar.classList.toggle('visible', window.scrollY > heroH);
+    }, { passive: true });
+  });
+})();
+
+function switchBookTab(tab) {
+  document.getElementById('tab-btn-wa').classList.toggle('active', tab === 'wa');
+  document.getElementById('tab-btn-email').classList.toggle('active', tab === 'email');
+  document.getElementById('pane-wa').style.display    = tab === 'wa'    ? 'block' : 'none';
+  document.getElementById('pane-email').style.display = tab === 'email' ? 'block' : 'none';
+}
+
+/* ── WhatsApp pane — required field validation + analytics ── */
+(function () {
+  document.getElementById('book-wa-btn').addEventListener('click', function (e) {
+    var name  = document.getElementById('wa-name');
+    var phone = document.getElementById('wa-phone');
+    var date  = document.getElementById('book-date');
+    var valid = true;
+    [name, phone, date].forEach(function (el) {
+      var ok = el && el.value.trim() !== '';
+      if (el) el.classList.toggle('field-error', !ok);
+      if (!ok) valid = false;
+    });
+    if (!valid) { e.preventDefault(); return; }
+    if (typeof window.mcaTrack === 'function') {
+      window.mcaTrack('submit_booking_wa', {
+        package_name:   (document.getElementById('pkg-title') || {}).textContent || '',
+        adults:         parseInt((document.getElementById('bps-adults') || {}).textContent, 10) || 1,
+        children:       parseInt((document.getElementById('bps-children') || {}).textContent, 10) || 0,
+        transfer_name:  window._mcaTransferLabel || '',
+        transfer_price: window._mcaTransferTotal || 0
+      });
+    }
+  });
+
+  /* open_booking_form — fired when user switches tabs */
+  ['tab-btn-wa', 'tab-btn-email'].forEach(function (id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      if (typeof window.mcaTrack === 'function') {
+        window.mcaTrack('open_booking_form', {
+          package_name: (document.getElementById('pkg-title') || {}).textContent || '',
+          form_type:    id === 'tab-btn-wa' ? 'whatsapp' : 'email'
+        });
+      }
+    });
+  });
+})();
+
+/* ── EmailJS — Booking Form ─────────────────────────── */
+(function () {
+  var EMAILJS_PUBLIC_KEY      = 'YOUR_PUBLIC_KEY';
+  var EMAILJS_SERVICE_ID      = 'YOUR_SERVICE_ID';
+  var EMAILJS_BOOKING_TEMPLATE = 'YOUR_BOOKING_TEMPLATE_ID';
+
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  document.getElementById('btn-email-submit').addEventListener('click', function () {
+    var fields = ['em-name', 'em-email', 'em-phone', 'em-date', 'em-people'];
+    var valid = fields.every(function (id) {
+      var el = document.getElementById(id);
+      var ok = el && el.value.trim() !== '';
+      if (el) el.classList.toggle('field-error', !ok);
+      return ok;
+    });
+    if (!valid) return;
+
+    var peopleEl = document.getElementById('em-people');
+    var boatCapacity = window._mcaBoatCapacity || 50;
+    if (parseInt(peopleEl.value, 10) > boatCapacity) {
+      peopleEl.classList.add('field-error');
+      alert('A embarcação selecionada permite no máximo ' + boatCapacity + ' pessoas.');
+      return;
+    }
+
+    var btn = document.getElementById('btn-email-submit');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bx bx-loader-alt bx-spin me-2"></i>A enviar...';
+
+    var packageName = (document.getElementById('pkg-title') || {}).textContent || 'N/A';
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_BOOKING_TEMPLATE, {
+      package_name : packageName,
+      package_url  : window.location.href,
+      from_name    : document.getElementById('em-name').value.trim(),
+      from_email   : document.getElementById('em-email').value.trim(),
+      phone        : document.getElementById('em-phone').value.trim(),
+      date         : document.getElementById('em-date').value,
+      people       : document.getElementById('em-people').value.trim(),
+      boat         : window._mcaBoatLabel || '',
+      estimated_total: window._mcaBoatTotal || '',
+      message      : (document.getElementById('em-message') || {}).value || ''
+    }).then(function () {
+      document.getElementById('pane-email').querySelectorAll('.booking-field, .btn-email-book, .book-note').forEach(function (el) {
+        el.style.display = 'none';
+      });
+      document.getElementById('email-success').style.display = 'block';
+      if (typeof window.mcaTrack === 'function') {
+        window.mcaTrack('submit_booking_email', {
+          package_name: packageName,
+          people:       document.getElementById('em-people').value.trim()
+        });
+      }
+    }, function (err) {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bx bxs-send me-2"></i>Enviar Pedido';
+      alert('Erro ao enviar. Por favor tente novamente ou contacte-nos via WhatsApp.');
+      console.error('[EmailJS] Booking send failed:', err);
+    });
+  });
+})();
+</script>
+</body>
+</html>
