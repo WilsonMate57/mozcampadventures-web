@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="same-origin">
+  <title>Painel | Moz Camp Adventures</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter/inter-latin-wght-normal.woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/vendor/boxicons/boxicons.css?v=654c65a5">
+  <link rel="stylesheet" href="/assets/css/tokens.css?v=1409600f">
+  <link rel="stylesheet" href="admin.css?v=88e579be">
+</head>
+<body>
+  <div class="app" data-app hidden>
+    <aside class="side" data-side>
+      <a class="side__brand" href="#/"><img src="/assets/images/logo/logo_moz_camp_adventures.webp" alt="" width="40" height="40"><span>Moz Camp<small>Painel</small></span></a>
+      <nav class="side__nav" data-nav aria-label="Painel"></nav>
+      <div class="side__user" data-user></div>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu"><i class="bx bx-menu"></i></button>
+        <h1 data-title>Painel</h1>
+        <a class="topbar__site" href="/" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> Ver site</a>
+      </header>
+      <main id="view" class="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <main class="auth" data-auth hidden></main>
+  <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+  <dialog class="dlg" data-dialog></dialog>
+
+  <script src="admin.js?v=cb476b37" defer></script>
+</body>
+</html>

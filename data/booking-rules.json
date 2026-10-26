@@ -1,0 +1,168 @@
+{
+  "_comment": "Regras de reserva por experiência (Fase 3). Complementa tours.json/accommodations.json sem os alterar. minPeople bloqueia o pedido abaixo do mínimo (decisão de 27/10/2026). pricing: per-person (omissão para tours) | per-group (preço fixo por grupo/barco) | per-person-night (omissão para alojamentos) | per-unit-night. Valores marcados _source vêm do texto 'importantInfo' ou 'priceLabel' do catálogo. nightRates: tarifas TOTAIS por pessoa publicadas em importantInfo (\"1 noite\"/\"2 noites\": [adulto, criança]); acima da última tarifa publicada, cada noite adicional soma a tarifa de 1 noite (decisão de 28/10/2026). _defaultTransfers: transfers privados por omissão dos beach tours (antes em packages-transfer.js); preço por reserva, como hoje.",
+  "_defaultTransfers": [
+    {
+      "id": "day-trip-transfer",
+      "price": 25000,
+      "pt": {
+        "title": "Transfer Privado Day Trip",
+        "subtitle": "Ida e volta no mesmo dia"
+      },
+      "en": {
+        "title": "Private Transfer — Day Trip",
+        "subtitle": "Same-day round trip"
+      }
+    },
+    {
+      "id": "one-night-transfer",
+      "price": 30000,
+      "pt": {
+        "title": "Transfer Privado — 1 Noite",
+        "subtitle": "Regresso no dia seguinte"
+      },
+      "en": {
+        "title": "Private Transfer — 1 Night",
+        "subtitle": "Return the following day"
+      }
+    }
+  ],
+  "portuguese-island-bbq": {
+    "minPeople": 5,
+    "_source": "Mínimo de 5 pessoas para confirmação da saída."
+  },
+  "portuguese-island-farol": {
+    "minPeople": 5,
+    "_source": "Mínimo de 5 participantes (tour privado)."
+  },
+  "santa-maria-snorkeling": {
+    "minPeople": 5,
+    "_source": "Mínimo de 5 participantes."
+  },
+  "xefina-island-cruise": {
+    "minPeople": 8,
+    "_source": "Mínimo de 8 participantes para confirmação."
+  },
+  "sunset-dinner-dj": {
+    "maxPeople": 20,
+    "_source": "Máximo 20 participantes por saída."
+  },
+  "ponta-douro-day-trip": {
+    "minPeople": 3,
+    "_source": "O mínimo de pessoas por reserva é de 3 participantes."
+  },
+  "macaneta-day-trip": {
+    "minPeople": 3,
+    "_source": "O mínimo de pessoas por reserva é de 3 participantes."
+  },
+  "bilene-day-trip": {
+    "minPeople": 4,
+    "_source": "O mínimo de pessoas por reserva é de 4 participantes."
+  },
+  "maputo-city-tour": {
+    "minPeople": 2,
+    "_source": "Mínimo de 2 pessoas por reserva."
+  },
+  "private-boat-rental": {
+    "pricing": "per-group",
+    "maxPeople": 8,
+    "_source": "priceLabel: por barco (até 8 pax)"
+  },
+  "deep-sea-fishing": {
+    "pricing": "per-group",
+    "_source": "priceLabel: por barco (selecção de barco obrigatória)"
+  },
+  "villa-martins": {
+    "minNights": 2,
+    "_source": "duration: Mínimo 2 noites",
+    "nightRates": {
+      "1": [
+        12800,
+        6400
+      ],
+      "2": [
+        16400,
+        8200
+      ]
+    },
+    "_note": "Tarifa de 1 noite publicada, mas duração indica mínimo 2 noites. A CONFIRMAR."
+  },
+  "cabo-beach-villas": {
+    "pricing": "per-unit-night",
+    "_source": "priceLabel: por noite (Villa 2 quartos — época baixa)",
+    "_note": "Tarifa de época baixa (Villa 2 quartos). Época alta (Dez, Jan, Abr) 30.699 MZN/noite e Villa 4 quartos não estão no simulador. A CONFIRMAR."
+  },
+  "machangulo-beach-lodge": {
+    "nightRates": {
+      "1": [
+        17900,
+        9900
+      ],
+      "2": [
+        31000,
+        17500
+      ]
+    }
+  },
+  "mamas-lodge": {
+    "nightRates": {
+      "1": [
+        14900,
+        9500
+      ],
+      "2": [
+        24400,
+        14900
+      ]
+    },
+    "_note": "Tarifas sem refeições (há tarifa com refeições: 24.200 / 32.400)."
+  },
+  "manico-camp": {
+    "nightRates": {
+      "1": [
+        10500,
+        8200
+      ],
+      "2": [
+        13500,
+        13800
+      ]
+    },
+    "_note": "Criança 2 noites publicado como 6.900 MZN/noite → 13.800 total. A CONFIRMAR."
+  },
+  "mad-marlin": {
+    "nightRates": {
+      "1": [
+        11500,
+        7500
+      ],
+      "2": [
+        14500,
+        8500
+      ]
+    }
+  },
+  "khanimambo-lodge": {
+    "nightRates": {
+      "1": [
+        11500,
+        7500
+      ],
+      "2": [
+        14500,
+        8800
+      ]
+    }
+  },
+  "bemugis-lodge": {
+    "nightRates": {
+      "1": [
+        13500,
+        7500
+      ],
+      "2": [
+        24000,
+        13500
+      ]
+    }
+  }
+}

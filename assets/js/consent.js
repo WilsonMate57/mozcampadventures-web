@@ -89,21 +89,31 @@
     }
 
     function openModal() {
+      var current = getSaved();
       if (toggleAnalytics) {
-        toggleAnalytics.checked = _saved ? _saved.analytics : false;
+        toggleAnalytics.checked = current ? current.analytics : false;
       }
-      if (typeof bootstrap !== 'undefined' && modalEl) {
-        var bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
-        bsModal.show();
+      if (!modalEl) return;
+      if (typeof modalEl.showModal === 'function') {
+        if (!modalEl.open) modalEl.showModal();
+      } else if (typeof bootstrap !== 'undefined') {
+        bootstrap.Modal.getOrCreateInstance(modalEl).show();
       }
     }
 
     function closeModal() {
-      if (typeof bootstrap !== 'undefined' && modalEl) {
+      if (!modalEl) return;
+      if (typeof modalEl.close === 'function') {
+        if (modalEl.open) modalEl.close();
+      } else if (typeof bootstrap !== 'undefined') {
         var bsModal = bootstrap.Modal.getInstance(modalEl);
         if (bsModal) bsModal.hide();
       }
     }
+
+    document.querySelectorAll('[data-cookie-close]').forEach(function (b) {
+      b.addEventListener('click', closeModal);
+    });
 
     function savePreferences() {
       var analytics = toggleAnalytics ? toggleAnalytics.checked : false;
@@ -126,7 +136,18 @@
     });
   }
 
-  /* ── Wait for banner to be injected ────────────────────── */
-  document.addEventListener('mcaCookieReady', initConsentUI);
+  /* ── Init: banner rendered in the HTML (build.mjs) or injected (legacy) ── */
+  var _inited = false;
+  function initOnce() {
+    if (_inited || !document.getElementById('cookie-banner')) return;
+    _inited = true;
+    initConsentUI();
+  }
+  document.addEventListener('mcaCookieReady', initOnce);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initOnce);
+  } else {
+    initOnce();
+  }
 
 })();

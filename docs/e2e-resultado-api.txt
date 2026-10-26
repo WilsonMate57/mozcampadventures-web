@@ -1,0 +1,46 @@
+PASS  A  Island Hopping, 1 adulto = 6.000
+PASS  B  2 adultos + 1 criança = 17.000
+PASS  C  barco 5 pax substitui o preço por pessoa = 30.000
+PASS  D  + massagem 2.500 × 2 adultos = 35.000
+PASS  E  capacidade do barco (5) limita participantes
+PASS  F  botão + desactivado na capacidade
+PASS  G  validação: data, nome e telefone em erro
+PASS  G2 nada é enviado com campos em falta
+PASS  H  Ponta D'Ouro começa no mínimo (3) = 24.000
+PASS  H2 abaixo do mínimo: pedido BLOQUEADO
+PASS  I  transfer próprio do JSON: 3 × 8.000 + 14.000 = 38.000
+PASS  I2 [API] no mínimo: pedido registado com referência e total do servidor
+PASS  I3 [API] botão WhatsApp leva a referência
+PASS  J  transfer por omissão: 3 × 8.700 + 25.000 = 51.100
+PASS  K  aluguer de barco é preço por barco (não × pessoas) = 8.000
+PASS  L  pacote desactivado: sem formulário + noindex
+PASS  M  Mama's Lodge 1 noite, 1 adulto = 14.900
+PASS  M2 2 noites usa a tarifa publicada (24.400, não 29.800)
+PASS  M3 + 1 criança 2 noites (14.900) = 39.300
+PASS  M4 3 noites = 2 noites + 1 noite adicional: (24.400 + 14.900) + criança (14.900 + 9.500) = 63.700
+PASS  M5 5 noites: adulto 24.400 + 3 × 14.900 = 69.100; criança 14.900 + 3 × 9.500 = 43.400 → 112.500
+PASS  N  Villa Martins: saída automática = entrada + 2 noites
+PASS  N2 2 noites, 1 adulto = 16.400
+PASS  N3 1 noite abaixo do mínimo: BLOQUEADO
+PASS  O  Cabo Beach Villas: por villa por noite, 2 noites = 45.398
+PASS  P  ?cat=safaris mostra 3 experiências
+PASS  Q  pesquisa sem acentos/maiúsculas ("baleias") encontra 1
+PASS  R  ordenar por preço: primeiro é o mais barato (1.000)
+PASS  R2 pacotes desactivados não aparecem no catálogo
+PASS  S  alojamentos ?loc=machangulo mostra 3
+PASS  T  home: um só <h1>, 6 destaques; avaliações só se houver aprovadas (10)
+PASS  T2 home: canonical e hreflang no domínio .co.mz
+PASS  T3 home: JSON-LD TravelAgency válido
+PASS  U  EN: lang=en, textos do formulário em inglês
+PASS  V  URL antigo package.html?id= redirecciona
+PASS  V2 URL antigo EN redirecciona
+PASS  W  mudar idioma mantém o filtro (?cat=) e aplica-o
+PASS  X  contacto vazio: 4 campos em erro
+PASS  X2 contacto válido: botão WhatsApp abre WhatsApp
+PASS  X3 [API] contacto enviado pelo site
+PASS  Y  banner de cookies visível na 1.ª visita
+PASS  Y2 aceitar: banner escondido e escolha guardada
+PASS  Z  sitemap: 64 URLs, sem pacotes desactivados nem .com
+PASS  Z2 sem erros de JavaScript nas páginas testadas
+
+44/44 testes passaram

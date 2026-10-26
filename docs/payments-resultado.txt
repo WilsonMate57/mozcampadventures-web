@@ -1,0 +1,46 @@
+PASS  A  30.000 + pagamento confirmado de 10.000 → «parcial», saldo 20.000
+PASS  A2 recibo RC-AAAA/NNNN emitido automaticamente
+PASS  A3 PDF do recibo disponível e íntegro
+PASS  B  + 20.000 confirmados → «pago», saldo 0
+PASS  B2 recebido no resumo aumenta exactamente 30.000
+PASS  B3 pagamento acima do saldo é recusado (factura já paga)
+PASS  B4 a tentativa recusada não deixa registo pendente órfão
+PASS  C0 link do cliente mostra a factura, o saldo e os métodos (sem dados pessoais)
+PASS  C  comprovativo do cliente → «declarado»
+PASS  C2 com comprovativo pendente a factura NÃO passa a «pago»
+PASS  C3 ficheiro com extensão .pdf mas conteúdo de texto → 415
+PASS  C4 ficheiro acima de 5 MB → 413
+PASS  C5 equipa vê o comprovativo no painel
+PASS  C6 gerente sem permissão de confirmar → 403
+PASS  C7 após verificação e confirmação → «pago» e recibo
+PASS  D  mesma transacção (método + referência, sem distinguir maiúsculas) → 409
+PASS  D2 duplo envio simultâneo da mesma transacção → só um registo
+PASS  D3 pagamentos registados sem confirmação não contam
+PASS  D4 duas confirmações simultâneas de 20.000 numa factura de 30.000 → só uma passa
+PASS  D5 dois registos+confirmação simultâneos que excedem o saldo → um passa, o outro recusado, nada pendente
+PASS  E  reversão autorizada → estado recalculado («parcial», saldo 20.000)
+PASS  E2 histórico preservado: pagamento «revertido», recibo «anulado», motivo e autor
+PASS  E3 reversão sem motivo → 422
+PASS  E4 valor de pagamento não pode ser alterado (BD)
+PASS  E5 pagamentos não podem ser apagados (BD)
+PASS  E6 pagamento revertido não volta a confirmado (BD)
+PASS  E7 recibo não pode ser alterado nem apagado (BD)
+PASS  E8 reembolso acima do valor pago → 422
+PASS  E9 reembolso total → «reembolsado», pago 0
+PASS  E10 gerente sem permissão de reembolso → 403
+PASS  F  factura de outro cliente sem sessão → 401
+PASS  F2 link de comprovativo inválido/de outra factura → 404
+PASS  F3 cada link só dá acesso à sua própria factura
+PASS  F4 gerar novo link invalida o anterior
+PASS  F5 comprovativo de outro cliente: só com sessão
+PASS  G1 factura com pagamentos não pode ser anulada
+PASS  G2 pagamentos só em facturas FT (não em pró-forma)
+PASS  G3 método de pagamento não aceite → 422
+PASS  G4 data de pagamento no futuro → 422
+PASS  G5 recusar pagamento exige motivo; depois fica fechado
+PASS  G6 reserva mostra situação financeira separada do estado operacional
+PASS  G7 filtro de facturas por estado de pagamento
+PASS  G8 auditoria regista registo, confirmação, reversão, reembolso e recusa
+PASS  G9 eventos de pagamento são só de acréscimo
+
+44/44 testes passaram

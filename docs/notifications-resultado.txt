@@ -1,0 +1,30 @@
+PASS  N1 pedido EN: e-mail de recepção em inglês com link da área do cliente
+PASS  N2 confirmar → resultado real devolvido e e-mail EN «Booking confirmed»
+PASS  N3 reserva PT → «Reserva confirmada», com nome e link /reserva/
+PASS  N4 «Notificar» desmarcado → nada enviado
+PASS  N5 tipo desligado nas Definições → «disabled»
+PASS  N6 concluída → convite para avaliar com link da experiência
+PASS  N7 cliente sem e-mail → «no_email» (o painel avisa para usar WhatsApp)
+PASS  N8 pagamento parcial → e-mail com recibo em anexo e saldo em dívida
+PASS  N9 liquidação → «A factura está totalmente paga»
+PASS  N10 envio da factura: anexo por caminho (reenviável) e link da área do cliente
+PASS  N11 reversão → e-mail «Pagamento anulado» com motivo
+PASS  N12 reembolso → e-mail «Reembolso efectuado»
+PASS  N13 recusar pagamento registado no painel → cliente não é avisado («skipped»)
+PASS  N14 factura anulada → e-mail ao cliente com o motivo
+PASS  N15 falha de envio é reportada como «failed» (não como enviado) e a reserva fica confirmada
+PASS  N16 registo de e-mails mostra a falha com o erro
+PASS  N17 reenvio de endereço inválido continua «failed» (honesto) e fica ligado ao original
+PASS  N18 reenvio com anexo/corpo guardado funciona
+PASS  N19 resumo conta e-mails falhados por reenviar
+PASS  C1 área do cliente: reserva, facturas, saldos e recibos (sem e-mail/telefone)
+PASS  C2 token errado → 404
+PASS  C3 token de outra reserva → 404
+PASS  C4 cliente descarrega a SUA factura (PDF)
+PASS  C5 factura de OUTRA reserva com o meu link → 404
+PASS  C6 cliente descarrega o recibo
+PASS  C7 link de comprovativo só para facturas com saldo (paga → 404)
+PASS  C8 revogar invalida o link antigo; o novo funciona
+PASS  C9 downloads do cliente ficam na auditoria
+
+28/28 testes passaram

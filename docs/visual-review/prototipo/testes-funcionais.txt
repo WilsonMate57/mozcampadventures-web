@@ -1,0 +1,15 @@
+PASS A 1 adulto = 6.000
+PASS B 2 adultos + 1 criança = 17.000
+PASS C barco 5 pax substitui preço por pessoa = 30.000
+PASS D + massagem 2.500×2 adultos = 35.000
+PASS E capacidade barco 5 limita adultos+crianças
+PASS F botão + desactivado na capacidade
+PASS G validação: data/nome/telefone em erro
+PASS H aviso de mínimo (Ponta D'Ouro, 3 pax)
+PASS I transfer próprio do JSON (Ponta D Ouro 14.000) → 22.000
+PASS I2 transfer por omissão (Macaneta 8.700 + 25.000) → 33.700
+PASS J pacote desactivado não é reservável
+PASS K mosaico Island Tours (contagem/mínimo do JSON)
+PASS L 6 cartões em destaque
+
+13 passaram, 0 falharam

@@ -1,0 +1,9 @@
+# MOZ CAMP ADVENTURES — /api (Apache/Plesk). Só index.php é executável; o resto é privado.
+Options -Indexes
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(src|migrations|bin)(/|$) - [F,L]
+  RewriteRule ^config\.example\.php$ - [F,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ index.php [L,QSA]
+</IfModule>

@@ -1,0 +1,53 @@
+PASS  A1 sem sessão → 401
+PASS  A2 palavra-passe fraca → 422
+PASS  A3 definir palavra-passe pelo link
+PASS  A4 link de configuração não é reutilizável
+PASS  A5 palavra-passe errada → 401
+PASS  A6 login → sessão, perfil e permissões
+PASS  A7 cookie da sessão: HttpOnly e SameSite=Strict
+PASS  A8 escrita sem token CSRF → 403
+PASS  A9 escrita com Origin de outro site → 403
+PASS  A10 força bruta: 6.ª tentativa falhada → 429
+PASS  B1 gerente vê reservas
+PASS  B2 gerente NÃO gere utilizadores
+PASS  B3 gerente NÃO vê definições
+PASS  B4 perfil Administrador não é editável
+PASS  B5 permissões desconhecidas são ignoradas
+PASS  C1 pedido manual (WhatsApp) → referência e total do servidor
+PASS  C2 pesquisa por referência
+PASS  C3 pesquisa por nome do cliente
+PASS  C4 transição inválida (pedido → concluída) → 422
+PASS  C5 confirmar pedido
+PASS  C6 cancelar exige motivo
+PASS  C7 nota interna fica no histórico
+PASS  D1 rascunho criado a partir da reserva (linhas e total)
+PASS  D2 edição do rascunho: valores recalculados no servidor (ignora amount do cliente)
+PASS  D3 total negativo → 422
+PASS  D4 NUIT do cliente inválido → 422
+PASS  D5 emitir → número FT-AAAA/NNNN, data, PDF com hash
+PASS  D6 cópia dos dados da empresa e de pagamento no documento
+PASS  D7 PDF: tipo, assinatura %PDF e hash igual ao registado
+PASS  D8 PDF sem sessão → 401
+PASS  D9 factura emitida não se edita pela API → 409
+PASS  D10 nem pela base de dados: UPDATE do total recusado
+PASS  D11 nem DELETE de factura emitida
+PASS  D12 gerente sem permissão de anular → 403
+PASS  D13 administrador atribui «anular» ao Gerente → anulação sem motivo recusada
+PASS  D14 anulação com motivo: estado, autor e histórico
+PASS  D15 anular novamente → 409
+PASS  D16 factura anulada não muda nem pela BD
+PASS  D17 10 emissões simultâneas → números únicos e consecutivos (sem buracos)
+PASS  D18 emitir o mesmo rascunho duas vezes em simultâneo → uma emite, a outra 409
+PASS  D19 pró-forma tem série própria PF-AAAA/NNNN
+PASS  D20 envio ao cliente: estado real do e-mail registado
+PASS  D21 PDF alterado no disco é detectado (500 pdf_integrity_error)
+PASS  D22 reserva cancelada não pode ser facturada
+PASS  D23 pesquisa de facturas por referência da reserva
+PASS  E1 administrador actualiza instruções de pagamento (e-Mola)
+PASS  E2 NUIT da empresa inválido → 422
+PASS  E3 avaliação aprovada no painel aparece no site
+PASS  E4 auditoria regista login falhado, emissão, anulação, permissões e definições
+PASS  E5 auditoria é só de acréscimo
+PASS  E6 logout invalida a sessão
+
+51/51 testes passaram

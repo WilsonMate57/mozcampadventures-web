@@ -1,0 +1,1366 @@
+{
+ "/assets/images/about/about-1.webp": {
+  "w": 1066,
+  "h": 1600,
+  "v": [
+   480,
+   960,
+   1066
+  ]
+ },
+ "/assets/images/accommodation/bemugis/bemugis-1.webp": {
+  "w": 960,
+  "h": 874,
+  "v": [
+   480,
+   960
+  ]
+ },
+ "/assets/images/accommodation/bemugis/bemugis-2.webp": {
+  "w": 960,
+  "h": 1280,
+  "v": [
+   480,
+   960
+  ]
+ },
+ "/assets/images/accommodation/bemugis/bemugis-3.webp": {
+  "w": 960,
+  "h": 1280,
+  "v": [
+   480,
+   960
+  ]
+ },
+ "/assets/images/accommodation/bemugis/bemugis-4.webp": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/accommodation/cabo-beach/cabo-beach-1.webp": {
+  "w": 1080,
+  "h": 1080,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/cabo-beach/cabo-beach-2.webp": {
+  "w": 1280,
+  "h": 900,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/accommodation/cabo-beach/cabo-beach-3.webp": {
+  "w": 1600,
+  "h": 1068,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/cabo-beach/cabo-beach-4.webp": {
+  "w": 1600,
+  "h": 1068,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-1.webp": {
+  "w": 1280,
+  "h": 958,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-2.webp": {
+  "w": 1440,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "/assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-3.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/khanimabo-lodge/khanimabo-lodge-4.webp": {
+  "w": 3520,
+  "h": 1980,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_1.webp": {
+  "w": 1080,
+  "h": 727,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_2.webp": {
+  "w": 1350,
+  "h": 900,
+  "v": [
+   480,
+   960,
+   1350
+  ]
+ },
+ "/assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_3.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/machangulo-beach-lodge/machangulo_beach_lodge_4.webp": {
+  "w": 1080,
+  "h": 907,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/machangulo-beach-lodge/machangulo_getaway_3.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/mad-marlin/mad_marlin_1.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/mad-marlin/mad_marlin_2.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/mad-marlin/mad_marlin_3.webp": {
+  "w": 1020,
+  "h": 765,
+  "v": [
+   480,
+   960,
+   1020
+  ]
+ },
+ "/assets/images/accommodation/mad-marlin/mad_marlin_4.webp": {
+  "w": 4032,
+  "h": 3024,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/mamas-lodge/mamas_lodge_1.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/mamas-lodge/mamas_lodge_2.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/mamas-lodge/mamas_lodge_3.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/mamas-lodge/mamas_lodge_4.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/mamas-lodge/mamas_lodge_5.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/accommodation/manico-camp/manico_camp_1.webp": {
+  "w": 1000,
+  "h": 666,
+  "v": [
+   480,
+   960,
+   1000
+  ]
+ },
+ "/assets/images/accommodation/manico-camp/manico_camp_2.webp": {
+  "w": 1280,
+  "h": 720,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/accommodation/manico-camp/manico_camp_3.webp": {
+  "w": 1024,
+  "h": 768,
+  "v": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/assets/images/accommodation/manico-camp/manico_camp_4.webp": {
+  "w": 1192,
+  "h": 814,
+  "v": [
+   480,
+   960,
+   1192
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_1.webp": {
+  "w": 1920,
+  "h": 1280,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_2.webp": {
+  "w": 1920,
+  "h": 1280,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_3.webp": {
+  "w": 1920,
+  "h": 1280,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_4.jpg": {
+  "w": 1920,
+  "h": 1280,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_4.webp": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_5.webp": {
+  "w": 1920,
+  "h": 1280,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_7.webp": {
+  "w": 1920,
+  "h": 1280,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/accommodation/villa-martins/villa_martins_8.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/bg/marine-bg.webp": {
+  "w": 4320,
+  "h": 2560,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/hero/eswatini-kingdom-tour.webp": {
+  "w": 1600,
+  "h": 1200,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/hero/hero_slider_1.webp": {
+  "w": 1024,
+  "h": 684,
+  "v": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/assets/images/hero/island-hopping-maputo-bay.webp": {
+  "w": 1720,
+  "h": 1290,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/hero/safari-kruger.webp": {
+  "w": 1000,
+  "h": 667,
+  "v": [
+   480,
+   960,
+   1000
+  ]
+ },
+ "/assets/images/hero/snorkeling-santa-maria.webp": {
+  "w": 1024,
+  "h": 684,
+  "v": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/assets/images/hero/sunset-cruise-maputo-bay.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/beach-berbecue/beach-bbq-1.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/beach-berbecue/beach-bbq-2.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/beach-berbecue/beach-bbq-3.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/beach-berbecue/beach-bbq-4.webp": {
+  "w": 1150,
+  "h": 1280,
+  "v": [
+   480,
+   960,
+   1150
+  ]
+ },
+ "/assets/images/packages/beach-tours/bazaruto/bazaruto-1.webp": {
+  "w": 1900,
+  "h": 997,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/beach-tours/bazaruto/bazaruto-2.webp": {
+  "w": 500,
+  "h": 334,
+  "v": [
+   480,
+   500
+  ]
+ },
+ "/assets/images/packages/beach-tours/bazaruto/bazaruto-3.webp": {
+  "w": 1600,
+  "h": 1067,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/beach-tours/bazaruto/bazaruto-4.webp": {
+  "w": 612,
+  "h": 408,
+  "v": [
+   480,
+   612
+  ]
+ },
+ "/assets/images/packages/beach-tours/bilene/bilene-1.webp": {
+  "w": 992,
+  "h": 660,
+  "v": [
+   480,
+   960,
+   992
+  ]
+ },
+ "/assets/images/packages/beach-tours/bilene/bilene-2.webp": {
+  "w": 1000,
+  "h": 665,
+  "v": [
+   480,
+   960,
+   1000
+  ]
+ },
+ "/assets/images/packages/beach-tours/bilene/bilene-3.webp": {
+  "w": 992,
+  "h": 660,
+  "v": [
+   480,
+   960,
+   992
+  ]
+ },
+ "/assets/images/packages/beach-tours/bilene/bilene-4.webp": {
+  "w": 768,
+  "h": 528,
+  "v": [
+   480,
+   768
+  ]
+ },
+ "/assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-1.webp": {
+  "w": 854,
+  "h": 406,
+  "v": [
+   480,
+   854
+  ]
+ },
+ "/assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-2.webp": {
+  "w": 1200,
+  "h": 900,
+  "v": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-3.webp": {
+  "w": 1300,
+  "h": 800,
+  "v": [
+   480,
+   960,
+   1300
+  ]
+ },
+ "/assets/images/packages/beach-tours/macaneta/macaneta-beach-tour-4.webp": {
+  "w": 1600,
+  "h": 1070,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.jpg": {
+  "w": 1600,
+  "h": 1200,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.webp": {
+  "w": 1600,
+  "h": 1000,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.jpg": {
+  "w": 1000,
+  "h": 667,
+  "v": [
+   480,
+   960,
+   1000
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-2.webp": {
+  "w": 1200,
+  "h": 800,
+  "v": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.jpeg": {
+  "w": 1024,
+  "h": 768,
+  "v": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.webp": {
+  "w": 800,
+  "h": 488,
+  "v": [
+   480,
+   800
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.jpg": {
+  "w": 1024,
+  "h": 682,
+  "v": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.webp": {
+  "w": 1087,
+  "h": 723,
+  "v": [
+   480,
+   960,
+   1087
+  ]
+ },
+ "/assets/images/packages/beach-tours/tofo/tofo-1.webp": {
+  "w": 960,
+  "h": 538,
+  "v": [
+   480,
+   960
+  ]
+ },
+ "/assets/images/packages/beach-tours/tofo/tofo-2.webp": {
+  "w": 992,
+  "h": 662,
+  "v": [
+   480,
+   960,
+   992
+  ]
+ },
+ "/assets/images/packages/beach-tours/tofo/tofo-3.webp": {
+  "w": 1200,
+  "h": 673,
+  "v": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/assets/images/packages/beach-tours/tofo/tofo-4.webp": {
+  "w": 960,
+  "h": 538,
+  "v": [
+   480,
+   960
+  ]
+ },
+ "/assets/images/packages/beach_day_1.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/farol-inhaca/1.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/farol-inhaca/2.webp": {
+  "w": 1280,
+  "h": 722,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/farol-inhaca/3.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/farol-inhaca/4.webp": {
+  "w": 1280,
+  "h": 722,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/fishing/deep-sea-fishing-1.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/fishing/deep-sea-fishing-2.webp": {
+  "w": 1179,
+  "h": 749,
+  "v": [
+   480,
+   960,
+   1179
+  ]
+ },
+ "/assets/images/packages/fishing/deep-sea-fishing-3.webp": {
+  "w": 1024,
+  "h": 1024,
+  "v": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/assets/images/packages/fishing/deep-sea-fishing-4.webp": {
+  "w": 1280,
+  "h": 1279,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/inhaca-cultural/1.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/inhaca-cultural/2.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/inhaca-cultural/3.webp": {
+  "w": 1280,
+  "h": 722,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/inhaca-cultural/4.webp": {
+  "w": 1280,
+  "h": 722,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/island-hopping/1.webp": {
+  "w": 4032,
+  "h": 3024,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/island-hopping/4.webp": {
+  "w": 1440,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "/assets/images/packages/island-hopping/island-hopping-1.jpg": {
+  "w": 4353,
+  "h": 3507,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/island-hopping/island-hopping-2.jpg": {
+  "w": 4032,
+  "h": 3024,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/island-hopping/island-hopping-3.jpg": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/island-hopping/island-hopping-4.jpg": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/island-hopping/island-hopping-5.jpg": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/maputo-tour/maputo-tour-1.webp": {
+  "w": 1600,
+  "h": 1067,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/maputo-tour/maputo-tour-2.webp": {
+  "w": 1050,
+  "h": 749,
+  "v": [
+   480,
+   960,
+   1050
+  ]
+ },
+ "/assets/images/packages/maputo-tour/maputo-tour-3.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/maputo-tour/maputo-tour-4.webp": {
+  "w": 1280,
+  "h": 991,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/package_1.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/private-rental/private-rental-1.webp": {
+  "w": 1440,
+  "h": 1103,
+  "v": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "/assets/images/packages/private-rental/private-rental-2.webp": {
+  "w": 1080,
+  "h": 607,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/private-rental/private-rental-3.webp": {
+  "w": 1280,
+  "h": 720,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/private-rental/private-rental-4.webp": {
+  "w": 1080,
+  "h": 607,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-1.webp": {
+  "w": 1280,
+  "h": 934,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-2.webp": {
+  "w": 1280,
+  "h": 866,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-3.webp": {
+  "w": 1140,
+  "h": 755,
+  "v": [
+   480,
+   960,
+   1140
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-4.webp": {
+  "w": 1280,
+  "h": 864,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-5.webp": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-6.webp": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-7.webp": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/maputo-park/safari-maputo-park-8.webp": {
+  "w": 1280,
+  "h": 853,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/safari-eswatini-1.webp": {
+  "w": 1600,
+  "h": 1066,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/safari/safari-eswatini-2.webp": {
+  "w": 1600,
+  "h": 1066,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/safari/safari-eswatini-3.webp": {
+  "w": 1440,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "/assets/images/packages/safari/safari-eswatini-4.webp": {
+  "w": 1154,
+  "h": 1154,
+  "v": [
+   480,
+   960,
+   1154
+  ]
+ },
+ "/assets/images/packages/safari/safari-kruger-1.webp": {
+  "w": 1080,
+  "h": 719,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/safari/safari-kruger-2.webp": {
+  "w": 1080,
+  "h": 720,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/safari/safari-kruger-3.webp": {
+  "w": 1280,
+  "h": 960,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/safari-kruger-4.webp": {
+  "w": 1280,
+  "h": 720,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/safari/safari-maputo-park-3.webp": {
+  "w": 1140,
+  "h": 755,
+  "v": [
+   480,
+   960,
+   1140
+  ]
+ },
+ "/assets/images/packages/safari/safari-maputo-park-4.webp": {
+  "w": 1280,
+  "h": 864,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/snorkeling-bbq/1.webp": {
+  "w": 1600,
+  "h": 1200,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/snorkeling-bbq/2.webp": {
+  "w": 1600,
+  "h": 1200,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/snorkeling-bbq/3.webp": {
+  "w": 1600,
+  "h": 900,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/snorkeling-bbq/4.webp": {
+  "w": 1600,
+  "h": 1200,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/sunset-dinner/sunset-dinner-1.webp": {
+  "w": 4032,
+  "h": 3024,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/sunset-dinner/sunset-dinner-2.webp": {
+  "w": 3520,
+  "h": 1980,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/sunset-dinner/sunset-dinner-3.webp": {
+  "w": 1600,
+  "h": 1066,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/sunset-dinner/sunset-dinner-4.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/sunset-xefina/sunset-xefina-1.webp": {
+  "w": 1080,
+  "h": 607,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/sunset-xefina/sunset-xefina-2.webp": {
+  "w": 1280,
+  "h": 747,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/sunset-xefina/sunset-xefina-3.webp": {
+  "w": 1080,
+  "h": 607,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/sunset-xefina/sunset-xefina-4.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/sunset_cruise_1.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/sunset_cruise_2.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/sunset_cruise_3.webp": {
+  "w": 1280,
+  "h": 814,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/sunset_cruise_5.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/packages/transfers/boat-transfer-1.webp": {
+  "w": 1600,
+  "h": 1296,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/transfers/marina-airport-transfer-1.webp": {
+  "w": 800,
+  "h": 532,
+  "v": [
+   480,
+   800
+  ]
+ },
+ "/assets/images/packages/transfers/marina-airport-transfer-2.webp": {
+  "w": 1600,
+  "h": 1296,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/transfers/marina-hotel-transfer-1.webp": {
+  "w": 1080,
+  "h": 720,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/packages/transfers/marina-hotel-transfer-2.webp": {
+  "w": 800,
+  "h": 492,
+  "v": [
+   480,
+   800
+  ]
+ },
+ "/assets/images/packages/transfers/marina-hotel-transfer-3.webp": {
+  "w": 1600,
+  "h": 1296,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/whale-watching/observacao_baleias_1.webp": {
+  "w": 1023,
+  "h": 769,
+  "v": [
+   480,
+   960,
+   1023
+  ]
+ },
+ "/assets/images/packages/whale-watching/observacao_baleias_2.webp": {
+  "w": 1200,
+  "h": 786,
+  "v": [
+   480,
+   960,
+   1200
+  ]
+ },
+ "/assets/images/packages/whale-watching/observacao_baleias_3.webp": {
+  "w": 800,
+  "h": 534,
+  "v": [
+   480,
+   800
+  ]
+ },
+ "/assets/images/packages/whale-watching/observacao_baleias_4.webp": {
+  "w": 1600,
+  "h": 1071,
+  "v": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "/assets/images/packages/WhatsApp Image 2025-11-13 at 22.54.33 (1).webp": {
+  "w": 1024,
+  "h": 683,
+  "v": [
+   480,
+   960,
+   1024
+  ]
+ },
+ "/assets/images/promo/sunset-cruise/sunset_cruise_1.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/promo/sunset-cruise/sunset_cruise_2.webp": {
+  "w": 1280,
+  "h": 854,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/promo/sunset-cruise/sunset_cruise_3.webp": {
+  "w": 1280,
+  "h": 814,
+  "v": [
+   480,
+   960,
+   1280
+  ]
+ },
+ "/assets/images/promo/sunset-cruise/sunset_cruise_4.webp": {
+  "w": 1080,
+  "h": 810,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ },
+ "/assets/images/thumbnails/video_thumb.webp": {
+  "w": 1080,
+  "h": 1306,
+  "v": [
+   480,
+   960,
+   1080
+  ]
+ }
+}

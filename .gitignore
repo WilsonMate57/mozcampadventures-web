@@ -3,3 +3,6 @@ node_modules/
 
 # Archives / backups
 *.zip
+
+# Pacote de publicação (scripts/package.mjs)
+dist/

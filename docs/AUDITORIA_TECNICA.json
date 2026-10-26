@@ -1,0 +1,53 @@
+{
+ "failures": {
+  "seo": [],
+  "links": [],
+  "a11y": [],
+  "perf": []
+ },
+ "a11y": {
+  "/": [],
+  "/pages/tours.html": [],
+  "/tours/island-hopping-experience/": [],
+  "/alojamentos/mamas-lodge/": [],
+  "/pages/accommodations.html": [],
+  "/pages/contact.html": [],
+  "/pages/privacidade.html": [],
+  "/en/": [],
+  "/en/tours/ponta-douro-day-trip/": [],
+  "/404.html": [],
+  "/pagamento/": [],
+  "/reserva/": [],
+  "/admin/": []
+ },
+ "perf": {
+  "/": {
+   "lcp": 2064,
+   "cls": 0,
+   "fcp": 1632,
+   "kb": 649,
+   "requests": 24
+  },
+  "/tours/island-hopping-experience/": {
+   "lcp": 1816,
+   "cls": 0,
+   "fcp": 1800,
+   "kb": 494,
+   "requests": 16
+  },
+  "/pages/tours.html": {
+   "lcp": 1592,
+   "cls": 0,
+   "fcp": 1492,
+   "kb": 675,
+   "requests": 17
+  },
+  "/pages/contact.html": {
+   "lcp": 1816,
+   "cls": 0,
+   "fcp": 1580,
+   "kb": 350,
+   "requests": 14
+  }
+ }
+}

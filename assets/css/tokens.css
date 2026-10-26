@@ -1,0 +1,139 @@
+/* ============================================================
+   MOZ CAMP ADVENTURES — tokens.css
+   Design tokens (Fase 2). Fonte única de cores, tipografia,
+   espaçamentos, raios, sombras e movimento.
+   Paleta de marca: #00c6c1 #3c9bb6 #ffbe06 #ff9a08 #353535 #7f7f7f
+   ============================================================ */
+
+/* Inter (variável, 100–900), alojada no site — SIL OFL 1.1 (assets/fonts/inter/LICENSE.txt) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(/assets/fonts/inter/inter-latin-wght-normal.woff2) format('woff2-variations'), url(/assets/fonts/inter/inter-latin-wght-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(/assets/fonts/inter/inter-latin-ext-wght-normal.woff2) format('woff2-variations'), url(/assets/fonts/inter/inter-latin-ext-wght-normal.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  /* ── Marca (valores de referência, não alterar) ─────────── */
+  --brand-teal:    #00c6c1;
+  --brand-blue:    #3c9bb6;
+  --brand-yellow:  #ffbe06;
+  --brand-orange:  #ff9a08;
+  --brand-dark:    #353535;
+  --brand-grey:    #7f7f7f;
+
+  /* ── Escalas derivadas (contraste AA garantido onde indicado) ── */
+  --teal-50:   #e8fbfa;
+  --teal-100:  #c5f3f1;
+  --teal-300:  #5edbd7;
+  --teal-500:  var(--brand-teal);  /* identidade, fundos, ícones — não usar como cor de texto sobre branco */
+  --teal-700:  #00807d;            /* texto/links sobre branco (4.8:1) e fundo para texto branco */
+  --teal-800:  #006764;
+  --sea-900:   #0b2e33;            /* secções escuras (oceano profundo) */
+  --sea-950:   #071f23;
+
+  --blue-500:  var(--brand-blue);
+  --blue-700:  #2b7287;
+
+  --sun-400:   var(--brand-yellow);
+  --sun-500:   var(--brand-orange);  /* acção principal (texto --ink por cima: 7.5:1) */
+  --sun-600:   #e88400;
+  --sun-50:    #fff6e6;
+
+  /* ── Neutros ─────────────────────────────────────────────── */
+  --ink:        #1d2324;           /* títulos */
+  --text:       var(--brand-dark); /* corpo (12:1 sobre branco) */
+  --text-soft:  #5f6466;           /* secundário (6:1) */
+  --text-mute:  var(--brand-grey); /* só ≥ 18px ou decorativo (4:1) */
+  --line:       #e4e8e8;
+  --line-strong:#cfd6d6;
+  --surface:    #ffffff;
+  --surface-2:  #f6f8f7;
+  --sand:       #faf6ef;           /* fundo editorial quente */
+
+  /* ── Estados ─────────────────────────────────────────────── */
+  --success:    #1f8a4c;
+  --success-bg: #e8f6ee;
+  --warning:    #9a5b00;
+  --warning-bg: #fff4dc;
+  --danger:     #c62828;
+  --danger-bg:  #fdecec;
+  --info:       var(--blue-700);
+  --info-bg:    #e9f4f8;
+  --whatsapp:   #25d366;
+  --whatsapp-ink:#0b5c2c;
+
+  /* ── Tipografia ──────────────────────────────────────────── */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-md:   1.125rem;
+  --fs-lg:   clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl:   clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+  --fs-2xl:  clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  --fs-3xl:  clamp(2.5rem, 1.6rem + 3.8vw, 4.75rem);
+  --lh-tight: 1.08;
+  --lh-snug:  1.25;
+  --lh-body:  1.6;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+  --tracking-tight: -0.025em;
+  --tracking-caps:  0.12em;
+
+  /* ── Espaçamento (escala de 4) ───────────────────────────── */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+  --section-y: clamp(56px, 4rem + 4vw, 120px);
+  --gutter: 16px;
+
+  /* ── Larguras ────────────────────────────────────────────── */
+  --w-prose:   68ch;
+  --w-content: 1200px;
+  --w-wide:    1360px;
+
+  /* ── Raios ───────────────────────────────────────────────── */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ── Sombras (discretas) ─────────────────────────────────── */
+  --shadow-1: 0 1px 2px rgba(11, 46, 51, .06), 0 1px 1px rgba(11, 46, 51, .04);
+  --shadow-2: 0 6px 18px -6px rgba(11, 46, 51, .14);
+  --shadow-3: 0 18px 40px -16px rgba(11, 46, 51, .28);
+  --ring:     0 0 0 3px rgba(0, 198, 193, .45);
+
+  /* ── Movimento ───────────────────────────────────────────── */
+  --ease:     cubic-bezier(.2, .7, .2, 1);
+  --dur-fast: 150ms;
+  --dur:      250ms;
+  --dur-slow: 450ms;
+
+  /* ── Camadas ─────────────────────────────────────────────── */
+  --z-header: 100;
+  --z-sticky: 90;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur: 0ms; --dur-slow: 0ms; }
+}

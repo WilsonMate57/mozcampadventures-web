@@ -1,0 +1,49 @@
+PASS  A1 /api/health responde e liga à BD
+PASS  B1 pedido válido → 201 + referência MCA-AAAA-NNNNN
+PASS  B2 preço recalculado no servidor (cliente enviou total=1): 3 × 8.000 + 14.000
+PASS  B3 estado inicial é «pedido» (não confirmado)
+PASS  B4 repetir com a mesma chave devolve a mesma referência (sem duplicado)
+PASS  B5 só existe 1 registo para essa chave
+PASS  B6 20 pedidos em simultâneo → 20 referências únicas e consecutivas
+PASS  B7 abaixo do mínimo (2 < 3) → 422 min_people
+PASS  B8 pacote desactivado → 422 item_unavailable
+PASS  B9 item inexistente → 422 invalid_item
+PASS  B10 data no passado → 422
+PASS  B11 data inválida → 422
+PASS  B12 opção inexistente (barco num tour sem barcos) → 422
+PASS  B13 barco de 5 com 6 pessoas → 422 capacity
+PASS  B14 barco privado substitui preço por pessoa = 30.000
+PASS  B15 aluguer de barco: preço por barco (3 pessoas) = 8.000
+PASS  B16 Mama's Lodge 3 noites, 1 adulto = 24.400 + 14.900 = 39.300
+PASS  B17 Villa Martins 1 noite → 422 min_nights (2)
+PASS  B18 Cabo Beach Villas por villa/noite, 2 noites = 45.398
+PASS  B19 extras por pessoa: Island Hopping 2 adultos + massagem = 12.000 + 5.000
+PASS  B20 telefone inválido → 422 invalid_phone
+PASS  B21 sem chave de idempotência → 422
+PASS  B22 versão EN: linhas em inglês
+PASS  S1 sem cabeçalho Origin → 403
+PASS  S2 Origin de outro site → 403
+PASS  S3 Content-Type de formulário (CSRF clássico) → 415
+PASS  S4 campo-armadilha preenchido (bot) → 400
+PASS  S5 JSON inválido → 400
+PASS  S6 rota inexistente → 404 JSON
+PASS  S7 injecção SQL no nome é guardada como texto
+PASS  S8 tabela bookings intacta depois da tentativa
+PASS  C1 mensagem válida → 201
+PASS  C2 e-mail inválido → 422
+PASS  R1 nova avaliação → 201, fica pendente
+PASS  R2 pendente não aparece publicamente
+PASS  R3 classificação fora de 1–5 → 422
+PASS  R4 depois de aprovada aparece, com média
+PASS  D1 cada reserva tem evento «created» no histórico
+ERROR:  Tabela booking_events é só de acréscimo: UPDATE não permitido
+CONTEXT:  PL/pgSQL function mca_append_only() line 3 at RAISE
+PASS  D2 histórico é só de acréscimo (UPDATE recusado)
+ERROR:  Tabela email_log é só de acréscimo: DELETE não permitido
+CONTEXT:  PL/pgSQL function mca_append_only() line 3 at RAISE
+PASS  D3 registo de e-mails é só de acréscimo (DELETE recusado)
+PASS  D4 e-mails do pedido B1 registados (equipa + cliente)
+PASS  D5 IP nunca guardado em claro
+PASS  L1 excesso de mensagens do mesmo IP → 429
+
+43/43 testes passaram

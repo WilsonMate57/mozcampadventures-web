@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /prototipo/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /pagamento/
+Disallow: /reserva/
+Disallow: /en/booking/
+Disallow: /docs/
+Disallow: /scripts/
+
+Sitemap: https://mozcampadventures.co.mz/sitemap.xml

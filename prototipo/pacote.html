@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Protótipo — Pacote | Moz Camp Adventures</title>
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="proto.css">
+</head>
+<body class="pkg-page" data-page="package">
+<a class="skip-link" href="#main">Saltar para o conteúdo</a>
+
+<header class="site-header">
+  <div class="site-header__bar">
+    <a class="brand" href="index.html" aria-label="Moz Camp Adventures — início">
+      <img src="../assets/images/logo/logo_moz_camp_adventures.webp" alt="" width="48" height="48">
+      <span>Moz Camp<small>Adventures</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Principal">
+      <ul>
+        <li class="has-mega">
+          <button type="button" aria-expanded="false" aria-controls="mega-exp">Experiências <i class="bx bx-chevron-down"></i></button>
+          <div class="mega" id="mega-exp" data-mega></div>
+        </li>
+        <li><a href="../pages/accommodations.html">Alojamentos</a></li>
+        <li><a href="index.html#destinos">Destinos</a></li>
+        <li><a href="index.html#como-reservar">Como reservar</a></li>
+        <li><a href="../pages/contact.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" aria-label="Idioma"><a href="#" aria-current="true">PT</a><a href="#" data-en-link>EN</a></div>
+      <a class="icon-btn" href="https://wa.me/258844406543" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><i class="bx bxl-whatsapp"></i></a>
+      <a class="btn-x btn-x--primary header-cta" href="#reservar">Pedir reserva</a>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false" data-menu-open><i class="bx bx-menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" data-open="false">
+  <div class="mobile-menu__top">
+    <a class="brand" href="index.html"><img src="../assets/images/logo/logo_moz_camp_adventures.webp" alt="" width="44" height="44"><span>Moz Camp<small>Adventures</small></span></a>
+    <button class="icon-btn" type="button" aria-label="Fechar menu" data-menu-close><i class="bx bx-x"></i></button>
+  </div>
+  <nav aria-label="Menu mobile" data-mobile-nav></nav>
+  <div class="mobile-menu__foot">
+    <a class="btn-x btn-x--wa btn-x--block" href="https://wa.me/258844406543" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> +258 84 440 6543</a>
+  </div>
+</div>
+
+<main id="main" class="container-x pkg-top" data-pkg-root>
+  <!-- Preenchido por proto.js a partir de data/tours.json / data/accommodations.json -->
+  <div class="skeleton" style="height:28px;width:40%;margin-bottom:16px"></div>
+  <div class="skeleton" style="height:56px;width:70%;margin-bottom:24px"></div>
+  <div class="skeleton" style="height:460px"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="container-x">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../assets/images/logo/logo_moz_camp_adventures.webp" alt="Moz Camp Adventures" width="72" height="72">
+        <p>Passeios às ilhas, sunset cruises, safaris e alojamento no sul de Moçambique, a partir da Marina de Maputo.</p>
+      </div>
+      <div><h3>Experiências</h3><ul data-footer-cats></ul></div>
+      <div>
+        <h3>Empresa</h3>
+        <ul><li><a href="../index.html#about">Sobre nós</a></li><li><a href="index.html#como-reservar">Como reservar</a></li><li><a href="../pages/contact.html">Contacto</a></li><li><a href="#">Política de privacidade</a></li><li><a href="#">Termos e condições</a></li></ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul class="footer-contact">
+          <li><i class="bx bxs-map"></i><span>Marina, Escola Náutica<br>Cidade de Maputo, Moçambique</span></li>
+          <li><i class="bx bxs-phone"></i><a href="tel:+258844406543">+258 84 440 6543</a></li>
+          <li><i class="bx bxs-envelope"></i><a href="mailto:booking@mozcampadventures.co.mz">booking@mozcampadventures.co.mz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> Mozambique Camp Adventures.</span><nav aria-label="Legal"><a href="#">Privacidade</a><a href="#">Termos</a></nav></div>
+  </div>
+</footer>
+
+<div class="book-bar" data-book-bar hidden>
+  <div class="price"><small>Desde</small><strong data-bar-price>—</strong> <span data-bar-unit></span></div>
+  <a class="btn-x btn-x--primary" href="#reservar">Pedir reserva</a>
+</div>
+
+<div class="lightbox" data-lightbox data-open="false" role="dialog" aria-modal="true" aria-label="Galeria de fotografias">
+  <button class="icon-btn lb-close" type="button" aria-label="Fechar" data-lb-close><i class="bx bx-x"></i></button>
+  <button class="icon-btn lb-prev" type="button" aria-label="Anterior" data-lb-prev><i class="bx bx-chevron-left"></i></button>
+  <img alt="" data-lb-img>
+  <button class="icon-btn lb-next" type="button" aria-label="Seguinte" data-lb-next><i class="bx bx-chevron-right"></i></button>
+  <span class="lb-count" data-lb-count></span>
+</div>
+
+<div class="proto-flag">Protótipo · Fase 2</div>
+<script src="proto.js"></script>
+</body>
+</html>

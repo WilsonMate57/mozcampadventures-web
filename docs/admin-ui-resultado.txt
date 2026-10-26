@@ -1,0 +1,35 @@
+PASS  U1 ecrã «Definir palavra-passe» a partir do link
+PASS  U2 depois de definir, mostra o ecrã de entrada
+PASS  U3 entrada → resumo com indicadores
+PASS  U4 administrador vê todas as secções do menu
+PASS  U5 resumo separa facturado, recebido, em dívida e por verificar
+PASS  U6 pedido manual registado → página da reserva com referência
+PASS  U7 total calculado pelo servidor (5 × 7.500)
+PASS  U8 reserva confirmada (histórico actualizado)
+PASS  U8b o aviso diz o resultado REAL do e-mail ao cliente
+PASS  U9 rascunho de factura com a linha da reserva
+PASS  U10 total recalculado no ecrã com desconto
+PASS  U11 factura emitida: número FT, link do PDF, sem editor
+PASS  U12 PDF abre com a sessão do utilizador (cookie HttpOnly)
+PASS  U19 factura emitida mostra cartão de pagamentos «Pendente», saldo 35.000
+PASS  U20 pagamento confirmado → «Parcialmente pago», recibo e saldo 20.000
+PASS  U21 link para o comprovativo gerado no painel (CSRF exigido em chamadas directas)
+PASS  U22 página do cliente: factura, saldo e instruções (sem login)
+PASS  U23 cliente envia comprovativo → mensagem de recebido (ainda não conta)
+PASS  U24 no painel: «por verificar», saldo continua 20.000
+PASS  U25 após confirmar → «Pago», saldo 0, sem botão de novo pagamento
+PASS  U26 lista de pagamentos mostra os recibos emitidos
+PASS  U27 painel gera o link da área do cliente (com WhatsApp e revogação)
+PASS  U28 cliente vê a reserva, a factura paga e os recibos (sem login)
+PASS  U29 área do cliente em 375 px sem scroll horizontal
+PASS  U30 registo de e-mails lista as notificações enviadas
+PASS  U31 Definições: 9 tipos de notificação configuráveis
+PASS  U13 perfil Administrador bloqueado, Gerente com caixas de permissões
+PASS  U14 definições com NUIT e 2 bancos + M-Pesa
+PASS  U15 mobile: a página mantém 375 px (sem zoom-out nem scroll horizontal)
+PASS  U16 gerente não vê Utilizadores, Definições nem Auditoria
+PASS  U17 acesso directo a #/utilizadores → «Sem permissão»
+PASS  U17b corrida: resposta antiga do resumo não se sobrepõe à página nova (3×)
+PASS  U18 sem erros de JavaScript
+
+33/33 testes passaram

@@ -1,0 +1,123 @@
+/* Boxicons 2.1.4 (MIT, https://boxicons.com) — subconjunto gerado por scripts/vendor-icons.mjs */
+@font-face{font-family:boxicons;font-weight:400;font-style:normal;font-display:block;src:url(boxicons.woff2) format('woff2')}
+.bx{font-family:boxicons!important;font-weight:400;font-style:normal;font-variant:normal;line-height:1;text-rendering:auto;display:inline-block;text-transform:none;speak:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.bx-ul{margin-left:2em;padding-left:0;list-style:none}
+.bx-ul>li{position:relative}
+.bx-ul .bx{font-size:inherit;line-height:inherit;position:absolute;left:-2em;width:2em;text-align:center}
+@-webkit-keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}
+@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}
+@-webkit-keyframes burst{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}90%{-webkit-transform:scale(1.5);transform:scale(1.5);opacity:0}}
+@keyframes burst{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}90%{-webkit-transform:scale(1.5);transform:scale(1.5);opacity:0}}
+@-webkit-keyframes flashing{0%{opacity:1}45%{opacity:0}90%{opacity:1}}
+@keyframes flashing{0%{opacity:1}45%{opacity:0}90%{opacity:1}}
+@-webkit-keyframes fade-left{0%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}75%{-webkit-transform:translateX(-20px);transform:translateX(-20px);opacity:0}}
+@keyframes fade-left{0%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}75%{-webkit-transform:translateX(-20px);transform:translateX(-20px);opacity:0}}
+@-webkit-keyframes fade-right{0%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}75%{-webkit-transform:translateX(20px);transform:translateX(20px);opacity:0}}
+@keyframes fade-right{0%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}75%{-webkit-transform:translateX(20px);transform:translateX(20px);opacity:0}}
+@-webkit-keyframes fade-up{0%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}75%{-webkit-transform:translateY(-20px);transform:translateY(-20px);opacity:0}}
+@keyframes fade-up{0%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}75%{-webkit-transform:translateY(-20px);transform:translateY(-20px);opacity:0}}
+@-webkit-keyframes fade-down{0%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}75%{-webkit-transform:translateY(20px);transform:translateY(20px);opacity:0}}
+@keyframes fade-down{0%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}75%{-webkit-transform:translateY(20px);transform:translateY(20px);opacity:0}}
+@-webkit-keyframes tada{from{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}10%,20%{-webkit-transform:scale3d(.95,.95,.95) rotate3d(0,0,1,-10deg);transform:scale3d(.95,.95,.95) rotate3d(0,0,1,-10deg)}30%,50%,70%,90%{-webkit-transform:scale3d(1,1,1) rotate3d(0,0,1,10deg);transform:scale3d(1,1,1) rotate3d(0,0,1,10deg)}40%,60%,80%{-webkit-transform:scale3d(1,1,1) rotate3d(0,0,1,-10deg);transform:scale3d(1,1,1) rotate3d(0,0,1,-10deg)}to{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
+@keyframes tada{from{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}10%,20%{-webkit-transform:scale3d(.95,.95,.95) rotate3d(0,0,1,-10deg);transform:scale3d(.95,.95,.95) rotate3d(0,0,1,-10deg)}30%,50%,70%,90%{-webkit-transform:scale3d(1,1,1) rotate3d(0,0,1,10deg);transform:scale3d(1,1,1) rotate3d(0,0,1,10deg)}40%,60%,80%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}to{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
+.bx-spin{-webkit-animation:spin 2s linear infinite;animation:spin 2s linear infinite}
+.bx-spin-hover:hover{-webkit-animation:spin 2s linear infinite;animation:spin 2s linear infinite}
+.bx-tada{-webkit-animation:tada 1.5s ease infinite;animation:tada 1.5s ease infinite}
+.bx-tada-hover:hover{-webkit-animation:tada 1.5s ease infinite;animation:tada 1.5s ease infinite}
+.bx-flashing{-webkit-animation:flashing 1.5s infinite linear;animation:flashing 1.5s infinite linear}
+.bx-flashing-hover:hover{-webkit-animation:flashing 1.5s infinite linear;animation:flashing 1.5s infinite linear}
+.bx-burst{-webkit-animation:burst 1.5s infinite linear;animation:burst 1.5s infinite linear}
+.bx-burst-hover:hover{-webkit-animation:burst 1.5s infinite linear;animation:burst 1.5s infinite linear}
+.bx-fade-up{-webkit-animation:fade-up 1.5s infinite linear;animation:fade-up 1.5s infinite linear}
+.bx-fade-up-hover:hover{-webkit-animation:fade-up 1.5s infinite linear;animation:fade-up 1.5s infinite linear}
+.bx-fade-down{-webkit-animation:fade-down 1.5s infinite linear;animation:fade-down 1.5s infinite linear}
+.bx-fade-down-hover:hover{-webkit-animation:fade-down 1.5s infinite linear;animation:fade-down 1.5s infinite linear}
+.bx-fade-left{-webkit-animation:fade-left 1.5s infinite linear;animation:fade-left 1.5s infinite linear}
+.bx-fade-left-hover:hover{-webkit-animation:fade-left 1.5s infinite linear;animation:fade-left 1.5s infinite linear}
+.bx-fade-right{-webkit-animation:fade-right 1.5s infinite linear;animation:fade-right 1.5s infinite linear}
+.bx-fade-right-hover:hover{-webkit-animation:fade-right 1.5s infinite linear;animation:fade-right 1.5s infinite linear}
+.bx-xs{font-size:1rem!important}
+.bx-sm{font-size:1.55rem!important}
+.bx-md{font-size:2.25rem!important}
+.bx-lg{font-size:3rem!important}
+.bx-fw{font-size:1.2857142857em;line-height:.8em;width:1.2857142857em;height:.8em;margin-top:-.2em!important;vertical-align:middle}
+.bx-pull-left{float:left;margin-right:.3em!important}
+.bx-pull-right{float:right;margin-left:.3em!important}
+.bx-rotate-90{transform:rotate(90deg)}
+.bx-rotate-180{transform:rotate(180deg)}
+.bx-rotate-270{transform:rotate(270deg)}
+.bx-flip-horizontal{transform:scaleX(-1)}
+.bx-flip-vertical{transform:scaleY(-1)}
+.bx-border{padding:.25em;border:.07em solid rgba(0,0,0,.1);border-radius:.25em}
+.bx-border-circle{padding:.25em;border:.07em solid rgba(0,0,0,.1);border-radius:50%}
+.bx-child:before{content:"\ef48"}
+.bxl-facebook:before{content:"\e92f"}
+.bxl-instagram:before{content:"\e942"}
+.bxl-whatsapp:before{content:"\e98a"}
+.bx-anchor:before{content:"\e9ac"}
+.bx-calendar:before{content:"\ea15"}
+.bx-calendar-check:before{content:"\ea17"}
+.bx-calendar-x:before{content:"\ea20"}
+.bx-camera:before{content:"\ea21"}
+.bx-check:before{content:"\ea41"}
+.bx-check-circle:before{content:"\ea46"}
+.bx-check-shield:before{content:"\ea48"}
+.bx-chevron-down:before{content:"\ea4a"}
+.bx-chevron-left:before{content:"\ea4d"}
+.bx-chevron-right:before{content:"\ea50"}
+.bx-cog:before{content:"\ea6e"}
+.bx-compass:before{content:"\ea7f"}
+.bx-envelope:before{content:"\eac1"}
+.bx-error-circle:before{content:"\eac7"}
+.bx-grid-alt:before{content:"\eafb"}
+.bx-group:before{content:"\eaff"}
+.bx-history:before{content:"\eb10"}
+.bx-info-circle:before{content:"\eb21"}
+.bx-link:before{content:"\eb3c"}
+.bx-link-external:before{content:"\eb3e"}
+.bx-mail-send:before{content:"\eb53"}
+.bx-map-alt:before{content:"\eb57"}
+.bx-menu:before{content:"\eb5f"}
+.bx-minus:before{content:"\eb8b"}
+.bx-moon:before{content:"\eb94"}
+.bx-paperclip:before{content:"\ebaa"}
+.bx-plus:before{content:"\ebc0"}
+.bx-purchase-tag:before{content:"\ebcb"}
+.bx-receipt:before{content:"\ebd5"}
+.bx-right-arrow-alt:before{content:"\ebe6"}
+.bx-save:before{content:"\ebf4"}
+.bx-search:before{content:"\ebf7"}
+.bx-search-alt:before{content:"\ebf8"}
+.bx-send:before{content:"\ebfc"}
+.bx-shield:before{content:"\ec05"}
+.bx-star:before{content:"\ec27"}
+.bx-swim:before{content:"\ec36"}
+.bx-time-five:before{content:"\ec46"}
+.bx-trash:before{content:"\ec50"}
+.bx-undo:before{content:"\ec59"}
+.bx-upload:before{content:"\ec5f"}
+.bx-user-circle:before{content:"\ec65"}
+.bx-user-plus:before{content:"\ec68"}
+.bx-wallet:before{content:"\ec78"}
+.bx-water:before{content:"\ec7a"}
+.bx-x:before{content:"\ec8d"}
+.bxs-bank:before{content:"\ecba"}
+.bxs-binoculars:before{content:"\eccf"}
+.bxs-buildings:before{content:"\ecf6"}
+.bxs-calendar-check:before{content:"\ed02"}
+.bxs-car:before{content:"\ed13"}
+.bxs-check-circle:before{content:"\ed31"}
+.bxs-edit:before{content:"\ed9b"}
+.bxs-envelope:before{content:"\ed9f"}
+.bxs-file:before{content:"\edad"}
+.bxs-file-pdf:before{content:"\edbc"}
+.bxs-gift:before{content:"\edd2"}
+.bxs-home-heart:before{content:"\ede9"}
+.bxs-map:before{content:"\ee17"}
+.bxs-phone:before{content:"\ee66"}
+.bxs-purchase-tag:before{content:"\ee7e"}
+.bxs-right-arrow-circle:before{content:"\ee91"}
+.bxs-send:before{content:"\ee9d"}
+.bxs-shield:before{content:"\eea2"}
+.bxs-star:before{content:"\eeb8"}
+.bxs-sun:before{content:"\eebe"}

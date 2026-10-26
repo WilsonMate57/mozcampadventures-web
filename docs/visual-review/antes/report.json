@@ -1,0 +1,226 @@
+[
+ {
+  "page": "home",
+  "dev": "desktop",
+  "sh": 4666,
+  "sw": 1366,
+  "cw": 1366,
+  "wide": [],
+  "h1": 5,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 29,
+  "bytes": 5353888,
+  "logs": [
+   "LOG Failed to load resource: the server responded with a status of 404 (Not Found) http://localhost:8765/assets/videos/depoimento.mp4"
+  ]
+ },
+ {
+  "page": "home",
+  "dev": "mobile",
+  "sh": 8554,
+  "sw": 375,
+  "cw": 375,
+  "wide": [
+   "DIV.col-md-4 col-sm-6 reveal revea@382",
+   "DIV.col-lg-7 reveal reveal-right a@380",
+   "DIV.col-lg-5 col-md-10 reveal reve@380"
+  ],
+  "h1": 5,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 29,
+  "bytes": 5228138,
+  "logs": [
+   "LOG Failed to load resource: the server responded with a status of 404 (Not Found) http://localhost:8765/assets/videos/depoimento.mp4"
+  ]
+ },
+ {
+  "page": "tours",
+  "dev": "desktop",
+  "sh": 3210,
+  "sw": 1366,
+  "cw": 1366,
+  "wide": [],
+  "h1": 1,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 30,
+  "bytes": 6953129,
+  "logs": []
+ },
+ {
+  "page": "tours",
+  "dev": "mobile",
+  "sh": 6184,
+  "sw": 375,
+  "cw": 375,
+  "wide": [
+   "DIV.col-md-4 reveal reveal-right a@386"
+  ],
+  "h1": 1,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 30,
+  "bytes": 6953129,
+  "logs": []
+ },
+ {
+  "page": "package",
+  "dev": "desktop",
+  "sh": 5608,
+  "sw": 1366,
+  "cw": 1366,
+  "wide": [],
+  "h1": 1,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 18,
+  "bytes": 5151457,
+  "logs": []
+ },
+ {
+  "page": "package",
+  "dev": "mobile",
+  "sh": 9129,
+  "sw": 375,
+  "cw": 375,
+  "wide": [
+   "DIV.row g-5@387",
+   "DIV.col-lg-7@387",
+   "DIV.col-lg-5@387",
+   "DIV.booking-card reveal reveal-rig@394",
+   "DIV.contact-agent-card reveal reve@411",
+   "DIV.pkg-related reveal reveal-righ@422",
+   "H6.pkg-related-title@402",
+   "DIV.@402"
+  ],
+  "h1": 1,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 18,
+  "bytes": 5149797,
+  "logs": []
+ },
+ {
+  "page": "accommodations",
+  "dev": "desktop",
+  "sh": 3789,
+  "sw": 1366,
+  "cw": 1366,
+  "wide": [],
+  "h1": 3,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 43,
+  "bytes": 6908166,
+  "logs": [
+   "LOG Failed to load resource: the server responded with a status of 404 (Not Found) http://localhost:8765/assets/videos/depoimento.mp4"
+  ]
+ },
+ {
+  "page": "accommodations",
+  "dev": "mobile",
+  "sh": 9665,
+  "sw": 375,
+  "cw": 375,
+  "wide": [],
+  "h1": 3,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 43,
+  "bytes": 6908166,
+  "logs": [
+   "LOG Failed to load resource: the server responded with a status of 404 (Not Found) http://localhost:8765/assets/videos/depoimento.mp4"
+  ]
+ },
+ {
+  "page": "contact",
+  "dev": "desktop",
+  "sh": 2655,
+  "sw": 1366,
+  "cw": 1366,
+  "wide": [],
+  "h1": 1,
+  "broken": [],
+  "imgsNoAlt": 0,
+  "imgs": 8,
+  "bytes": 1947752,
+  "logs": []
+ },
+ {
+  "page": "contact",
+  "dev": "mobile",
+  "sh": 4285,
+  "sw": 375,
+  "cw": 375,
+  "wide": [
+   "DIV.row g-5 align-items-start@387",
+   "DIV.col-lg-5 reveal reveal-left ac@387",
+   "DIV.col-lg-7 reveal reveal-right a@388"
+  ],
+  "h1": 1,
+  "broken": [],
+  "imgsNoAlt": 0,
+  "imgs": 8,
+  "bytes": 1947752,
+  "logs": []
+ },
+ {
+  "page": "en-home",
+  "dev": "desktop",
+  "sh": 4693,
+  "sw": 1366,
+  "cw": 1366,
+  "wide": [],
+  "h1": 5,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 29,
+  "bytes": 5310755,
+  "logs": [
+   "LOG Failed to load resource: the server responded with a status of 404 (Not Found) http://localhost:8765/assets/videos/depoimento.mp4"
+  ]
+ },
+ {
+  "page": "en-home",
+  "dev": "mobile",
+  "sh": 8470,
+  "sw": 375,
+  "cw": 375,
+  "wide": [
+   "DIV.col-md-4 col-sm-6 reveal revea@385",
+   "A.cat-img-card@377",
+   "DIV.col-lg-7 reveal reveal-right a@382",
+   "DIV.col-lg-5 col-md-10 reveal reve@382"
+  ],
+  "h1": 5,
+  "broken": [
+   "ERR  0"
+  ],
+  "imgsNoAlt": 0,
+  "imgs": 29,
+  "bytes": 5310755,
+  "logs": [
+   "LOG Failed to load resource: the server responded with a status of 404 (Not Found) http://localhost:8765/assets/videos/depoimento.mp4"
+  ]
+ }
+]

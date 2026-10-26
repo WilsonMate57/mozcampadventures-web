@@ -1,0 +1,21 @@
+SEO: 64 páginas indexáveis, 64 URLs no sitemap, 0 problemas
+Links: 6119 ligações internas verificadas, 0 partidas
+A11y /: sem violações
+A11y /pages/tours.html: sem violações
+A11y /tours/island-hopping-experience/: sem violações
+A11y /alojamentos/mamas-lodge/: sem violações
+A11y /pages/accommodations.html: sem violações
+A11y /pages/contact.html: sem violações
+A11y /pages/privacidade.html: sem violações
+A11y /en/: sem violações
+A11y /en/tours/ponta-douro-day-trip/: sem violações
+A11y /404.html: sem violações
+A11y /pagamento/: sem violações
+A11y /reserva/: sem violações
+A11y /admin/: sem violações
+Perf /: LCP 2064 ms · FCP 1632 ms · CLS 0 · 649 KB em 24 pedidos
+Perf /tours/island-hopping-experience/: LCP 1816 ms · FCP 1800 ms · CLS 0 · 494 KB em 16 pedidos
+Perf /pages/tours.html: LCP 1592 ms · FCP 1492 ms · CLS 0 · 675 KB em 17 pedidos
+Perf /pages/contact.html: LCP 1816 ms · FCP 1580 ms · CLS 0 · 350 KB em 14 pedidos
+
+Auditoria sem falhas — relatório em docs/AUDITORIA_TECNICA.json
