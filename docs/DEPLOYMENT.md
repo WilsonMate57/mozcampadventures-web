@@ -17,6 +17,7 @@ scripts/optimize-images.mjs                 gera variantes WebP em assets/images
 ```
 
 ### Alterar conteúdo (ex.: preço de um tour)
+Depois de publicado, a forma normal é o painel: **Experiências** (rascunho → «Publicar no site»; ver `CATALOGO.md`). No computador de desenvolvimento:
 1. Editar `data/tours.json` (e `data/en.json`, se o texto mudar).
 2. `node scripts/build.mjs`
 3. Rever localmente, correr os testes e publicar os ficheiros alterados.
@@ -26,8 +27,8 @@ scripts/optimize-images.mjs                 gera variantes WebP em assets/images
 2. `node scripts/optimize-images.mjs` (precisa de `npm install` uma vez; usa o `sharp`, já em `devDependencies`).
 3. `node scripts/build.mjs`
 
-### Requisitos (só no computador de desenvolvimento)
-Node.js 20 ou superior. O servidor **não** precisa de Node.
+### Requisitos
+Node.js 20 ou superior no computador de desenvolvimento. No servidor, o Node só é usado para publicar o catálogo a partir do painel (§3.1f); o site público continua a ser HTML estático.
 
 ## 2. Testar antes de publicar
 
@@ -41,6 +42,7 @@ PHP_CLI="php" MCA_CONFIG=<config dev> PSQL="…" node tests/admin.mjs      # pai
 PHP_CLI="php" MCA_CONFIG=<config dev> PSQL="…" node tests/payments.mjs   # pagamentos e recibos (cenários A–F) — 44 testes
 PHP_CLI="php" MCA_CONFIG=<config dev> PSQL="…" node tests/notifications.mjs   # notificações, e-mails, área do cliente — 28 testes
 PHP_CLI="php" MCA_CONFIG=<config dev> node tests/admin-ui.mjs           # painel no browser (pagamentos, área do cliente, e-mails) — 33 testes
+PHP_CLI="php" MCA_CONFIG=<config dev> PSQL="…" node tests/accounts.mjs   # contas de cliente — 34 testes
 node tests/audit.mjs                                 # (npm install uma vez) SEO, links, acessibilidade (axe-core) e desempenho mobile — relatório em docs/AUDITORIA_TECNICA.json
 ```
 Os testes usam o Chrome instalado (`CHROME=<caminho>` para outro). **Nunca correr `tests/api.mjs` contra a base de produção**: cria pedidos e esgota limites de propósito. Ver `docs/RELATORIO_DE_TESTES.md`.
@@ -108,6 +110,29 @@ Se a API ainda não estiver instalada, o site continua a funcionar: os pedidos e
    3. Abrir o link da área do cliente que vem no e-mail.
 4. Em **Definições → Notificações**, desligar o que não quiserem enviar.
 5. As páginas `/reserva/` e `/en/booking/` são geradas pelo build e enviadas com o resto do site.
+
+### 3.1e Contas de cliente (27/10/2026)
+1. `php httpdocs/api/bin/migrate.php` aplica a `006_customer_accounts`.
+2. Confirmar que o SPF/DKIM está activo (§3.1d), para o e-mail de reposição da palavra-passe não ir para o spam.
+3. Testar com uma conta vossa em `/conta/` (ver `PUBLICACAO.md` §3).
+
+Detalhes em `CONTAS_DE_CLIENTE.md`.
+
+### 3.1f Catálogo no painel (29/10/2026)
+1. `php httpdocs/api/bin/migrate.php` aplica a `007_catalog_editor` (permissão `catalog.edit` para o Gerente).
+2. **Node.js 20+** no Plesk (Extensões → Node.js). Na pasta do site, por SSH: `npm ci --omit=dev` (instala só o `sharp`; `package.json` e `package-lock.json` vêm no pacote).
+3. Na configuração (`private/mca-config.php`): `'node_bin' => '/opt/plesk/node/22/bin/node'` (caminho real: `ls /opt/plesk/node/`).
+4. **Permissões de escrita** do utilizador do PHP (o do domínio, no Plesk): `data/`, `assets/images/`, as páginas geradas e `private/storage/`.
+5. Teste: no painel, editar uma frase de um pacote, publicar e confirmar no site; depois repor o texto e publicar de novo.
+6. `scripts/`, `data/`, `node_modules/` e `package*.json` já estão bloqueados ao público (`.htaccess` e regras nginx abaixo).
+
+Detalhes em `CATALOGO.md`.
+
+### 3.1g E-mail pelo Resend e WhatsApp da equipa (29/10/2026)
+1. `php httpdocs/api/bin/migrate.php` aplica a `008_messaging`.
+2. **Resend:** o domínio já está verificado (29/10/2026). No servidor: chave em `RESEND_API_KEY` (ou `mail.resend_key`), `mail.transport` = `resend` e, no painel de produção, os destinatários dos avisos (`NOTIFICACOES.md` §6.2). O DKIM do Plesk (§3.1d) continua a servir as caixas de correio do domínio.
+3. **WhatsApp:** número, token permanente em `WHATSAPP_TOKEN` (ou `whatsapp.token`), `whatsapp.phone_number_id` e modelo `nova_reserva` aprovado (§6.3). Os números da equipa definem-se no painel.
+4. **Teste:** Definições → Canais de envio → «Enviar e-mail de teste» e «Enviar WhatsApp de teste»; depois, um pedido real a partir do site.
 
 ### 3.2 Backups da base de dados
 - Activar o backup agendado do Plesk (*Backup Manager → Schedule*), incluindo bases de dados, **diário**, com retenção mínima de 30 dias e cópia para armazenamento externo (FTP remoto ou cloud).

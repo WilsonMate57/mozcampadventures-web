@@ -41,6 +41,8 @@
     $('[data-c-summary]').innerHTML =
       '<div><small>' + L.ref + '</small><strong>' + esc(b.reference) + '</strong></div><div><small>' + L.exp + '</small><strong>' + esc(b.item) + '</strong></div>' +
       '<div><small>' + L.date + '</small><strong>' + esc(when) + '</strong></div><div><small>' + L.status + '</small><strong data-c-status>' + esc(L.st[b.status] || b.status) + '</strong></div>';
+    // Ticket do pedido com QR code: o QR leva a este mesmo link pessoal e mostra o estado actual
+    if (window.MCATicket) $('[data-c-ticket]').innerHTML = window.MCATicket.html(Object.assign({}, b, { url: location.href, lang: root.dataset.lang }));
     var inv = data.invoices;
     $('[data-c-invoices]').innerHTML = inv.length ? table([L.number, L.total, L.paid, L.balance, L.status, ''], inv.map(function (i) {
       var payable = i.type === 'FT' && i.status === 'emitida' && i.balance > 0;

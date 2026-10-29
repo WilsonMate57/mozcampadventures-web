@@ -8,31 +8,39 @@
   <title>Painel | Moz Camp Adventures</title>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter/inter-latin-wght-normal.woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/vendor/boxicons/boxicons.css?v=654c65a5">
-  <link rel="stylesheet" href="/assets/css/tokens.css?v=1409600f">
-  <link rel="stylesheet" href="admin.css?v=88e579be">
+  <link rel="stylesheet" href="/assets/vendor/boxicons/boxicons.css?v=7e42be1d">
+  <link rel="stylesheet" href="/assets/css/tokens.css?v=6d7453e8">
+  <link rel="stylesheet" href="admin.css?v=f72ce5cb">
 </head>
 <body>
   <div class="app" data-app hidden>
-    <aside class="side" data-side>
+    <aside class="side" data-side id="side">
       <a class="side__brand" href="#/"><img src="/assets/images/logo/logo_moz_camp_adventures.webp" alt="" width="40" height="40"><span>Moz Camp<small>Painel</small></span></a>
       <nav class="side__nav" data-nav aria-label="Painel"></nav>
       <div class="side__user" data-user></div>
     </aside>
+    <div class="side-backdrop" data-side-close aria-hidden="true"></div>
     <div class="main">
       <header class="topbar">
-        <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu"><i class="bx bx-menu"></i></button>
-        <h1 data-title>Painel</h1>
-        <a class="topbar__site" href="/" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> Ver site</a>
+        <button class="icon-btn menu-btn" type="button" data-menu aria-label="Abrir menu" aria-controls="side" aria-expanded="false"><i class="bx bx-menu"></i></button>
+        <div class="topbar__title"><span class="topbar__crumb" data-crumb></span><h1 data-title>Painel</h1></div>
+        <div class="topbar__tools">
+          <button class="search-trigger" type="button" data-search-open aria-label="Pesquisar (Ctrl+K)"><i class="bx bx-search"></i><span>Pesquisar reservas, clientes…</span><kbd>Ctrl K</kbd></button>
+          <a class="topbar__site" href="/" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> <span>Ver site</span></a>
+        </div>
       </header>
       <main id="view" class="view" tabindex="-1"></main>
     </div>
   </div>
 
+  <div class="drawer" data-drawer role="dialog" aria-modal="true" aria-labelledby="drawer-title" data-open="false" hidden></div>
+  <div class="drawer-backdrop" data-drawer-close aria-hidden="true"></div>
+  <dialog class="palette" data-palette aria-label="Pesquisa global"></dialog>
+
   <main class="auth" data-auth hidden></main>
   <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
   <dialog class="dlg" data-dialog></dialog>
 
-  <script src="admin.js?v=cb476b37" defer></script>
+  <script src="admin.js?v=f179b0c3" defer></script>
 </body>
 </html>

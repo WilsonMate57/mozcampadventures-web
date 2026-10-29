@@ -90,7 +90,7 @@
       btn.disabled = true; btn.textContent = T.sending;
       fetch('/api/reviews', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin',
-        body: JSON.stringify({ name: el.name.value.trim(), origin: el.role.value.trim(), rating: rating, text: el.text.value.trim(), item: form.dataset.package || '', lang: document.documentElement.lang, website: el.website.value })
+        body: JSON.stringify({ name: el.name.value.trim(), origin: el.role.value.trim(), rating: rating, text: el.text.value.trim(), item: form.dataset.package || '', lang: document.documentElement.lang, website: (el.mca_hp || {}).value || '' })
       })
         .then(function (r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);

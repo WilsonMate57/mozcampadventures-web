@@ -37,7 +37,7 @@ A equipa também recebe e-mail quando:
   
   A acção em si (por exemplo, confirmar a reserva) fica feita mesmo que o e-mail falhe.
 
-## 3. Registo de e-mails (painel → E-mails enviados)
+## 3. Registo de e-mails (painel → E-mails e WhatsApp)
 
 - Cada e-mail fica registado com data, tipo, destinatário, assunto, estado e erro.
 - Os anexos ficam por caminho, sem duplicar os PDFs.
@@ -67,6 +67,38 @@ A equipa também recebe e-mail quando:
 
 O painel gera o link com atalho para o WhatsApp do cliente, que é útil para clientes que tratam tudo por WhatsApp.
 
+## 4b. Ticket do pedido com QR code (27/10/2026)
+
+**Onde aparece:**
+- No fim do pedido no site.
+- Na área do cliente, para o poder reabrir.
+
+**O que contém:**
+- Referência, experiência, data(s), participantes e primeiro nome.
+- Hora do pedido, linhas de preço e total estimado.
+- Estado actual: «Pedido recebido — aguarda confirmação», «Reserva confirmada», etc.
+- QR code e contactos.
+
+**Botão:** «Imprimir / guardar PDF». Imprime só o ticket; no telemóvel, permite guardar como PDF.
+
+**O QR code:**
+- Contém o link pessoal da área do cliente (`/reserva/#r=REF&t=TOKEN`).
+- Ao lê-lo, abre a reserva com o estado actualizado, e a equipa pode lê-lo no dia para confirmar a reserva.
+- O link pode ser revogado no painel (*Reserva → Link da área do cliente → Revogar*); o QR antigo deixa então de funcionar.
+
+**Não é documento fiscal:** o ticket diz expressamente que não é factura nem recibo. Os recibos (RC) só são emitidos depois de um pagamento confirmado.
+
+**Implementação:**
+- `assets/js/ticket.js`, usado por `site.js` e `client.js`.
+- QR gerado no browser por `assets/vendor/qrcode/qrcode.js` (qrcode-generator 1.4.4, MIT), alojado no site por causa da CSP.
+- A API devolve `client_url` na resposta de `POST /api/bookings`, também quando o mesmo pedido é repetido.
+- `POST /api/client/booking` passou a devolver as linhas de preço e o total.
+
+**Testes:**
+- `tests/api.mjs` T1–T4: link na resposta, link igual quando o pedido é repetido, link em inglês, e o link abre a reserva.
+- `tests/e2e.mjs` I4: ticket, QR com o link e botão de impressão.
+- QR descodificado com um leitor independente, a partir do ecrã e do PDF impresso.
+
 ## 5. Testes
 
 - `tests/notifications.mjs`: **28/28**, cobrindo idiomas, cada tipo de notificação, «não notificar», tipo desligado, cliente sem e-mail, falha de envio reportada como falha, reenvio e área do cliente (C1–C9).
@@ -75,3 +107,121 @@ O painel gera o link com atalho para o WhatsApp do cliente, que é útil para cl
 Em desenvolvimento, `mail.transport = 'log'` regista sem enviar. Destinatários em domínios `.invalid` (reservados pela RFC 2606) simulam falha. **Em produção (`mail`), esta regra não se aplica.**
 
 **Não testado:** a entrega real pelo Postfix do Plesk. Ver a lista de verificação em `DEPLOYMENT.md` §3.1d.
+
+## 6. E-mail pelo Resend e avisos à equipa pelo WhatsApp (29/10/2026)
+
+Preparado e testado localmente com um servidor falso que imita o Resend e a Meta (`tests/messaging.mjs`). **Falta activar com as contas reais** (passos abaixo). Até lá, o site continua a enviar pelo `mail()` do servidor, e o WhatsApp fica desligado.
+
+Código: `api/src/Mailer.php` (modo `resend`), `api/src/WhatsApp.php`, `http_post_json()` e `secret()` em `api/src/bootstrap.php`, `api/migrations/008_messaging.sql`. Painel: **Definições → Canais de envio** e **E-mails e WhatsApp → WhatsApp**.
+
+### 6.1 O que acontece num pedido de reserva
+1. **E-mail à equipa** (`mail.team`) e, se o cliente indicou e-mail, **e-mail ao cliente**, enviados pelo Resend.
+2. **WhatsApp a cada número da equipa** (até 5), com o modelo `nova_reserva`: referência, experiência, data, pessoas, cliente, telefone e total.
+3. **Falhas:** uma falha do Resend ou da Meta fica registada com o motivo e **nunca impede o pedido**. O cliente recebe a referência na mesma, e a equipa vê a falha em **E-mails e WhatsApp**.
+4. **Outros e-mails:** facturas (com PDF em anexo), recibos, notificações, convites e reposição de palavra-passe também saem pelo Resend. O reenvio continua a funcionar.
+
+«Enviado» quer dizer **aceite** pelo Resend ou pela Meta: o id (Resend) ou o `wamid` (Meta) fica guardado no registo. A entrega e a leitura não são seguidas. Para isso seriam precisos webhooks, que podem ser acrescentados depois.
+
+### 6.2 Resend (e-mail)
+
+**Estado em 29/10/2026:**
+- **Configuração:** domínio `mozcampadventures.co.mz` verificado no Resend e chave de envio criada (guardada só na configuração local de desenvolvimento, fora do repositório).
+- **Envios reais de teste**, ambos aceites pelo Resend:
+  - um e-mail para o gmail da empresa;
+  - um aviso de teste para a lista da equipa.
+- **Por fazer:** confirmar a recepção e que não foi para o spam.
+- **Produção:** falta pôr a chave no servidor ao publicar (passo 4).
+
+**Quem recebe os avisos de novos pedidos e de comprovativos:** painel → **Definições → Canais de envio**, até 10 endereços. Todos recebem o mesmo e-mail, enviado de uma só vez. Sem lista, vai para `mail.team`. Lista definida em desenvolvimento:
+- dois endereços gmail (empresa e responsável)
+- `booking@mozcampadventures.co.mz`
+- `info@mozcampadventures.co.mz`
+
+A lista fica na base de dados, por isso **tem de ser introduzida também no painel de produção**. As respostas dos clientes continuam a ir para `mail.team` (`booking@`).
+
+1. Criar a conta em resend.com. Em **Domains → Add domain**, indicar `mozcampadventures.co.mz`.
+2. **DNS:** criar no DNS do domínio (Plesk → DNS) os registos que o Resend mostrar: DKIM (`resend._domainkey`) e, para o retorno, MX e SPF no subdomínio indicado.
+   - O SPF do domínio principal e o e-mail actual (caixas no Plesk) não mudam.
+   - Esperar até o Resend marcar o domínio como **Verified**.
+3. **API Keys → Create API key**, com permissão *Sending access* e limitada ao domínio. A chave começa por `re_`.
+4. **No servidor**, de preferência como variável de ambiente `RESEND_API_KEY` (Plesk → PHP Settings ou configuração do PHP-FPM). Em alternativa, `mail.resend_key` em `private/mca-config.php`. **Nunca** no repositório nem no painel.
+5. Em `private/mca-config.php`: `'transport' => 'resend'`, e `from` num endereço do domínio verificado (ex.: `no-reply@mozcampadventures.co.mz`).
+6. **Teste:** painel → **Definições → Canais de envio → Enviar e-mail de teste** (vai para `mail.team`). O resultado aparece logo, e o e-mail fica em **E-mails e WhatsApp**.
+
+**Limites do plano gratuito do Resend** (confirmar em resend.com/pricing, porque mudam): uma quota mensal e diária de e-mails e cerca de 2 pedidos por segundo. Um pedido de reserva gera 2 e-mails. Um 429 (limite por segundo) é repetido automaticamente uma vez.
+
+### 6.3 Meta WhatsApp Cloud API (avisos à equipa)
+1. **Conta e aplicação:**
+   - em business.facebook.com, usar (ou criar) a conta empresarial da Moz Camp Adventures; a verificação da empresa é recomendada;
+   - em developers.facebook.com, criar uma app do tipo **Business** e adicionar o produto **WhatsApp**.
+2. **Número que envia:**
+   - registar o número da empresa na conta WhatsApp Business (WhatsApp Manager → Phone numbers);
+   - um número que já está na app WhatsApp normal não pode ser usado em simultâneo sem migração;
+   - **usar um número dedicado**, ou confirmar com a Meta a opção de coexistência com a app WhatsApp Business;
+   - copiar o **Phone number ID** (é um id, não o número de telefone).
+3. **Token permanente:**
+   - em Business Settings → **System users**, criar um utilizador de sistema (Admin);
+   - atribuir-lhe a app e a conta WhatsApp;
+   - **Generate token**, com as permissões `whatsapp_business_messaging` e `whatsapp_business_management`.
+   - O token temporário da página «API Setup» expira em 24 h.
+4. **Pagamento:** adicionar um método de pagamento à conta WhatsApp. Os modelos «Utility» são cobrados por mensagem (preços por país em developers.facebook.com/docs/whatsapp/pricing).
+5. **Modelo:** WhatsApp Manager → **Message templates → Create**, com:
+   - **Categoria:** *Utility*;
+   - **Nome:** `nova_reserva`;
+   - **Idioma:** *Portuguese (POR)*, ou seja, `pt_PT`;
+   - **Corpo:** o texto abaixo (as variáveis têm de ficar por esta ordem):
+     ```
+     Novo pedido de reserva {{1}}
+     Experiência: {{2}}
+     Data: {{3}}
+     Pessoas: {{4}}
+     Cliente: {{5}} ({{6}})
+     Total estimado: {{7}}
+     Confirme a disponibilidade no painel.
+     ```
+   - **Exemplos para a aprovação:** `MCA-2026-00123`, `Ponta D'Ouro — Dia Completo`, `2026-11-14`, `4 (3 adultos, 1 crianças)`, `Joana Silva`, `+258 84 000 0000`, `36.000 MZN`.
+   - **Botão (opcional):** *Visit website*, URL dinâmico `https://mozcampadventures.co.mz/admin/#/reservas/{{1}}`, texto «Abrir no painel». Se o usar, pôr `'button' => true` na configuração.
+   - Esperar pela aprovação (normalmente minutos a horas).
+6. **No servidor:**
+   - token como variável de ambiente `WHATSAPP_TOKEN`, ou em `whatsapp.token` na configuração;
+   - em `private/mca-config.php`, o bloco `whatsapp`: `mode` `api`, `phone_number_id`, `template`, `language`, `button`.
+   - Se o modelo for aprovado com outro nome ou idioma, basta mudar `template` e `language`.
+7. **Painel → Definições → Canais de envio:**
+   - indicar os números da equipa, até 5, em formato internacional; números moçambicanos podem ir sem o 258;
+   - marcar «Avisar a equipa por WhatsApp» e guardar;
+   - **Enviar WhatsApp de teste**: cada número recebe uma mensagem com a referência `MCA-TESTE`.
+
+**Erros comuns, como aparecem no registo:**
+
+| Código | Causa |
+|---|---|
+| `132001` | Modelo inexistente nesse idioma (nome ou `language` errados, ou ainda por aprovar) |
+| `132000` | Número de variáveis diferente de 7 |
+| `190` | Token inválido ou expirado |
+| `131030` | Número de destino não autorizado (só acontece com o número de teste da Meta) |
+| `131026` | Destino sem WhatsApp |
+
+### 6.4 Segurança
+- **Segredos:** a chave do Resend e o token da Meta nunca chegam ao browser nem aos registos. O painel mostra só se estão configurados, e o Phone number ID mascarado (`••••••7890`).
+- **Permissões:**
+  - números, interruptor e envios de teste exigem `settings.manage` (Administrador);
+  - o registo do WhatsApp exige `emails.manage`.
+  - As alterações e os testes ficam na **Auditoria**.
+- **Dados enviados à Meta:** a mensagem leva o nome e o telefone do cliente para os números da equipa. É informação que a equipa já recebe por e-mail; mencionar o WhatsApp na Política de Privacidade (textos legais ainda provisórios).
+- **Pedidos de saída:** só para `api.resend.com` e `graph.facebook.com`, por HTTPS com verificação do certificado. Precisam de `allow_url_fopen` e da extensão `openssl`, ambos activos por omissão no Plesk.
+
+### 6.5 Testes
+- **`tests/messaging.mjs`: 19/19.** Corre sem enviar nada para fora: servidor falso em `127.0.0.1:8799` e um segundo PHP com configuração temporária. Cobre:
+  - estado sem segredos;
+  - validação e normalização dos números;
+  - permissões;
+  - pedido → 2 e-mails Resend e 1 WhatsApp por número, com o formato exacto da API (7 variáveis, botão, idioma, token);
+  - registos com o id do fornecedor;
+  - recusas do Resend (domínio não verificado) e da Meta (modelo inexistente) registadas sem bloquear o pedido;
+  - repetição em caso de 429;
+  - factura com PDF em anexo;
+  - testes do painel;
+  - interruptor desligado;
+  - auditoria.
+- **`tests/admin-ui.mjs`: 57/57**, com U51–U53 no cartão «Canais de envio» e no separador WhatsApp. Captura: `visual-review/painel-v2/19-canais-envio.png`.
+- **Não testado** (precisa das contas reais): verificação do domínio no Resend, aprovação do modelo pela Meta, entrega real.

@@ -67,14 +67,14 @@ function json_response(int $status, array $body): never
     exit;
 }
 
-/** Corpo JSON do pedido (limite 32 KB). */
-function json_input(): array
+/** Corpo JSON do pedido (limite 32 KB por omissão). */
+function json_input(int $max = 32768): array
 {
     $type = $_SERVER['CONTENT_TYPE'] ?? '';
     if (stripos($type, 'application/json') !== 0) {
         throw new ApiError(415, 'unsupported_media_type');
     }
-    $raw = file_get_contents('php://input', false, null, 0, 32768);
+    $raw = file_get_contents('php://input', false, null, 0, $max);
     $data = json_decode($raw ?: '', true);
     if (!is_array($data)) {
         throw new ApiError(400, 'invalid_json');
@@ -151,4 +151,36 @@ function utf8_cut(string $s, int $max): string
 function lang_of(mixed $value): string
 {
     return $value === 'en' ? 'en' : 'pt';
+}
+
+/** Segredo: variável de ambiente (preferida) ou chave da configuração. Nunca no repositório. */
+function secret(string $env, string $configKey): string
+{
+    $v = getenv($env);
+    return is_string($v) && $v !== '' ? $v : (string) (config($configKey) ?? '');
+}
+
+/**
+ * POST JSON por HTTPS (Resend, Meta WhatsApp). Usa streams do PHP (precisa de openssl e allow_url_fopen).
+ * @return array{status:int, body:?array, error:?string}  status 0 = sem resposta (rede, DNS, tempo esgotado)
+ */
+function http_post_json(string $url, array $payload, array $headers, int $timeout = 8): array
+{
+    $h = ['Content-Type: application/json', 'Accept: application/json', 'User-Agent: MCA-API/' . MCA_API_VERSION];
+    foreach ($headers as $k => $v) $h[] = "$k: $v";
+    $ctx = stream_context_create(['http' => ['method' => 'POST', 'header' => implode("\r\n", $h), 'content' => json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        'timeout' => $timeout, 'ignore_errors' => true, 'follow_location' => 0], 'ssl' => ['verify_peer' => true, 'verify_peer_name' => true]]);
+    $err = null;
+    set_error_handler(static function (int $no, string $msg) use (&$err): bool { $err = $msg; return true; });
+    try {
+        $raw = @file_get_contents($url, false, $ctx);
+    } finally {
+        restore_error_handler();
+    }
+    $status = 0;
+    foreach ($http_response_header ?? [] as $line) {
+        if (preg_match('#^HTTP/\S+\s+(\d{3})#', $line, $m)) $status = (int) $m[1];   // o último (depois de eventuais 100 Continue)
+    }
+    $body = is_string($raw) ? json_decode($raw, true) : null;
+    return ['status' => $status, 'body' => is_array($body) ? $body : null, 'error' => $status ? null : ($err ? preg_replace('/^file_get_contents\([^)]*\):\s*/', '', $err) : 'sem resposta')];
 }

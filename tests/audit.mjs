@@ -31,7 +31,7 @@ let failures = 0;
 const fail = (area, msg) => { failures++; report.failures[area].push(msg); console.log(`FAIL  [${area}] ${msg}`); };
 
 /* ── Páginas geradas ─────────────────────────────────── */
-const SKIP = new Set(['node_modules', 'prototipo', 'docs', 'tests', '.git', 'scripts', '.claude', 'api']);
+const SKIP = new Set(['node_modules', 'prototipo', 'docs', 'tests', '.git', 'scripts', '.claude', 'api', 'dist']);
 const walk = d => readdirSync(d).flatMap(e => {
   const p = join(d, e);
   if (statSync(p).isDirectory()) return SKIP.has(e) ? [] : walk(p);
@@ -115,7 +115,7 @@ const go = async (url, wait = 800) => {
 
 /* ── 3. Acessibilidade (axe-core) ────────────────────── */
 const AXE = readFileSync(join(ROOT, 'node_modules/axe-core/axe.min.js'), 'utf8');
-const A11Y_PAGES = ['/', '/pages/tours.html', '/tours/island-hopping-experience/', '/alojamentos/mamas-lodge/', '/pages/accommodations.html', '/pages/contact.html', '/pages/privacidade.html', '/en/', '/en/tours/ponta-douro-day-trip/', '/404.html', '/pagamento/', '/reserva/', '/admin/'];
+const A11Y_PAGES = ['/', '/pages/tours.html', '/tours/island-hopping-experience/', '/alojamentos/mamas-lodge/', '/pages/accommodations.html', '/pages/contact.html', '/pages/privacidade.html', '/en/', '/en/tours/ponta-douro-day-trip/', '/404.html', '/pagamento/', '/reserva/', '/conta/', '/en/account/', '/admin/'];
 await send('Emulation.setDeviceMetricsOverride', { width: 1366, height: 900, deviceScaleFactor: 1, mobile: false });
 for (const url of A11Y_PAGES) {
   await go(url, 1200);

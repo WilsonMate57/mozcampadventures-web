@@ -71,7 +71,7 @@ DATA.en.all = [...DATA.en.tours, ...DATA.en.stays];
 
 /* ── Helpers ─────────────────────────────────────────────── */
 /* Meta description: no máximo 160 caracteres, cortada numa palavra */
-const clip = (s, n = 160) => { s = String(s ?? '').replace(/s+/g, ' ').trim(); if (s.length <= n) return s; const c = s.slice(0, n - 1); return c.slice(0, c.lastIndexOf(' ')).replace(/[,;:.s]+$/, '') + '…'; };
+const clip = (s, n = 160) => { s = String(s ?? '').replace(/\s+/g, ' ').trim(); if (s.length <= n) return s; const c = s.slice(0, n - 1); return c.slice(0, c.lastIndexOf(' ')).replace(/[,;:.\s]+$/, '') + '…'; };
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmt = n => String(Math.round(n || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' MZN';
 const active = list => list.filter(p => !p.disabled);
@@ -118,6 +118,7 @@ const R = {
   contact: l => l === 'pt' ? '/pages/contact.html' : '/en/pages/contact.html',
   privacy: l => l === 'pt' ? '/pages/privacidade.html' : '/en/pages/privacy.html',
   terms: l => l === 'pt' ? '/pages/termos.html' : '/en/pages/terms.html',
+  account: l => l === 'pt' ? '/conta/' : '/en/account/',
   item: (p, l) => p.kind === 'stay'
     ? (l === 'pt' ? `/alojamentos/${p.slug}/` : `/en/accommodations/${p.slug}/`)
     : (l === 'pt' ? `/tours/${p.slug}/` : `/en/tours/${p.slug}/`),
@@ -181,9 +182,11 @@ function header(lang, alt, { cta } = {}) {
     </nav>
     <div class="header-actions">
       <a class="icon-btn search-btn" href="${R.tours(lang)}#procurar" aria-label="${t.search}"><i class="bx bx-search"></i></a>
+      <a class="icon-btn account-btn" href="${R.account(lang)}" aria-label="${t.account}" title="${t.account}" data-account-link><i class="bx bx-user"></i></a>
       <div class="lang-switch" aria-label="${t.lang}">${langs('pt')}${langs('en')}</div>
-      <a class="icon-btn" href="${wa()}" target="_blank" rel="noopener" aria-label="${t.wa}"><i class="bx bxl-whatsapp"></i></a>
-      <a class="btn-x btn-x--primary header-cta" href="${cta || R.tours(lang)}">${cta ? T[lang].bk.title : t.book}</a>
+      <a class="nav-phone" href="tel:+258844406543"><span class="nav-phone__icon" aria-hidden="true"><i class="bx bxs-phone"></i></span><span><small>${t.phone}</small>+258 84 440 6543</span></a>
+${cta ? `      <a class="btn-x btn-x--primary header-cta" href="${cta}">${T[lang].bk.title}</a>
+` : ''}
       <button class="icon-btn menu-toggle" type="button" aria-label="${t.menuOpen}" aria-controls="mobile-menu" aria-expanded="false" data-menu-open><i class="bx bx-menu"></i></button>
     </div>
   </div>
@@ -193,7 +196,7 @@ function header(lang, alt, { cta } = {}) {
     <a class="brand" href="${R.home(lang)}"><img src="/assets/images/logo/logo_moz_camp_adventures.webp" alt="" width="44" height="44"><span>Moz Camp<small>Adventures</small></span></a>
     <button class="icon-btn" type="button" aria-label="${t.menuClose}" data-menu-close><i class="bx bx-x"></i></button>
   </div>
-  <nav aria-label="Menu">${mobile}<a href="${R.home(lang)}#about">${t.about}</a><a href="${R.contact(lang)}">${t.contact}</a></nav>
+  <nav aria-label="Menu">${mobile}<a href="${R.home(lang)}#about">${t.about}</a><a href="${R.contact(lang)}">${t.contact}</a><a href="${R.account(lang)}">${t.account} <i class="bx bx-user"></i></a></nav>
   <div class="mobile-menu__foot">
     <a class="btn-x btn-x--wa btn-x--block" href="${wa()}" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> +258 84 440 6543</a>
     <div class="lang-switch lang-switch--dark" aria-label="${t.lang}">${langs('pt')}${langs('en')}</div>
@@ -294,11 +297,12 @@ ${alt ? `  <link rel="alternate" hreflang="pt" href="${SITE}${ptPath}">
   <meta property="og:image" content="${og}">
   <meta property="og:locale" content="${lang === 'pt' ? 'pt_PT' : 'en_GB'}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0b2e33">
+  <meta name="theme-color" content="#00c6c1">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo/favicon-32x32.png">
   <link rel="apple-touch-icon" href="/assets/images/logo/apple-touch-icon.png">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter/inter-latin-wght-normal.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dancing-script/dancing-script-latin-700.woff2" crossorigin>
 ${preload ? `  <link rel="preload" as="image" href="${preload}" fetchpriority="high">\n` : ''}  <link rel="stylesheet" href="${asset('/assets/vendor/boxicons/boxicons.css')}">
   <link rel="stylesheet" href="${asset('/assets/css/tokens.css')}">
   <link rel="stylesheet" href="${asset('/assets/css/site.css')}">
@@ -345,10 +349,9 @@ const crumbsLd = items => ({ '@context': 'https://schema.org', '@type': 'Breadcr
 /* ── Páginas ─────────────────────────────────────────────── */
 function home(lang) {
   const t = T[lang], h = t.home;
-  const tile = (cats, title, image, cls = '', extra = '') => {
-    const items = cats.flatMap(c => byCat(lang, c));
-    const min = Math.min(...items.map(p => p.price_from));
-    return `<a class="tile ${cls}" href="${R.cat(cats[0], lang)}">${img(image, { alt: '', sizes: cls.includes('feature') ? '(min-width:900px) 50vw, 100vw' : '(min-width:900px) 25vw, 50vw', max: 960 })}<span class="tile__arrow" aria-hidden="true"><i class="bx bx-right-arrow-alt"></i></span>${extra}<h3>${title}</h3><p>${t.nav.options(items.length)} · ${t.price.from.toLowerCase()} ${fmt(min)}</p></a>`;
+  const catCard = c => {
+    const items = byCat(lang, c), min = Math.min(...items.map(p => p.price_from));
+    return `<a class="cat-card" href="${R.cat(c, lang)}"><div class="cat-card__media">${img(CATEGORIES[c].img, { alt: '', sizes: '(min-width:1024px) 280px, (min-width:640px) 46vw, 90vw', max: 960 })}<span class="cat-card__icon" aria-hidden="true"><i class="bx ${CATEGORIES[c].icon}"></i></span></div><div class="cat-card__foot"><div><h3>${esc(CATEGORIES[c][lang])}</h3><small>${t.nav.options(items.length)} · ${t.price.from.toLowerCase()} ${fmt(min)}</small></div><span class="cat-card__more" aria-hidden="true">${t.nav.more} <i class="bx bx-right-arrow-alt"></i></span></div></a>`;
   };
   const featured = ['island-hopping-experience', 'maputo-bay-sunset-cruise', 'santa-maria-snorkeling', 'safari-parque-maputo', 'ponta-douro-day-trip', 'whale-watching'].map(id => find(lang, id)).filter(p => p && !p.disabled);
   const stays = ['machangulo-beach-lodge', 'mamas-lodge', 'villa-martins'].map(id => find(lang, id)).filter(Boolean);
@@ -359,15 +362,28 @@ function home(lang) {
     ['ponta-douro-day-trip', "Ponta D'Ouro", null],
     ['safari-parque-maputo', lang === 'pt' ? 'Reserva Especial de Maputo' : 'Maputo Special Reserve', null]
   ].map(([id, name, href]) => { const p = find(lang, id); return { p, name, href: href || R.item(p, lang) }; });
-  const hero = '/assets/images/hero/island-hopping-maputo-bay.webp';
+  /* Slider do topo (5 slides do site original). Só o 1.º título é <h1>; os outros slides ficam inertes até serem mostrados (site.js) */
+  const slides = t.hero.slides, n = slides.length;
+  const hero = `/assets/images/hero/${slides[0][0]}.webp`;
 
   const main = `<main id="main">
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero__media">${img(hero, { alt: t.hero.alt, eager: true, sizes: '100vw' })}</div>
-  <div class="container-x hero__content">
-    <span class="chip chip--glass"><i class="bx bxs-map"></i> ${t.hero.chip}</span>
-    <h1 id="hero-title">${t.hero.title}</h1>
-    <p>${t.hero.lead}</p>
+<section class="hero hero--slider" aria-roledescription="carousel" aria-label="${t.hero.label}" data-hero>
+  <div class="hero__slides" aria-live="off" data-hero-track>
+${slides.map(([file, place, title, sub, cat, alt], i) => `    <div class="hero__slide${i ? '' : ' is-active'}" role="group" aria-roledescription="slide" aria-label="${i + 1} / ${n}" data-slide${i ? ' aria-hidden="true" inert' : ''}>
+      <div class="hero__media">${img(`/assets/images/hero/${file}.webp`, { alt, eager: i === 0, sizes: '100vw' })}</div>
+      <div class="container-x hero__content">
+        <span class="chip chip--glass"><i class="bx bxs-map"></i> ${esc(place)}</span>
+        ${i ? `<h2 class="hero__title">${esc(title)}</h2>` : `<h1 class="hero__title">${esc(title)}</h1>`}
+        <p>${esc(sub)}</p>
+        <a class="btn-x btn-x--primary hero__cta" href="${R.cat(cat, lang)}" data-slide-cta="${cat}">${t.hero.cta} <i class="bx bx-right-arrow-alt"></i></a>
+      </div>
+    </div>`).join('\n')}
+  </div>
+  <div class="hero__controls" data-hero-controls>
+    <button type="button" class="hero__btn" data-hero-prev aria-label="${t.hero.prev}"><i class="bx bx-chevron-left"></i></button>
+    <div class="hero__dots">${slides.map((s, i) => `<button type="button" class="hero__dot" data-hero-dot="${i}" aria-label="${t.hero.goTo(i + 1)}"${i ? '' : ' aria-current="true"'}></button>`).join('')}</div>
+    <button type="button" class="hero__btn" data-hero-pause aria-label="${t.hero.pause}" data-label-pause="${t.hero.pause}" data-label-play="${t.hero.play}"><i class="bx bx-pause"></i></button>
+    <button type="button" class="hero__btn" data-hero-next aria-label="${t.hero.next}"><i class="bx bx-chevron-right"></i></button>
   </div>
 </section>
 <div class="container-x finder-wrap">
@@ -382,22 +398,14 @@ function home(lang) {
   <div class="trust">${t.trust.map(([i, a, b]) => `<div class="trust__item"><i class="bx ${i}"></i><div><strong>${a}</strong>${b}</div></div>`).join('')}</div>
 </div>
 
-<section class="section" aria-labelledby="cat-title">
+<section class="section section--teal" aria-labelledby="cat-title">
   <div class="container-x">
     <div class="section-head"><div><span class="eyebrow">${h.catEyebrow}</span><h2 id="cat-title">${h.catTitle}</h2></div><p>${h.catLead}</p></div>
-    <div class="mosaic">
-      ${tile(['island-tours'], 'Island Tours', CATEGORIES['island-tours'].img, 'tile--feature', `<span class="chip chip--sun tile__chip">${h.featured}</span>`)}
-      ${tile(['sunset-cruise'], 'Sunset Cruises', CATEGORIES['sunset-cruise'].img)}
-      ${tile(['safaris'], 'Safaris', CATEGORIES['safaris'].img)}
-      ${tile(['beach-tours'], 'Beach Tours', CATEGORIES['beach-tours'].img)}
-      ${tile(['ocean-activities'], 'Ocean Activities', CATEGORIES['ocean-activities'].img)}
-      ${tile(['island-accommodation'], esc(CATEGORIES['island-accommodation'][lang]), CATEGORIES['island-accommodation'].img, 'tile--wide')}
-      ${tile(['city-tour', 'transfers'], 'City Tour &amp; Transfers', CATEGORIES['city-tour'].img, 'tile--wide')}
-    </div>
+    <div class="cat-grid">${CAT_ORDER.map(catCard).join('')}</div>
   </div>
 </section>
 
-<section class="section section--flush-top" aria-labelledby="feat-title">
+<section class="section" aria-labelledby="feat-title">
   <div class="container-x">
     <div class="section-head"><div><span class="eyebrow">${h.featEyebrow}</span><h2 id="feat-title">${h.featTitle}</h2></div><a class="text-link" href="${R.tours(lang)}">${t.nav.all} <i class="bx bx-right-arrow-alt"></i></a></div>
     <div class="scroller">${featured.map(p => card(p, lang)).join('')}</div>
@@ -412,6 +420,13 @@ function home(lang) {
   </div>
 </section>
 
+<section class="section section--teal" aria-labelledby="stay-title">
+  <div class="container-x">
+    <div class="section-head"><div><span class="eyebrow">${h.stayEyebrow}</span><h2 id="stay-title">${h.stayTitle}</h2></div><a class="text-link" href="${R.stays(lang)}">${h.stayAll(active(DATA[lang].stays).length)} <i class="bx bx-right-arrow-alt"></i></a></div>
+    <div class="cards">${stays.map(p => stayCard(p, lang)).join('')}</div>
+  </div>
+</section>
+
 <section class="section" id="destinos" aria-labelledby="dest-title">
   <div class="container-x dest">
     <div class="dest__visual">${dests.map((d, i) => img(d.p.image, { alt: d.p.name, cls: i === 0 ? 'is-active' : '', sizes: '(min-width:960px) 50vw, 100vw', max: 960 })).join('')}<span class="chip chip--white dest__caption" data-dest-caption><i class="bx bx-camera"></i> ${esc(dests[0].p.name)}</span></div>
@@ -420,8 +435,7 @@ function home(lang) {
   </div>
 </section>
 
-<section class="section section--sea" id="como-reservar" aria-labelledby="how-title">
-  <svg class="wave-deco" viewBox="0 0 200 200" aria-hidden="true"><path fill="#fff" d="M0 120c30-20 60-20 90 0s60 20 110 0v80H0z"/><path fill="#fff" d="M0 80c30-20 60-20 90 0s60 20 110 0v20c-50 20-80 20-110 0S30 80 0 100z"/></svg>
+<section class="section section--teal" id="como-reservar" aria-labelledby="how-title">
   <div class="container-x">
     <div class="section-head"><div><span class="eyebrow">${h.howEyebrow}</span><h2 id="how-title">${h.howTitle}</h2></div><p>${h.howLead}</p></div>
     <div class="steps">${h.steps.map(([a, b]) => `<div class="step"><h3>${a}</h3><p>${b}</p></div>`).join('')}</div>
@@ -429,14 +443,7 @@ function home(lang) {
   </div>
 </section>
 
-<section class="section" aria-labelledby="stay-title">
-  <div class="container-x">
-    <div class="section-head"><div><span class="eyebrow">${h.stayEyebrow}</span><h2 id="stay-title">${h.stayTitle}</h2></div><a class="text-link" href="${R.stays(lang)}">${h.stayAll(active(DATA[lang].stays).length)} <i class="bx bx-right-arrow-alt"></i></a></div>
-    <div class="cards">${stays.map(p => stayCard(p, lang)).join('')}</div>
-  </div>
-</section>
-
-<section class="section section--flush-top" id="feedback" aria-labelledby="rev-title" data-reviews-section hidden>
+<section class="section" id="feedback" aria-labelledby="rev-title" data-reviews-section hidden>
   <div class="container-x reviews">
     <div><span class="eyebrow">${h.revEyebrow}</span><h2 id="rev-title" class="h2-lg">${h.revTitle}</h2><p class="lead">${h.revLead}</p>
       <p class="reviews__actions"><button type="button" class="btn-x btn-x--ghost btn-x--sm" data-review-open><i class="bx bxs-edit"></i> ${h.revWrite}</button></p></div>
@@ -470,7 +477,7 @@ function reviewDialog(lang, packageId) {
     <div class="field"><label for="rv-role">${r.origin}</label><input id="rv-role" name="role" maxlength="80"></div>
     <fieldset class="field"><legend>${r.rating}</legend><div class="star-input">${[5, 4, 3, 2, 1].map(n => `<input type="radio" id="rv-s${n}" name="rating" value="${n}"><label for="rv-s${n}" title="${r.stars(n)}"><i class="bx bxs-star"></i><span class="visually-hidden">${r.stars(n)}</span></label>`).join('')}</div></fieldset>
     <div class="field"><label for="rv-text">${r.text}</label><textarea id="rv-text" name="text" rows="4" maxlength="1200" required></textarea></div>
-    <div class="hp" aria-hidden="true"><label for="rv-website">Website</label><input id="rv-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <div class="hp" aria-hidden="true"><label for="rv-hp">Não preencher</label><input id="rv-hp" name="mca_hp" tabindex="-1" autocomplete="off"></div>
     <p class="form-msg" data-review-msg role="status"></p>
     <button type="submit" class="btn-x btn-x--teal btn-x--block">${r.send}</button>
   </form>
@@ -559,7 +566,7 @@ ${pageHero({ lang, eyebrow: c.eyebrow, h1: c.h1, lead: c.lead, image: '/assets/i
           <div class="field"><label for="cf-subject">${c.subject}</label><select id="cf-subject" name="subject" required><option value="">${c.choose}</option>${c.subjects.map(([v, l]) => `<option value="${v}">${l}</option>`).join('')}</select><span class="field__error">${c.errSubject}</span></div>
         </div>
         <div class="field"><label for="cf-message">${c.message}</label><textarea id="cf-message" name="message" rows="5" required></textarea><span class="field__error">${c.errMsg}</span></div>
-        <div class="hp" aria-hidden="true"><label for="cf-website">Website</label><input id="cf-website" name="website" tabindex="-1" autocomplete="off"></div>
+        <div class="hp" aria-hidden="true"><label for="cf-hp">Não preencher</label><input id="cf-hp" name="mca_hp" tabindex="-1" autocomplete="off"></div>
         <div class="form-actions"><button type="submit" class="btn-x btn-x--teal" value="api" data-submit><i class="bx bxs-send"></i> <span>${c.send}</span></button><button type="submit" class="btn-x btn-x--ghost" value="wa"><i class="bx bxl-whatsapp"></i> ${c.sendWa}</button></div>
         <p class="form-msg" data-contact-msg role="status"></p>
         <p class="form-note"><i class="bx bxs-shield"></i> ${c.privacy}</p>
@@ -647,7 +654,7 @@ function detail(p, lang) {
     </div>
     <div class="summary" data-summary aria-live="polite"></div>
     <p class="form-error" data-booking-error role="alert" hidden></p>
-    <div class="hp" aria-hidden="true"><label for="bk-website">Website</label><input id="bk-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <div class="hp" aria-hidden="true"><label for="bk-hp">Não preencher</label><input id="bk-hp" name="mca_hp" tabindex="-1" autocomplete="off"></div>
     <button type="submit" class="btn-x btn-x--primary btn-x--block" data-submit><i class="bx bxs-calendar-check"></i> <span>${b.submit}</span></button>
     <p class="booking__note"><i class="bx bx-info-circle"></i><span>${b.note}</span></p>
   </form>
@@ -698,7 +705,7 @@ ${reviewDialog(lang, p.slug)}`;
   return page({
     lang, path, alt, title: `${p.name} — ${isStay ? listName : t.nav.experiences} | Moz Camp Adventures`, desc: p.description, main, bodyClass: 'pkg-page', ogImage: p.gallery[0] || p.image,
     preload: optSrc(g[0], 1600), jsonld: ld, dockHtml: bar, headerOpts: { cta: '#reservar' },
-    scripts: `<script src="${asset('/assets/js/reviews.js')}" defer></script>\n<script type="application/json" id="track-view">${json({ event: 'view_package', package_id: p.slug, package_name: p.name, category: p.category, price: p.price_from })}</script>\n`
+    scripts: `${ticketScripts()}<script src="${asset('/assets/js/reviews.js')}" defer></script>\n<script type="application/json" id="track-view">${json({ event: 'view_package', package_id: p.slug, package_name: p.name, category: p.category, price: p.price_from })}</script>\n`
   });
 }
 
@@ -715,16 +722,20 @@ function legal(lang, kind) {
 <h2>Que dados recolhemos e para quê</h2><ul>
 <li><strong>Pedidos de reserva e contacto:</strong> nome, telefone, e-mail, datas, número de participantes e a mensagem que escreve. São guardados no nosso servidor e usados apenas para responder e organizar a sua experiência. Guardamos também uma impressão irreversível (hash) do endereço IP, para protecção contra abusos.</li>
 <li><strong>Avaliações:</strong> nome, origem (opcional), classificação e texto. São guardadas no nosso servidor e só são publicadas depois de aprovadas pela equipa.</li>
+<li><strong>Conta de cliente (opcional):</strong> nome, e-mail, telefone (opcional), idioma e palavra-passe (guardada cifrada, nunca em texto). Serve para ver as suas reservas e os documentos. As reservas que fizer com a sessão iniciada ficam associadas à conta. Pode apagar a conta a qualquer momento em «A minha conta»; as reservas e os documentos fiscais já emitidos ficam guardados, por obrigação legal.</li>
+<li><strong>Promoções:</strong> só se aceitar expressamente, ao criar a conta ou em «A minha conta». Guardamos a data do consentimento. Pode deixar de receber a qualquer momento em «A minha conta».</li>
 <li><strong>Estatísticas de utilização:</strong> só com o seu consentimento, através do Google Analytics (via Google Tag Manager), com dados agregados.</li></ul>
-<h2>Cookies</h2><p>Usamos armazenamento local essencial para guardar as suas preferências de cookies. Os cookies de análise só são activados se os aceitar. Pode mudar a escolha em «Gerir cookies», no rodapé.</p>
+<h2>Cookies</h2><p>Usamos armazenamento local essencial para guardar as suas preferências de cookies e, se entrar na sua conta, um cookie de sessão essencial. Os cookies de análise só são activados se os aceitar. Pode mudar a escolha em «Gerir cookies», no rodapé.</p>
 <h2>Partilha</h2><p>Não vendemos dados pessoais. Partilhamos apenas o necessário com os prestadores envolvidos na sua experiência (por exemplo, o alojamento reservado) e com os serviços técnicos acima referidos.</p>
 <h2>Os seus direitos</h2><p>Pode pedir acesso, correcção ou eliminação dos seus dados através de <a href="mailto:info@mozcampadventures.co.mz">info@mozcampadventures.co.mz</a>.</p>` : `
 <h2>Who we are</h2><p>Mozambique Camp Adventures (“Moz Camp Adventures”), Marina, Escola Náutica, Maputo City, Mozambique. Contact: <a href="mailto:info@mozcampadventures.co.mz">info@mozcampadventures.co.mz</a> · +258 84 440 6543.</p>
 <h2>What we collect and why</h2><ul>
 <li><strong>Booking and contact requests:</strong> name, phone, e-mail, dates, number of participants and your message. They are stored on our own server and used only to reply and arrange your experience. We also keep an irreversible fingerprint (hash) of your IP address to protect against abuse.</li>
 <li><strong>Reviews:</strong> name, origin (optional), rating and text. Stored on our own server and published only after our team approves them.</li>
+<li><strong>Customer account (optional):</strong> name, e-mail, phone (optional), language and password (stored encrypted, never as plain text). It lets you see your bookings and documents. Bookings you make while signed in are linked to the account. You can delete the account at any time under “My account”; bookings and tax documents already issued are kept, as required by law.</li>
+<li><strong>Promotions:</strong> only if you explicitly agree, when creating the account or under “My account”. We record the date of your consent. You can stop at any time under “My account”.</li>
 <li><strong>Usage statistics:</strong> only with your consent, through Google Analytics (via Google Tag Manager), as aggregated data.</li></ul>
-<h2>Cookies</h2><p>We use essential local storage to remember your cookie preferences. Analytics cookies are only enabled if you accept them. You can change your choice under “Manage cookies” in the footer.</p>
+<h2>Cookies</h2><p>We use essential local storage to remember your cookie preferences and, if you sign in to your account, an essential session cookie. Analytics cookies are only enabled if you accept them. You can change your choice under “Manage cookies” in the footer.</p>
 <h2>Sharing</h2><p>We do not sell personal data. We only share what is needed with the providers involved in your experience (for example the accommodation booked) and the technical services mentioned above.</p>
 <h2>Your rights</h2><p>You can ask to access, correct or delete your data at <a href="mailto:info@mozcampadventures.co.mz">info@mozcampadventures.co.mz</a>.</p>`)
     : (isPt ? `
@@ -783,7 +794,7 @@ function proofPage() {
         <div class="field"><label for="pf-ref">Referência da transacção / Transaction reference</label><input id="pf-ref" name="reference" maxlength="80"></div>
       </div>
       <div class="field"><label for="pf-file">Ficheiro (PDF, JPG ou PNG, até 5 MB) / File (up to 5 MB)</label><input id="pf-file" name="proof" type="file" accept="application/pdf,image/jpeg,image/png" required></div>
-      <div class="hp" aria-hidden="true"><label for="pf-website">Website</label><input id="pf-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="hp" aria-hidden="true"><label for="pf-hp">Não preencher</label><input id="pf-hp" name="mca_hp" tabindex="-1" autocomplete="off"></div>
       <p class="form-msg" data-proof-msg role="status"></p>
       <button class="btn-x btn-x--primary" type="submit"><i class="bx bx-upload"></i> <span>Enviar comprovativo / Send proof</span></button>
       <p class="booking__note"><i class="bx bx-info-circle"></i><span>O pagamento só é considerado depois de a nossa equipa confirmar a entrada dos fundos. Receberá o recibo.<br><span lang="en">The payment only counts once our team confirms the funds were received. You will receive a receipt.</span></span></p>
@@ -795,6 +806,9 @@ function proofPage() {
 }
 
 /* Área do cliente: /reserva/#r=REF&t=TOKEN (link assinado enviado nos e-mails) */
+/* Ticket do pedido com QR code (fim do pedido e área do cliente) */
+const ticketScripts = () => `<script src="${asset('/assets/vendor/qrcode/qrcode.js')}" defer></script>\n<script src="${asset('/assets/js/ticket.js')}" defer></script>\n`;
+
 function clientArea(lang) {
   const pt = lang === 'pt';
   const path = pt ? '/reserva/' : '/en/booking/';
@@ -805,13 +819,119 @@ function clientArea(lang) {
   <div class="notice notice--warn" data-c-error hidden><i class="bx bx-error-circle"></i><p>${pt ? 'Este link não é válido ou foi substituído. Peça um novo link por WhatsApp +258 84 440 6543.' : 'This link is invalid or has been replaced. Ask for a new link on WhatsApp +258 84 440 6543.'}</p></div>
   <div data-c-body hidden>
     <div class="proof-summary" data-c-summary></div>
+    <div class="client-ticket" data-c-ticket></div>
     <h2>${pt ? 'Facturas' : 'Invoices'}</h2><div data-c-invoices></div>
     <h2>${pt ? 'Recibos' : 'Receipts'}</h2><div data-c-receipts></div>
     <p class="booking__note"><i class="bx bx-shield"></i><span>${pt ? 'Este link é pessoal: não o partilhe. Dúvidas? WhatsApp +258 84 440 6543.' : 'This link is personal: please do not share it. Questions? WhatsApp +258 84 440 6543.'}</span></p>
   </div>
 </main>`;
   return page({ lang, path, alt: null, title: `${pt ? 'A minha reserva' : 'My booking'} | Moz Camp Adventures`, desc: pt ? 'Área do cliente.' : 'Customer area.', main, noindex: true, dockHtml: '',
-    extraHead: '  <meta name="referrer" content="no-referrer">\n', scripts: `<script src="${asset('/assets/js/client.js')}" defer></script>\n` });
+    extraHead: '  <meta name="referrer" content="no-referrer">\n', scripts: `${ticketScripts()}<script src="${asset('/assets/js/client.js')}" defer></script>\n` });
+}
+
+/* Conta de cliente (/conta/ e /en/account/): entrar, criar conta (funciona de imediato), repor palavra-passe,
+   reservas da conta, perfil, promoções e apagar conta. Lógica em assets/js/account.js; API em /api/account/*. */
+function accountPage(lang) {
+  const pt = lang === 'pt', t = T[lang];
+  const A = pt ? {
+    title: 'A minha conta', loading: 'A carregar…',
+    loginTitle: 'Entrar', loginLead: 'Veja as suas reservas, tickets e facturas num só lugar.', email: 'E-mail', password: 'Palavra-passe', login: 'Entrar',
+    forgotLink: 'Esqueci-me da palavra-passe', noAccount: 'Ainda não tem conta?', createLink: 'Criar conta',
+    regTitle: 'Criar conta', regLead: 'Crie a conta e pronto: as reservas que fizer com a sessão iniciada ficam todas aqui.', name: 'Nome completo', phone: 'Telefone / WhatsApp (opcional)',
+    newPassword: 'Palavra-passe', passHint: 'Pelo menos 8 caracteres, com letras e números.',
+    terms: `Li e aceito os <a href="${R.terms(lang)}">Termos</a> e a <a href="${R.privacy(lang)}">Política de Privacidade</a>.`,
+    marketing: 'Quero receber promoções e novidades por e-mail (pode cancelar a qualquer momento).', register: 'Criar conta', haveAccount: 'Já tem conta?',
+    forgotTitle: 'Repor a palavra-passe', forgotLead: 'Indique o e-mail da conta. Enviamos um link para escolher uma nova palavra-passe (válido 1 hora).', send: 'Enviar link',
+    forgotSent: 'Se existir uma conta com este e-mail, enviámos o link. Veja também a pasta de spam.', back: 'Voltar a entrar',
+    resetTitle: 'Nova palavra-passe', repeat: 'Repetir a palavra-passe', save: 'Guardar',
+    hello: 'Olá', logout: 'Sair', bookings: 'As minhas reservas', noBookings: 'Ainda não há reservas nesta conta. Os pedidos que fizer com a sessão iniciada aparecem aqui.', explore: 'Ver experiências',
+    profile: 'Dados pessoais', language: 'Idioma dos e-mails', prefs: 'Promoções', prefsLead: 'Receba ofertas e novidades da Moz Camp Adventures por e-mail.', prefsOn: 'Quero receber promoções por e-mail',
+    pwTitle: 'Alterar palavra-passe', current: 'Palavra-passe actual', newPw: 'Nova palavra-passe', change: 'Alterar',
+    delTitle: 'Apagar conta', delLead: 'A conta e as preferências são apagadas. As reservas e os documentos fiscais ficam guardados, por obrigação legal.', delConfirm: 'Confirme com a palavra-passe', del: 'Apagar a minha conta'
+  } : {
+    title: 'My account', loading: 'Loading…',
+    loginTitle: 'Sign in', loginLead: 'See your bookings, tickets and invoices in one place.', email: 'E-mail', password: 'Password', login: 'Sign in',
+    forgotLink: 'Forgot password', noAccount: "Don't have an account?", createLink: 'Create account',
+    regTitle: 'Create account', regLead: 'Create your account and you are set: every booking you make while signed in shows up here.', name: 'Full name', phone: 'Phone / WhatsApp (optional)',
+    newPassword: 'Password', passHint: 'At least 8 characters, with letters and numbers.',
+    terms: `I have read and accept the <a href="${R.terms(lang)}">Terms</a> and the <a href="${R.privacy(lang)}">Privacy Policy</a>.`,
+    marketing: 'I want to receive promotions and news by e-mail (you can unsubscribe at any time).', register: 'Create account', haveAccount: 'Already have an account?',
+    forgotTitle: 'Reset password', forgotLead: 'Enter your account e-mail. We will send a link to choose a new password (valid 1 hour).', send: 'Send link',
+    forgotSent: 'If there is an account with this e-mail, we have sent the link. Please also check your spam folder.', back: 'Back to sign in',
+    resetTitle: 'New password', repeat: 'Repeat password', save: 'Save',
+    hello: 'Hello', logout: 'Sign out', bookings: 'My bookings', noBookings: 'There are no bookings in this account yet. Requests you make while signed in show up here.', explore: 'See experiences',
+    profile: 'Personal details', language: 'E-mail language', prefs: 'Promotions', prefsLead: 'Get offers and news from Moz Camp Adventures by e-mail.', prefsOn: 'I want to receive promotions by e-mail',
+    pwTitle: 'Change password', current: 'Current password', newPw: 'New password', change: 'Change',
+    delTitle: 'Delete account', delLead: 'Your account and preferences are deleted. Bookings and tax documents are kept, as required by law.', delConfirm: 'Confirm with your password', del: 'Delete my account'
+  };
+  const msgs = pt ? {
+    invalid_credentials: 'E-mail ou palavra-passe incorrectos.', email_taken: 'Já existe uma conta com este e-mail. Entre, ou use «Esqueci-me da palavra-passe».',
+    too_many_requests: 'Demasiadas tentativas. Aguarde alguns minutos.', weak_password: 'A palavra-passe deve ter pelo menos 8 caracteres, com letras e números.',
+    invalid_link: 'Este link já não é válido. Peça um novo.', invalid_email: 'E-mail inválido.', invalid_name: 'Indique o seu nome.', invalid_phone: 'Telefone inválido.',
+    terms_required: 'Para criar a conta, aceite os Termos e a Política de Privacidade.', mismatch: 'As palavras-passe não coincidem.', saved: 'Alterações guardadas.',
+    pwChanged: 'Palavra-passe alterada. As outras sessões foram terminadas.', error: 'Não foi possível concluir. Tente de novo ou fale connosco por WhatsApp +258 84 440 6543.',
+    confirmDelete: 'Apagar a conta? Esta acção não pode ser anulada.', view: 'Ver reserva e ticket', toConfirm: 'a confirmar', p1: '1 pessoa', pN: '{n} pessoas',
+    st: { pedido: 'Pedido — aguarda confirmação', confirmada: 'Confirmada', concluida: 'Concluída', cancelada: 'Cancelada' }, since: 'desde', locale: 'pt-PT'
+  } : {
+    invalid_credentials: 'Wrong e-mail or password.', email_taken: 'There is already an account with this e-mail. Sign in, or use “Forgot password”.',
+    too_many_requests: 'Too many attempts. Please wait a few minutes.', weak_password: 'The password must have at least 8 characters, with letters and numbers.',
+    invalid_link: 'This link is no longer valid. Please ask for a new one.', invalid_email: 'Invalid e-mail.', invalid_name: 'Please enter your name.', invalid_phone: 'Invalid phone number.',
+    terms_required: 'To create an account, please accept the Terms and the Privacy Policy.', mismatch: 'The passwords do not match.', saved: 'Changes saved.',
+    pwChanged: 'Password changed. Your other sessions have been signed out.', error: 'Something went wrong. Please try again or contact us on WhatsApp +258 84 440 6543.',
+    confirmDelete: 'Delete your account? This cannot be undone.', view: 'View booking and ticket', toConfirm: 'to be confirmed', p1: '1 person', pN: '{n} people',
+    st: { pedido: 'Request — awaiting confirmation', confirmada: 'Confirmed', concluida: 'Completed', cancelada: 'Cancelled' }, since: 'since', locale: 'en-GB'
+  };
+  const field = (id, label, type, ac, extra = '') => `<div class="field"><label for="${id}">${label}</label><input id="${id}" name="${id.replace(/^ac-/, '')}" type="${type}" autocomplete="${ac}" ${extra}></div>`;
+  const main = `<main id="main" class="container-x account" data-account data-lang="${lang}">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="${R.home(lang)}">${t.nav.home}</a><span aria-hidden="true">/</span><span>${A.title}</span></nav>
+  <h1>${A.title}</h1>
+  <p class="lead" data-view="loading">${A.loading}</p>
+  <p class="form-msg account__msg" data-msg role="status" aria-live="polite" hidden></p>
+
+  <section class="account-card" data-view="login" hidden><span class="eyebrow">${A.loginTitle}</span><p class="lead">${A.loginLead}</p>
+    <form data-form="login" novalidate>${field('ac-email', A.email, 'email', 'email', 'required')}${field('ac-password', A.password, 'password', 'current-password', 'required')}
+      <button class="btn-x btn-x--primary btn-x--block" type="submit">${A.login}</button></form>
+    <p class="account__links"><a href="#" data-go="forgot">${A.forgotLink}</a><span>${A.noAccount} <a href="#" data-go="register">${A.createLink}</a></span></p></section>
+
+  <section class="account-card" data-view="register" hidden><span class="eyebrow">${A.regTitle}</span><p class="lead">${A.regLead}</p>
+    <form data-form="register" novalidate>${field('ac-name', A.name, 'text', 'name', 'required maxlength="120"')}${field('ac-remail', A.email, 'email', 'email', 'required')}${field('ac-phone', A.phone, 'tel', 'tel', 'maxlength="40"')}
+      ${field('ac-rpassword', A.newPassword, 'password', 'new-password', 'required minlength="8"')}<p class="form-note">${A.passHint}</p>
+      <label class="check-line"><input type="checkbox" name="terms" required> <span>${A.terms}</span></label>
+      <label class="check-line"><input type="checkbox" name="marketing"> <span>${A.marketing}</span></label>
+      <div class="hp" aria-hidden="true"><label for="ac-hp">Não preencher</label><input id="ac-hp" name="mca_hp" tabindex="-1" autocomplete="off"></div>
+      <button class="btn-x btn-x--primary btn-x--block" type="submit">${A.register}</button></form>
+    <p class="account__links"><span>${A.haveAccount} <a href="#" data-go="login">${A.login}</a></span></p></section>
+
+  <section class="account-card" data-view="forgot" hidden><span class="eyebrow">${A.forgotTitle}</span><p class="lead">${A.forgotLead}</p>
+    <form data-form="forgot" novalidate>${field('ac-femail', A.email, 'email', 'email', 'required')}<button class="btn-x btn-x--primary btn-x--block" type="submit">${A.send}</button></form>
+    <p class="account__links"><a href="#" data-go="login">${A.back}</a></p></section>
+
+  <section class="account-card" data-view="reset" hidden><span class="eyebrow">${A.resetTitle}</span>
+    <form data-form="reset" novalidate>${field('ac-npassword', A.newPassword, 'password', 'new-password', 'required minlength="8"')}${field('ac-npassword2', A.repeat, 'password', 'new-password', 'required')}<p class="form-note">${A.passHint}</p>
+      <button class="btn-x btn-x--primary btn-x--block" type="submit">${A.save}</button></form></section>
+
+  <div class="account-dash" data-view="dashboard" hidden>
+    <div class="account-dash__head"><p class="lead">${A.hello}, <strong data-c-name></strong></p><button type="button" class="btn-x btn-x--ghost btn-x--sm" data-logout><i class="bx bx-log-out"></i> ${A.logout}</button></div>
+    <section aria-labelledby="ac-bk"><h2 id="ac-bk" class="h2-md">${A.bookings}</h2><div class="account-bookings" data-bookings></div>
+      <p class="account-empty" data-no-bookings hidden>${A.noBookings} <a class="text-link" href="${R.tours(lang)}">${A.explore} <i class="bx bx-right-arrow-alt"></i></a></p></section>
+    <div class="account-grid">
+      <section class="account-card" aria-labelledby="ac-pf"><h2 id="ac-pf" class="h3-sub">${A.profile}</h2>
+        <form data-form="profile" novalidate>${field('ac-pname', A.name, 'text', 'name', 'required maxlength="120"')}<div class="field"><label>${A.email}</label><input type="email" data-c-email readonly></div>
+          ${field('ac-pphone', A.phone, 'tel', 'tel', 'maxlength="40"')}<div class="field"><label for="ac-plang">${A.language}</label><select id="ac-plang" name="plang"><option value="pt">Português</option><option value="en">English</option></select></div>
+          <button class="btn-x btn-x--teal" type="submit">${A.save}</button></form></section>
+      <section class="account-card" aria-labelledby="ac-pr"><h2 id="ac-pr" class="h3-sub">${A.prefs}</h2><p class="form-note">${A.prefsLead}</p>
+        <label class="check-line"><input type="checkbox" data-marketing> <span>${A.prefsOn}</span></label><p class="form-note" data-marketing-since></p>
+        <h2 class="h3-sub">${A.pwTitle}</h2>
+        <form data-form="password" novalidate>${field('ac-cpassword', A.current, 'password', 'current-password', 'required')}${field('ac-cnew', A.newPw, 'password', 'new-password', 'required minlength="8"')}
+          <button class="btn-x btn-x--ghost" type="submit">${A.change}</button></form></section>
+    </div>
+    <details class="account-delete"><summary>${A.delTitle}</summary><p class="form-note">${A.delLead}</p>
+      <form data-form="delete" novalidate>${field('ac-dpassword', A.delConfirm, 'password', 'current-password', 'required')}<button class="btn-x btn-x--danger" type="submit">${A.del}</button></form></details>
+  </div>
+</main>
+<script type="application/json" id="account-i18n">${json(msgs)}</script>`;
+  return page({ lang, path: R.account(lang), alt: R.account(other(lang)), title: `${A.title} | Moz Camp Adventures`, desc: A.loginLead, main, noindex: true, dockHtml: '',
+    extraHead: '  <meta name="referrer" content="no-referrer">\n', scripts: `<script src="${asset('/assets/js/account.js')}" defer></script>\n` });
 }
 
 function notFound() {
@@ -848,6 +968,8 @@ out('/404.html', notFound());
 out('/pagamento/', proofPage());
 out('/reserva/', clientArea('pt'));
 out('/en/booking/', clientArea('en'));
+out(R.account('pt'), accountPage('pt'));
+out(R.account('en'), accountPage('en'));
 
 /* Painel (/admin/, HTML escrito à mão): carimbar os recursos com ?v=<hash> (cache longa no .htaccess) */
 {
@@ -875,6 +997,8 @@ Disallow: /api/
 Disallow: /pagamento/
 Disallow: /reserva/
 Disallow: /en/booking/
+Disallow: /conta/
+Disallow: /en/account/
 Disallow: /docs/
 Disallow: /scripts/
 

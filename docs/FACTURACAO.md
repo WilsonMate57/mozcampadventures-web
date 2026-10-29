@@ -47,17 +47,41 @@ Cada série recomeça em `0001` a cada ano. O número é atribuído **no momento
 
 ## 4. Conteúdo do PDF
 
-- **Cabeçalho:** logótipo; Mozambique Camp Adventures; nome comercial; NUIT; morada; telefone; e-mail; site.
-- **Documento:** tipo e número, data de emissão, referência da reserva, moeda (MZN).
-- **Cliente:** nome e, se indicados, NUIT, morada, e-mail e telefone.
-- **Linhas:** descrição, quantidade, preço unitário e valor. Depois, o subtotal, o total e a menção fiscal (ISPC, sem IVA discriminado).
-- **Instruções de pagamento:** Nedbank (conta e NIB), Millennium bim (conta e NIB) e M-Pesa, mais uma nota a pedir a referência e o comprovativo. O e-Mola só aparece quando tiver número (hoje está pendente).
-- **Observações**, e, na pró-forma, a indicação de que não é factura.
-- **Rodapé:** denominação, NUIT, número, «Documento processado por computador» e quem emitiu.
+**Layout (27/10/2026):** segue o modelo de factura que a empresa já usa (fundo cinza-claro, logótipo horizontal, título e barras em laranja `#d0841f`). O mesmo layout é usado na factura (FT), na pró-forma (PF) e no recibo (RC) — classe `DocTheme` em `api/src/Invoices.php`.
 
-Exemplo: `docs/visual-review/depois/factura-exemplo.pdf` (dados de teste).
+- **Cabeçalho:** logótipo horizontal; título «FACTURA» / «FACTURA PRÓ-FORMA» / «RECIBO» em laranja; morada e telefone com ícones; filete.
+- **Caixa de três colunas:**
+  - «Factura para» com nome, morada, e-mail e NUIT do cliente («N/A» se não houver);
+  - número e data de emissão;
+  - «Valor da factura».
+- **Tabela:** barra laranja «Descrição · Preço Unit. · QTD · Total» e, no mínimo, 4 linhas, como no modelo. Com muitas linhas, a tabela continua numa segunda página, com o cabeçalho repetido.
+- **Métodos de pagamento:**
+  - Nedbank e Millennium bim (conta e NIB) e M-Pesa (número), com marcadores laranja;
+  - nome comercial em laranja;
+  - nota a pedir a referência e o comprovativo.
 
-O PDF é gerado sem bibliotecas externas: PDF 1.4 com Helvetica, que suporta os acentos portugueses. Não precisa de Composer.
+  O e-Mola só aparece quando tiver número.
+- **Totais:** SUB-TOTAL, Desconto (%) e ISPC (3%) «Incluso», com o total final numa barra laranja «Total (MZN)».
+- **Observações** e, na pró-forma, a indicação de que não é factura.
+- **Menções legais:** denominação, NUIT, número, reserva, «Documento processado por computador» e quem emitiu. Ficam numa linha discreta por cima do rodapé; o modelo original não tinha o NUIT da empresa, mas não pode faltar.
+- **Rodapé:** morada, e-mail, site e telefone com ícones, e o logótipo.
+
+**Diferenças em relação ao modelo original:**
+- **«Expira»:** dá lugar à data de emissão, porque o sistema não tem data de vencimento.
+- **Desconto:** aparece como 0%, porque o sistema não faz descontos.
+- **Valores:** em formato português (`44.000,00`), como no resto do sistema; o modelo usava `44,000.00`.
+- **Numeração:** `FT-2026/0001`, como decidido em 26/10/2026; o modelo usava `031/MCA/2025`.
+
+**Imagens:** `api/assets/doc-logo.jpg` e `doc-icon-*.jpg`, geradas por `node scripts/document-assets.mjs` a partir de `assets/images/logo/logo_moz_camp_adventures_horizontal.png`. Esse logótipo foi extraído do modelo de factura da empresa.
+
+Exemplos: `docs/visual-review/depois/factura-exemplo.pdf` e `recibo-exemplo.pdf` (dados fictícios).
+
+**Fonte:** Inter, a mesma do site, embebida no PDF nos pesos 400 (texto), 700 (negrito) e 800 (título). O PDF fica com cerca de 100 KB.
+- Ficheiros: `api/assets/fonts/inter-{400,700,800}.ttf` (SIL OFL, `LICENSE.txt`), com 18 KB cada.
+- São um subconjunto Windows-1252 (latim e acentos portugueses) da Inter estática do Google Fonts, gerado com `pyftsubset` (fonttools 4.55.3; caracteres U+0020–007E, U+00A0–00FF e os extras do Windows-1252; sem hinting nem tabelas de layout).
+- Se os ficheiros faltarem, o PDF volta a sair com Helvetica.
+
+O PDF é gerado sem bibliotecas externas (PDF 1.4; `api/src/Pdf.php` lê as métricas da TrueType sozinho). Não precisa de Composer. Validado com pdf.js e com pypdf em modo estrito: as fontes estão embebidas e o texto, com os acentos, extrai-se correctamente.
 
 ## 5. Pagamentos e recibos
 

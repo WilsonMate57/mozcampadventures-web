@@ -2,6 +2,8 @@
 
 **Fase 2** (protótipo, 26/10/2026): **aprovada** em 26/10/2026. **Fase 3** (aplicação ao site): concluída localmente, por publicar. Ver §8.
 
+> **Correcção de identidade (26/10/2026, §9):** a direcção «Editorial do Índico» (§2–§3) afastou-se demasiado da marca. A pedido do cliente, a identidade visual original foi restaurada; as §2–§3 ficam como histórico.
+
 ## 1. Como ver o protótipo
 
 O protótipo está em `prototipo/`, separado do site. Nenhuma página em produção foi alterada.
@@ -13,7 +15,7 @@ Os dados (nomes, textos, preços, imagens, extras, barcos, transfers) são lidos
 
 Para ver localmente, sirva a pasta do projecto com qualquer servidor estático (os `fetch` do JSON não funcionam a partir de `file://`) e abra `/prototipo/index.html`.
 
-## 2. Direcção criativa: «Editorial do Índico»
+## 2. Direcção criativa: «Editorial do Índico» (substituída — ver §9)
 
 Um site com aspecto de revista de viagens e não de template: fotografia real em grande formato, tipografia Inter forte e alinhada à esquerda, muito espaço em branco e cor usada com intenção.
 
@@ -132,3 +134,43 @@ Bootstrap 5.3.3 continua carregado (reboot e utilitários), como no site actual;
 | Peso das páginas | **Resolvido**: −75 a −90 % (ver `RELATORIO_DE_TESTES.md`) |
 | SEO dos pacotes | **Resolvido**: páginas próprias, canonical, hreflang, OG, JSON-LD, sitemap e robots |
 | Aluguer de barco multiplicado por pessoa | **Corrigido**: preço por barco |
+
+## 9. Restauro da identidade visual original (26/10/2026)
+
+**Pedido do cliente:** o redesign descaracterizou a marca; recuperar as cores, o padrão marinho, a tipografia e o layout originais sem perder as melhorias de usabilidade e as funcionalidades.
+
+**Referência:** commit `9ef42a8` (site em produção) — `assets/css/main.css`, `assets/css/pages/package.css`, `components/navbar.html` — e as capturas em `visual-review/antes/`. Resultado em `visual-review/restaurado/`.
+
+### Restaurado
+
+| Elemento | Como no original |
+|---|---|
+| Fundo | Padrão marinho `marine-bg.webp` repetido a 1420 px em todo o site (versão optimizada de 289 KB em vez de 1,1 MB), com opacidade de 13 % a pedido do cliente (27/10/2026); as fichas mantêm o fundo cinza-claro liso |
+| Blocos turquesa | Categorias, alojamentos e «como reservar» em fundo `#00c6c1` sólido, título branco centrado, botão de contorno branco |
+| «Sobre nós» | Fundo `#f5fffe` com filete turquesa→laranja no topo |
+| Etiquetas de secção | Pílula laranja `#ff9a08` com Dancing Script 700 em minúsculas (`.section-label`) |
+| Hero | Título em Dancing Script centrado, gradiente turquesa de baixo para cima, pílula laranja de localização |
+| Cabeçalho | Barra branca a toda a largura (72 px), só o logótipo (64 px), navegação com sublinhado turquesa, selector PT/EN em pílula cinzenta, bloco «Para mais info: +258 84 440 6543» com círculo turquesa |
+| Menu mobile | Painel branco a deslizar da direita |
+| Cartões | Brancos, raio 12 px, sombra suave, elevação ao passar; selo turquesa; botão turquesa; preço laranja nos alojamentos |
+| Categorias | Cartão com imagem, ícone em círculo translúcido e rodapé branco com título turquesa e «Ver mais» |
+| Botões | Turquesa, cantos de 6 px, elevação com sombra turquesa |
+| Páginas interiores | Banner com sobreposição escura e título centrado (`.page-banner`); fichas em fundo `#f8f9fa` com blocos em cartões brancos |
+| Avaliações | Cartão turquesa com texto branco em itálico |
+| Rodapé | `#1e1e2e`, logótipo em branco, títulos com traço turquesa, texto italic, ícones sociais em círculo |
+| Tipografia | Inter (corpo e títulos, pesos 700/800, sem tracking negativo) + Dancing Script, ambas alojadas no site (CSP) |
+| Painel de administração | Não existia no original; segue a mesma identidade: barra superior branca (72 px) como o cabeçalho, barra lateral no escuro do rodapé (`#1e1e2e`) com logótipo branco e item activo turquesa, fundo `#f8f9fa` com cartões brancos e sombra, indicadores com filete turquesa (laranja = requer atenção), botões turquesa de 6 px, entrada sobre o padrão marinho com etiqueta manuscrita |
+
+### Mantido do redesign (melhorias, não identidade)
+
+Barra de procura no hero, faixa de confiança, secção de destinos, passos de reserva com pagamentos, painel de reserva com preço em tempo real, galeria, filtros e pesquisa, páginas próprias por experiência (SEO), dock mobile, acessibilidade de teclado e foco, desempenho. Corrigido também um defeito antigo: nos cartões de alojamento o botão podia sair do cartão (coluna `1fr` → `minmax(0, 1fr)`).
+
+### Não restaurado (a confirmar)
+
+- **Carrossel de 5 slides no hero:** ficou uma imagem fixa (melhor LCP). Pode ser reposto se preferir.
+- **Grelha de 3 fotos em «Sobre nós»** e o selo flutuante «Experiências premium»: ficou uma foto.
+- **Plataformas de avaliação** (Viator, Tripadvisor, GetYourGuide): continuam retiradas até haver perfis reais (D14).
+
+### Contraste — decisão pendente do cliente
+
+O original usa texto branco sobre turquesa `#00c6c1` (**2,1:1**) e sobre laranja `#ff9a08` (**2,2:1**). O mínimo WCAG AA é 4,5:1 (3:1 para texto ≥ 24 px ou ≥ 19 px em negrito). A versão actual é fiel ao original, e o `tests/audit.mjs` assinala estes pontos como violações «serious» (botões, etiquetas, selector de idioma, blocos turquesa; no painel, o botão «Entrar»). Onde não afecta a identidade já se usa o turquesa escuro `#00807d` para texto pequeno (links, navegação, preços, títulos de categoria).

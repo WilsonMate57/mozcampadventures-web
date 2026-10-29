@@ -6,6 +6,8 @@ Disallow: /api/
 Disallow: /pagamento/
 Disallow: /reserva/
 Disallow: /en/booking/
+Disallow: /conta/
+Disallow: /en/account/
 Disallow: /docs/
 Disallow: /scripts/
 

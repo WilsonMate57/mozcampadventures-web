@@ -6,6 +6,7 @@ PASS  E  capacidade do barco (5) limita participantes
 PASS  F  botão + desactivado na capacidade
 PASS  G  validação: data, nome e telefone em erro
 PASS  G2 nada é enviado com campos em falta
+PASS  G3 campo-armadilha com nome que o preenchimento automático não reconhece
 PASS  H  Ponta D'Ouro começa no mínimo (3) = 24.000
 PASS  H2 abaixo do mínimo: pedido BLOQUEADO
 PASS  I  transfer próprio do JSON: 3 × 8.000 + 14.000 = 38.000
@@ -42,4 +43,4 @@ PASS  Y2 aceitar: banner escondido e escolha guardada
 PASS  Z  sitemap: 64 URLs, sem pacotes desactivados nem .com
 PASS  Z2 sem erros de JavaScript nas páginas testadas
 
-43/43 testes passaram
+44/44 testes passaram

@@ -5,7 +5,7 @@
  */
 
 import { spawn, execSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, mkdirSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, existsSync, rmSync, cpSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -64,9 +64,11 @@ await shot('01-entrar');
 await type('#a-email', adminEmail); await type('#a-pass', PASS);
 await click('[data-auth] button[type=submit]');
 await waitFor(`!document.querySelector('[data-app]').hidden && !!document.querySelector('.kpi')`);
-await test('U3 entrada → resumo com indicadores', () => ev(`document.querySelectorAll('.kpi').length`), 11);
-await test('U4 administrador vê todas as secções do menu', () => ev(`document.querySelectorAll('[data-nav] a').length`), 10);
-await test('U5 resumo separa facturado, recebido, em dívida e por verificar', () => ev(`['Facturado este mês', 'Recebido este mês', 'Em dívida', 'Pagamentos por verificar'].every(l => [...document.querySelectorAll('.kpi small')].some(k => k.textContent.startsWith(l)))`), true);
+await test('U3 entrada → resumo com indicadores do período e «Requer atenção»', () => ev(`[document.querySelectorAll('.kpi').length >= 4, document.querySelectorAll('.attn').length >= 5, document.querySelectorAll('.chart .bar').length > 0]`), [true, true, true]);
+await test('U4 administrador vê todas as secções do menu, agrupadas', () => ev(`[document.querySelectorAll('[data-nav] a').length, [...document.querySelectorAll('.nav-group')].map(g => g.textContent).join('|')]`), [12, 'Visão geral|Operação|Financeiro|Sistema']);   // inclui «Clientes» e «Experiências»
+await test('U5 resumo separa facturado, recebido, em dívida e por verificar', () => ev(`[[...document.querySelectorAll('.kpi small')].map(k => k.textContent.trim()).filter(t => /^(Recebido|Facturado \\(FT\\))$/.test(t)).length, ['Em dívida', 'pagamentos por verificar'].every(l => [...document.querySelectorAll('.attn span')].some(k => k.textContent.includes(l)))]`), [2, true]);
+await ev(`document.querySelector('[data-p="7d"]').click(), 1`); await sleep(1200);
+await test('U5b período «7 dias» muda o URL e o intervalo comparado', () => ev(`[location.hash, /comparado com os 7 dias anteriores/.test(document.querySelector('.dash-head p').textContent)]`), ['#/?p=7d', true]);
 await shot('02-resumo');
 
 /* 2. Pedido manual (WhatsApp) */
@@ -181,6 +183,19 @@ await shot('13-emails');
 await go('#/definicoes');
 await waitFor(`!!document.querySelector('[data-notif]')`);
 await test('U31 Definições: 9 tipos de notificação configuráveis', () => ev(`document.querySelectorAll('[data-notif] input[type=checkbox]').length`), 9);
+/* Canais de envio (desenvolvimento: e-mail e WhatsApp em modo de teste). Repõe a definição no fim. */
+await test('U51 canais de envio: estado do e-mail e do WhatsApp, sem segredos', () => ev(`[/Modo de teste/.test(document.querySelector('[data-channels]').textContent), !!document.querySelector('[data-wa] textarea[name=recipients]'), !/re_|EAA/.test(document.querySelector('[data-channels]').innerHTML)]`), [true, true, true]);
+await ev(`(() => { const f = document.querySelector('[data-wa]'); f.enabled.checked = true; f.recipients.value = '84 123 4567'; f.requestSubmit(f.querySelector('button:not([type])')); return 1; })()`);
+await waitFor(`document.querySelector('[data-wa] textarea').value === '+258841234567'`);
+await click('[data-test="whatsapp"]');
+await waitFor(`!!document.querySelector('[data-test-result] li')`);
+await test('U52 WhatsApp: número normalizado e teste com resultado por número', () => ev(`[document.querySelector('[data-wa] textarea').value, document.querySelector('[data-test-result] li').textContent]`), ['+258841234567', '+258841234567: registado em modo de teste (não enviado)']);
+await shot('19-canais-envio');
+await go('#/emails'); await waitFor(`!!document.querySelector('[data-st="wa"]')`);
+await click('[data-st="wa"]'); await waitFor(`!!document.querySelector('[data-list] table')`);
+await test('U53 E-mails e WhatsApp: separador WhatsApp mostra o teste', () => ev(`[...document.querySelectorAll('[data-list] td')].some(t => t.textContent.includes('Teste de envio'))`), true);
+await go('#/definicoes'); await waitFor(`!!document.querySelector('[data-wa]')`);
+await ev(`(() => { const f = document.querySelector('[data-wa]'); f.enabled.checked = false; f.recipients.value = ''; f.requestSubmit(f.querySelector('button:not([type])')); return 1; })()`); await sleep(800);
 
 /* 4. Utilizadores, definições, mobile */
 await go('#/utilizadores');
@@ -214,6 +229,115 @@ await go('#/utilizadores');
 await waitFor(`document.querySelector('#view').textContent.includes('Sem permissão')`);
 await test('U17 acesso directo a #/utilizadores → «Sem permissão»', () => ev(`document.querySelector('#view').textContent.includes('Sem permissão') || ('[ecrã: ' + location.hash + ' | ' + document.querySelector('[data-title]').textContent + ' | ' + document.querySelector('#view').textContent.slice(0, 80) + ' | auth=' + !document.querySelector('[data-auth]').hidden + ']')`), true);
 await test('U17b corrida: resposta antiga do resumo não se sobrepõe à página nova (3×)', async () => { const out = []; for (let i = 0; i < 3; i++) { await ev("location.hash='#/'; setTimeout(()=>{location.hash='#/utilizadores'}, 5)"); await sleep(2500); out.push(await ev(`document.querySelector('#view').textContent.includes('Sem permissão')`)); } return out; }, [true, true, true]);
+/* 8. Reservas: filtros, ordenação, paginação, painel lateral e pesquisa global */
+await go('#/reservas?status=pedido');
+await waitFor(`!!document.querySelector('[data-list] tbody tr')`);
+await test('U31 separadores por estado com contagens; pedido filtrado', () => ev(`[document.querySelector('[data-status="pedido"]').getAttribute('aria-pressed'), /\\d/.test(document.querySelector('[data-status="pedido"] b').textContent), [...document.querySelectorAll('[data-list] .badge')].every(b => b.textContent === 'Pedido')]`), ['true', true, true]);
+await click('th[data-sortkey="total"]'); await sleep(1200);
+await test('U32 ordenar por total (servidor) actualiza o URL e a seta', () => ev(`[location.hash.includes('sort=total'), document.querySelector('th[data-sortkey="total"]').getAttribute('aria-sort')]`), [true, 'descending']);
+await ev(`document.querySelector('[data-list] tbody tr td:nth-child(2)').click(), 1`);
+await waitFor(`!!document.querySelector('.drawer .dl')`);
+await test('U33 linha abre o painel lateral com acções e «Abrir reserva completa»', () => ev(`[document.querySelector('[data-drawer]').dataset.open, document.querySelectorAll('.drawer [data-dto]').length > 0, !!document.querySelector('.drawer a[href^="#/reservas/MCA-"]')]`), ['true', true, true]);
+await ev(`document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })), 1`); await sleep(400);
+await test('U34 Esc fecha o painel lateral', () => ev(`document.querySelector('[data-drawer]').dataset.open`), 'false');
+await ev(`document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true })), 1`); await sleep(300);
+await ev(`(() => { const i = document.querySelector('[data-pq]'); i.value = '${ref}'; i.dispatchEvent(new Event('input', { bubbles: true })); return 1; })()`); await sleep(1200);
+await test('U35 Ctrl+K encontra a reserva pela referência e abre-a com Enter', async () => { const found = await ev(`[...document.querySelectorAll('.palette__item')].some(a => a.textContent.includes('${ref}'))`); await ev(`document.querySelector('[data-pq]').dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })), 1`); await sleep(800); return [found, await ev('location.hash')]; }, [true, `#/reservas/${ref}`]);
+await go('#/experiencias');
+await waitFor(`!!document.querySelector('[data-elist] tbody tr')`);
+await test('U36 experiências (gerente): desempenho, colunas ordenáveis, «Novo pacote», sem «Versões anteriores»', () => ev(`[document.querySelectorAll('[data-elist] tbody tr').length >= 20, document.querySelectorAll('[data-elist] th[data-sort]').length >= 8, !!document.querySelector('[data-new]'), !!document.querySelector('[data-hist]')]`), [true, true, true, false]);
+
+await go('#/reservas');
+await waitFor(`!!document.querySelector('[data-new]')`);
+await click('[data-new]');
+await waitFor(`document.querySelector('[data-dialog]').open && !!document.querySelector('[data-item]')`);
+await ev(`(() => { const f = document.querySelector('[data-dialog] form'); f.requestSubmit(f.querySelector('button[value=ok]')); return 1; })()`); await sleep(300);
+await test('U37 novo pedido vazio: erros junto dos campos obrigatórios, diálogo continua aberto', () => ev(`[document.querySelector('[data-dialog]').open, document.querySelectorAll('[data-dialog] [aria-invalid=true]').length >= 3, !!document.querySelector('[data-dialog] label[for]')]`), [true, true, true]);
+await type('[data-item]', 'santa-maria-snorkeling');
+const d2 = new Date(); d2.setDate(d2.getDate() + 25);
+await type('[data-dialog] [name=date]', d2.toISOString().slice(0, 10)); await type('[data-dialog] [name=adults]', '1');
+await type('[data-dialog] [name=name]', 'Abaixo do Mínimo'); await type('[data-dialog] [name=phone]', '+258 84 555 7777');
+await ev(`(() => { const f = document.querySelector('[data-dialog] form'); f.requestSubmit(f.querySelector('button[value=ok]')); return 1; })()`); await sleep(1500);
+await test('U38 recusa do servidor (abaixo do mínimo): erro no diálogo e valores preservados', () => ev(`[document.querySelector('[data-dialog]').open, document.querySelector('[data-nb-error]').textContent.includes('mínimo'), document.querySelector('[data-dialog] [name=name]').value]`), [true, true, 'Abaixo do Mínimo']);
+await ev(`document.querySelector('[data-dialog]').close(), 1`);
+
+/* 3. Editor do catálogo (rascunho; a publicação é testada em tests/catalog.mjs). Repõe o rascunho e as fotos no fim. */
+const STORAGE = execSync(`${process.env.PHP_CLI} -r "echo (require getenv('MCA_CONFIG'))['app']['storage_dir'];"`, { encoding: 'utf8' }).trim();
+const DRAFT = join(STORAGE, 'catalog-draft'), draftBak = existsSync(join(DRAFT, 'tours.json')) ? DRAFT + '.ui-bak' : null;
+if (draftBak) cpSync(DRAFT, draftBak, { recursive: true });
+rmSync(DRAFT, { recursive: true, force: true });
+const SLUG = 'pacote-ui-' + run;
+try {
+  await go('#/experiencias');
+  await waitFor(`!!document.querySelector('[data-new]')`);
+  await click('[data-new]');
+  await waitFor(`document.querySelector('[data-dialog]').open && !!document.querySelector('[data-nn]')`);
+  await type('[data-nk]', 'tour'); await type('[data-nn]', 'Pacote UI ' + run);
+  await test('U39 novo pacote: endereço gerado a partir do nome', () => ev(`[document.querySelector('[data-ns]').value, document.querySelector('[data-nurl]').textContent]`), [SLUG, 'mozcampadventures.co.mz/tours/' + SLUG + '/']);
+  await shot('14-catalogo-novo');
+  await ev(`(() => { const f = document.querySelector('[data-dialog] form'); f.requestSubmit(f.querySelector('button[value=ok]')); return 1; })()`);
+  await waitFor(`location.hash === '#/experiencias/${SLUG}' && !!document.querySelector('[data-edform] input')`);
+  await test('U40 editor abre o pacote criado (desactivado, por publicar) com os separadores', () => ev(`[[...document.querySelectorAll('[data-tab]')].map(b => b.textContent.replace(/\\s*\\d+$/, '')).join('|'), /Indisponível/.test(document.querySelector('[data-edhead]').textContent), /Novo · por publicar/.test(document.querySelector('[data-edhead]').textContent)]`), ['Geral|Preços e regras|Conteúdo|Itinerário|Opções e menu|Galeria', true, true]);
+  /* Activar sem preço, descrição nem fotos → resumo de erros com ligações */
+  await ev(`(() => { const c = document.querySelector('[data-b=disabled]'); c.click(); return 1; })()`);
+  await test('U41 alteração por guardar é sinalizada', () => ev(`document.querySelector('[data-dstate]').textContent.trim()`), 'Alterações por guardar');
+  await click('[data-save]'); await waitFor(`!document.querySelector('[data-ederr]').hidden`);
+  await test('U42 activar incompleto: resumo dos erros (preço, descrição, galeria)', () => ev(`[...document.querySelectorAll('[data-ederr] li')].map(l => l.textContent.split(':')[0]).sort()`), ['Descrição curta', 'Galeria', 'Preço desde']);
+  await ev(`[...document.querySelectorAll('[data-goto]')].find(b => b.textContent === 'Preço desde').click(), 1`); await sleep(200);
+  await test('U43 ligação do erro abre o separador e marca o campo', () => ev(`[document.querySelector('[data-tab][aria-pressed=true]').dataset.tab, document.querySelector('#ed-item-price_from').getAttribute('aria-invalid')]`), ['precos', 'true']);
+  await type('#ed-item-price_from', '3500'); await type('#ed-item-priceLabel', 'por pessoa');
+  await type('#ed-rules-minPeople', '2');
+  await click('[data-tab="geral"]'); await type('#ed-item-description', 'Passeio de teste da interface.');
+  await click('[data-lang="en"]');
+  await test('U44 «English»: só textos, com o português como sugestão', () => ev(`[!!document.querySelector('#ed-en-name'), document.querySelector('#ed-en-description').placeholder, !document.querySelector('[data-b=category]'), document.querySelector('[data-edform]').classList.contains('is-en')]`), [true, 'Passeio de teste da interface.', true, true]);
+  await type('#ed-en-name', 'UI Package ' + run);
+  await click('[data-lang="pt"]');
+  await click('[data-tab="itinerario"]'); await click('[data-add="itinerary"]');
+  await type('#ed-itinerary-0-time', '09h00'); await type('#ed-itinerary-0-title', 'Partida da marina');
+  await click('[data-tab="opcoes"]'); await click('[data-add="extras"]');
+  await type('#ed-extras-0-title', 'Fotógrafo'); await type('#ed-extras-0-price', '2000');
+  /* Foto pelo campo de ficheiro real (reduzida no browser antes do envio) */
+  await click('[data-tab="galeria"]');
+  const img = join(mkdtempSync(join(tmpdir(), 'mca-ui-')), 'praia.jpg');
+  const sharp = (await import('sharp')).default;
+  await sharp({ create: { width: 3200, height: 2000, channels: 3, background: { r: 0, g: 170, b: 180 } } }).jpeg().toFile(img);
+  const doc = await send('DOM.getDocument', {});
+  const node = await send('DOM.querySelector', { nodeId: doc.result.root.nodeId, selector: '[data-file]' });
+  await send('DOM.setFileInputFiles', { nodeId: node.result.nodeId, files: [img] });
+  await waitFor(`document.querySelectorAll('.gal__item:not(.is-up)').length === 1`, 15000);
+  await test('U45 foto carregada: aparece na galeria como «Topo da página» e «Cartão»', () => ev(`[document.querySelectorAll('.gal__item').length, [...document.querySelectorAll('.gal__tags .tag')].map(t => t.textContent).join('|'), document.querySelector('[data-gcount]').textContent]`), [1, 'Topo da página|Cartão', '1']);
+  await shot('15-catalogo-galeria');
+  await click('[data-save]'); await waitFor(`document.querySelector('[data-dstate]').textContent.startsWith('Guardado')`, 8000);
+  await test('U46 guardar: rascunho válido, activo, com id da opção e foto reduzida a 2400 px', async () => {
+    const r = await ev(`fetch('/api/admin/catalog/items/${SLUG}', { headers: { Accept: 'application/json' } }).then(r => r.json())`);
+    const meta = await sharp(join(process.cwd(), r.item.gallery[0].slice(3))).metadata();
+    return [r.item.disabled === undefined, r.item.price_from, r.rules.minPeople, r.en.name, r.item.extras[0].id, r.item.itinerary[0].title, Math.max(meta.width, meta.height)];
+  }, [true, 3500, 2, 'UI Package ' + run, 'fotografo', 'Partida da marina', 2400]);
+  await shot('16-catalogo-editor');
+  await click('[data-tab="precos"]'); await type('#ed-item-priceLabel', 'alterado');
+  await test('U47 sair com alterações por guardar pede confirmação (e fica no editor se cancelar)', async () => {
+    await ev(`window.confirm = () => false, 1`); await ev(`location.hash = '#/reservas', 1`); await sleep(500);
+    const stayed = await ev('location.hash');
+    await ev(`window.confirm = () => true, 1`); await ev(`location.hash = '#/experiencias', 1`); await waitFor(`!!document.querySelector('[data-elist] tbody tr')`);
+    return [stayed, await ev('location.hash')];
+  }, ['#/experiencias/' + SLUG, '#/experiencias']);
+  await test('U48 lista: barra «por publicar» (gerente não publica) e pacote marcado como novo', () => ev(`[!!document.querySelector('.publish-bar') && !document.querySelector('[data-publish]') && /administrador tem de publicar/.test(document.querySelector('.publish-bar').textContent), [...document.querySelectorAll('[data-elist] tr')].some(tr => tr.textContent.includes('Pacote UI ${run}') && tr.textContent.includes('Novo · por publicar'))]`), [true, true]);
+  await shot('17-catalogo-lista');
+  await size(390, 844, true); await go('#/experiencias/' + SLUG); await waitFor(`!!document.querySelector('[data-edform] input')`);
+  await test('U49 editor no telemóvel sem scroll horizontal', () => ev('document.documentElement.scrollWidth <= innerWidth'), true);
+  await shot('18-catalogo-editor-mobile');
+  await size(1366, 900);
+  await go('#/experiencias'); await waitFor(`!!document.querySelector('[data-discard]')`);
+  await click('[data-discard]'); await waitFor(`document.querySelector('[data-dialog]').open`);
+  await ev(`(() => { const f = document.querySelector('[data-dialog] form'); f.querySelector('button[value=ok]').click(); return 1; })()`);
+  await waitFor(`!document.querySelector('.publish-bar')`, 8000);
+  await test('U50 descartar o rascunho remove o pacote não publicado da lista', () => ev(`[!!document.querySelector('.publish-bar'), [...document.querySelectorAll('[data-elist] tr')].some(tr => tr.textContent.includes('Pacote UI ${run}'))]`), [false, false]);
+} finally {
+  rmSync(DRAFT, { recursive: true, force: true });
+  if (draftBak) { cpSync(draftBak, DRAFT, { recursive: true }); rmSync(draftBak, { recursive: true, force: true }); }
+  rmSync(join('assets/images/packages', SLUG), { recursive: true, force: true });
+}
+
 await test('U18 sem erros de JavaScript', () => jsErrors, []);
 
 const pass = results.filter(Boolean).length;

@@ -23,6 +23,16 @@
   unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Dancing Script 700 — a letra manuscrita do site original (títulos do hero e etiquetas de secção). SIL OFL 1.1 (assets/fonts/dancing-script/LICENSE.txt) */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(/assets/fonts/dancing-script/dancing-script-latin-700.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   /* ── Marca (valores de referência, não alterar) ─────────── */
   --brand-teal:    #00c6c1;
@@ -41,6 +51,8 @@
   --teal-800:  #006764;
   --sea-900:   #0b2e33;            /* secções escuras (oceano profundo) */
   --sea-950:   #071f23;
+  --teal-dark: #00a8a4;            /* hover dos botões turquesa (como o --teal-dark do original) */
+  --on-brand:  #fff;               /* texto sobre turquesa/laranja, como no original (contraste: ver docs/REDESIGN_E_UI_UX.md §9) */
 
   --blue-500:  var(--brand-blue);
   --blue-700:  #2b7287;
@@ -60,6 +72,8 @@
   --surface:    #ffffff;
   --surface-2:  #f6f8f7;
   --sand:       #faf6ef;           /* fundo editorial quente */
+  --mint:       #f5fffe;           /* fundo da secção «sobre nós» do original */
+  --footer-bg:  #1e1e2e;           /* rodapé do original */
 
   /* ── Estados ─────────────────────────────────────────────── */
   --success:    #1f8a4c;
@@ -75,15 +89,16 @@
 
   /* ── Tipografia ──────────────────────────────────────────── */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-script: 'Dancing Script', 'Segoe Script', cursive;
   --fs-xs:   0.75rem;
   --fs-sm:   0.875rem;
   --fs-base: 1rem;
   --fs-md:   1.125rem;
   --fs-lg:   clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-  --fs-xl:   clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
-  --fs-2xl:  clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  --fs-xl:   clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
+  --fs-2xl:  clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);   /* títulos de secção e de página (original: 2–2,8rem) */
   --fs-3xl:  clamp(2.5rem, 1.6rem + 3.8vw, 4.75rem);
-  --lh-tight: 1.08;
+  --lh-tight: 1.2;
   --lh-snug:  1.25;
   --lh-body:  1.6;
   --fw-regular: 400;
@@ -91,7 +106,7 @@
   --fw-semi:    600;
   --fw-bold:    700;
   --fw-black:   800;
-  --tracking-tight: -0.025em;
+  --tracking-tight: 0;
   --tracking-caps:  0.12em;
 
   /* ── Espaçamento (escala de 4) ───────────────────────────── */
@@ -107,17 +122,17 @@
   --w-wide:    1360px;
 
   /* ── Raios ───────────────────────────────────────────────── */
-  --r-xs: 6px;
-  --r-sm: 10px;
-  --r-md: 14px;
-  --r-lg: 20px;
-  --r-xl: 28px;
+  --r-xs: 6px;    /* botões (como no original) */
+  --r-sm: 8px;
+  --r-md: 12px;   /* cartões */
+  --r-lg: 12px;
+  --r-xl: 16px;
   --r-pill: 999px;
 
   /* ── Sombras (discretas) ─────────────────────────────────── */
-  --shadow-1: 0 1px 2px rgba(11, 46, 51, .06), 0 1px 1px rgba(11, 46, 51, .04);
-  --shadow-2: 0 6px 18px -6px rgba(11, 46, 51, .14);
-  --shadow-3: 0 18px 40px -16px rgba(11, 46, 51, .28);
+  --shadow-1: 0 2px 10px rgba(0, 0, 0, .08);   /* sombras do original */
+  --shadow-2: 0 4px 20px rgba(0, 0, 0, .12);
+  --shadow-3: 0 12px 32px rgba(0, 0, 0, .18);
   --ring:     0 0 0 3px rgba(0, 198, 193, .45);
 
   /* ── Movimento ───────────────────────────────────────────── */

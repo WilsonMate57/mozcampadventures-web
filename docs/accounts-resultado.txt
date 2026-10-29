@@ -1,0 +1,36 @@
+PASS  R1 registo → conta criada e sessão aberta de imediato
+PASS  R2 cookie de sessão HttpOnly + SameSite=Strict; indicador mca_in visível ao JS
+PASS  R3 /me funciona logo, sem outro passo
+PASS  R4 o mesmo e-mail outra vez → 409 «já tem conta»
+PASS  R5 sem aceitar os termos → 422
+PASS  R6 palavra-passe fraca → 422
+PASS  R7 campo-armadilha preenchido → 400
+PASS  R8 sem origem permitida → 403
+PASS  R9 palavra-passe guardada cifrada; consentimento de promoções com data
+PASS  L1 entrar com e-mail e palavra-passe
+PASS  L2 palavra-passe errada e e-mail inexistente → mesma resposta
+PASS  L3 força bruta: 6.ª tentativa falhada → 429
+PASS  B1 reservas feitas com a sessão iniciada aparecem na conta
+PASS  B2 reserva feita SEM sessão não entra na conta, mesmo com o mesmo e-mail
+PASS  B3 cada reserva traz o link da área do cliente (ticket, facturas)
+PASS  B4 sem sessão → 401
+PASS  B5 privacidade: quem regista o e-mail de outra pessoa NÃO vê as reservas dela
+PASS  P1 escrita sem token CSRF → 403
+PASS  P2 escrita de outra origem → 403
+PASS  P3 desligar promoções regista a data
+PASS  P4 voltar a aceitar regista nova data; perfil actualizado
+PASS  P5 alterar palavra-passe exige a actual
+PASS  P6 alterar palavra-passe termina as outras sessões
+PASS  F1 pedido de reposição: mesma resposta para e-mail com e sem conta
+PASS  F2 o link de reposição NÃO fica no registo de e-mails
+PASS  F3 nova palavra-passe com o link → entra e termina sessões antigas
+PASS  F4 o link de reposição não serve duas vezes
+PASS  F5 entrar com a palavra-passe nova
+PASS  A1 Gerente vê a lista de clientes, com as reservas da conta e as promoções
+PASS  A2 filtro «aceitam promoções»
+PASS  A3 já não existe exportação de lista (404)
+PASS  A4 e-mail de reposição (link secreto) não pode ser reenviado pelo painel
+PASS  D1 apagar exige a palavra-passe
+PASS  D2 apagar conta: conta e sessões saem; as reservas ficam (sem ligação à conta)
+
+34/34 testes passaram

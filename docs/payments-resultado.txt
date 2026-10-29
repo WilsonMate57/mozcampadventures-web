@@ -2,7 +2,7 @@ PASS  A  30.000 + pagamento confirmado de 10.000 → «parcial», saldo 20.000
 PASS  A2 recibo RC-AAAA/NNNN emitido automaticamente
 PASS  A3 PDF do recibo disponível e íntegro
 PASS  B  + 20.000 confirmados → «pago», saldo 0
-PASS  B2 recebido no resumo aumenta exactamente 30.000
+PASS  B2 recebido no resumo (período actual) aumenta exactamente 30.000
 PASS  B3 pagamento acima do saldo é recusado (factura já paga)
 PASS  B4 a tentativa recusada não deixa registo pendente órfão
 PASS  C0 link do cliente mostra a factura, o saldo e os métodos (sem dados pessoais)

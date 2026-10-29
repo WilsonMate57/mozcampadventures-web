@@ -254,7 +254,7 @@ final class Payments
     {
         require_allowed_origin();
         rate_limit('proof', 5, 3600);
-        if (!empty($_POST['website'])) throw new ApiError(400, 'rejected');
+        if (!empty($_POST['mca_hp']) || !empty($_POST['website'])) throw new ApiError(400, 'rejected');
         $inv = self::invoiceByToken((string) ($_POST['token'] ?? ''));
         $data = self::validate($_POST, $inv);
         $f = $_FILES['proof'] ?? null;
@@ -275,7 +275,7 @@ final class Payments
         }
         $id = (int) $ins->fetchColumn();
         self::event($id, 'declared', ['amount' => $data['amount'], 'method' => $data['method']], null, 'cliente');
-        Mailer::send('proof_team', (string) config('mail.team'), "Comprovativo recebido — {$inv['number']}", "O cliente enviou um comprovativo de pagamento para a factura {$inv['number']}.\nValor declarado: " . Invoices::money($data['amount']) . "\nMétodo: {$data['method']}\nReferência: " . ($data['reference'] ?: '—') . "\n\nVerifique a entrada dos fundos antes de confirmar no painel.", 'payment', $id);
+        Mailer::send('proof_team', Mailer::team(), "Comprovativo recebido — {$inv['number']}", "O cliente enviou um comprovativo de pagamento para a factura {$inv['number']}.\nValor declarado: " . Invoices::money($data['amount']) . "\nMétodo: {$data['method']}\nReferência: " . ($data['reference'] ?: '—') . "\n\nVerifique a entrada dos fundos antes de confirmar no painel.", 'payment', $id);
         return ['ok' => true, 'status' => 'declarado'];
     }
 
@@ -373,51 +373,47 @@ final class Payments
     }
 }
 
-/** Recibo (A4, metade superior). */
+/** Recibo (A4), no mesmo modelo das facturas (DocTheme). */
 final class ReceiptPdf
 {
     public static function render(array $d): string
     {
-        $ink = [0.11, 0.14, 0.14]; $soft = [0.37, 0.39, 0.40]; $teal = [0.0, 0.50, 0.49];
         $p = new Pdf();
-        $p->addPage();
-        $L = 48; $R = Pdf::W - 48; $c = $d['company'] ?? [];
-        $p->rect(0, 0, Pdf::W, 6, $teal);
-        $p->jpeg(dirname(__DIR__) . '/assets/logo-invoice.jpg', $L, 34, 56);
-        $y = 44;
-        $p->text($R, $y, $c['legal_name'] ?? '', 12, true, $ink, 'R');
-        foreach (array_filter([!empty($c['nuit']) ? 'NUIT ' . $c['nuit'] : null, $c['address'] ?? null, $c['phone'] ?? null]) as $l) {
-            $y += 13;
-            $p->text($R, $y, $l, 8.5, false, $soft, 'R');
-        }
-        $p->text($L, 140, 'RECIBO', 20, true, $ink);
-        $p->text($L, 160, $d['number'], 12, true, $teal);
-        $p->text($R, 140, 'Data: ' . date('d/m/Y', strtotime($d['date'])), 9, false, $ink, 'R');
+        DocTheme::page($p);
+        $c = $d['company'] ?? [];
+        $L = DocTheme::L; $R = DocTheme::R; $ink = DocTheme::INK;
+        DocTheme::header($p, 'RECIBO', $c);
+        DocTheme::infoBox($p, 'Recebido de:', $d['customer'] ?? [], [['Recibo No.', $d['number']], ['Data:', date('d/m/Y', strtotime($d['date']))]], 'Valor recebido.', (float) $d['amount']);
 
-        $p->rect($L, 190, $R - $L, 120, [0.965, 0.973, 0.969]);
-        $p->text($L + 16, 214, 'Recebemos de', 8.5, false, $soft);
-        $p->text($L + 200, 214, $d['customer']['name'] ?? '', 11, true, $ink);
-        $rows = [
-            ['A quantia de', Invoices::money($d['amount'])],
-            ['Referente à factura', $d['invoice'] . ' (total ' . Invoices::money($d['invoice_total']) . ')'],
-            ['Método', $d['method'] . ($d['reference'] ? ' · ref. ' . $d['reference'] : '')],
-            ['Data do pagamento', date('d/m/Y', strtotime($d['paid_on']))],
-            ['Saldo em dívida após este pagamento', Invoices::money(max(0, $d['balance_after']))],
-        ];
-        $y = 236;
-        foreach ($rows as $i => [$k, $v]) {
-            $p->text($L + 16, $y, $k, 8.5, false, $soft);
-            $p->text($L + 200, $y, $v, $i === 0 ? 12 : 9.5, $i === 0, $ink);
-            $y += 16;
-        }
+        $y = DocTheme::tableHead($p, 274, [['Descrição', $L + 19, 'L'], ['Factura', 299, 'L'], ['Data pag.', 437, 'C'], ['Valor', 498, 'L']]);
+        $desc = 'Pagamento por ' . $d['method'] . ($d['reference'] ? ' (ref. ' . $d['reference'] . ')' : '');
+        $lines = array_slice(DocTheme::wrap($p, $desc, 205, 9.5), 0, 3);
+        $h = max(39, 16 + count($lines) * 12);
+        $ty = $y + ($h - (count($lines) - 1) * 12) / 2 + 3.5;
+        foreach ($lines as $k => $line) $p->text($L + 19, $ty + $k * 12, $line, 9.5, false, $ink);
+        $p->text(299, $ty, (string) $d['invoice'], 9.5, false, $ink);
+        $p->text(437, $ty, date('d/m/Y', strtotime($d['paid_on'])), 9.5, false, $ink, 'C');
+        $p->text(541, $ty, DocTheme::amount((float) $d['amount']), 9.5, false, $ink, 'R');
+        $y += $h;
+        $p->line($L, $y, $R, $y, DocTheme::RULE, 0.8);
+
+        $y = 400;
+        DocTheme::totals($p, $y, [
+            ['Total da factura', DocTheme::amount((float) $d['invoice_total'])],
+            ['Saldo em dívida', DocTheme::amount(max(0, (float) $d['balance_after']))],
+        ], 'Recebido (MZN)', (float) $d['amount']);
+
+        $x = $L + 19;
+        $p->text($x, $y, 'Recebemos a quantia indicada,', 10, false, $ink);
+        $p->text($x, $y + 14, 'referente à factura ' . $d['invoice'] . '.', 10, false, $ink);
         if (!empty($c['tax_note'])) {
-            $p->text($L, 334, $c['tax_note'], 8, false, $soft);
+            $p->paragraph($x, $y + 34, 250, $c['tax_note'], 8, false, DocTheme::SOFT, 1.3);
         }
-        $p->line($L, 400, $L + 200, 400, [0.6, 0.6, 0.6]);
-        $p->text($L, 414, 'Moz Camp Adventures — ' . $d['issued_by'], 8, false, $soft);
-        $p->line($L, Pdf::H - 58, $R, Pdf::H - 58, [0.85, 0.88, 0.88]);
-        $p->text($L, Pdf::H - 42, ($c['legal_name'] ?? '') . (!empty($c['nuit']) ? ' · NUIT ' . $c['nuit'] : '') . ' · ' . $d['number'], 7.5, false, $soft);
-        $p->text($R, Pdf::H - 42, 'Documento processado por computador', 7.5, false, $soft, 'R');
+        $p->line($x, $y + 96, $x + 180, $y + 96, $ink, 0.6);
+        $p->text($x, $y + 110, $c['trade_name'] ?? 'Moz Camp Adventures', 10, true, DocTheme::ORANGE);
+        $p->text($x, $y + 123, $d['issued_by'], 9, false, $ink);
+
+        DocTheme::footer($p, $c, ($c['legal_name'] ?? '') . (!empty($c['nuit']) ? ' · NUIT ' . $c['nuit'] : '') . ' · ' . $d['number'] . ' · Documento processado por computador');
         return $p->output(['title' => 'Recibo ' . $d['number'], 'author' => $c['legal_name'] ?? '']);
     }
 }

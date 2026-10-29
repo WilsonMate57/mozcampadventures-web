@@ -11,7 +11,10 @@ Site público, painel de gestão, facturação, pagamentos e notificações de *
 | [ARQUITECTURA.md](ARQUITECTURA.md) | Visão geral, API, modelo de dados, migrações |
 | [FACTURACAO.md](FACTURACAO.md) | Facturas (FT), pró-formas (PF), numeração e PDF |
 | [PAGAMENTOS.md](PAGAMENTOS.md) | Estados calculados, comprovativos, confirmação, recibos (RC), reversões |
-| [NOTIFICACOES.md](NOTIFICACOES.md) | E-mails automáticos, registo e reenvio, área do cliente |
+| [NOTIFICACOES.md](NOTIFICACOES.md) | E-mails automáticos, registo e reenvio, área do cliente, ticket com QR |
+| [PAINEL.md](PAINEL.md) | Painel de administração: sistema visual, resumo por período, reservas, pesquisa global, testes e limitações |
+| [CATALOGO.md](CATALOGO.md) | Pacotes, preços, regras, textos PT/EN e fotos editados no painel: rascunho, publicação, versões anteriores |
+| [CONTAS_DE_CLIENTE.md](CONTAS_DE_CLIENTE.md) | Contas de cliente no site (activas logo após o registo), reservas da conta, promoções, segurança |
 | [SEGURANCA.md](SEGURANCA.md) | Medidas de segurança por área, CSP e gestão de segredos |
 | [DEPLOYMENT.md](DEPLOYMENT.md) | Gerar o site, testar, configurar o Plesk, nginx, ambiente de desenvolvimento |
 | [PUBLICACAO.md](PUBLICACAO.md) | **Checklist, publicação passo a passo, backups e reversão** |
@@ -65,4 +68,5 @@ node scripts/package.mjs          # prepara dist/httpdocs para publicar (não pu
 4. **Textos legais** (Privacidade, Termos): os actuais são provisórios.
 5. **Nomes das categorias em PT:** continuam em inglês, como no site original («Island Tours», «Ocean Activities»…). Confirmar se é intencional (marca) ou se devem ser traduzidos.
 6. **Foto de snorkeling de origem duvidosa (D15):** já não é usada no site; confirmar se pode ser apagada.
-7. Configurações do Plesk listadas em `PUBLICACAO.md` §1.
+7. **Resend e WhatsApp:** criar as contas, verificar o domínio no Resend, aprovar o modelo `nova_reserva` na Meta e colocar as chaves no servidor (`NOTIFICACOES.md` §6).
+8. Configurações do Plesk listadas em `PUBLICACAO.md` §1, mais o Node.js para publicar o catálogo a partir do painel (`DEPLOYMENT.md` §3.1f).

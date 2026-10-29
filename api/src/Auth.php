@@ -34,6 +34,9 @@ final class Auth
         'settings.manage'  => 'Alterar dados da empresa e de pagamento',
         'users.manage'     => 'Gerir utilizadores e perfis',
         'audit.view'       => 'Ver o registo de auditoria',
+        'customers.view'   => 'Ver contas de clientes do site',
+        'catalog.edit'     => 'Editar experiências, preços e fotos (rascunho)',
+        'catalog.publish'  => 'Publicar o catálogo no site',
     ];
 
     private static ?array $user = null;

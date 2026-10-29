@@ -176,7 +176,8 @@ final class Notify
         $rc->execute([$b['id']]);
         return [
             'booking' => ['reference' => $b['reference'], 'item' => $b['item_name'], 'kind' => $b['item_kind'], 'status' => $b['status'], 'service_date' => $b['service_date'], 'checkin' => $b['checkin'], 'checkout' => $b['checkout'],
-                'adults' => (int) $b['adults'], 'children' => (int) $b['children'], 'name' => strtok((string) $b['customer_name'], ' '), 'lang' => $b['lang']],
+                'adults' => (int) $b['adults'], 'children' => (int) $b['children'], 'name' => strtok((string) $b['customer_name'], ' '), 'lang' => $b['lang'],
+                'lines' => json_decode((string) $b['price_lines'], true) ?: [], 'total' => (int) $b['total_estimate'], 'to_confirm' => (bool) $b['total_to_confirm'], 'created' => substr((string) $b['created_at'], 0, 16)],
             'invoices' => array_map(static fn ($i) => ['id' => (int) $i['id'], 'type' => $i['doc_type'], 'status' => $i['status'], 'number' => $i['number'], 'date' => $i['issue_date'], 'total' => (float) $i['total'],
                 'paid' => $i['paid'] !== null ? (float) $i['paid'] : null, 'balance' => $i['balance'] !== null ? (float) $i['balance'] : null, 'pay_status' => $i['pay_status']], $inv->fetchAll()),
             'receipts' => array_map(static fn ($r) => ['id' => (int) $r['id'], 'number' => $r['number'], 'amount' => (float) $r['amount'], 'status' => $r['status'], 'date' => substr((string) $r['issued_at'], 0, 10), 'invoice' => $r['invoice']], $rc->fetchAll()),

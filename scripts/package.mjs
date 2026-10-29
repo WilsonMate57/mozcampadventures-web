@@ -19,7 +19,7 @@ const OUT = join(ROOT, 'dist', 'httpdocs');
 
 /* Pastas e ficheiros que nunca vão para o servidor */
 const SKIP_DIRS = new Set(['.git', '.claude', '.vscode', 'node_modules', 'tests', 'docs', 'scripts', 'prototipo', 'dist']);
-const SKIP_FILE = /(^|\/)(package(-lock)?\.json|vercel\.json|settings\.json|\.gitignore|.*\.md|.*\.zip|.*\.mjs|.*\.log|Thumbs\.db|\.DS_Store)$/;
+const SKIP_FILE = /(^|\/)(package(-lock)?\.json|vercel\.json|settings\.json|\.gitignore|.*\.md|.*\.zip|.*\.mjs|.*\.log|Thumbs\.db|\.DS_Store)$|^[^/]+\.pdf$/;   // PDF na raiz = documentos de trabalho (podem ter dados de clientes)
 /* Configuração com segredos nunca pode estar dentro do httpdocs */
 const SECRET = /(^|\/)(mca-config\.php|config\.php|\.env(\..*)?)$/;
 
@@ -29,7 +29,10 @@ const walk = d => readdirSync(d).flatMap(e => {
   return SKIP_FILE.test(rel) ? [] : [rel];
 });
 
-const files = walk(ROOT);
+/* Publicação do catálogo a partir do painel: o servidor regenera o site (Node.js + sharp, `npm ci --omit=dev`).
+   Estes ficheiros ficam inacessíveis pela web (.htaccess e nginx: scripts/, *.mjs, package*.json). */
+const SERVER_TOOLS = ['scripts/build.mjs', 'scripts/i18n.mjs', 'scripts/optimize-images.mjs', 'scripts/publish.mjs', 'package.json', 'package-lock.json'];
+const files = [...walk(ROOT), ...SERVER_TOOLS];
 const secrets = files.filter(f => SECRET.test(f));
 if (secrets.length) {
   console.error(`Recusado: ficheiros de configuração com segredos dentro do site: ${secrets.join(', ')}\nA configuração fica fora do httpdocs (docs/DEPLOYMENT.md §3.1).`);

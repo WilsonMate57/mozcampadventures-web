@@ -115,7 +115,7 @@ await test('N17 reenvio de endereço inválido continua «failed» (honesto) e f
 const okMail = JSON.parse(sql("SELECT json_build_object('id', id) FROM email_log WHERE kind = 'notify_booking_confirmed' AND status = 'logged' ORDER BY id DESC LIMIT 1"));
 const rs2 = await admin.call('POST', `/emails/${okMail.id}/resend`);
 await test('N18 reenvio com anexo/corpo guardado funciona', () => rs2.data.status, 'logged');
-await test('N19 resumo conta e-mails falhados por reenviar', async () => (await admin.call('GET', '/dashboard')).data.emails_failed >= 1, true);
+await test('N19 resumo conta e-mails falhados por reenviar', async () => (await admin.call('GET', '/dashboard')).data.attention.emails_failed >= 1, true);
 
 /* ── Área do cliente ─────────────────────────────────── */
 const link = (await admin.call('POST', `/bookings/${ptB.reference}/client-link`, {})).data.link;

@@ -286,122 +286,237 @@ final class Invoices
     }
 }
 
-/** Composição do PDF da factura (A4). */
+/**
+ * Aspecto comum das facturas, pró-formas e recibos — segue o modelo de factura
+ * da empresa: fundo cinza-claro, logótipo horizontal, título e barras laranja,
+ * rodapé com morada, e-mail, site e telefone. Imagens em api/assets/doc-*.jpg
+ * (geradas por scripts/document-assets.mjs).
+ */
+final class DocTheme
+{
+    public const ORANGE = [0.816, 0.518, 0.122];   // #d0841f
+    public const BG = [0.949, 0.949, 0.949];       // #f2f2f2
+    public const INK = [0.173, 0.173, 0.165];      // #2c2c2a
+    public const SOFT = [0.40, 0.40, 0.39];
+    public const RULE = [0.50, 0.50, 0.50];        // #7f7f7f
+    public const WHITE = [1, 1, 1];
+    public const L = 42.0;
+    public const R = 553.0;
+
+    public static function page(Pdf $p): void
+    {
+        $p->addPage();
+        $p->rect(0, 0, Pdf::W, Pdf::H, self::BG);
+    }
+
+    public static function asset(string $file): string
+    {
+        return dirname(__DIR__) . "/assets/$file";
+    }
+
+    public static function amount(float $n): string
+    {
+        return number_format($n, 2, ',', '.');
+    }
+
+    /** Logótipo, título laranja, morada e telefone, filete a toda a largura. */
+    public static function header(Pdf $p, string $title, array $c): void
+    {
+        $p->jpeg(self::asset('doc-logo.jpg'), 48, 16, 132);
+        $p->text(self::R, 84, $title, $p->width($title, 32, 'black') > 330 ? 24 : 32, 'black', self::ORANGE, 'R');
+        $x = self::R;
+        foreach ([['phone', $c['phone'] ?? ''], ['pin', $c['address'] ?? '']] as [$icon, $txt]) {
+            if ($txt === '') continue;
+            $x -= $p->width($txt, 8.5);
+            $p->text($x, 127, $txt, 8.5, false, self::INK);
+            $p->jpeg(self::asset("doc-icon-$icon.jpg"), $x - 13, 119, 9);
+            $x -= 13 + 20;
+        }
+        $p->line(0, 138, Pdf::W, 138, self::RULE, 0.8);
+    }
+
+    /** Menções legais, filete e rodapé com ícones e logótipo. */
+    public static function footer(Pdf $p, array $c, string $legal): void
+    {
+        $p->paragraph(self::L, 742, self::R - self::L, $legal, 6.3, false, self::SOFT, 1.3);
+        $p->line(0, 758, Pdf::W, 758, self::RULE, 0.8);
+        $cells = [['pin', $c['address'] ?? ''], ['mail', $c['email'] ?? ''], ['globe', $c['website'] ?? ''], ['phone', $c['phone'] ?? '']];
+        $x0 = 28; $w = 100;
+        foreach ($cells as $i => [$icon, $txt]) {
+            $cx = $x0 + $w * $i + $w / 2;
+            if ($i > 0) $p->line($x0 + $w * $i, 772, $x0 + $w * $i, 816, self::RULE, 0.6);
+            $p->jpeg(self::asset("doc-icon-$icon.jpg"), $cx - 5, 776, 10);
+            foreach (array_slice(self::wrap($p, $txt, $w - 10, 6.4), 0, 3) as $k => $line) {
+                $p->text($cx, 797 + $k * 8, $line, 6.4, false, self::INK, 'C');
+            }
+        }
+        $p->jpeg(self::asset('doc-logo.jpg'), 468, 766, 82);
+    }
+
+    /** Quebra por palavras; uma palavra mais larga do que a linha (ex.: e-mail) é partida por caracteres. */
+    public static function wrap(Pdf $p, string $s, float $max, float $size, bool $bold = false): array
+    {
+        $lines = [];
+        $line = '';
+        foreach (preg_split('/\s+/u', trim($s)) as $word) {
+            $try = $line === '' ? $word : "$line $word";
+            if ($p->width($try, $size, $bold) <= $max) { $line = $try; continue; }
+            if ($line !== '') { $lines[] = $line; $line = ''; }
+            foreach (preg_split('//u', $word, -1, PREG_SPLIT_NO_EMPTY) as $ch) {
+                if ($line !== '' && $p->width($line . $ch, $size, $bold) > $max) { $lines[] = $line; $line = ''; }
+                $line .= $ch;
+            }
+        }
+        if ($line !== '') $lines[] = $line;
+        return $lines;
+    }
+
+    /** Caixa de três colunas: destinatário · número e data · valor. */
+    public static function infoBox(Pdf $p, string $toLabel, array $cu, array $mid, string $valueLabel, float $value): void
+    {
+        $y = 158; $h = 92; $c1 = 278; $c2 = 402;
+        $p->rect(self::L, $y, self::R - self::L, $h, null, self::RULE, 0.9);
+        $p->line($c1, $y, $c1, $y + $h, self::RULE, 0.9);
+        $p->line($c2, $y, $c2, $y + $h, self::RULE, 0.9);
+        $p->text(self::L + 19, $y + 20, $toLabel, 9.5, false, self::INK);
+        $yy = $y + 32;
+        foreach (array_slice(self::wrap($p, (string) ($cu['name'] ?? ''), $c1 - self::L - 30, 9.5, true), 0, 2) as $l) {
+            $p->text(self::L + 19, $yy, $l, 9.5, true, self::INK);
+            $yy += 11.5;
+        }
+        $extra = array_merge(self::wrap($p, (string) ($cu['address'] ?? ''), $c1 - self::L - 30, 9), !empty($cu['email']) ? self::wrap($p, (string) $cu['email'], $c1 - self::L - 30, 9) : []);
+        foreach (array_slice($extra, 0, 3) as $l) {
+            $p->text(self::L + 19, $yy, $l, 9, false, self::INK);
+            $yy += 11;
+        }
+        $p->text(self::L + 19, $y + 80, 'NUIT: ' . (!empty($cu['nuit']) ? $cu['nuit'] : 'N/A'), 9, false, self::INK);
+        $my = $y + 27;
+        foreach ($mid as [$k, $v]) {
+            $p->text($c1 + 20, $my, $k, 9.5, true, self::INK);
+            $p->text($c1 + 20, $my + 12, $v, 9.5, false, self::INK);
+            $my += 33;
+        }
+        $p->text($c2 + 20, $y + 42, $valueLabel, 10, false, self::INK);
+        $txt = self::amount($value) . ' MZN';
+        $size = 14.5;
+        while ($size > 9 && $p->width($txt, $size, true) > self::R - $c2 - 30) $size -= 0.5;
+        $p->text($c2 + 20, $y + 61, $txt, $size, true, self::INK);
+    }
+
+    /** Barra laranja de cabeçalho de tabela. $cols: [[texto, x, alinhamento]] */
+    public static function tableHead(Pdf $p, float $y, array $cols): float
+    {
+        $p->rect(self::L, $y, self::R - self::L, 32, self::ORANGE);
+        foreach ($cols as [$t, $x, $a]) $p->text($x, $y + 20.5, $t, 11.5, true, self::WHITE, $a);
+        return $y + 32;
+    }
+
+    /** Linhas de totais à direita e barra laranja com o total. */
+    public static function totals(Pdf $p, float $y, array $rows, string $label, float $value): float
+    {
+        foreach ($rows as [$k, $v]) {
+            $p->text(427, $y, $k, 10.5, true, self::INK, 'R');
+            $p->text(536, $y, $v, 10, false, self::INK, 'R');
+            $y += 20;
+        }
+        $p->rect(319, $y - 6, 234, 22, self::ORANGE);
+        $p->text(427, $y + 9.5, $label, 12, true, self::WHITE, 'R');
+        $p->text(536, $y + 9.5, self::amount($value), 12, true, self::WHITE, 'R');
+        return $y + 30;
+    }
+}
+
+/** Composição do PDF da factura e da pró-forma (A4), no modelo de factura da empresa. */
 final class InvoicePdf
 {
-    private const INK = [0.11, 0.14, 0.14];
-    private const SOFT = [0.37, 0.39, 0.40];
-    private const TEAL = [0.0, 0.50, 0.49];
-    private const LINE = [0.85, 0.88, 0.88];
-
     public static function render(array $d): string
     {
         $p = new Pdf();
-        $p->addPage();
-        $L = 48; $R = Pdf::W - 48; $c = $d['company'];
-        $p->rect(0, 0, Pdf::W, 6, self::TEAL);
+        DocTheme::page($p);
+        $c = $d['company'];
+        $L = DocTheme::L; $R = DocTheme::R; $ink = DocTheme::INK;
+        $pf = $d['type'] === 'PF';
+        $title = $pf ? 'FACTURA PRÓ-FORMA' : 'FACTURA';
+        $legal = ($c['legal_name'] ?? '') . (!empty($c['nuit']) ? ' · NUIT ' . $c['nuit'] : '') . ' · ' . $d['number'] . ' · Reserva ' . $d['booking']
+            . ' · Documento processado por computador · Emitido por ' . $d['issued_by'];
+        DocTheme::header($p, $title, $c);
+        DocTheme::infoBox($p, $pf ? 'Pró-forma para:' : 'Factura para:', $d['customer'],
+            [[$pf ? 'Pró-forma No.' : 'Factura No.', $d['number']], ['Data:', date('d/m/Y', strtotime($d['date']))]],
+            $pf ? 'Valor da pró-forma.' : 'Valor da factura.', (float) $d['total']);
 
-        // Cabeçalho: logótipo + empresa
-        $p->jpeg(dirname(__DIR__) . '/assets/logo-invoice.jpg', $L, 34, 64);
-        $y = 44;
-        $p->text($R, $y, $c['legal_name'] ?? '', 12, true, self::INK, 'R');
-        foreach (array_filter([
-            ($c['trade_name'] ?? '') !== ($c['legal_name'] ?? '') ? $c['trade_name'] : null,
-            !empty($c['nuit']) ? 'NUIT ' . $c['nuit'] : null,
-            $c['address'] ?? null, $c['phone'] ?? null, trim(($c['email'] ?? '') . '  ·  ' . ($c['website'] ?? ''), ' ·'),
-        ]) as $l) {
-            $y += 13;
-            $p->text($R, $y, $l, 8.5, false, self::SOFT, 'R');
-        }
-
-        // Título e dados do documento
-        $y = 140;
-        $title = $d['type'] === 'PF' ? 'FACTURA PRÓ-FORMA' : 'FACTURA';
-        $p->text($L, $y, $title, 20, true, self::INK);
-        $p->text($L, $y + 20, $d['number'], 12, true, self::TEAL);
-        $meta = [['Data de emissão', date('d/m/Y', strtotime($d['date']))], ['Referência da reserva', $d['booking']], ['Moeda', 'Metical (MZN)']];
-        $my = $y - 6;
-        foreach ($meta as [$k, $v]) {
-            $p->text($R - 215, $my, $k, 8, false, self::SOFT);
-            $p->text($R, $my, $v, 9, true, self::INK, 'R');
-            $my += 15;
-        }
-
-        // Cliente
-        $y = 200;
-        $cu = $d['customer'];
-        $info = array_values(array_filter([!empty($cu['nuit']) ? 'NUIT ' . $cu['nuit'] : null, $cu['address'] ?? null, trim(($cu['email'] ?? '') . '   ' . ($cu['phone'] ?? ''))]));
-        $boxH = 52 + count($info) * 12;
-        $p->rect($L, $y, $R - $L, $boxH, [0.965, 0.973, 0.969]);
-        $p->text($L + 14, $y + 18, 'CLIENTE', 7.5, true, self::TEAL);
-        $p->text($L + 14, $y + 34, $cu['name'] ?? '', 11, true, self::INK);
-        foreach ($info as $i => $l) {
-            $p->text($L + 14, $y + 49 + $i * 12, $l, 8.5, false, self::SOFT);
-        }
-
-        // Tabela de linhas
-        $y += $boxH + 22;
-        $cols = ['desc' => $L + 10, 'qty' => $R - 190, 'unit' => $R - 95, 'amt' => $R - 10];
-        $p->rect($L, $y, $R - $L, 22, self::INK);
-        $p->text($cols['desc'], $y + 14.5, 'Descrição', 8.5, true, [1, 1, 1]);
-        $p->text($cols['qty'], $y + 14.5, 'Qtd.', 8.5, true, [1, 1, 1], 'R');
-        $p->text($cols['unit'], $y + 14.5, 'Preço unitário', 8.5, true, [1, 1, 1], 'R');
-        $p->text($cols['amt'], $y + 14.5, 'Valor', 8.5, true, [1, 1, 1], 'R');
-        $y += 22;
-        foreach ($d['lines'] as $l) {
-            $h = $p->paragraph($cols['desc'], $y + 15, $cols['qty'] - $cols['desc'] - 40, $l['description'], 9, false, self::INK, 1.3);
-            $p->text($cols['qty'], $y + 15, rtrim(rtrim(number_format((float) $l['qty'], 2, ',', '.'), '0'), ','), 9, false, self::INK, 'R');
-            $p->text($cols['unit'], $y + 15, number_format((float) $l['unit_price'], 2, ',', '.'), 9, false, self::INK, 'R');
-            $p->text($cols['amt'], $y + 15, number_format((float) $l['amount'], 2, ',', '.'), 9, false, self::INK, 'R');
-            $y += max(24, $h + 12);
-            $p->line($L, $y, $R, $y, self::LINE);
-        }
-
-        // Totais
-        $y += 16;
-        $p->text($R - 230, $y, 'Subtotal', 9, false, self::SOFT);
-        $p->text($R - 10, $y, Invoices::money($d['total']), 9, false, self::INK, 'R');
-        $y += 10;
-        $p->rect($R - 240, $y, 240, 30, [0.91, 0.98, 0.98]);
-        $p->text($R - 230, $y + 19, $d['type'] === 'PF' ? 'Total' : 'Total a pagar', 10, true, self::INK);
-        $p->text($R - 10, $y + 19, Invoices::money($d['total']), 12, true, self::INK, 'R');
-        $y += 44;
-        if (!empty($c['tax_note'])) {
-            $p->text($R, $y, $c['tax_note'], 8, false, self::SOFT, 'R');
-            $y += 12;
-        }
-
-        // Instruções de pagamento
-        $y = max($y + 16, 560);
-        $p->text($L, $y, 'INSTRUÇÕES DE PAGAMENTO', 7.5, true, self::TEAL);
-        $y += 16;
-        foreach ($d['payment']['methods'] ?? [] as $m) {
-            if (!empty($m['pending']) || ($m['type'] === 'mobile' && empty($m['number']))) {
-                continue;
+        // Linhas: Descrição · Preço Unit. · QTD · Total (mínimo de 4 linhas, como no modelo)
+        $y = DocTheme::tableHead($p, 274, [['Descrição', $L + 19, 'L'], ['Preço Unit.', 299, 'L'], ['QTD', 437, 'C'], ['Total', 498, 'L']]);
+        $rows = $d['lines'];
+        for ($i = 0; $i < max(4, count($rows)); $i++) {
+            $l = $rows[$i] ?? null;
+            $h = 39;
+            if ($l) {
+                $desc = array_slice(DocTheme::wrap($p, (string) $l['description'], 205, 9.5), 0, 3);
+                $h = max(39, 16 + count($desc) * 12);
+                if ($y + $h > 700) {                       // muitas linhas: continua na página seguinte
+                    DocTheme::footer($p, $c, $legal);
+                    DocTheme::page($p);
+                    DocTheme::header($p, $title, $c);
+                    $y = DocTheme::tableHead($p, 160, [['Descrição', $L + 19, 'L'], ['Preço Unit.', 299, 'L'], ['QTD', 437, 'C'], ['Total', 498, 'L']]);
+                }
+                $ty = $y + ($h - (count($desc) - 1) * 12) / 2 + 3.5;
+                foreach ($desc as $k => $line) $p->text($L + 19, $ty + $k * 12, $line, 9.5, false, $ink);
+                $p->text(307, $ty, DocTheme::amount((float) $l['unit_price']), 9.5, false, $ink);
+                $p->text(437, $ty, rtrim(rtrim(number_format((float) $l['qty'], 2, ',', '.'), '0'), ','), 9.5, false, $ink, 'C');
+                $p->text(541, $ty, DocTheme::amount((float) $l['amount']), 9.5, false, $ink, 'R');
             }
-            $detail = $m['type'] === 'bank' ? "Conta {$m['account']}   ·   NIB {$m['nib']}" : $m['number'];
-            $p->text($L, $y, $m['label'], 9, true, self::INK);
-            $p->text($L + 110, $y, $detail, 9, false, self::INK);
-            $y += 15;
+            $y += $h;
+            $p->line($L, $y, $R, $y, DocTheme::RULE, 0.8);
         }
-        if (!empty($d['payment']['note'])) {
-            $y += $p->paragraph($L, $y + 4, $R - $L, $d['payment']['note'], 8.5, false, self::SOFT);
+
+        // Rodapé do documento: métodos de pagamento (esquerda) e totais (direita)
+        $y = max($y + 38, 498);
+        if ($y > 590) {
+            DocTheme::footer($p, $c, $legal);
+            DocTheme::page($p);
+            DocTheme::header($p, $title, $c);
+            $y = 170;
+        }
+        $ty = DocTheme::totals($p, $y, array_values(array_filter([
+            ['SUB-TOTAL', DocTheme::amount((float) $d['total'])],
+            ['Desconto (%)', '0%'],
+            stripos((string) ($c['tax_regime'] ?? ''), 'ISPC') !== false ? ['ISPC (3%)', 'Incluso'] : null,
+        ])), 'Total (MZN)', (float) $d['total']);
+        if ($pf) {
+            $ty += $p->paragraph(319, $ty + 8, 234, 'Este documento não é uma factura nem serve de recibo. Serve apenas para pedido de pagamento.', 8, true, $ink, 1.3);
         }
         if (!empty($d['notes'])) {
-            $y += 12;
-            $p->text($L, $y, 'OBSERVAÇÕES', 7.5, true, self::TEAL);
-            $y += $p->paragraph($L, $y + 14, $R - $L, $d['notes'], 9, false, self::INK) + 8;
-        }
-        if ($d['type'] === 'PF') {
-            $y += 10;
-            $p->text($L, $y, 'Este documento não é uma factura nem serve de recibo. Serve apenas para pedido de pagamento.', 8.5, true, self::INK);
+            $p->text(319, $ty + 14, 'Observações', 8.5, true, $ink);
+            $p->paragraph(319, $ty + 26, 234, (string) $d['notes'], 8, false, $ink, 1.3);
         }
 
-        // Rodapé
-        $p->line($L, Pdf::H - 58, $R, Pdf::H - 58, self::LINE);
-        $p->text($L, Pdf::H - 42, ($c['legal_name'] ?? '') . (!empty($c['nuit']) ? ' · NUIT ' . $c['nuit'] : '') . ' · ' . $d['number'], 7.5, false, self::SOFT);
-        $p->text($R, Pdf::H - 42, 'Documento processado por computador · Emitido por ' . $d['issued_by'], 7.5, false, self::SOFT, 'R');
+        $x = $L + 19;
+        $p->text($x, $y, 'Métodos de Pagamentos', 11.5, true, $ink);
+        $p->line($x, $y + 9, $x + 120, $y + 9, $ink, 0.8);
+        $py = $y + 28;
+        foreach ($d['payment']['methods'] ?? [] as $m) {
+            if (!empty($m['pending']) || ($m['type'] === 'mobile' && empty($m['number']))) continue;
+            $p->rect($x + 1, $py - 6.5, 4, 4, DocTheme::ORANGE);
+            $p->text($x + 13, $py, upper_pt((string) $m['label']), 10, true, $ink);
+            $rows = $m['type'] === 'bank' ? [['Conta:', $m['account'] ?? ''], ['NIB:', $m['nib'] ?? '']] : [['Número:', $m['number']]];
+            foreach ($rows as $k => [$lab, $val]) {
+                $p->text($x + 11, $py + 16 + $k * 14, $lab, 9.5, false, $ink);
+                $p->text($x + 60, $py + 16 + $k * 14, $val, 9.5, false, $ink);
+            }
+            $py += 22 + count($rows) * 14;
+        }
+        $p->text($x + 11, $py + 2, $c['trade_name'] ?? 'Moz Camp Adventures', 10, true, DocTheme::ORANGE);
+        if (!empty($d['payment']['note']) && $py + 14 < 728) {
+            $p->paragraph($x + 11, $py + 16, 250, $d['payment']['note'], 7.5, false, DocTheme::SOFT, 1.3);
+        }
 
+        DocTheme::footer($p, $c, $legal);
         return $p->output(['title' => $title . ' ' . $d['number'], 'author' => $c['legal_name'] ?? '']);
     }
+}
+
+/** Maiúsculas sem mbstring (indisponível em alguns servidores): ASCII + acentos portugueses. */
+function upper_pt(string $s): string
+{
+    return strtr(strtoupper($s), ['á' => 'Á', 'à' => 'À', 'â' => 'Â', 'ã' => 'Ã', 'é' => 'É', 'ê' => 'Ê', 'í' => 'Í', 'ó' => 'Ó', 'ô' => 'Ô', 'õ' => 'Õ', 'ú' => 'Ú', 'ç' => 'Ç']);
 }

@@ -6,3 +6,6 @@ node_modules/
 
 # Pacote de publicação (scripts/package.mjs)
 dist/
+
+# Documentos reais de clientes (ex.: modelos de factura) nunca vão para o Git nem para o site
+/*.pdf

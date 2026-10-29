@@ -6,11 +6,13 @@ PASS  E  capacidade do barco (5) limita participantes
 PASS  F  botão + desactivado na capacidade
 PASS  G  validação: data, nome e telefone em erro
 PASS  G2 nada é enviado com campos em falta
+PASS  G3 campo-armadilha com nome que o preenchimento automático não reconhece
 PASS  H  Ponta D'Ouro começa no mínimo (3) = 24.000
 PASS  H2 abaixo do mínimo: pedido BLOQUEADO
 PASS  I  transfer próprio do JSON: 3 × 8.000 + 14.000 = 38.000
 PASS  I2 [API] no mínimo: pedido registado com referência e total do servidor
 PASS  I3 [API] botão WhatsApp leva a referência
+PASS  I4 [API] ticket do pedido com QR code do link pessoal e botão de impressão
 PASS  J  transfer por omissão: 3 × 8.700 + 25.000 = 51.100
 PASS  K  aluguer de barco é preço por barco (não × pessoas) = 8.000
 PASS  L  pacote desactivado: sem formulário + noindex
@@ -43,4 +45,4 @@ PASS  Y2 aceitar: banner escondido e escolha guardada
 PASS  Z  sitemap: 64 URLs, sem pacotes desactivados nem .com
 PASS  Z2 sem erros de JavaScript nas páginas testadas
 
-44/44 testes passaram
+46/46 testes passaram

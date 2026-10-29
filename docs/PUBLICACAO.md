@@ -16,7 +16,7 @@ Fase 10 (26/10/2026). **Nada foi publicado.** Este documento é o guião para qu
   - segredo novo, gerado no servidor;
   - `allowed_origins` e `site_url` com `https://mozcampadventures.co.mz`;
   - `cookie_secure = true`;
-  - `mail.transport = 'mail'`.
+  - `mail.transport = 'resend'` e `mail.resend_key` com a chave do Resend (`NOTIFICACOES.md` §6.2).
 - [ ] `private/storage` criada (permissões `750`).
 - [ ] SSL activo e redireccionamento HTTP → HTTPS; host preferido sem `www`.
 
@@ -38,7 +38,9 @@ Tempo estimado: 1 a 2 horas na primeira vez, incluindo a verificação.
    - enviar `dist/MANIFEST.sha256` para `/var/www/vhosts/mozcampadventures.co.mz/private/`.
 3. **Confirmar a cópia** por SSH: `cd httpdocs-novo && sha256sum -c ../private/MANIFEST.sha256 --quiet`. Sem saída significa que todos os ficheiros chegaram intactos.
 4. Copiar para `httpdocs-novo/` os ficheiros a manter, identificados no inventário (verificação do Google, `.well-known/`, etc.).
-5. **Base de dados:** `php httpdocs-novo/api/bin/migrate.php` e depois `--status` (aplica as migrações 001 a 005).
+   **Depois da primeira publicação:** o catálogo editado no painel vive no servidor. Antes de gerar um pacote novo, trazer do servidor `data/*.json` e as fotos novas (`assets/images/packages/`, `assets/images/accommodation/`) para o computador de desenvolvimento, e só então correr o build e o `package.mjs`. Caso contrário, as edições do painel perdem-se.
+5. **Base de dados:** `php httpdocs-novo/api/bin/migrate.php` e depois `--status` (aplica as migrações 001 a 008).
+   **Node (catálogo no painel):** em `httpdocs-novo/`, `npm ci --omit=dev`, e `node_bin` na configuração (`DEPLOYMENT.md` §3.1f).
 6. **Troca:** renomear `httpdocs` → `httpdocs-antigo` e `httpdocs-novo` → `httpdocs`. O site fica em baixo apenas alguns segundos, e a reversão é a troca inversa.
 7. **Primeiros acessos ao painel:** `php httpdocs/api/bin/create-user.php …` para o Administrador e o Gerente (`DEPLOYMENT.md` §3.1b). Enviar cada link só à pessoa em causa.
 8. **Verificação (§3).** Se algo crítico falhar e não se resolver em 15 minutos, reverter (§5).
@@ -59,6 +61,7 @@ Tempo estimado: 1 a 2 horas na primeira vez, incluindo a verificação.
 | 9 | Pró-forma de teste e PDF | O PDF abre com o logótipo, o NUIT e os bancos correctos |
 | 10 | Cancelar a reserva de teste | Fica registada como cancelada (não se apaga, por auditoria) |
 | 11 | GTM em modo de pré-visualização | GA4 e Clarity disparam sem erros de CSP; não há tags «HTML personalizado» |
+| 12a | Conta de cliente de teste em `/conta/`: criar, fazer um pedido com a sessão iniciada, «Esqueci-me da palavra-passe» | A conta abre logo; o pedido aparece na conta; o e-mail de reposição chega (e não vai para o spam) |
 | 12 | Google Search Console | Submeter `sitemap.xml`; confirmar que não há erros de cobertura nos dias seguintes |
 
 ## 4. Plano de backup

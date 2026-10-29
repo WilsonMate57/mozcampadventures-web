@@ -103,6 +103,8 @@ await test('F  botão + desactivado na capacidade', () => ev(`document.querySele
 await submit();
 await test('G  validação: data, nome e telefone em erro', () => ev(`document.querySelectorAll('[data-booking] .field.has-error').length`), 3);
 await test('G2 nada é enviado com campos em falta', resultShown, false);
+// O preenchimento automático do Chrome preenche campos «website»/«Website» mesmo escondidos → o servidor recusava (400)
+await test('G3 campo-armadilha com nome que o preenchimento automático não reconhece', () => ev(`[...new Set([...document.querySelectorAll('.hp input')].map(i => i.name + '|' + i.autocomplete + '|' + i.labels[0].textContent))].join()`), 'mca_hp|off|Não preencher');
 
 await go('/tours/ponta-douro-day-trip/');
 await test('H  Ponta D\'Ouro começa no mínimo (3) = 24.000', () => ev(TOTAL), '24.000 MZN');
@@ -117,6 +119,8 @@ await sleep(1200);
 if (WITH_API) {
   await test('I2 [API] no mínimo: pedido registado com referência e total do servidor', () => ev(`[/^MCA-\\d{4}-\\d{5}$/.test(document.querySelector('[data-reference]')?.textContent||''), document.querySelector('[data-booking-result] .summary__total span:last-child').textContent, document.querySelector('[data-booking]').hidden]`), [true, '38.000 MZN', true]);
   await test('I3 [API] botão WhatsApp leva a referência', () => ev(`decodeURIComponent(document.querySelector('[data-booking-result] a[href*="wa.me"]').href).includes(document.querySelector('[data-reference]').textContent)`), true);
+  await test('I4 [API] ticket do pedido com QR code do link pessoal e botão de impressão', () => ev(`(() => { const t = document.querySelector('[data-booking-result] [data-ticket]'); if (!t) return null;
+    return [!!t.querySelector('.ticket__qr svg path'), new RegExp('/reserva/#r=' + t.querySelector('[data-reference]').textContent + '&t=[a-f0-9]{48}$').test(t.dataset.qr), t.querySelector('.ticket__status').className.includes('pedido'), !!document.querySelector('[data-booking-result] [data-ticket-print]')]; })()`), [true, true, true, true]);
   if (process.env.E2E_SHOT) {   // captura do painel de confirmação para revisão visual
     const box = await ev(`(()=>{const r=document.querySelector('#reservar').getBoundingClientRect();return {x:r.left,y:r.top+scrollY,width:r.width,height:r.height}})()`);
     const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { ...box, scale: 1 } });

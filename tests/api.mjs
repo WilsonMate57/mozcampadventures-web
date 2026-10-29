@@ -53,6 +53,16 @@ const b1r = await call('POST', '/api/bookings', booking({ idempotency_key: key, 
 await test('B4 repetir com a mesma chave devolve a mesma referência (sem duplicado)', () => [b1r.data.reference === b1.data.reference, b1r.data.replayed], [true, true]);
 if (PSQL) await test('B5 só existe 1 registo para essa chave', () => sql(`SELECT count(*) FROM bookings WHERE idempotency_key='${key}'`), '1');
 
+/* ── Ticket do pedido: o QR code leva ao link pessoal da área do cliente ── */
+const linkRe = new RegExp(`/reserva/#r=${b1.data.reference}&t=[a-f0-9]{48}$`);
+await test('T1 resposta traz o link da área do cliente (para o QR do ticket)', () => linkRe.test(b1.data.client_url || ''), true);
+await test('T2 repetir o pedido devolve o mesmo link e as linhas de preço', () => [b1r.data.client_url === b1.data.client_url, (b1r.data.lines || []).length === b1.data.lines.length], [true, true]);
+const enB = await call('POST', '/api/bookings', booking({ lang: 'en' }));
+await test('T3 pedido em inglês → link /en/booking/', () => /\/en\/booking\/#r=MCA-\d{4}-\d{5}&t=[a-f0-9]{48}$/.test(enB.data.client_url || ''), true);
+const qrHash = new URLSearchParams((b1.data.client_url || '#').split('#')[1]);
+const area = await call('POST', '/api/client/booking', { ref: qrHash.get('r'), token: qrHash.get('t') });
+await test('T4 o link do QR abre a reserva na área do cliente, com total e linhas', () => [area.status, area.data.booking?.reference, area.data.booking?.total, area.data.booking?.lines?.length > 0], [200, b1.data.reference, 38000, true]);
+
 const many = await Promise.all(Array.from({ length: 20 }, () => call('POST', '/api/bookings', booking())));
 const refs = many.map(r => r.data.reference);
 const nums = refs.map(r => +r.split('-')[2]).sort((a, b) => a - b);

@@ -1,5 +1,167 @@
 # Relatório de testes — Moz Camp Adventures
 
+## Resend e WhatsApp (29/10/2026)
+
+| Bateria | Resultado |
+|---|---|
+| `tests/messaging.mjs` (novo, servidor falso do Resend e da Meta) | **19/19** |
+| `tests/admin-ui.mjs` | **57/57** (+3: canais de envio e separador WhatsApp) |
+| API · painel e facturas · pagamentos · notificações · contas · catálogo · site | **47/47 · 51/51 · 44/44 · 28/28 · 34/34 · 37/37 · 44/44** |
+
+**Não testado:** envio real (sem contas Resend/Meta). Detalhe em `NOTIFICACOES.md` §6.
+
+---
+
+## Slider do topo da home reposto (29/10/2026)
+
+**Pedido:** o hero voltou a ser um slider, como no site original. Mantém os 5 slides originais (imagens, locais, títulos e textos PT/EN) e um botão «Explorar destinos» por slide. Gerado em `scripts/build.mjs` (`home`), com os textos em `scripts/i18n.mjs` (`hero.slides`) e o comportamento em `assets/js/site.js` (`initHeroSlider`).
+
+**Comportamento:**
+- **Rotação:** avança a cada 6 s, com transição suave.
+- **Pausa automática:** pára com o rato por cima, com o foco do teclado lá dentro ou com o separador escondido.
+- **Controlos:** botão de pausa (WCAG 2.2.2), setas, pontos, ← → e deslizar no telemóvel.
+- **Movimento reduzido:** com a preferência do sistema activa, não avança sozinho.
+
+**Acessibilidade e SEO:**
+- só o 1.º título é `<h1>`;
+- os slides escondidos ficam `inert` e `aria-hidden`.
+
+| Verificação | Resultado |
+|---|---|
+| Chrome 1366 px e 390 px (PT/EN) | avança sozinho; setas, pontos e pausa funcionam; sem scroll horizontal; sem erros JS/CSP |
+| `tests/e2e.mjs` | **44/44** |
+| `tests/audit.mjs` (home) | sem violações; LCP 2,1 s, CLS 0. A home pesa 1,3 MB (26 pedidos); as 4 imagens dos outros slides carregam depois da primeira |
+
+---
+
+## Catálogo no painel (29/10/2026)
+
+| Bateria | Resultado |
+|---|---|
+| `tests/catalog.mjs` (novo) | **37/37**: permissões, validação, rascunho sem efeito no site, fotos, publicação (páginas PT/EN, WebP, preço na reserva), falha com reposição automática, versões, auditoria |
+| `tests/admin-ui.mjs` | **54/54** (+12 no editor: U39–U50; U36 actualizado) |
+| API · painel e facturas · pagamentos · notificações · contas · site | **47/47 · 51/51 · 44/44 · 28/28 · 34/34 · 44/44** |
+| `tests/audit.mjs` | SEO e links sem problemas; 3 páginas com o contraste já conhecido (decisão pendente); LCP dentro do limite (uma corrida a 4,9 s em /pages/tours.html, 2,7 s ao repetir) |
+| Pacote (`dist/httpdocs`) copiado para uma pasta à parte | `node scripts/publish.mjs` gera o site sozinho (com `node_modules`) |
+
+**Encontrado e corrigido:**
+- **Meta descriptions de todas as páginas sem a letra «s»** («Trê  ilha , um dia…»): uma expressão regular do build tinha perdido as barras invertidas numa alteração anterior. Corrigido e regenerado.
+- **Valores de 4 algarismos no painel sem separador** («5800 MZN»): o formato pt-PT não agrupa milhares abaixo de 10 000. Passa a «5.800 MZN» em todo o painel.
+- **Ícones em falta no subconjunto do Boxicons** (carregar foto, globo, seta para cima): subconjunto regenerado com `scripts/vendor-icons.mjs`.
+
+Detalhe em `CATALOGO.md`.
+
+---
+
+## Redesign do painel (28/10/2026)
+
+| Bateria | Resultado |
+|---|---|
+| Painel no browser (`admin-ui.mjs`) | **42/42** (+8 novos: filtros, ordenação, painel lateral, Ctrl+K, experiências, validação, erro sem perder valores) |
+| Painel e facturas · pagamentos · notificações · contas · API · site sem API · site com API | **51/51 · 44/44 · 28/28 · 34/34 · 47/47 · 44/44 · 46/46** |
+| axe-core com sessão iniciada (16 vistas do painel) | sem violações |
+| 1440 px e 390 px | sem scroll horizontal; menu móvel; sem erros JS/CSP |
+
+**Encontrado e corrigido:**
+- **Script de aplicação:** a sequência `$$` virava `$`. Detectado pelos erros de JavaScript no teste, e o ficheiro foi refeito a partir da cópia de segurança.
+- **Painel lateral:** perdia o foco depois de carregar.
+- **Etiquetas de formulário:** estavam desligadas dos campos em todo o painel.
+- **«Novo pedido»:** um erro do servidor fechava o diálogo e perdia o que foi escrito; a validação nativa do browser escondia as mensagens próprias.
+- **Contraste:** vários pontos abaixo de 4,5:1 (texto secundário, rótulos do menu, botão principal turquesa com texto branco).
+
+Detalhe em `PAINEL.md`.
+
+---
+
+## Contas de cliente (27/10/2026)
+
+**Alteração pedida:** a conta funciona logo após o registo, sem confirmação por e-mail, e sem exportação para ferramentas externas. Como o e-mail deixou de ser confirmado, as reservas passam a ficar na conta só quando são feitas com a sessão iniciada (`customer_id`), e nunca pelo e-mail.
+
+| Bateria | Resultado |
+|---|---|
+| `tests/accounts.mjs` | **34/34**, incluindo B5: quem regista o e-mail de outra pessoa não vê as reservas dela |
+| Site sem API · site com API · API · painel e facturas · pagamentos · notificações · painel no browser | **44/44 · 46/46 · 47/47 · 51/51 · 44/44 · 28/28 · 33/33** |
+| Percurso no browser: criar conta → painel imediato → reserva pelo formulário → reserva na conta | sem erros JS/CSP |
+| `tests/audit.mjs` | SEO e links sem problemas; `/conta/` e `/en/account/` sem violações; CLS 0 |
+
+**Encontrado e corrigido:**
+- **CLS de 0,122 na home:** o título manuscrito do hero mudava de altura quando a Dancing Script chegava. A fonte passa a ser pré-carregada, e o CLS voltou a 0.
+- **Link colado no mesmo separador:** o link de reposição não arrancava, porque só mudava o fragmento. A página passa a reagir à mudança do fragmento.
+- **Teste U4:** o menu do painel tem agora 11 secções, com «Clientes».
+
+**Desempenho:**
+- **LCP:** em três corridas seguidas, sem alterações entre elas, variou entre 2,0 e 2,9 s, conforme a carga do portátil.
+- **Peso das fichas:** passou de cerca de 500 KB (Fase 8) para cerca de 880 KB, sobretudo por causa do padrão marinho (cerca de 290 KB).
+
+**Nota sobre a auditoria de contraste:** com o padrão marinho numa camada própria, o axe-core deixou de conseguir calcular o contraste nalgumas páginas e marca-as como «a rever». Há menos páginas assinaladas, mas **o problema não diminuiu** (decisão pendente, `REDESIGN_E_UI_UX.md` §9).
+
+---|---|
+| `tests/accounts.mjs` (novo) | **39/39** |
+| Site sem API · site com API · API · painel e facturas · pagamentos · notificações · painel no browser | **44/44 · 46/46 · 47/47 · 51/51 · 44/44 · 28/28 · 33/33** |
+| Percurso no browser (criar conta → activar → painel → reserva pré-preenchida), 1366 e 375 px | sem erros JS/CSP |
+| `tests/audit.mjs` | SEO e links sem problemas; `/conta/` e `/en/account/` sem violações; LCP 1,6–2,0 s, CLS 0 |
+
+**Encontrado e corrigido:**
+- **CLS de 0,122 na home:** o título manuscrito do hero mudava de altura quando a Dancing Script chegava. A fonte passa a ser pré-carregada, e o CLS voltou a 0.
+- **Link de activação colado no mesmo separador:** não arrancava, porque só mudava o fragmento. A página passa a reagir à mudança do fragmento.
+- **Teste U4:** o menu do painel tem agora 11 secções, com «Clientes».
+
+**Nota sobre a auditoria de contraste:** com o padrão marinho numa camada própria (opacidade de 13 %), o axe-core deixou de conseguir calcular o contraste nalgumas páginas e marca-as como «a rever». Por isso há menos páginas com «color-contrast» do que antes. **O problema não diminuiu:** a decisão sobre o texto branco sobre turquesa continua pendente (`REDESIGN_E_UI_UX.md` §9).
+
+---
+
+## Ticket do pedido com QR code (27/10/2026)
+
+| Bateria | Resultado |
+|---|---|
+| Site sem API · site com API · API · painel e facturas · pagamentos · notificações · painel no browser | **44/44 · 46/46 · 47/47 · 51/51 · 44/44 · 28/28 · 33/33** (293/293) |
+| Novos | API T1–T4 (link no QR, link igual no pedido repetido, link em inglês, o link abre a reserva); browser I4 (ticket, QR e impressão) |
+| Manual | QR lido por um descodificador independente (jsQR) a partir da captura de ecrã e do PDF impresso; PT e EN; 375 px |
+
+---
+
+## Defeito: pedidos recusados no Chrome (27/10/2026)
+
+**Sintoma (reportado pelo cliente):** no Chrome, o pedido de reserva mostrava «Não conseguimos registar o seu pedido no site», mas no browser do VS Code funcionava.
+
+**Causa:**
+- O registo de pedidos do servidor de desenvolvimento mostrou `POST /api/bookings → 400` só a partir do Chrome.
+- O campo-armadilha anti-spam chamava-se `website`, com rótulo «Website».
+- O preenchimento automático do Chrome preenchia esse campo, mesmo escondido, com dados guardados.
+- O servidor recusava então o pedido como robô.
+- O mesmo acontecia nos formulários de contacto, de avaliação e de comprovativo.
+
+**Correcção:**
+- O campo passa a chamar-se `mca_hp`, com o rótulo «Não preencher», nos 4 formulários.
+- A validação no servidor não muda, porque o valor continua a ser enviado na chave `website` do JSON.
+- No comprovativo, o servidor aceita os dois nomes.
+- Novo teste G3 em `tests/e2e.mjs`.
+
+**Testes:** site sem API 44/44 · site com API 45/45 · API 43/43 · pagamentos 44/44 · notificações 28/28.
+
+**Não testado:** o Chrome do cliente, com os dados de preenchimento automático dele; aguarda confirmação.
+
+---
+
+## Restauro da identidade visual (26/10/2026)
+
+| Verificação | Resultado |
+|---|---|
+| Regressão: site sem API · site com API · API · painel e facturas · pagamentos · notificações · painel no browser | **43/43 · 44/44 · 43/43 · 51/51 · 44/44 · 28/28 · 33/33** (286/286) |
+| `tests/audit.mjs`: SEO (64 páginas), sitemap, 6103 ligações internas | sem problemas |
+| `tests/audit.mjs`: desempenho mobile (4G lenta, CPU 4×) | LCP 1,9–2,2 s, CLS 0 em todas as páginas medidas |
+| `tests/audit.mjs`: acessibilidade (axe-core) | **12 páginas com `color-contrast`**: texto branco sobre turquesa/laranja, como no original. Decisão pendente (ver `REDESIGN_E_UI_UX.md` §9) |
+| Painel alinhado com a identidade: painel e facturas · pagamentos · notificações · painel no browser (repetidos depois da alteração) | **51/51 · 44/44 · 28/28 · 33/33**; capturas em `visual-review/painel/`; axe: só o contraste do botão turquesa (mesma decisão pendente) |
+| Capturas desktop 1366 px e mobile 375 px (home PT/EN, catálogo, ficha, alojamentos, contacto) | `visual-review/restaurado/`; sem scroll horizontal; sem erros de CSP na consola |
+
+Encontrado e corrigido:
+- **Cartões de alojamento:** o botão podia sair do cartão quando o texto era longo. Já acontecia antes, e a nova sombra tornou-o visível. Medido no DOM; corrigido.
+- **`tests/audit.mjs`:** analisava também a cópia em `dist/` (gerada por `scripts/package.mjs`); `dist` passa a ser ignorado.
+
+O peso das páginas subiu cerca de 290 KB (padrão marinho, em cache depois da primeira visita). O original carregava a versão de 1,1 MB.
+
+---
+
 ## Fase 8 — segurança, SEO, acessibilidade e desempenho (26/10/2026)
 
 | Bateria | Resultado |

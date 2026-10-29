@@ -20,14 +20,26 @@ return [
         'site_url'        => 'https://mozcampadventures.co.mz',          // usado nos links de convite do painel
         'cookie_secure'   => true,                                       // cookie de sessão só por HTTPS
         'data_dir'        => null,                                       // null = <httpdocs>/data
-        'storage_dir'     => '/var/www/vhosts/mozcampadventures.co.mz/private/storage',   // PDFs das facturas (FORA do httpdocs)
+        'storage_dir'     => '/var/www/vhosts/mozcampadventures.co.mz/private/storage',   // PDFs das facturas e rascunho do catálogo (FORA do httpdocs)
+        'node_bin'        => '/opt/plesk/node/22/bin/node',              // Node.js para publicar o catálogo a partir do painel (scripts/publish.mjs)
     ],
     'mail' => [
-        'transport' => 'mail',                                           // 'mail' (sendmail do Plesk) ou 'log' (não envia)
-        'from'      => 'no-reply@mozcampadventures.co.mz',
+        'transport' => 'resend',                                         // 'resend' (API do Resend, recomendado), 'mail' (sendmail do Plesk) ou 'log' (não envia)
+        'resend_key' => '',                                              // preferível: variável de ambiente RESEND_API_KEY (re_…). Nunca no repositório.
+        'from'      => 'no-reply@mozcampadventures.co.mz',               // com Resend: domínio verificado em resend.com/domains
         'from_name' => 'Moz Camp Adventures',
         'team'      => 'booking@mozcampadventures.co.mz',                // recebe os pedidos de reserva
         'contact'   => 'info@mozcampadventures.co.mz',                   // recebe as mensagens de contacto
+    ],
+    /* Avisos de novos pedidos à equipa pelo WhatsApp (Meta WhatsApp Cloud API). Números e interruptor: painel → Definições. */
+    'whatsapp' => [
+        'mode'            => 'api',                                      // 'api' (envia) ou 'log' (regista sem enviar)
+        'token'           => '',                                         // preferível: variável de ambiente WHATSAPP_TOKEN (token permanente de utilizador de sistema)
+        'phone_number_id' => '',                                         // WhatsApp Manager → API Setup → Phone number ID (não é o número de telefone)
+        'template'        => 'nova_reserva',                             // modelo aprovado (Utility), 7 variáveis: ver docs/NOTIFICACOES.md §6.3
+        'language'        => 'pt_PT',                                    // idioma do modelo, igual ao aprovado
+        'button'          => false,                                      // true se o modelo tiver o botão «Abrir no painel» (URL dinâmico)
+        'api_version'     => 'v21.0',
     ],
     'limits' => [
         'bookings_per_hour' => 10,

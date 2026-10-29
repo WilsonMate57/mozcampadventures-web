@@ -1,21 +1,26 @@
 SEO: 64 páginas indexáveis, 64 URLs no sitemap, 0 problemas
-Links: 6119 ligações internas verificadas, 0 partidas
+Links: 6597 ligações internas verificadas, 0 partidas
 A11y /: sem violações
 A11y /pages/tours.html: sem violações
-A11y /tours/island-hopping-experience/: sem violações
-A11y /alojamentos/mamas-lodge/: sem violações
+FAIL  [a11y] /tours/island-hopping-experience/: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (7×: .header-actions > .lang-switch[aria-label="Idioma"] > a[aria-current="true"][href="#"][lang="pt"] | .header-cta | button[data-submit=""] > span)
+A11y /tours/island-hopping-experience/: color-contrast(serious,7)
+FAIL  [a11y] /alojamentos/mamas-lodge/: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (10×: .header-actions > .lang-switch[aria-label="Idioma"] > a[aria-current="true"][href="#"][lang="pt"] | .header-cta | button[data-submit=""] > span)
+A11y /alojamentos/mamas-lodge/: color-contrast(serious,10)
 A11y /pages/accommodations.html: sem violações
 A11y /pages/contact.html: sem violações
 A11y /pages/privacidade.html: sem violações
 A11y /en/: sem violações
-A11y /en/tours/ponta-douro-day-trip/: sem violações
+FAIL  [a11y] /en/tours/ponta-douro-day-trip/: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (6×: .header-actions > .lang-switch[aria-label="Language"] > a[aria-current="true"][href="#"][lang="en"] | .header-cta | button[data-submit=""] > span)
+A11y /en/tours/ponta-douro-day-trip/: color-contrast(serious,6)
 A11y /404.html: sem violações
 A11y /pagamento/: sem violações
 A11y /reserva/: sem violações
+A11y /conta/: sem violações
+A11y /en/account/: sem violações
 A11y /admin/: sem violações
-Perf /: LCP 2064 ms · FCP 1632 ms · CLS 0 · 649 KB em 24 pedidos
-Perf /tours/island-hopping-experience/: LCP 1816 ms · FCP 1800 ms · CLS 0 · 494 KB em 16 pedidos
-Perf /pages/tours.html: LCP 1592 ms · FCP 1492 ms · CLS 0 · 675 KB em 17 pedidos
-Perf /pages/contact.html: LCP 1816 ms · FCP 1580 ms · CLS 0 · 350 KB em 14 pedidos
+Perf /: LCP 2432 ms · FCP 2432 ms · CLS 0 · 940 KB em 22 pedidos
+Perf /tours/island-hopping-experience/: LCP 2340 ms · FCP 2340 ms · CLS 0 · 879 KB em 20 pedidos
+Perf /pages/tours.html: LCP 2100 ms · FCP 1932 ms · CLS 0 · 997 KB em 19 pedidos
+Perf /pages/contact.html: LCP 1624 ms · FCP 1624 ms · CLS 0 · 672 KB em 16 pedidos
 
-Auditoria sem falhas — relatório em docs/AUDITORIA_TECNICA.json
+3 falhas — relatório em docs/AUDITORIA_TECNICA.json

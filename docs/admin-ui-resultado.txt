@@ -1,8 +1,9 @@
 PASS  U1 ecrã «Definir palavra-passe» a partir do link
 PASS  U2 depois de definir, mostra o ecrã de entrada
-PASS  U3 entrada → resumo com indicadores
-PASS  U4 administrador vê todas as secções do menu
+PASS  U3 entrada → resumo com indicadores do período e «Requer atenção»
+PASS  U4 administrador vê todas as secções do menu, agrupadas
 PASS  U5 resumo separa facturado, recebido, em dívida e por verificar
+PASS  U5b período «7 dias» muda o URL e o intervalo comparado
 PASS  U6 pedido manual registado → página da reserva com referência
 PASS  U7 total calculado pelo servidor (5 × 7.500)
 PASS  U8 reserva confirmada (histórico actualizado)
@@ -30,6 +31,14 @@ PASS  U15 mobile: a página mantém 375 px (sem zoom-out nem scroll horizontal)
 PASS  U16 gerente não vê Utilizadores, Definições nem Auditoria
 PASS  U17 acesso directo a #/utilizadores → «Sem permissão»
 PASS  U17b corrida: resposta antiga do resumo não se sobrepõe à página nova (3×)
+PASS  U31 separadores por estado com contagens; pedido filtrado
+PASS  U32 ordenar por total (servidor) actualiza o URL e a seta
+PASS  U33 linha abre o painel lateral com acções e «Abrir reserva completa»
+PASS  U34 Esc fecha o painel lateral
+PASS  U35 Ctrl+K encontra a reserva pela referência e abre-a com Enter
+PASS  U36 experiências: catálogo só de leitura com desempenho e colunas ordenáveis
+PASS  U37 novo pedido vazio: erros junto dos campos obrigatórios, diálogo continua aberto
+PASS  U38 recusa do servidor (abaixo do mínimo): erro no diálogo e valores preservados
 PASS  U18 sem erros de JavaScript
 
-33/33 testes passaram
+42/42 testes passaram

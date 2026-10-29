@@ -2,52 +2,123 @@
  "failures": {
   "seo": [],
   "links": [],
-  "a11y": [],
+  "a11y": [
+   "/tours/island-hopping-experience/: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (7×: .header-actions > .lang-switch[aria-label=\"Idioma\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"pt\"] | .header-cta | button[data-submit=\"\"] > span)",
+   "/alojamentos/mamas-lodge/: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (10×: .header-actions > .lang-switch[aria-label=\"Idioma\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"pt\"] | .header-cta | button[data-submit=\"\"] > span)",
+   "/en/tours/ponta-douro-day-trip/: [serious] color-contrast — Elements must meet minimum color contrast ratio thresholds (6×: .header-actions > .lang-switch[aria-label=\"Language\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"en\"] | .header-cta | button[data-submit=\"\"] > span)"
+  ],
   "perf": []
  },
  "a11y": {
   "/": [],
   "/pages/tours.html": [],
-  "/tours/island-hopping-experience/": [],
-  "/alojamentos/mamas-lodge/": [],
+  "/tours/island-hopping-experience/": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "n": 7,
+    "target": [
+     ".header-actions > .lang-switch[aria-label=\"Idioma\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"pt\"]",
+     ".header-cta",
+     "button[data-submit=\"\"] > span"
+    ],
+    "detail": [
+     ".header-actions > .lang-switch[aria-label=\"Idioma\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"pt\"] → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.1pt (12.16px), font weight: bold). Expected contrast ratio of 4.5:1",
+     ".header-cta → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "button[data-submit=\"\"] > span → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[href$=\"portuguese-island-bbq/\"] > .xcard__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[data-price=\"6000\"] > .xcard__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[href$=\"santa-maria-snorkeling/\"] > .xcard__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "#cb-accept-all → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   }
+  ],
+  "/alojamentos/mamas-lodge/": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "n": 10,
+    "target": [
+     ".header-actions > .lang-switch[aria-label=\"Idioma\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"pt\"]",
+     ".header-cta",
+     "button[data-submit=\"\"] > span"
+    ],
+    "detail": [
+     ".header-actions > .lang-switch[aria-label=\"Idioma\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"pt\"] → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.1pt (12.16px), font weight: bold). Expected contrast ratio of 4.5:1",
+     ".header-cta → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "button[data-submit=\"\"] > span → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[data-loc=\"machangulo\"] > .stay__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[data-loc=\"machangulo\"] > .stay__body > .xcard__foot > .price > strong → Element has insufficient color contrast of 2.12 (foreground color: #ff9a08, background color: #ffffff, font size: 14.4pt (19.2px), font weight: bold). Expected contrast ratio of 3:1",
+     "a[href$=\"manico-camp/\"] > .stay__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[href$=\"manico-camp/\"] > .stay__body > .xcard__foot > .price > strong → Element has insufficient color contrast of 2.12 (foreground color: #ff9a08, background color: #ffffff, font size: 14.4pt (19.2px), font weight: bold). Expected contrast ratio of 3:1",
+     "a[href$=\"villa-martins/\"] > .stay__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[href$=\"villa-martins/\"] > .stay__body > .xcard__foot > .price > strong → Element has insufficient color contrast of 2.12 (foreground color: #ff9a08, background color: #ffffff, font size: 14.4pt (19.2px), font weight: bold). Expected contrast ratio of 3:1",
+     "#cb-accept-all → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   }
+  ],
   "/pages/accommodations.html": [],
   "/pages/contact.html": [],
   "/pages/privacidade.html": [],
   "/en/": [],
-  "/en/tours/ponta-douro-day-trip/": [],
+  "/en/tours/ponta-douro-day-trip/": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "help": "Elements must meet minimum color contrast ratio thresholds",
+    "n": 6,
+    "target": [
+     ".header-actions > .lang-switch[aria-label=\"Language\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"en\"]",
+     ".header-cta",
+     "button[data-submit=\"\"] > span"
+    ],
+    "detail": [
+     ".header-actions > .lang-switch[aria-label=\"Language\"] > a[aria-current=\"true\"][href=\"#\"][lang=\"en\"] → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.1pt (12.16px), font weight: bold). Expected contrast ratio of 4.5:1",
+     ".header-cta → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "button[data-submit=\"\"] > span → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[href$=\"macaneta-day-trip/\"] > .xcard__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "a[href$=\"bilene-day-trip/\"] > .xcard__media > .chip--white.chip → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "#cb-accept-all → Element has insufficient color contrast of 2.13 (foreground color: #ffffff, background color: #00c6c1, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   }
+  ],
   "/404.html": [],
   "/pagamento/": [],
   "/reserva/": [],
+  "/conta/": [],
+  "/en/account/": [],
   "/admin/": []
  },
  "perf": {
   "/": {
-   "lcp": 2064,
+   "lcp": 2112,
    "cls": 0,
-   "fcp": 1632,
-   "kb": 649,
-   "requests": 24
+   "fcp": 2112,
+   "kb": 1343,
+   "requests": 26
   },
   "/tours/island-hopping-experience/": {
-   "lcp": 1816,
+   "lcp": 2576,
    "cls": 0,
-   "fcp": 1800,
-   "kb": 494,
-   "requests": 16
+   "fcp": 2260,
+   "kb": 885,
+   "requests": 20
   },
   "/pages/tours.html": {
-   "lcp": 1592,
+   "lcp": 2516,
    "cls": 0,
-   "fcp": 1492,
-   "kb": 675,
-   "requests": 17
+   "fcp": 2332,
+   "kb": 1004,
+   "requests": 19
   },
   "/pages/contact.html": {
-   "lcp": 1816,
+   "lcp": 2424,
    "cls": 0,
-   "fcp": 1580,
-   "kb": 350,
-   "requests": 14
+   "fcp": 1872,
+   "kb": 678,
+   "requests": 16
   }
  }
 }

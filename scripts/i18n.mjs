@@ -5,16 +5,12 @@
  * Textos marcados [A CONFIRMAR] em docs/REDESIGN_E_UI_UX.md são sugestões.
  */
 
-export const CATEGORIES = {
-  'island-tours':         { icon: 'bx-water',       img: '/assets/images/packages/package_1.webp',                               pt: 'Island Tours',          en: 'Island Tours' },
-  'sunset-cruise':        { icon: 'bxs-sun',        img: '/assets/images/packages/sunset_cruise_1.webp',                         pt: 'Sunset Cruises',        en: 'Sunset Cruises' },
-  'beach-tours':          { icon: 'bx-swim',        img: '/assets/images/packages/beach_day_1.webp',                             pt: 'Beach Tours',           en: 'Beach Tours' },
-  'safaris':              { icon: 'bxs-binoculars', img: '/assets/images/packages/safari/maputo-park/safari-maputo-park-1.webp', pt: 'Safaris',               en: 'Safaris' },
-  'ocean-activities':     { icon: 'bx-anchor',      img: '/assets/images/packages/whale-watching/observacao_baleias_1.webp',     pt: 'Ocean Activities',      en: 'Ocean Activities' },
-  'city-tour':            { icon: 'bxs-buildings',  img: '/assets/images/packages/maputo-tour/maputo-tour-1.webp',               pt: 'Maputo City Tour',      en: 'Maputo City Tour' },
-  'transfers':            { icon: 'bxs-car',        img: '/assets/images/packages/transfers/marina-hotel-transfer-1.webp',       pt: 'Transfers',             en: 'Transfers' },
-  'island-accommodation': { icon: 'bxs-home-heart', img: '/assets/images/accommodation/mamas-lodge/mamas_lodge_3.webp',          pt: 'Alojamento nas ilhas',  en: 'Island accommodation' }
-};
+import { readFileSync } from 'node:fs';
+
+/* Categorias: data/categories.json (partilhado com o painel de administração) */
+const _cat = JSON.parse(readFileSync(new URL('../data/categories.json', import.meta.url), 'utf8'));
+delete _cat._comment;
+export const CATEGORIES = _cat;
 
 export const LOCATIONS = {
   inhaca:     { pt: 'Ilha da Inhaca', en: 'Inhaca Island' },
@@ -25,13 +21,22 @@ export const T = {
   pt: {
     locale: 'pt-PT', htmlLang: 'pt',
     skip: 'Saltar para o conteúdo',
-    nav: { experiences: 'Experiências', accommodation: 'Alojamentos', destinations: 'Destinos', how: 'Como reservar', contact: 'Contacto', about: 'Sobre nós', search: 'Procurar experiências', menuOpen: 'Abrir menu', menuClose: 'Fechar menu', book: 'Reservar experiência', bookShort: 'Reservar', explore: 'Explorar', all: 'Ver todas as experiências', options: n => n === 1 ? '1 opção' : `${n} opções`, home: 'Início', lang: 'Idioma', wa: 'Falar no WhatsApp' },
+    nav: { experiences: 'Experiências', accommodation: 'Alojamentos', destinations: 'Destinos', how: 'Como reservar', contact: 'Contacto', about: 'Sobre nós', search: 'Procurar experiências', menuOpen: 'Abrir menu', menuClose: 'Fechar menu', book: 'Reservar experiência', bookShort: 'Reservar', explore: 'Explorar', all: 'Ver todas as experiências', options: n => n === 1 ? '1 opção' : `${n} opções`, home: 'Início', lang: 'Idioma', wa: 'Falar no WhatsApp', phone: 'Para mais info:', more: 'Ver mais', account: 'A minha conta' },
     price: { from: 'Desde', currency: 'MZN' },
     hero: {
       chip: 'Baía de Maputo · Moçambique',
       title: 'Ilhas, oceano e safaris <em>a partir de Maputo.</em>',
       lead: 'Island hopping, snorkeling na Inhaca, sunset cruises e safaris — planeados e acompanhados pela equipa da Moz Camp Adventures.',
       alt: 'Grupo a bordo de um barco da Moz Camp Adventures junto à costa arborizada da Ilha da Inhaca',
+      /* Slider do topo (os 5 slides do site original): [imagem, local, título, texto, categoria, alt] */
+      slides: [
+        ['snorkeling-santa-maria', 'Santa Maria', 'Mergulhe num Mundo Subaquático Inesquecível', 'Descubra águas cristalinas, vida marinha vibrante e momentos únicos no paraíso de Santa Maria.', 'island-tours', 'Snorkeling em Santa Maria'],
+        ['island-hopping-maputo-bay', 'Baía de Maputo', 'Explore Ilhas Paradisíacas num Só Dia', 'Navegue pela Baía de Maputo e descubra praias intocadas, águas turquesa e experiências inesquecíveis.', 'island-tours', 'Island hopping na Baía de Maputo'],
+        ['sunset-cruise-maputo-bay', 'Baía de Maputo', 'Viva o Pôr do Sol Mais Incrível de Maputo', 'Relaxe a bordo, desfrute de vistas deslumbrantes e crie memórias inesquecíveis ao som do mar.', 'sunset-cruise', 'Sunset cruise na Baía de Maputo'],
+        ['eswatini-kingdom-tour', 'Eswatini', 'Descubra a Cultura Viva do Reino de Eswatini', 'Uma jornada autêntica por tradições, paisagens e experiências culturais únicas em África.', 'safaris', 'Tour cultural no Reino de Eswatini'],
+        ['safari-kruger', 'Kruger National Park', 'Encontre a Vida Selvagem de África de Perto', 'Explore o Kruger National Park e viva a emoção de um safari autêntico e inesquecível.', 'safaris', 'Safari no Kruger National Park']
+      ],
+      cta: 'Explorar destinos', prev: 'Slide anterior', next: 'Slide seguinte', pause: 'Pausar a apresentação', play: 'Retomar a apresentação', goTo: n => `Ir para o slide ${n}`, label: 'Destaques',
       fExp: 'Experiência', fAll: 'Todas as experiências', fDate: 'Data', fPax: 'Pessoas', fGo: 'Ver experiências'
     },
     trust: [
@@ -109,7 +114,7 @@ export const T = {
       minNights: n => `Estadia mínima de ${n} noites.`, maxReached: n => `Máximo de ${n} pessoas.`,
       waHello: 'Olá Moz Camp Adventures 👋', waIntro: 'Gostaria de pedir a reserva de:', waExp: 'Experiência', waDate: 'Data', waIn: 'Entrada', waOut: 'Saída', waPax: 'Participantes',
       waAdults: 'adultos', waChildren: 'crianças', waName: 'Nome', waPhone: 'Telefone', waEmail: 'E-mail', waEnd: 'Por favor, confirmem a disponibilidade.', mailSubject: 'Pedido de reserva',
-      submit: 'Enviar pedido de reserva', sending: 'A enviar…', okTitle: 'Pedido recebido', okRef: 'Referência do pedido',
+      submit: 'Enviar pedido de reserva', sending: 'A enviar…', accountAs: 'Sessão iniciada: este pedido fica na sua conta.', okTitle: 'Pedido recebido', okRef: 'Referência do pedido',
       okLead: 'Guarde esta referência. A nossa equipa vai confirmar a disponibilidade e enviar as instruções de pagamento.',
       okMail: 'Enviámos um resumo para {email}.', okWa: 'Falar no WhatsApp sobre este pedido', again: 'Fazer outro pedido',
       waRef: 'Olá Moz Camp Adventures 👋\n\nFiz o pedido de reserva {ref} — {item}.\nNome: {name}',
@@ -142,13 +147,21 @@ export const T = {
   en: {
     locale: 'en-GB', htmlLang: 'en',
     skip: 'Skip to content',
-    nav: { experiences: 'Experiences', accommodation: 'Accommodation', destinations: 'Destinations', how: 'How to book', contact: 'Contact', about: 'About us', search: 'Search experiences', menuOpen: 'Open menu', menuClose: 'Close menu', book: 'Book an experience', bookShort: 'Book', explore: 'Explore', all: 'See all experiences', options: n => n === 1 ? '1 option' : `${n} options`, home: 'Home', lang: 'Language', wa: 'Chat on WhatsApp' },
+    nav: { experiences: 'Experiences', accommodation: 'Accommodation', destinations: 'Destinations', how: 'How to book', contact: 'Contact', about: 'About us', search: 'Search experiences', menuOpen: 'Open menu', menuClose: 'Close menu', book: 'Book an experience', bookShort: 'Book', explore: 'Explore', all: 'See all experiences', options: n => n === 1 ? '1 option' : `${n} options`, home: 'Home', lang: 'Language', wa: 'Chat on WhatsApp', phone: 'More info:', more: 'See more', account: 'My account' },
     price: { from: 'From', currency: 'MZN' },
     hero: {
       chip: 'Maputo Bay · Mozambique',
       title: 'Islands, ocean and safaris <em>from Maputo.</em>',
       lead: 'Island hopping, snorkelling at Inhaca, sunset cruises and safaris — planned and guided by the Moz Camp Adventures team.',
       alt: 'Group on board a Moz Camp Adventures boat off the forested coast of Inhaca Island',
+      slides: [
+        ['snorkeling-santa-maria', 'Santa Maria', 'Dive into an Unforgettable Underwater World', 'Discover crystal-clear waters, vibrant marine life and unique moments in the paradise of Santa Maria.', 'island-tours', 'Snorkelling at Santa Maria'],
+        ['island-hopping-maputo-bay', 'Maputo Bay', 'Explore Paradise Islands in a Single Day', 'Sail across Maputo Bay and discover untouched beaches, turquoise waters and unforgettable experiences.', 'island-tours', 'Island hopping in Maputo Bay'],
+        ['sunset-cruise-maputo-bay', 'Maputo Bay', "Experience Maputo's Most Breathtaking Sunset", 'Relax on board, enjoy stunning views and create unforgettable memories to the sound of the sea.', 'sunset-cruise', 'Sunset cruise in Maputo Bay'],
+        ['eswatini-kingdom-tour', 'Eswatini', 'Discover the Living Culture of the Kingdom of Eswatini', 'An authentic journey through traditions, landscapes and unique cultural experiences in Africa.', 'safaris', 'Cultural tour in the Kingdom of Eswatini'],
+        ['safari-kruger', 'Kruger National Park', "Encounter Africa's Wildlife Up Close", 'Explore Kruger National Park and live the thrill of an authentic and unforgettable safari.', 'safaris', 'Safari in Kruger National Park']
+      ],
+      cta: 'Explore destinations', prev: 'Previous slide', next: 'Next slide', pause: 'Pause the slideshow', play: 'Resume the slideshow', goTo: n => `Go to slide ${n}`, label: 'Highlights',
       fExp: 'Experience', fAll: 'All experiences', fDate: 'Date', fPax: 'People', fGo: 'Show experiences'
     },
     trust: [
@@ -226,7 +239,7 @@ export const T = {
       minNights: n => `Minimum stay of ${n} nights.`, maxReached: n => `Maximum of ${n} people.`,
       waHello: 'Hello Moz Camp Adventures 👋', waIntro: 'I would like to request a booking for:', waExp: 'Experience', waDate: 'Date', waIn: 'Check-in', waOut: 'Check-out', waPax: 'Participants',
       waAdults: 'adults', waChildren: 'children', waName: 'Name', waPhone: 'Phone', waEmail: 'E-mail', waEnd: 'Please confirm availability.', mailSubject: 'Booking request',
-      submit: 'Send booking request', sending: 'Sending…', okTitle: 'Request received', okRef: 'Request reference',
+      submit: 'Send booking request', sending: 'Sending…', accountAs: 'Signed in: this request will appear in your account.', okTitle: 'Request received', okRef: 'Request reference',
       okLead: 'Please keep this reference. Our team will confirm availability and send payment instructions.',
       okMail: 'We have sent a summary to {email}.', okWa: 'Chat on WhatsApp about this request', again: 'Make another request',
       waRef: 'Hello Moz Camp Adventures 👋\n\nI made booking request {ref} — {item}.\nName: {name}',

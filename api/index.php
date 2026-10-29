@@ -23,7 +23,10 @@ require __DIR__ . '/src/Pdf.php';
 require __DIR__ . '/src/Invoices.php';
 require __DIR__ . '/src/Payments.php';
 require __DIR__ . '/src/Notify.php';
+require __DIR__ . '/src/WhatsApp.php';
 require __DIR__ . '/src/Admin.php';
+require __DIR__ . '/src/Account.php';
+require __DIR__ . '/src/CatalogAdmin.php';
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $path = '/' . trim((string) preg_replace('#^/?api#', '', parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/'), '/');
@@ -31,6 +34,10 @@ $path = '/' . trim((string) preg_replace('#^/?api#', '', parse_url($_SERVER['REQ
 try {
     if (str_starts_with($path, '/admin/')) {       // painel: /api/admin/* (sessão + permissões)
         $result = Admin::route($method, substr($path, 6));
+        json_response(200, $result);
+    }
+    if (str_starts_with($path, '/account/')) {     // contas de cliente: /api/account/* (sessão própria, separada da equipa)
+        $result = Account::route($method, substr($path, 8));
         json_response(200, $result);
     }
     $result = match ([$method, $path]) {

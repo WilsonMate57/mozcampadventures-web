@@ -4,6 +4,10 @@ PASS  B2 preço recalculado no servidor (cliente enviou total=1): 3 × 8.000 + 1
 PASS  B3 estado inicial é «pedido» (não confirmado)
 PASS  B4 repetir com a mesma chave devolve a mesma referência (sem duplicado)
 PASS  B5 só existe 1 registo para essa chave
+PASS  T1 resposta traz o link da área do cliente (para o QR do ticket)
+PASS  T2 repetir o pedido devolve o mesmo link e as linhas de preço
+PASS  T3 pedido em inglês → link /en/booking/
+PASS  T4 o link do QR abre a reserva na área do cliente, com total e linhas
 PASS  B6 20 pedidos em simultâneo → 20 referências únicas e consecutivas
 PASS  B7 abaixo do mínimo (2 < 3) → 422 min_people
 PASS  B8 pacote desactivado → 422 item_unavailable
@@ -46,4 +50,4 @@ PASS  D4 e-mails do pedido B1 registados (equipa + cliente)
 PASS  D5 IP nunca guardado em claro
 PASS  L1 excesso de mensagens do mesmo IP → 429
 
-43/43 testes passaram
+47/47 testes passaram

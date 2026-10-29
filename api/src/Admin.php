@@ -24,7 +24,18 @@ final class Admin
             ['GET', '#^/me$#', fn () => Auth::me() + ['permissions_catalog' => Auth::PERMISSIONS]],
             ['POST', '#^/setup-password$#', fn () => Auth::setupPassword(json_input())],
             ['GET', '#^/dashboard$#', fn () => self::dashboard(Auth::require('dashboard.view'))],
+            ['GET', '#^/search$#', fn () => self::search(Auth::require())],
+            ['GET', '#^/experiences$#', fn () => self::experiences(Auth::require('bookings.view'))],
             ['GET', '#^/catalog$#', fn () => self::catalog(Auth::require('bookings.create'))],
+            ['GET', '#^/catalog/items$#', fn () => CatalogAdmin::list(Auth::require('catalog.edit'))],
+            ['POST', '#^/catalog/items$#', fn () => CatalogAdmin::create(json_input(), Auth::require('catalog.edit'))],
+            ['GET', '#^/catalog/items/([a-z0-9-]{1,60})$#', fn ($m) => CatalogAdmin::get($m[1], Auth::require('catalog.edit'))],
+            ['POST', '#^/catalog/items/([a-z0-9-]{1,60})$#', fn ($m) => CatalogAdmin::save($m[1], json_input(262144), Auth::require('catalog.edit'))],
+            ['POST', '#^/catalog/items/([a-z0-9-]{1,60})/photos$#', fn ($m) => CatalogAdmin::upload($m[1], Auth::require('catalog.edit'))],
+            ['POST', '#^/catalog/discard$#', fn () => CatalogAdmin::discard(Auth::require('catalog.edit'))],
+            ['POST', '#^/catalog/publish$#', fn () => CatalogAdmin::publish(Auth::require('catalog.publish'))],
+            ['GET', '#^/catalog/history$#', fn () => CatalogAdmin::history(Auth::require('catalog.publish'))],
+            ['POST', '#^/catalog/history/([0-9a-f-]{1,40})/restore$#', fn ($m) => CatalogAdmin::restore($m[1], Auth::require('catalog.publish'))],
             ['GET', '#^/bookings$#', fn () => self::bookings(Auth::require('bookings.view'))],
             ['POST', '#^/bookings$#', fn () => Bookings::create(json_input(), Auth::require('bookings.create'))],
             ['GET', '#^/bookings/(MCA-\d{4}-\d{5,})$#', fn ($m) => self::booking($m[1], Auth::require('bookings.view'))],
@@ -62,8 +73,11 @@ final class Admin
             ['POST', '#^/roles$#', fn () => self::saveRole(null, json_input(), Auth::require('users.manage'))],
             ['POST', '#^/roles/(\d+)$#', fn ($m) => self::saveRole((int) $m[1], json_input(), Auth::require('users.manage'))],
             ['GET', '#^/settings$#', fn () => self::settings(Auth::require('settings.manage'))],
-            ['POST', '#^/settings/(company|payment|notifications)$#', fn ($m) => self::saveSetting($m[1], json_input(), Auth::require('settings.manage'))],
+            ['POST', '#^/settings/(company|payment|notifications|whatsapp|email_team)$#', fn ($m) => self::saveSetting($m[1], json_input(), Auth::require('settings.manage'))],
+            ['POST', '#^/notifications/test$#', fn () => self::testChannel(json_input(), Auth::require('settings.manage'))],
+            ['GET', '#^/whatsapp$#', fn () => (Auth::require('emails.manage') ? WhatsApp::log() : null)],
             ['GET', '#^/audit$#', fn () => self::audit(Auth::require('audit.view'))],
+            ['GET', '#^/customers$#', fn () => (Auth::require('customers.view') ? Account::adminList($_GET) : null)],
         ];
         foreach ($routes as [$verb, $re, $fn]) {
             if ($verb === $method && preg_match($re, $path, $m)) {
@@ -76,30 +90,120 @@ final class Admin
     /* ── Resumo ─────────────────────────────────────────── */
     private static function dashboard(array $u): array
     {
-        $one = static fn (string $sql) => db()->query($sql)->fetchColumn();
-        $data = [
+        $db = db();
+        $one = static function (string $sql, array $a = []) use ($db) { $s = $db->prepare($sql); $s->execute($a); return $s->fetchColumn(); };
+        $all = static function (string $sql, array $a = []) use ($db) { $s = $db->prepare($sql); $s->execute($a); return $s->fetchAll(); };
+        $r = self::range();
+        [$from, $to, $pf, $pt] = [$r['from'], $r['to'], $r['prev_from'], $r['prev_to']];
+        $pay = Auth::has('payments.view');
+
+        /* Indicadores do período (e do período anterior, com a mesma duração) — tudo a partir dos registos */
+        $created = 'SELECT count(*) FROM bookings WHERE created_at::date BETWEEN ? AND ?';
+        $moved = "SELECT count(DISTINCT booking_id) FROM booking_events WHERE type = 'status_changed' AND data->>'to' = ? AND created_at::date BETWEEN ? AND ?";
+        /* Recebido = pagamentos CONFIRMADOS menos reembolsos, pela data do pagamento. Nunca inclui facturado por receber. */
+        $received = "SELECT coalesce(sum(CASE WHEN kind = 'payment' THEN amount ELSE -amount END), 0) FROM payments WHERE status = 'confirmado' AND paid_on BETWEEN ? AND ?";
+        $invoiced = "SELECT coalesce(sum(total), 0) FROM invoices WHERE doc_type = 'FT' AND status = 'emitida' AND issue_date BETWEEN ? AND ?";
+        $m = [
+            'bookings' => [(int) $one($created, [$from, $to]), (int) $one($created, [$pf, $pt])],
+            'confirmed' => [(int) $one($moved, ['confirmada', $from, $to]), (int) $one($moved, ['confirmada', $pf, $pt])],
+            'cancelled' => [(int) $one($moved, ['cancelada', $from, $to]), (int) $one($moved, ['cancelada', $pf, $pt])],
+            'invoiced' => [(float) $one($invoiced, [$from, $to]), (float) $one($invoiced, [$pf, $pt])],
+        ];
+        if ($pay) $m['received'] = [(float) $one($received, [$from, $to]), (float) $one($received, [$pf, $pt])];
+
+        /* Séries: por dia até 92 dias; por mês acima disso */
+        $unit = $r['bucket'];
+        $series = $all("SELECT to_char(g.d, 'YYYY-MM-DD') AS d,
+                (SELECT count(*) FROM bookings b WHERE date_trunc('$unit', b.created_at)::date = g.d AND b.created_at::date BETWEEN ? AND ?) AS bookings" .
+                ($pay ? ", (SELECT coalesce(sum(CASE WHEN p.kind = 'payment' THEN p.amount ELSE -p.amount END), 0) FROM payments p WHERE p.status = 'confirmado' AND date_trunc('$unit', p.paid_on)::date = g.d AND p.paid_on BETWEEN ? AND ?) AS received" : '') . "
+            FROM generate_series(date_trunc('$unit', ?::date), ?::date, '1 $unit') AS g(d) ORDER BY g.d",
+            $pay ? [$from, $to, $from, $to, $from, $to] : [$from, $to, $from, $to]);
+        foreach ($series as &$p) { $p['bookings'] = (int) $p['bookings']; if ($pay) $p['received'] = (float) $p['received']; }
+        unset($p);
+
+        $status = $all('SELECT status, count(*) AS n FROM bookings WHERE created_at::date BETWEEN ? AND ? GROUP BY status', [$from, $to]);
+        $top = $all("SELECT item_id, item_name, count(*) AS requests, count(*) FILTER (WHERE status IN ('confirmada', 'concluida')) AS confirmed, sum(adults + children) AS pax
+            FROM bookings WHERE created_at::date BETWEEN ? AND ? GROUP BY item_id, item_name ORDER BY requests DESC, item_name LIMIT 6", [$from, $to]);
+
+        /* Requer atenção (estado actual, independente do período) */
+        $attention = [
             'bookings_pending' => (int) $one("SELECT count(*) FROM bookings WHERE status = 'pedido'"),
-            'bookings_confirmed_upcoming' => (int) $one("SELECT count(*) FROM bookings WHERE status = 'confirmada' AND coalesce(service_date, checkin) >= current_date"),
+            'bookings_urgent' => (int) $one("SELECT count(*) FROM bookings WHERE status = 'pedido' AND coalesce(service_date, checkin) <= current_date + 7"),
             'messages_new' => (int) $one("SELECT count(*) FROM contact_messages WHERE status = 'novo'"),
             'reviews_pending' => (int) $one("SELECT count(*) FROM reviews WHERE status = 'pendente'"),
             'invoices_draft' => (int) $one("SELECT count(*) FROM invoices WHERE status = 'rascunho'"),
-            'invoiced_month' => (float) $one("SELECT coalesce(sum(total), 0) FROM invoices WHERE doc_type = 'FT' AND status = 'emitida' AND issue_date >= date_trunc('month', current_date)"),
-            'invoiced_year' => (float) $one("SELECT coalesce(sum(total), 0) FROM invoices WHERE doc_type = 'FT' AND status = 'emitida' AND issue_date >= date_trunc('year', current_date)"),
-            'invoices_issued_month' => (int) $one("SELECT count(*) FROM invoices WHERE doc_type = 'FT' AND status = 'emitida' AND issue_date >= date_trunc('month', current_date)"),
+            'emails_failed' => Auth::has('emails.manage') ? (int) $one("SELECT count(*) FROM email_log e WHERE e.status = 'failed' AND e.created_at > now() - interval '7 days' AND NOT EXISTS (SELECT 1 FROM email_log r WHERE r.resent_of = e.id AND r.status IN ('sent', 'logged'))") : null,
         ];
-        /* Recebido = pagamentos CONFIRMADOS menos reembolsos (pela data do pagamento). Nunca inclui facturado por receber. */
-        $data['received_month'] = (float) $one("SELECT coalesce(sum(CASE WHEN kind = 'payment' THEN amount ELSE -amount END), 0) FROM payments WHERE status = 'confirmado' AND paid_on >= date_trunc('month', current_date)");
-        $data['received_year'] = (float) $one("SELECT coalesce(sum(CASE WHEN kind = 'payment' THEN amount ELSE -amount END), 0) FROM payments WHERE status = 'confirmado' AND paid_on >= date_trunc('year', current_date)");
-        $data['outstanding'] = (float) $one("SELECT coalesce(sum(balance), 0) FROM invoice_balances WHERE pay_status IN ('pendente', 'parcial')");
-        $data['payments_awaiting'] = (int) $one("SELECT count(*) FROM payments WHERE status IN ('declarado', 'em_verificacao')");
-        $data['invoices_by_status'] = db()->query("SELECT pay_status, count(*) AS n FROM invoice_balances WHERE pay_status <> 'anulada' GROUP BY pay_status")->fetchAll(PDO::FETCH_KEY_PAIR);
-        $data['emails_failed'] = Auth::has('emails.manage') ? (int) $one("SELECT count(*) FROM email_log e WHERE e.status = 'failed' AND e.created_at > now() - interval '7 days' AND NOT EXISTS (SELECT 1 FROM email_log r WHERE r.resent_of = e.id AND r.status IN ('sent', 'logged'))") : null;
-        if (!Auth::has('payments.view')) {
-            unset($data['received_month'], $data['received_year'], $data['outstanding'], $data['payments_awaiting'], $data['invoices_by_status']);
+        if ($pay) {
+            $attention['payments_awaiting'] = (int) $one("SELECT count(*) FROM payments WHERE status IN ('declarado', 'em_verificacao')");
+            $attention['outstanding'] = (float) $one("SELECT coalesce(sum(balance), 0) FROM invoice_balances WHERE pay_status IN ('pendente', 'parcial')");
+            $attention['outstanding_invoices'] = (int) $one("SELECT count(*) FROM invoice_balances WHERE pay_status IN ('pendente', 'parcial')");
         }
-        $data['recent'] = db()->query("SELECT reference, item_name, customer_name, status, coalesce(service_date, checkin) AS date, total_estimate, created_at FROM bookings ORDER BY created_at DESC LIMIT 8")->fetchAll();
-        $data['upcoming'] = db()->query("SELECT reference, item_name, customer_name, coalesce(service_date, checkin) AS date, adults + children AS pax FROM bookings WHERE status = 'confirmada' AND coalesce(service_date, checkin) BETWEEN current_date AND current_date + 14 ORDER BY 4 LIMIT 10")->fetchAll();
-        return $data;
+
+        return [
+            'range' => $r, 'metrics' => $m, 'series' => $series, 'status' => array_column($status, 'n', 'status'), 'top' => $top, 'attention' => $attention,
+            'upcoming' => $all("SELECT reference, item_name, customer_name, coalesce(service_date, checkin) AS date, adults + children AS pax FROM bookings
+                WHERE status = 'confirmada' AND coalesce(service_date, checkin) BETWEEN current_date AND current_date + 14 ORDER BY 4, 1 LIMIT 8"),
+            'activity' => $all("SELECT e.type, e.data, e.actor, e.created_at, b.reference, b.item_name, b.customer_name FROM booking_events e JOIN bookings b ON b.id = e.booking_id
+                WHERE e.type IN ('created', 'status_changed', 'note') ORDER BY e.id DESC LIMIT 10"),
+        ];
+    }
+
+    /** Período do resumo: from/to (AAAA-MM-DD; por omissão os últimos 30 dias) e o período anterior com a mesma duração. */
+    private static function range(): array
+    {
+        $ok = static fn ($v) => is_string($v) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $v) && strtotime($v) !== false;
+        $to = $ok($_GET['to'] ?? null) ? $_GET['to'] : date('Y-m-d');
+        $from = $ok($_GET['from'] ?? null) ? $_GET['from'] : date('Y-m-d', strtotime("$to -29 days"));
+        if ($from > $to) [$from, $to] = [$to, $from];
+        $days = (int) round((strtotime($to) - strtotime($from)) / 86400) + 1;
+        if ($days > 731) throw new ApiError(422, 'range_too_long');
+        return ['from' => $from, 'to' => $to, 'days' => $days, 'bucket' => $days > 92 ? 'month' : 'day',
+            'prev_from' => date('Y-m-d', strtotime("$from -$days days")), 'prev_to' => date('Y-m-d', strtotime("$from -1 day"))];
+    }
+
+    /** Pesquisa global (Ctrl+K): reservas, clientes e facturas, conforme as permissões. */
+    private static function search(array $u): array
+    {
+        $q = clean_text($_GET['q'] ?? '', 80);
+        if (strlen($q) < 2) return ['bookings' => [], 'customers' => [], 'invoices' => []];
+        $like = '%' . str_replace(['%', '_'], ['\%', '\_'], $q) . '%';
+        $run = static function (string $sql, array $a) { $s = db()->prepare($sql); $s->execute($a); return $s->fetchAll(); };
+        return [
+            'bookings' => Auth::has('bookings.view') ? $run('SELECT reference, item_name, customer_name, status, coalesce(service_date, checkin) AS date FROM bookings
+                WHERE reference ILIKE ? OR customer_name ILIKE ? OR customer_phone ILIKE ? OR customer_email ILIKE ? OR item_name ILIKE ? ORDER BY created_at DESC LIMIT 6', [$like, $like, $like, $like, $like]) : [],
+            'customers' => Auth::has('customers.view') ? $run('SELECT id, name, email, phone FROM customers WHERE name ILIKE ? OR email ILIKE ? OR phone ILIKE ? ORDER BY created_at DESC LIMIT 4', [$like, $like, $like]) : [],
+            'invoices' => Auth::has('invoices.view') ? $run("SELECT i.id, i.doc_type, i.number, i.status, i.total, i.customer->>'name' AS customer FROM invoices i
+                WHERE i.number ILIKE ? OR i.customer->>'name' ILIKE ? ORDER BY i.id DESC LIMIT 4", [$like, $like]) : [],
+        ];
+    }
+
+    /** Experiências do catálogo (data/*.json) com o desempenho real dos últimos 90 dias. Só leitura: o conteúdo edita-se no catálogo. */
+    private static function experiences(array $u): array
+    {
+        $stats = [];
+        foreach (db()->query("SELECT item_id, count(*) FILTER (WHERE created_at > now() - interval '90 days') AS requests,
+                count(*) FILTER (WHERE created_at > now() - interval '90 days' AND status IN ('confirmada', 'concluida')) AS confirmed,
+                count(*) FILTER (WHERE created_at > now() - interval '90 days' AND status = 'cancelada') AS cancelled,
+                count(*) FILTER (WHERE status = 'confirmada' AND coalesce(service_date, checkin) >= current_date) AS upcoming,
+                max(created_at) AS last_request FROM bookings GROUP BY item_id")->fetchAll() as $row) {
+            $stats[$row['item_id']] = $row;
+        }
+        $out = [];
+        $dir = config('app.data_dir') ?: dirname(__DIR__, 2) . '/data';
+        $rules = json_decode((string) @file_get_contents("$dir/booking-rules.json"), true) ?: [];   // mínimos de participantes/noites
+        foreach (['tours.json' => 'tour', 'accommodations.json' => 'stay'] as $file => $kind) {
+            foreach (json_decode((string) file_get_contents("$dir/$file"), true) as $p) {
+                $id = $p['slug'] ?? $p['id'];
+                $st = $stats[$id] ?? [];
+                $out[] = ['id' => $id, 'name' => $p['name'], 'kind' => $kind, 'category' => $p['category'] ?? null, 'location' => $p['location'] ?? null,
+                    'price_from' => (float) ($p['price_from'] ?? 0), 'price_label' => $p['priceLabel'] ?? null, 'active' => empty($p['disabled']),
+                    'min_people' => $rules[$id]['minPeople'] ?? null, 'min_nights' => $rules[$id]['minNights'] ?? null,
+                    'requests' => (int) ($st['requests'] ?? 0), 'confirmed' => (int) ($st['confirmed'] ?? 0), 'cancelled' => (int) ($st['cancelled'] ?? 0),
+                    'upcoming' => (int) ($st['upcoming'] ?? 0), 'last_request' => $st['last_request'] ?? null];
+            }
+        }
+        return ['items' => $out];
     }
 
     /* ── Reservas ───────────────────────────────────────── */
@@ -119,21 +223,52 @@ final class Admin
         return ['items' => $out];
     }
 
+    /** Lista de reservas: filtros combináveis, ordenação, paginação e contagem por estado. */
     private static function bookings(array $u): array
     {
         $where = ['1=1'];
         $args = [];
-        if (!empty($_GET['status'])) { $where[] = 'b.status = ?'; $args[] = (string) $_GET['status']; }
         if (!empty($_GET['q'])) {
             $like = '%' . str_replace(['%', '_'], ['\%', '\_'], trim((string) $_GET['q'])) . '%';
             $where[] = '(b.reference ILIKE ? OR b.customer_name ILIKE ? OR b.customer_phone ILIKE ? OR b.customer_email ILIKE ? OR b.item_name ILIKE ?)';
             array_push($args, $like, $like, $like, $like, $like);
         }
-        $stmt = db()->prepare('SELECT b.reference, b.status, b.channel, b.item_name, b.customer_name, b.customer_phone, coalesce(b.service_date, b.checkin) AS date, b.adults + b.children AS pax, b.total_estimate, b.total_to_confirm, b.created_at,
-              (SELECT count(*) FROM invoices i WHERE i.booking_id = b.id AND i.status = \'emitida\') AS invoices
-            FROM bookings b WHERE ' . implode(' AND ', $where) . ' ORDER BY b.created_at DESC LIMIT 200');
-        $stmt->execute($args);
-        return ['bookings' => $stmt->fetchAll()];
+        $date = static fn ($v) => is_string($v) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $v) ? $v : null;
+        if ($d = $date($_GET['from'] ?? null)) { $where[] = 'coalesce(b.service_date, b.checkin) >= ?'; $args[] = $d; }
+        if ($d = $date($_GET['to'] ?? null)) { $where[] = 'coalesce(b.service_date, b.checkin) <= ?'; $args[] = $d; }
+        if (!empty($_GET['item'])) { $where[] = 'b.item_id = ?'; $args[] = (string) $_GET['item']; }
+        if (($_GET['when'] ?? '') === 'upcoming') $where[] = 'coalesce(b.service_date, b.checkin) >= current_date';
+        if (($_GET['when'] ?? '') === 'past') $where[] = 'coalesce(b.service_date, b.checkin) < current_date';
+        $base = implode(' AND ', $where);
+
+        /* Contagem por estado com os restantes filtros (para os separadores) */
+        $c = db()->prepare("SELECT b.status, count(*) FROM bookings b WHERE $base GROUP BY b.status");
+        $c->execute($args);
+        $counts = array_map('intval', $c->fetchAll(PDO::FETCH_KEY_PAIR));
+        $counts['all'] = array_sum($counts);
+
+        $status = (string) ($_GET['status'] ?? '');
+        $w = $base;
+        $a = $args;
+        if (in_array($status, ['pedido', 'confirmada', 'concluida', 'cancelada'], true)) { $w .= ' AND b.status = ?'; $a[] = $status; }
+        $sorts = ['created' => 'b.created_at', 'date' => 'coalesce(b.service_date, b.checkin)', 'total' => 'b.total_estimate', 'reference' => 'b.reference', 'customer' => 'lower(b.customer_name)'];
+        $sort = $sorts[$_GET['sort'] ?? ''] ?? 'b.created_at';
+        $dir = ($_GET['dir'] ?? 'desc') === 'asc' ? 'ASC' : 'DESC';
+        $per = max(10, min(100, (int) ($_GET['per'] ?? 25)));
+        $page = max(1, (int) ($_GET['page'] ?? 1));
+        $t = db()->prepare("SELECT count(*) FROM bookings b WHERE $w");
+        $t->execute($a);
+        $total = (int) $t->fetchColumn();
+        $stmt = db()->prepare("SELECT b.reference, b.status, b.channel, b.item_id, b.item_name, b.customer_name, b.customer_phone, coalesce(b.service_date, b.checkin) AS date, b.adults + b.children AS pax, b.total_estimate, b.total_to_confirm, b.created_at,
+              (b.status = 'pedido' AND coalesce(b.service_date, b.checkin) <= current_date + 7) AS urgent,
+              (SELECT count(*) FROM invoices i WHERE i.booking_id = b.id AND i.status = 'emitida') AS invoices
+            FROM bookings b WHERE $w ORDER BY $sort $dir NULLS LAST, b.id DESC LIMIT $per OFFSET " . (($page - 1) * $per));
+        $stmt->execute($a);
+        $rows = $stmt->fetchAll();
+        foreach ($rows as &$r) { $r['urgent'] = (bool) $r['urgent']; $r['pax'] = (int) $r['pax']; $r['invoices'] = (int) $r['invoices']; }
+        unset($r);
+        $items = db()->query('SELECT item_id, max(item_name) AS name FROM bookings GROUP BY item_id ORDER BY 2')->fetchAll();
+        return ['bookings' => $rows, 'total' => $total, 'page' => $page, 'per' => $per, 'counts' => $counts, 'items' => $items];
     }
 
     private static function bookingRow(string $ref): array
@@ -219,7 +354,7 @@ final class Admin
         $where = '1=1';
         $args = [];
         if (in_array($_GET['status'] ?? '', ['sent', 'failed', 'logged'], true)) { $where = 'e.status = ?'; $args[] = $_GET['status']; }
-        $s = db()->prepare("SELECT e.id, e.kind, e.to_addr, e.subject, e.related_type, e.related_id, e.status, e.error, e.lang, e.created_at, e.resent_of, (e.body IS NOT NULL) AS resendable,
+        $s = db()->prepare("SELECT e.id, e.kind, e.to_addr, e.subject, e.related_type, e.related_id, e.status, e.error, e.lang, e.created_at, e.resent_of, (e.body IS NOT NULL AND e.kind NOT LIKE 'account_%') AS resendable,
               EXISTS (SELECT 1 FROM email_log r WHERE r.resent_of = e.id AND r.status IN ('sent', 'logged')) AS resent_ok
             FROM email_log e WHERE $where ORDER BY e.id DESC LIMIT 300");
         $s->execute($args);
@@ -381,7 +516,28 @@ final class Admin
     /* ── Definições ─────────────────────────────────────── */
     private static function settings(array $u): array
     {
-        return ['company' => setting('company'), 'payment' => setting('payment'), 'invoicing' => setting('invoicing'), 'notifications' => setting('notifications')];
+        return ['company' => setting('company'), 'payment' => setting('payment'), 'invoicing' => setting('invoicing'), 'notifications' => setting('notifications'),
+            'channels' => ['email' => self::emailStatus(), 'whatsapp' => WhatsApp::status()]];
+    }
+
+    /** Estado do envio de e-mail (sem segredos): por onde sai, remetente, se a chave do Resend existe. */
+    private static function emailStatus(): array
+    {
+        $t = (string) (config('mail.transport') ?: 'mail');
+        return ['transport' => $t, 'from' => config('mail.from_name') . ' <' . config('mail.from') . '>', 'team' => Mailer::team(), 'team_list' => setting('email_team')['recipients'] ?? [], 'reply_to' => (string) config('mail.team'),
+            'configured' => $t !== 'resend' || secret('RESEND_API_KEY', 'mail.resend_key') !== ''];
+    }
+
+    /** Definições → «Enviar teste»: e-mail para mail.team ou WhatsApp para os números da equipa. */
+    private static function testChannel(array $in, array $u): array
+    {
+        if (($in['channel'] ?? '') === 'whatsapp') return WhatsApp::test($u);
+        $to = Mailer::team();
+        $status = Mailer::send('test', $to, 'Teste de envio — Moz Camp Adventures', "Mensagem de teste enviada a partir do painel por {$u['name']}.\n\nSe a recebeu, o envio de e-mails está a funcionar.");
+        $err = db()->prepare('SELECT error FROM email_log WHERE id = ?');
+        $err->execute([Mailer::$lastId]);
+        Audit::log('email_test', 'settings', 'mail', ['status' => $status]);
+        return ['results' => [['to' => $to, 'status' => $status, 'error' => $err->fetchColumn() ?: null]]];
     }
 
     private static function saveSetting(string $key, array $in, array $u): array
@@ -393,6 +549,17 @@ final class Admin
             }
             if (strlen($v['legal_name']) < 2) throw new ApiError(422, 'invalid_legal_name');
             if ($v['nuit'] !== '' && !preg_match('/^\d{9}$/', $v['nuit'])) throw new ApiError(422, 'invalid_nuit');
+        } elseif ($key === 'email_team') {
+            $list = [];
+            foreach (array_slice(is_array($in['recipients'] ?? null) ? $in['recipients'] : [], 0, 10) as $a) {
+                $a = strtolower(clean_text($a, 160));
+                if ($a === '') continue;
+                if (!filter_var($a, FILTER_VALIDATE_EMAIL)) throw new ApiError(422, 'invalid_email', '', ['email' => $a]);
+                if (!in_array($a, $list, true)) $list[] = $a;
+            }
+            $v = ['recipients' => $list];
+        } elseif ($key === 'whatsapp') {
+            $v = WhatsApp::saveSettings($in);
         } elseif ($key === 'notifications') {
             $v = [];
             foreach (array_keys(setting('notifications')) as $k) {

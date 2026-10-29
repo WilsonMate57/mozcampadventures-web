@@ -85,6 +85,62 @@
     });
   }
 
+  /* Slider do topo da home: avança a cada 6 s; pára com o rato, o foco ou o separador escondido; botão de pausa;
+     setas, pontos, teclado (← →) e deslizar no telemóvel. Com «reduzir movimento», não avança sozinho. */
+  function initHeroSlider() {
+    var root = $('[data-hero]');
+    if (!root) return;
+    var slides = $$('[data-slide]', root), dots = $$('[data-hero-dot]', root), pauseBtn = $('[data-hero-pause]', root);
+    if (slides.length < 2) return;
+    var cur = 0, timer = null, hovering = false, focused = false;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var paused = reduced;   // pausa escolhida pelo utilizador (ou movimento reduzido)
+
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      slides.forEach(function (s, k) {
+        var on = k === cur;
+        s.classList.toggle('is-active', on);
+        if (on) { s.removeAttribute('aria-hidden'); s.removeAttribute('inert'); }
+        else { s.setAttribute('aria-hidden', 'true'); s.setAttribute('inert', ''); }
+      });
+      dots.forEach(function (d, k) { if (k === cur) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+    }
+    function stop() { clearInterval(timer); timer = null; }
+    function sync() {
+      stop();
+      if (!paused && !hovering && !focused && !document.hidden) timer = setInterval(function () { show(cur + 1); }, 6000);
+      pauseBtn.setAttribute('aria-label', paused ? pauseBtn.dataset.labelPlay : pauseBtn.dataset.labelPause);
+      pauseBtn.innerHTML = '<i class="bx ' + (paused ? 'bx-play' : 'bx-pause') + '"></i>';
+    }
+    function go(i, how) { show(i); sync(); track('hero_slide', { slide: cur + 1, via: how }); }
+
+    $('[data-hero-prev]', root).addEventListener('click', function () { go(cur - 1, 'arrow'); });
+    $('[data-hero-next]', root).addEventListener('click', function () { go(cur + 1, 'arrow'); });
+    dots.forEach(function (d) { d.addEventListener('click', function () { go(+d.dataset.heroDot, 'dot'); }); });
+    pauseBtn.addEventListener('click', function () { paused = !paused; sync(); });
+    root.addEventListener('mouseenter', function () { hovering = true; sync(); });
+    root.addEventListener('mouseleave', function () { hovering = false; sync(); });
+    root.addEventListener('focusin', function () { focused = true; sync(); });
+    root.addEventListener('focusout', function (e) { if (!root.contains(e.relatedTarget)) { focused = false; sync(); } });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1, 'key'); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1, 'key'); }
+    });
+    document.addEventListener('visibilitychange', sync);
+    /* Deslizar (toque): mais de 40 px na horizontal e mais horizontal do que vertical */
+    var x0 = null, y0 = 0;
+    root.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      x0 = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1), 'swipe');
+    }, { passive: true });
+    $$('[data-slide-cta]', root).forEach(function (a) { a.addEventListener('click', function () { track('click_hero_cta', { cta_text: 'slide', cta_link: a.dataset.slideCta }); }); });
+    sync();
+  }
+
   /* ── 3. Catálogo ────────────────────────────────────────── */
   function initCatalog() {
     var root = $('[data-catalog]');
@@ -198,6 +254,25 @@
     var errBox = $('[data-booking-error]', form);
     var inEl = $('#bk-in', form), outEl = $('#bk-out', form), dateEl = $('#bk-date', form);
     var lastTrack = '';
+
+    /* Cliente com sessão iniciada: preenche os dados (a reserva aparece na conta pelo e-mail) */
+    if (/(?:^|; )mca_in=1/.test(document.cookie)) {
+      fetch('/api/account/me', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (a) {
+        if (!a || !a.customer) return;
+        [['#bk-name', a.customer.name], ['#bk-phone', a.customer.phone], ['#bk-email', a.customer.email]].forEach(function (x) {
+          var el = $(x[0], form);
+          if (el && !el.value && x[1]) el.value = x[1];
+        });
+        var step = ($('#bk-name', form) || form).closest('.bk-step');
+        if (step && t.accountAs) {
+          var note = document.createElement('p');
+          note.className = 'booking__account';
+          note.innerHTML = '<i class="bx bx-user"></i>';
+          note.appendChild(document.createTextNode(' ' + t.accountAs));
+          step.appendChild(note);
+        }
+      }).catch(function () {});
+    }
 
     if (inEl && outEl) {
       inEl.addEventListener('change', function () {
@@ -347,7 +422,7 @@
         transfer: (form.querySelector('input[name=transfer]:checked') || {}).value || null,
         extras: $$('input[name=extra]:checked', form).map(function (x) { return x.value; }),
         name: nameEl.value.trim(), phone: phoneEl.value.trim(), email: emailEl.value.trim(),
-        website: (form.elements.website || {}).value || ''
+        website: (form.elements.mca_hp || {}).value || ''
       };
       if (isStay) { payload.checkin = inEl.value; payload.checkout = outEl.value; } else { payload.date = dateEl.value; }
 
@@ -377,12 +452,16 @@
 
     function showSuccess(data, p) {
       var waMsg = t.waRef.replace('{ref}', data.reference).replace('{item}', d.name).replace('{name}', p.name);
+      // Ticket do pedido com QR code (ticket.js); sem ele, mostra a referência e o resumo simples
+      var ticket = window.MCATicket
+        ? window.MCATicket.html({ reference: data.reference, status: data.status, item: d.name, service_date: p.date, checkin: p.checkin, checkout: p.checkout,
+            adults: p.adults, children: p.children, name: p.name.split(' ')[0], lines: data.lines, total: data.total, to_confirm: data.to_confirm, url: data.client_url, lang: d.lang })
+        : '<p class="result-ref"><small>' + esc(t.okRef) + '</small><strong data-reference>' + esc(data.reference) + '</strong></p>' +
+          '<div class="summary">' + (data.lines || []).map(function (l) { return '<div><span>' + esc(l.label) + '</span><span>' + (l.amount === null ? esc(l.note || t.toConfirm) : fmt(l.amount)) + '</span></div>'; }).join('') +
+          '<div class="summary__total"><span>' + esc(t.total) + '</span><span>' + (data.to_confirm ? esc(t.toConfirm) : fmt(data.total)) + '</span></div></div>';
       result.innerHTML =
         '<div class="result-ok"><i class="bx bxs-check-circle"></i><h3>' + esc(t.okTitle) + '</h3>' +
-        '<p class="result-ref"><small>' + esc(t.okRef) + '</small><strong data-reference>' + esc(data.reference) + '</strong></p>' +
-        '<div class="summary">' + (data.lines || []).map(function (l) { return '<div><span>' + esc(l.label) + '</span><span>' + (l.amount === null ? esc(l.note || t.toConfirm) : fmt(l.amount)) + '</span></div>'; }).join('') +
-        '<div class="summary__total"><span>' + esc(t.total) + '</span><span>' + (data.to_confirm ? esc(t.toConfirm) : fmt(data.total)) + '</span></div></div>' +
-        '<p>' + esc(t.okLead) + '</p>' +
+        '<p>' + esc(t.okLead) + '</p>' + ticket +
         (data.email && data.email.client === 'sent' ? '<p class="text-soft">' + esc(t.okMail.replace('{email}', p.email)) + '</p>' : '') +
         '<a class="btn-x btn-x--wa btn-x--block" target="_blank" rel="noopener" href="https://wa.me/' + WA + '?text=' + encodeURIComponent(waMsg) + '"><i class="bx bxl-whatsapp"></i> ' + esc(t.okWa) + '</a>' +
         '<button type="button" class="btn-x btn-x--ghost btn-x--block" data-again>' + esc(t.again) + '</button></div>';
@@ -448,7 +527,7 @@
         return;
       }
       btn.disabled = true; $('span', btn).textContent = tt.sending; msgEl.className = 'form-msg'; msgEl.textContent = '';
-      api('/api/contact', { name: el.name.value.trim(), email: el.email.value.trim(), phone: el.phone.value.trim(), subject: subj, message: el.message.value.trim(), lang: form.dataset.lang, website: el.website.value })
+      api('/api/contact', { name: el.name.value.trim(), email: el.email.value.trim(), phone: el.phone.value.trim(), subject: subj, message: el.message.value.trim(), lang: form.dataset.lang, website: (el.mca_hp || {}).value || '' })
         .then(function (res) {
           btn.disabled = false; $('span', btn).textContent = tt.send;
           if (res.ok) {
@@ -477,7 +556,7 @@
   }
 
   function init() {
-    initHeader(); initDates(); initFinder(); initCatalog(); initDestinations();
+    initHeader(); initDates(); initFinder(); initHeroSlider(); initCatalog(); initDestinations();
     initGallery(); initAnchors(); initBooking(); initContact(); initTracking();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

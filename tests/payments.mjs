@@ -80,7 +80,7 @@ await test('A3 PDF do recibo disponível e íntegro', () => [rcPdf.type, rcPdf.d
 /* ── Cenário B — liquidação ──────────────────────────── */
 const b = await pay(admin, inv.id, 20000, { confirm: true, method: 'Nedbank' });
 await test('B  + 20.000 confirmados → «pago», saldo 0', () => [b.data.balance.pay_status, b.data.balance.balance], ['pago', 0]);
-await test('B2 recebido no resumo aumenta exactamente 30.000', async () => (await admin.call('GET', '/dashboard')).data.received_month - before.received_month, 30000);
+await test('B2 recebido no resumo (período actual) aumenta exactamente 30.000', async () => (await admin.call('GET', '/dashboard')).data.metrics.received[0] - before.metrics.received[0], 30000);
 await test('B3 pagamento acima do saldo é recusado (factura já paga)', async () => { const r = await pay(admin, inv.id, 1, { confirm: true }); return [r.status, r.data.error]; }, [422, 'exceeds_balance']);
 await test('B4 a tentativa recusada não deixa registo pendente órfão', async () => [(await bal(inv.id)).awaiting, sql(`SELECT count(*) FROM payments WHERE invoice_id = ${inv.id}`)], [0, '2']);
 

@@ -1,0 +1,51 @@
+{
+  "_comment": "Categorias do catálogo (site e painel). Editar aqui; o gerador (scripts/i18n.mjs) e a API lêem este ficheiro.",
+  "island-tours": {
+    "icon": "bx-water",
+    "img": "/assets/images/packages/package_1.webp",
+    "pt": "Island Tours",
+    "en": "Island Tours"
+  },
+  "sunset-cruise": {
+    "icon": "bxs-sun",
+    "img": "/assets/images/packages/sunset_cruise_1.webp",
+    "pt": "Sunset Cruises",
+    "en": "Sunset Cruises"
+  },
+  "beach-tours": {
+    "icon": "bx-swim",
+    "img": "/assets/images/packages/beach_day_1.webp",
+    "pt": "Beach Tours",
+    "en": "Beach Tours"
+  },
+  "safaris": {
+    "icon": "bxs-binoculars",
+    "img": "/assets/images/packages/safari/maputo-park/safari-maputo-park-1.webp",
+    "pt": "Safaris",
+    "en": "Safaris"
+  },
+  "ocean-activities": {
+    "icon": "bx-anchor",
+    "img": "/assets/images/packages/whale-watching/observacao_baleias_1.webp",
+    "pt": "Ocean Activities",
+    "en": "Ocean Activities"
+  },
+  "city-tour": {
+    "icon": "bxs-buildings",
+    "img": "/assets/images/packages/maputo-tour/maputo-tour-1.webp",
+    "pt": "Maputo City Tour",
+    "en": "Maputo City Tour"
+  },
+  "transfers": {
+    "icon": "bxs-car",
+    "img": "/assets/images/packages/transfers/marina-hotel-transfer-1.webp",
+    "pt": "Transfers",
+    "en": "Transfers"
+  },
+  "island-accommodation": {
+    "icon": "bxs-home-heart",
+    "img": "/assets/images/accommodation/mamas-lodge/mamas_lodge_3.webp",
+    "pt": "Alojamento nas ilhas",
+    "en": "Island accommodation"
+  }
+}

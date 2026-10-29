@@ -14,6 +14,15 @@ if (preg_match('/Header always set Content-Security-Policy "([^"]+)"/', (string)
 }
 
 if (str_starts_with($path, '/api/') || $path === '/api') {
+    /* Diagnóstico local: regista método, caminho, estado, Origin e browser (sem conteúdo do pedido) ao lado da config de dev */
+    if (getenv('MCA_CONFIG')) {
+        $t0 = microtime(true);
+        register_shutdown_function(function () use ($path, $t0) {
+            $line = sprintf("%s %s %s → %d (%d ms) origin=%s type=%s ua=%s\n", date('H:i:s'), $_SERVER['REQUEST_METHOD'], $path, http_response_code(),
+                (microtime(true) - $t0) * 1000, $_SERVER['HTTP_ORIGIN'] ?? '-', $_SERVER['CONTENT_TYPE'] ?? '-', substr($_SERVER['HTTP_USER_AGENT'] ?? '-', 0, 80));
+            @file_put_contents(dirname(getenv('MCA_CONFIG')) . '/dev-requests.log', $line, FILE_APPEND);
+        });
+    }
     require $root . '/api/index.php';
     return true;
 }

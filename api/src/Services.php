@@ -25,10 +25,11 @@ final class Bookings
             throw new ApiError(422, 'invalid_idempotency_key');
         }
 
-        $existing = db()->prepare('SELECT reference, total_estimate, total_to_confirm FROM bookings WHERE idempotency_key = ?');
+        $existing = db()->prepare('SELECT id, reference, lang, client_link_version, total_estimate, total_to_confirm, price_lines FROM bookings WHERE idempotency_key = ?');
         $existing->execute([$key]);
         if ($row = $existing->fetch()) {
-            return ['reference' => $row['reference'], 'total' => (int) $row['total_estimate'], 'to_confirm' => (bool) $row['total_to_confirm'], 'status' => 'pedido', 'replayed' => true];
+            return ['reference' => $row['reference'], 'total' => (int) $row['total_estimate'], 'to_confirm' => (bool) $row['total_to_confirm'], 'lines' => json_decode((string) $row['price_lines'], true) ?: [],
+                'status' => 'pedido', 'client_url' => $admin === null ? Notify::clientLink($row) : null, 'replayed' => true];
         }
         if ($admin === null) {
             rate_limit('booking', (int) (config('limits.bookings_per_hour') ?? 10), 3600);
@@ -60,8 +61,8 @@ final class Bookings
             $seq->execute(["booking-$year"]);
             $reference = sprintf('MCA-%s-%05d', $year, (int) $seq->fetchColumn());
 
-            $ins = $pdo->prepare('INSERT INTO bookings (reference, idempotency_key, channel, lang, item_id, item_kind, item_name, service_date, checkin, checkout, nights, adults, children, options, price_lines, total_estimate, total_to_confirm, customer_name, customer_phone, customer_email, customer_message, access_token_hash, ip_hash, user_agent)
-                VALUES (:ref, :key, :channel, :lang, :item, :kind, :iname, :sdate, :cin, :cout, :nights, :adults, :children, :options, :lines, :total, :tc, :name, :phone, :email, :msg, :tok, :ip, :ua)
+            $ins = $pdo->prepare('INSERT INTO bookings (reference, idempotency_key, channel, lang, item_id, item_kind, item_name, service_date, checkin, checkout, nights, adults, children, options, price_lines, total_estimate, total_to_confirm, customer_name, customer_phone, customer_email, customer_message, access_token_hash, ip_hash, user_agent, customer_id)
+                VALUES (:ref, :key, :channel, :lang, :item, :kind, :iname, :sdate, :cin, :cout, :nights, :adults, :children, :options, :lines, :total, :tc, :name, :phone, :email, :msg, :tok, :ip, :ua, :cust)
                 RETURNING id');
             $ins->execute([
                 ':ref' => $reference, ':key' => $key, ':channel' => $channel, ':lang' => $lang,
@@ -72,6 +73,7 @@ final class Bookings
                 ':total' => $q['total'], ':tc' => $q['to_confirm'] ? 't' : 'f',
                 ':name' => $name, ':phone' => $phone, ':email' => $email ?: null, ':msg' => $message ?: null,
                 ':tok' => hash('sha256', $token), ':ip' => ip_hash(), ':ua' => clean_text($_SERVER['HTTP_USER_AGENT'] ?? '', 300),
+                ':cust' => $admin === null ? Account::currentId() : null,     // pedido feito com sessão de cliente → fica na conta
             ]);
             $id = (int) $ins->fetchColumn();
             $pdo->prepare("INSERT INTO booking_events (booking_id, type, data, actor) VALUES (?, 'created', ?, ?)")
@@ -86,7 +88,9 @@ final class Bookings
         }
 
         $mail = $admin === null ? self::notify($reference, $id, $item, $q, $name, $phone, $email, $message, $lang) : [];
-        return ['reference' => $reference, 'total' => $q['total'], 'to_confirm' => $q['to_confirm'], 'lines' => $q['lines'], 'status' => 'pedido', 'email' => $mail];
+        // Link pessoal da área do cliente: vai no QR code do ticket do pedido (só para quem fez o pedido no site)
+        $clientUrl = $admin === null ? Notify::clientLink(['id' => $id, 'reference' => $reference, 'lang' => $lang, 'client_link_version' => 1]) : null;
+        return ['reference' => $reference, 'total' => $q['total'], 'to_confirm' => $q['to_confirm'], 'lines' => $q['lines'], 'status' => 'pedido', 'email' => $mail, 'client_url' => $clientUrl];
     }
 
     public static function uuid(): string
@@ -106,7 +110,13 @@ final class Bookings
         $total = $q['to_confirm'] ? 'a confirmar pela equipa' : Pricing::fmt($q['total']);
 
         $team = "Novo pedido de reserva $ref\n\nExperiência: {$item['name']}\n$when\nParticipantes: {$q['pax']} ({$q['adults']} adultos, {$q['children']} crianças)\n\n$lines\n\nTotal estimado: $total\n\nCliente: $name\nTelefone: $phone\nE-mail: " . ($email ?: '—') . ($message ? "\nMensagem: $message" : '') . "\nIdioma: $lang\n\nEste pedido aguarda confirmação de disponibilidade.";
-        $out = ['team' => Mailer::send('booking_team', (string) config('mail.team'), "Pedido de reserva $ref — {$item['name']}", $team, 'booking', $id, $email ?: null)];
+        $out = ['team' => Mailer::send('booking_team', Mailer::team(), "Pedido de reserva $ref — {$item['name']}", $team, 'booking', $id, $email ?: null)];
+        try {   // aviso à equipa pelo WhatsApp (se activo); uma falha fica registada e nunca bloqueia o pedido
+            $whenWa = isset($q['dates']['service_date']) ? $q['dates']['service_date'] : "{$q['dates']['checkin']} a {$q['dates']['checkout']} ({$q['nights']} noites)";
+            WhatsApp::bookingTeam($ref, $id, $item['name'], $whenWa, "{$q['pax']} ({$q['adults']} adultos, {$q['children']} crianças)", $name, $phone, $total);
+        } catch (Throwable $e) {
+            error_log('[MCA WhatsApp] ' . $e->getMessage());
+        }
 
         if ($email !== '' && Notify::enabled('booking_received')) {
             $area = Notify::clientLink(['id' => $id, 'reference' => $ref, 'lang' => $lang, 'client_link_version' => 1]);
