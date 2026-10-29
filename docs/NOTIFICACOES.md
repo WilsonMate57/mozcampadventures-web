@@ -225,3 +225,37 @@ A lista fica na base de dados, por isso **tem de ser introduzida também no pain
   - auditoria.
 - **`tests/admin-ui.mjs`: 57/57**, com U51–U53 no cartão «Canais de envio» e no separador WhatsApp. Captura: `visual-review/painel-v2/19-canais-envio.png`.
 - **Não testado** (precisa das contas reais): verificação do domínio no Resend, aprovação do modelo pela Meta, entrega real.
+
+## 7. Layout HTML dos e-mails (30/10/2026)
+
+Todos os e-mails saem com **HTML com a identidade da marca** e com a **versão em texto** (multipart/alternative), para os programas de e-mail que não mostram HTML.
+
+- **Estrutura:**
+  - logótipo e faixa com as 4 cores da marca (turquesa, azul, amarelo, laranja);
+  - foto da experiência;
+  - etiqueta de estado e saudação em Dancing Script;
+  - cartão-resumo (referência, experiência, data por extenso, participantes, linhas de preço, total);
+  - botão principal e próximos passos;
+  - bloco «Dúvidas?» com WhatsApp (com a referência já escrita) e e-mail;
+  - rodapé escuro com morada, contactos, Instagram e Facebook.
+- **Modelos próprios:**
+  - pedido recebido (cliente, PT/EN);
+  - novo pedido (equipa, com «Abrir no painel», «WhatsApp do cliente» e «Responder por e-mail»);
+  - reserva confirmada, cancelada ou concluída (com «Deixar a minha avaliação»);
+  - pagamento recebido, recusado ou anulado, reembolso, factura anulada;
+  - factura ou pró-forma (com «Como pagar», a partir das **Definições → Instruções de pagamento**, e «Enviar comprovativo»).
+- **Restantes e-mails** (convites ao painel, palavra-passe, testes): o texto é posto automaticamente no mesmo layout, e o link principal passa a botão.
+- **Compatibilidade:**
+  - tabelas e estilos em linha, para Gmail, Outlook e Apple Mail;
+  - 600 px, com coluna única e botões empilhados no telemóvel;
+  - 6 a 13 KB por e-mail (o Gmail corta acima de 102 KB);
+  - sem Inter nem Dancing Script, o e-mail usa Segoe UI/Arial e Georgia.
+- **Imagens:** em `assets/images/_email/`, geradas por `scripts/email-images.mjs` (também na publicação do catálogo):
+  - capas em JPG 1200×600, porque o Outlook do Windows não mostra WebP;
+  - logótipo a cores e logótipo branco.
+  - São servidas a partir de `app.site_url`, por isso só aparecem quando os ficheiros estão no servidor.
+- **Registo:** a versão HTML fica em `email_log.body_html` (migração `009_email_html`), e o reenvio sai igual. Nos e-mails de palavra-passe, o registo continua sem o link secreto.
+- **Código e ferramentas:**
+  - layout em `api/src/EmailView.php`;
+  - pré-visualização com dados fictícios: `php tests/email-preview.php <pasta>`;
+  - capturas em `visual-review/emails/`.

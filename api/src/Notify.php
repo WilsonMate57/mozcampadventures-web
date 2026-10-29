@@ -96,7 +96,8 @@ final class Notify
         $vars += ['name' => $b['customer_name'], 'ref' => $b['reference'], 'item' => $b['item_name'], 'when' => self::when($b, $lang), 'note' => '', 'link' => self::clientLink($b)];
         $fill = static fn (string $s) => preg_replace_callback('/\{(\w+)\}/', static fn ($m) => (string) ($vars[$m[1]] ?? $m[0]), $s);
         $body = $fill($t['hello']) . "\n\n" . $fill($t["$type.body"]) . "\n\n" . $fill($t['area']) . "\n\n" . $t['sign'];
-        return Mailer::send("notify_$type", $to, $fill($t["$type.subject"]), $body, $relatedType, $relatedId ?? (int) $b['id'], (string) config('mail.team'), $attachments, $lang);
+        $html = EmailView::notification($type, $lang, $b, $fill($t["$type.body"]), $vars);
+        return Mailer::send("notify_$type", $to, $fill($t["$type.subject"]), $body, $relatedType, $relatedId ?? (int) $b['id'], (string) config('mail.team'), $attachments, $lang, null, null, $html);
     }
 
     public static function bookingStatus(array $b, string $to, string $note): string

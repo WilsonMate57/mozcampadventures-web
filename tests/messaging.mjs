@@ -117,8 +117,8 @@ try {
   const ref = b1.data.reference;
   const mails = seen.filter(s => s.who === 'resend'), was = seen.filter(s => s.who === 'meta');
   await test('B1 pedido aceite (201) e resposta pública sem estado do WhatsApp', () => [b1.status, 'whatsapp' in (b1.data.email || {})], [201, false]);
-  await test('B2 Resend: 2 e-mails (equipa = 1 e-mail para toda a lista; cliente com resposta para booking@)', () => [mails.length, mails.every(m => m.auth === 'Bearer re_test_123'), mails[0]?.body.to, mails[0]?.body.subject.includes(ref), mails[1]?.body.to, mails[1]?.body.reply_to, /Moz Camp Adventures <.+@.+>/.test(mails[0]?.body.from)],
-    [2, true, ['equipa@example.com', 'outro@example.com'], true, ['joana@example.com'], 'booking@mozcampadventures.co.mz', true]);
+  await test('B2 Resend: 2 e-mails (equipa = 1 e-mail para toda a lista; cliente com resposta para booking@; HTML da marca + texto)', () => [mails.length, mails.every(m => m.auth === 'Bearer re_test_123'), mails[0]?.body.to, mails[0]?.body.subject.includes(ref), mails[1]?.body.to, mails[1]?.body.reply_to, /Moz Camp Adventures <.+@.+>/.test(mails[0]?.body.from), /<!DOCTYPE html>/.test(mails[1]?.body.html || '') && mails[1].body.html.includes(ref) && /Recebemos o seu pedido/.test(mails[1].body.html), !!mails[1]?.body.text],
+    [2, true, ['equipa@example.com', 'outro@example.com'], true, ['joana@example.com'], 'booking@mozcampadventures.co.mz', true, true, true]);
   await test('B3 Meta: 1 mensagem por número, modelo nova_reserva/pt_PT, URL e token correctos', () => [was.length, was.map(w => w.body.to).sort(), was.every(w => w.url === '/v21.0/1234567890/messages' && w.auth === 'Bearer EAAG-test-token'), was[0]?.body.template.name, was[0]?.body.template.language.code],
     [2, ['258841234567', '27820000000'], true, 'nova_reserva', 'pt_PT']);
   await test('B4 Meta: 7 variáveis (ref, experiência, data, pessoas, cliente, telefone, total) e botão com a referência', () => {

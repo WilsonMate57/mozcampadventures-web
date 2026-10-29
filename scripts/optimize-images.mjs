@@ -19,7 +19,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'assets/images');
 const OUT = join(SRC, '_opt');
 const WIDTHS = [480, 960, 1600];
-const SKIP = ['_opt', 'logo', 'payment-methods', 'preloader'];
+const SKIP = ['_opt', '_email', 'logo', 'payment-methods', 'preloader'];
 const FORCE = process.argv.includes('--force');
 
 async function walk(dir) {

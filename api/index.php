@@ -17,6 +17,7 @@ declare(strict_types=1);
 require __DIR__ . '/src/bootstrap.php';
 require __DIR__ . '/src/Catalog.php';
 require __DIR__ . '/src/Mailer.php';
+require __DIR__ . '/src/EmailView.php';
 require __DIR__ . '/src/Services.php';
 require __DIR__ . '/src/Auth.php';
 require __DIR__ . '/src/Pdf.php';

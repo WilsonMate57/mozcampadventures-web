@@ -7,7 +7,8 @@
     "images": "node scripts/optimize-images.mjs",
     "icons": "node scripts/vendor-icons.mjs",
     "test:site": "node tests/e2e.mjs",
-    "test:audit": "node tests/audit.mjs"
+    "test:audit": "node tests/audit.mjs",
+    "email-images": "node scripts/email-images.mjs"
   },
   "devDependencies": {
     "axe-core": "^4.10.2"

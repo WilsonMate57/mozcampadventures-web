@@ -217,7 +217,7 @@ final class Invoices
     /** Envia o PDF ao e-mail do cliente; o resultado real fica registado. */
     public static function send(int $id, array $user): array
     {
-        $stmt = db()->prepare('SELECT i.*, b.reference, b.lang, b.client_link_version, b.id AS bid FROM invoices i JOIN bookings b ON b.id = i.booking_id WHERE i.id = ?');
+        $stmt = db()->prepare('SELECT i.*, b.reference, b.lang, b.client_link_version, b.id AS bid, b.item_name FROM invoices i JOIN bookings b ON b.id = i.booking_id WHERE i.id = ?');
         $stmt->execute([$id]);
         $inv = $stmt->fetch() ?: throw new ApiError(404, 'not_found');
         if ($inv['status'] !== 'emitida') throw new ApiError(409, 'not_issued');
@@ -237,7 +237,8 @@ final class Invoices
             : "Olá {$customer['name']},\n\nEnviamos em anexo a $label {$inv['number']} referente ao pedido {$inv['reference']}, no valor de $amount.\n\nAs instruções de pagamento constam do documento. Indique o número da factura no pagamento."
               . ($link ? "\n\nDepois de pagar, pode enviar o comprovativo por este link privado (válido 60 dias):\n$link" : '')
               . "\n\nEstado da reserva e documentos: $area\n\nObrigado,\nMoz Camp Adventures\nWhatsApp +258 84 440 6543";
-        $status = Mailer::send('invoice', $to, "$label {$inv['number']} — Moz Camp Adventures", $body, 'invoice', $id, (string) config('mail.team'), [['name' => str_replace('/', '-', $inv['number']) . '.pdf', 'mime' => 'application/pdf', 'path' => $inv['pdf_path']]], $inv['lang']);
+        $html = EmailView::invoice(['lang' => $inv['lang'], 'name' => $customer['name'] ?? '', 'label' => $label, 'number' => $inv['number'], 'ref' => $inv['reference'], 'item' => $inv['item_name'], 'amount' => $amount, 'proof' => $link, 'area' => $area]);
+        $status = Mailer::send('invoice', $to, "$label {$inv['number']} — Moz Camp Adventures", $body, 'invoice', $id, (string) config('mail.team'), [['name' => str_replace('/', '-', $inv['number']) . '.pdf', 'mime' => 'application/pdf', 'path' => $inv['pdf_path']]], $inv['lang'], null, null, $html);
         db()->prepare("INSERT INTO invoice_events (invoice_id, type, data, user_id) VALUES (?, 'sent', ?, ?)")->execute([$id, json_encode(['to' => $to, 'status' => $status]), $user['id']]);
         Audit::log('invoice_sent', 'invoice', $id, ['to' => $to, 'status' => $status]);
         return ['status' => $status, 'to' => $to, 'proof_link' => $link];

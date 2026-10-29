@@ -8,6 +8,8 @@
  * ficam registadas com o erro.
  * mail.transport = 'log' (desenvolvimento) regista sem enviar; nesse modo,
  * destinatários em domínios .invalid (RFC 2606) simulam falha, para testes.
+ * Cada e-mail leva HTML (layout da marca, api/src/EmailView.php) e texto (multipart/alternative);
+ * sem HTML próprio, o texto é convertido para o mesmo layout (EmailView::fromText).
  * Resend: chave em RESEND_API_KEY (variável de ambiente) ou mail.resend_key; o remetente
  * (mail.from) tem de ser de um domínio verificado no Resend. Ver docs/NOTIFICACOES.md §6.
  */
@@ -22,10 +24,13 @@ final class Mailer
     /**
      * @param list<array{name:string, mime:string, data?:string, path?:string}> $attachments
      * @param ?string $logBody corpo a registar no lugar do enviado (e-mails de conta: sem o link secreto)
+     * @param ?string $html versão HTML; sem ela, o texto é posto no layout da marca
      * @return 'sent'|'failed'|'logged'
      */
-    public static function send(string $kind, string $to, string $subject, string $body, ?string $relatedType = null, ?int $relatedId = null, ?string $replyTo = null, array $attachments = [], ?string $lang = null, ?int $resentOf = null, ?string $logBody = null): string
+    public static function send(string $kind, string $to, string $subject, string $body, ?string $relatedType = null, ?int $relatedId = null, ?string $replyTo = null, array $attachments = [], ?string $lang = null, ?int $resentOf = null, ?string $logBody = null, ?string $html = null): string
     {
+        $html ??= EmailView::fromText($body, $subject, $lang);
+        $logHtml = $logBody !== null ? EmailView::fromText($logBody, $subject, $lang) : $html;   // o registo nunca guarda o link secreto
         $status = 'failed';
         $error = null;
         $providerId = null;
@@ -51,25 +56,27 @@ final class Mailer
                 $status = 'logged';
             }
         } elseif (config('mail.transport') === 'resend') {
-            [$status, $error, $providerId] = self::viaResend($list, $subject, $body, $replyTo, $files);
+            [$status, $error, $providerId] = self::viaResend($list, $subject, $body, $html, $replyTo, $files);
         } else {
             $from = (string) config('mail.from');
             $headers = [
                 'From' => self::encode((string) config('mail.from_name')) . " <$from>",
                 'MIME-Version' => '1.0',
-                'Content-Type' => 'text/plain; charset=UTF-8',
-                'Content-Transfer-Encoding' => '8bit',
                 'X-Mailer' => 'MCA-API/' . MCA_API_VERSION,
             ];
             if ($replyTo && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) {
                 $headers['Reply-To'] = $replyTo;
             }
-            $wire = $body;
+            /* Texto + HTML (o HTML em base64: as linhas longas do HTML excedem o limite de 998 caracteres do SMTP) */
+            $alt = 'mca-alt-' . bin2hex(random_bytes(10));
+            $altBody = "--$alt\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit\r\n\r\n$body\r\n"
+                . "--$alt\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($html)) . "\r\n--$alt--\r\n";
+            $headers['Content-Type'] = "multipart/alternative; boundary=\"$alt\"";
+            $wire = $altBody;
             if ($files) {
                 $boundary = 'mca-' . bin2hex(random_bytes(12));
                 $headers['Content-Type'] = "multipart/mixed; boundary=\"$boundary\"";
-                unset($headers['Content-Transfer-Encoding']);
-                $wire = "--$boundary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit\r\n\r\n$body\r\n";
+                $wire = "--$boundary\r\nContent-Type: multipart/alternative; boundary=\"$alt\"\r\n\r\n$altBody\r\n";
                 foreach ($files as $a) {
                     $name = preg_replace('/[^A-Za-z0-9._-]/', '_', $a['name']);
                     $wire .= "--$boundary\r\nContent-Type: {$a['mime']}; name=\"$name\"\r\nContent-Transfer-Encoding: base64\r\nContent-Disposition: attachment; filename=\"$name\"\r\n\r\n" . chunk_split(base64_encode($a['data'])) . "\r\n";
@@ -88,8 +95,8 @@ final class Mailer
             }
         }
         $meta = array_map(static fn ($a) => ['name' => $a['name'], 'mime' => $a['mime'], 'path' => $a['path'] ?? null], $attachments);
-        $ins = db()->prepare('INSERT INTO email_log (kind, to_addr, subject, related_type, related_id, status, error, body, attachments, lang, reply_to, resent_of, provider, provider_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id');
-        $ins->execute([$kind, $to, $subject, $relatedType, $relatedId, $status, $error, $logBody ?? $body, json_encode($meta, JSON_UNESCAPED_UNICODE), $lang, $replyTo, $resentOf, (string) (config('mail.transport') ?: 'mail'), $providerId]);
+        $ins = db()->prepare('INSERT INTO email_log (kind, to_addr, subject, related_type, related_id, status, error, body, attachments, lang, reply_to, resent_of, provider, provider_id, body_html) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id');
+        $ins->execute([$kind, $to, $subject, $relatedType, $relatedId, $status, $error, $logBody ?? $body, json_encode($meta, JSON_UNESCAPED_UNICODE), $lang, $replyTo, $resentOf, (string) (config('mail.transport') ?: 'mail'), $providerId, $logHtml]);
         self::$lastId = (int) $ins->fetchColumn();
         return $status;
     }
@@ -116,7 +123,7 @@ final class Mailer
         if ($e['body'] === null) throw new ApiError(422, 'not_resendable');      // registos anteriores à Fase 7 não guardavam o corpo
         if (str_starts_with((string) $e['kind'], 'account_')) throw new ApiError(422, 'not_resendable');   // o link de reposição não fica registado: o cliente pede outro
         $att = array_values(array_filter(json_decode((string) $e['attachments'], true) ?: [], static fn ($a) => !empty($a['path'])));
-        $status = self::send($e['kind'], $e['to_addr'], $e['subject'], $e['body'], $e['related_type'], $e['related_id'] !== null ? (int) $e['related_id'] : null, $e['reply_to'], $att, $e['lang'], $id);
+        $status = self::send($e['kind'], $e['to_addr'], $e['subject'], $e['body'], $e['related_type'], $e['related_id'] !== null ? (int) $e['related_id'] : null, $e['reply_to'], $att, $e['lang'], $id, null, $e['body_html'] ?: null);
         return ['status' => $status, 'id' => self::$lastId];
     }
 
@@ -125,11 +132,11 @@ final class Mailer
      * a entrega final aparece no painel do Resend. Um 429 (limite de pedidos por segundo) é repetido uma vez.
      * @return array{0:string, 1:?string, 2:?string} [estado, erro, id do Resend]
      */
-    private static function viaResend(array $to, string $subject, string $body, ?string $replyTo, array $files): array
+    private static function viaResend(array $to, string $subject, string $body, string $html, ?string $replyTo, array $files): array
     {
         $key = secret('RESEND_API_KEY', 'mail.resend_key');
         if ($key === '') return ['failed', 'Resend: chave em falta (RESEND_API_KEY ou mail.resend_key)', null];
-        $payload = ['from' => config('mail.from_name') . ' <' . config('mail.from') . '>', 'to' => $to, 'subject' => $subject, 'text' => $body];
+        $payload = ['from' => config('mail.from_name') . ' <' . config('mail.from') . '>', 'to' => $to, 'subject' => $subject, 'html' => $html, 'text' => $body];
         if ($replyTo && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) $payload['reply_to'] = $replyTo;
         foreach ($files as $a) $payload['attachments'][] = ['filename' => preg_replace('/[^A-Za-z0-9._-]/', '_', $a['name']), 'content' => base64_encode($a['data'])];
         $url = (string) (config('mail.resend_url') ?: self::RESEND_URL);

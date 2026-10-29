@@ -3,7 +3,8 @@
  * =====================================================
  * Publicação a partir do painel (ou de uma tarefa agendada do Plesk):
  *   1. optimiza as fotos novas (WebP 480/960/1600 — scripts/optimize-images.mjs, incremental);
- *   2. regenera o site (scripts/build.mjs).
+ *   2. imagens dos e-mails (JPG/PNG — scripts/email-images.mjs);
+ *   3. regenera o site (scripts/build.mjs).
  * Sai com código ≠ 0 se algum passo falhar (o painel repõe então o catálogo anterior).
  * Uso: node scripts/publish.mjs        (precisa de `npm ci --omit=dev` no servidor: sharp)
  * =====================================================
@@ -22,5 +23,6 @@ const step = (label, script) => {
   if (r.status !== 0) process.exit(r.status || 1);
 };
 step('fotos', 'optimize-images.mjs');
+step('e-mail', 'email-images.mjs');
 step('site', 'build.mjs');
 console.log('Publicação concluída.');

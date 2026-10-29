@@ -110,7 +110,15 @@ final class Bookings
         $total = $q['to_confirm'] ? 'a confirmar pela equipa' : Pricing::fmt($q['total']);
 
         $team = "Novo pedido de reserva $ref\n\nExperiência: {$item['name']}\n$when\nParticipantes: {$q['pax']} ({$q['adults']} adultos, {$q['children']} crianças)\n\n$lines\n\nTotal estimado: $total\n\nCliente: $name\nTelefone: $phone\nE-mail: " . ($email ?: '—') . ($message ? "\nMensagem: $message" : '') . "\nIdioma: $lang\n\nEste pedido aguarda confirmação de disponibilidade.";
-        $out = ['team' => Mailer::send('booking_team', Mailer::team(), "Pedido de reserva $ref — {$item['name']}", $team, 'booking', $id, $email ?: null)];
+        /* Versão HTML (layout da marca): mesmos dados, datas por extenso */
+        $view = ['ref' => $ref, 'item' => $item['name'], 'slug' => $item['slug'] ?? $item['id'], 'lang' => $lang, 'to_confirm' => $q['to_confirm'],
+            'lines' => array_map(static fn ($l) => [$l['label'], $l['amount'] === null ? ($l['note'] ?? 'a confirmar') : Pricing::fmt($l['amount'])], $q['lines']), 'total' => $total,
+            'name' => $name, 'phone' => $phone, 'email' => $email, 'message' => $message];
+        $whenH = static fn (string $l) => isset($q['dates']['service_date']) ? EmailView::date($q['dates']['service_date'], $l)
+            : EmailView::date($q['dates']['checkin'], $l, false) . ' – ' . EmailView::date($q['dates']['checkout'], $l, false) . ' (' . $q['nights'] . ($l === 'en' ? ' nights)' : ' noites)');
+        $paxH = static fn (string $l) => $q['pax'] . ' (' . $q['adults'] . ($l === 'en' ? ' adults' : ' adultos') . ($q['children'] ? ', ' . $q['children'] . ($l === 'en' ? ' children' : ' crianças') : '') . ')';
+        $out = ['team' => Mailer::send('booking_team', Mailer::team(), "Pedido de reserva $ref — {$item['name']}", $team, 'booking', $id, $email ?: null, [], 'pt', null, null,
+            EmailView::teamBooking(['when' => $whenH('pt'), 'pax' => $paxH('pt')] + $view))];
         try {   // aviso à equipa pelo WhatsApp (se activo); uma falha fica registada e nunca bloqueia o pedido
             $whenWa = isset($q['dates']['service_date']) ? $q['dates']['service_date'] : "{$q['dates']['checkin']} a {$q['dates']['checkout']} ({$q['nights']} noites)";
             WhatsApp::bookingTeam($ref, $id, $item['name'], $whenWa, "{$q['pax']} ({$q['adults']} adultos, {$q['children']} crianças)", $name, $phone, $total);
@@ -123,7 +131,10 @@ final class Bookings
             $client = $lang === 'en'
                 ? "Hello $name,\n\nWe have received your booking request $ref for {$item['name']}.\n\n$when\n\n$lines\n\nEstimated total: " . ($q['to_confirm'] ? 'to be confirmed by our team' : Pricing::fmt($q['total'])) . "\n\nThis is a REQUEST, not a confirmed booking. Our team will confirm availability and send payment instructions (M-Pesa, e-Mola or bank transfer).\n\nFollow your request here: $area\n\nQuestions? WhatsApp +258 84 440 6543 — please quote $ref.\n\nMoz Camp Adventures\nMarina, Escola Náutica, Maputo"
                 : "Olá $name,\n\nRecebemos o seu pedido de reserva $ref para {$item['name']}.\n\n$when\n\n$lines\n\nTotal estimado: $total\n\nIsto é um PEDIDO, não uma reserva confirmada. A nossa equipa vai confirmar a disponibilidade e enviar as instruções de pagamento (M-Pesa, e-Mola ou transferência bancária).\n\nAcompanhe o seu pedido aqui: $area\n\nDúvidas? WhatsApp +258 84 440 6543 — indique a referência $ref.\n\nMoz Camp Adventures\nMarina, Escola Náutica, Cidade de Maputo";
-            $out['client'] = Mailer::send('booking_client', $email, ($lang === 'en' ? 'Booking request received' : 'Pedido de reserva recebido') . " — $ref", $client, 'booking', $id, (string) config('mail.team'), [], $lang);
+            $viewC = ['when' => $whenH($lang), 'pax' => $paxH($lang), 'area' => $area] + $view;
+            if ($lang === 'en') { $viewC['total'] = $q['to_confirm'] ? 'to be confirmed' : Pricing::fmt($q['total']); $viewC['lines'] = array_map(static fn ($l) => [$l['label'], $l['amount'] === null ? ($l['note'] ?? 'to be confirmed') : Pricing::fmt($l['amount'])], $q['lines']); }
+            $out['client'] = Mailer::send('booking_client', $email, ($lang === 'en' ? 'Booking request received' : 'Pedido de reserva recebido') . " — $ref", $client, 'booking', $id, (string) config('mail.team'), [], $lang, null, null,
+                EmailView::bookingReceived($viewC));
         }
         return $out;
     }

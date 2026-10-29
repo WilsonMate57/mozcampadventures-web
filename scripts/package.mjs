@@ -31,7 +31,7 @@ const walk = d => readdirSync(d).flatMap(e => {
 
 /* Publicação do catálogo a partir do painel: o servidor regenera o site (Node.js + sharp, `npm ci --omit=dev`).
    Estes ficheiros ficam inacessíveis pela web (.htaccess e nginx: scripts/, *.mjs, package*.json). */
-const SERVER_TOOLS = ['scripts/build.mjs', 'scripts/i18n.mjs', 'scripts/optimize-images.mjs', 'scripts/publish.mjs', 'package.json', 'package-lock.json'];
+const SERVER_TOOLS = ['scripts/build.mjs', 'scripts/i18n.mjs', 'scripts/optimize-images.mjs', 'scripts/email-images.mjs', 'scripts/publish.mjs', 'package.json', 'package-lock.json'];
 const files = [...walk(ROOT), ...SERVER_TOOLS];
 const secrets = files.filter(f => SECRET.test(f));
 if (secrets.length) {
