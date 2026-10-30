@@ -95,10 +95,23 @@ final class Mailer
             }
         }
         $meta = array_map(static fn ($a) => ['name' => $a['name'], 'mime' => $a['mime'], 'path' => $a['path'] ?? null], $attachments);
-        $ins = db()->prepare('INSERT INTO email_log (kind, to_addr, subject, related_type, related_id, status, error, body, attachments, lang, reply_to, resent_of, provider, provider_id, body_html) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id');
-        $ins->execute([$kind, $to, $subject, $relatedType, $relatedId, $status, $error, $logBody ?? $body, json_encode($meta, JSON_UNESCAPED_UNICODE), $lang, $replyTo, $resentOf, (string) (config('mail.transport') ?: 'mail'), $providerId, $logHtml]);
+        $args = [$kind, $to, $subject, $relatedType, $relatedId, $status, $error, $logBody ?? $body, json_encode($meta, JSON_UNESCAPED_UNICODE), $lang, $replyTo, $resentOf, (string) (config('mail.transport') ?: 'mail'), $providerId];
+        if (self::hasHtmlColumn()) {
+            $ins = db()->prepare('INSERT INTO email_log (kind, to_addr, subject, related_type, related_id, status, error, body, attachments, lang, reply_to, resent_of, provider, provider_id, body_html) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id');
+            $args[] = $logHtml;
+        } else {   // código publicado antes da migração 009: o e-mail sai com HTML, só o registo fica sem ele
+            $ins = db()->prepare('INSERT INTO email_log (kind, to_addr, subject, related_type, related_id, status, error, body, attachments, lang, reply_to, resent_of, provider, provider_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id');
+        }
+        $ins->execute($args);
         self::$lastId = (int) $ins->fetchColumn();
         return $status;
+    }
+
+    /** A coluna email_log.body_html existe (migração 009)? Consulta o catálogo, sem provocar erros dentro de transacções. */
+    private static function hasHtmlColumn(): bool
+    {
+        static $has = null;
+        return $has ??= (bool) db()->query("SELECT 1 FROM information_schema.columns WHERE table_name = 'email_log' AND column_name = 'body_html' AND table_schema = current_schema()")->fetchColumn();
     }
 
     /** «a@x, b@y» → [a@x, b@y] (sem repetidos). */
@@ -123,7 +136,7 @@ final class Mailer
         if ($e['body'] === null) throw new ApiError(422, 'not_resendable');      // registos anteriores à Fase 7 não guardavam o corpo
         if (str_starts_with((string) $e['kind'], 'account_')) throw new ApiError(422, 'not_resendable');   // o link de reposição não fica registado: o cliente pede outro
         $att = array_values(array_filter(json_decode((string) $e['attachments'], true) ?: [], static fn ($a) => !empty($a['path'])));
-        $status = self::send($e['kind'], $e['to_addr'], $e['subject'], $e['body'], $e['related_type'], $e['related_id'] !== null ? (int) $e['related_id'] : null, $e['reply_to'], $att, $e['lang'], $id, null, $e['body_html'] ?: null);
+        $status = self::send($e['kind'], $e['to_addr'], $e['subject'], $e['body'], $e['related_type'], $e['related_id'] !== null ? (int) $e['related_id'] : null, $e['reply_to'], $att, $e['lang'], $id, null, ($e['body_html'] ?? null) ?: null);
         return ['status' => $status, 'id' => self::$lastId];
     }
 
