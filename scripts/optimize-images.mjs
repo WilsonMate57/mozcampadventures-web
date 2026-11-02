@@ -38,8 +38,14 @@ async function newer(a, b) {
 
 const manifest = {};
 let made = 0, bytesIn = 0, bytesOut = 0;
+const files = await walk(SRC);
+/* Ficheiros com o mesmo nome e extensões diferentes (ex.: foto-1.jpg e foto-1.webp) gerariam as mesmas
+   variantes e uma apagaria a outra: o .webp fica com o nome base; os outros recebem a extensão no nome
+   (foto-1-jpg-960.webp), indicada no manifesto em «b» */
+const byBase = {};
+for (const f of files) { const k = f.replace(extname(f), '').toLowerCase(); (byBase[k] = byBase[k] || []).push(f); }
 
-for (const file of await walk(SRC)) {
+for (const file of files) {
   const rel = relative(ROOT, file).replace(/\\/g, '/');
   let meta;
   try { meta = await sharp(file).metadata(); }
@@ -48,9 +54,12 @@ for (const file of await walk(SRC)) {
   const widths = WIDTHS.filter(w => w < w0);
   if (!widths.length || w0 <= 1600) widths.push(Math.min(w0, 1600));
   const variants = [...new Set(widths)].sort((a, b) => a - b);
-  const base = relative(SRC, file).replace(/\\/g, '/').replace(extname(file), '');
+  const plain = relative(SRC, file).replace(/\\/g, '/').replace(extname(file), '');
+  const clash = byBase[file.replace(extname(file), '').toLowerCase()].length > 1 && extname(file).toLowerCase() !== '.webp';
+  const base = clash ? `${plain}-${extname(file).slice(1).toLowerCase()}` : plain;
 
   const entry = { w: w0, h: h0, v: [] };
+  if (clash) entry.b = base;
   bytesIn += (await stat(file)).size;
   for (const w of variants) {
     const out = join(OUT, `${base}-${w}.webp`);

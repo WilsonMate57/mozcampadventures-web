@@ -1,5 +1,35 @@
 # Relatório de testes — Moz Camp Adventures
 
+## Pacotes de férias — /holiday-packages/ (02/11/2026)
+
+Página nova, só em inglês, com os 3 pacotes fornecidos pelo cliente.
+
+- **Conteúdo:** em `data/holiday-packages.json`, gerado por `scripts/build.mjs` (`holidayPackages`).
+- **Estilos:** bloco `hp-` em `assets/css/site.css`.
+- **Comportamento:** «Expand all days» e o registo de pedidos no analytics, em `initHolidayPackages` (`site.js`).
+- **Navegação:** destaque no menu «Experiences», menu móvel e rodapé (PT e EN).
+
+| Verificação | Resultado |
+|---|---|
+| `tests/e2e.mjs` | **53/53**, com 9 testes novos (HP1–HP9). Comparam, com `data/holiday-packages.json`: cada dia e cada linha dos itinerários, hotéis, inclusões, exclusões e preços; testam também os links de WhatsApp e e-mail por pacote, o aviso dos voos, as 8 condições, «Expand all days», as fotos e as ligações no menu e no rodapé |
+| `tests/audit.mjs` (página nova incluída) | **Sem violações** de acessibilidade; SEO e links sem problemas. As 3 falhas da auditoria são o contraste já conhecido noutras páginas |
+| Chrome 1366, 820 e 390 px | Sem scroll horizontal, sem imagens partidas, sem erros JS/CSP; «Explore our packages» desliza até aos pacotes |
+| Catálogo · API | 37/37 · 47/47 |
+
+**Encontrado e corrigido:**
+- **Colisão de nomes no `optimize-images.mjs`:** ficheiros com o mesmo nome e extensões diferentes (`ponta-do-ouro-1.jpg` e `ponta-do-ouro-1.webp`) geravam as mesmas variantes, e a última apagava a outra.
+  - **Efeito:** a página da Ponta do Ouro mostrava as versões `.jpg` em vez das `.webp` do catálogo, incluindo uma foto com o crédito «© Craig Ritchers».
+  - **Correcção:** o `.webp` mantém o nome; os outros recebem a extensão no nome (`-jpg`), indicada no manifesto (`b`).
+  - **Ficheiros afectados:** 4 fotos da Ponta do Ouro e 1 da Villa Martins.
+- **Classe `.hp`:** já existia no site (esconde o campo anti-spam) e escondia o conteúdo da página nova. A página passou a usar `holiday`.
+- **Ícones:** o subconjunto do Boxicons não incluía os ícones dos dados; `scripts/vendor-icons.mjs` passa a ler `data/`.
+
+**Fotos:** só fotos do próprio site e do destino certo.
+- **Bilene:** as quatro fotos existentes têm marcas de água de bancos de imagens (dreamstime / Adobe Stock), por isso o pacote 03 não mostra nenhuma foto do Bilene.
+- **Hotéis, passeio de quad e passeio a cavalo:** não há fotos no site; não foram usadas imagens de outros sítios em seu lugar.
+
+---
+
 ## Resend e WhatsApp (29/10/2026)
 
 | Bateria | Resultado |

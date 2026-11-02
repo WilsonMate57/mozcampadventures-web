@@ -89,35 +89,36 @@
   "/reserva/": [],
   "/conta/": [],
   "/en/account/": [],
+  "/holiday-packages/": [],
   "/admin/": []
  },
  "perf": {
   "/": {
-   "lcp": 2112,
+   "lcp": 2108,
    "cls": 0,
-   "fcp": 2112,
-   "kb": 1343,
+   "fcp": 2108,
+   "kb": 1363,
    "requests": 26
   },
   "/tours/island-hopping-experience/": {
-   "lcp": 2576,
+   "lcp": 2328,
    "cls": 0,
-   "fcp": 2260,
-   "kb": 885,
+   "fcp": 2328,
+   "kb": 904,
    "requests": 20
   },
   "/pages/tours.html": {
-   "lcp": 2516,
+   "lcp": 1996,
    "cls": 0,
-   "fcp": 2332,
-   "kb": 1004,
+   "fcp": 1876,
+   "kb": 1023,
    "requests": 19
   },
   "/pages/contact.html": {
-   "lcp": 2424,
+   "lcp": 1680,
    "cls": 0,
-   "fcp": 1872,
-   "kb": 678,
+   "fcp": 1680,
+   "kb": 697,
    "requests": 16
   }
  }

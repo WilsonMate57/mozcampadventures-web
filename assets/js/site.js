@@ -141,6 +141,30 @@
     sync();
   }
 
+  /* Pacotes de férias (/holiday-packages/): «Expand all days» e pedidos por WhatsApp/e-mail */
+  function initHolidayPackages() {
+    $$('[data-hp-days]').forEach(function (btn) {
+      var list = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!list) return;
+      var days = $$('details', list);
+      function label() {
+        var all = days.every(function (d) { return d.open; });
+        btn.textContent = all ? 'Collapse all days' : 'Expand all days';
+        btn.setAttribute('aria-expanded', String(all));
+      }
+      btn.addEventListener('click', function () {
+        var open = !days.every(function (d) { return d.open; });
+        days.forEach(function (d) { d.open = open; });
+        label();
+      });
+      days.forEach(function (d) { d.addEventListener('toggle', label); });
+      label();
+    });
+    $$('[data-hp-cta]').forEach(function (a) {
+      a.addEventListener('click', function () { track('holiday_package_enquiry', { channel: a.dataset.hpCta, package: a.dataset.hpPackage }); });
+    });
+  }
+
   /* ── 3. Catálogo ────────────────────────────────────────── */
   function initCatalog() {
     var root = $('[data-catalog]');
@@ -556,7 +580,7 @@
   }
 
   function init() {
-    initHeader(); initDates(); initFinder(); initHeroSlider(); initCatalog(); initDestinations();
+    initHeader(); initDates(); initFinder(); initHeroSlider(); initHolidayPackages(); initCatalog(); initDestinations();
     initGallery(); initAnchors(); initBooking(); initContact(); initTracking();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

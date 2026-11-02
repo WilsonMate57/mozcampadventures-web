@@ -1,0 +1,127 @@
+{
+  "_comment": "Pacotes de férias (página /holiday-packages/, só em inglês). Conteúdo fornecido pelo cliente em 02/11/2026: não alterar preços, durações, itinerários, alojamentos, inclusões nem exclusões sem confirmação. Fotos: só imagens do próprio site, do destino certo e sem marcas de água de bancos de imagem (as fotos actuais do Bilene têm marcas de água — não usar).",
+  "currency": "ZAR",
+  "whatsapp": "258844406543",
+  "email": "booking@mozcampadventures.co.mz",
+  "hero": {
+    "image": "/assets/images/packages/island-hopping/4.webp",
+    "alt": "Aerial view of a sandy beach and turquoise water on the islands of Maputo Bay"
+  },
+  "includedEverywhere": "All packages include airport reception at Maputo International Airport, accommodation, meals, scheduled transfers and the activities specified in each itinerary.",
+  "flightNotice": "International flights to and from Maputo are not included. Guests are responsible for arranging their own flights.",
+  "packages": [
+    {
+      "id": "maputo-escape",
+      "number": "01",
+      "name": "Maputo Escape",
+      "duration": "4 Days / 3 Nights",
+      "route": ["Maputo", "Portuguese Island"],
+      "price": 19900,
+      "summary": "City sightseeing, a boat trip across Maputo Bay and a day on Portuguese Island — the perfect short escape to Mozambique's capital.",
+      "intro": "Discover the charm of Mozambique's capital through a combination of city sightseeing, coastal experiences and relaxation by the Indian Ocean.",
+      "cover": { "image": "/assets/images/packages/maputo-tour/maputo-tour-1.webp", "alt": "Maputo city centre and its tree-lined avenues, with Maputo Bay in the background" },
+      "gallery": [
+        { "image": "/assets/images/packages/maputo-tour/maputo-tour-2.webp", "alt": "The historic Maputo Railway Station, visited on the Maputo City Tour" },
+        { "image": "/assets/images/packages/beach-berbecue/beach-bbq-3.webp", "alt": "Arriving by boat at Portuguese Island, Maputo Bay" },
+        { "image": "/assets/images/packages/beach-berbecue/beach-bbq-1.webp", "alt": "Swimming in the calm, clear water of Portuguese Island" },
+        { "image": "/assets/images/packages/maputo-tour/maputo-tour-4.webp", "alt": "Colonial-era architecture in Maputo" }
+      ],
+      "days": [
+        { "title": "Arrival & Maputo City Tour", "icon": "bx-buildings", "items": ["Arrival at Maputo International Airport.", "Meet and greet by Moz Camp Adventures.", "Private transfer to the hotel.", "Hotel check-in.", "Guided Maputo City Tour.", "Lunch and dinner included.", "Overnight in Maputo."] },
+        { "title": "Maputo Bay & Portuguese Island", "icon": "bx-water", "items": ["Breakfast at the hotel.", "Transfer to Maputo Marina.", "Boat excursion across Maputo Bay.", "Visit to Portuguese Island.", "Beach time, swimming and relaxation.", "Lunch during the excursion.", "Return boat transfer to Maputo.", "Dinner and overnight in Maputo."] },
+        { "title": "Maputo at Leisure", "icon": "bx-coffee-togo", "items": ["Breakfast at the hotel.", "Free day to explore Maputo or enjoy the hotel's facilities.", "Lunch included.", "Dinner included.", "Overnight in Maputo."] },
+        { "title": "Departure", "icon": "bxs-plane-take-off", "items": ["Breakfast at the hotel.", "Hotel check-out.", "Lunch, subject to departure schedule.", "Private transfer to Maputo International Airport."] }
+      ],
+      "accommodation": [
+        { "place": "Maputo", "label": "Accommodation options – Maputo", "hotels": ["Polana Serena Hotel.", "Radisson Blu Hotel & Residence.", "Hotel Cardoso.", "Southern Sun Maputo."] }
+      ],
+      "breakdown": [],
+      "includes": ["Airport reception at Maputo International Airport.", "Private airport transfers (arrival and departure).", "3 nights' accommodation in Maputo.", "All meals: breakfast, lunch and dinner throughout the package.", "Guided Maputo City Tour.", "Maputo Bay boat excursion.", "Portuguese Island beach experience.", "Boat crew and local guides.", "Scheduled ground transportation.", "Applicable activity, access and marina fees.", "Mandatory applicable local taxes and charges, including VAT."],
+      "excludes": ["International flights to and from Maputo.", "Travel insurance.", "Alcoholic beverages and premium drinks.", "Personal expenses and tips.", "Optional activities not specified in the itinerary."],
+      "notes": []
+    },
+    {
+      "id": "island-experience",
+      "number": "02",
+      "name": "Island Experience",
+      "duration": "5 Days / 4 Nights",
+      "route": ["Maputo", "Santa Maria", "Inhaca", "Portuguese Island", "Maputo"],
+      "price": 23000,
+      "summary": "Two nights on Inhaca Island, a boat day through Santa Maria and Portuguese Island, and the best of Maputo at both ends of your stay.",
+      "intro": "Experience Mozambique's coastline, island life and local culture through a combination of Maputo sightseeing and the beautiful islands of Inhaca and Santa Maria.",
+      "cover": { "image": "/assets/images/packages/snorkeling-bbq/2.webp", "alt": "White sand beach and turquoise water at Santa Maria, near Inhaca Island" },
+      "gallery": [
+        { "image": "/assets/images/packages/inhaca-cultural/1.webp", "alt": "Guided vehicle tour on Inhaca Island" },
+        { "image": "/assets/images/packages/farol-inhaca/4.webp", "alt": "Coastal view over Inhaca Island and the Indian Ocean" },
+        { "image": "/assets/images/packages/snorkeling-bbq/4.webp", "alt": "Kayaking and boats in the shallow water off Santa Maria" },
+        { "image": "/assets/images/packages/inhaca-cultural/4.webp", "alt": "Local craft market in Inhaca village" }
+      ],
+      "days": [
+        { "title": "Arrival & Maputo City Tour", "icon": "bx-buildings", "items": ["Arrival at Maputo International Airport.", "Meet and greet by Moz Camp Adventures.", "Private transfer to the hotel.", "Hotel check-in.", "Guided Maputo City Tour.", "Lunch and dinner included.", "Overnight in Maputo."] },
+        { "title": "Santa Maria, Inhaca & Portuguese Island", "icon": "bx-water", "items": ["Breakfast and hotel check-out.", "Transfer to Maputo Marina.", "Boat excursion to Santa Maria, Inhaca and Portuguese Island.", "Beach stops, swimming and snorkelling, subject to sea conditions.", "Lunch during the excursion.", "Boat transfer to Inhaca accommodation.", "Dinner and overnight on Inhaca Island."] },
+        { "title": "Inhaca Island Exploration", "icon": "bx-map-alt", "items": ["Breakfast at the accommodation.", "Guided island exploration by vehicle.", "Discover local communities, natural landscapes and beautiful beaches.", "Lunch included.", "Leisure time to enjoy the island.", "Dinner and overnight on Inhaca Island."] },
+        { "title": "Return to Maputo", "icon": "bx-restaurant", "items": ["Breakfast and check-out.", "Boat transfer from Inhaca to Maputo.", "Hotel check-in.", "Lunch included.", "Selected Maputo gastronomic experience.", "Dinner and overnight in Maputo."] },
+        { "title": "Departure", "icon": "bxs-plane-take-off", "items": ["Breakfast at the hotel.", "Hotel check-out.", "Lunch, subject to departure schedule.", "Private transfer to Maputo International Airport."] }
+      ],
+      "accommodation": [
+        { "place": "Maputo", "label": "Maputo hotel options", "hotels": ["Polana Serena Hotel.", "Radisson Blu Hotel & Residence.", "Hotel Cardoso.", "Southern Sun Maputo."] },
+        { "place": "Inhaca Island", "label": "Inhaca accommodation", "hotels": [], "text": "Selected island lodge, subject to availability and confirmation." }
+      ],
+      "breakdown": ["1 night in Maputo on arrival.", "2 nights on Inhaca Island.", "1 night in Maputo before departure."],
+      "includes": ["Airport reception at Maputo International Airport.", "Private airport transfers (arrival and departure).", "4 nights' accommodation.", "All meals: breakfast, lunch and dinner throughout the package.", "Guided Maputo City Tour.", "Boat transfers between Maputo and Inhaca.", "Santa Maria, Inhaca and Portuguese Island boat excursion.", "Snorkelling equipment, subject to availability.", "Guided Inhaca island vehicle tour.", "Maputo gastronomic experience.", "Boat crew and local guides.", "Scheduled ground transportation.", "Applicable island landing, access and conservation fees.", "Applicable port, marina and activity fees.", "Mandatory applicable local taxes and charges, including VAT."],
+      "excludes": ["International flights to and from Maputo.", "Travel insurance.", "Alcoholic beverages and premium drinks.", "Personal expenses and tips.", "Optional activities not specified in the itinerary."],
+      "notes": []
+    },
+    {
+      "id": "coastal-adventure",
+      "number": "03",
+      "name": "Coastal Adventure",
+      "duration": "6 Days / 5 Nights",
+      "route": ["Maputo", "Inhaca", "Ponta do Ouro", "Bilene", "Maputo"],
+      "price": 29499,
+      "summary": "Islands, the golden beaches of Ponta do Ouro and the calm lagoon of Bilene — quad biking, horse riding and a sunset cruise along the way.",
+      "intro": "Discover the beauty of southern Mozambique through a combination of coastal adventures, island experiences and relaxing beach destinations.\n\nExplore the islands of Inhaca and Portuguese Island, enjoy the beaches of Ponta do Ouro and experience the peaceful lagoon of Bilene.",
+      "cover": { "image": "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-1.webp", "alt": "Golden beach and forested dunes at Ponta do Ouro" },
+      "gallery": [
+        { "image": "/assets/images/hero/snorkeling-santa-maria.webp", "alt": "Snorkelling in the clear water off Santa Maria" },
+        { "image": "/assets/images/packages/beach-berbecue/beach-bbq-1.webp", "alt": "Portuguese Island, visited on the island boat excursion" },
+        { "image": "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-3.webp", "alt": "Rocky coastline and Indian Ocean surf at Ponta do Ouro" },
+        { "image": "/assets/images/packages/beach-tours/ponta-do-ouro/ponta-do-ouro-4.webp", "alt": "The village of Ponta do Ouro by the sea" }
+      ],
+      "days": [
+        { "title": "Arrival & Maputo City Tour", "icon": "bx-buildings", "items": ["Arrival at Maputo International Airport.", "Meet and greet by Moz Camp Adventures.", "Private transfer to the hotel.", "Hotel check-in.", "Guided Maputo City Tour.", "Lunch and dinner included.", "Overnight in Maputo."] },
+        { "title": "Inhaca, Santa Maria & Portuguese Island", "icon": "bx-water", "items": ["Breakfast at the hotel.", "Transfer to Maputo Marina.", "Boat excursion to Santa Maria, Inhaca and Portuguese Island.", "Beach stops, swimming and snorkelling, subject to sea conditions.", "Lunch during the excursion.", "Return boat transfer to Maputo.", "Dinner and overnight in Maputo."] },
+        { "title": "Ponta do Ouro Beach Experience", "icon": "bx-sun", "items": ["Breakfast and hotel check-out.", "Road transfer from Maputo to Ponta do Ouro.", "Hotel check-in.", "Quad biking experience.", "Beach time and relaxation.", "Lunch and dinner included.", "Overnight in Ponta do Ouro."] },
+        { "title": "Ponta do Ouro to Bilene", "icon": "bx-car", "items": ["Breakfast and hotel check-out.", "Road transfer from Ponta do Ouro to Bilene.", "Arrival and hotel check-in.", "Lunch included.", "Free time to enjoy the beautiful Bilene Lagoon.", "Dinner and overnight in Bilene."] },
+        { "title": "Bilene Lagoon Experience", "icon": "bx-anchor", "items": ["Breakfast at the hotel.", "Horse riding experience.", "Leisure time by the lagoon.", "Lunch included.", "Sunset boat cruise on Bilene Lagoon.", "Dinner and overnight in Bilene."] },
+        { "title": "Departure", "icon": "bxs-plane-take-off", "items": ["Breakfast at the hotel.", "Hotel check-out.", "Road transfer from Bilene to Maputo International Airport.", "Lunch, subject to departure schedule.", "Airport drop-off."], "note": "An afternoon or evening departure is recommended to allow sufficient time for the road transfer from Bilene to Maputo." }
+      ],
+      "accommodation": [
+        { "place": "Maputo", "label": "Maputo", "hotels": ["Polana Serena Hotel.", "Radisson Blu Hotel & Residence.", "Hotel Cardoso.", "Southern Sun Maputo."] },
+        { "place": "Ponta do Ouro", "label": "Ponta do Ouro", "hotels": ["Kaya Kweru Resort."] },
+        { "place": "Bilene", "label": "Bilene", "hotels": ["San Martinho Beach Club.", "Complexo Palmeiras Bilene."] }
+      ],
+      "breakdown": ["2 nights in Maputo.", "1 night in Ponta do Ouro.", "2 nights in Bilene."],
+      "includes": ["Airport reception at Maputo International Airport.", "Private airport transfers (arrival and departure).", "5 nights' accommodation.", "All meals: breakfast, lunch and dinner throughout the package.", "All scheduled road transportation.", "Guided Maputo City Tour.", "Santa Maria, Inhaca and Portuguese Island boat excursion.", "Snorkelling equipment, subject to availability.", "Quad biking experience in Ponta do Ouro.", "Horse riding experience in Bilene.", "Sunset boat cruise on Bilene Lagoon.", "Boat crew and local guides.", "Applicable island landing, access and conservation fees.", "Applicable port, marina and activity fees.", "Mandatory applicable local taxes and charges, including VAT."],
+      "excludes": ["International flights to and from Maputo.", "Travel insurance.", "Alcoholic beverages and premium drinks.", "Personal expenses and tips.", "Optional activities not specified in the itinerary."],
+      "notes": []
+    }
+  ],
+  "conditions": [
+    "All prices are quoted in South African Rand (ZAR) per person sharing.",
+    "International flights to and from Maputo are not included.",
+    "All packages start and end at Maputo International Airport.",
+    "Accommodation and activities are subject to availability.",
+    "Boat excursions and island activities are subject to sea and weather conditions.",
+    "Final prices are subject to confirmation for the selected travel dates and accommodation category.",
+    "Single-room supplements are available on request.",
+    "Special group rates can be provided upon request."
+  ],
+  "related": [
+    { "slug": "maputo-city-tour", "label": "Maputo City Tour" },
+    { "slug": "island-hopping-experience", "label": "Island Hopping Experience" },
+    { "slug": "inhaca-cultural", "label": "Inhaca Cultural Experience" },
+    { "slug": "ponta-douro-day-trip", "label": "Ponta do Ouro Day Trip" },
+    { "slug": "bilene-day-trip", "label": "Bilene Day Trip" }
+  ]
+}

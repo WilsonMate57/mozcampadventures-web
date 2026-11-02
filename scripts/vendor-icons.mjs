@@ -14,13 +14,13 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = readFileSync(join(ROOT, 'scripts/vendor/boxicons.min.css'), 'utf8');
 
 /* Ícones usados: procura "bx-…", "bxs-…", "bxl-…" nas fontes */
-const scan = ['scripts', 'assets/js', 'admin'];
+const scan = ['scripts', 'assets/js', 'admin', 'data'];   // data/: ícones dos pacotes de férias (holiday-packages.json)
 const used = new Set();
 function walk(dir) {
   for (const e of readdirSync(dir)) {
     const p = join(dir, e);
     if (statSync(p).isDirectory()) { if (e !== 'vendor') walk(p); continue; }
-    if (!['.mjs', '.js', '.html'].includes(extname(e))) continue;
+    if (!['.mjs', '.js', '.html', '.json'].includes(extname(e))) continue;
     for (const m of readFileSync(p, 'utf8').matchAll(/\b(bx[sl]?-[a-z0-9-]+)/g)) used.add(m[1]);
   }
 }

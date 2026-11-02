@@ -90,7 +90,7 @@ function optSrc(src, w) {
   const m = MANIFEST[src];
   if (!m) return src;
   const v = m.v.filter(x => x <= w).pop() || m.v[0];
-  return '/assets/images/_opt/' + src.replace('/assets/images/', '').replace(/\.[a-z]+$/i, '') + `-${v}.webp`;
+  return '/assets/images/_opt/' + (m.b || src.replace('/assets/images/', '').replace(/\.[a-z]+$/i, '')) + `-${v}.webp`;
 }
 function img(src, { alt = '', sizes = '100vw', cls = '', eager = false, max = 1600 } = {}) {
   const m = MANIFEST[src];
@@ -99,7 +99,7 @@ function img(src, { alt = '', sizes = '100vw', cls = '', eager = false, max = 16
   if (m) {
     const variants = m.v.filter(v => v <= max);
     const top = variants[variants.length - 1] || m.v[0];
-    const base = '/assets/images/_opt/' + src.replace('/assets/images/', '').replace(/\.[a-z]+$/i, '');
+    const base = '/assets/images/_opt/' + (m.b || src.replace('/assets/images/', '').replace(/\.[a-z]+$/i, ''));   // m.b: nome próprio quando há outro ficheiro com o mesmo nome
     a.unshift(`src="${base}-${top}.webp"`, `srcset="${variants.map(v => `${base}-${v}.webp ${v}w`).join(', ')}"`, `sizes="${sizes}"`);
     const w = Math.min(m.w, top);
     a.push(`width="${w}" height="${Math.round(m.h * w / m.w)}"`);
@@ -172,7 +172,7 @@ function header(lang, alt, { cta } = {}) {
       <ul>
         <li class="has-mega">
           <button type="button" aria-expanded="false" aria-controls="mega-exp">${t.experiences} <i class="bx bx-chevron-down"></i></button>
-          <div class="mega" id="mega-exp">${mega}<a class="mega-all text-link" href="${R.tours(lang)}">${t.all} <i class="bx bx-right-arrow-alt"></i></a></div>
+          <div class="mega" id="mega-exp">${mega}<a class="mega-feature" href="/holiday-packages/"${lang === 'pt' ? ' hreflang="en"' : ''}><span class="mega-feature__icon" aria-hidden="true"><i class="bx bx-map-alt"></i></span><span><strong>${t.packages}</strong><small>${t.packagesSub}</small></span><i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a><a class="mega-all text-link" href="${R.tours(lang)}">${t.all} <i class="bx bx-right-arrow-alt"></i></a></div>
         </li>
         <li><a href="${R.stays(lang)}">${t.accommodation}</a></li>
         <li><a href="${R.home(lang)}#destinos">${t.destinations}</a></li>
@@ -196,7 +196,7 @@ ${cta ? `      <a class="btn-x btn-x--primary header-cta" href="${cta}">${T[lang
     <a class="brand" href="${R.home(lang)}"><img src="/assets/images/logo/logo_moz_camp_adventures.webp" alt="" width="44" height="44"><span>Moz Camp<small>Adventures</small></span></a>
     <button class="icon-btn" type="button" aria-label="${t.menuClose}" data-menu-close><i class="bx bx-x"></i></button>
   </div>
-  <nav aria-label="Menu">${mobile}<a href="${R.home(lang)}#about">${t.about}</a><a href="${R.contact(lang)}">${t.contact}</a><a href="${R.account(lang)}">${t.account} <i class="bx bx-user"></i></a></nav>
+  <nav aria-label="Menu">${mobile}<a href="/holiday-packages/"${lang === 'pt' ? ' hreflang="en"' : ''}>${t.packages} <small>4–6 ${lang === 'pt' ? 'dias' : 'days'}</small></a><a href="${R.home(lang)}#about">${t.about}</a><a href="${R.contact(lang)}">${t.contact}</a><a href="${R.account(lang)}">${t.account} <i class="bx bx-user"></i></a></nav>
   <div class="mobile-menu__foot">
     <a class="btn-x btn-x--wa btn-x--block" href="${wa()}" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> +258 84 440 6543</a>
     <div class="lang-switch lang-switch--dark" aria-label="${t.lang}">${langs('pt')}${langs('en')}</div>
@@ -218,7 +218,7 @@ function footer(lang) {
           <a href="${wa()}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
         </div>
       </div>
-      <div><h2>${t.nav.experiences}</h2><ul>${CAT_ORDER.map(c => `<li><a href="${R.cat(c, lang)}">${esc(CATEGORIES[c][lang])}</a></li>`).join('')}</ul></div>
+      <div><h2>${t.nav.experiences}</h2><ul>${CAT_ORDER.map(c => `<li><a href="${R.cat(c, lang)}">${esc(CATEGORIES[c][lang])}</a></li>`).join('')}<li><a href="/holiday-packages/"${lang === 'pt' ? ' hreflang="en"' : ''}>${t.nav.packages}</a></li></ul></div>
       <div><h2>${f.company}</h2><ul>
         <li><a href="${R.home(lang)}#about">${t.nav.about}</a></li>
         <li><a href="${R.home(lang)}#como-reservar">${t.nav.how}</a></li>
@@ -940,6 +940,201 @@ function notFound() {
   return page({ lang: 'pt', path: '/404.html', alt: null, title: `${t.title} | Moz Camp Adventures`, desc: t.lead, main, noindex: true });
 }
 
+/* ── Pacotes de férias (/holiday-packages/, só em inglês) ─────────────────
+   Conteúdo em data/holiday-packages.json (fonte de verdade: preços, itinerários, alojamento, inclusões).
+   Reservas por WhatsApp e e-mail, com a mensagem já preenchida para cada pacote. */
+const HOLIDAY = readJson('data/holiday-packages.json');
+const HP_PATH = '/holiday-packages/';
+const zar = n => `${HOLIDAY.currency} ${Number(n).toLocaleString('en-US')}`;
+const hpEnquiry = p => `Hello Moz Camp Adventures! I am interested in the ${p.name} package (${p.duration}). Please send me more information and availability.`;
+const hpMail = p => `mailto:${HOLIDAY.email}?subject=${encodeURIComponent(`Holiday package enquiry: ${p.name} (${p.duration})`)}&body=${encodeURIComponent(`Hello Moz Camp Adventures,\n\nI am interested in the ${p.name} package (${p.duration}). Please send me more information and availability.\n\nPreferred travel dates:\nNumber of travellers:\nPreferred hotel:\n\nThank you.`)}`;
+const hpRoute = r => r.map(x => `<span>${esc(x)}</span>`).join('<i class="bx bx-right-arrow-alt" aria-hidden="true"></i>');
+
+function hpPackage(p, i) {
+  const nights = p.breakdown.length ? p.breakdown : p.accommodation.map(a => `${p.duration.split('/')[1].trim().split(' ')[0]} nights in ${a.place}.`);
+  const days = p.days.map((d, n) => `
+        <li><details class="hp-day"${n === 0 ? ' open' : ''}>
+          <summary><span class="hp-day__n">Day ${n + 1}</span><span class="hp-day__t"><i class="bx ${d.icon}" aria-hidden="true"></i>${esc(d.title)}</span><i class="bx bx-chevron-down hp-day__chev" aria-hidden="true"></i></summary>
+          <ul class="hp-day__list">${d.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul>${d.note ? `
+          <p class="hp-note"><i class="bx bx-time-five" aria-hidden="true"></i>${esc(d.note)}</p>` : ''}
+        </details></li>`).join('');
+  const stays = p.accommodation.map(a => `<div class="hp-stay"><h4><i class="bx bxs-hotel" aria-hidden="true"></i>${esc(a.label)}</h4>${a.hotels.length ? `<ul>${a.hotels.map(h => `<li>${esc(h)}</li>`).join('')}</ul>` : ''}${a.text ? `<p>${esc(a.text)}</p>` : ''}</div>`).join('');
+  return `
+<article class="hp-pkg${i % 2 ? ' hp-pkg--alt' : ''}" id="${p.id}" aria-labelledby="${p.id}-title">
+  <div class="container-x">
+    <header class="hp-pkg__head">
+      <div class="hp-pkg__intro">
+        <p class="hp-kicker"><span class="hp-num">${p.number}</span> Package ${p.number}</p>
+        <h2 id="${p.id}-title">${esc(p.name)}</h2>
+        <p class="hp-meta"><span><i class="bx bx-calendar" aria-hidden="true"></i>${esc(p.duration)}</span><span class="hp-route">${hpRoute(p.route)}</span></p>
+        ${p.intro.split('\n\n').map(x => `<p class="hp-lead">${esc(x)}</p>`).join('')}
+      </div>
+      <figure class="hp-pkg__photo">${img(p.cover.image, { alt: p.cover.alt, sizes: '(min-width:1024px) 560px, 92vw', max: 1600 })}</figure>
+    </header>
+    <div class="hp-pkg__body">
+      <div class="hp-price" role="group" aria-label="${esc(p.name)} — price and booking">
+        <p class="hp-price__from">From</p>
+        <p class="hp-price__amount">${zar(p.price)}</p>
+        <p class="hp-price__unit">per person sharing</p>
+        <p class="hp-price__supp">Single-room supplement available on request.</p>
+        <dl class="hp-facts">
+          <div><dt><i class="bx bx-calendar" aria-hidden="true"></i>Duration</dt><dd>${esc(p.duration)}</dd></div>
+          <div><dt><i class="bx bxs-plane-land" aria-hidden="true"></i>Starts &amp; ends</dt><dd>Maputo International Airport</dd></div>
+          <div><dt><i class="bx bx-bed" aria-hidden="true"></i>Nights</dt><dd>${nights.map(x => esc(x.replace(/\.$/, ''))).join('<br>')}</dd></div>
+          <div><dt><i class="bx bx-dish" aria-hidden="true"></i>Meals</dt><dd>Breakfast, lunch &amp; dinner</dd></div>
+        </dl>
+        <a class="btn-x btn-x--wa btn-x--block" href="${wa(hpEnquiry(p))}" target="_blank" rel="noopener" data-hp-cta="whatsapp" data-hp-package="${p.id}"><i class="bx bxl-whatsapp" aria-hidden="true"></i> Book on WhatsApp</a>
+        <a class="btn-x btn-x--ghost btn-x--block" href="${hpMail(p)}" data-hp-cta="email" data-hp-package="${p.id}"><i class="bx bx-envelope" aria-hidden="true"></i> Enquire by email</a>
+        <p class="hp-price__fine">Final price confirmed for your travel dates and accommodation category.</p>
+      </div>
+      <div class="hp-pkg__main">
+        <section class="hp-block" aria-labelledby="${p.id}-it ${p.id}-title">
+          <div class="hp-block__head"><h3 id="${p.id}-it">Day-by-day itinerary</h3><button type="button" class="hp-toggle" data-hp-days aria-controls="${p.id}-days" aria-expanded="false">Expand all days</button></div>
+          <ol class="hp-days" id="${p.id}-days">${days}
+          </ol>
+        </section>
+        <section class="hp-block" aria-labelledby="${p.id}-acc ${p.id}-title">
+          <h3 id="${p.id}-acc">Accommodation</h3>
+          ${p.breakdown.length ? `<ul class="hp-nights">${p.breakdown.map(x => `<li><i class="bx bx-moon" aria-hidden="true"></i>${esc(x)}</li>`).join('')}</ul>` : ''}
+          <div class="hp-stays">${stays}</div>
+        </section>
+        <section class="hp-block hp-incl" aria-label="${esc(p.name)} — what is included">
+          <div><h3>Package includes</h3><ul class="hp-list hp-list--yes">${p.includes.map(x => `<li><i class="bx bx-check" aria-hidden="true"></i>${esc(x)}</li>`).join('')}</ul></div>
+          <div><h3>Not included</h3><ul class="hp-list hp-list--no">${p.excludes.map(x => `<li><i class="bx bx-x" aria-hidden="true"></i>${esc(x)}</li>`).join('')}</ul></div>
+        </section>
+        <section class="hp-block" aria-label="${esc(p.name)} — photos">
+          <div class="hp-gallery">${p.gallery.map(g => `<figure>${img(g.image, { alt: g.alt, sizes: '(min-width:1024px) 300px, 46vw', max: 960 })}<figcaption>${esc(g.alt)}</figcaption></figure>`).join('')}</div>
+        </section>
+      </div>
+    </div>
+  </div>
+</article>`;
+}
+
+function holidayPackages() {
+  const H = HOLIDAY, P = H.packages;
+  const minPrice = Math.min(...P.map(p => p.price));
+  const general = 'Hello Moz Camp Adventures! I would like more information about your Mozambique holiday packages.';
+  const cards = P.map(p => `
+      <article class="hp-card">
+        <a class="hp-card__media" href="#${p.id}" tabindex="-1" aria-hidden="true">${img(p.cover.image, { alt: '', sizes: '(min-width:1024px) 380px, (min-width:640px) 46vw, 92vw', max: 960 })}<span class="hp-card__tag">Package ${p.number}</span></a>
+        <div class="hp-card__body">
+          <p class="hp-card__dur"><i class="bx bx-calendar" aria-hidden="true"></i>${esc(p.duration)}</p>
+          <h3><a href="#${p.id}">${esc(p.name)}</a></h3>
+          <p class="hp-route hp-route--sm">${hpRoute(p.route)}</p>
+          <p class="hp-card__text">${esc(p.summary)}</p>
+          <div class="hp-card__foot">
+            <p class="hp-card__price"><small>From</small><strong>${zar(p.price)}</strong><span>per person sharing</span></p>
+            <a class="btn-x btn-x--primary" href="#${p.id}">Explore package <i class="bx bx-down-arrow-alt" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </article>`).join('');
+  const related = H.related.map(r => { const p = find('en', r.slug); return p ? `<a href="${R.item(p, 'en')}">${esc(r.label)}</a>` : ''; }).filter(Boolean).join('');
+  const main = `<main id="main" class="holiday">
+<section class="hp-hero" aria-labelledby="hp-title">
+  <div class="hp-hero__media">${img(H.hero.image, { alt: H.hero.alt, eager: true, sizes: '100vw' })}</div>
+  <div class="container-x hp-hero__content">
+    <nav class="crumbs crumbs--light" aria-label="Breadcrumb"><a href="${R.home('en')}">Home</a><span aria-hidden="true">/</span><span>Holiday Packages</span></nav>
+    <p class="hp-hero__brand">Moz Camp Adventures</p>
+    <h1 id="hp-title">Mozambique Holiday Packages</h1>
+    <p class="hp-hero__sub">Ground Handling, Accommodation &amp; Destination Experiences</p>
+    <p class="hp-hero__lead">Discover Mozambique with carefully designed holiday experiences combining coastal destinations, island adventures, local culture and relaxation.</p>
+    <div class="hp-hero__actions">
+      <a class="btn-x btn-x--primary" href="#packages">Explore our packages <i class="bx bx-down-arrow-alt" aria-hidden="true"></i></a>
+      <a class="btn-x btn-x--outline-light" href="${wa(general)}" target="_blank" rel="noopener" data-hp-cta="whatsapp" data-hp-package="general"><i class="bx bxl-whatsapp" aria-hidden="true"></i> Talk to us</a>
+    </div>
+    <ul class="hp-hero__facts">
+      <li><i class="bx bx-map-alt" aria-hidden="true"></i>3 itineraries · 4 to 6 days</li>
+      <li><i class="bx bx-receipt" aria-hidden="true"></i>From ${zar(minPrice)} per person sharing</li>
+      <li><i class="bx bxs-plane-land" aria-hidden="true"></i>Start &amp; end at Maputo International Airport</li>
+    </ul>
+  </div>
+</section>
+
+<section class="hp-intro" aria-label="What every package includes">
+  <div class="container-x hp-intro__grid">
+    <div>
+      <ul class="hp-incl-icons">
+        <li><i class="bx bx-user-check" aria-hidden="true"></i><span>Airport reception</span></li>
+        <li><i class="bx bx-bed" aria-hidden="true"></i><span>Accommodation</span></li>
+        <li><i class="bx bx-dish" aria-hidden="true"></i><span>All meals</span></li>
+        <li><i class="bx bx-bus" aria-hidden="true"></i><span>Scheduled transfers</span></li>
+        <li><i class="bx bx-water" aria-hidden="true"></i><span>Itinerary activities</span></li>
+      </ul>
+      <p class="hp-intro__note">${esc(H.includedEverywhere)}</p>
+    </div>
+    <div class="hp-flight" role="note">
+      <i class="bx bxs-plane-alt" aria-hidden="true"></i>
+      <div><strong>Flights are not included</strong><p>${esc(H.flightNotice)}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section hp-overview" id="packages" aria-labelledby="hp-packages-title">
+  <div class="container-x">
+    <div class="section-head"><div><span class="eyebrow">our packages</span><h2 id="hp-packages-title">Three ways to discover southern Mozambique</h2></div><p>From a short city-and-island break to a six-day journey along the coast — each package is planned and guided on the ground by the Moz Camp Adventures team.</p></div>
+    <div class="hp-cards">${cards}
+    </div>
+  </div>
+</section>
+${P.map(hpPackage).join('\n')}
+
+<section class="section hp-conditions" id="booking-conditions" aria-labelledby="hp-cond-title">
+  <div class="container-x hp-conditions__grid">
+    <div>
+      <span class="eyebrow">good to know</span>
+      <h2 id="hp-cond-title">General booking conditions</h2>
+      <ul class="hp-list hp-list--yes hp-list--lg">${H.conditions.map(x => `<li><i class="bx bx-check" aria-hidden="true"></i>${esc(x)}</li>`).join('')}</ul>
+    </div>
+    <div class="hp-conditions__side">
+      <div class="hp-flight hp-flight--card" role="note">
+        <i class="bx bxs-plane-alt" aria-hidden="true"></i>
+        <div><strong>International flights</strong><p>${esc(H.flightNotice)}</p></div>
+      </div>
+      <div class="hp-related">
+        <h3>Prefer a day trip?</h3>
+        <p>Many of the experiences in these packages can also be booked on their own.</p>
+        <div class="hp-related__links">${related}<a href="${R.tours('en')}">All experiences</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hp-final" aria-labelledby="hp-final-title">
+  <div class="container-x">
+    <div class="cta-band">${img('/assets/images/hero/sunset-cruise-maputo-bay.webp', { alt: '', sizes: '100vw' })}
+      <span class="eyebrow">let's plan your trip</span>
+      <h2 id="hp-final-title">Your Mozambique Experience Starts Here.</h2>
+      <p>Let us help you discover the best of Mozambique.</p>
+      <div class="hp-final__actions">
+        <a class="btn-x btn-x--wa" href="${wa(general)}" target="_blank" rel="noopener" data-hp-cta="whatsapp" data-hp-package="general"><i class="bx bxl-whatsapp" aria-hidden="true"></i> Enquire via WhatsApp</a>
+        <a class="btn-x btn-x--light" href="mailto:${H.email}?subject=${encodeURIComponent('Mozambique holiday packages enquiry')}" data-hp-cta="email" data-hp-package="general"><i class="bx bx-envelope" aria-hidden="true"></i> Send us an email</a>
+      </div>
+      <ul class="hp-final__contact">
+        <li><i class="bx bxs-phone" aria-hidden="true"></i><a href="tel:+258844406543">+258 84 440 6543</a></li>
+        <li><i class="bx bxs-envelope" aria-hidden="true"></i><a href="mailto:${H.email}">${H.email}</a></li>
+        <li><i class="bx bxs-map" aria-hidden="true"></i>Marina, Escola Náutica, Maputo, Mozambique</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>`;
+  const ld = [ORG, crumbsLd([['Home', R.home('en')], ['Holiday Packages', HP_PATH]]), {
+    '@context': 'https://schema.org', '@type': 'ItemList', name: 'Mozambique Holiday Packages', url: SITE + HP_PATH,
+    itemListElement: P.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: {
+      '@type': 'TouristTrip', name: `${p.name} — ${p.duration}`, description: p.intro.replace(/\n+/g, ' '), url: `${SITE}${HP_PATH}#${p.id}`,
+      image: SITE + optSrc(p.cover.image, 1600), touristType: 'Leisure', provider: { '@id': SITE + '/#org' },
+      itinerary: { '@type': 'ItemList', itemListElement: p.days.map((d, n) => ({ '@type': 'ListItem', position: n + 1, name: `Day ${n + 1} – ${d.title}` })) },
+      offers: { '@type': 'Offer', price: p.price, priceCurrency: H.currency, description: 'From, per person sharing', url: `${SITE}${HP_PATH}#${p.id}`, availability: 'https://schema.org/InStock' }
+    } }))
+  }];
+  return page({
+    lang: 'en', path: HP_PATH, alt: null, title: 'Mozambique Holiday Packages | Moz Camp Adventures',
+    desc: 'Discover Mozambique with Moz Camp Adventures. Explore Maputo, Inhaca Island, Santa Maria, Ponta do Ouro and Bilene through our exclusive holiday packages.',
+    main, bodyClass: 'hp-page', ogImage: H.hero.image, preload: optSrc(H.hero.image, 960), jsonld: ld
+  });
+}
+
 /* ── Escrita ─────────────────────────────────────────────── */
 const written = [];
 function out(url, html) {
@@ -970,6 +1165,8 @@ out('/reserva/', clientArea('pt'));
 out('/en/booking/', clientArea('en'));
 out(R.account('pt'), accountPage('pt'));
 out(R.account('en'), accountPage('en'));
+out(HP_PATH, holidayPackages());
+const sitemapSingle = [HP_PATH];   // páginas só numa língua (sem alternativas hreflang)
 
 /* Painel (/admin/, HTML escrito à mão): carimbar os recursos com ?v=<hash> (cache longa no .htaccess) */
 {
@@ -987,6 +1184,7 @@ const today = new Date().toISOString().slice(0, 10);
 writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${sitemap.flatMap(([pt, en]) => [pt, en].map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod><xhtml:link rel="alternate" hreflang="pt" href="${SITE}${pt}"/><xhtml:link rel="alternate" hreflang="en" href="${SITE}${en}"/><xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${pt}"/></url>`)).join('\n')}
+${sitemapSingle.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
 </urlset>
 `);
 writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *
@@ -1005,4 +1203,4 @@ Disallow: /scripts/
 Sitemap: ${SITE}/sitemap.xml
 `);
 
-console.log(`${written.length} páginas · ${sitemap.length * 2} URLs no sitemap`);
+console.log(`${written.length} páginas · ${sitemap.length * 2 + sitemapSingle.length} URLs no sitemap`);

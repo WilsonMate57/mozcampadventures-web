@@ -21,7 +21,7 @@ export const T = {
   pt: {
     locale: 'pt-PT', htmlLang: 'pt',
     skip: 'Saltar para o conteúdo',
-    nav: { experiences: 'Experiências', accommodation: 'Alojamentos', destinations: 'Destinos', how: 'Como reservar', contact: 'Contacto', about: 'Sobre nós', search: 'Procurar experiências', menuOpen: 'Abrir menu', menuClose: 'Fechar menu', book: 'Reservar experiência', bookShort: 'Reservar', explore: 'Explorar', all: 'Ver todas as experiências', options: n => n === 1 ? '1 opção' : `${n} opções`, home: 'Início', lang: 'Idioma', wa: 'Falar no WhatsApp', phone: 'Para mais info:', more: 'Ver mais', account: 'A minha conta' },
+    nav: { experiences: 'Experiências', accommodation: 'Alojamentos', destinations: 'Destinos', how: 'Como reservar', contact: 'Contacto', about: 'Sobre nós', search: 'Procurar experiências', menuOpen: 'Abrir menu', menuClose: 'Fechar menu', book: 'Reservar experiência', bookShort: 'Reservar', explore: 'Explorar', all: 'Ver todas as experiências', options: n => n === 1 ? '1 opção' : `${n} opções`, home: 'Início', lang: 'Idioma', wa: 'Falar no WhatsApp', phone: 'Para mais info:', more: 'Ver mais', account: 'A minha conta', packages: 'Pacotes de férias', packagesSub: '4 a 6 dias, com alojamento (em inglês)' },
     price: { from: 'Desde', currency: 'MZN' },
     hero: {
       chip: 'Baía de Maputo · Moçambique',
@@ -147,7 +147,7 @@ export const T = {
   en: {
     locale: 'en-GB', htmlLang: 'en',
     skip: 'Skip to content',
-    nav: { experiences: 'Experiences', accommodation: 'Accommodation', destinations: 'Destinations', how: 'How to book', contact: 'Contact', about: 'About us', search: 'Search experiences', menuOpen: 'Open menu', menuClose: 'Close menu', book: 'Book an experience', bookShort: 'Book', explore: 'Explore', all: 'See all experiences', options: n => n === 1 ? '1 option' : `${n} options`, home: 'Home', lang: 'Language', wa: 'Chat on WhatsApp', phone: 'More info:', more: 'See more', account: 'My account' },
+    nav: { experiences: 'Experiences', accommodation: 'Accommodation', destinations: 'Destinations', how: 'How to book', contact: 'Contact', about: 'About us', search: 'Search experiences', menuOpen: 'Open menu', menuClose: 'Close menu', book: 'Book an experience', bookShort: 'Book', explore: 'Explore', all: 'See all experiences', options: n => n === 1 ? '1 option' : `${n} options`, home: 'Home', lang: 'Language', wa: 'Chat on WhatsApp', phone: 'More info:', more: 'See more', account: 'My account', packages: 'Holiday Packages', packagesSub: '4 to 6 days, accommodation included' },
     price: { from: 'From', currency: 'MZN' },
     hero: {
       chip: 'Maputo Bay · Mozambique',
