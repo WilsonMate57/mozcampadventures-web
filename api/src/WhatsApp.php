@@ -474,9 +474,14 @@ final class WhatsApp
             FROM whatsapp_messages m LEFT JOIN bookings b ON b.id = m.booking_id WHERE ' . implode(' AND ', $where) . ' ORDER BY m.id DESC LIMIT 200');
         $s->execute($args);
         $rows = array_map(static fn ($r) => ['params' => json_decode((string) $r['params'], true), 'related_type' => $r['related'] ? 'booking' : null] + $r, $s->fetchAll());
-        $stats = db()->query("SELECT count(*) FILTER (WHERE sent_at IS NOT NULL) AS sent, count(*) FILTER (WHERE delivered_at IS NOT NULL) AS delivered, count(*) FILTER (WHERE read_at IS NOT NULL) AS read, count(*) FILTER (WHERE status = 'failed') AS failed FROM whatsapp_messages WHERE created_at > now() - interval '30 days'")->fetch();
         $inbound = db()->query("SELECT from_number, body, created_at FROM whatsapp_events WHERE type = 'message' ORDER BY id DESC LIMIT 50")->fetchAll();
-        return ['messages' => $rows, 'stats' => array_map('intval', $stats), 'inbound' => $inbound, 'status' => self::status()];
+        return ['messages' => $rows, 'stats' => self::stats(), 'inbound' => $inbound, 'status' => self::status()];
+    }
+
+    /** Indicadores dos últimos 30 dias. */
+    public static function stats(): array
+    {
+        return array_map('intval', db()->query("SELECT count(*) FILTER (WHERE sent_at IS NOT NULL) AS sent, count(*) FILTER (WHERE delivered_at IS NOT NULL) AS delivered, count(*) FILTER (WHERE read_at IS NOT NULL) AS read, count(*) FILTER (WHERE status = 'failed') AS failed FROM whatsapp_messages WHERE created_at > now() - interval '30 days'")->fetch());
     }
 
     /** Definições → WhatsApp: interruptor e números da equipa (até 5). */

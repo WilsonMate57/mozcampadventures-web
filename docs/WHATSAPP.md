@@ -112,7 +112,7 @@ O aviso à equipa continua a usar o modelo `nova_reserva` (ver [NOTIFICACOES.md]
 
 ## 4. Tarefa agendada
 
-Repete envios temporariamente falhados e envia os lembretes a partir das 08:00 de Maputo. Em Plesk → Tarefas agendadas, crie uma tarefa de 5 em 5 minutos:
+Repete envios temporariamente falhados e envia os lembretes a partir das 08:00 de Maputo. Também envia as respostas do Live Chat a quem saiu do site e aplica a retenção das conversas. Em Plesk → Tarefas agendadas, crie uma tarefa de 5 em 5 minutos:
 
 ```
 /opt/plesk/php/8.4/bin/php /var/www/vhosts/mozcampadventures.co.mz/httpdocs/api/bin/worker.php

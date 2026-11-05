@@ -18,6 +18,7 @@ final class Admin
 
     public static function route(string $method, string $path): mixed
     {
+        if ($path === '/chat' || str_starts_with($path, '/chat/')) return ChatAdmin::route($method, $path);
         $routes = [
             ['POST', '#^/login$#', fn () => Auth::login(json_input())],
             ['POST', '#^/logout$#', fn () => Auth::logout()],
@@ -145,6 +146,7 @@ final class Admin
             'bookings_urgent' => (int) $one("SELECT count(*) FROM bookings WHERE status = 'pedido' AND coalesce(service_date, checkin) <= current_date + 7"),
             'messages_new' => (int) $one("SELECT count(*) FROM contact_messages WHERE status = 'novo'"),
             'reviews_pending' => (int) $one("SELECT count(*) FROM reviews WHERE status = 'pendente'"),
+            'chat_waiting' => Auth::has('chat.view') ? ChatAdmin::stats()['pending'] : null,
             'invoices_draft' => (int) $one("SELECT count(*) FROM invoices WHERE status = 'rascunho'"),
             'emails_failed' => Auth::has('emails.manage') ? (int) $one("SELECT count(*) FROM email_log e WHERE e.status = 'failed' AND e.created_at > now() - interval '7 days' AND NOT EXISTS (SELECT 1 FROM email_log r WHERE r.resent_of = e.id AND r.status IN ('sent', 'logged'))") : null,
         ];
@@ -156,6 +158,7 @@ final class Admin
 
         return [
             'range' => $r, 'metrics' => $m, 'series' => $series, 'status' => array_column($status, 'n', 'status'), 'top' => $top, 'attention' => $attention,
+            'indicators' => ['chat' => Auth::has('chat.view') ? ChatAdmin::stats() : null, 'whatsapp' => Auth::has('emails.manage') ? WhatsApp::stats() : null],
             'upcoming' => $all("SELECT reference, item_name, customer_name, coalesce(service_date, checkin) AS date, adults + children AS pax FROM bookings
                 WHERE status = 'confirmada' AND coalesce(service_date, checkin) BETWEEN current_date AND current_date + 14 ORDER BY 4, 1 LIMIT 8"),
             'activity' => $all("SELECT e.type, e.data, e.actor, e.created_at, b.reference, b.item_name, b.customer_name FROM booking_events e JOIN bookings b ON b.id = e.booking_id
@@ -316,6 +319,9 @@ final class Admin
         $wa = db()->prepare('SELECT kind, status, created_at FROM whatsapp_messages WHERE booking_id = ? AND audience = \'customer\' ORDER BY id');
         $wa->execute([$b['id']]);
         $b['whatsapp'] = $wa->fetchAll();
+        $chat = db()->prepare('SELECT id FROM chat_conversations WHERE booking_id = ? ORDER BY id DESC LIMIT 1');
+        $chat->execute([$b['id']]);
+        $b['chat_id'] = Auth::has('chat.view') ? ($chat->fetchColumn() ?: null) : null;
         $b['next_status'] = self::BOOKING_FLOW[$b['status']] ?? [];
         return ['booking' => $b];
     }

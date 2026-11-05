@@ -208,3 +208,8 @@ Usado para os testes desta fase (versões portáteis, sem instalar nada no siste
 
 1. `php httpdocs/api/bin/migrate.php` aplica a `011_whatsapp_customers`.
 2. Siga a ordem de activação em [WHATSAPP.md](WHATSAPP.md) §5. A migração deixa as mensagens a clientes desligadas.
+
+## Live Chat
+
+1. `php httpdocs/api/bin/migrate.php` aplica a `012_live_chat`.
+2. Siga [LIVE_CHAT.md](LIVE_CHAT.md) §4. O chat fica visível no site logo depois da publicação, a não ser que seja desligado nas Definições.

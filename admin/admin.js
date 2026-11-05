@@ -35,6 +35,7 @@
     exceeds_balance: 'O valor excede o saldo em dívida.', duplicate_payment: 'Esta transacção (método + referência) já está registada.', invoice_has_payments: 'A factura tem pagamentos: reverta, reembolse ou decida-os antes de anular.',
     refund_exceeds_paid: 'O reembolso excede o valor efectivamente pago.', payments_only_on_ft: 'Pagamentos só em facturas FT emitidas.', reason_required: 'Indique o motivo.', payment_not_pending: 'Este pagamento já foi decidido.',
     payment_not_confirmed: 'Só pagamentos confirmados podem ser revertidos.', refunds_exceed_payments: 'Há reembolsos que deixariam o pago negativo.', invalid_method: 'Método de pagamento inválido.', invalid_paid_on: 'Data de pagamento inválida (não pode ser no futuro).',
+    chat_closed: 'A conversa está encerrada. Reabra-a para responder.', chat_already_assigned: 'Outra pessoa já assumiu esta conversa.', chat_invalid_agent: 'Essa pessoa não pode atender conversas.', chat_invalid_hours: 'Horário inválido: a hora de início tem de ser antes da hora de fim.', chat_file_too_large: 'O ficheiro tem mais de 5 MB.', chat_file_type: 'Use uma imagem (JPEG, PNG, WebP) ou um PDF.', invalid_message: 'Escreva a mensagem.',
     whatsapp_invalid_id: 'Os identificadores da Meta têm só algarismos.', whatsapp_invalid_version: 'Versão da API inválida (exemplo: v21.0).', whatsapp_sender_recipient: 'O número remetente não pode receber avisos: retire-o da lista da equipa.', whatsapp_not_allowed: 'Sem envio: o cliente não autorizou, pediu para sair, o número é inválido, ou este tipo de mensagem está desligado.', whatsapp_not_failed: 'Só uma mensagem falhada pode ser reenviada.', note_required: 'Escreva o que mudou.',
     invalid_amount: 'Valor inválido.', whatsapp_invalid_number: 'Número de WhatsApp inválido', whatsapp_no_recipients: 'Indique pelo menos um número da equipa.', whatsapp_not_configured: 'O WhatsApp não está configurado no servidor (token e Phone number ID).', invoice_not_payable: 'A factura não está emitida.', not_resendable: 'Este e-mail não pode ser reenviado: é um registo antigo sem conteúdo, ou um e-mail de reposição de palavra-passe de cliente (o link não fica guardado; o cliente pede um novo).',
     date_out_of_range: 'Data inválida (tem de ser a partir de hoje).', invalid_phone: 'Telefone inválido.', invalid_name: 'Nome inválido.', invalid_email: 'E-mail inválido.', pdf_integrity_error: 'O ficheiro PDF não corresponde ao original. Contacte o administrador.',
@@ -47,7 +48,7 @@
   function withMail(msg, r) { var m = r && r.data && MAIL[r.data.email]; return { text: m ? msg + ' ' + m : msg, err: r && r.data && r.data.email === 'failed' }; }
   function toastMail(msg, r) { var x = withMail(msg, r); toast(x.text, x.err); }
   var NOTIF = { booking_received: 'Pedido de reserva recebido', booking_confirmed: 'Reserva confirmada', booking_cancelled: 'Reserva cancelada', booking_completed: 'Actividade concluída (convite para avaliar)', payment_confirmed: 'Pagamento recebido (com recibo)', payment_refused: 'Comprovativo recusado', payment_reversed: 'Pagamento revertido', refund: 'Reembolso efectuado', invoice_voided: 'Factura anulada' };
-  var KIND = { booking_client: 'Pedido recebido (cliente)', booking_team: 'Novo pedido (equipa)', contact_team: 'Mensagem de contacto (equipa)', invoice: 'Factura enviada', proof_team: 'Comprovativo recebido (equipa)', user_invite: 'Convite ao painel', user_reset: 'Repor palavra-passe', account_reset: 'Repor palavra-passe (cliente)', test: 'Teste de envio' };
+  var KIND = { chat_offline: 'Live Chat: mensagem sem equipa (equipa)', chat_reply: 'Live Chat: resposta (cliente)', booking_client: 'Pedido recebido (cliente)', booking_team: 'Novo pedido (equipa)', contact_team: 'Mensagem de contacto (equipa)', invoice: 'Factura enviada', proof_team: 'Comprovativo recebido (equipa)', user_invite: 'Convite ao painel', user_reset: 'Repor palavra-passe', account_reset: 'Repor palavra-passe (cliente)', test: 'Teste de envio' };
   var WA_KIND = { booking_received: 'Pedido recebido', booking_confirmed: 'Reserva confirmada', booking_changed: 'Reserva alterada', booking_cancelled: 'Reserva cancelada', activity_reminder: 'Lembrete da actividade', booking_team: 'Novo pedido (equipa)', test: 'Teste de envio' };
   var WA_ST = { pending: 'Pendente', sent: 'Enviada', delivered: 'Entregue', read: 'Lida', failed: 'Falhou', logged: 'Modo de teste' };
   var NOTIFY_BOX = '<label class="check"><input type="checkbox" name="notify" checked> Notificar o cliente por e-mail</label>';
@@ -128,7 +129,7 @@
   var NAV = [
     ['Visão geral', [['#/', 'bx-grid-alt', 'Resumo', 'dashboard.view']]],
     ['Operação', [['#/reservas', 'bx-calendar-check', 'Reservas', 'bookings.view', 'bookings_pending'], ['#/clientes', 'bx-user', 'Clientes', 'customers.view'],
-      ['#/experiencias', 'bx-compass', 'Experiências', 'bookings.view|catalog.edit'], ['#/disponibilidade', 'bx-calendar', 'Disponibilidade', 'availability.view'], ['#/mensagens', 'bx-envelope', 'Mensagens', 'messages.view', 'messages_new'], ['#/avaliacoes', 'bx-star', 'Avaliações', 'reviews.moderate', 'reviews_pending']]],
+      ['#/experiencias', 'bx-compass', 'Experiências', 'bookings.view|catalog.edit'], ['#/disponibilidade', 'bx-calendar', 'Disponibilidade', 'availability.view'], ['#/chat', 'bx-message-rounded-dots', 'Live Chat', 'chat.view', 'chat_waiting'], ['#/mensagens', 'bx-envelope', 'Mensagens', 'messages.view', 'messages_new'], ['#/avaliacoes', 'bx-star', 'Avaliações', 'reviews.moderate', 'reviews_pending']]],
     ['Financeiro', [['#/facturas', 'bx-receipt', 'Facturas', 'invoices.view'], ['#/pagamentos', 'bx-wallet', 'Pagamentos', 'payments.view', 'payments_awaiting']]],
     ['Sistema', [['#/emails', 'bx-mail-send', 'E-mails e WhatsApp', 'emails.manage', 'emails_failed'], ['#/utilizadores', 'bx-group', 'Utilizadores e perfis', 'users.manage'],
       ['#/definicoes', 'bx-cog', 'Definições', 'settings.manage'], ['#/auditoria', 'bx-history', 'Auditoria', 'audit.view']]]
@@ -148,6 +149,7 @@
     $('[data-logout]').addEventListener('click', function () { api('POST', '/logout').then(function () { S.me = null; showAuth('login'); }); });
     refreshCounts();
     route();
+    chatPresence();
   }
   /* Contadores da navegação (pedidos por confirmar, pagamentos por verificar…): pedido próprio, não cancelado pela navegação */
   function refreshCounts() {
@@ -163,7 +165,7 @@
   /* ── Router ────────────────────────────────────────── */
   var ROUTES = [
     [/^#\/?$/, dashboard, 'Resumo', 'Visão geral'], [/^#\/reservas$/, bookings, 'Reservas', 'Operação'], [/^#\/reservas\/(MCA-\d{4}-\d+)$/, booking, 'Reserva', 'Reservas'],
-    [/^#\/clientes$/, customers, 'Clientes', 'Operação'], [/^#\/experiencias$/, experiences, 'Experiências', 'Operação'], [/^#\/disponibilidade$/, availability, 'Disponibilidade', 'Operação'], [/^#\/experiencias\/([a-z0-9-]{1,60})$/, experienceEdit, 'Experiência', 'Experiências'], [/^#\/facturas$/, invoices, 'Facturas', 'Financeiro'], [/^#\/facturas\/(\d+)$/, invoice, 'Factura', 'Facturas'],
+    [/^#\/chat(?:\/(\d+))?$/, chat, 'Live Chat', 'Operação'], [/^#\/clientes$/, customers, 'Clientes', 'Operação'], [/^#\/experiencias$/, experiences, 'Experiências', 'Operação'], [/^#\/disponibilidade$/, availability, 'Disponibilidade', 'Operação'], [/^#\/experiencias\/([a-z0-9-]{1,60})$/, experienceEdit, 'Experiência', 'Experiências'], [/^#\/facturas$/, invoices, 'Facturas', 'Financeiro'], [/^#\/facturas\/(\d+)$/, invoice, 'Factura', 'Facturas'],
     [/^#\/pagamentos$/, payments, 'Pagamentos', 'Financeiro'], [/^#\/avaliacoes$/, reviews, 'Avaliações', 'Operação'], [/^#\/mensagens$/, messages, 'Mensagens', 'Operação'], [/^#\/emails$/, emails, 'E-mails e WhatsApp', 'Sistema'],
     [/^#\/utilizadores$/, users, 'Utilizadores e perfis', 'Sistema'], [/^#\/definicoes$/, settings, 'Definições', 'Sistema'], [/^#\/auditoria$/, audit, 'Auditoria', 'Sistema']
   ];
@@ -224,6 +226,19 @@
 
   function denied(perm) { view.innerHTML = '<p class="empty">Sem permissão (' + esc(perm) + ').</p>'; }
 
+  /* Indicadores dos últimos 30 dias: só dados registados; cada bloco aparece a quem tem permissão */
+  function indicators(x) {
+    (can('availability.view') ? api('GET', '/availability/summary') : Promise.resolve(null)).then(function (av) {
+      var box = $('[data-indicators]');
+      if (!box) return;
+      var groups = [];
+      if (x.chat) groups.push(['Live Chat', kpi('#/chat', 'Conversas recebidas', x.chat.received, '') + kpi('#/chat', 'Conversas pendentes', x.chat.pending, '') + kpi('#/chat', 'Conversas atendidas', x.chat.attended, '') + kpi('#/chat', 'Primeira resposta (média)', secs(x.chat.first_response), '')]);
+      if (x.whatsapp) groups.push(['WhatsApp', kpi('#/emails', 'Enviadas', x.whatsapp.sent, '') + kpi('#/emails', 'Entregues', x.whatsapp.delivered, '') + kpi('#/emails', 'Lidas', x.whatsapp.read, '') + kpi('#/emails', 'Falhas', x.whatsapp.failed, '')]);
+      if (av && av.ok) groups.push(['Disponibilidade (30 dias)', kpi('#/disponibilidade', 'Pacotes disponíveis', av.data.packages_active, '') + kpi('#/disponibilidade', 'Datas esgotadas', av.data.sold_out_dates, '') + kpi('#/disponibilidade', 'Datas bloqueadas', av.data.blocked_dates, '') + kpi('#/disponibilidade', 'Vagas restantes', av.data.places_left, '') + kpi('#/disponibilidade', 'Maior procura', av.data.demand && av.data.demand[0] ? av.data.demand[0].item_name : '—', '')]);
+      box.innerHTML = groups.map(function (g) { return '<h3 class="h-sub" style="margin-bottom:8px">' + esc(g[0]) + '</h3><div class="kpis">' + g[1] + '</div>'; }).join('');
+    });
+  }
+
   /* ── Resumo: centro de controlo por período ───────── */
   var PERIODS = [['today', 'Hoje', 0], ['7d', '7 dias', 6], ['30d', '30 dias', 29], ['90d', '90 dias', 89], ['year', 'Este ano', null], ['custom', 'Personalizado', null]];
   function periodRange(p, q) {
@@ -242,6 +257,7 @@
       if (!r.ok) { view.innerHTML = emptyState('bx-error-circle', 'Não foi possível carregar o resumo', errMsg(r)); return; }
       var d = r.data, m = d.metrics, a = d.attention, R = d.range, pay = m.received !== undefined;
       setCounts(a);
+      indicators(d.indicators);
       var hour = new Date().getHours(), hello = hour < 12 ? 'Bom dia' : hour < 19 ? 'Boa tarde' : 'Boa noite';
       var fmt = function (x) { return new Date(x + 'T00:00:00').toLocaleDateString('pt-PT', { day: 'numeric', month: 'short' }); };
       var rangeTxt = R.from === R.to ? fmt(R.from) : fmt(R.from) + ' – ' + fmt(R.to);
@@ -251,6 +267,7 @@
         pay ? ['#/facturas?pay=pendente', 'bx-wallet', mzn(a.outstanding), 'Em dívida (FT emitidas)', a.outstanding_invoices + ' facturas'] : null,
         ['#/mensagens', 'bx-envelope', a.messages_new, 'mensagens novas', ''],
         ['#/avaliacoes', 'bx-star', a.reviews_pending, 'avaliações por moderar', ''],
+        a.chat_waiting !== null && a.chat_waiting !== undefined ? ['#/chat', 'bx-message-rounded-dots', a.chat_waiting, 'conversas a aguardar resposta', ''] : null,
         a.emails_failed !== null && a.emails_failed !== undefined ? ['#/emails', 'bx-mail-send', a.emails_failed, 'e-mails falhados (7 dias)', ''] : null,
         ['#/facturas', 'bx-file', a.invoices_draft, 'rascunhos de factura', '']
       ].filter(Boolean);
@@ -267,7 +284,7 @@
         '<div class="dash-head"><div><h2>' + hello + ', ' + esc(String(S.me.name).split(' ')[0]) + '</h2><p>' + esc(rangeTxt) + ' · comparado com os ' + R.days + ' dias anteriores</p></div>' +
           '<div class="dash-period"><div class="segmented" role="group" aria-label="Período">' + PERIODS.map(function (x) { return '<button type="button" data-p="' + x[0] + '" aria-pressed="' + (x[0] === p) + '">' + x[1] + '</button>'; }).join('') + '</div>' +
           '<form class="custom" data-custom' + (p === 'custom' ? '' : ' hidden') + '><label class="sr-only" for="p-from">De</label><input type="date" id="p-from" name="from" value="' + esc(R.from) + '" max="' + esc(iso(new Date())) + '" required><span aria-hidden="true">→</span><label class="sr-only" for="p-to">Até</label><input type="date" id="p-to" name="to" value="' + esc(R.to) + '" max="' + esc(iso(new Date())) + '" required><button class="btn btn--sm btn--ghost">Aplicar</button></form></div></div>' +
-        '<section aria-label="Requer atenção"><div class="attention">' + attn.map(function (x) {
+        '<div data-indicators></div><section aria-label="Requer atenção"><div class="attention">' + attn.map(function (x) {
           var zero = x[2] === 0 || x[2] === '0 MZN';
           return '<a class="attn ' + (zero ? 'attn--ok' : 'attn--hot') + '" href="' + x[0] + '"><i class="bx ' + (zero ? 'bx-check' : x[1]) + '" aria-hidden="true"></i><div><strong>' + esc(x[2]) + '</strong><span>' + esc(x[3]) + (x[4] ? ' · ' + esc(x[4]) : '') + '</span></div></a>';
         }).join('') + '</div></section>' +
@@ -508,7 +525,7 @@
         (b.invoices.length ? '<div class="table-wrap"><table><tbody>' + b.invoices.map(function (i) { return '<tr data-href="#/facturas/' + i.id + '"><td>' + esc(LABEL[i.doc_type]) + '</td><td class="mono">' + esc(i.number || '(rascunho)') + '</td><td>' + date(i.issue_date) + '</td><td class="num">' + mzn(i.total, true) + '</td><td>' + badge(i.status) + (i.pay_status && i.pay_status !== 'anulada' && b.finance ? ' ' + badge(i.pay_status) : '') + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<p class="muted">Ainda sem facturas.</p>') +
         (b.finance ? '<dl class="dl" style="margin-top:14px"><dt>Situação financeira</dt><dd>' + badge(b.finance.status) + ' <span class="muted">(independente do estado da reserva)</span></dd><dt>Facturado (FT)</dt><dd>' + mzn(b.finance.invoiced, true) + '</dd><dt>Pago (confirmado)</dt><dd>' + mzn(b.finance.paid, true) + '</dd><dt>Em dívida</dt><dd><strong>' + mzn(b.finance.balance, true) + '</strong></dd>' + (b.finance.awaiting ? '<dt>Por verificar</dt><dd>' + b.finance.awaiting + ' comprovativo(s)</dd>' : '') + '</dl>' : '') +
         '</section></div>' +
-        '<div class="stack"><section class="card"><h2>Cliente</h2><dl class="dl"><dt>Nome</dt><dd>' + esc(b.customer_name) + '</dd><dt>Telefone</dt><dd><a href="tel:' + esc(b.customer_phone) + '">' + esc(b.customer_phone) + '</a></dd><dt>E-mail</dt><dd>' + (b.customer_email ? '<a href="mailto:' + esc(b.customer_email) + '">' + esc(b.customer_email) + '</a>' : '—') + '</dd><dt>Mensagens WhatsApp</dt><dd>' + (b.whatsapp_opt_in ? 'Autorizadas em ' + dt(b.whatsapp_opt_in_at) : 'Sem autorização') + '</dd></dl>' +
+        '<div class="stack"><section class="card"><h2>Cliente</h2><dl class="dl"><dt>Nome</dt><dd>' + esc(b.customer_name) + '</dd><dt>Telefone</dt><dd><a href="tel:' + esc(b.customer_phone) + '">' + esc(b.customer_phone) + '</a></dd><dt>E-mail</dt><dd>' + (b.customer_email ? '<a href="mailto:' + esc(b.customer_email) + '">' + esc(b.customer_email) + '</a>' : '—') + '</dd>' + (b.chat_id ? '<dt>Live Chat</dt><dd><a href="#/chat/' + esc(b.chat_id) + '">Ver conversa</a></dd>' : '') + '<dt>Mensagens WhatsApp</dt><dd>' + (b.whatsapp_opt_in ? 'Autorizadas em ' + dt(b.whatsapp_opt_in_at) : 'Sem autorização') + '</dd></dl>' +
         (b.whatsapp.length ? '<ul class="plain-list" style="margin-top:10px" data-wa-sent>' + b.whatsapp.map(function (m) { return '<li>' + esc(WA_KIND[m.kind] || m.kind) + ': <strong>' + esc(WA_ST[m.status] || m.status) + '</strong> <span class="muted">' + dt(m.created_at) + '</span></li>'; }).join('') + '</ul>' : '') +
         (b.whatsapp_opt_in && can('bookings.manage') ? '<div class="row" style="margin-top:10px"><button type="button" class="btn btn--sm btn--ghost" data-wachange>Avisar alteração</button><button type="button" class="btn btn--sm btn--ghost" data-warevoke>Retirar autorização</button></div>' : '') +
         '<p style="margin-top:12px"><a class="btn btn--sm" href="' + wa + '" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> WhatsApp</a>' + (can('bookings.manage') ? ' <button type="button" class="btn btn--sm btn--ghost" data-clientlink><i class="bx bx-user-circle"></i> Área do cliente</button>' : '') + '</p>' + (b.customer_message ? '<p class="note" style="margin-top:10px">' + esc(b.customer_message) + '</p>' : '') + '</section>' +
@@ -916,6 +933,218 @@
     });
     $$('[data-st]').forEach(function (c) { c.addEventListener('click', function () { st = c.dataset.st; $$('[data-st]').forEach(function (x) { x.setAttribute('aria-pressed', x === c); }); load(); }); });
     load();
+  }
+
+  /* ── Live Chat ─────────────────────────────────────── */
+  var AGENT = { online: 'Online', away: 'Ausente', offline: 'Offline' };
+  var CHAT_FILTERS = [['open', 'Abertas'], ['new', 'Novas'], ['unassigned', 'Não atribuídas'], ['active', 'Em atendimento'], ['waiting', 'Aguardando resposta'], ['closed', 'Encerradas']];
+  var chatFilter = 'open';
+  function secs(n) { return n === null || n === undefined ? '—' : n < 60 ? n + ' s' : Math.round(n / 60) + ' min'; }
+  function chatId() { return window.crypto && crypto.randomUUID ? crypto.randomUUID() : 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 12); }
+
+  /* Presença: heartbeat em qualquer página do painel; «active» só com interacção real desde o último sinal */
+  function chatPresence() {
+    if (!can('chat.manage') || S.beat) return;
+    var acted = true, waiting = null;
+    ['mousemove', 'keydown', 'click', 'touchstart', 'scroll'].forEach(function (t) { document.addEventListener(t, function () { acted = true; }, { passive: true, capture: true }); });
+    S.beat = function (status) {
+      if (!S.me) return Promise.resolve(null);
+      var body = { active: acted };
+      if (status) body.status = status;
+      acted = false;
+      return api('POST', '/chat/heartbeat', body).then(function (r) {
+        if (!r.ok) return r;
+        S.agent = r.data;
+        var c = $('[data-count="chat_waiting"]');
+        if (c) { c.hidden = !r.data.waiting; c.textContent = r.data.waiting > 99 ? '99+' : r.data.waiting; }
+        if (waiting !== null && r.data.waiting > waiting && location.hash.indexOf('#/chat') !== 0) toast('Nova mensagem no Live Chat.');
+        waiting = r.data.waiting;
+        return r;
+      });
+    };
+    S.beat();
+    setInterval(function () { S.beat(); }, 30000);
+  }
+
+  function chat(m) {
+    if (!can('chat.view')) return denied('chat.view');
+    var seq = S.seq, manage = can('chat.manage'), sel = m[1] ? +m[1] : null, q = '', last = 0, shown = {}, C = null, sideKey = '', notesKey = '', typedAt = 0, draftId = chatId(), lastList = '', agents = [];
+    function alive() { return seq === S.seq; }
+
+    view.innerHTML = '<div class="row row--between" style="margin-bottom:12px"><div class="row">' + (manage ? '<label class="muted" for="chat-me">O meu estado</label><select id="chat-me" data-me style="width:auto">' + Object.keys(AGENT).map(function (k) { return '<option value="' + k + '">' + AGENT[k] + '</option>'; }).join('') + '</select><span class="muted" data-me-note></span>' : '') + '</div>' +
+      '<div class="row"><span class="muted" data-agents></span>' + (can('settings.manage') ? '<button type="button" class="btn btn--ghost btn--sm" data-chat-settings><i class="bx bx-cog"></i> Definições</button>' : '') + '</div></div>' +
+      '<div class="kpis" data-chat-kpis></div>' +
+      '<div class="chatp' + (sel ? ' has-sel' : '') + '"><aside class="chatp__list"><div class="chips" data-filters></div><input type="search" data-q placeholder="Nome, e-mail ou telefone" aria-label="Procurar conversas"><div data-convs></div></aside>' +
+      '<section class="chatp__main" aria-label="Conversa"><div data-empty class="empty"' + (sel ? ' hidden' : '') + '>Escolha uma conversa.</div>' +
+      '<div class="chatp__conv" data-conv' + (sel ? '' : ' hidden') + '><div class="chatp__head"><a class="chatp__back" href="#/chat" aria-label="Voltar à lista"><i class="bx bx-chevron-left"></i></a><div><strong data-cname></strong><span class="muted" data-cstate></span></div></div>' +
+      '<div class="chatp__log" data-log role="log" aria-live="polite" tabindex="0"></div><p class="muted chatp__typing" data-typing hidden></p>' +
+      (manage ? '<form class="chatp__composer" data-reply><input type="file" data-file accept="image/jpeg,image/png,image/webp,application/pdf" hidden><button type="button" class="btn btn--ghost btn--sm" data-attach aria-label="Anexar ficheiro"><i class="bx bx-paperclip"></i></button><textarea name="body" rows="2" maxlength="2000" placeholder="Escreva a resposta (Enter envia, Shift+Enter muda de linha)" aria-label="Resposta"></textarea><button class="btn btn--sm">Enviar</button></form>' : '') +
+      '</div></section><aside class="chatp__side"' + (sel ? '' : ' hidden') + '><div data-chat-info></div><div class="stack"><h3 class="h-sub">Notas internas</h3><p class="muted">Nunca são mostradas ao visitante.</p><ul class="timeline" data-notes></ul>' +
+      (manage ? '<form class="stack" data-note><textarea name="body" rows="2" maxlength="2000" aria-label="Nota interna" placeholder="Nota interna"></textarea><button class="btn btn--sm btn--ghost">Adicionar nota</button></form>' : '') + '</div></aside></div>';
+
+    function bubble(x) {
+      var f = '';
+      if (x.file_name) {
+        var url = '/api/admin/chat/file/' + x.id;
+        f = x.file_mime.indexOf('image/') === 0 ? '<a href="' + url + '" target="_blank" rel="noopener"><img src="' + url + '" alt="' + esc(x.file_name) + '"></a>' : '<a href="' + url + '"><i class="bx bx-file"></i> ' + esc(x.file_name) + '</a>';
+      }
+      return '<div class="chatp__msg ' + (x.sender === 'agent' ? 'is-agent' : 'is-visitor') + '"><span class="chatp__who">' + esc(x.author) + '</span>' + f + (x.body ? '<p>' + esc(x.body) + '</p>' : '') + '<time>' + dt(x.created_at) + '</time></div>';
+    }
+    function append(list) {
+      var log = $('[data-log]'), fresh = list.filter(function (x) { return !shown[x.id]; });
+      if (!log || !fresh.length) return;
+      var atEnd = log.scrollHeight - log.scrollTop - log.clientHeight < 80;
+      fresh.forEach(function (x) { shown[x.id] = true; last = Math.max(last, +x.id); log.insertAdjacentHTML('beforeend', bubble(x)); });
+      if (atEnd || fresh.some(function (x) { return x.sender === 'agent'; })) log.scrollTop = log.scrollHeight;
+    }
+    function loadList() {
+      var p = '/chat?filter=' + chatFilter + (q ? '&q=' + encodeURIComponent(q) : '');
+      return api('GET', p).then(function (r) {
+        if (!r.ok || !alive()) return;
+        var d = r.data, t = d.stats, key = JSON.stringify([d.conversations, d.counts, sel]);
+        agents = d.agents;
+        $('[data-chat-kpis]').innerHTML = kpi('', 'Recebidas (30 dias)', t.received, '') + kpi('', 'Pendentes', t.pending, '') + kpi('', 'Atendidas (30 dias)', t.attended, '') + kpi('', 'Primeira resposta (média)', secs(t.first_response), '');
+        var here = d.agents.filter(function (a) { return a.state !== 'offline'; });
+        $('[data-agents]').textContent = here.length ? here.map(function (a) { return a.name.split(' ')[0] + ': ' + AGENT[a.state]; }).join(' · ') : 'Ninguém disponível';
+        if (S.agent && $('[data-me]') && document.activeElement !== $('[data-me]')) {
+          $('[data-me]').value = S.agent.status;
+          $('[data-me-note]').textContent = S.agent.status === 'online' && S.agent.effective !== 'online' ? 'Sem actividade: aparece como ' + AGENT[S.agent.effective] : '';
+        }
+        if (key === lastList) return;
+        lastList = key;
+        $('[data-filters]').innerHTML = CHAT_FILTERS.map(function (f) { return '<button type="button" class="chip" data-f="' + f[0] + '" aria-pressed="' + (f[0] === chatFilter) + '">' + f[1] + ' <span>' + d.counts[f[0]] + '</span></button>'; }).join('');
+        $('[data-convs]').innerHTML = d.conversations.length ? d.conversations.map(function (c) {
+          return '<a class="chatp__item' + (+c.id === sel ? ' is-on' : '') + '" href="#/chat/' + c.id + '"><span class="row row--between"><strong>' + esc(c.name) + '</strong>' + (c.unread ? '<span class="nav-count">' + c.unread + '</span>' : '') + '</span>' +
+            '<span class="cell-sub">' + esc(c.subject_label) + (c.assigned_name ? ' · ' + esc(c.assigned_name.split(' ')[0]) : ' · sem responsável') + (c.status === 'closed' ? ' · encerrada' : '') + '</span><span class="chatp__preview">' + esc(c.last_preview || '') + '</span><time>' + dt(c.last_message_at) + '</time></a>';
+        }).join('') : '<p class="empty">Sem conversas.</p>';
+      });
+    }
+    function side(d) {
+      var c = d.conversation, b = d.booking, it = d.item, key = JSON.stringify([c.status, c.assigned_to, c.assigned_name, c.last_message_at, c.booking_id, d.related]);
+      if (key !== sideKey) {
+        sideKey = key;
+        $('[data-chat-info]').innerHTML = '<h3 class="h-sub">Visitante</h3><dl class="dl"><dt>Nome</dt><dd>' + esc(c.name) + '</dd><dt>E-mail</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></dd><dt>Telefone</dt><dd>' + esc(c.phone || '—') + '</dd><dt>Assunto</dt><dd>' + esc(c.subject_label) + '</dd><dt>Página de origem</dt><dd class="mono">' + esc(c.origin_page || '—') + '</dd><dt>Última actividade</dt><dd>' + dt(c.last_message_at) + '</dd><dt>Estado</dt><dd>' + (c.status === 'closed' ? 'Encerrada' : c.assigned_to ? 'Em atendimento' : 'Sem responsável') + '</dd><dt>Responsável</dt><dd data-owner>' + esc(c.assigned_name || '—') + '</dd></dl>' +
+          (it ? '<h3 class="h-sub">Pacote</h3><p data-item-ctx><strong>' + esc(it.name) + '</strong>' + (it.location ? '<br>' + esc(it.location) : '') + (it.price_from ? '<br>Desde ' + mzn(it.price_from) : '') + '</p>' : '') +
+          (b ? '<h3 class="h-sub">Reserva</h3><p data-booking-ctx><a class="mono" href="#/reservas/' + esc(b.reference) + '">' + esc(b.reference) + '</a> ' + badge(b.status) + '<br>' + esc(b.item_name) + '<br>' + date(b.date) + ' · ' + esc(b.pax) + ' pessoas<br>' + (b.total_to_confirm ? 'Total a confirmar' : mzn(b.total_estimate)) + '</p>' : '') +
+          (d.related.length ? '<h3 class="h-sub">Reservas com este e-mail</h3><ul class="plain-list">' + d.related.map(function (x) { return '<li><a class="mono" href="#/reservas/' + esc(x.reference) + '">' + esc(x.reference) + '</a> ' + esc(x.item_name) + (manage ? ' <button type="button" class="btn btn--ghost btn--sm" data-link="' + esc(x.reference) + '">Associar</button>' : '') + '</li>'; }).join('') + '</ul>' : '') +
+          (manage ? '<div class="stack" style="margin-top:12px">' + (!c.assigned_to ? '<button type="button" class="btn btn--sm" data-take>Assumir atendimento</button>' : '') + '<div class="field"><label for="chat-to">Atribuir a</label><select id="chat-to" data-assign><option value="">Ninguém</option>' + agents.map(function (a) { return '<option value="' + a.id + '"' + (+a.id === +c.assigned_to ? ' selected' : '') + '>' + esc(a.name) + '</option>'; }).join('') + '</select></div>' +
+            (c.status === 'closed' ? '<button type="button" class="btn btn--sm" data-reopen>Reabrir</button>' : '<button type="button" class="btn btn--sm btn--ghost" data-close>Encerrar conversa</button>') + '</div>' : '');
+      }
+      var nk = JSON.stringify(d.notes);
+      if (nk !== notesKey) {
+        notesKey = nk;
+        $('[data-notes]').innerHTML = d.notes.map(function (n) { return '<li><time>' + dt(n.created_at) + ' · ' + esc(n.author) + '</time>' + esc(n.body) + '</li>'; }).join('');
+      }
+    }
+    function loadConv() {
+      if (!sel) return Promise.resolve();
+      return api('GET', '/chat/' + sel + '?after=' + last + (document.hidden ? '' : '&read=1')).then(function (r) {
+        if (!alive()) return;
+        if (!r.ok) { if (r.status === 404) location.hash = '#/chat'; return; }
+        var d = r.data, c = d.conversation;
+        C = c;
+        append(d.messages);
+        $('[data-cname]').textContent = c.name;
+        $('[data-cstate]').textContent = ' ' + (c.visitor_here ? '· a ver a conversa' : '· fora da conversa');
+        var ty = $('[data-typing]');
+        ty.hidden = !(c.visitor_typing || c.other_typing);
+        ty.textContent = c.visitor_typing ? c.name.split(' ')[0] + ' está a escrever…' : c.other_typing ? (c.typing_name || 'Outro agente').split(' ')[0] + ' está a escrever…' : '';
+        var form = $('[data-reply]');
+        if (form) form.hidden = c.status === 'closed';
+        side(d);
+      });
+    }
+    function tick() {
+      if (!alive()) return;
+      loadList().then(loadConv).then(function () { if (alive()) setTimeout(tick, document.hidden ? 10000 : 3000); });
+    }
+    function act(path, body, done) {
+      api('POST', '/chat/' + sel + path, body || {}).then(function (r) {
+        if (!r.ok) return toast(errMsg(r), true);
+        sideKey = '';
+        if (done) toast(done);
+        loadList(); loadConv();
+      });
+    }
+
+    $('[data-filters]').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-f]');
+      if (!b) return;
+      chatFilter = b.dataset.f; lastList = ''; loadList();
+    });
+    var qt;
+    $('[data-q]').addEventListener('input', function (e) { clearTimeout(qt); qt = setTimeout(function () { q = e.target.value.trim(); lastList = ''; loadList(); }, 250); });
+    var me = $('[data-me]');
+    if (me) {
+      if (S.agent) me.value = S.agent.status;
+      me.addEventListener('change', function () { S.beat(me.value).then(function (r) { if (r && r.ok) { toast('Estado: ' + AGENT[me.value] + '.'); loadList(); } }); });
+    }
+    var reply = $('[data-reply]');
+    if (reply) {
+      var ta = reply.body;
+      function send() {
+        var text = ta.value.trim();
+        if (!text) return;
+        var id = draftId;
+        api('POST', '/chat/' + sel + '/messages', { body: text, client_id: id }).then(function (r) {
+          if (!r.ok) return toast(errMsg(r), true);       // o texto fica e o mesmo id evita duplicar ao repetir
+          if (ta.value.trim() === text) ta.value = '';
+          draftId = chatId();
+          sideKey = '';
+          loadConv(); loadList();
+        });
+      }
+      reply.addEventListener('submit', function (e) { e.preventDefault(); send(); });
+      ta.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+      ta.addEventListener('input', function () { if (Date.now() - typedAt > 3000) { typedAt = Date.now(); api('POST', '/chat/' + sel + '/typing', {}); } });
+      var file = $('[data-file]');
+      $('[data-attach]').addEventListener('click', function () { file.click(); });
+      file.addEventListener('change', function () {
+        if (!file.files[0]) return;
+        var fd = new FormData();
+        fd.append('file', file.files[0]);
+        fd.append('client_id', chatId());
+        file.value = '';
+        fetch('/api/admin/chat/' + sel + '/upload', { method: 'POST', credentials: 'same-origin', headers: { Accept: 'application/json', 'X-CSRF-Token': S.csrf }, body: fd })
+          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, data: d }; }); })
+          .then(function (r) { if (!r.ok) return toast(errMsg(r), true); loadConv(); })
+          .catch(function () { toast('Sem ligação.', true); });
+      });
+    }
+    var note = $('[data-note]');
+    if (note) note.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var text = note.body.value.trim();
+      if (!text) return;
+      api('POST', '/chat/' + sel + '/notes', { body: text }).then(function (r) { if (!r.ok) return toast(errMsg(r), true); note.body.value = ''; loadConv(); });
+    });
+    $('[data-chat-info]').addEventListener('click', function (e) {
+      if (e.target.closest('[data-take]')) act('/assign', { take: true }, 'Conversa assumida.');
+      if (e.target.closest('[data-close]')) act('/close', {}, 'Conversa encerrada.');
+      if (e.target.closest('[data-reopen]')) act('/reopen', {}, 'Conversa reaberta.');
+      var l = e.target.closest('[data-link]');
+      if (l) act('/booking', { reference: l.dataset.link }, 'Reserva associada.');
+    });
+    $('[data-chat-info]').addEventListener('change', function (e) {
+      if (e.target.matches('[data-assign]')) act('/assign', { user_id: e.target.value ? +e.target.value : null }, 'Responsável actualizado.');
+    });
+    var cfg = $('[data-chat-settings]');
+    if (cfg) cfg.addEventListener('click', function () {
+      api('GET', '/chat/settings').then(function (r) {
+        if (!r.ok) return toast(errMsg(r), true);
+        var s = r.data, h = s.hours || {}, days = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+        dialog('Definições do Live Chat', '<label class="check"><input type="checkbox" name="enabled"' + (s.enabled ? ' checked' : '') + '> Mostrar o chat no site</label><label class="check"><input type="checkbox" name="notify_offline"' + (s.notify_offline ? ' checked' : '') + '> Avisar a equipa por e-mail quando chegar uma mensagem sem ninguém disponível</label>' +
+          '<div class="field"><label>Guardar conversas durante (meses)</label><input type="number" name="retention_months" min="1" max="24" value="' + esc(s.retention_months) + '"></div>' +
+          '<h3 class="h-sub">Horário de atendimento (Maputo)</h3><p class="muted">Tudo vazio: sem limite de horário. Com algum dia preenchido, os dias vazios ficam fechados.</p>' +
+          days.map(function (n, i) { var d = h[i + 1] || {}; return '<div class="form-grid form-grid--3"><span style="align-self:center">' + n + '</span><input type="time" name="from' + (i + 1) + '" aria-label="' + n + ': início" value="' + esc(d.from || '') + '"><input type="time" name="to' + (i + 1) + '" aria-label="' + n + ': fim" value="' + esc(d.to || '') + '"></div>'; }).join(''), 'Guardar').then(function (v) {
+          if (!v) return;
+          var hours = {};
+          for (var i = 1; i <= 7; i++) if (v['from' + i] || v['to' + i]) hours[i] = { from: v['from' + i], to: v['to' + i] };
+          api('POST', '/chat/settings', { enabled: v.enabled, notify_offline: v.notify_offline, retention_months: +v.retention_months, hours: hours }).then(function (r2) { toast(r2.ok ? 'Definições guardadas.' : errMsg(r2), !r2.ok); });
+        });
+      });
+    });
+    tick();
   }
 
   /* ── Utilizadores e perfis ─────────────────────────── */

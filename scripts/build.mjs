@@ -319,6 +319,7 @@ ${dockHtml === undefined ? dock(lang) : dockHtml}
 ${cookieBanner(lang)}
 <script src="${asset('/assets/js/analytics.js')}"></script>
 <script src="${asset('/assets/js/site.js')}" defer></script>
+<script src="${asset('/assets/js/chat.js')}" data-css="${asset('/assets/css/chat.css')}" defer></script>
 ${scripts}</body>
 </html>
 `;
@@ -722,21 +723,25 @@ function legal(lang, kind) {
 <h2>Quem somos</h2><p>Mozambique Camp Adventures («Moz Camp Adventures»), Marina, Escola Náutica, Cidade de Maputo, Moçambique. Contacto: <a href="mailto:info@mozcampadventures.co.mz">info@mozcampadventures.co.mz</a> · +258 84 440 6543.</p>
 <h2>Que dados recolhemos e para quê</h2><ul>
 <li><strong>Pedidos de reserva e contacto:</strong> nome, telefone, e-mail, datas, número de participantes e a mensagem que escreve. São guardados no nosso servidor e usados apenas para responder e organizar a sua experiência. Guardamos também uma impressão irreversível (hash) do endereço IP, para protecção contra abusos.</li>
+<li><strong>Live Chat:</strong> nome, e-mail, telefone (opcional), assunto, página de origem, mensagens e ficheiros que enviar. São guardados no nosso servidor durante 12 meses após a última mensagem e usados apenas para responder. Se sair do site antes da resposta, enviamo-la por e-mail.</li>
+<li><strong>Mensagens de WhatsApp:</strong> só se o autorizar na reserva, usamos o seu número para enviar actualizações dessa reserva através da Meta WhatsApp Business. Pode sair a qualquer momento respondendo STOP.</li>
 <li><strong>Avaliações:</strong> nome, origem (opcional), classificação e texto. São guardadas no nosso servidor e só são publicadas depois de aprovadas pela equipa.</li>
 <li><strong>Conta de cliente (opcional):</strong> nome, e-mail, telefone (opcional), idioma e palavra-passe (guardada cifrada, nunca em texto). Serve para ver as suas reservas e os documentos. As reservas que fizer com a sessão iniciada ficam associadas à conta. Pode apagar a conta a qualquer momento em «A minha conta»; as reservas e os documentos fiscais já emitidos ficam guardados, por obrigação legal.</li>
 <li><strong>Promoções:</strong> só se aceitar expressamente, ao criar a conta ou em «A minha conta». Guardamos a data do consentimento. Pode deixar de receber a qualquer momento em «A minha conta».</li>
 <li><strong>Estatísticas de utilização:</strong> só com o seu consentimento, através do Google Analytics (via Google Tag Manager), com dados agregados.</li></ul>
-<h2>Cookies</h2><p>Usamos armazenamento local essencial para guardar as suas preferências de cookies e, se entrar na sua conta, um cookie de sessão essencial. Os cookies de análise só são activados se os aceitar. Pode mudar a escolha em «Gerir cookies», no rodapé.</p>
+<h2>Cookies</h2><p>Usamos armazenamento local essencial para guardar as suas preferências de cookies e, se entrar na sua conta ou iniciar uma conversa no Live Chat, um cookie de sessão essencial. Os cookies de análise só são activados se os aceitar. Pode mudar a escolha em «Gerir cookies», no rodapé.</p>
 <h2>Partilha</h2><p>Não vendemos dados pessoais. Partilhamos apenas o necessário com os prestadores envolvidos na sua experiência (por exemplo, o alojamento reservado) e com os serviços técnicos acima referidos.</p>
 <h2>Os seus direitos</h2><p>Pode pedir acesso, correcção ou eliminação dos seus dados através de <a href="mailto:info@mozcampadventures.co.mz">info@mozcampadventures.co.mz</a>.</p>` : `
 <h2>Who we are</h2><p>Mozambique Camp Adventures (“Moz Camp Adventures”), Marina, Escola Náutica, Maputo City, Mozambique. Contact: <a href="mailto:info@mozcampadventures.co.mz">info@mozcampadventures.co.mz</a> · +258 84 440 6543.</p>
 <h2>What we collect and why</h2><ul>
 <li><strong>Booking and contact requests:</strong> name, phone, e-mail, dates, number of participants and your message. They are stored on our own server and used only to reply and arrange your experience. We also keep an irreversible fingerprint (hash) of your IP address to protect against abuse.</li>
+<li><strong>Live Chat:</strong> name, e-mail, phone (optional), subject, page of origin, and the messages and files you send. They are stored on our own server for 12 months after the last message and used only to reply. If you leave the website before we reply, we send the reply by e-mail.</li>
+<li><strong>WhatsApp messages:</strong> only if you agree when booking, we use your number to send updates about that booking through Meta WhatsApp Business. You can opt out at any time by replying STOP.</li>
 <li><strong>Reviews:</strong> name, origin (optional), rating and text. Stored on our own server and published only after our team approves them.</li>
 <li><strong>Customer account (optional):</strong> name, e-mail, phone (optional), language and password (stored encrypted, never as plain text). It lets you see your bookings and documents. Bookings you make while signed in are linked to the account. You can delete the account at any time under “My account”; bookings and tax documents already issued are kept, as required by law.</li>
 <li><strong>Promotions:</strong> only if you explicitly agree, when creating the account or under “My account”. We record the date of your consent. You can stop at any time under “My account”.</li>
 <li><strong>Usage statistics:</strong> only with your consent, through Google Analytics (via Google Tag Manager), as aggregated data.</li></ul>
-<h2>Cookies</h2><p>We use essential local storage to remember your cookie preferences and, if you sign in to your account, an essential session cookie. Analytics cookies are only enabled if you accept them. You can change your choice under “Manage cookies” in the footer.</p>
+<h2>Cookies</h2><p>We use essential local storage to remember your cookie preferences and, if you sign in to your account or start a Live Chat conversation, an essential session cookie. Analytics cookies are only enabled if you accept them. You can change your choice under “Manage cookies” in the footer.</p>
 <h2>Sharing</h2><p>We do not sell personal data. We only share what is needed with the providers involved in your experience (for example the accommodation booked) and the technical services mentioned above.</p>
 <h2>Your rights</h2><p>You can ask to access, correct or delete your data at <a href="mailto:info@mozcampadventures.co.mz">info@mozcampadventures.co.mz</a>.</p>`)
     : (isPt ? `

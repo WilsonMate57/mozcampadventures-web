@@ -98,6 +98,14 @@ final class Bookings
             throw $e;
         }
 
+        if ($admin === null) {
+            try {
+                Chat::linkBooking($id);       // quem conversou e reservou fica ligado à reserva
+            } catch (Throwable $e) {
+                error_log('[MCA Chat] ' . $e->getMessage());
+            }
+        }
+
         /* Depois do commit: uma falha do WhatsApp nunca desfaz a reserva. O que ficar na fila sai pela tarefa agendada. */
         if ($consent) {
             try {

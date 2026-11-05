@@ -1,5 +1,23 @@
 # Relatório de testes — Moz Camp Adventures
 
+## Live Chat e integração dos três sistemas (05/11/2026)
+
+Executado em desenvolvimento (PHP 8.2, PostgreSQL local). A produção usa PHP 8.4. E-mail e WhatsApp em modo de teste: nada saiu para fora.
+
+`tests/chat.mjs`: 86/86. Cobre identificação, sessão, respostas, duplicados, isolamento entre visitantes, ficheiros, notas internas, vários agentes, filtros e pesquisa, encerrar e reabrir, disponibilidade da equipa, horário de Maputo, e-mail a quem saiu, retenção, indicadores, e o fluxo pacote → chat → reserva → capacidade → WhatsApp → painel.
+
+`tests/chat-ui.mjs`: 48/48, com dois Chrome independentes (visitante e agente). A resposta do agente apareceu no site em cerca de 3 s, sem recarregar. Inclui recuperação da conversa, contador de não lidas, falha de ligação, HTML como texto e telemóvel.
+
+Carga medida num único processo PHP em Windows, sem opcache: 200 consultas de 20 visitantes em simultâneo, cerca de 12 por segundo, sem erros. Um pedido `/health` (110 ms) demorou mais do que uma consulta (78 ms), por isso o limite é do ambiente. **Não representa a produção e falta medi-la lá.**
+
+Defeitos encontrados e corrigidos:
+
+- Os dados do visitante apagavam o menu do painel, por colisão do selector `data-side`. Foi detectado nas capturas de ecrã, não nos testes, que agora o verificam.
+- O botão aparecia sem estilo antes de o CSS carregar.
+- O aviso de cookies tapava a caixa de escrita.
+- Cada consulta com a janela aberta escrevia na base de dados, mesmo sem novidades.
+- O campo-armadilha do chat não tinha etiqueta.
+
 ## WhatsApp Business Cloud API (05/11/2026)
 
 Executado em desenvolvimento (PHP 8.2, PostgreSQL local) contra um servidor falso da Meta. **Não foi feito nenhum envio real**: faltam as credenciais e a aprovação dos modelos. A produção usa PHP 8.4.

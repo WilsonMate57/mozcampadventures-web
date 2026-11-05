@@ -104,7 +104,7 @@ await submit();
 await test('G  validação: data, nome e telefone em erro', () => ev(`document.querySelectorAll('[data-booking] .field.has-error').length`), 3);
 await test('G2 nada é enviado com campos em falta', resultShown, false);
 // O preenchimento automático do Chrome preenche campos «website»/«Website» mesmo escondidos → o servidor recusava (400)
-await test('G3 campo-armadilha com nome que o preenchimento automático não reconhece', () => ev(`[...new Set([...document.querySelectorAll('.hp input')].map(i => i.name + '|' + i.autocomplete + '|' + i.labels[0].textContent))].join()`), 'mca_hp|off|Não preencher');
+await test('G3 campo-armadilha com nome que o preenchimento automático não reconhece', () => ev(`[...new Set([...document.querySelectorAll('.hp input')].map(i => i.name + '|' + i.autocomplete + '|' + i.labels[0].textContent))].sort().join()`), 'mca_chat_hp|off|Não preencher,mca_hp|off|Não preencher');
 
 await go('/tours/ponta-douro-day-trip/');
 await test('H  Ponta D\'Ouro começa no mínimo (3) = 24.000', () => ev(TOTAL), '24.000 MZN');

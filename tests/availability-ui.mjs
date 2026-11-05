@@ -165,7 +165,7 @@ try {
   await click('[data-av-block]'); await waitFor(`document.querySelector('[data-dialog]').open && !!document.querySelector('[data-dialog] [name=reason]')`);
   await type('[data-dialog] [name=from]', nm(12)); await type('[data-dialog] [name=to]', nm(14)); await type('[data-dialog] [name=reason]', 'Teste manutenção');
   await ev(`document.querySelector('[data-dialog] button[value=ok]').click()`);
-  await waitFor(`document.querySelector('[data-av-blocks]').textContent.includes('Teste manutenção')`);
+  await waitFor(`document.querySelector('[data-av-blocks]').textContent.includes('Teste manutenção') && document.querySelector('[data-av-date="${nm(13)}"]').className.includes('is-blocked')`);   // lista e calendário actualizam em paralelo
   await test('P8 bloquear intervalo aparece nos bloqueios activos e no calendário', () => ev(`[document.querySelector('[data-av-blocks]').textContent.includes('Teste manutenção'), document.querySelector('[data-av-date="${nm(13)}"]').className.includes('is-blocked')]`), [true, true]);
   await ev(`document.querySelector('[data-av-view="week"]').click()`); await waitFor(`document.querySelectorAll('.av-cell').length === 7`);
   await test('P9 vista semanal', () => ev(`document.querySelectorAll('.av-cell').length`), 7);

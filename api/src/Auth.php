@@ -39,6 +39,8 @@ final class Auth
         'catalog.publish'  => 'Publicar o catálogo no site',
         'availability.view'   => 'Ver a disponibilidade dos pacotes',
         'availability.manage' => 'Gerir datas, capacidade e bloqueios',
+        'chat.view'        => 'Ver conversas do Live Chat',
+        'chat.manage'      => 'Atender, atribuir e encerrar conversas do Live Chat',
     ];
 
     private static ?array $user = null;

@@ -28,6 +28,8 @@ require __DIR__ . '/src/Invoices.php';
 require __DIR__ . '/src/Payments.php';
 require __DIR__ . '/src/Notify.php';
 require __DIR__ . '/src/WhatsApp.php';
+require __DIR__ . '/src/Chat.php';
+require __DIR__ . '/src/ChatAdmin.php';
 require __DIR__ . '/src/Admin.php';
 require __DIR__ . '/src/Account.php';
 require __DIR__ . '/src/CatalogAdmin.php';
@@ -40,6 +42,9 @@ try {
         if ($method === 'GET') WhatsApp::webhookVerify($_GET);
         if ($method !== 'POST') throw new ApiError(405, 'method_not_allowed');
         json_response(200, WhatsApp::webhook((string) file_get_contents('php://input', false, null, 0, 1048576), (string) ($_SERVER['HTTP_X_HUB_SIGNATURE_256'] ?? '')));
+    }
+    if (str_starts_with($path, '/chat/')) {        // Live Chat do visitante: sessão própria, sem conta
+        json_response(200, Chat::route($method, substr($path, 5)));
     }
     if (str_starts_with($path, '/admin/')) {       // painel: /api/admin/* (sessão + permissões)
         $result = Admin::route($method, substr($path, 6));
