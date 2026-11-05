@@ -197,6 +197,38 @@ await test('U53 E-mails e WhatsApp: separador WhatsApp mostra o teste', () => ev
 await go('#/definicoes'); await waitFor(`!!document.querySelector('[data-wa]')`);
 await ev(`(() => { const f = document.querySelector('[data-wa]'); f.enabled.checked = false; f.recipients.value = ''; f.requestSubmit(f.querySelector('button:not([type])')); return 1; })()`); await sleep(800);
 
+/* WhatsApp Business: credenciais só de escrita, reserva com consentimento, aviso de alteração, histórico (modo de teste, não envia) */
+await waitFor(`!!document.querySelector('[data-waapi]')`);
+await test('U60 ligação à Meta: segredos vazios, URL do webhook e interruptores por tipo', () => ev(`(() => { const f = document.querySelector('[data-waapi]'); return [f.token.type, f.token.value, /\\/api\\/whatsapp\\/webhook/.test(f.textContent), f.querySelectorAll('[data-ev]').length, f.querySelectorAll('[data-te]').length]; })()`), ['password', '', true, 5, 3]);
+await ev(`(() => { const f = document.querySelector('[data-waapi]'); f.customer_enabled.checked = true; f.verify_token.value = 'verify-ui-teste'; f.requestSubmit(f.querySelector('button:not([type])')); return 1; })()`);
+await sleep(1500); await waitFor(`!!document.querySelector('[data-waapi]') && document.querySelector('[data-waapi]').customer_enabled.checked`);
+await test('U61 guardar: fica activo, o segredo não volta ao campo nem à página', () => ev(`(() => { const f = document.querySelector('[data-waapi]'); return [f.customer_enabled.checked, f.verify_token.value, document.body.innerHTML.includes('verify-ui-teste'), /Guardado/.test(f.querySelector('#wa-verify_token').parentElement.textContent)]; })()`), [true, '', false, true]);
+await click('[data-wacheck]'); await waitFor(`!!document.querySelector('[data-wacheck-out] .note')`);
+await test('U62 testar ligação mostra o resultado', () => ev(`/Modo de teste/.test(document.querySelector('[data-wacheck-out]').textContent)`), true);
+const waBook = await (await fetch(BASE + '/api/bookings', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: BASE }, body: JSON.stringify({ idempotency_key: crypto.randomUUID(), item: 'maputo-city-tour', lang: 'pt', date: new Date(Date.now() + 50 * 864e5).toISOString().slice(0, 10), adults: 2, name: 'Cliente Consentimento', phone: '+258 84 700 1122', whatsapp_opt_in: true }) })).json();
+await go('#/reservas/' + waBook.reference); await waitFor(`!!document.querySelector('[data-wachange]')`);
+await test('U63 reserva mostra a autorização e a mensagem enviada', () => ev(`[/Autorizadas em/.test(document.body.textContent), document.querySelector('[data-wa-sent]').textContent.includes('Pedido recebido')]`), [true, true]);
+await click('[data-wachange]'); await waitFor(`!!document.querySelector('[data-dialog] textarea[name=note]')`);
+await type('[data-dialog] textarea[name=note]', 'Novo ponto de encontro');
+await ev(`(()=>{const f=document.querySelector('[data-dialog] form');f.requestSubmit(f.querySelector('button[value=ok]'))})()`);
+await waitFor(`document.querySelectorAll('[data-wa-sent] li').length === 2`);
+await test('U64 «Avisar alteração» regista a mensagem na reserva', () => ev(`document.querySelector('[data-wa-sent]').textContent.includes('Reserva alterada')`), true);
+await go('#/emails'); await waitFor(`!!document.querySelector('[data-st="wa"]')`);
+await click('[data-st="wa"]'); await waitFor(`!!document.querySelector('[data-wa-filter]')`);
+await ev(`(() => { const f = document.querySelector('[data-wa-filter]'); f.q.value = ${JSON.stringify(waBook.reference)}; f.requestSubmit(); return 1; })()`);
+const waRows = `document.querySelector('[data-list] .table-wrap tbody').children.length`;
+await waitFor(`${waRows} === 2`);
+await test('U65 histórico: indicadores e filtro por reserva', () => ev(`[document.querySelectorAll('[data-list] .kpis > *').length, ${waRows}]`), [4, 2]);
+if (process.env.PSQL) {
+  execSync(`${process.env.PSQL} -c "UPDATE whatsapp_messages SET status = 'failed', error = 'Falha de teste' WHERE kind = 'booking_changed' AND booking_id = (SELECT id FROM bookings WHERE reference = '${waBook.reference}')"`, { stdio: 'ignore' });
+  await ev(`document.querySelector('[data-wa-filter]').requestSubmit()`); await waitFor(`!!document.querySelector('[data-wa-resend]')`);
+  await click('[data-wa-resend]'); await waitFor(`!document.querySelector('[data-wa-resend]')`);
+  await test('U66 reenviar uma falhada actualiza a mesma linha', () => ev(`[${waRows}, /Falha de teste/.test(document.querySelector('[data-list]').textContent)]`), [2, false]);
+  execSync(`${process.env.PSQL} -c "DELETE FROM settings WHERE key = 'whatsapp_secrets'"`, { stdio: 'ignore' });
+}
+await go('#/definicoes'); await waitFor(`!!document.querySelector('[data-waapi]')`);
+await ev(`(() => { const f = document.querySelector('[data-waapi]'); f.customer_enabled.checked = false; f.requestSubmit(f.querySelector('button:not([type])')); return 1; })()`); await sleep(1200);
+
 /* 4. Utilizadores, definições, mobile */
 await go('#/utilizadores');
 await waitFor(`!!document.querySelector('[data-roleform]')`);

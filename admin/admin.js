@@ -35,6 +35,7 @@
     exceeds_balance: 'O valor excede o saldo em dívida.', duplicate_payment: 'Esta transacção (método + referência) já está registada.', invoice_has_payments: 'A factura tem pagamentos: reverta, reembolse ou decida-os antes de anular.',
     refund_exceeds_paid: 'O reembolso excede o valor efectivamente pago.', payments_only_on_ft: 'Pagamentos só em facturas FT emitidas.', reason_required: 'Indique o motivo.', payment_not_pending: 'Este pagamento já foi decidido.',
     payment_not_confirmed: 'Só pagamentos confirmados podem ser revertidos.', refunds_exceed_payments: 'Há reembolsos que deixariam o pago negativo.', invalid_method: 'Método de pagamento inválido.', invalid_paid_on: 'Data de pagamento inválida (não pode ser no futuro).',
+    whatsapp_invalid_id: 'Os identificadores da Meta têm só algarismos.', whatsapp_invalid_version: 'Versão da API inválida (exemplo: v21.0).', whatsapp_sender_recipient: 'O número remetente não pode receber avisos: retire-o da lista da equipa.', whatsapp_not_allowed: 'Sem envio: o cliente não autorizou, pediu para sair, o número é inválido, ou este tipo de mensagem está desligado.', whatsapp_not_failed: 'Só uma mensagem falhada pode ser reenviada.', note_required: 'Escreva o que mudou.',
     invalid_amount: 'Valor inválido.', whatsapp_invalid_number: 'Número de WhatsApp inválido', whatsapp_no_recipients: 'Indique pelo menos um número da equipa.', whatsapp_not_configured: 'O WhatsApp não está configurado no servidor (token e Phone number ID).', invoice_not_payable: 'A factura não está emitida.', not_resendable: 'Este e-mail não pode ser reenviado: é um registo antigo sem conteúdo, ou um e-mail de reposição de palavra-passe de cliente (o link não fica guardado; o cliente pede um novo).',
     date_out_of_range: 'Data inválida (tem de ser a partir de hoje).', invalid_phone: 'Telefone inválido.', invalid_name: 'Nome inválido.', invalid_email: 'E-mail inválido.', pdf_integrity_error: 'O ficheiro PDF não corresponde ao original. Contacte o administrador.',
     sold_out: 'Esta data está esgotada.', not_enough_places: 'Não há vagas suficientes nesta data.', date_blocked: 'Esta data está bloqueada.', date_closed: 'Esta data não está aberta.', session_required: 'Indique a sessão (hora).', invalid_session: 'Sessão ou hora inválida.', invalid_capacity: 'Capacidade inválida.', weekdays_required: 'Escolha pelo menos um dia da semana.', invalid_range: 'Intervalo de datas inválido.', invalid_hold: 'Indique um número de horas válido.', invalid_date: 'Data inválida.', invalid_notice: 'Antecedência mínima inválida.', invalid_advance: 'Antecedência máxima inválida.',
@@ -47,6 +48,8 @@
   function toastMail(msg, r) { var x = withMail(msg, r); toast(x.text, x.err); }
   var NOTIF = { booking_received: 'Pedido de reserva recebido', booking_confirmed: 'Reserva confirmada', booking_cancelled: 'Reserva cancelada', booking_completed: 'Actividade concluída (convite para avaliar)', payment_confirmed: 'Pagamento recebido (com recibo)', payment_refused: 'Comprovativo recusado', payment_reversed: 'Pagamento revertido', refund: 'Reembolso efectuado', invoice_voided: 'Factura anulada' };
   var KIND = { booking_client: 'Pedido recebido (cliente)', booking_team: 'Novo pedido (equipa)', contact_team: 'Mensagem de contacto (equipa)', invoice: 'Factura enviada', proof_team: 'Comprovativo recebido (equipa)', user_invite: 'Convite ao painel', user_reset: 'Repor palavra-passe', account_reset: 'Repor palavra-passe (cliente)', test: 'Teste de envio' };
+  var WA_KIND = { booking_received: 'Pedido recebido', booking_confirmed: 'Reserva confirmada', booking_changed: 'Reserva alterada', booking_cancelled: 'Reserva cancelada', activity_reminder: 'Lembrete da actividade', booking_team: 'Novo pedido (equipa)', test: 'Teste de envio' };
+  var WA_ST = { pending: 'Pendente', sent: 'Enviada', delivered: 'Entregue', read: 'Lida', failed: 'Falhou', logged: 'Modo de teste' };
   var NOTIFY_BOX = '<label class="check"><input type="checkbox" name="notify" checked> Notificar o cliente por e-mail</label>';
 
   function errMsg(r) { var e = (r && r.data && r.data.error) || 'server_error'; return ERR[e] || ('Erro: ' + e); }
@@ -446,7 +449,7 @@
         '<div class="form-grid form-grid--3"><div class="field"><label>Adultos</label><input type="number" name="adults" min="1" value="1"></div><div class="field"><label>Crianças</label><input type="number" name="children" min="0" value="0"></div><div class="field"><label>Canal</label><select name="channel"><option value="whatsapp">WhatsApp</option><option value="manual">Telefone / presencial</option><option value="email">E-mail</option></select></div></div>' +
         '<div class="field" data-boatwrap hidden><label>Barco</label><select name="boat" data-boat></select></div>' +
         '<div class="form-grid form-grid--2"><div class="field"><label>Nome do cliente <span class="req" aria-hidden="true">*</span></label><input name="name" required autocomplete="off"></div><div class="field"><label>Telefone <span class="req" aria-hidden="true">*</span></label><input name="phone" required inputmode="tel" autocomplete="off"></div></div>' +
-        '<div class="field"><label>E-mail <span class="opt">(opcional)</span></label><input type="email" name="email" autocomplete="off"></div><div class="field"><label>Sessão <span class="opt">(se o pacote tiver horários)</span></label><input type="time" name="session"></div><label class="check"><input type="checkbox" name="override_capacity"> Registar mesmo sem vagas ou com a data bloqueada</label><p class="muted">O preço é calculado pelo sistema com as tarifas publicadas.</p><p class="error" data-nb-error role="alert" hidden></p>', 'Registar pedido');
+        '<div class="field"><label>E-mail <span class="opt">(opcional)</span></label><input type="email" name="email" autocomplete="off"></div><div class="field"><label>Sessão <span class="opt">(se o pacote tiver horários)</span></label><input type="time" name="session"></div><label class="check"><input type="checkbox" name="whatsapp_opt_in"> O cliente autorizou mensagens por WhatsApp</label><label class="check"><input type="checkbox" name="override_capacity"> Registar mesmo sem vagas ou com a data bloqueada</label><p class="muted">O preço é calculado pelo sistema com as tarifas publicadas.</p><p class="error" data-nb-error role="alert" hidden></p>', 'Registar pedido');
       var d = $('[data-dialog]');
       function sync() {
         var it = items.filter(function (i) { return i.id === $('[data-item]', d).value; })[0];
@@ -478,7 +481,7 @@
         var ok = $$('[name=name], [name=phone], [name=email], [name=date], [name=checkin], [name=checkout]', form).map(check).every(Boolean);
         if (!ok) { var first = $('[aria-invalid=true]', form); if (first) first.focus(); return; }
         var v = {}; $$('[name]', d).forEach(function (el) { if (!(el.closest('.field') || {}).hidden) v[el.name] = el.value; });
-        v.adults = +v.adults; v.children = +v.children; if (!v.boat) delete v.boat; v.override_capacity = form.override_capacity.checked; if (!v.session) delete v.session;
+        v.adults = +v.adults; v.children = +v.children; if (!v.boat) delete v.boat; v.override_capacity = form.override_capacity.checked; v.whatsapp_opt_in = form.whatsapp_opt_in.checked; if (!v.session) delete v.session;
         busy(e.submitter, api('POST', '/bookings', v)).then(function (r) {
           if (!r.ok) { err.textContent = errMsg(r) + (r.data.min ? ' (mínimo ' + r.data.min + ')' : ''); err.hidden = false; return; }
           d.close('done');
@@ -505,7 +508,9 @@
         (b.invoices.length ? '<div class="table-wrap"><table><tbody>' + b.invoices.map(function (i) { return '<tr data-href="#/facturas/' + i.id + '"><td>' + esc(LABEL[i.doc_type]) + '</td><td class="mono">' + esc(i.number || '(rascunho)') + '</td><td>' + date(i.issue_date) + '</td><td class="num">' + mzn(i.total, true) + '</td><td>' + badge(i.status) + (i.pay_status && i.pay_status !== 'anulada' && b.finance ? ' ' + badge(i.pay_status) : '') + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<p class="muted">Ainda sem facturas.</p>') +
         (b.finance ? '<dl class="dl" style="margin-top:14px"><dt>Situação financeira</dt><dd>' + badge(b.finance.status) + ' <span class="muted">(independente do estado da reserva)</span></dd><dt>Facturado (FT)</dt><dd>' + mzn(b.finance.invoiced, true) + '</dd><dt>Pago (confirmado)</dt><dd>' + mzn(b.finance.paid, true) + '</dd><dt>Em dívida</dt><dd><strong>' + mzn(b.finance.balance, true) + '</strong></dd>' + (b.finance.awaiting ? '<dt>Por verificar</dt><dd>' + b.finance.awaiting + ' comprovativo(s)</dd>' : '') + '</dl>' : '') +
         '</section></div>' +
-        '<div class="stack"><section class="card"><h2>Cliente</h2><dl class="dl"><dt>Nome</dt><dd>' + esc(b.customer_name) + '</dd><dt>Telefone</dt><dd><a href="tel:' + esc(b.customer_phone) + '">' + esc(b.customer_phone) + '</a></dd><dt>E-mail</dt><dd>' + (b.customer_email ? '<a href="mailto:' + esc(b.customer_email) + '">' + esc(b.customer_email) + '</a>' : '—') + '</dd></dl>' +
+        '<div class="stack"><section class="card"><h2>Cliente</h2><dl class="dl"><dt>Nome</dt><dd>' + esc(b.customer_name) + '</dd><dt>Telefone</dt><dd><a href="tel:' + esc(b.customer_phone) + '">' + esc(b.customer_phone) + '</a></dd><dt>E-mail</dt><dd>' + (b.customer_email ? '<a href="mailto:' + esc(b.customer_email) + '">' + esc(b.customer_email) + '</a>' : '—') + '</dd><dt>Mensagens WhatsApp</dt><dd>' + (b.whatsapp_opt_in ? 'Autorizadas em ' + dt(b.whatsapp_opt_in_at) : 'Sem autorização') + '</dd></dl>' +
+        (b.whatsapp.length ? '<ul class="plain-list" style="margin-top:10px" data-wa-sent>' + b.whatsapp.map(function (m) { return '<li>' + esc(WA_KIND[m.kind] || m.kind) + ': <strong>' + esc(WA_ST[m.status] || m.status) + '</strong> <span class="muted">' + dt(m.created_at) + '</span></li>'; }).join('') + '</ul>' : '') +
+        (b.whatsapp_opt_in && can('bookings.manage') ? '<div class="row" style="margin-top:10px"><button type="button" class="btn btn--sm btn--ghost" data-wachange>Avisar alteração</button><button type="button" class="btn btn--sm btn--ghost" data-warevoke>Retirar autorização</button></div>' : '') +
         '<p style="margin-top:12px"><a class="btn btn--sm" href="' + wa + '" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> WhatsApp</a>' + (can('bookings.manage') ? ' <button type="button" class="btn btn--sm btn--ghost" data-clientlink><i class="bx bx-user-circle"></i> Área do cliente</button>' : '') + '</p>' + (b.customer_message ? '<p class="note" style="margin-top:10px">' + esc(b.customer_message) + '</p>' : '') + '</section>' +
         '<section class="card"><h2>Histórico</h2><ul class="timeline">' + b.events.map(function (e) {
           var txt = e.type === 'created' ? 'Pedido registado (' + esc(LABEL[e.data.channel] || e.data.channel || 'site') + ')' : e.type === 'status_changed' ? 'Estado: ' + esc(LABEL[e.data.from]) + ' → ' + esc(LABEL[e.data.to]) + (e.data.note ? ' — ' + esc(e.data.note) : '') : e.type === 'note' ? esc(e.data.text) : esc(e.type);
@@ -524,6 +529,19 @@
       });
       var cl = $('[data-clientlink]');
       if (cl) cl.addEventListener('click', function () { clientLinkDialog(b, false); });
+      var wc = $('[data-wachange]'), wr = $('[data-warevoke]');
+      if (wc) wc.addEventListener('click', function () {
+        dialog('Avisar alteração por WhatsApp', '<div class="field"><label>O que mudou (o cliente recebe este texto)</label><textarea name="note" rows="3" maxlength="300" required></textarea></div>', 'Enviar').then(function (v) {
+          if (!v) return;
+          api('POST', '/bookings/' + b.reference + '/whatsapp-change', { note: v.note }).then(function (r2) { if (!r2.ok) return toast(errMsg(r2), true); toast(r2.data.status === 'failed' ? 'O envio FALHOU. Veja o detalhe em E-mails → WhatsApp.' : 'Aviso: ' + (WA_ST[r2.data.status] || r2.data.status) + '.', r2.data.status === 'failed'); route(); });
+        });
+      });
+      if (wr) wr.addEventListener('click', function () {
+        dialog('Retirar autorização de WhatsApp', '<p>Este número deixa de receber mensagens, nesta e em futuras reservas.</p>', 'Retirar', true).then(function (v) {
+          if (!v) return;
+          api('POST', '/bookings/' + b.reference + '/whatsapp-revoke', {}).then(function (r2) { if (!r2.ok) return toast(errMsg(r2), true); toast('Autorização retirada.'); route(); });
+        });
+      });
       var nf = $('[data-note]');
       if (nf) nf.addEventListener('submit', function (e) { e.preventDefault(); api('POST', '/bookings/' + b.reference + '/notes', { text: nf.text.value }).then(function (r2) { if (!r2.ok) return toast(errMsg(r2), true); route(); }); });
       $$('[data-inv]').forEach(function (btn) {
@@ -836,7 +854,7 @@
     view.innerHTML = '<div class="toolbar chips">' + [['failed', 'Falhados'], ['sent', 'Enviados'], ['logged', 'Modo de teste'], ['', 'Todos'], ['wa', 'WhatsApp']].map(function (x) { return '<button class="chip" data-st="' + x[0] + '" aria-pressed="' + (x[0] === st) + '">' + x[1] + '</button>'; }).join('') + '</div>' +
       '<p class="muted" style="margin-bottom:12px" data-mnote></p><div data-list></div>';
     function load() {
-      $('[data-mnote]').textContent = st === 'wa' ? '«Enviado» significa que a Meta aceitou a mensagem; a entrega e a leitura não são seguidas. Os números e o interruptor estão em Definições.' : '«Enviado» significa que o servidor de e-mail (ou o Resend) aceitou a mensagem; a entrega na caixa do cliente não pode ser garantida.';
+      $('[data-mnote]').textContent = st === 'wa' ? '«Enviada» significa que a Meta aceitou a mensagem. «Entregue» e «Lida» só aparecem quando a Meta o confirma pelo webhook.' : '«Enviado» significa que o servidor de e-mail (ou o Resend) aceitou a mensagem; a entrega na caixa do cliente não pode ser garantida.';
       if (st === 'wa') return loadWa();
       api('GET', '/emails?status=' + st).then(function (r) {
         var list = r.data.emails || [];
@@ -849,19 +867,43 @@
         }).join('') + '</tbody></table></div>' : '<p class="empty">Nada aqui.</p>';
       });
     }
+    var waq = { status: '', kind: '', q: '' };
     function loadWa() {
-      api('GET', '/whatsapp').then(function (r) {
+      var qs = Object.keys(waq).filter(function (k) { return waq[k]; }).map(function (k) { return k + '=' + encodeURIComponent(waq[k]); }).join('&');
+      api('GET', '/whatsapp' + (qs ? '?' + qs : '')).then(function (r) {
         if (!r.ok) return toast(errMsg(r), true);
-        var list = r.data.messages || [], ws = r.data.status;
-        var head = !ws.enabled ? '<p class="note" style="margin-bottom:12px"><i class="bx bx-info-circle"></i> Avisos por WhatsApp desligados. Active-os em <a href="#/definicoes">Definições</a>.</p>' : '';
-        $('[data-list]').innerHTML = head + (list.length ? '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Tipo</th><th>Para</th><th>Mensagem</th><th>Estado</th></tr></thead><tbody>' + list.map(function (m) {
-          var cls = m.status === 'failed' ? 'recusado' : m.status === 'sent' ? 'confirmado' : 'rascunho';
-          return '<tr><td>' + dt(m.created_at) + '</td><td>' + esc(KIND[m.kind] || (m.kind === 'booking_team' ? 'Novo pedido (equipa)' : m.kind)) + '</td><td>+' + esc(m.to_number) + '</td>' +
-            '<td>' + (m.related_type === 'booking' && m.params && m.params[0] ? '<a href="#/reservas/' + esc(m.params[0]) + '">' + esc(m.params[0]) + '</a> · ' : '') + esc((m.params || []).slice(1, 3).join(' · ')) + '<span class="cell-sub">Modelo ' + esc(m.template) + '</span></td>' +
-            '<td><span class="badge badge--' + cls + '">' + esc(ST[m.status]) + '</span>' + (m.error ? '<br><span class="muted">' + esc(m.error) + '</span>' : '') + '</td></tr>';
-        }).join('') + '</tbody></table></div>' : '<p class="empty">Ainda não foi enviada nenhuma mensagem.</p>');
+        var list = r.data.messages || [], t = r.data.stats, inbound = r.data.inbound || [];
+        function opts(map, sel) { return '<option value="">Todos</option>' + Object.keys(map).map(function (k) { return '<option value="' + k + '"' + (k === sel ? ' selected' : '') + '>' + esc(map[k]) + '</option>'; }).join(''); }
+        var rows = list.map(function (m) {
+          var cls = m.status === 'failed' ? 'recusado' : m.status === 'pending' || m.status === 'logged' ? 'rascunho' : 'confirmado';
+          return '<tr><td>' + dt(m.created_at) + '</td><td>' + esc(WA_KIND[m.kind] || m.kind) + '<span class="cell-sub">' + (m.audience === 'team' ? 'Equipa' : 'Cliente · ' + esc(m.lang.toUpperCase())) + '</span></td><td>+' + esc(m.to_number) + '</td>' +
+            '<td>' + (m.reference ? '<a href="#/reservas/' + esc(m.reference) + '">' + esc(m.reference) + '</a>' : '—') + '<span class="cell-sub">Modelo ' + esc(m.template) + '</span>' + (m.provider_id ? '<span class="cell-sub mono">' + esc(m.provider_id) + '</span>' : '') + '</td>' +
+            '<td><span class="badge badge--' + cls + '">' + esc(WA_ST[m.status] || m.status) + '</span>' + (m.error ? '<br><span class="muted">' + esc(m.error) + '</span>' : '') + (m.delivered_at ? '<span class="cell-sub">Entregue ' + dt(m.delivered_at) + '</span>' : '') + (m.read_at ? '<span class="cell-sub">Lida ' + dt(m.read_at) + '</span>' : '') + '</td>' +
+            '<td>' + (m.status === 'failed' ? '<button class="btn btn--sm" data-wa-resend="' + m.id + '">Reenviar</button>' : '') + '</td></tr>';
+        }).join('');
+        $('[data-list]').innerHTML = (!r.data.status.customer_enabled ? '<p class="note" style="margin-bottom:12px"><i class="bx bx-info-circle"></i> Mensagens a clientes desligadas. Active-as em <a href="#/definicoes">Definições</a> depois de a Meta aprovar os modelos.</p>' : '') +
+          '<div class="kpis" style="margin-bottom:14px">' + kpi('', 'Enviadas (30 dias)', t.sent, '') + kpi('', 'Entregues', t.delivered, '') + kpi('', 'Lidas', t.read, '') + kpi('', 'Falhadas', t.failed, '') + '</div>' +
+          '<form class="row" style="margin-bottom:12px" data-wa-filter><select name="status" aria-label="Estado" style="width:auto">' + opts(WA_ST, waq.status) + '</select><select name="kind" aria-label="Tipo" style="width:auto">' + opts(WA_KIND, waq.kind) + '</select><input name="q" value="' + esc(waq.q) + '" placeholder="Número ou referência" aria-label="Procurar" style="width:auto"><button class="btn btn--sm btn--ghost">Filtrar</button></form>' +
+          (list.length ? '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Tipo</th><th>Para</th><th>Reserva</th><th>Estado</th><th><span class="sr-only">Acções</span></th></tr></thead><tbody>' + rows + '</tbody></table></div>' : '<p class="empty">Sem mensagens.</p>') +
+          (inbound.length ? '<h3 class="h-sub" style="margin-top:18px">Mensagens recebidas</h3><div class="table-wrap"><table><tbody>' + inbound.map(function (m) { return '<tr><td>' + dt(m.created_at) + '</td><td>+' + esc(m.from_number) + '</td><td>' + esc(m.body) + '</td></tr>'; }).join('') + '</tbody></table></div>' : '');
       });
     }
+    $('[data-list]').addEventListener('submit', function (e) {
+      if (!e.target.matches('[data-wa-filter]')) return;
+      e.preventDefault();
+      waq = { status: e.target.status.value, kind: e.target.kind.value, q: e.target.q.value.trim() };
+      loadWa();
+    });
+    $('[data-list]').addEventListener('click', function (e) {
+      var w = e.target.closest('[data-wa-resend]');
+      if (!w) return;
+      w.disabled = true;
+      api('POST', '/whatsapp/' + w.dataset.waResend + '/resend', {}).then(function (r) {
+        if (!r.ok) { toast(errMsg(r), true); return loadWa(); }
+        toast(r.data.status === 'failed' ? 'O reenvio também FALHOU.' : 'Mensagem: ' + (WA_ST[r.data.status] || r.data.status) + '.', r.data.status === 'failed');
+        loadWa();
+      });
+    });
     $('[data-list]').addEventListener('click', function (e) {
       var b = e.target.closest('[data-resend]');
       if (!b) return;
@@ -938,7 +980,7 @@
         '<p class="muted" style="margin-top:14px">As facturas já emitidas guardam uma cópia destes dados e não mudam.</p>' +
         '<form class="card stack" data-notif style="margin-top:16px"><h2>Notificações automáticas ao cliente</h2><div class="perm-grid">' +
         Object.keys(r.data.notifications || {}).map(function (k) { return '<label class="check"><input type="checkbox" name="' + k + '"' + (r.data.notifications[k] ? ' checked' : '') + '> ' + esc(NOTIF[k] || k) + '</label>'; }).join('') +
-        '</div><p class="muted">Mesmo activas, cada acção no painel permite desmarcar «Notificar o cliente».</p><button class="btn">Guardar notificações</button></form>' + channelsCard(r.data.channels);
+        '</div><p class="muted">Mesmo activas, cada acção no painel permite desmarcar «Notificar o cliente».</p><button class="btn">Guardar notificações</button></form>' + channelsCard(r.data.channels) + waApiCard(r.data.channels, r.data.team_events);
       $('[data-notif]').addEventListener('submit', function (e) {
         e.preventDefault();
         var v = {};
@@ -946,6 +988,7 @@
         api('POST', '/settings/notifications', v).then(function (r2) { if (!r2.ok) return toast(errMsg(r2), true); toast('Preferências de notificação guardadas.'); });
       });
       bindChannels();
+      bindWaApi();
       var box = $('[data-methods]');
       function addM(m) {
         var div = document.createElement('div');
@@ -996,6 +1039,48 @@
         '<span class="help">Formato internacional; números moçambicanos podem ir sem o 258. Cada número tem de ter WhatsApp.</span></div>' +
         '<div class="row"><button class="btn btn--sm">Guardar WhatsApp</button><button type="button" class="btn btn--ghost btn--sm" data-test="whatsapp"><i class="bx bx-send"></i> Enviar WhatsApp de teste</button></div></form>' +
       '</div><div data-test-result role="status" aria-live="polite"></div></section>';
+  }
+  /* WhatsApp Business: os segredos são só de escrita (o painel apenas sabe se existem) */
+  function waApiCard(ch, te) {
+    if (!ch) return '';
+    var w = ch.whatsapp, ev = w.events || {};
+    function has(ok) { return ok ? '<span class="help">Guardado. Deixe vazio para manter.</span>' : '<span class="help">Ainda não definido.</span>'; }
+    function field(id, label, value, help) { return '<div class="field"><label for="wa-' + id + '">' + label + '</label><input id="wa-' + id + '" name="' + id + '" value="' + esc(value || '') + '" autocomplete="off">' + (help || '') + '</div>'; }
+    function secret(id, label, ok) { return '<div class="field"><label for="wa-' + id + '">' + label + '</label><input id="wa-' + id + '" name="' + id + '" type="password" autocomplete="new-password">' + has(ok) + '</div>'; }
+    return '<form class="card stack" style="margin-top:16px" data-waapi><h2>WhatsApp Business (Meta Cloud API)</h2>' +
+      '<div class="form-grid form-grid--2">' + field('phone_number_id', 'Phone Number ID', '', w.phone_number_id ? '<span class="help">Actual: ' + esc(w.phone_number_id) + '. Deixe vazio para manter.</span>' : '') + field('waba_id', 'WhatsApp Business Account ID', w.waba_id) + field('app_id', 'App ID', w.app_id) + field('api_version', 'Versão da API', w.api_version) + field('sender_number', 'Número remetente', w.sender_number, '<span class="help">Nunca recebe avisos da equipa.</span>') + '</div>' +
+      '<div class="form-grid form-grid--2">' + secret('token', 'Access Token permanente', w.has_token) + secret('app_secret', 'App Secret', w.has_app_secret) + secret('verify_token', 'Verify Token do webhook', w.has_verify_token) + '</div>' +
+      '<dl class="kv"><dt>URL do webhook</dt><dd class="mono">' + esc(w.webhook_url) + '</dd></dl>' +
+      '<h3 class="h-sub">Mensagens a clientes</h3><label class="check"><input type="checkbox" name="customer_enabled"' + (w.customer_enabled ? ' checked' : '') + '> Enviar mensagens a clientes que autorizaram (active só com os modelos aprovados pela Meta)</label>' +
+      Object.keys(w.templates).map(function (k) { return '<label class="check"><input type="checkbox" data-ev="' + k + '"' + (ev[k] !== false ? ' checked' : '') + '> ' + esc(WA_KIND[k]) + ' <span class="muted">(' + esc(w.templates[k]) + ')</span></label>'; }).join('') +
+      '<div class="field" style="max-width:260px"><label for="wa-days">Lembrete: dias antes da actividade</label><input id="wa-days" name="reminder_days" type="number" min="0" max="14" value="' + esc(w.reminder_days) + '"><span class="help">0 desliga o lembrete.</span></div>' +
+      '<h3 class="h-sub">Avisos internos</h3>' + [['email_new_booking', 'E-mail à equipa a cada novo pedido'], ['email_proof', 'E-mail à equipa a cada comprovativo'], ['whatsapp_new_booking', 'WhatsApp à equipa a cada novo pedido']].map(function (x) { return '<label class="check"><input type="checkbox" data-te="' + x[0] + '"' + (te[x[0]] !== false ? ' checked' : '') + '> ' + x[1] + '</label>'; }).join('') +
+      '<div class="row"><button class="btn btn--sm">Guardar</button><button type="button" class="btn btn--ghost btn--sm" data-wacheck>Testar ligação</button></div><div data-wacheck-out role="status" aria-live="polite"></div></form>';
+  }
+  function bindWaApi() {
+    var f = $('[data-waapi]');
+    if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var body = { waba_id: f.waba_id.value, app_id: f.app_id.value, api_version: f.api_version.value, sender_number: f.sender_number.value, customer_enabled: f.customer_enabled.checked, reminder_days: +f.reminder_days.value, events: {}, token: f.token.value, app_secret: f.app_secret.value, verify_token: f.verify_token.value };
+      if (f.phone_number_id.value.trim()) body.phone_number_id = f.phone_number_id.value;
+      var te = {};
+      $$('[data-ev]', f).forEach(function (c) { body.events[c.dataset.ev] = c.checked; });
+      $$('[data-te]', f).forEach(function (c) { te[c.dataset.te] = c.checked; });
+      busy(e.submitter, api('POST', '/whatsapp/settings', body).then(function (r) { return r.ok ? api('POST', '/settings/team_events', te) : r; })).then(function (r) {
+        if (!r.ok) return toast(errMsg(r), true);
+        toast('Definições guardadas.');
+        route();
+      });
+    });
+    $('[data-wacheck]', f).addEventListener('click', function (e) {
+      var out = $('[data-wacheck-out]', f);
+      busy(e.currentTarget, api('POST', '/whatsapp/check', {})).then(function (r) {
+        if (!r.ok) return toast(errMsg(r), true);
+        var d = r.data;
+        out.innerHTML = '<div class="note' + (d.ok ? '' : ' note--warn') + '">' + (d.mode === 'log' ? esc(d.message) : d.ok ? 'Ligação correcta: ' + esc(d.number) + (d.name ? ' · ' + esc(d.name) : '') + (d.quality ? ' · qualidade ' + esc(d.quality) : '') : d.expired ? 'O token expirou ou foi revogado. Crie um novo e guarde-o aqui.' : 'Falhou: ' + esc(d.error)) + '</div>';
+      });
+    });
   }
   function bindChannels() {
     var card = $('[data-channels]');

@@ -109,6 +109,8 @@ await test('G3 campo-armadilha com nome que o preenchimento automático não rec
 await go('/tours/ponta-douro-day-trip/');
 await test('H  Ponta D\'Ouro começa no mínimo (3) = 24.000', () => ev(TOTAL), '24.000 MZN');
 await click('[data-step="adults:-1"]');
+await test('W  consentimento de WhatsApp desmarcado por omissão e com o texto de saída', () => ev(`(() => { const c = document.querySelector('#bk-wa'); return [c.checked, /STOP/.test(c.parentElement.textContent)]; })()`), [false, true]);
+await ev(`(() => { window.__b = null; const f = window.fetch; window.fetch = (u, o) => { if (String(u).includes('/api/bookings')) window.__b = o.body; return f(u, o); }; document.querySelector('#bk-wa').checked = true; })()`);
 await setVal('#bk-date', iso(10)); await fillContact(); await submit();
 await test('H2 abaixo do mínimo: pedido BLOQUEADO', () => ev(`[!document.querySelector('[data-booking-error]').hidden, !document.querySelector('[data-booking-result]').hidden]`), [true, false]);
 await click('[data-step="adults:1"]');
@@ -116,6 +118,7 @@ await check('input[name=transfer][value="day-trip-transfer"]');
 await test('I  transfer próprio do JSON: 3 × 8.000 + 14.000 = 38.000', () => ev(TOTAL), '38.000 MZN');
 await submit('');
 await sleep(1200);
+await test('W  o pedido leva o consentimento marcado', () => ev(`JSON.parse(window.__b || '{}').whatsapp_opt_in === true`), true);
 if (WITH_API) {
   await test('I2 [API] no mínimo: pedido registado com referência e total do servidor', () => ev(`[/^MCA-\\d{4}-\\d{5}$/.test(document.querySelector('[data-reference]')?.textContent||''), document.querySelector('[data-booking-result] .summary__total span:last-child').textContent, document.querySelector('[data-booking]').hidden]`), [true, '38.000 MZN', true]);
   await test('I3 [API] botão WhatsApp leva a referência', () => ev(`decodeURIComponent(document.querySelector('[data-booking-result] a[href*="wa.me"]').href).includes(document.querySelector('[data-reference]').textContent)`), true);

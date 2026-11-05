@@ -651,6 +651,7 @@ function detail(p, lang) {
     <div class="bk-step">${label(b.you)}
       <div class="field"><label for="bk-name">${b.name}</label><input id="bk-name" autocomplete="name" required><span class="field__error">${b.errName}</span></div>
       <div class="field-row"><div class="field"><label for="bk-phone">${b.phone}</label><input id="bk-phone" type="tel" autocomplete="tel" placeholder="+258 84 000 0000" required><span class="field__error">${b.errPhone}</span></div><div class="field"><label for="bk-email">${b.email}</label><input id="bk-email" type="email" autocomplete="email"></div></div>
+      <label class="check-line"><input type="checkbox" id="bk-wa"><span>${b.waConsent}</span></label>
     </div>
     <div class="summary" data-summary aria-live="polite"></div>
     <p class="form-error" data-booking-error role="alert" hidden></p>

@@ -102,7 +102,7 @@ final class Auth
         $stmt = db()->prepare('SELECT id, name, password_hash, active FROM users WHERE lower(email) = ?');
         $stmt->execute([$email]);
         $u = $stmt->fetch();
-        $hash = $u['password_hash'] ?? password_hash(random_bytes(8), PASSWORD_DEFAULT);   // mesmo custo se o e-mail não existir
+        $hash = $u['password_hash'] ?? password_hash(bin2hex(random_bytes(8)), PASSWORD_DEFAULT);   // mesmo custo se o e-mail não existir
         $ok = password_verify($password, $hash) && $u && $u['active'] && $u['password_hash'];
         if (!$ok) {
             Audit::log('login_failed', 'user', $u['id'] ?? null, ['email' => $email], $u ? (int) $u['id'] : null, $u['name'] ?? null);

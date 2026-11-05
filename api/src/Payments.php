@@ -275,7 +275,7 @@ final class Payments
         }
         $id = (int) $ins->fetchColumn();
         self::event($id, 'declared', ['amount' => $data['amount'], 'method' => $data['method']], null, 'cliente');
-        Mailer::send('proof_team', Mailer::team(), "Comprovativo recebido — {$inv['number']}", "O cliente enviou um comprovativo de pagamento para a factura {$inv['number']}.\nValor declarado: " . Invoices::money($data['amount']) . "\nMétodo: {$data['method']}\nReferência: " . ($data['reference'] ?: '—') . "\n\nVerifique a entrada dos fundos antes de confirmar no painel.", 'payment', $id);
+        if (setting('team_events')['email_proof'] ?? true) Mailer::send('proof_team', Mailer::team(), "Comprovativo recebido — {$inv['number']}", "O cliente enviou um comprovativo de pagamento para a factura {$inv['number']}.\nValor declarado: " . Invoices::money($data['amount']) . "\nMétodo: {$data['method']}\nReferência: " . ($data['reference'] ?: '—') . "\n\nVerifique a entrada dos fundos antes de confirmar no painel.", 'payment', $id);
         return ['ok' => true, 'status' => 'declarado'];
     }
 

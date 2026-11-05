@@ -160,15 +160,21 @@ function secret(string $env, string $configKey): string
     return is_string($v) && $v !== '' ? $v : (string) (config($configKey) ?? '');
 }
 
+/** GET JSON por HTTPS, com o mesmo resultado de http_post_json(). */
+function http_get_json(string $url, array $headers, int $timeout = 8): array
+{
+    return http_post_json($url, null, $headers, $timeout, 'GET');
+}
+
 /**
  * POST JSON por HTTPS (Resend, Meta WhatsApp). Usa streams do PHP (precisa de openssl e allow_url_fopen).
  * @return array{status:int, body:?array, error:?string}  status 0 = sem resposta (rede, DNS, tempo esgotado)
  */
-function http_post_json(string $url, array $payload, array $headers, int $timeout = 8): array
+function http_post_json(string $url, ?array $payload, array $headers, int $timeout = 8, string $method = 'POST'): array
 {
     $h = ['Content-Type: application/json', 'Accept: application/json', 'User-Agent: MCA-API/' . MCA_API_VERSION];
     foreach ($headers as $k => $v) $h[] = "$k: $v";
-    $ctx = stream_context_create(['http' => ['method' => 'POST', 'header' => implode("\r\n", $h), 'content' => json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+    $ctx = stream_context_create(['http' => ['method' => $method, 'header' => implode("\r\n", $h), 'content' => $payload === null ? '' : json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
         'timeout' => $timeout, 'ignore_errors' => true, 'follow_location' => 0], 'ssl' => ['verify_peer' => true, 'verify_peer_name' => true]]);
     $err = null;
     set_error_handler(static function (int $no, string $msg) use (&$err): bool { $err = $msg; return true; });

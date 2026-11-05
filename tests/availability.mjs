@@ -63,7 +63,7 @@ const cleanup = () => {
   sql(`DELETE FROM availability_rules WHERE item_id IN ('${items.join("','")}')`);
   sql(`DELETE FROM availability_slots WHERE item_id IN ('${items.join("','")}')`);
   sql(`DELETE FROM availability_blocks WHERE reason LIKE 'Teste%'`);
-  sql(`UPDATE bookings SET status = 'cancelada' WHERE customer_name = 'Teste Disponibilidade'`);
+  sql(`UPDATE bookings SET status = 'cancelada' WHERE customer_name = 'Teste Disponibilidade' OR item_id IN ('${items.join("','")}')`);   // inclui reservas deixadas por outras suites
   sql(`DELETE FROM rate_limits`);
 };
 cleanup();

@@ -560,7 +560,8 @@
         transfer: (form.querySelector('input[name=transfer]:checked') || {}).value || null,
         extras: $$('input[name=extra]:checked', form).map(function (x) { return x.value; }),
         name: nameEl.value.trim(), phone: phoneEl.value.trim(), email: emailEl.value.trim(),
-        website: (form.elements.mca_hp || {}).value || ''
+        website: (form.elements.mca_hp || {}).value || '',
+        whatsapp_opt_in: !!($('#bk-wa', form) || {}).checked
       };
       if (isStay) { payload.checkin = inEl.value; payload.checkout = outEl.value; } else { payload.date = dateEl.value; if (av.session) payload.session = av.session; }
 

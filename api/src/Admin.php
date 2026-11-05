@@ -82,9 +82,14 @@ final class Admin
             ['POST', '#^/roles$#', fn () => self::saveRole(null, json_input(), Auth::require('users.manage'))],
             ['POST', '#^/roles/(\d+)$#', fn ($m) => self::saveRole((int) $m[1], json_input(), Auth::require('users.manage'))],
             ['GET', '#^/settings$#', fn () => self::settings(Auth::require('settings.manage'))],
-            ['POST', '#^/settings/(company|payment|notifications|whatsapp|email_team)$#', fn ($m) => self::saveSetting($m[1], json_input(), Auth::require('settings.manage'))],
+            ['POST', '#^/settings/(company|payment|notifications|whatsapp|email_team|team_events)$#', fn ($m) => self::saveSetting($m[1], json_input(), Auth::require('settings.manage'))],
             ['POST', '#^/notifications/test$#', fn () => self::testChannel(json_input(), Auth::require('settings.manage'))],
-            ['GET', '#^/whatsapp$#', fn () => (Auth::require('emails.manage') ? WhatsApp::log() : null)],
+            ['GET', '#^/whatsapp$#', fn () => (Auth::require('emails.manage') ? WhatsApp::log($_GET) : null)],
+            ['POST', '#^/whatsapp/(\d+)/resend$#', fn ($m) => WhatsApp::resend((int) $m[1], Auth::require('emails.manage'))],
+            ['POST', '#^/whatsapp/check$#', fn () => (Auth::require('settings.manage') ? WhatsApp::check() : null)],
+            ['POST', '#^/whatsapp/settings$#', fn () => WhatsApp::saveApi(json_input(), Auth::require('settings.manage'))],
+            ['POST', '#^/bookings/(MCA-\d{4}-\d{5,})/whatsapp-change$#', fn ($m) => WhatsApp::notifyChange(self::bookingRow($m[1]), json_input(), Auth::require('bookings.manage'))],
+            ['POST', '#^/bookings/(MCA-\d{4}-\d{5,})/whatsapp-revoke$#', fn ($m) => WhatsApp::revokeConsent(self::bookingRow($m[1]), Auth::require('bookings.manage'))],
             ['GET', '#^/audit$#', fn () => self::audit(Auth::require('audit.view'))],
             ['GET', '#^/customers$#', fn () => (Auth::require('customers.view') ? Account::adminList($_GET) : null)],
         ];
@@ -308,6 +313,9 @@ final class Admin
             'invoiced' => (float) $f['invoiced'], 'paid' => (float) $f['paid'], 'balance' => (float) $f['balance'], 'awaiting' => (int) $f['awaiting'],
             'status' => (float) $f['invoiced'] <= 0 ? 'sem_factura' : ((float) $f['balance'] <= 0.001 ? 'pago' : ((float) $f['paid'] > 0 ? 'parcial' : 'pendente')),
         ] : null;
+        $wa = db()->prepare('SELECT kind, status, created_at FROM whatsapp_messages WHERE booking_id = ? AND audience = \'customer\' ORDER BY id');
+        $wa->execute([$b['id']]);
+        $b['whatsapp'] = $wa->fetchAll();
         $b['next_status'] = self::BOOKING_FLOW[$b['status']] ?? [];
         return ['booking' => $b];
     }
@@ -339,7 +347,13 @@ final class Admin
         }
         Audit::log('booking_status', 'booking', $ref, ['from' => $b['status'], 'to' => $to]);
         $email = ($in['notify'] ?? true) ? Notify::bookingStatus($b, $to, $note) : 'skipped';
-        return self::booking($ref, $u) + ['email' => $email];
+        $whatsapp = null;
+        try {
+            if ($in['notify'] ?? true) $whatsapp = WhatsApp::statusChanged($b, $to, $note);
+        } catch (Throwable $e) {
+            error_log('[MCA WhatsApp] ' . $e->getMessage());
+        }
+        return self::booking($ref, $u) + ['email' => $email, 'whatsapp' => $whatsapp];
     }
 
     private static function bookingNote(string $ref, array $in, array $u): array
@@ -534,7 +548,7 @@ final class Admin
     private static function settings(array $u): array
     {
         return ['company' => setting('company'), 'payment' => setting('payment'), 'invoicing' => setting('invoicing'), 'notifications' => setting('notifications'),
-            'channels' => ['email' => self::emailStatus(), 'whatsapp' => WhatsApp::status()]];
+            'channels' => ['email' => self::emailStatus(), 'whatsapp' => WhatsApp::status()], 'team_events' => setting('team_events') + ['email_new_booking' => true, 'email_proof' => true, 'whatsapp_new_booking' => true]];
     }
 
     /** Estado do envio de e-mail (sem segredos): por onde sai, remetente, se a chave do Resend existe. */
@@ -575,6 +589,8 @@ final class Admin
                 if (!in_array($a, $list, true)) $list[] = $a;
             }
             $v = ['recipients' => $list];
+        } elseif ($key === 'team_events') {
+            $v = ['email_new_booking' => !empty($in['email_new_booking']), 'email_proof' => !empty($in['email_proof']), 'whatsapp_new_booking' => !empty($in['whatsapp_new_booking'])];
         } elseif ($key === 'whatsapp') {
             $v = WhatsApp::saveSettings($in);
         } elseif ($key === 'notifications') {

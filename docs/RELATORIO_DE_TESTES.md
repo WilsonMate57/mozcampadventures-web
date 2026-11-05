@@ -1,5 +1,21 @@
 # Relatório de testes — Moz Camp Adventures
 
+## WhatsApp Business Cloud API (05/11/2026)
+
+Executado em desenvolvimento (PHP 8.2, PostgreSQL local) contra um servidor falso da Meta. **Não foi feito nenhum envio real**: faltam as credenciais e a aprovação dos modelos. A produção usa PHP 8.4.
+
+`tests/whatsapp.mjs`: 44/44. Cobre credenciais cifradas e só de escrita, teste de ligação, token expirado, consentimento, PT e EN, erro da Meta, falha temporária com repetição, envio interrompido, ligação cortada, reenvio simultâneo sem duplicar, webhook (verificação, assinatura, entrega, leitura, ordem trocada, repetição, falha, STOP), alteração, cancelamento, lembrete, interruptores e indicadores.
+
+Interface no Chrome: `tests/admin-ui.mjs` 64/64 e `tests/e2e.mjs` 57/57, com as definições, o reenvio, o histórico, a reserva e a caixa de autorização no formulário público.
+
+Regressão: messaging 20, api 47, admin 51, payments 44, notifications 28, accounts 34, catalog 38, availability 55, availability-ui 25. Total das 12 suites: 507/507.
+
+Defeitos encontrados e corrigidos:
+
+- Um STOP devolvia 500 à Meta, porque a auditoria usava um utilizador inexistente.
+- O login com um e-mail inexistente falhava de forma intermitente com 500 no site e no painel: `password_hash(random_bytes(8))` recusa bytes nulos. Já existia antes desta fase.
+- O teste de disponibilidade P4 dependia de a base estar limpa.
+
 ## Disponibilidade (Fase 2) (05/11/2026)
 
 | Bateria | Resultado |

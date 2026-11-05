@@ -9,6 +9,7 @@
  *   POST /api/reviews           nova avaliação (fica pendente)
  *   POST /api/proof/info        dados da factura para o link privado do comprovativo
  *   POST /api/proof             comprovativo do cliente (multipart) → pagamento «declarado»
+ *   GET/POST /api/whatsapp/webhook   eventos da Meta (assinados)
  *   /api/admin/*                painel de administração (ver src/Admin.php)
  * Erros: {"error": "<código>", ...} com o estado HTTP adequado.
  */
@@ -35,6 +36,11 @@ $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $path = '/' . trim((string) preg_replace('#^/?api#', '', parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/'), '/');
 
 try {
+    if ($path === '/whatsapp/webhook') {           // Meta: sem sessão nem CSRF; a segurança é a assinatura
+        if ($method === 'GET') WhatsApp::webhookVerify($_GET);
+        if ($method !== 'POST') throw new ApiError(405, 'method_not_allowed');
+        json_response(200, WhatsApp::webhook((string) file_get_contents('php://input', false, null, 0, 1048576), (string) ($_SERVER['HTTP_X_HUB_SIGNATURE_256'] ?? '')));
+    }
     if (str_starts_with($path, '/admin/')) {       // painel: /api/admin/* (sessão + permissões)
         $result = Admin::route($method, substr($path, 6));
         json_response(200, $result);

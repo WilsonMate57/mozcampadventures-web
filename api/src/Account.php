@@ -94,7 +94,7 @@ final class Account
         $s = db()->prepare('SELECT id, password_hash FROM customers WHERE lower(email) = ?');
         $s->execute([$email]);
         $c = $s->fetch();
-        $hash = $c['password_hash'] ?? password_hash(random_bytes(8), PASSWORD_DEFAULT);   // mesmo custo se o e-mail não existir
+        $hash = $c['password_hash'] ?? password_hash(bin2hex(random_bytes(8)), PASSWORD_DEFAULT);   // mesmo custo se o e-mail não existir
         if (!password_verify($password, $hash) || !$c) {
             throw new ApiError(401, 'invalid_credentials');
         }

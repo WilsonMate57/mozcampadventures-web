@@ -65,8 +65,9 @@ final class Bookings
             $seq->execute(["booking-$year"]);
             $reference = sprintf('MCA-%s-%05d', $year, (int) $seq->fetchColumn());
 
-            $ins = $pdo->prepare('INSERT INTO bookings (reference, idempotency_key, channel, lang, item_id, item_kind, item_name, service_date, checkin, checkout, nights, adults, children, options, price_lines, total_estimate, total_to_confirm, customer_name, customer_phone, customer_email, customer_message, access_token_hash, ip_hash, user_agent, customer_id, session, hold_expires_at)
-                VALUES (:ref, :key, :channel, :lang, :item, :kind, :iname, :sdate, :cin, :cout, :nights, :adults, :children, :options, :lines, :total, :tc, :name, :phone, :email, :msg, :tok, :ip, :ua, :cust, :sess, :hold)
+            $consent = ($in['whatsapp_opt_in'] ?? false) === true;
+            $ins = $pdo->prepare('INSERT INTO bookings (reference, idempotency_key, channel, lang, item_id, item_kind, item_name, service_date, checkin, checkout, nights, adults, children, options, price_lines, total_estimate, total_to_confirm, customer_name, customer_phone, customer_email, customer_message, access_token_hash, ip_hash, user_agent, customer_id, session, hold_expires_at, whatsapp_opt_in, whatsapp_opt_in_at)
+                VALUES (:ref, :key, :channel, :lang, :item, :kind, :iname, :sdate, :cin, :cout, :nights, :adults, :children, :options, :lines, :total, :tc, :name, :phone, :email, :msg, :tok, :ip, :ua, :cust, :sess, :hold, :wa, :waat)
                 RETURNING id');
             $ins->execute([
                 ':ref' => $reference, ':key' => $key, ':channel' => $channel, ':lang' => $lang,
@@ -79,6 +80,7 @@ final class Bookings
                 ':tok' => hash('sha256', $token), ':ip' => ip_hash(), ':ua' => clean_text($_SERVER['HTTP_USER_AGENT'] ?? '', 300),
                 ':cust' => $admin === null ? Account::currentId() : null,     // pedido feito com sessão de cliente → fica na conta
                 ':sess' => $claim['session'], ':hold' => date('c', time() + Availability::holdHours() * 3600),
+                ':wa' => $consent ? 't' : 'f', ':waat' => $consent ? date('c') : null,
             ]);
             $id = (int) $ins->fetchColumn();
             Availability::attach($id, $itemId, $claim);
@@ -96,6 +98,17 @@ final class Bookings
             throw $e;
         }
 
+        /* Depois do commit: uma falha do WhatsApp nunca desfaz a reserva. O que ficar na fila sai pela tarefa agendada. */
+        if ($consent) {
+            try {
+                $row = $pdo->prepare('SELECT * FROM bookings WHERE id = ?');
+                $row->execute([$id]);
+                $waMessage = WhatsApp::enqueueCustomer('booking_received', $row->fetch(), "booking_received:$id");
+                if ($waMessage !== null) WhatsApp::sendNow($waMessage);
+            } catch (Throwable $e) {
+                error_log('[MCA WhatsApp] ' . $e->getMessage());
+            }
+        }
         if ($claim['session']) $q['dates']['session'] = $claim['session'];
         $mail = $admin === null ? self::notify($reference, $id, $item, $q, $name, $phone, $email, $message, $lang) : [];
         // Link pessoal da área do cliente: vai no QR code do ticket do pedido (só para quem fez o pedido no site)
@@ -127,7 +140,7 @@ final class Bookings
         $whenH = static fn (string $l) => isset($q['dates']['service_date']) ? EmailView::date($q['dates']['service_date'], $l) . (isset($q['dates']['session']) ? ' · ' . $q['dates']['session'] : '')
             : EmailView::date($q['dates']['checkin'], $l, false) . ' – ' . EmailView::date($q['dates']['checkout'], $l, false) . ' (' . $q['nights'] . ($l === 'en' ? ' nights)' : ' noites)');
         $paxH = static fn (string $l) => $q['pax'] . ' (' . $q['adults'] . ($l === 'en' ? ' adults' : ' adultos') . ($q['children'] ? ', ' . $q['children'] . ($l === 'en' ? ' children' : ' crianças') : '') . ')';
-        $out = ['team' => Mailer::send('booking_team', Mailer::team(), "Pedido de reserva $ref — {$item['name']}", $team, 'booking', $id, $email ?: null, [], 'pt', null, null,
+        $out = ['team' => !(setting('team_events')['email_new_booking'] ?? true) ? 'disabled' : Mailer::send('booking_team', Mailer::team(), "Pedido de reserva $ref — {$item['name']}", $team, 'booking', $id, $email ?: null, [], 'pt', null, null,
             EmailView::teamBooking(['when' => $whenH('pt'), 'pax' => $paxH('pt')] + $view))];
         try {   // aviso à equipa pelo WhatsApp (se activo); uma falha fica registada e nunca bloqueia o pedido
             $whenWa = isset($q['dates']['service_date']) ? $q['dates']['service_date'] : "{$q['dates']['checkin']} a {$q['dates']['checkout']} ({$q['nights']} noites)";

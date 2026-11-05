@@ -203,3 +203,8 @@ Usado para os testes desta fase (versões portáteis, sem instalar nada no siste
 - PostgreSQL 16 (binários EnterpriseDB), base `mca` na porta 55432.
 - Configuração com `mail.transport = 'log'` (não envia e-mails) e origem `http://localhost:8791`.
 - Servidor: `MCA_CONFIG=<config> php -S localhost:8791 tests/dev-router.php` (serve o site e a API, como o Plesk).
+
+## WhatsApp Business
+
+1. `php httpdocs/api/bin/migrate.php` aplica a `011_whatsapp_customers`.
+2. Siga a ordem de activação em [WHATSAPP.md](WHATSAPP.md) §5. A migração deixa as mensagens a clientes desligadas.

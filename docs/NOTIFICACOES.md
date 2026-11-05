@@ -259,3 +259,7 @@ Todos os e-mails saem com **HTML com a identidade da marca** e com a **versão e
   - layout em `api/src/EmailView.php`;
   - pré-visualização com dados fictícios: `php tests/email-preview.php <pasta>`;
   - capturas em `visual-review/emails/`.
+
+## WhatsApp a clientes
+
+As mensagens a clientes, o webhook, os estados de entrega e a tarefa agendada estão em [WHATSAPP.md](WHATSAPP.md). O histórico passou de `whatsapp_log` para `whatsapp_messages`; a tabela antiga fica apenas como arquivo.

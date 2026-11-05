@@ -33,7 +33,7 @@ const mock = createServer((req, res) => {
     const body = raw ? JSON.parse(raw) : null, who = req.url.startsWith('/emails') ? 'resend' : 'meta';
     seen.push({ who, url: req.url, auth: req.headers.authorization, body });
     const forced = reply[who].shift();
-    const [status, out] = forced || (who === 'resend' ? [200, { id: 'resend-' + randomUUID() }] : [200, { messaging_product: 'whatsapp', contacts: [{ input: body.to, wa_id: body.to }], messages: [{ id: 'wamid.TEST' + seen.length }] }]);
+    const [status, out] = forced || (who === 'resend' ? [200, { id: 'resend-' + randomUUID() }] : [200, { messaging_product: 'whatsapp', contacts: [{ input: body.to, wa_id: body.to }], messages: [{ id: 'wamid.TEST' + randomUUID() }] }]);
     res.writeHead(status, { 'Content-Type': 'application/json' }).end(JSON.stringify(out));
   });
 });
@@ -127,7 +127,7 @@ try {
   }, [7, true, true, '4 (3 adultos, 1 crianças)', 'Joana Teste', '+258 84 555 1212', true, 'url', true, true]);
   await test('B5 registos: e-mail com fornecedor e id do Resend; WhatsApp «sent» com wamid', () => [
     sql(`SELECT count(*) FROM email_log e JOIN bookings b ON b.id = e.related_id AND e.related_type = 'booking' WHERE b.reference = '${ref}' AND e.status = 'sent' AND e.provider = 'resend' AND e.provider_id LIKE 'resend-%'`),
-    sql(`SELECT count(*) FROM whatsapp_log w JOIN bookings b ON b.id = w.related_id WHERE b.reference = '${ref}' AND w.status = 'sent' AND w.provider_id LIKE 'wamid.%'`)], ['2', '2']);
+    sql(`SELECT count(*) FROM whatsapp_messages w JOIN bookings b ON b.id = w.booking_id WHERE b.reference = '${ref}' AND w.status = 'sent' AND w.provider_id LIKE 'wamid.%'`)], ['2', '2']);
   await test('B6 painel: registo do WhatsApp visível para quem gere e-mails (gerente)', async () => { const r = await mgr.call('GET', '/whatsapp'); return [r.status, r.data.messages.some(m => m.params[0] === ref), r.data.status.enabled]; }, [200, true, true]);
 
   /* Falhas do fornecedor: ficam registadas e não bloqueiam o pedido */
@@ -137,7 +137,7 @@ try {
   const b2 = await book({ email: '' });
   await test('F1 Resend e Meta recusam → pedido continua aceite (201)', () => b2.status, 201);
   await test('F2 erro do Resend registado com o motivo', () => sql(`SELECT e.status || ' | ' || e.error FROM email_log e JOIN bookings b ON b.id = e.related_id AND e.related_type = 'booking' WHERE b.reference = '${b2.data.reference}' AND e.kind = 'booking_team'`), 'failed | Resend HTTP 403 — validation_error: The mozcampadventures.co.mz domain is not verified.');
-  await test('F3 erro da Meta registado com o detalhe; o 2.º número enviado na mesma', () => sql(`SELECT string_agg(w.status || coalesce(' | ' || w.error, ''), ' ; ' ORDER BY w.id) FROM whatsapp_log w JOIN bookings b ON b.id = w.related_id WHERE b.reference = '${b2.data.reference}'`),
+  await test('F3 erro da Meta registado com o detalhe; o 2.º número enviado na mesma', () => sql(`SELECT string_agg(w.status || coalesce(' | ' || w.error, ''), ' ; ' ORDER BY w.id) FROM whatsapp_messages w JOIN bookings b ON b.id = w.booking_id WHERE b.reference = '${b2.data.reference}'`),
     'failed | Meta HTTP 400 — 132001: template name (nova_reserva) does not exist in pt_PT ; sent');
   seen.length = 0; reply.resend.length = reply.meta.length = 0;
   reply.resend.push([429, { statusCode: 429, name: 'rate_limit_exceeded', message: 'Too many requests' }]);
