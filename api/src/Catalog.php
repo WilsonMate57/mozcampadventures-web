@@ -34,6 +34,12 @@ final class Catalog
         return self::$cache = ['items' => $items, 'en' => $read('en.json'), 'rules' => $read('booking-rules.json')];
     }
 
+    /** Todos os pacotes (id, nome, tipo, categoria), para o painel. */
+    public static function list(): array
+    {
+        return array_map(static fn (array $p) => ['id' => $p['slug'] ?? $p['id'], 'name' => $p['name'], 'kind' => $p['_kind'], 'category' => $p['category'] ?? null, 'disabled' => !empty($p['disabled'])], self::load()['items']);
+    }
+
     /** Item localizado + regras, ou null. */
     public static function find(string $id, string $lang): ?array
     {

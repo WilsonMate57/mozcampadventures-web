@@ -14,6 +14,7 @@ Site público, painel de gestão, facturação, pagamentos e notificações de *
 | [NOTIFICACOES.md](NOTIFICACOES.md) | E-mails automáticos, registo e reenvio, área do cliente, ticket com QR |
 | [PAINEL.md](PAINEL.md) | Painel de administração: sistema visual, resumo por período, reservas, pesquisa global, testes e limitações |
 | `/holiday-packages/` | Catálogo de pacotes de férias (EN): conteúdo em `data/holiday-packages.json`; ver `RELATORIO_DE_TESTES.md` (02/11/2026) |
+| [DISPONIBILIDADE.md](DISPONIBILIDADE.md) | Calendário, capacidade, sessões, bloqueios e prevenção de sobre-reservas |
 | [CATALOGO.md](CATALOGO.md) | Pacotes, preços, regras, textos PT/EN e fotos editados no painel: rascunho, publicação, versões anteriores |
 | [CONTAS_DE_CLIENTE.md](CONTAS_DE_CLIENTE.md) | Contas de cliente no site (activas logo após o registo), reservas da conta, promoções, segurança |
 | [SEGURANCA.md](SEGURANCA.md) | Medidas de segurança por área, CSP e gestão de segredos |

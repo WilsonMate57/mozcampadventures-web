@@ -37,6 +37,8 @@ final class Auth
         'customers.view'   => 'Ver contas de clientes do site',
         'catalog.edit'     => 'Editar experiências, preços e fotos (rascunho)',
         'catalog.publish'  => 'Publicar o catálogo no site',
+        'availability.view'   => 'Ver a disponibilidade dos pacotes',
+        'availability.manage' => 'Gerir datas, capacidade e bloqueios',
     ];
 
     private static ?array $user = null;

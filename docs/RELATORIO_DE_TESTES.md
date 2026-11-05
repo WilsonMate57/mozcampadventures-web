@@ -1,5 +1,20 @@
 # Relatório de testes — Moz Camp Adventures
 
+## Disponibilidade (Fase 2) (05/11/2026)
+
+| Bateria | Resultado |
+|---|---|
+| `tests/availability.mjs` (novo) | **55/55**: capacidade, retenção de pedidos, bloqueios, dias da semana, sessões, antecedência, fuso de Maputo, 12 reservas em simultâneo para 3 vagas, unidades, estadias, pedidos manuais, painel |
+| `tests/availability-ui.mjs` (novo, Chrome) | **25/25**: calendário público, dados antigos, última vaga ganha por outra pessoa, sessões, alojamento, inglês, telemóvel, painel, axe sem violações, sem erros JS/CSP |
+| Restantes baterias | API 47 · painel e facturas 51 · pagamentos 44 · notificações 28 · contas 34 · catálogo 38 · mensagens 20 · site 53 · site com API 55 · painel no browser 57 |
+| Base de dados | As 10 migrações aplicadas de raiz numa base nova |
+
+**Encontrado e corrigido:** reservas anteriores às sessões, ou de uma sessão retirada, deixavam de contar e mostravam vagas falsas. Passam a contar contra todas as sessões da data (S7, S8).
+
+**Não testado:** PHP 8.4 (os testes correm em 8.2), a migração sobre os dados reais de produção.
+
+---
+
 ## Pacotes de férias — /holiday-packages/ (02/11/2026)
 
 Página nova, só em inglês, com os 3 pacotes fornecidos pelo cliente.

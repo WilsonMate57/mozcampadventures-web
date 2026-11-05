@@ -119,7 +119,10 @@ export const T = {
       okMail: 'Enviámos um resumo para {email}.', okWa: 'Falar no WhatsApp sobre este pedido', again: 'Fazer outro pedido',
       waRef: 'Olá Moz Camp Adventures 👋\n\nFiz o pedido de reserva {ref} — {item}.\nNome: {name}',
       failTitle: 'Não foi possível registar o pedido pelo site', failLead: 'Envie-o directamente — a mensagem já vai preenchida:', orMail: 'ou por e-mail',
+      avPrev: 'Mês anterior', avNext: 'Mês seguinte', avAvailable: 'Disponível', avLimited: 'Últimas vagas', avSoldOut: 'Esgotado', avUnavailable: 'Indisponível', avSession: 'Escolha o horário',
+      avLeft1: 'Resta 1 vaga.', avLeftN: 'Restam {n} vagas.', avGone: 'Essa data deixou de estar disponível. Escolha outra.', avOnly: 'Só restam {n} vagas: reduza o número de participantes.', avStay: 'Há noites indisponíveis neste período. Escolha outras datas.',
       errors: {
+        sold_out: 'Essa data esgotou. Escolha outra data.', not_enough_places: 'Só restam {left} vagas nessa data.', date_blocked: 'Essa data não está disponível. Escolha outra.', date_closed: 'Essa data não está aberta a reservas. Escolha outra.', session_required: 'Escolha o horário.', invalid_session: 'Esse horário não está disponível.',
         min_people: 'Esta experiência exige um mínimo de {min} participantes.', min_nights: 'A estadia mínima é de {min} noites.', capacity: 'O máximo é de {max} pessoas.',
         date_out_of_range: 'Escolha uma data a partir de hoje.', item_unavailable: 'Esta experiência não está disponível.', boat_required: 'Escolha uma embarcação.',
         too_many_requests: 'Recebemos muitos pedidos deste dispositivo. Tente mais tarde ou use o WhatsApp.', invalid_phone: 'Indique um telefone válido.', invalid_email: 'Indique um e-mail válido.', invalid_name: 'Indique o seu nome.'
@@ -244,7 +247,10 @@ export const T = {
       okMail: 'We have sent a summary to {email}.', okWa: 'Chat on WhatsApp about this request', again: 'Make another request',
       waRef: 'Hello Moz Camp Adventures 👋\n\nI made booking request {ref} — {item}.\nName: {name}',
       failTitle: 'We could not register your request on the website', failLead: 'Send it directly — the message is already filled in:', orMail: 'or by e-mail',
+      avPrev: 'Previous month', avNext: 'Next month', avAvailable: 'Available', avLimited: 'Last places', avSoldOut: 'Sold out', avUnavailable: 'Unavailable', avSession: 'Choose a time',
+      avLeft1: '1 place left.', avLeftN: '{n} places left.', avGone: 'That date is no longer available. Please choose another.', avOnly: 'Only {n} places left: please reduce the number of participants.', avStay: 'Some nights in this period are unavailable. Please choose other dates.',
       errors: {
+        sold_out: 'That date has sold out. Please choose another date.', not_enough_places: 'Only {left} places left on that date.', date_blocked: 'That date is not available. Please choose another.', date_closed: 'That date is not open for booking. Please choose another.', session_required: 'Please choose a time.', invalid_session: 'That time is not available.',
         min_people: 'This experience requires a minimum of {min} participants.', min_nights: 'The minimum stay is {min} nights.', capacity: 'The maximum is {max} people.',
         date_out_of_range: 'Please choose a date from today onwards.', item_unavailable: 'This experience is not available.', boat_required: 'Please choose a boat.',
         too_many_requests: 'We received many requests from this device. Please try later or use WhatsApp.', invalid_phone: 'Please enter a valid phone number.', invalid_email: 'Please enter a valid e-mail.', invalid_name: 'Please enter your name.'

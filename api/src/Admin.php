@@ -26,6 +26,15 @@ final class Admin
             ['GET', '#^/dashboard$#', fn () => self::dashboard(Auth::require('dashboard.view'))],
             ['GET', '#^/search$#', fn () => self::search(Auth::require())],
             ['GET', '#^/experiences$#', fn () => self::experiences(Auth::require('bookings.view'))],
+            ['GET', '#^/availability/calendar$#', fn () => (Auth::require('availability.view') ? Availability::calendar($_GET) : null)],
+            ['GET', '#^/availability/day$#', fn () => (Auth::require('availability.view') ? Availability::day($_GET) : null)],
+            ['GET', '#^/availability/summary$#', fn () => (Auth::require('availability.view') ? Availability::summary() : null)],
+            ['GET', '#^/availability/blocks$#', fn () => (Auth::require('availability.view') ? Availability::blocks() : null)],
+            ['POST', '#^/availability/rules/([a-z0-9-]{1,60})$#', fn ($m) => Availability::saveRule($m[1], json_input(), Auth::require('availability.manage'))],
+            ['POST', '#^/availability/dates$#', fn () => Availability::saveDates(json_input(), Auth::require('availability.manage'))],
+            ['POST', '#^/availability/blocks$#', fn () => Availability::addBlock(json_input(), Auth::require('availability.manage'))],
+            ['POST', '#^/availability/blocks/(\d+)/remove$#', fn ($m) => Availability::removeBlock((int) $m[1], Auth::require('availability.manage'))],
+            ['POST', '#^/availability/settings$#', fn () => Availability::saveSettings(json_input(), Auth::require('availability.manage'))],
             ['GET', '#^/catalog$#', fn () => self::catalog(Auth::require('bookings.create'))],
             ['GET', '#^/catalog/items$#', fn () => CatalogAdmin::list(Auth::require('catalog.edit'))],
             ['POST', '#^/catalog/items$#', fn () => CatalogAdmin::create(json_input(), Auth::require('catalog.edit'))],
@@ -316,10 +325,18 @@ final class Admin
         }
         $pdo = db();
         $pdo->beginTransaction();
-        $pdo->prepare('UPDATE bookings SET status = ? WHERE id = ? AND status = ?')->execute([$to, $b['id'], $b['status']]);
-        $pdo->prepare("INSERT INTO booking_events (booking_id, type, data, actor) VALUES (?, 'status_changed', ?, ?)")
-            ->execute([$b['id'], json_encode(['from' => $b['status'], 'to' => $to, 'note' => $note], JSON_UNESCAPED_UNICODE), $u['name']]);
-        $pdo->commit();
+        try {
+            /* Voltar a ocupar vagas (pedido com a retenção expirada, reabrir cancelada): só se ainda houver lugar */
+            if (in_array($to, ['confirmada', 'pedido'], true)) Availability::recheck($b, !empty($in['force']));
+            $hold = $to === 'pedido' ? date('c', time() + Availability::holdHours() * 3600) : null;
+            $pdo->prepare('UPDATE bookings SET status = ?, hold_expires_at = ? WHERE id = ? AND status = ?')->execute([$to, $hold, $b['id'], $b['status']]);
+            $pdo->prepare("INSERT INTO booking_events (booking_id, type, data, actor) VALUES (?, 'status_changed', ?, ?)")
+                ->execute([$b['id'], json_encode(['from' => $b['status'], 'to' => $to, 'note' => $note, 'forced' => !empty($in['force'])], JSON_UNESCAPED_UNICODE), $u['name']]);
+            $pdo->commit();
+        } catch (Throwable $e) {
+            $pdo->rollBack();
+            throw $e;
+        }
         Audit::log('booking_status', 'booking', $ref, ['from' => $b['status'], 'to' => $to]);
         $email = ($in['notify'] ?? true) ? Notify::bookingStatus($b, $to, $note) : 'skipped';
         return self::booking($ref, $u) + ['email' => $email];

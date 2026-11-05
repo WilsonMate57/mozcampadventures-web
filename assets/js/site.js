@@ -279,6 +279,117 @@
     var inEl = $('#bk-in', form), outEl = $('#bk-out', form), dateEl = $('#bk-date', form);
     var lastTrack = '';
 
+    /* Disponibilidade real: calendário no lugar do campo de data; sem API, fica o campo normal (o servidor valida sempre) */
+    var av = { on: false, days: {}, month: null, today: '', session: '', sessions: [], left: null, stayBad: false };
+    function avFetch(from, to) {
+      return fetch('/api/availability?item=' + encodeURIComponent(d.id) + '&from=' + from + '&to=' + to, { credentials: 'same-origin', cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('api')); });
+    }
+    function monthRange(m) {
+      var y = +m.slice(0, 4), mo = +m.slice(5, 7), last = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+      return [m + '-01', m + '-' + String(last).padStart(2, '0')];
+    }
+    function avLoad(m) {
+      var r = monthRange(m);
+      return avFetch(r[0], r[1]).then(function (x) {
+        av.today = x.today;
+        Object.keys(x.days).forEach(function (k) { av.days[k] = x.days[k]; });
+        return x;
+      });
+    }
+    function avMonthShift(m, n) {
+      var dt = new Date(Date.UTC(+m.slice(0, 4), +m.slice(5, 7) - 1 + n, 1));
+      return dt.toISOString().slice(0, 7);
+    }
+    function avLabel(s) { return { available: t.avAvailable, limited: t.avLimited, sold_out: t.avSoldOut }[s] || t.avUnavailable; }
+    function avRender() {
+      var box = $('[data-avail]', form);
+      if (!box) return;
+      var loc = d.lang === 'en' ? 'en-GB' : 'pt-PT', m = av.month, r = monthRange(m);
+      var first = new Date(r[0] + 'T12:00:00Z'), pad = (first.getUTCDay() + 6) % 7, n = +r[1].slice(8);
+      var title = new Intl.DateTimeFormat(loc, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(first);
+      title = title.charAt(0).toUpperCase() + title.slice(1);
+      var heads = [], cells = [];
+      for (var w = 0; w < 7; w++) heads.push('<span aria-hidden="true">' + esc(new Intl.DateTimeFormat(loc, { weekday: 'narrow', timeZone: 'UTC' }).format(new Date(Date.UTC(2024, 0, 1 + w)))) + '</span>');
+      for (var p = 0; p < pad; p++) cells.push('<span></span>');
+      for (var i = 1; i <= n; i++) {
+        var iso = m + '-' + String(i).padStart(2, '0'), v = av.days[iso] || { status: 'closed' }, ok = v.status === 'available' || v.status === 'limited';
+        var long = new Intl.DateTimeFormat(loc, { day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(iso + 'T12:00:00Z'));
+        cells.push('<button type="button" class="avail__day is-' + v.status + '" data-av-day="' + iso + '"' + (ok ? '' : ' disabled') + (dateEl.value === iso ? ' aria-pressed="true"' : ' aria-pressed="false"') + ' aria-label="' + esc(long + ': ' + avLabel(v.status)) + '">' + i + '</button>');
+      }
+      box.innerHTML = '<div class="avail__head"><button type="button" data-av-go="-1" aria-label="' + esc(t.avPrev) + '"' + (m <= av.today.slice(0, 7) ? ' disabled' : '') + '><i class="bx bx-chevron-left"></i></button><strong aria-live="polite">' + esc(title) + '</strong><button type="button" data-av-go="1" aria-label="' + esc(t.avNext) + '"><i class="bx bx-chevron-right"></i></button></div>' +
+        '<div class="avail__grid" role="group" aria-label="' + esc(t.dateLabel) + '">' + heads.join('') + cells.join('') + '</div>' +
+        '<ul class="avail__legend"><li class="is-available">' + esc(t.avAvailable) + '</li><li class="is-limited">' + esc(t.avLimited) + '</li><li class="is-sold_out">' + esc(t.avSoldOut) + '</li></ul>' +
+        '<div data-av-sessions></div><p class="avail__note" data-av-note aria-live="polite"></p>';
+      avDetail();
+    }
+    function avDetail() {
+      var v = av.days[dateEl.value], box = $('[data-av-sessions]', form), note = $('[data-av-note]', form);
+      if (!box) return;
+      av.sessions = v && v.sessions ? v.sessions : [];
+      if (av.sessions.length === 1 && av.sessions[0].status !== 'sold_out') av.session = av.sessions[0].time;
+      if (!av.sessions.some(function (s) { return s.time === av.session; })) av.session = '';
+      box.innerHTML = av.sessions.length ? '<p class="avail__sub">' + esc(t.avSession) + '</p><div class="avail__sessions">' + av.sessions.map(function (s) {
+        var ok = s.status === 'available' || s.status === 'limited';
+        return '<label class="avail__session' + (ok ? '' : ' is-off') + '"><input type="radio" name="bk-session" value="' + esc(s.time) + '"' + (ok ? '' : ' disabled') + (av.session === s.time ? ' checked' : '') + '><span>' + esc(s.time) + '</span>' + (ok ? '' : '<small>' + esc(avLabel(s.status)) + '</small>') + '</label>';
+      }).join('') + '</div>' : '';
+      var cur = av.sessions.filter(function (s) { return s.time === av.session; })[0];
+      av.left = cur ? cur.left : (v && !av.sessions.length ? v.left : null);
+      note.textContent = av.left === null || av.left === undefined ? '' : (av.left === 1 ? t.avLeft1 : t.avLeftN.replace('{n}', av.left));
+      calc();
+    }
+    /* Reconsulta o mês: se a data escolhida deixou de estar disponível, retira-a e avisa */
+    function avRefresh() {
+      if (!av.on) return Promise.resolve();
+      return avLoad(av.month).then(function () {
+        var v = av.days[dateEl.value], gone = dateEl.value && (!v || (v.status !== 'available' && v.status !== 'limited'));
+        if (gone) { dateEl.value = ''; av.session = ''; }
+        avRender();
+        if (gone) $('[data-av-note]', form).textContent = t.avGone;
+      }).catch(function () {});
+    }
+    function avStayCheck() {
+      if (!inEl.value || !outEl.value || outEl.value <= inEl.value) { av.stayBad = false; calc(); return; }
+      avFetch(inEl.value, addDays(outEl.value, -1)).then(function (x) {
+        av.stayBad = Object.keys(x.days).some(function (k) { var s = x.days[k].status; return s !== 'available' && s !== 'limited'; });
+        calc();
+      }).catch(function () {});
+    }
+    function initAvailability() {
+      if (isStay) {
+        [inEl, outEl].forEach(function (el) { el.addEventListener('change', avStayCheck); });
+        return;
+      }
+      if (!dateEl) return;
+      av.month = localISO(new Date()).slice(0, 7);
+      avLoad(av.month).then(function () {
+        av.month = av.today.slice(0, 7);
+        av.on = true;
+        var box = document.createElement('div');
+        box.className = 'avail';
+        box.setAttribute('data-avail', '');
+        dateEl.parentNode.insertBefore(box, dateEl.nextSibling);
+        dateEl.hidden = true;
+        box.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-av-day]'), g = e.target.closest('[data-av-go]');
+          if (b && !b.disabled) {
+            dateEl.value = b.dataset.avDay;
+            av.session = '';
+            var f = dateEl.closest('.field'); if (f) f.classList.remove('has-error');
+            $$('[data-av-day]', box).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            avDetail();
+          } else if (g && !g.disabled) {
+            av.month = avMonthShift(av.month, +g.dataset.avGo);
+            avLoad(av.month).then(avRender).catch(function () {});
+          }
+        });
+        box.addEventListener('change', function (e) { if (e.target.name === 'bk-session') { av.session = e.target.value; avDetail(); } });
+        dateEl.addEventListener('change', function () { if (dateEl.value) { av.month = dateEl.value.slice(0, 7); avLoad(av.month).then(avRender).catch(function () {}); } });
+        window.addEventListener('focus', avRefresh);
+        avRender();
+      }).catch(function () { /* sem API: fica o campo de data normal */ });
+    }
+
     /* Cliente com sessão iniciada: preenche os dados (a reserva aparece na conta pelo e-mail) */
     if (/(?:^|; )mca_in=1/.test(document.cookie)) {
       fetch('/api/account/me', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (a) {
@@ -366,6 +477,8 @@
       var pax = st.adults + st.children;
       if (d.minPeople && pax < d.minPeople) issues.push(t.minBlock.replace('{n}', d.minPeople));
       if (isStay && n > 0 && n < (d.minNights || 1)) issues.push(t.minNightsMsg.replace('{n}', d.minNights));
+      if (av.stayBad) issues.push(t.avStay);
+      if (av.left !== null && av.left !== undefined && pax > av.left) issues.push(t.avOnly.replace('{n}', av.left));
       if (pax >= cap && (boat || d.maxPeople)) issues.push(null); /* só desactiva o botão + */
 
       $$('[data-out]', form).forEach(function (o) { o.textContent = st[o.dataset.out]; });
@@ -396,6 +509,7 @@
       calc();
     });
     calc();
+    initAvailability();
 
     function fieldError(el, bad) {
       var f = el.closest('.field');
@@ -412,7 +526,7 @@
       var first = null;
       var check = function (el, bad) { if (el && fieldError(el, bad) && !first) first = el; };
       if (isStay) { check(inEl, !inEl.value); check(outEl, !outEl.value || (inEl.value && outEl.value <= inEl.value)); }
-      else check(dateEl, !dateEl.value);
+      else check(dateEl, !dateEl.value || (av.sessions.length > 0 && !av.session));
       var nameEl = $('#bk-name', form), phoneEl = $('#bk-phone', form), emailEl = $('#bk-email', form);
       check(nameEl, !nameEl.value.trim());
       check(phoneEl, phoneEl.value.replace(/\D/g, '').length < 7);
@@ -448,7 +562,7 @@
         name: nameEl.value.trim(), phone: phoneEl.value.trim(), email: emailEl.value.trim(),
         website: (form.elements.mca_hp || {}).value || ''
       };
-      if (isStay) { payload.checkin = inEl.value; payload.checkout = outEl.value; } else { payload.date = dateEl.value; }
+      if (isStay) { payload.checkin = inEl.value; payload.checkout = outEl.value; } else { payload.date = dateEl.value; if (av.session) payload.session = av.session; }
 
       setBusy(true);
       api('/api/bookings', payload).then(function (res) {
@@ -459,8 +573,9 @@
           idemKey = uuid();
         } else if (res.status === 422 || res.status === 429) {
           var code = res.data.error, tpl = (t.errors || {})[code];
-          errBox.textContent = tpl ? tpl.replace('{min}', res.data.min).replace('{max}', res.data.max) : t.failTitle;
+          errBox.textContent = tpl ? tpl.replace('{min}', res.data.min).replace('{max}', res.data.max).replace('{left}', res.data.left) : t.failTitle;
           errBox.hidden = false;
+          if (/^(sold_out|not_enough_places|date_blocked|date_closed|session_required|invalid_session)$/.test(code || '')) avRefresh();
           if (res.status === 429) showFallback(msg);
         } else {
           showFallback(msg);

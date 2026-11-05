@@ -65,7 +65,7 @@ await type('#a-email', adminEmail); await type('#a-pass', PASS);
 await click('[data-auth] button[type=submit]');
 await waitFor(`!document.querySelector('[data-app]').hidden && !!document.querySelector('.kpi')`);
 await test('U3 entrada → resumo com indicadores do período e «Requer atenção»', () => ev(`[document.querySelectorAll('.kpi').length >= 4, document.querySelectorAll('.attn').length >= 5, document.querySelectorAll('.chart .bar').length > 0]`), [true, true, true]);
-await test('U4 administrador vê todas as secções do menu, agrupadas', () => ev(`[document.querySelectorAll('[data-nav] a').length, [...document.querySelectorAll('.nav-group')].map(g => g.textContent).join('|')]`), [12, 'Visão geral|Operação|Financeiro|Sistema']);   // inclui «Clientes» e «Experiências»
+await test('U4 administrador vê todas as secções do menu, agrupadas', () => ev(`[document.querySelectorAll('[data-nav] a').length, [...document.querySelectorAll('.nav-group')].map(g => g.textContent).join('|')]`), [13, 'Visão geral|Operação|Financeiro|Sistema']);   // inclui «Clientes», «Experiências» e «Disponibilidade»
 await test('U5 resumo separa facturado, recebido, em dívida e por verificar', () => ev(`[[...document.querySelectorAll('.kpi small')].map(k => k.textContent.trim()).filter(t => /^(Recebido|Facturado \\(FT\\))$/.test(t)).length, ['Em dívida', 'pagamentos por verificar'].every(l => [...document.querySelectorAll('.attn span')].some(k => k.textContent.includes(l)))]`), [2, true]);
 await ev(`document.querySelector('[data-p="7d"]').click(), 1`); await sleep(1200);
 await test('U5b período «7 dias» muda o URL e o intervalo comparado', () => ev(`[location.hash, /comparado com os 7 dias anteriores/.test(document.querySelector('.dash-head p').textContent)]`), ['#/?p=7d', true]);
@@ -192,7 +192,7 @@ await waitFor(`!!document.querySelector('[data-test-result] li')`);
 await test('U52 WhatsApp: número normalizado e teste com resultado por número', () => ev(`[document.querySelector('[data-wa] textarea').value, document.querySelector('[data-test-result] li').textContent]`), ['+258841234567', '+258841234567: registado em modo de teste (não enviado)']);
 await shot('19-canais-envio');
 await go('#/emails'); await waitFor(`!!document.querySelector('[data-st="wa"]')`);
-await click('[data-st="wa"]'); await waitFor(`!!document.querySelector('[data-list] table')`);
+await click('[data-st="wa"]'); await waitFor(`[...document.querySelectorAll('[data-list] td')].some(t => t.textContent.includes('Teste de envio'))`);
 await test('U53 E-mails e WhatsApp: separador WhatsApp mostra o teste', () => ev(`[...document.querySelectorAll('[data-list] td')].some(t => t.textContent.includes('Teste de envio'))`), true);
 await go('#/definicoes'); await waitFor(`!!document.querySelector('[data-wa]')`);
 await ev(`(() => { const f = document.querySelector('[data-wa]'); f.enabled.checked = false; f.recipients.value = ''; f.requestSubmit(f.querySelector('button:not([type])')); return 1; })()`); await sleep(800);

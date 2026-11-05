@@ -471,3 +471,47 @@ textarea { resize: vertical; line-height: 1.5; }
 .kv dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; word-break: break-word; }
 [data-channels] .grid > * + * { border-top: 1px solid var(--a-line); padding-top: 16px; }
 @media (min-width: 900px) { [data-channels] .grid > * + * { border-top: 0; padding-top: 0; border-left: 1px solid var(--a-line); padding-left: 20px; } }
+
+/* Disponibilidade */
+.av-nav strong { min-width: 150px; text-align: center; font-size: 13.5px; }
+.av-actions { margin-left: auto; }
+.av-layout { display: grid; gap: 16px; }
+@media (min-width: 1100px) { .av-layout { grid-template-columns: minmax(0, 1fr) 360px; align-items: start; } }
+.av-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.av-h { font-size: 11.5px; font-weight: 600; color: var(--a-soft); text-align: center; padding-bottom: 4px; }
+.av-cell { min-height: 68px; padding: 6px 7px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 2px; border: 1px solid var(--a-line); border-radius: 8px; background: #fff; cursor: pointer; text-align: left; transition: border-color .15s, box-shadow .15s; }
+.av-cell b { font-size: 13px; font-weight: 600; color: var(--a-ink); }
+.av-cell small { font-size: 11px; color: var(--a-soft); line-height: 1.25; }
+.av-cell:hover { border-color: var(--a-accent); }
+.av-cell.is-sel { border-color: var(--a-accent-ink); box-shadow: 0 0 0 2px rgba(0, 198, 193, .28); }
+.av-cell.is-today b { color: var(--a-accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.av-cell.is-limited { background: #fff6e5; border-color: #fde6b8; }
+.av-cell.is-sold_out { background: #fdeeee; border-color: #f6d0d0; }
+.av-cell.is-blocked { background: repeating-linear-gradient(135deg, #f1f3f3, #f1f3f3 6px, #fafbfb 6px, #fafbfb 12px); }
+.av-cell.is-closed { background: #f7f9f9; }
+.av-cell.is-closed b { color: var(--a-mute); font-weight: 500; }
+.av-legend { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--a-soft); }
+.av-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.av-legend li::before { content: ""; width: 11px; height: 11px; border-radius: 3px; border: 1px solid var(--a-line-2); background: #fff; }
+.av-legend .is-limited::before { background: #fff6e5; border-color: #f4cf86; }
+.av-legend .is-sold_out::before { background: #fdeeee; border-color: #eeb4b4; }
+.av-legend .is-blocked::before { background: repeating-linear-gradient(135deg, #dfe3e3, #dfe3e3 2px, #fff 2px, #fff 4px); }
+.av-legend .is-closed::before { background: #eef1f1; }
+.av-day { display: grid; gap: 10px; align-content: start; }
+.av-day h2 { margin: 0; }
+.av-day p { margin: 0; }
+.av-sessions { display: grid; gap: 6px; }
+.av-session { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 7px 0; border-top: 1px solid var(--a-line); font-size: 13px; }
+.av-session .btn { margin-left: auto; }
+.badge--av-available { background: #ebf7f0; color: #1b7a44; border-color: #cfead9; }
+.badge--av-limited { background: #fff6e5; color: #925400; border-color: #fde6b8; }
+.badge--av-sold_out { background: #fdeeee; color: #b42323; border-color: #f6d0d0; }
+.badge--av-blocked, .badge--av-closed { background: var(--surface-2); color: var(--a-soft); }
+.av-bookings { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 13px; }
+.av-bookings li { padding-bottom: 8px; border-bottom: 1px solid var(--a-line); }
+.av-bookings li:last-child { border-bottom: 0; padding-bottom: 0; }
+@media (max-width: 699px) {
+  .av-cell { min-height: 52px; padding: 4px 5px; }
+  .av-cell small { font-size: 10px; }
+  .av-actions { margin-left: 0; }
+}

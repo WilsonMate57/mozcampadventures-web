@@ -37,6 +37,7 @@
     payment_not_confirmed: 'Só pagamentos confirmados podem ser revertidos.', refunds_exceed_payments: 'Há reembolsos que deixariam o pago negativo.', invalid_method: 'Método de pagamento inválido.', invalid_paid_on: 'Data de pagamento inválida (não pode ser no futuro).',
     invalid_amount: 'Valor inválido.', whatsapp_invalid_number: 'Número de WhatsApp inválido', whatsapp_no_recipients: 'Indique pelo menos um número da equipa.', whatsapp_not_configured: 'O WhatsApp não está configurado no servidor (token e Phone number ID).', invoice_not_payable: 'A factura não está emitida.', not_resendable: 'Este e-mail não pode ser reenviado: é um registo antigo sem conteúdo, ou um e-mail de reposição de palavra-passe de cliente (o link não fica guardado; o cliente pede um novo).',
     date_out_of_range: 'Data inválida (tem de ser a partir de hoje).', invalid_phone: 'Telefone inválido.', invalid_name: 'Nome inválido.', invalid_email: 'E-mail inválido.', pdf_integrity_error: 'O ficheiro PDF não corresponde ao original. Contacte o administrador.',
+    sold_out: 'Esta data está esgotada.', not_enough_places: 'Não há vagas suficientes nesta data.', date_blocked: 'Esta data está bloqueada.', date_closed: 'Esta data não está aberta.', session_required: 'Indique a sessão (hora).', invalid_session: 'Sessão ou hora inválida.', invalid_capacity: 'Capacidade inválida.', weekdays_required: 'Escolha pelo menos um dia da semana.', invalid_range: 'Intervalo de datas inválido.', invalid_hold: 'Indique um número de horas válido.', invalid_date: 'Data inválida.', invalid_notice: 'Antecedência mínima inválida.', invalid_advance: 'Antecedência máxima inválida.',
     catalog_busy: 'Outra pessoa está a gravar ou a publicar o catálogo. Tente de novo dentro de momentos.', no_changes: 'Não há alterações por publicar.', publish_failed: 'A publicação falhou; o site anterior foi reposto.',
     slug_taken: 'Já existe um pacote com este endereço.', invalid_slug: 'Endereço inválido (mínimo 3 letras ou números).', invalid_category: 'Escolha uma categoria.', name_required: 'Indique o nome.', validation_failed: 'Há campos por corrigir.', network: 'Sem ligação ao servidor.'
   };
@@ -124,7 +125,7 @@
   var NAV = [
     ['Visão geral', [['#/', 'bx-grid-alt', 'Resumo', 'dashboard.view']]],
     ['Operação', [['#/reservas', 'bx-calendar-check', 'Reservas', 'bookings.view', 'bookings_pending'], ['#/clientes', 'bx-user', 'Clientes', 'customers.view'],
-      ['#/experiencias', 'bx-compass', 'Experiências', 'bookings.view|catalog.edit'], ['#/mensagens', 'bx-envelope', 'Mensagens', 'messages.view', 'messages_new'], ['#/avaliacoes', 'bx-star', 'Avaliações', 'reviews.moderate', 'reviews_pending']]],
+      ['#/experiencias', 'bx-compass', 'Experiências', 'bookings.view|catalog.edit'], ['#/disponibilidade', 'bx-calendar', 'Disponibilidade', 'availability.view'], ['#/mensagens', 'bx-envelope', 'Mensagens', 'messages.view', 'messages_new'], ['#/avaliacoes', 'bx-star', 'Avaliações', 'reviews.moderate', 'reviews_pending']]],
     ['Financeiro', [['#/facturas', 'bx-receipt', 'Facturas', 'invoices.view'], ['#/pagamentos', 'bx-wallet', 'Pagamentos', 'payments.view', 'payments_awaiting']]],
     ['Sistema', [['#/emails', 'bx-mail-send', 'E-mails e WhatsApp', 'emails.manage', 'emails_failed'], ['#/utilizadores', 'bx-group', 'Utilizadores e perfis', 'users.manage'],
       ['#/definicoes', 'bx-cog', 'Definições', 'settings.manage'], ['#/auditoria', 'bx-history', 'Auditoria', 'audit.view']]]
@@ -159,7 +160,7 @@
   /* ── Router ────────────────────────────────────────── */
   var ROUTES = [
     [/^#\/?$/, dashboard, 'Resumo', 'Visão geral'], [/^#\/reservas$/, bookings, 'Reservas', 'Operação'], [/^#\/reservas\/(MCA-\d{4}-\d+)$/, booking, 'Reserva', 'Reservas'],
-    [/^#\/clientes$/, customers, 'Clientes', 'Operação'], [/^#\/experiencias$/, experiences, 'Experiências', 'Operação'], [/^#\/experiencias\/([a-z0-9-]{1,60})$/, experienceEdit, 'Experiência', 'Experiências'], [/^#\/facturas$/, invoices, 'Facturas', 'Financeiro'], [/^#\/facturas\/(\d+)$/, invoice, 'Factura', 'Facturas'],
+    [/^#\/clientes$/, customers, 'Clientes', 'Operação'], [/^#\/experiencias$/, experiences, 'Experiências', 'Operação'], [/^#\/disponibilidade$/, availability, 'Disponibilidade', 'Operação'], [/^#\/experiencias\/([a-z0-9-]{1,60})$/, experienceEdit, 'Experiência', 'Experiências'], [/^#\/facturas$/, invoices, 'Facturas', 'Financeiro'], [/^#\/facturas\/(\d+)$/, invoice, 'Factura', 'Facturas'],
     [/^#\/pagamentos$/, payments, 'Pagamentos', 'Financeiro'], [/^#\/avaliacoes$/, reviews, 'Avaliações', 'Operação'], [/^#\/mensagens$/, messages, 'Mensagens', 'Operação'], [/^#\/emails$/, emails, 'E-mails e WhatsApp', 'Sistema'],
     [/^#\/utilizadores$/, users, 'Utilizadores e perfis', 'Sistema'], [/^#\/definicoes$/, settings, 'Definições', 'Sistema'], [/^#\/auditoria$/, audit, 'Auditoria', 'Sistema']
   ];
@@ -445,7 +446,7 @@
         '<div class="form-grid form-grid--3"><div class="field"><label>Adultos</label><input type="number" name="adults" min="1" value="1"></div><div class="field"><label>Crianças</label><input type="number" name="children" min="0" value="0"></div><div class="field"><label>Canal</label><select name="channel"><option value="whatsapp">WhatsApp</option><option value="manual">Telefone / presencial</option><option value="email">E-mail</option></select></div></div>' +
         '<div class="field" data-boatwrap hidden><label>Barco</label><select name="boat" data-boat></select></div>' +
         '<div class="form-grid form-grid--2"><div class="field"><label>Nome do cliente <span class="req" aria-hidden="true">*</span></label><input name="name" required autocomplete="off"></div><div class="field"><label>Telefone <span class="req" aria-hidden="true">*</span></label><input name="phone" required inputmode="tel" autocomplete="off"></div></div>' +
-        '<div class="field"><label>E-mail <span class="opt">(opcional)</span></label><input type="email" name="email" autocomplete="off"></div><p class="muted">O preço é calculado pelo sistema com as tarifas publicadas.</p><p class="error" data-nb-error role="alert" hidden></p>', 'Registar pedido');
+        '<div class="field"><label>E-mail <span class="opt">(opcional)</span></label><input type="email" name="email" autocomplete="off"></div><div class="field"><label>Sessão <span class="opt">(se o pacote tiver horários)</span></label><input type="time" name="session"></div><label class="check"><input type="checkbox" name="override_capacity"> Registar mesmo sem vagas ou com a data bloqueada</label><p class="muted">O preço é calculado pelo sistema com as tarifas publicadas.</p><p class="error" data-nb-error role="alert" hidden></p>', 'Registar pedido');
       var d = $('[data-dialog]');
       function sync() {
         var it = items.filter(function (i) { return i.id === $('[data-item]', d).value; })[0];
@@ -477,7 +478,7 @@
         var ok = $$('[name=name], [name=phone], [name=email], [name=date], [name=checkin], [name=checkout]', form).map(check).every(Boolean);
         if (!ok) { var first = $('[aria-invalid=true]', form); if (first) first.focus(); return; }
         var v = {}; $$('[name]', d).forEach(function (el) { if (!(el.closest('.field') || {}).hidden) v[el.name] = el.value; });
-        v.adults = +v.adults; v.children = +v.children; if (!v.boat) delete v.boat;
+        v.adults = +v.adults; v.children = +v.children; if (!v.boat) delete v.boat; v.override_capacity = form.override_capacity.checked; if (!v.session) delete v.session;
         busy(e.submitter, api('POST', '/bookings', v)).then(function (r) {
           if (!r.ok) { err.textContent = errMsg(r) + (r.data.min ? ' (mínimo ' + r.data.min + ')' : ''); err.hidden = false; return; }
           d.close('done');
@@ -492,7 +493,7 @@
     api('GET', '/bookings/' + m[1]).then(function (r) {
       if (!r.ok) { view.innerHTML = '<p class="error">' + esc(errMsg(r)) + '</p>'; return; }
       var b = r.data.booking;
-      var when = b.service_date ? date(b.service_date) : date(b.checkin) + ' → ' + date(b.checkout) + ' (' + b.nights + ' noites)';
+      var when = b.service_date ? date(b.service_date) + (b.session ? ' · ' + b.session : '') : date(b.checkin) + ' → ' + date(b.checkout) + ' (' + b.nights + ' noites)';
       var wa = 'https://wa.me/' + String(b.customer_phone).replace(/\D/g, '') + '?text=' + encodeURIComponent('Olá ' + b.customer_name + ', sobre o seu pedido ' + b.reference + ' (' + b.item_name + '): ');
       view.innerHTML = '<div class="row row--between" style="margin-bottom:16px"><div><h2 class="mono" style="font-size:22px">' + esc(b.reference) + '</h2><span class="muted">' + esc(b.item_name) + '</span></div><div class="row">' + badge(b.status) +
         (can('bookings.manage') ? b.next_status.map(function (s) { return '<button class="btn btn--sm ' + (s === 'cancelada' ? 'btn--danger' : '') + '" data-to="' + s + '">' + ({ confirmada: 'Confirmar', concluida: 'Marcar concluída', cancelada: 'Cancelar', pedido: 'Reabrir' })[s] + '</button>'; }).join('') : '') + '</div></div>' +
@@ -517,7 +518,7 @@
           var to = btn.dataset.to;
           dialog('Mudar estado para «' + LABEL[to] + '»', '<div class="field"><label>Nota' + (to === 'cancelada' ? ' (motivo obrigatório)' : ' (opcional)') + '</label><textarea name="note" rows="3"></textarea></div>' + (to !== 'pedido' ? NOTIFY_BOX : ''), 'Confirmar', to === 'cancelada').then(function (v) {
             if (!v) return;
-            api('POST', '/bookings/' + b.reference + '/status', { status: to, note: v.note, notify: !!v.notify }).then(function (r2) { if (!r2.ok) return toast(errMsg(r2), true); toastMail('Estado actualizado.', r2); route(); });
+            postStatus(b.reference, { status: to, note: v.note, notify: !!v.notify }).then(function (r2) { if (!r2.ok) return toast(errMsg(r2), true); toastMail('Estado actualizado.', r2); route(); });
           });
         });
       });
@@ -1056,7 +1057,7 @@
     api('GET', '/bookings/' + ref).then(function (r) {
       if (!r.ok) { $('.drawer__body', dr).innerHTML = emptyState('bx-error-circle', 'Não foi possível abrir', errMsg(r)); return; }
       var b = r.data.booking;
-      var when = b.service_date ? date(b.service_date) : date(b.checkin) + ' → ' + date(b.checkout) + ' (' + b.nights + ' noites)';
+      var when = b.service_date ? date(b.service_date) + (b.session ? ' · ' + b.session : '') : date(b.checkin) + ' → ' + date(b.checkout) + ' (' + b.nights + ' noites)';
       var wa = 'https://wa.me/' + String(b.customer_phone).replace(/\D/g, '') + '?text=' + encodeURIComponent('Olá ' + b.customer_name + ', sobre o seu pedido ' + b.reference + ' (' + b.item_name + '): ');
       dr.innerHTML = '<div class="drawer__head"><div><h2 id="drawer-title" class="mono">' + esc(b.reference) + '</h2><span class="muted">' + esc(b.item_name) + '</span></div><div class="row">' + badge(b.status) + '<button class="icon-btn" type="button" data-drawer-close aria-label="Fechar"><i class="bx bx-x"></i></button></div></div>' +
         '<div class="drawer__body">' +
@@ -1076,7 +1077,7 @@
           var to = btn.dataset.dto;
           dialog('Mudar estado para «' + LABEL[to] + '»', '<div class="field"><label>Nota' + (to === 'cancelada' ? '<span class="req" aria-hidden="true">*</span> <span class="opt">(motivo obrigatório)</span>' : ' <span class="opt">(opcional)</span>') + '</label><textarea name="note" rows="3"></textarea></div>' + (to !== 'pedido' ? NOTIFY_BOX : ''), 'Confirmar', to === 'cancelada').then(function (v) {
             if (!v) return;
-            busy(btn, api('POST', '/bookings/' + b.reference + '/status', { status: to, note: v.note, notify: !!v.notify })).then(function (r2) {
+            busy(btn, postStatus(b.reference, { status: to, note: v.note, notify: !!v.notify })).then(function (r2) {
               if (!r2.ok) return toast(errMsg(r2), true);
               toastMail('Estado actualizado.', r2);
               refreshCounts();
@@ -1330,7 +1331,7 @@
         (it.disabled ? '<span class="badge badge--arquivado">Indisponível no site</span>' : '<span class="badge badge--confirmado">Activa</span>') +
         (data.change ? '<span class="badge badge--pendente">' + esc(CHANGE[data.change] || data.change) + '</span>' : '') + (data.published ? '' : '<span class="badge">Ainda não publicado</span>') +
         '<span class="muted">' + esc(itemUrl(data.kind, id)) + '</span></div></div>' +
-        (data.published ? '<a class="btn btn--ghost btn--sm" href="' + itemUrl(data.kind, id) + '" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> Ver no site</a>' : '');
+        (can('availability.view') ? '<a class="btn btn--ghost btn--sm" href="#/disponibilidade?item=' + encodeURIComponent(id) + '"><i class="bx bx-calendar"></i> Gerir disponibilidade</a>' : '') + (data.published ? '<a class="btn btn--ghost btn--sm" href="' + itemUrl(data.kind, id) + '" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> Ver no site</a>' : '');
       $('[data-gcount]').textContent = it.gallery.length;
     }
     function setDirty(v) {
@@ -1624,6 +1625,170 @@
     }
     $('[data-save]').addEventListener('click', function (e) { save(e.currentTarget); });
     head(); renderTab(); setDirty(false);
+  }
+
+  /* ── Disponibilidade: calendário, regras por pacote, bloqueios ── */
+  var AV_LABEL = { available: 'Disponível', limited: 'Vagas limitadas', sold_out: 'Esgotado', blocked: 'Bloqueado', closed: 'Fechado' };
+  var AV_WEEK = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  function avIso(d) { return iso(d); }
+  function availability() {
+    if (!can('availability.view')) return denied('availability.view');
+    var manage = can('availability.manage');
+    var q = new URLSearchParams((location.hash.split('?')[1] || ''));
+    var st = { item: q.get('item') || '', category: '', view: 'month', cursor: new Date(), selected: null, items: [], categories: [], data: null };
+    st.cursor.setHours(12, 0, 0, 0);
+    view.innerHTML = '<div class="kpis" data-av-kpis></div>' +
+      '<div class="toolbar"><select aria-label="Pacote" data-av-item></select><select aria-label="Destino ou categoria" data-av-cat></select>' +
+      '<div class="segmented" role="group" aria-label="Vista"><button type="button" data-av-view="month" aria-pressed="true">Mês</button><button type="button" data-av-view="week" aria-pressed="false">Semana</button></div>' +
+      '<div class="row av-nav"><button type="button" class="icon-btn" data-av-go="-1" aria-label="Anterior"><i class="bx bx-chevron-left"></i></button><strong data-av-title></strong><button type="button" class="icon-btn" data-av-go="1" aria-label="Seguinte"><i class="bx bx-chevron-right"></i></button><button type="button" class="btn btn--ghost btn--sm" data-av-today>Hoje</button></div>' +
+      (manage ? '<div class="row av-actions"><button type="button" class="btn btn--ghost btn--sm" data-av-rule hidden><i class="bx bx-cog"></i> Regras do pacote</button><button type="button" class="btn btn--sm" data-av-block><i class="bx bx-block"></i> Bloquear intervalo</button></div>' : '') + '</div>' +
+      '<div class="av-layout"><section class="card av-cal"><div data-av-cal></div><ul class="av-legend"><li class="is-available">Disponível</li><li class="is-limited">Vagas limitadas</li><li class="is-sold_out">Esgotado</li><li class="is-blocked">Bloqueado</li><li class="is-closed">Fechado</li></ul></section>' +
+      '<section class="card av-day" data-av-day aria-live="polite"></section></div>' +
+      '<div class="grid grid--2" style="margin-top:16px"><section class="card"><h2>Datas a esgotar (30 dias)</h2><div data-av-near></div></section><section class="card stack"><div><h2>Bloqueios activos</h2><div data-av-blocks></div></div>' +
+      (manage ? '<form class="row" data-av-hold><label for="av-hold" class="muted">Um pedido por confirmar ocupa vagas durante</label><input id="av-hold" name="hold" type="number" min="1" max="720" style="width:80px"><span class="muted">horas</span><button class="btn btn--ghost btn--sm">Guardar</button></form>' : '') + '</section></div>';
+
+    function range() {
+      var c = st.cursor;
+      if (st.view === 'week') { var s = new Date(c); s.setDate(c.getDate() - ((c.getDay() + 6) % 7)); var e = new Date(s); e.setDate(s.getDate() + 6); return [s, e]; }
+      return [new Date(c.getFullYear(), c.getMonth(), 1, 12), new Date(c.getFullYear(), c.getMonth() + 1, 0, 12)];
+    }
+    function load() {
+      var r = range();
+      api('GET', '/availability/calendar?from=' + avIso(r[0]) + '&to=' + avIso(r[1]) + (st.item ? '&item=' + encodeURIComponent(st.item) : '') + (st.category ? '&category=' + encodeURIComponent(st.category) : '')).then(function (x) {
+        if (!x.ok) { $('[data-av-cal]').innerHTML = emptyState('bx-error-circle', 'Não foi possível carregar', errMsg(x)); return; }
+        st.data = x.data; st.items = x.data.items; st.categories = x.data.categories;
+        fill(); draw();
+        if (st.selected) openDay(st.selected);
+      });
+    }
+    function fill() {
+      var sel = $('[data-av-item]'), cat = $('[data-av-cat]');
+      if (sel.options.length < 2) {
+        sel.innerHTML = '<option value="">Todos os pacotes</option>' + st.items.map(function (i) { return '<option value="' + esc(i.id) + '">' + esc(i.name) + '</option>'; }).join('');
+        cat.innerHTML = '<option value="">Todos os destinos</option>' + st.categories.map(function (c) { return '<option value="' + esc(c) + '">' + esc(c) + '</option>'; }).join('');
+      }
+      sel.value = st.item; cat.disabled = !!st.item;
+      var rb = $('[data-av-rule]'); if (rb) rb.hidden = !st.item;
+    }
+    function draw() {
+      var r = range(), first = r[0], days = Math.round((r[1] - r[0]) / 864e5) + 1, pad = (first.getDay() + 6) % 7, h = '';
+      $('[data-av-title]').textContent = st.view === 'week' ? date(avIso(r[0])) + ' – ' + date(avIso(r[1])) : first.toLocaleDateString('pt-PT', { month: 'long', year: 'numeric' }).replace(/^./, function (c) { return c.toUpperCase(); });
+      h = '<div class="av-grid">' + ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].map(function (d) { return '<span class="av-h">' + d + '</span>'; }).join('');
+      for (var p = 0; p < pad; p++) h += '<span></span>';
+      var today = avIso(new Date());
+      for (var i = 0; i < days; i++) {
+        var d = new Date(first); d.setDate(first.getDate() + i);
+        var k = avIso(d), cls = '', sub = '', label = '';
+        if (st.item) {
+          var v = (st.data.days || {})[k] || { status: 'closed' };
+          cls = 'is-' + v.status; label = AV_LABEL[v.status];
+          sub = v.status === 'blocked' ? 'Bloqueado' : v.status === 'closed' ? 'Fechado' : v.left === null ? (v.used ? v.used + ' res.' : '') : v.left + ' / ' + v.capacity;
+        } else {
+          var s = (st.data.summary || {})[k] || {};
+          cls = s.sold_out ? 'is-limited' : s.blocked ? 'is-blocked' : '';
+          sub = (s.bookings ? s.bookings + ' res.' : '') + (s.sold_out ? ' · ' + s.sold_out + ' esg.' : '') + (s.blocked ? ' · ' + s.blocked + ' bl.' : '');
+          label = sub || 'Sem reservas';
+        }
+        h += '<button type="button" class="av-cell ' + cls + (k === today ? ' is-today' : '') + (k === st.selected ? ' is-sel' : '') + '" data-av-date="' + k + '" aria-label="' + esc(date(k) + ': ' + label) + '"><b>' + d.getDate() + '</b><small>' + esc(sub) + '</small></button>';
+      }
+      $('[data-av-cal]').innerHTML = h + '</div>';
+    }
+    function openDay(k) {
+      st.selected = k;
+      $$('.av-cell').forEach(function (c) { c.classList.toggle('is-sel', c.dataset.avDate === k); });
+      api('GET', '/availability/day?date=' + k + (st.item ? '&item=' + encodeURIComponent(st.item) : '')).then(function (x) {
+        if (!x.ok) return toast(errMsg(x), true);
+        var box = $('[data-av-day]'), d = x.data, v = d.state, h = '<h2>' + esc(date(k)) + '</h2>';
+        if (v) {
+          h += '<p>' + '<span class="badge badge--av-' + v.status + '">' + esc(AV_LABEL[v.status]) + '</span>' + (v.reason ? ' <span class="muted">' + esc(v.reason) + '</span>' : '') + '</p>' +
+            '<dl class="kv"><dt>Capacidade</dt><dd>' + (v.capacity === null ? 'Sem limite' : v.capacity) + '</dd><dt>Ocupadas</dt><dd>' + v.used + '</dd><dt>Vagas restantes</dt><dd>' + (v.left === null ? '—' : v.left) + '</dd></dl>';
+          if (v.sessions.length > 1 || (v.sessions[0] && v.sessions[0].time)) {
+            h += '<div class="av-sessions">' + v.sessions.map(function (s) {
+              return '<div class="av-session"><strong>' + esc(s.time) + '</strong><span class="muted">' + (s.capacity === null ? s.used + ' ocupadas' : s.left + ' de ' + s.capacity) + '</span><span class="badge badge--av-' + s.status + '">' + esc(AV_LABEL[s.status]) + '</span>' +
+                (manage ? '<button type="button" class="btn btn--sm btn--ghost" data-av-act="' + (s.status === 'blocked' ? 'reset' : 'block') + '" data-av-s="' + esc(s.time) + '">' + (s.status === 'blocked' ? 'Reabrir' : 'Bloquear') + '</button>' : '') + '</div>';
+            }).join('') + '</div>';
+          }
+          if (manage) {
+            h += '<div class="row"><button type="button" class="btn btn--sm btn--ghost" data-av-act="block">Bloquear data</button><button type="button" class="btn btn--sm btn--ghost" data-av-act="open">Abrir data</button><button type="button" class="btn btn--sm btn--ghost" data-av-act="reset">Repor regra</button></div>' +
+              '<form class="row" data-av-cap><label class="muted" for="av-cap">Capacidade nesta data</label><input id="av-cap" name="cap" type="number" min="0" style="width:90px"><button class="btn btn--sm btn--ghost">Alterar</button></form>' +
+              '<form class="row" data-av-ses><label class="muted" for="av-ses">Nova sessão</label><input id="av-ses" name="ses" type="time" style="width:120px"><button class="btn btn--sm btn--ghost">Criar</button></form>';
+          }
+        } else {
+          h += '<p class="muted">Escolha um pacote para alterar esta data.</p>';
+        }
+        h += '<h3 class="h-sub" style="margin-top:14px"><i class="bx bx-group"></i> Reservas e participantes</h3>' + (d.bookings.length ? '<ul class="av-bookings">' + d.bookings.map(function (b) {
+          var pax = +b.adults + +b.children;
+          return '<li><a href="#/reservas/' + esc(b.reference) + '"><strong>' + esc(b.reference) + '</strong></a> ' + badge(b.status) + (b.holds ? '' : ' <span class="muted">retenção expirada</span>') + '<span class="cell-sub">' + esc(b.customer_name) + ' · ' + pax + (pax === 1 ? ' pessoa' : ' pessoas') + (b.session ? ' · ' + esc(b.session) : '') + (st.item ? '' : ' · ' + esc(b.item_name)) + ' · ' + esc(b.customer_phone) + '</span></li>';
+        }).join('') + '</ul>' : '<p class="muted">Sem reservas nesta data.</p>');
+        box.innerHTML = h;
+        $$('[data-av-act]', box).forEach(function (b) { b.addEventListener('click', function () { change(k, { action: b.dataset.avAct, session: b.dataset.avS || '' }, b); }); });
+        var cap = $('[data-av-cap]', box); if (cap) cap.addEventListener('submit', function (e) { e.preventDefault(); change(k, { action: 'capacity', capacity: cap.cap.value }, e.submitter); });
+        var ses = $('[data-av-ses]', box); if (ses) ses.addEventListener('submit', function (e) { e.preventDefault(); change(k, { action: 'add_session', session: ses.ses.value }, e.submitter); });
+      });
+    }
+    function change(k, body, btn) {
+      body.item = st.item; body.dates = [k];
+      busy(btn, api('POST', '/availability/dates', body)).then(function (x) { if (!x.ok) return toast(errMsg(x), true); toast('Disponibilidade actualizada.'); load(); summary(); });
+    }
+    function summary() {
+      api('GET', '/availability/summary').then(function (x) {
+        if (!x.ok) return;
+        var s = x.data;
+        $('[data-av-kpis]').innerHTML = kpi(null, 'Pacotes configurados', s.packages_configured + ' / ' + s.packages_active, 'os restantes ficam sob confirmação') + kpi(null, 'Datas esgotadas', s.sold_out_dates, 'próximos 30 dias') + kpi(null, 'Datas bloqueadas', s.blocked_dates, 'próximos 30 dias') + kpi(null, 'Vagas restantes', s.places_left, 'pacotes com capacidade, 30 dias');
+        $('[data-av-near]').innerHTML = s.near_full.length ? '<ul class="av-bookings">' + s.near_full.map(function (n) { return '<li><a href="#/disponibilidade?item=' + encodeURIComponent(n.item) + '"><strong>' + esc(n.name) + '</strong></a> <span class="badge badge--av-' + n.status + '">' + esc(AV_LABEL[n.status]) + '</span><span class="cell-sub">' + date(n.date) + (n.left !== null ? ' · ' + n.left + ' de ' + n.capacity + ' vagas' : '') + '</span></li>'; }).join('') + '</ul>' : '<p class="muted">Nenhuma data perto de esgotar. Só os pacotes com capacidade definida entram nesta lista.</p>';
+        var hold = $('[data-av-hold]'); if (hold) hold.hold.value = s.hold_hours;
+      });
+      api('GET', '/availability/blocks').then(function (x) {
+        if (!x.ok) return;
+        var names = {}; st.items.forEach(function (i) { names[i.id] = i.name; });
+        $('[data-av-blocks]').innerHTML = x.data.blocks.length ? '<ul class="av-bookings">' + x.data.blocks.map(function (b) { return '<li><strong>' + esc(b.item_id ? names[b.item_id] || b.item_id : 'Todos os pacotes') + '</strong> ' + (manage ? '<button type="button" class="btn btn--sm btn--ghost" data-av-unblock="' + b.id + '">Retirar</button>' : '') + '<span class="cell-sub">' + date(b.date_from) + ' – ' + date(b.date_to) + ' · ' + esc(b.reason) + '</span></li>'; }).join('') + '</ul>' : '<p class="muted">Sem bloqueios activos.</p>';
+        $$('[data-av-unblock]').forEach(function (btn) { btn.addEventListener('click', function () { busy(btn, api('POST', '/availability/blocks/' + btn.dataset.avUnblock + '/remove', {})).then(function (y) { if (!y.ok) return toast(errMsg(y), true); toast('Bloqueio retirado.'); load(); summary(); }); }); });
+      });
+    }
+    function ruleDialog() {
+      var r = st.data.rule, name = (st.items.filter(function (i) { return i.id === st.item; })[0] || {}).name;
+      dialog('Regras de disponibilidade — ' + name,
+        '<div class="field"><label>Funcionamento</label><select name="mode"><option value="request"' + (r.mode === 'request' ? ' selected' : '') + '>Aberto todos os dias, salvo bloqueios</option><option value="scheduled"' + (r.mode === 'scheduled' ? ' selected' : '') + '>Só nos dias da semana abaixo e nas datas abertas</option></select></div>' +
+        '<div class="field"><label>Dias da semana</label><div class="row">' + AV_WEEK.map(function (w, i) { return '<label class="check"><input type="checkbox" name="wd' + i + '"' + (r.weekdays.indexOf(i) !== -1 ? ' checked' : '') + '> ' + w + '</label>'; }).join('') + '</div></div>' +
+        '<div class="form-grid form-grid--2"><div class="field"><label>Capacidade por data ou sessão</label><input name="capacity" type="number" min="1" value="' + esc(r.capacity === null ? '' : r.capacity) + '"><span class="help">Vazio = sem limite.</span></div>' +
+        '<div class="field"><label>Conta</label><select name="unit"><option value="people"' + (r.unit === 'people' ? ' selected' : '') + '>Pessoas</option><option value="units"' + (r.unit === 'units' ? ' selected' : '') + '>Unidades (barco, viatura)</option></select></div>' +
+        '<div class="field"><label>Antecedência mínima (horas)</label><input name="notice" type="number" min="0" value="' + esc(r.min_notice_hours) + '"></div><div class="field"><label>Antecedência máxima (dias)</label><input name="advance" type="number" min="1" value="' + esc(r.max_advance_days === null ? '' : r.max_advance_days) + '"><span class="help">Vazio = sem limite.</span></div></div>' +
+        '<div class="field"><label>Sessões ou horários</label><input name="sessions" value="' + esc(r.sessions.join(', ')) + '" placeholder="09:00, 16:30"><span class="help">Separados por vírgulas. Vazio = sem horário.</span></div>', 'Guardar regras').then(function (v) {
+        if (!v) return;
+        var wd = []; AV_WEEK.forEach(function (w, i) { if (v['wd' + i]) wd.push(i); });
+        api('POST', '/availability/rules/' + encodeURIComponent(st.item), { mode: v.mode, weekdays: wd, capacity: v.capacity, unit: v.unit, min_notice_hours: v.notice, max_advance_days: v.advance, sessions: v.sessions.split(',') }).then(function (x) { if (!x.ok) return toast(errMsg(x), true); toast('Regras guardadas.'); load(); summary(); });
+      });
+    }
+    function blockDialog() {
+      dialog('Bloquear intervalo de datas', '<div class="field"><label>Pacote</label><select name="item"><option value="">Todos os pacotes</option>' + st.items.map(function (i) { return '<option value="' + esc(i.id) + '"' + (i.id === st.item ? ' selected' : '') + '>' + esc(i.name) + '</option>'; }).join('') + '</select></div>' +
+        '<div class="form-grid form-grid--2"><div class="field"><label>De</label><input type="date" name="from" value="' + (st.selected || '') + '"></div><div class="field"><label>Até</label><input type="date" name="to" value="' + (st.selected || '') + '"></div></div>' +
+        '<div class="field"><label>Motivo</label><input name="reason" maxlength="200" placeholder="Férias, manutenção da embarcação…"></div><p class="muted">As reservas já existentes nestas datas mantêm-se.</p>', 'Bloquear').then(function (v) {
+        if (!v) return;
+        api('POST', '/availability/blocks', v).then(function (x) { if (!x.ok) return toast(errMsg(x), true); toast('Datas bloqueadas.'); load(); summary(); });
+      });
+    }
+    $('[data-av-item]').addEventListener('change', function (e) { st.item = e.target.value; st.selected = null; $('[data-av-day]').innerHTML = ''; load(); });
+    $('[data-av-cat]').addEventListener('change', function (e) { st.category = e.target.value; load(); });
+    $$('[data-av-view]').forEach(function (b) { b.addEventListener('click', function () { st.view = b.dataset.avView; $$('[data-av-view]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); load(); }); });
+    $$('[data-av-go]').forEach(function (b) { b.addEventListener('click', function () { var n = +b.dataset.avGo; if (st.view === 'week') st.cursor.setDate(st.cursor.getDate() + 7 * n); else st.cursor = new Date(st.cursor.getFullYear(), st.cursor.getMonth() + n, 1, 12); load(); }); });
+    $('[data-av-today]').addEventListener('click', function () { st.cursor = new Date(); st.cursor.setHours(12, 0, 0, 0); load(); });
+    $('[data-av-cal]').addEventListener('click', function (e) { var c = e.target.closest('[data-av-date]'); if (c) openDay(c.dataset.avDate); });
+    var rb = $('[data-av-rule]'); if (rb) rb.addEventListener('click', ruleDialog);
+    var bb = $('[data-av-block]'); if (bb) bb.addEventListener('click', blockDialog);
+    var hf = $('[data-av-hold]'); if (hf) hf.addEventListener('submit', function (e) { e.preventDefault(); busy(e.submitter, api('POST', '/availability/settings', { hold_hours: hf.hold.value })).then(function (x) { if (!x.ok) return toast(errMsg(x), true); toast('Retenção guardada.'); }); });
+    $('[data-av-day]').innerHTML = '<p class="muted">Escolha uma data no calendário.</p>';
+    load(); summary();
+  }
+
+  /* Mudança de estado: sem vagas, pede confirmação antes de forçar */
+  function postStatus(ref, body) {
+    return api('POST', '/bookings/' + ref + '/status', body).then(function (r) {
+      if (r.status === 409 && r.data.error === 'sold_out' && window.confirm('Já não há vagas nesta data (restam ' + (r.data.left || 0) + '). Continuar mesmo assim?')) {
+        body.force = true;
+        return api('POST', '/bookings/' + ref + '/status', body);
+      }
+      return r;
+    });
   }
 
   /* ── Tabelas ordenáveis (no ecrã): clique no cabeçalho; números, datas e valores MZN ── */

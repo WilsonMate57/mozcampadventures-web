@@ -3,6 +3,7 @@
  * MOZ CAMP ADVENTURES — API pública (Fase 4)
  *   GET  /api/health
  *   POST /api/bookings          pedido de reserva → referência MCA-AAAA-NNNNN
+ *   GET  /api/availability?item=&from=&to=   datas reserváveis de um pacote
  *   POST /api/contact           mensagem de contacto
  *   GET  /api/reviews?item=…    avaliações aprovadas (item ou 'home')
  *   POST /api/reviews           nova avaliação (fica pendente)
@@ -16,6 +17,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/src/bootstrap.php';
 require __DIR__ . '/src/Catalog.php';
+require __DIR__ . '/src/Availability.php';
 require __DIR__ . '/src/Mailer.php';
 require __DIR__ . '/src/EmailView.php';
 require __DIR__ . '/src/Services.php';
@@ -45,6 +47,7 @@ try {
         ['GET', '/health'] => ['ok' => true, 'version' => MCA_API_VERSION, 'db' => (bool) db()->query('SELECT 1')->fetchColumn()],
         ['POST', '/bookings'] => (function () { require_allowed_origin(); return Bookings::create(json_input()); })(),
         ['POST', '/contact'] => (function () { require_allowed_origin(); return Contact::create(json_input()); })(),
+        ['GET', '/availability'] => Availability::publicView($_GET),
         ['GET', '/reviews'] => Reviews::list(isset($_GET['item']) ? (string) $_GET['item'] : null),
         ['POST', '/reviews'] => (function () { require_allowed_origin(); return Reviews::create(json_input()); })(),
         ['POST', '/proof/info'] => Payments::proofInfo(json_input()),

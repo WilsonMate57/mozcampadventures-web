@@ -1065,3 +1065,32 @@ a.info-item:hover { border-color: var(--teal-700); box-shadow: var(--shadow-2); 
   .hp-card, .hp-card__media img, .hp-gallery img, .hp-day__chev { transition: none; }
   .hp-card:hover { transform: none; }
 }
+
+/* Calendário de disponibilidade no formulário de reserva */
+.avail { display: grid; gap: 10px; }
+.avail__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.avail__head strong { color: var(--ink); font-size: var(--fs-sm); }
+.avail__head button { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: var(--r-sm); background: #fff; color: var(--ink); font-size: 1.2rem; cursor: pointer; }
+.avail__head button:disabled { opacity: .35; cursor: default; }
+.avail__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.avail__grid > span { font-size: var(--fs-xs); font-weight: var(--fw-semi); color: var(--text-soft); text-align: center; text-transform: uppercase; padding-bottom: 2px; }
+.avail__day { aspect-ratio: 1; min-height: 36px; padding: 0; border: 1px solid var(--line); border-radius: var(--r-sm); background: #fff; color: var(--ink); font: inherit; font-size: var(--fs-sm); font-weight: var(--fw-semi); cursor: pointer; transition: border-color var(--dur-fast), background-color var(--dur-fast); }
+.avail__day:hover:not(:disabled) { border-color: var(--teal-700); }
+.avail__day:focus-visible { outline: none; box-shadow: var(--ring); }
+.avail__day.is-limited { background: var(--sun-50); border-color: #fde3b0; }
+.avail__day:disabled { background: var(--surface-2); border-color: transparent; color: var(--text-mute); font-weight: var(--fw-regular); cursor: not-allowed; }
+.avail__day.is-sold_out:disabled { text-decoration: line-through; }
+.avail__day[aria-pressed="true"] { background: var(--teal-700); border-color: var(--teal-700); color: #fff; }
+.avail__legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: var(--fs-xs); color: var(--text-soft); }
+.avail__legend li { display: inline-flex; align-items: center; gap: 6px; }
+.avail__legend li::before { content: ""; width: 10px; height: 10px; border-radius: 3px; border: 1px solid var(--line-strong); background: #fff; }
+.avail__legend .is-limited::before { background: var(--sun-50); border-color: #f2c673; }
+.avail__legend .is-sold_out::before { background: var(--surface-2); border-color: transparent; }
+.avail__sub { margin: 4px 0 6px; font-size: var(--fs-sm); font-weight: var(--fw-semi); color: var(--ink); }
+.avail__sessions { display: flex; flex-wrap: wrap; gap: 8px; }
+.avail__session { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1.5px solid var(--line); border-radius: var(--r-sm); font-size: var(--fs-sm); font-weight: var(--fw-semi); cursor: pointer; }
+.avail__session:has(input:checked) { border-color: var(--teal-700); background: var(--teal-50); }
+.avail__session input { accent-color: var(--teal-700); }
+.avail__session.is-off { color: var(--text-mute); background: var(--surface-2); cursor: not-allowed; }
+.avail__session small { font-weight: var(--fw-regular); }
+.avail__note { margin: 0; min-height: 1.2em; font-size: var(--fs-sm); color: var(--warning); }

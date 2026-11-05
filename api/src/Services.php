@@ -56,13 +56,17 @@ final class Bookings
         $pdo = db();
         $pdo->beginTransaction();
         try {
+            /* Disponibilidade: verificada aqui, com a data bloqueada até ao fim da transacção */
+            $itemId = $item['slug'] ?? $item['id'];
+            $override = $admin !== null && !empty($in['override_capacity']);
+            $claim = Availability::claim($itemId, $q, $in, $admin !== null, $override);
             $year = date('Y');
             $seq = $pdo->prepare('INSERT INTO counters (name, value) VALUES (?, 1) ON CONFLICT (name) DO UPDATE SET value = counters.value + 1 RETURNING value');
             $seq->execute(["booking-$year"]);
             $reference = sprintf('MCA-%s-%05d', $year, (int) $seq->fetchColumn());
 
-            $ins = $pdo->prepare('INSERT INTO bookings (reference, idempotency_key, channel, lang, item_id, item_kind, item_name, service_date, checkin, checkout, nights, adults, children, options, price_lines, total_estimate, total_to_confirm, customer_name, customer_phone, customer_email, customer_message, access_token_hash, ip_hash, user_agent, customer_id)
-                VALUES (:ref, :key, :channel, :lang, :item, :kind, :iname, :sdate, :cin, :cout, :nights, :adults, :children, :options, :lines, :total, :tc, :name, :phone, :email, :msg, :tok, :ip, :ua, :cust)
+            $ins = $pdo->prepare('INSERT INTO bookings (reference, idempotency_key, channel, lang, item_id, item_kind, item_name, service_date, checkin, checkout, nights, adults, children, options, price_lines, total_estimate, total_to_confirm, customer_name, customer_phone, customer_email, customer_message, access_token_hash, ip_hash, user_agent, customer_id, session, hold_expires_at)
+                VALUES (:ref, :key, :channel, :lang, :item, :kind, :iname, :sdate, :cin, :cout, :nights, :adults, :children, :options, :lines, :total, :tc, :name, :phone, :email, :msg, :tok, :ip, :ua, :cust, :sess, :hold)
                 RETURNING id');
             $ins->execute([
                 ':ref' => $reference, ':key' => $key, ':channel' => $channel, ':lang' => $lang,
@@ -74,11 +78,16 @@ final class Bookings
                 ':name' => $name, ':phone' => $phone, ':email' => $email ?: null, ':msg' => $message ?: null,
                 ':tok' => hash('sha256', $token), ':ip' => ip_hash(), ':ua' => clean_text($_SERVER['HTTP_USER_AGENT'] ?? '', 300),
                 ':cust' => $admin === null ? Account::currentId() : null,     // pedido feito com sessão de cliente → fica na conta
+                ':sess' => $claim['session'], ':hold' => date('c', time() + Availability::holdHours() * 3600),
             ]);
             $id = (int) $ins->fetchColumn();
+            Availability::attach($id, $itemId, $claim);
             $pdo->prepare("INSERT INTO booking_events (booking_id, type, data, actor) VALUES (?, 'created', ?, ?)")
-                ->execute([$id, json_encode(['total' => $q['total'], 'to_confirm' => $q['to_confirm'], 'channel' => $channel]), $admin['name'] ?? 'cliente']);
+                ->execute([$id, json_encode(['total' => $q['total'], 'to_confirm' => $q['to_confirm'], 'channel' => $channel, 'session' => $claim['session'], 'override_capacity' => $override]), $admin['name'] ?? 'cliente']);
             $pdo->commit();
+        } catch (ApiError $e) {                          // sem vagas, data bloqueada, sessão inválida
+            $pdo->rollBack();
+            throw $e;
         } catch (PDOException $e) {
             $pdo->rollBack();
             if ($e->getCode() === '23505') {             // corrida na mesma chave de idempotência
@@ -87,6 +96,7 @@ final class Bookings
             throw $e;
         }
 
+        if ($claim['session']) $q['dates']['session'] = $claim['session'];
         $mail = $admin === null ? self::notify($reference, $id, $item, $q, $name, $phone, $email, $message, $lang) : [];
         // Link pessoal da área do cliente: vai no QR code do ticket do pedido (só para quem fez o pedido no site)
         $clientUrl = $admin === null ? Notify::clientLink(['id' => $id, 'reference' => $reference, 'lang' => $lang, 'client_link_version' => 1]) : null;
@@ -104,7 +114,7 @@ final class Bookings
     private static function notify(string $ref, int $id, array $item, array $q, string $name, string $phone, string $email, string $message, string $lang): array
     {
         $when = isset($q['dates']['service_date'])
-            ? "Data: {$q['dates']['service_date']}"
+            ? "Data: {$q['dates']['service_date']}" . (isset($q['dates']['session']) ? " às {$q['dates']['session']}" : '')
             : "Entrada: {$q['dates']['checkin']} · Saída: {$q['dates']['checkout']} ({$q['nights']} noites)";
         $lines = implode("\n", array_map(static fn ($l) => "• {$l['label']}: " . ($l['amount'] === null ? ($l['note'] ?? 'a confirmar') : Pricing::fmt($l['amount'])), $q['lines']));
         $total = $q['to_confirm'] ? 'a confirmar pela equipa' : Pricing::fmt($q['total']);
@@ -114,7 +124,7 @@ final class Bookings
         $view = ['ref' => $ref, 'item' => $item['name'], 'slug' => $item['slug'] ?? $item['id'], 'lang' => $lang, 'to_confirm' => $q['to_confirm'],
             'lines' => array_map(static fn ($l) => [$l['label'], $l['amount'] === null ? ($l['note'] ?? 'a confirmar') : Pricing::fmt($l['amount'])], $q['lines']), 'total' => $total,
             'name' => $name, 'phone' => $phone, 'email' => $email, 'message' => $message];
-        $whenH = static fn (string $l) => isset($q['dates']['service_date']) ? EmailView::date($q['dates']['service_date'], $l)
+        $whenH = static fn (string $l) => isset($q['dates']['service_date']) ? EmailView::date($q['dates']['service_date'], $l) . (isset($q['dates']['session']) ? ' · ' . $q['dates']['session'] : '')
             : EmailView::date($q['dates']['checkin'], $l, false) . ' – ' . EmailView::date($q['dates']['checkout'], $l, false) . ' (' . $q['nights'] . ($l === 'en' ? ' nights)' : ' noites)');
         $paxH = static fn (string $l) => $q['pax'] . ' (' . $q['adults'] . ($l === 'en' ? ' adults' : ' adultos') . ($q['children'] ? ', ' . $q['children'] . ($l === 'en' ? ' children' : ' crianças') : '') . ')';
         $out = ['team' => Mailer::send('booking_team', Mailer::team(), "Pedido de reserva $ref — {$item['name']}", $team, 'booking', $id, $email ?: null, [], 'pt', null, null,

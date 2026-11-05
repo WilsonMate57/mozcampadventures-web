@@ -168,6 +168,7 @@ try {
       body: JSON.stringify({ item: SLUG, lang: 'pt', name: 'Teste Catálogo', email: `cat-${run}@example.com`, phone: '+258 84 000 0000', date: new Date(Date.now() + 20 * 864e5).toISOString().slice(0, 10), adults: 1, consent: true, idempotency_key: randomUUID() }) });
     return r.status;
   }, 422);
+  await test('P6b a publicação guarda a cópia do catálogo fora do site (reposta depois de um deploy por Git)', () => readFileSync(join(STORAGE, 'catalog-live/tours.json'), 'utf8') === readFileSync('data/tours.json', 'utf8'), true);
   await test('P7 depois de publicar: rascunho limpo; publicar de novo → 409', async () => [(await admin.call('GET', '/catalog/items')).data.draft.changes, (await admin.call('POST', '/catalog/publish', {})).data.error], [0, 'no_changes']);
 
   /* Falha na geração → catálogo anterior reposto */
@@ -202,7 +203,7 @@ try {
   rmSync(DRAFT, { recursive: true, force: true });
   if (draftBackup) { cpSync(draftBackup, DRAFT, { recursive: true }); rmSync(draftBackup, { recursive: true, force: true }); }
   for (const v of existsSync(HISTORY) ? readdirSync(HISTORY) : []) if (!historyBefore.has(v)) rmSync(join(HISTORY, v), { recursive: true, force: true });
-  for (const d of [photoDir, join('assets/images/_opt/packages', SLUG), join('tours', SLUG), join('en/tours', SLUG)]) rmSync(d, { recursive: true, force: true });
+  for (const d of [photoDir, join('assets/images/_opt/packages', SLUG), join('tours', SLUG), join('en/tours', SLUG), join('assets/images/_email', SLUG + '.jpg'), join(STORAGE, 'catalog-live')]) rmSync(d, { recursive: true, force: true });
   mkdirSync('assets/images/_opt', { recursive: true });
   execSync('node scripts/publish.mjs', { stdio: 'ignore' });
   const m = JSON.parse(readFileSync('assets/images/_opt/manifest.json', 'utf8'));

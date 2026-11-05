@@ -571,6 +571,10 @@ final class CatalogAdmin
             throw new ApiError(500, 'publish_failed', '', ['log' => $log, 'restored' => $restored]);
         }
         foreach ([...self::FILES, 'meta.json'] as $f) @unlink("$dir/$f");
+        /* Cópia do catálogo publicado: um deploy por Git substitui data/*.json (api/bin/catalog-restore.php repõe-a) */
+        $snap = self::storage('catalog-live');
+        if (!is_dir($snap)) @mkdir($snap, 0750, true);
+        foreach (self::FILES as $f) self::copyFile(self::liveDir() . "/$f", "$snap/$f");
         self::prune();
         Audit::log('catalog_published', 'catalog', null, ['items' => array_keys($changes), 'backup' => $id, 'seconds' => $secs]);
         flock($lock, LOCK_UN);
